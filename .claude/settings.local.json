@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:/Users/manish yadav/Downloads\" -maxdepth 3 \\\\\\( -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.webp\" \\\\\\) 2>/dev/null | grep -i -E \"banner|all.product|lineup|range|collection|cover\" | head -20)",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/Influencer_holding_dried_blueber…_1080p_202607290620.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/blueberries.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/Almonds_for_mental_edge_1080p_202607290555.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/almonds.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/Naturesmud_Apple_Crunch_Ad.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/apple.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/Mother_kissing_baby_Naturesmud_oil_202607271614.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/coconut-oil.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/Naturesmud_Dried_Cranberries_jar…_1080p_202608021302.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/cranberries.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/0723\\(18\\).mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/dates-powder-energy.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/0723\\(19\\).mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/apple-mountains.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/cocunut oil Ad.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/coconut-oil-ad.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/0723\\(12\\).mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/blueberries-stress.mp4')",
+      "Bash(cp 'C:/Users/manish yadav/Downloads/family kids way betroot powder.mp4' 'C:/Users/manish yadav/Downloads/NEW-NATUREMUD/public/videos/beetroot-family.mp4')",
+      "Bash(npm install *)"
+    ]
+  }
+}

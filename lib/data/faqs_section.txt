@@ -1,0 +1,103 @@
+export const faqs: FAQItem[] = [
+  // 1. Baby Care & Infant Nutrition
+  {
+    id: 'f-baby-1',
+    question: 'At what age can I introduce Nature\'s Mud products to my baby?',
+    answer: 'Our Sprouted Ragi & Oats Porridge can be introduced to infants from 6 months of age as their first solid meal. Micro-ground nut powders (such as sweet almond or cashew powder) can be introduced in small pinch quantities from 7–8 months once the baby is comfortable with basic cereals. Whole nuts should only be given to children aged 4+ to prevent choking hazards.',
+    category: 'Baby Care & Nutrition',
+  },
+  {
+    id: 'f-baby-2',
+    question: 'Is your Raw Himalayan Honey safe for infants under 1 year?',
+    answer: 'No. In accordance with universal pediatric guidelines, raw honey should never be given to infants under 12 months of age due to the natural presence of wild botulinum spores that infant digestive tracts are not yet equipped to process. For babies 1 year and older, our honey is a wonderful, gentle immune tonic.',
+    category: 'Baby Care & Nutrition',
+  },
+  {
+    id: 'f-baby-3',
+    question: 'How are your baby porridges and nut powders prepared for easy digestion?',
+    answer: 'All grains and legumes used in our baby range undergo traditional soaking and sprouting (germination), which neutralizes phytic acid and activates vital digestive enzymes. The sprouted grains are sun-dried and slow-roasted at low temperatures before being micro-milled into an ultra-smooth, easily swallowable powder.',
+    category: 'Baby Care & Nutrition',
+  },
+  {
+    id: 'f-baby-4',
+    question: 'Which dry fruit is best for babies with low iron or constipation?',
+    answer: 'Organic Dried Figs (Anjeer) and Medjool Dates are extraordinary natural remedies for infant constipation and low hemoglobin. Soaking 1 fig or 1 pitted date in warm water and mashing it into baby porridge provides gentle dietary fiber and bioavailable iron without causing stomach cramps.',
+    category: 'Baby Care & Nutrition',
+  },
+
+  // 2. Mothercare & Pregnancy
+  {
+    id: 'f-mother-1',
+    question: 'Which superfoods are most recommended during pregnancy?',
+    answer: 'Expectant mothers benefit greatly from: 1) Raw Himalayan Walnuts for plant-based Omega-3 DHA (fetal brain & eye growth), 2) Dried Figs & Medjool Dates for natural non-heme iron and constipation relief, 3) Roasted Pumpkin Seeds for zinc and restful sleep, and 4) A delicate pinch of Pure Himalayan Saffron in warm milk during the 2nd & 3rd trimesters.',
+    category: 'Mothercare & Pregnancy',
+  },
+  {
+    id: 'f-mother-2',
+    question: 'How does Moringa Leaf Powder help nursing mothers with lactation?',
+    answer: 'Organic Moringa Powder is clinically recognized as a natural galactagogue. It contains rich plant phytosterols that encourage prolactin secretion, naturally stimulating and enriching breastmilk supply. Nursing mothers typically stir 1/2 teaspoon into warm water, dal, or morning smoothies.',
+    category: 'Mothercare & Pregnancy',
+  },
+  {
+    id: 'f-mother-3',
+    question: 'Can I consume Edible Gond (Acacia Gum) during postpartum recovery?',
+    answer: 'Yes! In traditional Nepali postpartum care, Edible Gond (Dink) is considered the premier natural remedy for replenishing lost calcium, strengthening pelvic bones, restoring joint lubrication, and promoting tissue healing following labor.',
+    category: 'Mothercare & Pregnancy',
+  },
+
+  // 3. Superfoods & Honey Purity
+  {
+    id: 'f-superfood-1',
+    question: 'Why does your Raw Mustang Honey sometimes crystallize or turn solid?',
+    answer: 'Crystallization is the definitive proof of pure, unadulterated raw honey! Real unheated honey contains natural pollen grains and natural glucose that naturally form crystals in cool temperatures. Commercial honey prevents this by heating and adding corn syrup. To re-liquefy, simply place the glass jar in a warm water bath.',
+    category: 'Superfoods & Honey',
+  },
+  {
+    id: 'f-superfood-2',
+    question: 'How do I know your Himalayan Shilajit is 100% authentic?',
+    answer: 'Nature\'s Mud Shilajit is pure gold-grade black resin harvested from Himalayan cliffs at altitudes over 16,000 ft. It dissolves completely in warm water or milk without leaving insoluble residue, contains >65% Fulvic Acid, and has the distinctive earthy Himalayan herbal aroma.',
+    category: 'Superfoods & Honey',
+  },
+  {
+    id: 'f-superfood-3',
+    question: 'Do your superfoods contain added sugars, glazes, or preservatives?',
+    answer: 'Never. Every single product in Nature’s Mud is 100% chemical-free and unadulterated. We do not use sulfur dioxide, artificial preservatives, synthetic dyes, or refined sugars. What you receive is pure, wholesome nutrition straight from nature.',
+    category: 'Superfoods & Honey',
+  },
+
+  // 4. Nuts, Seeds & Cold-Pressed Oils
+  {
+    id: 'f-nuts-1',
+    question: 'How should I store organic dry fruits and seeds in Nepal’s humid weather?',
+    answer: 'Because our nuts and seeds are 100% preservative-free, we recommend storing opened packages in airtight glass jars in a cool, dry pantry away from direct sunlight. During the monsoon season or for extended storage beyond 3 months, refrigerating nut packets preserves crispness and natural oils.',
+    category: 'Dry Fruits & Oils',
+  },
+  {
+    id: 'f-nuts-2',
+    question: 'Can your Cold-Pressed Mustard and Virgin Coconut Oils be used for baby massage?',
+    answer: 'Yes. Our cold-pressed oils are extracted at room temperature using wooden expellers without petroleum hexane solvents or artificial bleaching. Pure cold-pressed mustard oil is ideal for warming winter massages, while virgin coconut oil is perfect for delicate, sensitive baby skin and cradle cap.',
+    category: 'Dry Fruits & Oils',
+  },
+
+  // 5. Orders, Delivery & Payments across Nepal
+  {
+    id: 'f-order-1',
+    question: 'What are your delivery timelines across Kathmandu and other cities in Nepal?',
+    answer: 'Orders within Kathmandu Valley (Kathmandu, Lalitpur, Bhaktapur) are delivered within 24 to 48 business hours. For other major cities (Pokhara, Butwal, Chitwan, Biratnagar, Dharan, Nepalgunj), delivery takes 2 to 4 business days. Remote district deliveries take 4 to 7 business days.',
+    category: 'Orders & Shipping',
+  },
+  {
+    id: 'f-order-2',
+    question: 'Do you offer Cash on Delivery (COD) and online digital wallets?',
+    answer: 'Yes! We proudly accept Cash on Delivery (COD) throughout Nepal. We also accept instant digital payments via eSewa, Khalti, FonePay QR, and major debit/credit cards.',
+    category: 'Orders & Shipping',
+  },
+  {
+    id: 'f-order-3',
+    question: 'What is your refund and return policy if a package arrives damaged?',
+    answer: 'Customer happiness is our highest priority. If your package arrives damaged or unsealed, notify us within 48 hours of delivery with a quick photo, and we will promptly send a replacement or issue a full refund with no return shipping fees.',
+    category: 'Orders & Shipping',
+  },
+];
+
+export const userOrders: Order[] = [];

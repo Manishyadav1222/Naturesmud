@@ -1,0 +1,9 @@
+{
+  "instagram_handle": "naturesmud_official",
+  "access_token": "",
+  "user_id": "",
+  "auto_sync": true,
+  "sync_interval_hours": 6,
+  "last_synced_at": "2026-08-20T08:34:43.946Z",
+  "webhook_verify_token": "naturemud_insta_webhook_secure_2025"
+}

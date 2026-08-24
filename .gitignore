@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.next/
+dist/
+build/
+backend/vendor/
+admin-server/node_modules/
+admin-server/dist/
+
+# Logs & Temporary files
+*.log
+dev-server.log
+frontend_logs.txt
+ziVuDjVB
+temp_resp.json
+query
+.swc/
+*.tsbuildinfo
+NUL
+
+# Environment files
+.env
+.env.local
+backend/.env
+admin-server/.env
+
+# Large archives & media artifacts
+*.zip
+cpanel-deploy/
+scratch/
+assetsphotovodeo/
+playwright-report/
+test-results/
+public/videos/

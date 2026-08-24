@@ -1,0 +1,202 @@
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: 'Nutrition' | 'Health Tips' | 'Lifestyle' | 'Organic Living' | 'Superfoods' | string;
+  author: string;
+  date: string;
+  readTime: number;
+  content: string[];
+  tags: string[];
+  featured?: boolean;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: '1',
+    slug: 'wild-honey-benefits',
+    title: 'Why Wild Himalayan Honey Is Nature\'s Most Powerful Superfood',
+    excerpt: 'Discover the science behind why honey harvested from 3,500m+ cliffs contains 100x more antioxidants than commercial honey.',
+    image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=800',
+    category: 'Superfoods',
+    author: 'Dr. Anjali Sharma',
+    date: '2024-01-15',
+    readTime: 8,
+    content: [
+      'Wild Himalayan honey (Apis laboriosa) is harvested from the world\'s largest honey bees, which build massive nests on vertical cliff faces at altitudes between 2,500m and 4,000m.',
+      'These bees forage on 100+ species of wild medicinal flowers — rhododendron, wild cherry, Himalayan herbs, and rare alpine blossoms — creating a honey with unparalleled phytochemical diversity.',
+      'Independent lab testing shows our wild honey contains: 3-4x more phenolic compounds, 5x more flavonoids, and measurable levels of rare compounds like grayanotoxins (in safe, therapeutic amounts) that contribute to its unique medicinal properties.',
+      'Traditional honey hunters from the Gurung community risk their lives to harvest this liquid gold using hand-woven bamboo ladders and ancestral techniques passed down for generations. Every jar supports their livelihoods and preserves this UNESCO-recognized cultural heritage.',
+    ],
+    tags: ['honey', 'wild', 'himalayan', 'superfood', 'antioxidants', 'traditional'],
+    featured: true,
+  },
+  {
+    id: '2',
+    slug: 'shilajit-guide',
+    title: 'The Complete Guide to Authentic Shilajit: What to Look For',
+    excerpt: 'Learn how to identify genuine Shilajit resin, understand purification methods, and avoid the 80% of fake products on the market.',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
+    category: 'Health Tips',
+    author: 'Vaidya Rajesh Thapa',
+    date: '2024-02-20',
+    readTime: 12,
+    content: [
+      'Shilajit (Sanskrit: शिलाजीत, "conqueror of mountains") is a sticky, tar-like substance that oozes from rocks in high mountain ranges during summer months. It forms over centuries from the decomposition of plant matter and minerals.',
+      'Authentic Shilajit must meet these criteria: 60%+ fulvic acid content, 85+ trace minerals in ionic form, dissolves completely in warm water (no residue), has a distinct bittersweet taste, and forms a pliable resin at room temperature.',
+      'Red flags for fake Shilajit: powder form (likely filler), dissolves poorly, tastes purely bitter or sweet, unusually cheap, no lab certificates, sold in plastic without proper sealing.',
+      'Our Shilajit undergoes traditional Surya Tapi purification — 40 days of sun exposure in copper vessels — which removes heavy metals and enhances bioavailability. Every batch is third-party tested for fulvic acid, heavy metals, and microbial safety.',
+    ],
+    tags: ['shilajit', 'ayurveda', 'authentic', 'purification', 'fulvic-acid', 'guide'],
+    featured: true,
+  },
+  {
+    id: '3',
+    slug: 'morning-ritual-superfoods',
+    title: '5 Morning Rituals Using Himalayan Superfoods for All-Day Energy',
+    excerpt: 'Transform your mornings with these simple, science-backed routines using shilajit, honey, moringa, and more.',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800',
+    category: 'Lifestyle',
+    author: 'Priya Sharma',
+    date: '2024-03-10',
+    readTime: 6,
+    content: [
+      'Ritual 1: Shilajit Sunrise Tonic — Dissolve a pea-sized portion of Shilajit resin in warm water with lemon. Take on empty stomach for mitochondrial energy production.',
+      'Ritual 2: Golden Honey Turmeric Latte — Blend 1 tsp wild honey, ½ tsp turmeric, pinch of black pepper, and warm oat milk. Anti-inflammatory powerhouse.',
+      'Ritual 3: Moringa Green Smoothie — 1 tsp moringa powder, banana, spinach, chia seeds, coconut water. Your daily multivitamin in a glass.',
+      'Ritual 4: Chia Seed Hydration — Soak 1 tbsp chia seeds in water overnight. Drink first thing for sustained hydration and omega-3s.',
+      'Ritual 5: Dates Powder Energy Balls — Mix dates powder, almond butter, cocoa, and rolled oats. Natural pre-workout fuel.',
+    ],
+    tags: ['morning', 'ritual', 'superfoods', 'energy', 'routine', 'wellness'],
+    featured: false,
+  },
+  {
+    id: '4',
+    slug: 'organic-baby-care',
+    title: 'Why Pediatricians Recommend Organic for Baby\'s First Year',
+    excerpt: 'The science of sensitive skin, developing immunity, and why what touches your baby matters as much as what they eat.',
+    image: 'https://images.unsplash.com/photo-1515488042261-424e6a5a7f3e?w=800',
+    category: 'Nutrition',
+    author: 'Dr. Sanjay Karki',
+    date: '2024-04-05',
+    readTime: 10,
+    content: [
+      'A baby\'s skin is 30% thinner than adult skin, with an underdeveloped barrier function. This means chemicals from conventional products — pesticides, synthetic fragrances, parabens — absorb more readily into their bloodstream.',
+      'The first 1,000 days (conception to age 2) are critical for immune system development. Exposure to endocrine disruptors during this window can have lifelong effects on hormonal health, metabolism, and cognitive development.',
+      'Organic certification (NOCB, USDA NOP) guarantees: no synthetic pesticides, no GMOs, no synthetic fertilizers, no irradiation, and strict processing standards. For baby products, this is non-negotiable.',
+      'Our Baby & Mother Care range is pediatrician-reviewed, hypoallergenic tested, and made in small batches with Himalayan-sourced ingredients. Because your baby deserves the purest start.',
+    ],
+    tags: ['baby', 'organic', 'pediatrician', 'skin-care', 'first-year', 'certification'],
+    featured: false,
+  },
+  {
+    id: '5',
+    slug: 'sustainable-himalayan-farming',
+    title: 'Regenerative Agriculture in the Himalayas: Healing the Land While Feeding People',
+    excerpt: 'How our 180+ farm partners are rebuilding soil health, sequestering carbon, and creating climate-resilient food systems.',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800',
+    category: 'Organic Living',
+    author: 'Mohan Gurung',
+    date: '2024-05-12',
+    readTime: 9,
+    content: [
+      'Conventional farming in the Himalayas has led to soil erosion, loss of biodiversity, and farmer debt. Our partner farms practice regenerative agriculture: cover cropping, composting, crop rotation, agroforestry, and zero-tillage.',
+      'Results after 3 years: 40% increase in soil organic carbon, 60% reduction in irrigation needs, return of native pollinators, and 25% higher farmer incomes due to premium pricing and reduced input costs.',
+      'Carbon sequestration: Each hectare of our regenerative farmland captures 2-5 tons of CO2 annually. With 500+ hectares under regenerative management, that\'s 1,000-2,500 tons of CO2 removed from the atmosphere every year.',
+      'When you buy Nature\'s Mud, you\'re not just getting pure food — you\'re investing in a farming system that heals the Himalayas. Every product tells a story of regeneration.',
+    ],
+    tags: ['regenerative', 'farming', 'sustainability', 'carbon', 'himalayas', 'soil-health'],
+    featured: false,
+  },
+];
+
+export const recipes = [
+  {
+    id: '1',
+    slug: 'golden-turmeric-latte',
+    title: 'Golden Turmeric Latte with Wild Honey',
+    excerpt: 'Anti-inflammatory, immune-boosting, and deeply comforting — the perfect morning or evening ritual.',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800',
+    category: 'Beverages',
+    prepTime: 5,
+    cookTime: 5,
+    servings: 1,
+    difficulty: 'Easy',
+    ingredients: [
+      '1 cup milk (dairy or plant-based)',
+      '½ tsp organic turmeric powder',
+      '¼ tsp cinnamon',
+      'Pinch of black pepper',
+      '1 tsp wild Himalayan honey',
+      '½ tsp coconut oil (optional)',
+    ],
+    instructions: [
+      'Heat milk in a small saucepan over medium heat until steaming.',
+      'Whisk in turmeric, cinnamon, and black pepper until fully dissolved.',
+      'Remove from heat and stir in coconut oil.',
+      'Let cool slightly (to preserve honey enzymes), then stir in wild honey.',
+      'Pour into your favorite mug and enjoy mindfully.',
+    ],
+    tags: ['turmeric', 'honey', 'anti-inflammatory', 'latte', 'morning', 'ayurveda'],
+    featured: true,
+  },
+  {
+    id: '2',
+    slug: 'chia-pudding-breakfast',
+    title: 'Overnight Chia Pudding with Moringa & Berries',
+    excerpt: 'Make-ahead breakfast packed with omega-3s, plant protein, and 90+ nutrients from moringa.',
+    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800',
+    category: 'Breakfast',
+    prepTime: 10,
+    cookTime: 0,
+    servings: 2,
+    difficulty: 'Easy',
+    ingredients: [
+      '3 tbsp organic chia seeds',
+      '¾ cup coconut milk',
+      '1 tsp moringa powder',
+      '1 tbsp dates powder',
+      '½ cup wild blueberries (rehydrated)',
+      '2 tbsp chopped Himalayan almonds',
+    ],
+    instructions: [
+      'In a jar, combine chia seeds, coconut milk, moringa powder, and dates powder.',
+      'Stir vigorously to prevent clumping, then refrigerate overnight (or minimum 4 hours).',
+      'In the morning, stir again and top with rehydrated wild blueberries and almonds.',
+      'Enjoy cold or let sit at room temperature for 10 minutes.',
+    ],
+    tags: ['chia', 'moringa', 'breakfast', 'make-ahead', 'protein', 'omega-3'],
+    featured: true,
+  },
+  {
+    id: '3',
+    slug: 'shilajit-energy-balls',
+    title: 'Shilajit Energy Balls for Sustained Stamina',
+    excerpt: 'No-bake energy bites with authentic Shilajit, dates, nuts, and superfoods — perfect pre-workout fuel.',
+    image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800',
+    category: 'Snacks',
+    prepTime: 15,
+    cookTime: 0,
+    servings: 12,
+    difficulty: 'Easy',
+    ingredients: [
+      '1 cup pitted dates',
+      '½ cup Himalayan almonds',
+      '¼ cup chia seeds',
+      '2 tbsp cacao powder',
+      'Pea-sized Shilajit resin (dissolved in 1 tsp warm water)',
+      'Pinch of sea salt',
+    ],
+    instructions: [
+      'Dissolve Shilajit in warm water and set aside.',
+      'Process dates and almonds in food processor until sticky crumb forms.',
+      'Add chia seeds, cacao, salt, and Shilajit water. Process until dough forms.',
+      'Roll into 12 balls. Refrigerate 30 minutes to firm.',
+      'Store in airtight container in fridge for up to 2 weeks.',
+    ],
+    tags: ['shilajit', 'energy', 'no-bake', 'snacks', 'pre-workout', 'stamina'],
+    featured: false,
+  },
+];
