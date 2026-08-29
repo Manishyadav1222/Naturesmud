@@ -1290,6 +1290,43 @@ const productMapDetails: Record<string, { name: string; price: number; image: st
   'pure-himalayan-black-salt-bire-noon': { name: 'Pure Himalayan Black Salt (Bire Noon)', price: 120, image: '/products/black-salt.jpg' },
 };
 
+const getCategoryThumbnail = (category: string, prodKey: string, slug: string): string => {
+  const s = slug.toLowerCase();
+  if (s.includes('shilajit') || s.includes('yarsagumba') || s.includes('triphala') || s.includes('ayurved') || category.includes('Ayurveda')) {
+    return '/images/blog/himalayan-shilajit-ayurveda-biohacking.jpg';
+  }
+  if (s.includes('baby') || s.includes('infant') || s.includes('weaning') || s.includes('pediatric') || s.includes('toddler') || category.includes('Infant')) {
+    return '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg';
+  }
+  if (s.includes('beetroot') || s.includes('nitric-oxide') || s.includes('athletic') || s.includes('stamina') || s.includes('fitness') || category.includes('Athletic')) {
+    return '/images/blog/himalayan-beetroot-nitric-oxide-stamina.jpg';
+  }
+  if (s.includes('rakhi') || s.includes('raksha') || s.includes('festive') || s.includes('hamper') || s.includes('gift') || category.includes('Festive')) {
+    return '/images/blog/rakhi-gift-hampers-natures-mud.jpg';
+  }
+  if (s.includes('flood') || s.includes('glacial') || s.includes('climate')) {
+    return '/images/blog/nepal-glacial-lake-threat-2026.jpg';
+  }
+  if (s.includes('hydropower') || s.includes('energy') || s.includes('trishuli')) {
+    return '/images/blog/nepal-hydropower-damage-2026.jpg';
+  }
+  if (s.includes('gyirong') || s.includes('avalanche') || s.includes('border')) {
+    return '/images/blog/nepal-glacier-avalanche-2026.jpg';
+  }
+  if (s.includes('seed') || s.includes('chia') || s.includes('flax') || s.includes('almond') || s.includes('nut') || category.includes('Brain') || category.includes('Gut')) {
+    return '/images/blog/purity-wellness-rakhi-chia-almonds.jpg';
+  }
+  if (s.includes('antioxidant') || s.includes('skin') || s.includes('hair') || s.includes('hormone') || category.includes('Skin') || category.includes('Metabolic')) {
+    return '/images/blog/healthy-rakshabandhan-superfood-rangoli.jpg';
+  }
+  if (s.includes('recipe') || s.includes('cooking') || s.includes('satvik') || category.includes('Clean Cooking') || category.includes('Combos')) {
+    return '/images/blog/divine-raksha-bandhan-superfoods-nepal.jpg';
+  }
+  const prodInfo = productMapDetails[prodKey];
+  if (prodInfo && prodInfo.image) return prodInfo.image;
+  return '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg';
+};
+
 // Assemble all 100 comprehensive blogs
 // Assemble master blog catalog with Raksha Bandhan specials prepended and sorted by date
 const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
@@ -1301,13 +1338,14 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
   const prodKey = item.prod;
   const prodInfo = productMapDetails[prodKey] || productMapDetails['sweet-potato-powder'];
   const dateStr = `2026-08-${String(Math.max(1, 22 - Math.floor(idx / 5))).padStart(2, '0')}`;
+  const thumbImage = getCategoryThumbnail(item.cat, prodKey, item.slug);
 
   return {
     id: `b-${String(idx + 5).padStart(2, '0')}`,
     slug: item.slug,
     title: item.title,
     excerpt: `A master scientific, nutritional, and practical guide to ${item.title.toLowerCase()} using clean Himalayan single-origin botanicals and zero-chemical glass packaging.`,
-    image: prodInfo.image,
+    image: thumbImage,
     category: item.cat,
     author: "Nature's Mud Clinical Research Council",
     date: dateStr,
