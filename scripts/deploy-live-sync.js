@@ -281,7 +281,10 @@ async function main() {
 
   // 5. Server-side Native Fast Permission Fix & Passenger Restart
   console.log('\n[5/6] 🔒 Applying server permissions (0755/0644) and restarting Passenger...');
-  await saveFile(`${config.homeDir}/api.naturesmud.shop/public`, 'fix_perms.php', fixPermsPhp);
+  const localFixPerms = path.join(config.rootDir, 'fix_perms.php');
+  fs.writeFileSync(localFixPerms, fixPermsPhp);
+  await uploadFile(localFixPerms, `${config.homeDir}/api.naturesmud.shop/public`, 'fix_perms.php');
+  if (fs.existsSync(localFixPerms)) fs.unlinkSync(localFixPerms);
   const permRes = await runPhpEndpoint('/fix_perms.php');
   console.log('Permission Fixer Output:', permRes.body.trim());
 
