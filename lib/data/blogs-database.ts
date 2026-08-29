@@ -34,10 +34,11 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'As the Himalayas warm at an unprecedented rate, new and unstable glacial lakes are forming. Discover why scientists are warning that the August 2026 flood might not be an isolated event.',
     image: '/images/blog/nepal-glacial-lake-threat-2026.jpg',
     category: 'News & Environment',
-    author: 'Nature\\'s Mud Editorial Team',
+    author: "Nature's Mud Editorial Team",
     date: '2026-08-29',
     readTime: 5,
     featured: true,
+    tags: ['Nepal Flood', 'Climate Change', 'GLOF', 'Himalayas', 'Environment'],
     metaDescription: 'An in-depth explanation of why new glacial lakes are forming in Nepal and the ongoing threat of future Glacial Lake Outburst Floods (GLOFs) following the August 2026 disaster.',
     keyTakeaways: [
       'Rapid glacial melting due to climate change is creating dozens of new, highly unstable lakes high in the Himalayas.',
@@ -79,10 +80,10 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     id: 'news-hydropower-crisis-2026',
     slug: 'nepal-hydropower-crisis-after-flood-which-projects-damaged',
     title: 'Nepal Hydropower Crisis: The $4 Billion Question After the August Flood',
-    excerpt: 'With 14 projects damaged and 431 MW wiped from the grid in minutes, the August 2026 flood has exposed a critical vulnerability in Nepal\\'s hydropower-driven economic strategy.',
+    excerpt: "With 14 projects damaged and 431 MW wiped from the grid in minutes, the August 2026 flood has exposed a critical vulnerability in Nepal's hydropower-driven economic strategy.",
     image: '/images/blog/nepal-hydropower-damage-2026.jpg',
     category: 'News & Economy',
-    author: 'Nature\\'s Mud Editorial Team',
+    author: "Nature's Mud Editorial Team",
     date: '2026-08-29',
     readTime: 6,
     featured: true,
@@ -132,10 +133,10 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     id: 'news-gyirong-port-disaster-2026',
     slug: 'what-happened-gyirong-port-nepal-china-border-disaster-explained',
     title: 'What Happened at Gyirong Port? The Nepal–China Border Disaster Explained',
-    excerpt: 'The August 2026 flood didn\\'t just destroy hydropower; it wiped out the Kerung border crossing. Explore the geopolitical and economic fallout of the Gyirong Port destruction.',
+    excerpt: "The August 2026 flood didn't just destroy hydropower; it wiped out the Kerung border crossing. Explore the geopolitical and economic fallout of the Gyirong Port destruction.",
     image: '/images/blog/nepal-glacier-avalanche-2026.jpg',
     category: 'News & Economy',
-    author: 'Nature\\'s Mud Editorial Team',
+    author: "Nature's Mud Editorial Team",
     date: '2026-08-29',
     readTime: 4,
     featured: true,
@@ -183,7 +184,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
     image: '/images/blog/nepal-glacier-avalanche-2026.jpg', // Placeholder for news image
     category: 'News & Environment',
-    author: 'Nature\\'s Mud Editorial Team',
+    author: "Nature's Mud Editorial Team",
     date: '2026-08-29',
     readTime: 6,
     featured: true,
@@ -200,7 +201,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
         answer: 'Technically, scientists currently classify the trigger as an ice-and-rock avalanche that created a temporary barrier lake, which then burst. While similar in consequence to a classic GLOF, the mechanics of this disaster were much more sudden.'
       },
       {
-        question: 'Are Kathmandu\\'s power supplies affected?',
+        question: "Are Kathmandu's power supplies affected?",
         answer: 'Yes. The loss of over 431 MW from the national grid has forced the NEA to manage power distribution carefully, leading to localized outages and an increased reliance on energy imports from India.'
       }
     ],
@@ -218,7 +219,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "While scientists at the International Centre for Integrated Mountain Development (ICIMOD) have identified the ice-and-rock avalanche as the primary trigger, the underlying mechanics are still under intense investigation. Did unprecedented summer heatwaves create a hidden network of meltwater lubricating the base of the glacier? Or was there a localized seismic event that triggered the initial collapse? Geologists and glaciologists are currently analyzing satellite imagery to answer these questions.",
       "The exact economic toll also remains entirely unquantified. Assessing the structural integrity of partially buried hydropower tunnels and transmission lines will take months, if not years. Additionally, the stability of other glacial lakes in the upper Trishuli catchment is highly uncertain, keeping downstream communities on high alert for secondary outburst floods.",
       "### Why it matters",
-      "For decades, the narrative of Nepal’s economic future has been deeply tied to the \\"white gold\\" of its rivers. Hydropower has been positioned as our ticket to prosperity and clean energy export. However, this disaster exposes a critical vulnerability: we are building multi-billion rupee infrastructure in the exact path of climate-induced geographical violence.",
+      "For decades, the narrative of Nepal’s economic future has been deeply tied to the \\\"white gold\\\" of its rivers. Hydropower has been positioned as our ticket to prosperity and clean energy export. However, this disaster exposes a critical vulnerability: we are building multi-billion rupee infrastructure in the exact path of climate-induced geographical violence.",
       "The Trishuli corridor is one of the most heavily dammed river stretches in the country. When a single avalanche can knock 14 power plants offline and instantly cripple a significant percentage of the national power supply, the resilience of our entire energy strategy is called into question.",
       "### Nepal-specific impact",
       "Beyond the macroeconomic shock to the energy sector, the human cost is deeply localized and agonizing. The destruction of the Gyirong Port border complex chokes a vital artery for Nepal-China trade, threatening the livelihoods of thousands of truck drivers, traders, and local hoteliers who depend on the Kerung border route.",
@@ -1361,7 +1362,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
 });
 
 export const masterBlogCatalog: ExtendedBlogPost[] = [
-  ...allBlogPosts.filter(b => b.slug.startsWith('healthy-raksha') || b.slug.startsWith('divine-bond') || b.slug.startsWith('lifelong-health') || b.slug.startsWith('antioxidant-festive')),
+  ...allBlogPosts.filter(b => b.category === 'News & Environment' || b.category === 'News & Economy' || b.slug.startsWith('healthy-raksha') || b.slug.startsWith('divine-bond') || b.slug.startsWith('lifelong-health') || b.slug.startsWith('antioxidant-festive')),
   ...rawCatalog
 ].sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 

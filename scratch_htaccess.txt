@@ -1,0 +1,24 @@
+# BEGIN HTTPS Force Redirect
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# END HTTPS Force Redirect
+
+# BEGIN cPanel-generated php ini directives, do not edit
+<IfModule php8_module>
+   php_value error_log "/home8/kathma13/logs/php.error.log"
+   php_flag log_errors On
+</IfModule>
+<IfModule lsapi_module>
+   php_value error_log "/home8/kathma13/logs/php.error.log"
+   php_flag log_errors On
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home8/kathma13/naturesmud.shop"
+PassengerBaseURI "/"
+PassengerNodejs "/home8/kathma13/nodevenv/naturesmud.shop/20/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END

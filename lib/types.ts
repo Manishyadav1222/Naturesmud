@@ -72,7 +72,7 @@ export interface BlogPost {
   readTime: number;
   content: string[];
   contentNp?: string[];
-  tags: string[];
+  tags?: string[];
   tagsNp?: string[];
   featured?: boolean;
   isFeatured?: boolean; // Added for admin sync

@@ -14,11 +14,11 @@ export const products: Product[] = [
     "mrp": 395,
     "rating": 4.9,
     "reviewCount": 68,
-    "image": "/products/dehydrated-mango.jpg",
+    "image": "/products/authentic-dehydrated-mango.jpg",
     "images": [
+      "/products/authentic-dehydrated-mango.jpg",
       "/products/dehydrated-mango.jpg",
-      "/products/papaya.jpg",
-      "/products/dehydrated-pineapple.jpg"
+      "/products/mango.jpg"
     ],
     "description": "Golden, intensely flavorful sun-dried mango slices made from tree-ripened Nepali mangoes. Solar-dehydrated at low temperatures with no added sugar, sulfur dioxide, or preservatives—just 100% pure tropical sweetness packed with Vitamins A & C.",
     "shortDescription": "100% pure sun-dried sweet mango slices without added sugar or sulfur in a Standup Ziplock Pouch.",
@@ -84,11 +84,11 @@ export const products: Product[] = [
     "mrp": 495,
     "rating": 4.9,
     "reviewCount": 45,
-    "image": "/products/dehydrated-pineapple.jpg",
+    "image": "/products/authentic-dehydrated-pineapple.jpg",
     "images": [
+      "/products/authentic-dehydrated-pineapple.jpg",
       "/products/dehydrated-pineapple.jpg",
-      "/products/pineapple.jpg",
-      "/products/dehydrated-mango.jpg"
+      "/products/pineapple.jpg"
     ],
     "description": "Tangy-sweet pineapple slices harvested from sun-drenched terraced hills and slowly dehydrated. Packed with natural bromelain digestive enzyme, vitamin C, and manganese for anti-inflammatory wellness.",
     "shortDescription": "Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme.",
@@ -149,8 +149,9 @@ export const products: Product[] = [
     "mrp": 510,
     "rating": 4.8,
     "reviewCount": 42,
-    "image": "/products/dehydrated-apple.jpg",
+    "image": "/products/authentic-dehydrated-apple.jpg",
     "images": [
+      "/products/authentic-dehydrated-apple.jpg",
       "/products/dehydrated-apple.jpg",
       "/products/apple.jpg"
     ],
@@ -957,10 +958,11 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.8,
     "reviewCount": 39,
-    "image": "/products/cashewnuts-roasted.jpg",
+    "image": "/products/authentic-cashewnuts-roasted.jpg",
     "images": [
+      "/products/authentic-cashewnuts-roasted.jpg",
       "/products/cashewnuts-roasted.jpg",
-      "/products/cashewnuts.jpg"
+      "/products/cashews-roasted.jpg"
     ],
     "description": "Artisan slow-roasted golden cashew nuts roasted without added oils or synthetic flavor enhancers. Delicate toasty aroma with an irresistible crisp snap, delivering pure wholesome nut satisfaction.",
     "shortDescription": "Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 150g Glass Jar.",
@@ -1161,8 +1163,9 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 59,
-    "image": "/products/almonds.jpg",
+    "image": "/products/authentic-almonds.jpg",
     "images": [
+      "/products/authentic-almonds.jpg",
       "/products/almonds.jpg",
       "/products/almonds-2.jpg"
     ],

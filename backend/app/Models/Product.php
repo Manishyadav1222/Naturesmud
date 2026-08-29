@@ -151,9 +151,9 @@ class Product extends Model
         // 2. Fallback to product slug image mapping with real files on disk
         $slugMap = [
             // 25 Official Catalog Products
-            'dehydrated-mango' => '/products/dehydrated-mango.jpg',
-            'dehydrated-pineapple' => '/products/dehydrated-pineapple.jpg',
-            'dehydrated-apple' => '/products/dehydrated-apple.jpg',
+            'dehydrated-mango' => '/products/authentic-dehydrated-mango.jpg',
+            'dehydrated-pineapple' => '/products/authentic-dehydrated-pineapple.jpg',
+            'dehydrated-apple' => '/products/authentic-dehydrated-apple.jpg',
             'dehydrated-coconut-chips' => '/products/dehydrated-coconut-chips.jpg',
             'dehydrated-papaya' => '/products/papaya.jpg',
             'dried-blueberries' => '/products/dried-blueberries-100g.jpg',
@@ -173,11 +173,12 @@ class Product extends Model
             'organic-pumpkin-seeds' => '/products/pumpkin-seeds.jpg',
             'premium-cashewnuts' => '/products/cashewnuts.jpg',
             'cashewnuts' => '/products/cashewnuts.jpg',
-            'roasted-cashewnuts' => '/products/cashewnuts-roasted.jpg',
+            'roasted-cashewnuts' => '/products/authentic-cashewnuts-roasted.jpg',
+            'roasted-cashews' => '/products/authentic-cashewnuts-roasted.jpg',
             'roasted-almonds' => '/products/almonds-2.jpg',
             'premium-roasted-almonds' => '/products/almonds-2.jpg',
-            'raw-himalayan-almonds' => '/products/almonds.jpg',
-            'raw-almond' => '/products/almonds.jpg',
+            'raw-himalayan-almonds' => '/products/authentic-almonds.jpg',
+            'raw-almond' => '/products/authentic-almonds.jpg',
             'premium-pistachios' => '/products/pistachios.jpg',
             'pistachio' => '/products/pistachios.jpg',
             'pistachios' => '/products/pistachios.jpg',

@@ -73,9 +73,18 @@ export const classNames = (...classes: (string | false | null | undefined)[]): s
 };
 
 const IMAGE_ALIAS_MAP: Record<string, string> = {
+  '/products/dehydrated-mango.jpg': '/products/authentic-dehydrated-mango.jpg',
+  '/products/mango.jpg': '/products/authentic-dehydrated-mango.jpg',
+  '/products/dehydrated-apple.jpg': '/products/authentic-dehydrated-apple.jpg',
+  '/products/apple.jpg': '/products/authentic-dehydrated-apple.jpg',
+  '/products/apples.jpg': '/products/authentic-dehydrated-apple.jpg',
+  '/products/dehydrated-pineapple.jpg': '/products/authentic-dehydrated-pineapple.jpg',
+  '/products/pineapple.jpg': '/products/authentic-dehydrated-pineapple.jpg',
+  '/products/almonds.jpg': '/products/authentic-almonds.jpg',
+  '/products/raw-almonds.jpg': '/products/authentic-almonds.jpg',
+  '/products/cashewnuts-roasted.jpg': '/products/authentic-cashewnuts-roasted.jpg',
+  '/products/cashews-roasted.jpg': '/products/authentic-cashewnuts-roasted.jpg',
   '/products/dates.jpg': '/products/dates-powder-100g.jpg',
-  '/products/apples.jpg': '/products/dehydrated-apple.jpg',
-  '/products/raw-almonds.jpg': '/products/almonds-2.jpg',
   '/products/flaxseed.jpg': '/products/flax-seeds.jpg',
   '/products/apricots.jpg': '/products/papaya.jpg',
   '/products/yarsagumba.jpg': '/products/shilajit.jpg',

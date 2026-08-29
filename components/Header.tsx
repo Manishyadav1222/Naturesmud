@@ -43,9 +43,9 @@ const navLinks = [
 ];
 
 const featuredCategories = [
-  { name: 'Dried Fruits', slug: 'dried-fruits', image: '/products/dehydrated-mango.jpg', count: '8 items' },
+  { name: 'Dried Fruits', slug: 'dried-fruits', image: '/products/authentic-dehydrated-mango.jpg', count: '8 items' },
   { name: 'Organic Powders', slug: 'powders', image: '/products/sweet-potato-powder-100g.jpg', count: '4 items' },
-  { name: 'Mountain Nuts', slug: 'nuts', image: '/products/almonds.jpg', count: '7 items' },
+  { name: 'Mountain Nuts', slug: 'nuts', image: '/products/authentic-almonds.jpg', count: '7 items' },
   { name: 'Seeds & Salts', slug: 'seeds', image: '/products/pumpkin-seeds.jpg', count: '4 items' },
 ];
 

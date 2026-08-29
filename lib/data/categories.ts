@@ -6,7 +6,7 @@ export const categories: Category[] = [
     slug: 'dried-fruits',
     name: 'Dried Fruits',
     description: 'Naturally sweet sun-dried mango, pineapple, apple, papaya, berries & figs',
-    image: '/products/dehydrated-mango.jpg',
+    image: '/products/authentic-dehydrated-mango.jpg',
     productCount: 8,
   },
   {
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     slug: 'nuts',
     name: 'Nuts',
     description: 'Premium whole cashews, almonds, pistachios, macadamias & energy trail mix',
-    image: '/products/almonds.jpg',
+    image: '/products/authentic-almonds.jpg',
     productCount: 7,
   },
   {
