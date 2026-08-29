@@ -258,19 +258,37 @@ async function main() {
     output.on('close', resolve);
     archive.on('error', reject);
     archive.pipe(output);
+    const publicFiles = [
+      'catalog.pdf',
+      'Nature_Mud_Product_Catalog.pdf',
+      'official-product-catalog.jpg',
+      'products/cashewnuts-roasted.jpg',
+      'products/cashewnuts.jpg',
+      'products/client-authentic-label-1.jpg',
+      'products/client-authentic-label-2.jpg',
+      'products/client-authentic-label-3.jpg',
+      'products/dehydrated-coconut-chips.jpg',
+      'products/figs.jpg',
+      'products/macadamia.jpg',
+      'products/pistachios.jpg',
+    ];
 
-    archive.directory(
-      path.join(config.rootDir, 'public'),
-      false,
-      (entry) => {
-        if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
-          entry.mode = 0o755;
-        } else {
-          entry.mode = 0o644;
+    // Add all files in public/images/blog
+    const blogImgDir = path.join(config.rootDir, 'public', 'images', 'blog');
+    if (fs.existsSync(blogImgDir)) {
+      fs.readdirSync(blogImgDir).forEach(f => {
+        if (fs.statSync(path.join(blogImgDir, f)).isFile()) {
+          publicFiles.push(`images/blog/${f}`);
         }
-        return entry;
+      });
+    }
+
+    for (const rel of publicFiles) {
+      const full = path.join(config.rootDir, 'public', rel);
+      if (fs.existsSync(full)) {
+        archive.file(full, { name: rel, mode: 0o644 });
       }
-    );
+    }
     archive.finalize();
   });
   console.log(`✅ Public assets package created (${(fs.statSync(publicZip).size / 1024 / 1024).toFixed(2)} MB)`);
