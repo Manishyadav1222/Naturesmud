@@ -26,7 +26,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         slug: res.data.slug,
         title: res.data.title,
         excerpt: res.data.excerpt || '',
-        content: Array.isArray(res.data.content) ? res.data.content : [res.data.content || ''],
+        content: (() => {
+          let c = res.data.content || '';
+          if (Array.isArray(c)) return c;
+          if (typeof c === 'string') {
+            try { 
+              const parsed = JSON.parse(c); 
+              if (Array.isArray(parsed)) return parsed;
+            } catch(e) {}
+            return c.split(/\n\s*\n/).filter(Boolean);
+          }
+          return [c];
+        })(),
         image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
         category: res.data.category || 'Superfoods',
         author: res.data.author || "Nature's Mud Clinical Council",
@@ -71,7 +82,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         slug: res.data.slug,
         title: res.data.title,
         excerpt: res.data.excerpt || '',
-        content: Array.isArray(res.data.content) ? res.data.content : [res.data.content || ''],
+        content: (() => {
+          let c = res.data.content || '';
+          if (Array.isArray(c)) return c;
+          if (typeof c === 'string') {
+            try { 
+              const parsed = JSON.parse(c); 
+              if (Array.isArray(parsed)) return parsed;
+            } catch(e) {}
+            return c.split(/\n\s*\n/).filter(Boolean);
+          }
+          return [c];
+        })(),
         image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
         category: res.data.category || 'Superfoods',
         author: res.data.author || "Nature's Mud Clinical Council",

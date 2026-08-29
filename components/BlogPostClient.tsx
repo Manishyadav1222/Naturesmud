@@ -343,11 +343,22 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 );
               }
               if (paragraph.startsWith('- ')) {
+                // Simple bold text parser for lists
+                const renderWithBold = (text: string) => {
+                  const parts = text.split(/(\*\*.*?\*\*)/g);
+                  return parts.map((part, idx) => {
+                    if (part.startsWith('**') && part.endsWith('**')) {
+                      return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+                    }
+                    return part;
+                  });
+                };
+                
                 return (
                   <div key={i} className="flex items-start gap-2.5 my-2 pl-2">
                     <span className="w-2 h-2 rounded-full bg-[#2D5A27] mt-2.5 shrink-0" />
                     <p className="text-gray-700 text-base leading-relaxed">
-                      {paragraph.replace(/^-\s*/, '')}
+                      {renderWithBold(paragraph.replace(/^-\s*/, ''))}
                     </p>
                   </div>
                 );
@@ -361,9 +372,29 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                   </div>
                 );
               }
+              if (paragraph.startsWith('> ')) {
+                return (
+                  <div key={i} className="my-6 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border-l-4 border-[#C9982A] shadow-sm italic text-gray-800 text-lg sm:text-xl font-serif">
+                    <Quote className="w-6 h-6 text-[#C9982A]/40 mb-2 inline-block" />
+                    {paragraph.replace(/^>\s*/, '')}
+                  </div>
+                );
+              }
+
+              // Simple bold text parser
+              const renderWithBold = (text: string) => {
+                const parts = text.split(/(\*\*.*?\*\*)/g);
+                return parts.map((part, idx) => {
+                  if (part.startsWith('**') && part.endsWith('**')) {
+                    return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+                  }
+                  return part;
+                });
+              };
+
               return (
                 <p key={i} className="text-gray-700 leading-relaxed">
-                  {paragraph}
+                  {renderWithBold(paragraph)}
                 </p>
               );
             })}
