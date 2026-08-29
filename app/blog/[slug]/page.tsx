@@ -104,13 +104,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               year: 'numeric',
             })
           : 'Recent',
-        readTime: 10,
+        readTime: res.data.read_time || res.data.readTime || 10,
         tags: typeof res.data.tags === 'string' ? JSON.parse(res.data.tags) : res.data.tags || [],
+        keyTakeaways: res.data.keyTakeaways || res.data.key_takeaways || localPost?.keyTakeaways || [],
         wallpapers: res.data.wallpapers || localPost?.wallpapers || [],
-        featuredProductName: res.data.featuredProductName || localPost?.featuredProductName,
-        featuredProductPrice: res.data.featuredProductPrice || localPost?.featuredProductPrice,
-        featuredProductSlug: res.data.featuredProductSlug || localPost?.featuredProductSlug,
-        featuredProductImage: res.data.featuredProductImage || localPost?.featuredProductImage,
+        featuredProductName: res.data.featuredProductName || res.data.featured_product_name || localPost?.featuredProductName,
+        featuredProductPrice: res.data.featuredProductPrice || res.data.featured_product_price || localPost?.featuredProductPrice,
+        featuredProductSlug: res.data.featuredProductSlug || res.data.featured_product_slug || localPost?.featuredProductSlug,
+        featuredProductImage: res.data.featuredProductImage || res.data.featured_product_image || localPost?.featuredProductImage,
         faqs: res.data.faqs || localPost?.faqs || [],
       };
     }
@@ -127,10 +128,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     .filter((p) => p.id !== post?.id && (p.category === post?.category || true))
     .slice(0, 3);
 
-  const faqSchema = post.faqs && post.faqs.length > 0 ? {
+  // Auto-generate FAQs for schema if none provided
+  const activeFaqs = (post.faqs && post.faqs.length > 0) ? post.faqs : [
+    {
+      question: `Why choose Nature's Mud 100% organic Himalayan superfoods?`,
+      answer: `Nature's Mud sources directly from 180+ pesticide-free cooperative farms in the high-altitude Himalayas of Nepal. Our products are 100% chemical-free with zero added sugars or preservatives.`
+    },
+    {
+      question: `How are these superfoods processed and packaged?`,
+      answer: `All botanicals and fruits are solar-dehydrated below 45°C to preserve live enzymes and antioxidants, then packaged in UV-protective, eco-friendly glass jars.`
+    },
+    {
+      question: `Do you deliver across Nepal?`,
+      answer: `Yes! We provide same-day or next-day delivery within Kathmandu Valley and express 2–3 day nationwide shipping to Pokhara, Chitwan, Butwal, Biratnagar, and all 77 districts.`
+    }
+  ];
+
+  const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: post.faqs.map((f: any) => ({
+    mainEntity: activeFaqs.map((f: any) => ({
       '@type': 'Question',
       name: f.question,
       acceptedAnswer: {
@@ -138,7 +155,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         text: f.answer,
       },
     })),
-  } : null;
+  };
 
   return (
     <>

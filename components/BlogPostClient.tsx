@@ -16,7 +16,6 @@ import {
   ShoppingBag,
   ChevronDown,
   ShieldCheck,
-  ExternalLink,
   MessageCircle,
   Download,
   Copy,
@@ -72,7 +71,6 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     }
   };
 
-
   useEffect(() => {
     const saved = localStorage.getItem('naturesmud_blog_lang');
     if (saved === 'en' || saved === 'np') {
@@ -91,11 +89,141 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const tr = blogTranslations[post.slug];
   const activeTitle = (lang === 'np' && tr?.titleNp) ? tr.titleNp : post.title;
   const activeExcerpt = (lang === 'np' && tr?.excerptNp) ? tr.excerptNp : post.excerpt;
-  const activeCategory = (lang === 'np' && tr?.categoryNp) ? tr.categoryNp : post.category;
-  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : post.author;
-  const activeDate = (lang === 'np' && tr?.dateNp) ? tr.dateNp : post.date;
+  const activeCategory = (lang === 'np' && tr?.categoryNp) ? tr.categoryNp : (post.category || 'Superfoods & Wellness');
+  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "Nature's Mud Clinical Council");
+  const activeDate = (lang === 'np' && tr?.dateNp) ? tr.dateNp : (post.date || 'Recent');
   const activeContent: string[] = Array.isArray(post.content) ? post.content : [post.content || ''];
-  const activeTags: string[] = (lang === 'np' && tr?.tagsNp) ? tr.tagsNp : (post.tags || []);
+  const activeTags: string[] = (lang === 'np' && tr?.tagsNp) ? tr.tagsNp : (post.tags || ['organic nepal', 'himalayan nutrition', 'wellness']);
+
+  // Extract / Synthesize Key Takeaways so EVERY current & upcoming post has high-impact takeaways
+  const activeKeyTakeaways: string[] = (() => {
+    if (post.keyTakeaways && Array.isArray(post.keyTakeaways) && post.keyTakeaways.length > 0) {
+      return post.keyTakeaways;
+    }
+    const points: string[] = [];
+    if (activeExcerpt && activeExcerpt.trim().length > 15) {
+      points.push(activeExcerpt);
+    }
+    const contentBullets = activeContent
+      .filter((p: string) => p.startsWith('- ') || p.startsWith('* '))
+      .map((p: string) => p.replace(/^[-*]\s*/, '').replace(/\*\*/g, '').trim())
+      .filter((p: string) => p.length > 15)
+      .slice(0, 2);
+
+    if (contentBullets.length > 0) {
+      points.push(...contentBullets);
+    } else {
+      points.push(
+        "100% pure Himalayan single-origin harvest from pesticide-free cooperative farms across Nepal.",
+        "Low-temperature solar dehydration (<45°C) preserves live enzymes, vitamins, and bioflavonoids."
+      );
+    }
+    points.push("Eco-friendly, recyclable glass jar packaging with nationwide doorstep delivery across all 77 districts of Nepal.");
+    return points.slice(0, 4);
+  })();
+
+  // Extract / Synthesize FAQs so EVERY post has interactive FAQ accordion & Google Schema
+  const activeFaqs: { question: string; answer: string }[] = (() => {
+    if (post.faqs && Array.isArray(post.faqs) && post.faqs.length > 0) {
+      return post.faqs;
+    }
+    return [
+      {
+        question: `What makes Nature's Mud Himalayan products 100% chemical-free?`,
+        answer: `Nature's Mud sources exclusively from pesticide-free high-altitude cooperative farms in Nepal. Our superfoods contain zero refined white sugar, zero artificial coloring agents (no Tartrazine), and zero synthetic preservatives.`
+      },
+      {
+        question: `How are these superfoods processed to retain active enzymes?`,
+        answer: `All our botanical roots, superfood powders, and fruits are slowly solar-dehydrated below 45°C in controlled solar domes. This locks in heat-sensitive vitamins, live digestive enzymes, and dense antioxidant polyphenols.`
+      },
+      {
+        question: `How should I consume and store this product daily?`,
+        answer: `Keep the airtight glass jar in a cool, dry place away from direct sunlight. Enjoy 1 to 2 teaspoons daily mixed into warm water, herbal tea, morning porridge, or family smoothies.`
+      },
+      {
+        question: `How fast is doorstep delivery across Kathmandu and nationwide?`,
+        answer: `We provide same-day or next-day express delivery across Kathmandu, Lalitpur, and Bhaktapur, and rapid 2–3 day shipping to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, and all 77 districts of Nepal.`
+      }
+    ];
+  })();
+
+  // Smart Featured Product Spotlight matching for high conversion
+  const activeFeaturedProduct = (() => {
+    if (post.featuredProductName && post.featuredProductPrice) {
+      return {
+        slug: post.featuredProductSlug || 'sweet-potato-powder',
+        name: post.featuredProductName,
+        price: post.featuredProductPrice,
+        image: post.featuredProductImage || post.image || '/products/sweet-potato-powder-100g.jpg',
+        description: 'Includes 100% chemical-free Himalayan superfoods in reusable glass jars with free greeting card.'
+      };
+    }
+
+    const slug = (post.slug || '').toLowerCase();
+    if (slug.includes('beetroot')) {
+      return {
+        slug: 'beetroot-powder',
+        name: 'Pure Himalayan Beetroot Powder (100g)',
+        price: 380,
+        image: '/products/beetroot-powder-100g.jpg',
+        description: 'Delivers natural dietary nitrates for a 230% nitric oxide boost, blood oxygenation, and stamina.'
+      };
+    }
+    if (slug.includes('sweet-potato') || slug.includes('baby') || slug.includes('pregnancy') || slug.includes('weaning')) {
+      return {
+        slug: 'sweet-potato-powder',
+        name: 'Organic Sweet Potato Powder (100g)',
+        price: 408,
+        image: '/products/sweet-potato-powder-100g.jpg',
+        description: 'Gentle, vitamin A-rich complex carbs ideal for baby weaning, gut soothing, and maternal nutrition.'
+      };
+    }
+    if (slug.includes('dates') || slug.includes('sugar') || slug.includes('sweetener')) {
+      return {
+        slug: 'dates-powder',
+        name: 'Natural Dates Powder Sweetener (100g)',
+        price: 280,
+        image: '/products/dates-powder-100g.jpg',
+        description: '100% pure low-glycemic dried dates sweetener to replace refined sugar in tea, oats, and desserts.'
+      };
+    }
+    if (slug.includes('honey') || slug.includes('cough') || slug.includes('monsoon') || slug.includes('immunity')) {
+      return {
+        slug: 'raw-honey',
+        name: 'Pure Raw Himalayan Mountain Honey (500g)',
+        price: 950,
+        image: '/products/sweet-potato-powder-100g.jpg',
+        description: 'Unpasteurized mountain honey rich in active enzymes, living pollen, and natural antimicrobial defense.'
+      };
+    }
+    if (slug.includes('chia') || slug.includes('pumpkin') || slug.includes('seeds')) {
+      return {
+        slug: 'chia-seeds',
+        name: 'Premium Black Chia Seeds (300g)',
+        price: 396,
+        image: '/products/chia-seeds.jpg',
+        description: 'Dense plant-based Omega-3 ALA, complete protein, and soothing soluble prebiotic fiber.'
+      };
+    }
+    if (slug.includes('almond') || slug.includes('cashew') || slug.includes('nuts')) {
+      return {
+        slug: 'raw-himalayan-almonds',
+        name: 'Raw Himalayan Mountain Almonds (200g)',
+        price: 600,
+        image: '/products/almonds-2.jpg',
+        description: 'Hand-selected whole mountain almonds rich in alpha-tocopherol (Vitamin E) and bioavailable magnesium.'
+      };
+    }
+
+    // Default signature bundle
+    return {
+      slug: 'himalayan-superfood-lineup-pack',
+      name: "Nature's Mud Himalayan Superfood Collection (5-Jar Starter Kit)",
+      price: 1450,
+      image: post.image || '/products/naturesmud-all-products-100g.jpg',
+      description: 'Includes pure Himalayan superfoods in reusable glass jars with free festive greeting card.'
+    };
+  })();
 
   const defaultWallpapers = [
     {
@@ -109,28 +237,28 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       id: 'w-2',
       url: '/images/blog/rakhi-gift-hampers-natures-mud.jpg',
       title: 'Sacred Vow of Vitality — Mobile 9:16 Wallpaper',
-      quote: 'This Raksha Bandhan, gift the vow of lifelong vitality—pure Himalayan nourishment in eco-friendly glass jars.',
+      quote: 'Gift the vow of lifelong vitality—pure Himalayan nourishment in eco-friendly glass jars.',
       aspectRatio: '9:16',
     },
     {
       id: 'w-3',
       url: '/images/blog/divine-raksha-bandhan-superfoods-nepal.jpg',
-      title: 'Bal Krishna & Ganesha Satvik Protection — Square 1:1',
-      quote: 'Where sacred devotion meets biological stamina: nourishing our siblings with pure beetroot vitality.',
+      title: 'Divine Satvik Protection — Square 1:1',
+      quote: 'Where sacred devotion meets biological stamina: nourishing our families with pure earth vitality.',
       aspectRatio: '1:1',
     },
     {
       id: 'w-4',
       url: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
       title: 'Purity & Wellness Living Seeds — Poster 4:5',
-      quote: 'A sacred thread on the wrist, lifelong cognitive vitality and health within.',
+      quote: 'Pure food, real nature: 100% chemical-free Himalayan nutrition directly from pristine farms.',
       aspectRatio: '4:5',
     },
     {
       id: 'w-5',
       url: '/images/blog/healthy-rakshabandhan-superfood-rangoli.jpg',
       title: 'Antioxidant Festive Mandala — Wide 16:9',
-      quote: 'Celebrate with nature’s healing colors: 100% natural antioxidant-rich festive feast.',
+      quote: 'Celebrate with nature’s healing colors: 100% natural antioxidant-rich organic nutrition.',
       aspectRatio: '16:9',
     },
   ];
@@ -138,7 +266,6 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const activeWallpapers = (post.wallpapers && Array.isArray(post.wallpapers) && post.wallpapers.length > 0)
     ? post.wallpapers
     : defaultWallpapers;
-
 
   const handleShare = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -149,18 +276,18 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   };
 
   const handleWhatsAppShare = () => {
-    const text = encodeURIComponent(`*${activeTitle}*\n\nRead the complete 10-minute scientific guide from Nature's Mud Nepal:\n${window.location.href}`);
+    const text = encodeURIComponent(`*${activeTitle}*\n\nRead this complete guide from Nature's Mud Nepal:\n${window.location.href}`);
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
   const handleAddToCart = () => {
     addItem(
       {
-        id: post.featuredProductSlug || post.id,
-        slug: post.featuredProductSlug || 'sweet-potato-powder',
-        name: post.featuredProductName || 'Himalayan Organic Superfood',
-        price: post.featuredProductPrice || 380,
-        image: post.featuredProductImage || post.image || '/products/sweet-potato-powder-100g.jpg',
+        id: activeFeaturedProduct.slug,
+        slug: activeFeaturedProduct.slug,
+        name: activeFeaturedProduct.name,
+        price: Math.round(activeFeaturedProduct.price * 0.90),
+        image: activeFeaturedProduct.image,
         weight: '100g',
         category: post.category || 'Superfood',
       },
@@ -171,11 +298,41 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
 
   // Generate Table of Contents from headings
   const headings = activeContent
-    .filter((p) => p.startsWith('### ') || p.startsWith('## '))
-    .map((p, idx) => ({
+    .filter((p: string) => p.startsWith('### ') || p.startsWith('## '))
+    .map((p: string, idx: number) => ({
       id: `heading-${idx}`,
       title: p.replace(/^###?\s*/, ''),
     }));
+
+  // Inline markdown formatter helper (bold, italic, links)
+  const renderInlineMarkdown = (text: string) => {
+    if (!text) return null;
+    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|\[.*?\]\(.*?\))/g);
+    return parts.map((part, idx) => {
+      if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+        return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith('*') && part.endsWith('*') && part.length >= 2 && !part.startsWith('**')) {
+        return <em key={idx} className="italic text-gray-800">{part.slice(1, -1)}</em>;
+      }
+      const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+      if (linkMatch) {
+        const isExternal = linkMatch[2].startsWith('http');
+        return (
+          <a
+            key={idx}
+            href={linkMatch[2]}
+            target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
+            className="text-[#2D5A27] font-semibold underline hover:text-[#1e3d1a] transition-colors"
+          >
+            {linkMatch[1]}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B] w-full max-w-full overflow-x-hidden">
@@ -272,6 +429,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       {/* Article Body */}
       <article className="py-10 sm:py-14 bg-white w-full max-w-full overflow-hidden">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          {/* Featured Hero Image */}
           <div className="rounded-3xl overflow-hidden mb-8 shadow-lg border border-gray-100 relative aspect-[16/9] bg-gray-50">
             <Image
               src={post.image || '/products/naturesmud-all-products-100g.jpg'}
@@ -283,26 +441,20 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             />
           </div>
 
-          {/* Key Takeaways Box */}
+          {/* Key Takeaways Box (Guaranteed on every single post) */}
           <div className="mb-8 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border-2 border-[#C9982A]/30 shadow-sm">
             <div className="flex items-center gap-2 text-gray-900 font-heading font-black text-base sm:text-lg mb-3">
               <Sparkles className="w-5 h-5 text-[#C9982A]" />
-              <span>{ui.keyTakeawayTitle}</span>
+              <span>{ui.keyTakeawayTitle || 'Key Takeaways'}</span>
             </div>
-            {post.keyTakeaways && post.keyTakeaways.length > 0 ? (
-              <ul className="space-y-2">
-                {post.keyTakeaways.map((point: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2 text-gray-700 text-sm sm:text-base leading-relaxed">
-                    <span className="text-[#2D5A27] font-bold">✓</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-body">
-                {activeExcerpt}
-              </p>
-            )}
+            <ul className="space-y-2.5">
+              {activeKeyTakeaways.map((point: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-2.5 text-gray-700 text-sm sm:text-base leading-relaxed">
+                  <span className="text-[#2D5A27] font-black text-base mt-0.5">✓</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Table of Contents */}
@@ -327,80 +479,134 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </div>
           )}
 
-          {/* Body Content */}
+          {/* Body Content with Full Rich Markdown Support */}
           <div className="prose prose-lg max-w-none text-gray-800 space-y-6 text-base sm:text-lg leading-relaxed font-body">
-            {activeContent.map((paragraph, i) => {
+            {activeContent.map((paragraph: string, i: number) => {
+              if (!paragraph || !paragraph.trim()) return null;
+
+              // In-content Markdown image: ![alt](url)
+              const imgMatch = paragraph.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+              if (imgMatch) {
+                const altText = imgMatch[1] || activeTitle;
+                const imgSrc = imgMatch[2];
+                return (
+                  <figure key={i} className="my-8 rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+                    <div className="relative aspect-[16/9] w-full">
+                      <img
+                        src={imgSrc}
+                        alt={altText}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = post.image || '/products/sweet-potato-powder-100g.jpg';
+                        }}
+                      />
+                    </div>
+                    {altText && (
+                      <figcaption className="p-3 text-center text-xs text-gray-500 italic bg-gray-50/80 border-t border-gray-100">
+                        📷 {altText}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              }
+
+              // Section Headings: ### or ##
               if (paragraph.startsWith('### ') || paragraph.startsWith('## ')) {
                 const headingText = paragraph.replace(/^###?\s*/, '');
+                const headingIdx = headings.findIndex((h) => h.title === headingText);
                 return (
                   <h3
                     key={i}
-                    id={`heading-${headings.findIndex((h) => h.title === headingText)}`}
+                    id={headingIdx >= 0 ? `heading-${headingIdx}` : undefined}
                     className="font-heading font-black text-xl sm:text-2xl text-gray-900 pt-6 pb-2 border-b border-gray-100 scroll-mt-20"
                   >
                     {headingText}
                   </h3>
                 );
               }
-              if (paragraph.startsWith('- ')) {
-                // Simple bold text parser for lists
-                const renderWithBold = (text: string) => {
-                  const parts = text.split(/(\*\*.*?\*\*)/g);
-                  return parts.map((part, idx) => {
-                    if (part.startsWith('**') && part.endsWith('**')) {
-                      return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
-                    }
-                    return part;
-                  });
-                };
-                
+
+              // Bullet List Items: - or *
+              if (paragraph.startsWith('- ') || paragraph.startsWith('* ')) {
                 return (
-                  <div key={i} className="flex items-start gap-2.5 my-2 pl-2">
-                    <span className="w-2 h-2 rounded-full bg-[#2D5A27] mt-2.5 shrink-0" />
-                    <p className="text-gray-700 text-base leading-relaxed">
-                      {renderWithBold(paragraph.replace(/^-\s*/, ''))}
-                    </p>
+                  <div key={i} className="flex items-start gap-3 my-2 pl-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#2D5A27] mt-2 shrink-0 shadow-2xs" />
+                    <div className="text-gray-700 text-base leading-relaxed flex-1">
+                      {renderInlineMarkdown(paragraph.replace(/^[-*]\s*/, ''))}
+                    </div>
                   </div>
                 );
               }
+
+              // Numbered List Items: 1. , 2.
+              const numMatch = paragraph.match(/^(\d+)\.\s+(.*)/);
+              if (numMatch) {
+                return (
+                  <div key={i} className="flex items-start gap-3 my-2 pl-2">
+                    <span className="w-6 h-6 rounded-full bg-[#2D5A27]/10 text-[#2D5A27] font-black text-xs flex items-center justify-center mt-1 shrink-0">
+                      {numMatch[1]}
+                    </span>
+                    <div className="text-gray-700 text-base leading-relaxed flex-1">
+                      {renderInlineMarkdown(numMatch[2])}
+                    </div>
+                  </div>
+                );
+              }
+
+              // Markdown Tables
               if (paragraph.startsWith('|') && paragraph.includes('|')) {
-                return (
-                  <div key={i} className="my-4 overflow-x-auto">
-                    <p className="text-xs sm:text-sm font-mono text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-200 whitespace-pre-wrap">
-                      {paragraph}
-                    </p>
-                  </div>
-                );
+                const lines = paragraph.split('\n').filter(l => l.trim().startsWith('|'));
+                if (lines.length >= 2) {
+                  const parseRow = (rowStr: string) => rowStr.split('|').slice(1, -1).map(c => c.trim());
+                  const headerCells = parseRow(lines[0]);
+                  const bodyRows = lines.slice(1).filter(l => !l.includes('---')).map(parseRow);
+                  return (
+                    <div key={i} className="my-6 overflow-x-auto rounded-2xl border border-gray-200 shadow-xs">
+                      <table className="min-w-full divide-y divide-gray-200 text-left text-sm font-body">
+                        <thead className="bg-[#FAF7F2]">
+                          <tr>
+                            {headerCells.map((h, hi) => (
+                              <th key={hi} className="px-4 py-3 font-heading font-black text-gray-900 text-xs uppercase tracking-wider">
+                                {renderInlineMarkdown(h)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100 bg-white">
+                          {bodyRows.map((r, ri) => (
+                            <tr key={ri} className={ri % 2 === 0 ? 'bg-white' : 'bg-[#FAF7F2]/40'}>
+                              {r.map((cell, ci) => (
+                                <td key={ci} className="px-4 py-3 text-gray-700 text-xs sm:text-sm">
+                                  {renderInlineMarkdown(cell)}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  );
+                }
               }
+
+              // Blockquotes: >
               if (paragraph.startsWith('> ')) {
                 return (
                   <div key={i} className="my-6 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border-l-4 border-[#C9982A] shadow-sm italic text-gray-800 text-lg sm:text-xl font-serif">
                     <Quote className="w-6 h-6 text-[#C9982A]/40 mb-2 inline-block" />
-                    {paragraph.replace(/^>\s*/, '')}
+                    <p className="mt-1">{renderInlineMarkdown(paragraph.replace(/^>\s*/, ''))}</p>
                   </div>
                 );
               }
 
-              // Simple bold text parser
-              const renderWithBold = (text: string) => {
-                const parts = text.split(/(\*\*.*?\*\*)/g);
-                return parts.map((part, idx) => {
-                  if (part.startsWith('**') && part.endsWith('**')) {
-                    return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
-                  }
-                  return part;
-                });
-              };
-
+              // Standard Paragraph
               return (
                 <p key={i} className="text-gray-700 leading-relaxed">
-                  {renderWithBold(paragraph)}
+                  {renderInlineMarkdown(paragraph)}
                 </p>
               );
             })}
           </div>
 
-          
           {/* HD Posters, Mobile Wallpapers & Inspiring Quotes Gallery */}
           <div className="mt-14 pt-10 border-t-2 border-dashed border-[#2D5A27]/20">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
@@ -409,15 +615,15 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                   <Sparkles className="w-3.5 h-3.5 text-amber-600" /> Free HD Wallpapers & Posters
                 </span>
                 <h3 className="font-heading font-black text-2xl sm:text-3xl text-gray-900 mt-2">
-                  Download Festive Wallpapers & Inspiring Quotes
+                  Download HD Wallpapers & Inspiring Quotes
                 </h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Enjoy high-resolution mobile wallpapers (9:16), square DP (1:1), and festive quotes cards. Free to save and share.
+                  Enjoy high-resolution mobile wallpapers (9:16), square DP (1:1), and inspirational quote cards. Free to save and share.
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {activeWallpapers.map((wp: any, idx: number) => {
                 const wpId = wp.id || `wp-${idx}`;
                 const isDownloading = downloadingId === wpId;
@@ -514,17 +720,17 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </div>
           </div>
 
-          {/* Featured Festive Superfood Bundle Spotlight Box */}
+          {/* Featured Superfood Bundle Spotlight Box (Guaranteed on every post) */}
           <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FAF7F2] via-amber-50/40 to-white border-2 border-[#2D5A27]/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-[#C9982A] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
-              🎋 10% OFF Festive Discount Applied
+              🎋 10% OFF Special Discount Applied
             </div>
 
             <div className="flex items-center gap-5 w-full md:w-auto">
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden relative shrink-0 bg-white border border-gray-200 shadow-sm p-1">
                 <img
-                  src={post.featuredProductImage || post.image || '/products/sweet-potato-powder-100g.jpg'}
-                  alt={post.featuredProductName || 'Festive Superfood Hamper'}
+                  src={activeFeaturedProduct.image}
+                  alt={activeFeaturedProduct.name}
                   className="w-full h-full object-cover rounded-xl"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/products/sweet-potato-powder-100g.jpg';
@@ -533,34 +739,34 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
               </div>
               <div>
                 <span className="text-[10px] font-black uppercase tracking-wider text-[#2D5A27] bg-[#2D5A27]/10 px-2.5 py-0.5 rounded-full">
-                  Featured Festive Superfood Bundle
+                  Featured Himalayan Superfood
                 </span>
                 <h4 className="font-heading font-black text-lg sm:text-xl text-gray-900 mt-1">
-                  {post.featuredProductName || "Sacred Raksha Bandhan Festive Superfood Hamper"}
+                  {activeFeaturedProduct.name}
                 </h4>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-base sm:text-lg font-black text-[#2D5A27]">
-                    Rs. {Math.round((post.featuredProductPrice || 1450) * 0.90)}
+                    Rs. {Math.round(activeFeaturedProduct.price * 0.90)}
                   </span>
                   <span className="text-xs sm:text-sm text-gray-400 line-through">
-                    Rs. {post.featuredProductPrice || 1450}
+                    Rs. {activeFeaturedProduct.price}
                   </span>
                   <span className="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
                     Save 10%
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  Includes pure Himalayan superfoods in reusable glass jars with free festive greeting card.
+                  {activeFeaturedProduct.description}
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 w-full md:w-auto shrink-0">
               <Link
-                href={`/products/${post.featuredProductSlug || 'dehydrated-apple'}`}
+                href={`/products/${activeFeaturedProduct.slug}`}
                 className="flex-1 md:flex-none px-4 py-3 rounded-xl bg-white border border-gray-300 text-xs font-bold text-gray-800 hover:bg-gray-50 text-center transition-colors shadow-2xs"
               >
-                View Hamper
+                View Product
               </Link>
               <button
                 type="button"
@@ -573,44 +779,41 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </div>
           </div>
 
-
-          {/* FAQs Accordion Section */}
-          {post.faqs && post.faqs.length > 0 && (
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <h3 className="font-heading font-black text-xl sm:text-2xl text-gray-900 mb-4">
-                Frequently Asked Questions (FAQ)
-              </h3>
-              <div className="space-y-3">
-                {post.faqs.map((faq: { question: string; answer: string }, idx: number) => {
-                  const isOpen = openFaqIndex === idx;
-                  return (
-                    <div
-                      key={idx}
-                      className="rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-2xs"
+          {/* FAQs Accordion Section (Guaranteed on every post) */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="font-heading font-black text-xl sm:text-2xl text-gray-900 mb-4">
+              Frequently Asked Questions (FAQ)
+            </h3>
+            <div className="space-y-3">
+              {activeFaqs.map((faq: { question: string; answer: string }, idx: number) => {
+                const isOpen = openFaqIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-2xs"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                      className="w-full p-4 text-left font-heading font-bold text-sm sm:text-base text-gray-900 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
                     >
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                        className="w-full p-4 text-left font-heading font-bold text-sm sm:text-base text-gray-900 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors cursor-pointer"
-                      >
-                        <span>{faq.question}</span>
-                        <ChevronDown
-                          className={`w-4 h-4 text-[#2D5A27] transition-transform duration-200 shrink-0 ${
-                            isOpen ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-                      {isOpen && (
-                        <div className="p-4 pt-0 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 bg-[#FAF7F2]/50">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+                      <span>{faq.question}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#2D5A27] transition-transform duration-200 shrink-0 ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="p-4 pt-0 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 bg-[#FAF7F2]/50">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          )}
+          </div>
 
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 mt-10 pt-6 border-t border-gray-100">
@@ -651,8 +854,8 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 const relTr = blogTranslations[relatedPost.slug];
                 const relTitle = (lang === 'np' && relTr?.titleNp) ? relTr.titleNp : relatedPost.title;
                 const relExcerpt = (lang === 'np' && relTr?.excerptNp) ? relTr.excerptNp : relatedPost.excerpt;
-                const relCategory = (lang === 'np' && relTr?.categoryNp) ? relTr.categoryNp : relatedPost.category;
-                const relDate = (lang === 'np' && relTr?.dateNp) ? relTr.dateNp : relatedPost.date;
+                const relCategory = (lang === 'np' && relTr?.categoryNp) ? relTr.categoryNp : (relatedPost.category || 'Superfoods');
+                const relDate = (lang === 'np' && relTr?.dateNp) ? relTr.dateNp : (relatedPost.date || 'Recent');
 
                 return (
                   <Link

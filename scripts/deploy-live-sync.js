@@ -14,17 +14,55 @@ const config = {
   rootDir: path.resolve(__dirname, '..')
 };
 
-const auth = Buffer.from(`${config.username}:${config.password}`).toString('base64');
+let sessionCache = null;
 
-function callApi(apiPath, method = 'GET') {
+function cpanelLogin() {
+  return new Promise((resolve, reject) => {
+    const postData = querystring.stringify({
+      user: config.username,
+      pass: config.password
+    });
+    const req = https.request({
+      hostname: config.host,
+      port: config.port,
+      path: '/login/?login_only=1',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(postData)
+      },
+      rejectUnauthorized: false
+    }, (res) => {
+      let data = '';
+      const cookies = res.headers['set-cookie'] || [];
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          resolve({ token: json.security_token, cookies });
+        } catch (e) {
+          reject(e);
+        }
+      });
+    });
+    req.on('error', reject);
+    req.write(postData);
+    req.end();
+  });
+}
+
+async function callApi(apiPath, method = 'GET') {
+  if (!sessionCache) {
+    sessionCache = await cpanelLogin();
+  }
   return new Promise((resolve, reject) => {
     const req = https.request({
       hostname: config.host,
       port: config.port,
-      path: apiPath,
+      path: sessionCache.token + apiPath,
       method: method,
       headers: {
-        'Authorization': 'Basic ' + auth
+        'Cookie': sessionCache.cookies.map(c => c.split(';')[0]).join('; ')
       },
       rejectUnauthorized: false
     }, (res) => {
