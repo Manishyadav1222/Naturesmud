@@ -50,21 +50,27 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
   });
 
   // Extract unique categories
-  const categories = ['ALL', ...Array.from(new Set(localizedPosts.map((p) => p.category)))];
+  const categories = ['ALL', ...Array.from(new Set(localizedPosts.map((p) => p.category))).filter(Boolean)];
 
   // Filter posts
-  const filteredPosts = localizedPosts.filter((post) => {
-    const matchesCat = selectedCategory === 'ALL' || post.category === selectedCategory;
-    const matchesSearch =
-      searchTerm.trim() === '' ||
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.category.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCat && matchesSearch;
-  });
+  const filteredPosts = localizedPosts
+    .filter((post) => {
+      const matchesCat = selectedCategory === 'ALL' || post.category === selectedCategory;
+      const matchesSearch =
+        searchTerm.trim() === '' ||
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.category.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCat && matchesSearch;
+    })
+    .sort((a, b) => {
+      const timeA = new Date(a.date || 0).getTime();
+      const timeB = new Date(b.date || 0).getTime();
+      return timeB - timeA;
+    });
 
-  const featured = filteredPosts.find((p) => p.featured) || filteredPosts[0];
-  const restPosts = filteredPosts.filter((p) => p.id !== featured?.id);
+  const featured = filteredPosts[0];
+  const restPosts = filteredPosts.slice(1);
   const displayedRestPosts = restPosts.slice(0, visibleCount);
   const hasMore = visibleCount < restPosts.length;
 

@@ -25,6 +25,173 @@ export interface ExtendedBlogPost extends BlogPost {
 // Generate the master 100 comprehensive SEO blogs catalog
 export const allBlogPosts: ExtendedBlogPost[] = [
   // -------------------------------------------------------------
+  // MASTER ARTICLE 1: HOW TO EAT CHIA SEEDS (2026-08-30)
+  // -------------------------------------------------------------
+  {
+    id: 'blog-chia-seeds-guide-2026',
+    slug: 'how-to-eat-chia-seeds-daily-guide',
+    title: 'How to Eat Chia Seeds: 10 Easy Ways to Add Them to Your Daily Diet',
+    excerpt: 'Learn how to eat chia seeds safely and effectively. Discover ideal soaking ratios, 10 simple everyday recipes, digestive tips, and common mistakes to avoid in Nepal.',
+    image: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
+    category: 'Seeds, Nuts & Superfoods',
+    author: "Nature's Mud Editorial Team",
+    date: '2026-08-30',
+    readTime: 8,
+    featured: true,
+    featuredProductSlug: 'chia-seeds',
+    featuredProductName: 'Premium Black Chia Seeds (300g)',
+    featuredProductPrice: 396,
+    featuredProductImage: '/products/chia-seeds.jpg',
+    metaDescription: "Complete practical guide on how to eat chia seeds. Learn proper soaking ratios, 10 daily recipes, and digestive tips from Nature's Mud Nepal.",
+    keyTakeaways: [
+      'Always soak chia seeds in a 1:6 liquid ratio for at least 15–20 minutes before consuming.',
+      'Packed with 9.8g dietary fiber and 5.0g plant-based Omega-3 (ALA) per 2-tablespoon serving.',
+      'Easily added to morning lemon water, dahi (curd), oats, smoothies, or kneaded into roti dough.',
+      'Start with 1 teaspoon daily and increase gradually to allow your digestion to adapt smoothly.'
+    ],
+    faqs: [
+      {
+        question: 'What is the best time of day to eat chia seeds?',
+        answer: 'Chia seeds can be eaten at any time. Many people prefer consuming them in the morning mixed with lemon water or oatmeal to support bowel regularity and sustained hydration, or 30 minutes before workouts.'
+      },
+      {
+        question: 'Can I eat chia seeds without soaking them?',
+        answer: 'Yes, in small amounts as a crunchy topping over curd, oats, or salads. However, make sure you chew them thoroughly and drink plenty of water to prevent digestive discomfort.'
+      },
+      {
+        question: 'How long can soaked chia seed gel be stored in the fridge?',
+        answer: 'When stored in an airtight glass jar in the refrigerator, soaked chia seed gel stays fresh for up to 5 days.'
+      }
+    ],
+    content: [
+      "Chia seeds (*Salvia hispanica*) have become a staple in modern kitchens across Nepal, valued for their high soluble fiber, plant-based Omega-3 fatty acids (alpha-linolenic acid), and mineral density. Despite their popularity, many people are unsure how to prepare them properly—often wondering whether they should be soaked, ground, or eaten raw.",
+      "Because these tiny seeds can absorb up to 12 times their weight in water, how you consume them directly influences how well your body digests and absorbs their nutrients.",
+      "### Should You Eat Chia Seeds Raw or Soaked?",
+      "While chia seeds can technically be eaten dry as a crunchy garnish, soaking is strongly recommended by nutritionists. Chia seeds have a unique outer mucilaginous layer rich in soluble fiber. When exposed to liquid, this layer expands into a thick, slippery gel that digests smoothly.",
+      "Eating large amounts of raw, dry chia seeds without adequate fluid can cause them to absorb water directly from your esophagus or stomach, which may cause digestive discomfort. Pre-soaking ensures optimal hydration and steady carbohydrate absorption.",
+      "### The Ideal Soaking Ratio & Timing",
+      "To create a smooth, clump-free chia gel, follow the standard 1:6 liquid ratio: combine 1 tablespoon of chia seeds (approx. 15g) with 6 tablespoons (approx. 90ml) of water, milk, or curd. Stir vigorously, wait 3 minutes, stir once more to break up any clumps, and let sit for 15 to 20 minutes.",
+      "### 10 Practical Ways to Eat Chia Seeds Daily",
+      "- **1. Morning Lemon-Chia Water:** Stir 1 tablespoon of chia seeds into lukewarm water with fresh lemon and raw honey 20 minutes before breakfast.",
+      "- **2. Classic Overnight Chia Pudding:** Combine 3 tablespoons of chia seeds with 200ml milk in a glass jar, add dates powder, and refrigerate overnight.",
+      "- **3. Blended into Daily Smoothies:** Add 1 tablespoon directly into your blender with bananas and seasonal fruit for a thick, energizing drink.",
+      "- **4. Stirred into Warm Oatmeal (Jaulo):** Once your morning oats or porridge are cooked, stir in 1 tablespoon of chia seeds for a creamy, nutrient-rich texture.",
+      "- **5. Mixed with Fresh Dahi (Curd):** Stir soaked chia seeds into homemade curd topped with pumpkin seeds and dried cranberries.",
+      "- **6. Homemade 10-Minute Berry Jam:** Mash warm berries or rehydrated blueberries with 2 tablespoons of chia seeds to create an instant sugar-free spread.",
+      "- **7. Kneaded into Roti & Paratha Dough:** Mix 1 to 2 tablespoons into your whole wheat flour before adding water to boost daily fiber.",
+      "- **8. Natural Thickener for Dal & Soups:** Whisk 1 tablespoon of ground or whole seeds into thin soups 5 minutes before serving.",
+      "- **9. Plant-Based Chia Egg for Baking:** Mix 1 tablespoon ground chia with 3 tablespoons water to replace one egg in pancakes or baking.",
+      "- **10. Desk & Travel Hydration Bottle:** Add 1 teaspoon of chia seeds into your reusable water bottle with cucumber or mint for sustained hydration.",
+      "### Daily Portion Sizes & Digestive Tips",
+      "A standard serving of 1 to 2 tablespoons (15g to 30g) daily is ideal for most adults. If your diet is currently low in fiber, start with 1 teaspoon daily for the first week and drink plenty of water throughout the day to allow your digestion to adapt naturally."
+    ],
+    tags: ['chia seeds', 'how to eat chia seeds', 'superfoods nepal', 'healthy recipes', 'digestive wellness']
+  },
+
+  // -------------------------------------------------------------
+  // MASTER ARTICLE 2: ARE DRIED FRUITS HEALTHY? (2026-08-30)
+  // -------------------------------------------------------------
+  {
+    id: 'blog-dried-fruits-healthy-2026',
+    slug: 'are-dried-fruits-healthy-benefits-nutrition-guide',
+    title: 'Are Dried Fruits Healthy? Benefits, Nutrition & What to Look For',
+    excerpt: 'Discover the real nutritional facts about dried and dehydrated fruits. Learn about sugar concentration, fiber benefits, portion sizing, and how to avoid sulfur-treated snacks in Nepal.',
+    image: '/products/authentic-dehydrated-mango.jpg',
+    category: 'Dried Fruits & Healthy Snacking',
+    author: "Nature's Mud Editorial Team",
+    date: '2026-08-30',
+    readTime: 7,
+    featured: true,
+    featuredProductSlug: 'dehydrated-mango',
+    featuredProductName: 'Sun-Dried Himalayan Mango Slices (100g)',
+    featuredProductPrice: 395,
+    featuredProductImage: '/products/authentic-dehydrated-mango.jpg',
+    metaDescription: 'Are dried fruits healthy? Read our evidence-based guide on sugar content, sulfur dioxide additives, and portion control for dried fruits in Nepal.',
+    keyTakeaways: [
+      'Dried fruits are healthy when they contain 100% whole fruit with zero added cane sugar or sulfur dioxide.',
+      'Dehydration concentrates dietary fiber, potassium, iron, and antioxidant polyphenols.',
+      'Avoid unnaturally bright dried fruits treated with sulfur dioxide (E220) bleaching fumigants.',
+      'The ideal daily portion is a modest handful (30–40 grams) to enjoy nutrients without excess calories.'
+    ],
+    faqs: [
+      {
+        question: 'Can people with diabetes eat dried fruits?',
+        answer: 'Yes, in strict moderation. Choose unsweetened, fiber-dense dried fruits like apples, figs, or berries, and pair them with raw almonds or walnuts to slow glucose absorption.'
+      },
+      {
+        question: 'Why do some commercial dried fruits look unnaturally bright?',
+        answer: 'Commercial vendors often use sulfur dioxide (E220) fumigation to artificially prevent browning. Authentic, naturally sun-dried fruits will have a darker, deeper rustic hue.'
+      }
+    ],
+    content: [
+      "Walking through grocery stores or dry fruit markets in Kathmandu, dried fruits are frequently promoted as the ultimate healthy snack. From sun-dried mango slices and apple rings to cranberries and figs, they offer a convenient, shelf-stable way to enjoy fruit year-round.",
+      "The health value of dried fruit depends entirely on how the fruit was dried, what was added during processing, and how much you consume.",
+      "### What Actually Happens When Fruit is Dried?",
+      "Fresh fruits consist of 75% to 90% water. During solar dehydration, this moisture evaporates, concentrating the dietary fiber, minerals (like potassium and iron), and antioxidant polyphenols from several pieces of fruit into a single handful.",
+      "Low-temperature solar dehydration (below 42°C) preserves heat-sensitive enzymes, vitamins, and natural fruit sugars without burning the fruit or altering its biological value.",
+      "### The Sugar & Calorie Question: Natural vs. Added Sugar",
+      "It is vital to distinguish between intrinsic natural fruit sugars and extrinsic added sugars. Unsweetened dehydrated fruits contain only the fruit's native fructose and glucose bound to dietary fiber. In contrast, candied commercial dried fruits are steeped in refined cane sugar syrup, significantly increasing empty calories.",
+      "### The Hidden Problem: Sulfur Dioxide in Wholesale Markets",
+      "Many commercial dried fruits in Nepal feature neon-bright colors achieved through sulfur dioxide (E220) gas fumigation. Sulfites can trigger respiratory irritation and headaches in sensitive individuals. Naturally dried fruits without chemical fumigation will have a darker, more rustic golden-amber color—a hallmark of chemical-free purity.",
+      "### Recommended Daily Portion & Snacking Tips",
+      "Because dried fruit is concentrated, keep your daily intake to one small handful (30 to 40 grams). Chop unsweetened dried apple rings or figs into morning oats, or pair sun-dried mango with raw almonds for a balanced glycemic response."
+    ],
+    tags: ['dried fruits', 'are dried fruits healthy', 'sugar free snacks', 'dehydrated mango', 'healthy snacking nepal']
+  },
+
+  // -------------------------------------------------------------
+  // MASTER ARTICLE 3: SWEET POTATO POWDER FOR BABIES (2026-08-30)
+  // -------------------------------------------------------------
+  {
+    id: 'blog-sweet-potato-babies-2026',
+    slug: 'sweet-potato-powder-for-babies-nepal-guide',
+    title: 'Sweet Potato Powder for Babies in Nepal: Benefits, Age Guide & Daily Recipes',
+    excerpt: 'A practical guide to introducing sweet potato powder to babies in Nepal. Learn when to start, nutritional benefits, digestive safety, and easy daily recipes.',
+    image: '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg',
+    category: 'Infant & Family Nutrition',
+    author: "Nature's Mud Clinical Council",
+    date: '2026-08-30',
+    readTime: 8,
+    featured: true,
+    featuredProductSlug: 'sweet-potato-powder',
+    featuredProductName: 'Organic Sweet Potato Powder (100g)',
+    featuredProductPrice: 408,
+    featuredProductImage: '/products/sweet-potato-powder-100g.jpg',
+    metaDescription: 'Complete guide on feeding sweet potato powder to infants and toddlers in Nepal. Weaning schedules, age guidelines, and easy 3-minute recipes.',
+    keyTakeaways: [
+      'Sweet potato powder is suitable for infants starting at 6 months of age during complementary feeding.',
+      'Rich in natural beta-carotene (pro-Vitamin A), potassium, and gut-soothing soluble fiber.',
+      'Cooks in 2–3 minutes with warm water, breast milk, or traditional littho without lumps.',
+      '100% single ingredient with zero added white sugar, maltodextrin, or chemical preservatives.'
+    ],
+    faqs: [
+      {
+        question: 'Can sweet potato powder cause constipation in babies?',
+        answer: 'No. Sweet potato is naturally rich in soluble fiber that helps soften stools. When starting solids, always ensure the porridge is mixed with sufficient liquid.'
+      },
+      {
+        question: 'Do I need to cook sweet potato powder before serving?',
+        answer: 'Yes. Simmer the powder in water or milk for 2 to 3 minutes over low heat. Gentle warming creates a silky texture that is easily digested by an infant.'
+      }
+    ],
+    content: [
+      "Introducing solid food to an infant is a joyful milestone for families in Nepal. Between the traditional Pasni (rice feeding ceremony) and the transition to family meals, parents look for gentle, easily digestible, and nutrient-rich first foods.",
+      "Sweet potato has long been recommended by pediatric nutritionists as an ideal early weaning food due to its natural sweetness, high dietary fiber, and rich beta-carotene content.",
+      "### Why Sweet Potato is a Preferred First Weaning Food",
+      "Unlike heavy grains or legumes that can cause infant bloating, sweet potato contains gentle soluble fiber that supports regular bowel movements without irritating an underdeveloped intestinal lining.",
+      "Its mild natural sweetness is readily accepted by babies, making it a reliable foundation for complementary feeding without requiring added sugar or salt.",
+      "### Nutritional Profile for Growing Infants",
+      "- **Beta-Carotene (Pro-Vitamin A):** Converted into active Vitamin A, essential for retinal development, vision, and mucosal immunity.",
+      "- **Soluble Fiber:** Aids digestion and helps prevent common weaning constipation.",
+      "- **Potassium & Magnesium:** Vital minerals supporting muscle coordination and cellular hydration.",
+      "- **Vitamin C & B6:** Essential co-factors for energy metabolism and natural immunity.",
+      "### Easy 3-Minute Weaning Porridge Recipe",
+      "Whisk 1 tablespoon of pure sweet potato powder into 60–80ml of warm water in a small saucepan. Simmer gently over low heat for 2 minutes, stirring continuously until smooth. Allow to cool to lukewarm before serving."
+    ],
+    tags: ['sweet potato powder', 'baby food nepal', 'infant weaning', 'organic baby food', 'pediatric nutrition']
+  },
+
+  // -------------------------------------------------------------
   // VIRAL NEWS: COULD ANOTHER FLOOD HAPPEN?
   // -------------------------------------------------------------
   {
@@ -1400,8 +1567,8 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
 });
 
 export const masterBlogCatalog: ExtendedBlogPost[] = [
-  ...allBlogPosts.filter(b => b.category === 'News & Environment' || b.category === 'News & Economy' || b.slug.startsWith('healthy-raksha') || b.slug.startsWith('divine-bond') || b.slug.startsWith('lifelong-health') || b.slug.startsWith('antioxidant-festive')),
-  ...rawCatalog
+  ...allBlogPosts,
+  ...rawCatalog.filter(r => !allBlogPosts.some(a => a.slug === r.slug))
 ].sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
 
 export function getBlogPostBySlug(slug: string): ExtendedBlogPost | undefined {
