@@ -54,7 +54,12 @@ async function uploadFile(localPath, remoteDir, remoteFileName) {
       password: config.password,
       secure: false
     });
-    const remotePath = remoteDir + '/' + remoteFileName;
+    // FTP root is already /home8/kathma13/, so we remove it from the path
+    let ftpDir = remoteDir;
+    if (ftpDir.startsWith(config.homeDir)) {
+      ftpDir = ftpDir.substring(config.homeDir.length);
+    }
+    const remotePath = ftpDir + '/' + remoteFileName;
     await client.uploadFrom(localPath, remotePath);
   } catch (err) {
     console.error(`FTP Upload error for ${remoteFileName}:`, err);
