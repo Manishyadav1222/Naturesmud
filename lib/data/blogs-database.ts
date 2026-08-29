@@ -25,6 +25,62 @@ export interface ExtendedBlogPost extends BlogPost {
 // Generate the master 100 comprehensive SEO blogs catalog
 export const allBlogPosts: ExtendedBlogPost[] = [
   // -------------------------------------------------------------
+  // VIRAL NEWS: AUGUST 2026 NEPAL GLACIER AVALANCHE
+  // -------------------------------------------------------------
+  {
+    id: 'news-glacier-avalanche-2026',
+    slug: 'august-2026-nepal-glacier-avalanche-bhotekoshi-trishuli-flood',
+    title: 'The August 2026 Nepal Glacier Avalanche: A Wake-Up Call for Our Himalayan Rivers',
+    excerpt: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
+    image: '/images/blog/nepal-glacier-avalanche-2026.jpg', // Placeholder for news image
+    category: 'News & Environment',
+    author: 'Nature\\'s Mud Editorial Team',
+    date: '2026-08-29',
+    readTime: 6,
+    featured: true,
+    metaDescription: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
+    keyTakeaways: [
+      'An ice-and-rock avalanche created a temporary barrier lake that burst, flooding the Bhotekoshi and Trishuli basins.',
+      'At least 14 hydropower projects were damaged, disconnecting over 431 MW of electricity from the national grid.',
+      'The disaster destroyed the Gyirong Port border complex, severely impacting Nepal-China trade.',
+      'Authorities have declared the Rasuwa, Nuwakot, and Dhading districts disaster crisis zones.'
+    ],
+    faqs: [
+      {
+        question: 'Was this a Glacial Lake Outburst Flood (GLOF)?',
+        answer: 'Technically, scientists currently classify the trigger as an ice-and-rock avalanche that created a temporary barrier lake, which then burst. While similar in consequence to a classic GLOF, the mechanics of this disaster were much more sudden.'
+      },
+      {
+        question: 'Are Kathmandu\\'s power supplies affected?',
+        answer: 'Yes. The loss of over 431 MW from the national grid has forced the NEA to manage power distribution carefully, leading to localized outages and an increased reliance on energy imports from India.'
+      }
+    ],
+    content: [
+      "The roar didn’t sound like water. Villagers in Rasuwa later described it as the earth tearing itself apart—a deep, grinding thunder that vibrated through the soles of their feet before the river even came into view. By the time the dark wall of mud, ice, and splintered pine trees violently surged down the Lhende Khola, there was no time to run.",
+      "On August 26, 2026, a catastrophic event forever altered the geography of the Bhotekoshi and Trishuli river basins. The August 2026 Nepal glacier avalanche was not just another monsoon tragedy; it was a brutal demonstration of how rapidly warming high-altitude environments can cascade into downstream devastation.",
+      "### What happened?",
+      "The disaster began high above the snowline, far from human settlement. An immense section of a glacier—comprising millions of tons of ice and rock—fractured and collapsed. The sheer force of this avalanche striking the earth registered on seismographs across the region as a 5.2-magnitude earthquake.",
+      "This avalanche did not just stop on the mountain. It plummeted into the Lhende Khola, creating a massive, unstable natural dam. Within hours, the immense pressure of the blocked glacial meltwater and monsoon runoff caused this temporary barrier to catastrophically fail. The resulting outburst flood sent a deadly slurry of debris rocketing downstream, wiping out entire settlements, severing the Pasang Lhamu Highway, and annihilating the Gyirong Port border complex.",
+      "### What we know so far",
+      "The scale of the destruction across the Rasuwa, Nuwakot, and Dhading districts is staggering. Search and rescue operations—hampered by washed-out roads and continuous heavy rain—are ongoing in some of the most unforgiving terrain in the Himalayas. While official figures are being continuously updated by the Ministry of Home Affairs, hundreds are confirmed dead, with estimates of 1,000 to 2,500 individuals still missing.",
+      "We also know the immediate physical toll on the nation's infrastructure. Preliminary assessments by the Nepal Electricity Authority (NEA) confirm that at least 14 hydropower projects have sustained major damage. Projects including Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli, and Devighat have been severely compromised. Over 431 Megawatts (MW) of electricity have been suddenly disconnected from the national grid.",
+      "### What remains uncertain",
+      "While scientists at the International Centre for Integrated Mountain Development (ICIMOD) have identified the ice-and-rock avalanche as the primary trigger, the underlying mechanics are still under intense investigation. Did unprecedented summer heatwaves create a hidden network of meltwater lubricating the base of the glacier? Or was there a localized seismic event that triggered the initial collapse? Geologists and glaciologists are currently analyzing satellite imagery to answer these questions.",
+      "The exact economic toll also remains entirely unquantified. Assessing the structural integrity of partially buried hydropower tunnels and transmission lines will take months, if not years. Additionally, the stability of other glacial lakes in the upper Trishuli catchment is highly uncertain, keeping downstream communities on high alert for secondary outburst floods.",
+      "### Why it matters",
+      "For decades, the narrative of Nepal’s economic future has been deeply tied to the \\"white gold\\" of its rivers. Hydropower has been positioned as our ticket to prosperity and clean energy export. However, this disaster exposes a critical vulnerability: we are building multi-billion rupee infrastructure in the exact path of climate-induced geographical violence.",
+      "The Trishuli corridor is one of the most heavily dammed river stretches in the country. When a single avalanche can knock 14 power plants offline and instantly cripple a significant percentage of the national power supply, the resilience of our entire energy strategy is called into question.",
+      "### Nepal-specific impact",
+      "Beyond the macroeconomic shock to the energy sector, the human cost is deeply localized and agonizing. The destruction of the Gyirong Port border complex chokes a vital artery for Nepal-China trade, threatening the livelihoods of thousands of truck drivers, traders, and local hoteliers who depend on the Kerung border route.",
+      "Furthermore, the affected districts—Rasuwa, Nuwakot, and Dhading—are predominantly agricultural. The floods didn't just take homes; they scoured away topsoil, buried terraced fields in sterile glacial silt, and destroyed the suspension bridges that connect isolated villages to markets and schools. An estimated 17,000 children in these areas are currently in urgent need of humanitarian assistance.",
+      "### What happens next",
+      "Authorities have declared the affected regions disaster crisis zones for a three-month period. The immediate priority remains search, rescue, and the provision of emergency shelter and medical aid to displaced families before the onset of winter.",
+      "For the government and the NEA, a massive logistical nightmare has just begun. Rebuilding the transmission lines and access roads will require unprecedented coordination. But the bigger, more difficult conversation must happen among policymakers, environmentalists, and investors. The August 2026 Nepal glacier avalanche must force a re-evaluation of how risk is calculated for Himalayan infrastructure. Early warning systems, which failed or were non-existent in the upper reaches of the Lhende Khola, must become mandatory, non-negotiable components of any future river basin development.",
+      "### Sources / reporting notes",
+      "This article was compiled using preliminary damage reports from the Nepal Electricity Authority (NEA), initial geological assessments provided by the International Centre for Integrated Mountain Development (ICIMOD), and field reports from local authorities in Rasuwa and Nuwakot districts. Casualty figures and MW loss estimates are accurate as of late August 2026 but are subject to revision as search and rescue operations continue."
+    ]
+  },
+  // -------------------------------------------------------------
   // RAKSHA BANDHAN FESTIVE SPECIALS (2026-08-27 to 2026-08-24)
   // -------------------------------------------------------------
   {
