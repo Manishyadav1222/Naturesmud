@@ -44,55 +44,24 @@ function callApi(apiPath, method = 'GET') {
   });
 }
 
-function uploadFile(localPath, remoteDir, remoteFileName) {
-  return new Promise((resolve, reject) => {
-    const boundary = '----WebKitFormBoundary' + Math.random().toString(36).substring(2);
-    const fileData = fs.readFileSync(localPath);
-    
-    const header = Buffer.from(
-      `--${boundary}\r\n` +
-      `Content-Disposition: form-data; name="dir"\r\n\r\n` +
-      `${remoteDir}\r\n` +
-      `--${boundary}\r\n` +
-      `Content-Disposition: form-data; name="overwrite"\r\n\r\n` +
-      `1\r\n` +
-      `--${boundary}\r\n` +
-      `Content-Disposition: form-data; name="file-1"; filename="${remoteFileName}"\r\n` +
-      `Content-Type: application/zip\r\n\r\n`
-    );
-    
-    const footer = Buffer.from(`\r\n--${boundary}--\r\n`);
-    const contentLength = header.length + fileData.length + footer.length;
-    
-    const req = https.request({
-      hostname: config.host,
-      port: config.port,
-      path: '/execute/Fileman/upload_files',
-      method: 'POST',
-      headers: {
-        'Authorization': 'Basic ' + auth,
-        'Content-Type': 'multipart/form-data; boundary=' + boundary,
-        'Content-Length': contentLength
-      },
-      rejectUnauthorized: false
-    }, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          resolve(data);
-        }
-      });
+async function uploadFile(localPath, remoteDir, remoteFileName) {
+  const ftp = require('basic-ftp');
+  const client = new ftp.Client();
+  try {
+    await client.access({
+      host: config.host,
+      user: config.username,
+      password: config.password,
+      secure: false
     });
-    
-    req.on('error', reject);
-    req.write(header);
-    req.write(fileData);
-    req.write(footer);
-    req.end();
-  });
+    const remotePath = remoteDir + '/' + remoteFileName;
+    await client.uploadFrom(localPath, remotePath);
+  } catch (err) {
+    console.error(`FTP Upload error for ${remoteFileName}:`, err);
+    throw err;
+  } finally {
+    client.close();
+  }
 }
 
 function saveFile(remoteDir, fileName, content) {
