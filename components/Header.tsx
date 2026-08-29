@@ -34,12 +34,11 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/products', label: 'Shop', hasMegaMenu: true },
   { href: '/catalog', label: 'Catalog' },
-  { href: '#search', label: 'Search', isSearch: true },
   { href: '/offers', label: 'Offers', isSpecial: true },
-  { href: '/about', label: 'About Us' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/recipes', label: 'Recipes' },
-  { href: '/faq', label: 'FAQ' },
+  { href: '/about', label: 'About Us', hideOnLg: true },
+  { href: '/blog', label: 'Blog', hideOnLg: true },
+  { href: '/recipes', label: 'Recipes', hideOnLg: true },
+  { href: '/faq', label: 'FAQ', hideOnLg: true },
 ];
 
 const featuredCategories = [
@@ -226,30 +225,15 @@ export default function Header() {
                   );
                 }
 
-                if ((link as any).isSearch) {
-                  return (
-                    <button
-                      key="header-search-bar"
-                      type="button"
-                      onClick={openSearch}
-                      className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 bg-black/5 hover:bg-black/10 text-ink/80 hover:text-primary cursor-pointer border border-black/10 group"
-                      aria-label="Search Superfoods"
-                    >
-                      <Search className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" />
-                      <span>Search</span>
-                      <kbd className="hidden xl:inline text-[9px] bg-white border border-ink/10 rounded px-1 py-0.2 text-ink/50 font-mono shadow-xs ml-0.5">
-                        ⌘K
-                      </kbd>
-                    </button>
-                  );
-                }
+
 
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={classNames(
-                      'px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5',
+                      'px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 items-center gap-1.5',
+                      (link as any).hideOnLg ? 'hidden xl:flex' : 'flex',
                       isActive
                         ? 'text-primary bg-primary/10 font-bold'
                         : link.isSpecial
@@ -276,6 +260,11 @@ export default function Header() {
               >
                 <Search className="w-4 h-4" />
               </motion.button>
+
+              {/* Orders Status Widget — desktop only, between Search and Wishlist */}
+              <div className="hidden lg:flex items-center">
+                <OrdersHeaderWidget />
+              </div>
 
               {/* Wishlist */}
               <MotionLink
@@ -332,10 +321,8 @@ export default function Header() {
             </div>
           </div>
 
-          {/* ── Right Zone: Live Track Order Widget (Desktop Only - Kept identical) ── */}
-          <div className="hidden lg:flex items-center shrink-0 z-20">
-            <OrdersHeaderWidget />
-          </div>
+          {/* ── Right Zone: Spacer for balance ── */}
+          <div className="hidden lg:flex w-[140px] shrink-0 z-20"></div>
         </div>
 
         {/* Mobile Menu Drawer */}
@@ -372,27 +359,25 @@ export default function Header() {
                   </Link>
                 </div>
 
+                {/* Mobile Search Button */}
+                <button
+                  key="mobile-search-btn"
+                  type="button"
+                  onClick={() => {
+                    closeMobileMenu();
+                    openSearch();
+                  }}
+                  className="w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium bg-primary/5 text-primary border border-primary/20 transition-all duration-200"
+                >
+                  <span className="flex items-center gap-2.5">
+                    <Search className="w-4 h-4 text-primary" /> Search Superfoods &amp; Recipes
+                  </span>
+                  <kbd className="text-[10px] bg-white border border-primary/20 rounded px-1.5 py-0.5 text-primary font-mono">
+                    Tap
+                  </kbd>
+                </button>
+
                 {navLinks.map((link) => {
-                  if ((link as any).isSearch) {
-                    return (
-                      <button
-                        key="mobile-search-btn"
-                        type="button"
-                        onClick={() => {
-                          closeMobileMenu();
-                          openSearch();
-                        }}
-                        className="w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium bg-primary/5 text-primary border border-primary/20 transition-all duration-200"
-                      >
-                        <span className="flex items-center gap-2.5">
-                          <Search className="w-4 h-4 text-primary" /> Search Superfoods &amp; Recipes
-                        </span>
-                        <kbd className="text-[10px] bg-white border border-primary/20 rounded px-1.5 py-0.5 text-primary font-mono">
-                          Tap
-                        </kbd>
-                      </button>
-                    );
-                  }
 
                   return (
                     <Link

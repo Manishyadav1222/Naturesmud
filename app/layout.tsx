@@ -255,7 +255,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-body bg-cream text-dark antialiased w-full max-w-full">
+      <body className="font-body bg-cream text-dark antialiased overflow-x-hidden w-full max-w-full">
         <StorefrontShell>{children}</StorefrontShell>
         <Toaster position="bottom-right" richColors />
       </body>

@@ -115,49 +115,43 @@ export function OrdersHeaderWidget() {
 
   return (
     <div className="relative inline-block" ref={dropdownRef}>
-      {/* ── Top Bar Animated Order Status Trigger ── */}
+      {/* ── Header Actions Toolbar Button ── */}
       <motion.button
-        whileHover={{ scale: 1.04, y: -2 }}
-        whileTap={{ scale: 0.96 }}
+        whileHover={{ scale: 1.06, y: -1 }}
+        whileTap={{ scale: 0.94 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-semibold transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer ${
+        className={`relative flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
           safeOrders.length > 0
-            ? 'bg-gradient-to-r from-primary via-primary-600 to-emerald-700 text-white shadow-emerald-950/20 ring-2 ring-primary/40'
-            : 'bg-white hover:bg-cream-50 text-ink border border-gray-200 hover:border-primary/30 shadow-[0_2px_10px_rgba(58,107,53,0.06)]'
+            ? 'bg-gradient-to-r from-primary to-emerald-700 text-white shadow-md shadow-emerald-950/20 ring-2 ring-primary/40 hover:shadow-lg'
+            : 'text-ink/80 hover:text-primary hover:bg-black/5'
         }`}
         aria-label="View active orders status"
       >
-        {/* Animated Pulse Ring for Active Orders */}
+        {/* Animated Pulse Dot for Active Orders */}
         {safeOrders.length > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-gold-500"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-500"></span>
           </span>
         )}
 
-        {/* Animated Icon */}
+        {/* Truck / Package Icon */}
         <motion.div
           animate={safeOrders.length > 0 ? { x: [0, 2, 0, -2, 0] } : {}}
           transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
           className="flex items-center justify-center"
         >
           {safeOrders.length > 0 ? (
-            <Truck className="w-4 h-4 text-gold-300 animate-pulse" />
+            <Truck className="w-4 h-4 text-gold-300" />
           ) : (
-            <PackageCheck className="w-4 h-4 text-primary" />
+            <PackageCheck className="w-4 h-4" />
           )}
         </motion.div>
 
-        {/* Text / Order Status */}
-        <span className="font-semibold tracking-wide">
+        {/* Label: Orders count or Track Order */}
+        <span className="font-semibold tracking-wide whitespace-nowrap">
           {safeOrders.length > 0 ? (
-            <span className="flex items-center gap-1.5">
-              <span>Orders ({safeOrders.length})</span>
-              <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-gold-300" />
-              <span className="hidden sm:inline-block text-[11px] text-gold-200 font-normal">
-                {latestOrder ? getStatusBadge(latestOrder.status).label : ''}
-              </span>
-            </span>
+            <span>Orders ({safeOrders.length})</span>
           ) : (
             <span>Track Order</span>
           )}
