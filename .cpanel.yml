@@ -1,0 +1,42 @@
+---
+deployment:
+  tasks:
+    # ── 1. Install production dependencies ──────────────────────────────────
+    - export HOME=/home/kathma13
+    - export PATH=$HOME/.local/bin:$HOME/.nvm/versions/node/v20.18.0/bin:/usr/local/bin:$PATH
+    - export NODE_ENV=production
+
+    # Go to the cloned repo directory
+    - cd /home/kathma13/repositories/naturesmud-frontend
+
+    # Install dependencies (skip dev, use ci for reproducibility)
+    - /home/kathma13/.nvm/versions/node/v20.18.0/bin/npm ci --omit=dev --prefer-offline || /home/kathma13/.nvm/versions/node/v20.18.0/bin/npm install --omit=dev
+
+    # ── 2. Build Next.js (standalone output) ─────────────────────────────────
+    - /home/kathma13/.nvm/versions/node/v20.18.0/bin/npm run build
+
+    # ── 3. Copy static assets into the standalone folder ────────────────────
+    # (Required — Next.js standalone does NOT include these automatically)
+    - cp -r /home/kathma13/repositories/naturesmud-frontend/.next/static /home/kathma13/repositories/naturesmud-frontend/.next/standalone/.next/static
+    - cp -r /home/kathma13/repositories/naturesmud-frontend/public /home/kathma13/repositories/naturesmud-frontend/.next/standalone/public
+
+    # ── 4. Backup current .env from public_html ──────────────────────────────
+    - cp /home/kathma13/public_html/.env /tmp/.env.backup 2>/dev/null || true
+
+    # ── 5. Deploy standalone build to public_html ────────────────────────────
+    # Remove old build artifacts (but NOT the .env — restored in step 6)
+    - find /home/kathma13/public_html -mindepth 1 -maxdepth 1 ! -name '.env' ! -name '.htaccess' -exec rm -rf {} + 2>/dev/null || true
+
+    # Copy everything from standalone into public_html
+    - cp -r /home/kathma13/repositories/naturesmud-frontend/.next/standalone/. /home/kathma13/public_html/
+
+    # ── 6. Restore the production .env ──────────────────────────────────────
+    - cp /tmp/.env.backup /home/kathma13/public_html/.env 2>/dev/null || true
+
+    # ── 7. Restart the Node.js passenger app ─────────────────────────────────
+    # Touching tmp/restart.txt tells Phusion Passenger to restart
+    - mkdir -p /home/kathma13/public_html/tmp
+    - touch /home/kathma13/public_html/tmp/restart.txt
+
+    # ── Done ─────────────────────────────────────────────────────────────────
+    - echo "✅ naturesmud.shop deployed successfully at $(date)"
