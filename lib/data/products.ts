@@ -1858,18 +1858,18 @@ export function normalizeProduct(rawProduct: any, fallback?: Product | null): Pr
     name: String(product.name || localFallback?.name || ''),
     category: categoryName,
     categorySlug: categorySlug,
-    price: Number(localFallback?.price ?? product.price ?? 0),
+    price: Number(product.price ?? localFallback?.price ?? 0),
     compareAtPrice:
-      localFallback?.compareAtPrice !== undefined
-        ? Number(localFallback.compareAtPrice)
-        : product.compareAtPrice !== undefined
+      product.compareAtPrice !== undefined
         ? Number(product.compareAtPrice)
         : product.compare_at_price !== undefined
         ? Number(product.compare_at_price)
-        : Number(localFallback?.price ?? product.price ?? 0),
-    mrp: Number(localFallback?.mrp ?? product.mrp ?? localFallback?.price ?? product.price ?? 0),
+        : localFallback?.compareAtPrice !== undefined
+        ? Number(localFallback.compareAtPrice)
+        : Number(product.price ?? localFallback?.price ?? 0),
+    mrp: Number(product.mrp ?? localFallback?.mrp ?? product.price ?? localFallback?.price ?? 0),
     basePrice: Number(product.basePrice ?? localFallback?.basePrice ?? 0),
-    packing: String(localFallback?.packing || product.packing || 'Glass Jar'),
+    packing: String(product.packing || localFallback?.packing || 'Glass Jar'),
     rating: Number(product.rating ?? product.rating_avg ?? localFallback?.rating ?? 5),
     reviewCount: Number(product.reviewCount ?? product.review_count ?? product.rating_count ?? localFallback?.reviewCount ?? 0),
     image: mainImage,
