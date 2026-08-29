@@ -123,44 +123,82 @@ class Product extends Model
         // 1. Check if images JSON array exists in database
         if (!empty($this->images)) {
             $imgs = is_array($this->images) ? $this->images : json_decode($this->images, true);
-            if (!empty($imgs[0])) {
-                if (is_string($imgs[0]) && !empty($imgs[0])) {
-                    return $imgs[0];
+            if (is_array($imgs)) {
+                // Check if any image is marked as primary
+                foreach ($imgs as $img) {
+                    if (is_array($img) && !empty($img['isPrimary'])) {
+                        $url = $img['url'] ?? $img['secure_url'] ?? $img['path'] ?? null;
+                        if ($url && is_string($url)) {
+                            return $url;
+                        }
+                    }
                 }
-                if (is_array($imgs[0])) {
-                    $url = $imgs[0]['url'] ?? $imgs[0]['secure_url'] ?? $imgs[0]['path'] ?? null;
-                    if ($url && is_string($url)) {
-                        return $url;
+                // Otherwise use first valid image
+                if (!empty($imgs[0])) {
+                    if (is_string($imgs[0]) && !empty($imgs[0])) {
+                        return $imgs[0];
+                    }
+                    if (is_array($imgs[0])) {
+                        $url = $imgs[0]['url'] ?? $imgs[0]['secure_url'] ?? $imgs[0]['path'] ?? null;
+                        if ($url && is_string($url)) {
+                            return $url;
+                        }
                     }
                 }
             }
         }
 
-        // 2. Fallback to product slug image mapping
+        // 2. Fallback to product slug image mapping with real files on disk
         $slugMap = [
-            'dried-cranberries' => '/products/cranberries.jpg',
-            'immunity-shield-superfood-mix' => '/products/superfood-mix.jpg',
-            'organic-pumpkin-seeds' => '/products/pumpkin-seeds.jpg',
-            'premium-roasted-almonds' => '/products/almonds.jpg',
-            'himalayan-walnuts' => '/products/walnuts.jpg',
-            'raw-himalayan-almonds' => '/products/raw-almonds.jpg',
-            'mustard-seeds' => '/products/mustard-seeds.jpg',
-            'chia-seeds' => '/products/chia-seeds.jpg',
-            'yarsagumba-powder' => '/products/yarsagumba.jpg',
-            'raw-honey' => '/products/honey.jpg',
-            'turmeric-powder' => '/products/turmeric.jpg',
-            'ginger-powder' => '/products/ginger.jpg',
-            'dried-apricots' => '/products/apricots.jpg',
-            'dried-apples' => '/products/apples.jpg',
-            'flaxseed-crackers' => '/products/flaxseed.jpg',
-            'himalayan-trail-mix' => '/products/trail-mix.jpg',
-            'dried-blueberries' => '/products/blueberries.jpg',
-            'beetroot-powder' => '/products/beetroot.jpg',
-            'dates-powder' => '/products/dates.jpg',
+            // 25 Official Catalog Products
+            'dehydrated-mango' => '/products/dehydrated-mango.jpg',
+            'dehydrated-pineapple' => '/products/dehydrated-pineapple.jpg',
             'dehydrated-apple' => '/products/dehydrated-apple.jpg',
-            'premium-coconut-oil' => '/products/coconut-oil.jpg',
+            'dehydrated-coconut-chips' => '/products/dehydrated-coconut-chips.jpg',
             'dehydrated-papaya' => '/products/papaya.jpg',
+            'dried-blueberries' => '/products/dried-blueberries-100g.jpg',
+            'dried-cranberries' => '/products/cranberries.jpg',
+            'dried-cranberry' => '/products/cranberries.jpg',
+            'dried-figs' => '/products/figs.jpg',
+            'dates-powder' => '/products/dates-powder-100g.jpg',
+            'beetroot-powder' => '/products/beetroot-powder-100g.jpg',
+            'carrot-powder' => '/products/carrot-powder-marble.jpg',
+            'sweet-potato-powder' => '/products/sweet-potato-powder-100g.jpg',
             'himalayan-pink-salt' => '/products/pink-salt.jpg',
+            'pink-salt' => '/products/pink-salt.jpg',
+            'pure-himalayan-black-salt-bire-noon' => '/products/himalayan-black-salt-digestive.jpg',
+            'black-salt' => '/products/himalayan-black-salt-digestive.jpg',
+            'chia-seeds' => '/products/chia-seeds.jpg',
+            'pumpkin-seeds' => '/products/pumpkin-seeds.jpg',
+            'organic-pumpkin-seeds' => '/products/pumpkin-seeds.jpg',
+            'premium-cashewnuts' => '/products/cashewnuts.jpg',
+            'cashewnuts' => '/products/cashewnuts.jpg',
+            'roasted-cashewnuts' => '/products/cashewnuts-roasted.jpg',
+            'roasted-almonds' => '/products/almonds-2.jpg',
+            'premium-roasted-almonds' => '/products/almonds-2.jpg',
+            'raw-himalayan-almonds' => '/products/almonds.jpg',
+            'raw-almond' => '/products/almonds.jpg',
+            'premium-pistachios' => '/products/pistachios.jpg',
+            'pistachio' => '/products/pistachios.jpg',
+            'pistachios' => '/products/pistachios.jpg',
+            'superfood-trail-mix' => '/products/superfood-mix.jpg',
+            'mix-dry-nuts' => '/products/superfood-mix.jpg',
+            'macadamia-nuts' => '/products/macadamia.jpg',
+            'virgin-coconut-oil-500ml' => '/products/coconut-oil.jpg',
+            'virgin-coconut-oil-180ml' => '/products/coconut-oil-product.jpg',
+            'coconut-oil' => '/products/coconut-oil.jpg',
+            // Fallback aliases
+            'flaxseed-crackers' => '/products/flax-seeds.jpg',
+            'flax-seeds' => '/products/flax-seeds.jpg',
+            'dried-apples' => '/products/dehydrated-apple.jpg',
+            'apple' => '/products/apple.jpg',
+            'papaya' => '/products/papaya.jpg',
+            'shilajit' => '/products/shilajit.jpg',
+            'raw-honey' => '/products/raw-honey.jpg',
+            'honey' => '/products/honey.jpg',
+            'immunity-shield-superfood-mix' => '/products/superfood-mix.jpg',
+            'himalayan-trail-mix' => '/products/superfood-mix.jpg',
+            'himalayan-superfood-lineup-pack' => '/images/combos/superfood-lineup.jpg',
         ];
 
         return $slugMap[$this->slug] ?? "/products/{$this->slug}.jpg";

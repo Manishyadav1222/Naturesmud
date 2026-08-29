@@ -1,1080 +1,796 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Alert, TextInput, Platform } from 'react-native';
-import { Link, useRouter } from 'expo-router';
-import { User, Package, Heart, Settings, LogOut, Bell, CreditCard, ShieldCheck, Truck, Star, Gift, ArrowRight, ChevronRight, Edit2, Moon, Sun, HelpCircle, Share2, Lock, Mail, Phone, MapPin } from 'lucide-react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  Alert,
+  Linking,
+  Modal,
+  TextInput,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import {
+  User,
+  Package,
+  Heart,
+  MapPin,
+  CreditCard,
+  Bell,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Award,
+  ChevronRight,
+  LogOut,
+  LogIn,
+  Zap,
+  Star,
+  Sparkles,
+  Truck,
+  Plus,
+} from 'lucide-react-native';
 import { useAuthStore } from '@/store/auth-store';
-import { useCartStore } from '@/store/cart-store';
-import { tokenStorage, authApi } from '@/lib/api';
-import { formatPrice } from '@/lib/utils';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { useOrderStore } from '@/store/order-store';
+import { useWishlistStore } from '@/store/wishlist-store';
+import { formatPrice, formatDateTime } from '@/lib/utils';
+import { toast } from '@/store/ui-store';
 
 export default function AccountScreen() {
   const router = useRouter();
-  const { user, token, isLoading, setAuth, clearAuth } = useAuthStore();
-  const { items: cartItems, getTotalItems } = useCartStore();
+  const { user, isAuthenticated, clearAuth, loginWithDemo } = useAuthStore();
+  const { orders } = useOrderStore();
+  const { favoriteIds } = useWishlistStore();
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const [registerName, setRegisterName] = useState('');
-  const [registerEmail, setRegisterEmail] = useState('');
-  const [registerPhone, setRegisterPhone] = useState('');
-  const [registerPassword, setRegisterPassword] = useState('');
-  const [registerConfirmPassword, setRegisterConfirmPassword] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false);
-
-  const cartCount = getTotalItems();
-
-  const handleLogin = async () => {
-    if (!loginEmail || !loginPassword) {
-      Alert.alert('Error', 'Please enter email and password');
-      return;
-    }
-
-    setIsLoggingIn(true);
-    try {
-      const response = await authApi.login(loginEmail, loginPassword);
-      await setAuth(response.user, response.token);
-      setShowLoginModal(false);
-      setLoginEmail('');
-      setLoginPassword('');
-    } catch (error: any) {
-      Alert.alert('Login Failed', error.response?.data?.message || 'Invalid credentials');
-    } finally {
-      setIsLoggingIn(false);
-    }
-  };
-
-  const handleRegister = async () => {
-    if (!registerName || !registerEmail || !registerPhone || !registerPassword) {
-      Alert.alert('Error', 'Please fill in all fields');
-      return;
-    }
-    if (registerPassword !== registerConfirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
-      return;
-    }
-    if (registerPassword.length < 8) {
-      Alert.alert('Error', 'Password must be at least 8 characters');
-      return;
-    }
-
-    setIsRegistering(true);
-    try {
-      const response = await authApi.register(registerName, registerEmail, registerPhone, registerPassword, registerConfirmPassword);
-      await setAuth(response.user, response.token);
-      setShowRegisterModal(false);
-      setRegisterName('');
-      setRegisterEmail('');
-      setRegisterPhone('');
-      setRegisterPassword('');
-      setRegisterConfirmPassword('');
-    } catch (error: any) {
-      Alert.alert('Registration Failed', error.response?.data?.message || 'Registration failed');
-    } finally {
-      setIsRegistering(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    await authApi.logout();
-    await clearAuth();
-  };
-
-  const menuItems = [
+  const [showAddressModal, setShowAddressModal] = useState(false);
+  const [addresses, setAddresses] = useState([
     {
-      section: 'My Account',
-      items: [
-        { id: 'orders', icon: Package, label: 'My Orders', badge: '3', onPress: () => router.push('/account/orders') },
-        { id: 'addresses', icon: MapPin, label: 'Saved Addresses', onPress: () => router.push('/account/addresses') },
-        { id: 'payment', icon: CreditCard, label: 'Payment Methods', onPress: () => router.push('/account/payment') },
-        { id: 'wishlist', icon: Heart, label: 'Wishlist', badge: '12', onPress: () => router.push('/favorites') },
-        { id: 'reviews', icon: Star, label: 'My Reviews', onPress: () => router.push('/account/reviews') },
-      ],
+      id: 'addr_1',
+      title: 'Home (Kathmandu)',
+      address: 'Thamel Marg, Ward No. 26, Kathmandu, Bagmati Province',
+      phone: '+977 9841234567',
+      isDefault: true,
     },
     {
-      section: 'Subscriptions & Loyalty',
-      items: [
-        { id: 'subscribe', icon: Gift, label: 'Subscribe & Save', onPress: () => router.push('/account/subscriptions') },
-        { id: 'loyalty', icon: Star, label: 'Loyalty Points', badge: '2,450', onPress: () => router.push('/account/loyalty') },
-        { id: 'referrals', icon: Share2, label: 'Refer & Earn', onPress: () => router.push('/account/referrals') },
-      ],
+      id: 'addr_2',
+      title: 'Office / Store',
+      address: 'Lakeside-6, Baidam, Pokhara, Gandaki Province',
+      phone: '+977 9801987654',
+      isDefault: false,
     },
-    {
-      section: 'Settings',
-      items: [
-        { id: 'profile', icon: User, label: 'Edit Profile', onPress: () => router.push('/account/profile') },
-        { id: 'notifications', icon: Bell, label: 'Notifications', onPress: () => router.push('/account/notifications') },
-        { id: 'security', icon: Lock, label: 'Security & Privacy', onPress: () => router.push('/account/security') },
-        { id: 'appearance', icon: isDarkMode ? Sun : Moon, label: isDarkMode ? 'Light Mode' : 'Dark Mode', onPress: () => setIsDarkMode(!isDarkMode) },
-      ],
-    },
-    {
-      section: 'Support',
-      items: [
-        { id: 'help', icon: HelpCircle, label: 'Help Center', onPress: () => router.push('/help') },
-        { id: 'contact', icon: Mail, label: 'Contact Us', onPress: () => router.push('/contact') },
-        { id: 'track', icon: Truck, label: 'Track Order', onPress: () => router.push('/track') },
-        { id: 'returns', icon: RotateCcw, label: 'Returns & Refunds', onPress: () => router.push('/returns') },
-      ],
-    },
-  ];
+  ]);
 
-  if (!token) {
-    return (
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        {/* Guest Header */}
-        <View style={styles.guestHeader}>
-          <View style={styles.guestAvatar}>
-            <User style={styles.guestAvatarIcon} />
-          </View>
-          <Text style={styles.guestTitle}>Welcome to Nature's Mud</Text>
-          <Text style={styles.guestDesc}>Sign in to access your orders, wishlist, and personalized recommendations</Text>
-
-          <View style={styles.guestButtons}>
-            <TouchableOpacity style={styles.guestButtonPrimary} onPress={() => setShowLoginModal(true)}>
-              <Text style={styles.guestButtonText}>Sign In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.guestButtonOutline} onPress={() => setShowRegisterModal(true)}>
-              <Text style={styles.guestButtonOutlineText}>Create Account</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.guestBenefits}>
-            <View style={styles.guestBenefit}>
-              <ShieldCheck style={styles.guestBenefitIcon} />
-              <Text style={styles.guestBenefitText}>Secure Checkout</Text>
-            </View>
-            <View style={styles.guestBenefit}>
-              <Truck style={styles.guestBenefitIcon} />
-              <Text style={styles.guestBenefitText}>Free Shipping > Rs. 3,000</Text>
-            </View>
-            <View style={styles.guestBenefit}>
-              <Gift style={styles.guestBenefitIcon} />
-              <Text style={styles.guestBenefitText}>Exclusive Member Offers</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Quick Links for Guests */}
-        <View style={styles.quickLinks}>
-          <Text style={styles.quickLinksTitle}>Quick Links</Text>
-          <View style={styles.quickLinksGrid}>
-            {[
-              { icon: Package, label: 'Track Order', onPress: () => router.push('/track') },
-              { icon: HelpCircle, label: 'Help Center', onPress: () => router.push('/help') },
-              { icon: Mail, label: 'Contact Us', onPress: () => router.push('/contact') },
-              { icon: RotateCcw, label: 'Returns', onPress: () => router.push('/returns') },
-            ].map((item) => (
-              <TouchableOpacity key={item.label} style={styles.quickLinkCard} onPress={item.onPress}>
-                <View style={styles.quickLinkIconContainer}>
-                  <item.icon style={styles.quickLinkIcon} />
-                </View>
-                <Text style={styles.quickLinkLabel}>{item.label}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-
-        {/* App Info */}
-        <View style={styles.appInfo}>
-          <Text style={styles.appVersion}>Nature's Mud v1.0.0</Text>
-          <Text style={styles.appCopyright}>© 2024 Nature's Mud. All rights reserved.</Text>
-        </View>
-      </ScrollView>
-    );
-  }
-
-  // Logged in user view
-  const recentOrders = [
-    { id: 'ORD-2024-001', date: '2024-01-15', status: 'delivered', total: 4599, items: 3 },
-    { id: 'ORD-2024-002', date: '2024-01-08', status: 'shipped', total: 2999, items: 2 },
-    { id: 'ORD-2024-003', date: '2024-01-02', status: 'processing', total: 6499, items: 5 },
-  ];
-
-  const getStatusStyle = (status: string) => {
-    switch (status) {
-      case 'delivered': return styles.statusDelivered;
-      case 'shipped': return styles.statusShipped;
-      case 'processing': return styles.statusProcessing;
-      default: return styles.statusDefault;
-    }
+  const handleLogout = () => {
+    Alert.alert('Sign Out', 'Are you sure you want to sign out of your account?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Sign Out',
+        style: 'destructive',
+        onPress: async () => {
+          await clearAuth();
+          toast.info('Signed Out', 'You have been signed out.');
+        },
+      },
+    ]);
   };
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'delivered': return 'Delivered';
-      case 'shipped': return 'Shipped';
-      case 'processing': return 'Processing';
-      default: return status;
-    }
+  const handleWhatsApp = () => {
+    Linking.openURL('https://wa.me/9779713888002?text=Namaste!%20I%20need%20assistance%20with%20my%20account%20or%20order.').catch(() => {});
+  };
+
+  const handleCallSupport = () => {
+    Linking.openURL('tel:+9779713888002').catch(() => {});
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false} refreshControl={
-      <RefreshControl refreshing={false} onRefresh={() => {}} />
-    }>
-      {/* User Profile Header */}
-      <View style={styles.profileHeader}>
-        <View style={styles.profileAvatar}>
-          {user?.avatar ? (
-            <Image source={{ uri: user.avatar }} style={styles.profileAvatarImage} />
-          ) : (
-            <Text style={styles.profileAvatarInitial}>{user?.name?.charAt(0).toUpperCase()}</Text>
-          )}
-          {user?.is_active && <View style={styles.verifiedBadge} />}
-        </View>
-        <View style={styles.profileInfo}>
-          <Text style={styles.profileName}>{user?.name}</Text>
-          <Text style={styles.profileEmail}>{user?.email}</Text>
-          {user?.phone && <Text style={styles.profilePhone}>{user?.phone}</Text>}
-        </View>
-        <TouchableOpacity style={styles.editProfileButton} onPress={() => router.push('/account/profile')}>
-          <Edit2 style={styles.editIcon} />
-          <Text style={styles.editText}>Edit Profile</Text>
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Account & Orders</Text>
+        <TouchableOpacity style={styles.chatBtn} onPress={handleWhatsApp}>
+          <MessageCircle size={20} color="#365314" />
         </TouchableOpacity>
       </View>
 
-      {/* Stats Row */}
-      <View style={styles.statsRow}>
-        <TouchableOpacity style={styles.statCard} onPress={() => router.push('/account/orders')}>
-          <Text style={styles.statValue}>{recentOrders.length}</Text>
-          <Text style={styles.statLabel}>Orders</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.statCard} onPress={() => router.push('/favorites')}>
-          <Text style={styles.statValue}>12</Text>
-          <Text style={styles.statLabel}>Wishlist</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.statCard} onPress={() => router.push('/account/loyalty')}>
-          <Text style={styles.statValue}>2,450</Text>
-          <Text style={styles.statLabel}>Points</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.statCard} onPress={() => router.push('/account/subscriptions')}>
-          <Text style={styles.statValue}>2</Text>
-          <Text style={styles.statLabel}>Subscriptions</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Recent Orders */}
-      <View style={styles.recentOrdersSection}>
-        <View style={styles.sectionHeaderRow}>
-          <Text style={styles.sectionTitle}>Recent Orders</Text>
-          <TouchableOpacity style={styles.viewAllLink} onPress={() => router.push('/account/orders')}>
-            <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight style={styles.viewAllArrow} />
-          </TouchableOpacity>
-        </View>
-        {recentOrders.map((order) => (
-          <TouchableOpacity key={order.id} style={styles.orderCard} onPress={() => router.push(`/account/orders/${order.id}`)}>
-            <View style={styles.orderHeader}>
-              <Text style={styles.orderId}>{order.id}</Text>
-              <View style={[styles.orderStatus, getStatusStyle(order.status)]}>
-                <Text style={styles.orderStatusText}>{getStatusText(order.status)}</Text>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        {/* Profile Card */}
+        {isAuthenticated && user ? (
+          <View style={styles.profileCard}>
+            <View style={styles.profileAvatar}>
+              {user.avatar ? (
+                <Image source={{ uri: user.avatar }} style={styles.avatarImg} />
+              ) : (
+                <User size={32} color="#365314" />
+              )}
+            </View>
+            <View style={styles.profileInfo}>
+              <View style={styles.nameRow}>
+                <Text style={styles.profileName}>{user.name}</Text>
+                <View style={styles.verifiedBadge}>
+                  <ShieldCheck size={12} color="#365314" />
+                  <Text style={styles.verifiedText}>Verified</Text>
+                </View>
+              </View>
+              <Text style={styles.profileEmail}>{user.email}</Text>
+              <Text style={styles.profilePhone}>{user.phone}</Text>
+            </View>
+          </View>
+        ) : (
+          <View style={styles.guestCard}>
+            <View style={styles.guestHeader}>
+              <View style={styles.guestIconBadge}>
+                <User size={28} color="#365314" />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.guestTitle}>Welcome to Nature's Mud</Text>
+                <Text style={styles.guestSub}>Sign in to earn loyalty points & track orders</Text>
               </View>
             </View>
-            <View style={styles.orderDetails}>
-              <Text style={styles.orderDate}>{new Date(order.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</Text>
-              <Text style={styles.orderItems}>{order.items} items</Text>
-              <Text style={styles.orderTotal}>{formatPrice(order.total)}</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </View>
 
-      {/* Menu Sections */}
-      {menuItems.map((section, sectionIndex) => (
-        <ScrollReveal key={section.section} direction="up" distance={20} delay={sectionIndex * 100}>
-          <View style={styles.menuSection}>
-            <Text style={styles.menuSectionTitle}>{section.section}</Text>
-            <View style={styles.menuItems}>
-              {section.items.map((item, itemIndex) => (
-                <TouchableOpacity key={item.id} style={styles.menuItem} onPress={item.onPress}>
-                  <View style={styles.menuItemIconContainer}>
-                    <item.icon style={styles.menuItemIcon} />
-                  </View>
-                  <View style={styles.menuItemContent}>
-                    <Text style={styles.menuItemLabel}>{item.label}</Text>
-                  </View>
-                  {item.badge && (
-                    <View style={styles.menuItemBadge}>
-                      <Text style={styles.menuItemBadgeText}>{item.badge}</Text>
-                    </View>
-                  )}
-                  <ChevronRight style={styles.menuItemArrow} />
-                </TouchableOpacity>
-              ))}
-            </View>
-          </View>
-        </ScrollReveal>
-      ))}
-
-      {/* Logout Button */}
-      <View style={styles.logoutSection}>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <LogOut style={styles.logoutIcon} />
-          <Text style={styles.logoutText}>Sign Out</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* App Info */}
-      <View style={styles.appInfo}>
-        <Text style={styles.appVersion}>Nature's Mud v1.0.0</Text>
-        <Text style={styles.appCopyright}>© 2024 Nature's Mud. All rights reserved.</Text>
-      </View>
-    </ScrollView>
-  );
-}
-
-// Login Modal
-function LoginModal({ visible, onClose, onSwitchToRegister, email, setEmail, password, setPassword, onLogin, isLoading }: any) {
-  if (!visible) return null;
-
-  return (
-    <View style={styles.modalOverlay} onTouchStart={onClose}>
-      <View style={styles.modalContainer} onTouchStart={(e) => e.stopPropagation()}>
-        <View style={styles.modalHeader}>
-          <Text style={styles.modalTitle}>Welcome Back</Text>
-          <TouchableOpacity style={styles.modalClose} onPress={onClose}>
-            <X style={styles.modalCloseIcon} />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.modalSubtitle}>Sign in to your Nature's Mud account</Text>
-
-        <View style={styles.modalForm}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Email</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="you@example.com"
-              autoCapitalize="none"
-              keyboardType="email-address"
-              autoCompleteType="email"
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <View style={styles.inputLabelRow}>
-              <Text style={styles.inputLabel}>Password</Text>
-              <TouchableOpacity style={styles.forgotPassword} onPress={() => router.push('/forgot-password')}>
-                <Text style={styles.forgotPasswordText}>Forgot?</Text>
+            <View style={styles.guestButtonsRow}>
+              <TouchableOpacity
+                style={styles.signInBtn}
+                onPress={() => router.push('/login')}
+              >
+                <LogIn size={16} color="#FFFFFF" />
+                <Text style={styles.signInBtnText}>Sign In</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.registerBtn}
+                onPress={() => router.push('/register')}
+              >
+                <Text style={styles.registerBtnText}>Create Account</Text>
               </TouchableOpacity>
             </View>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              placeholder="••••••••"
-              secureTextEntry
-              autoCompleteType="password"
-            />
+
+            {/* Quick Demo Login Option */}
+            <View style={styles.demoLoginBox}>
+              <Text style={styles.demoLoginLabel}>⚡ Instant Preview:</Text>
+              <TouchableOpacity
+                style={styles.demoLoginChip}
+                onPress={() => {
+                  loginWithDemo('customer');
+                  toast.success('Signed in as Demo Customer');
+                }}
+              >
+                <Zap size={12} color="#365314" />
+                <Text style={styles.demoLoginChipText}>Demo Customer</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+
+        {/* Loyalty Points Banner */}
+        <View style={styles.loyaltyCard}>
+          <View style={styles.loyaltyLeft}>
+            <Award size={24} color="#D97706" />
+            <View>
+              <Text style={styles.loyaltyTitle}>Himalayan Club Points</Text>
+              <Text style={styles.loyaltySub}>Redeemable for free gifts & discounts</Text>
+            </View>
+          </View>
+          <View style={styles.loyaltyPointsBadge}>
+            <Text style={styles.loyaltyPointsVal}>
+              {user ? user.loyaltyPoints : 150} PTS
+            </Text>
+          </View>
+        </View>
+
+        {/* Recent Orders Section */}
+        <View style={styles.sectionBox}>
+          <View style={styles.sectionHeader}>
+            <View style={styles.sectionTitleRow}>
+              <Package size={18} color="#365314" />
+              <Text style={styles.sectionTitle}>Recent Orders ({orders.length})</Text>
+            </View>
+            <TouchableOpacity onPress={() => router.push('/track-order')}>
+              <Text style={styles.trackShortcutText}>Live Track 🚚</Text>
+            </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={[styles.modalButton, isLoading && styles.modalButtonDisabled]} onPress={onLogin} disabled={isLoading}>
-            {isLoading ? <ActivityIndicator color="#FFFFFF" size="small" /> : <Text style={styles.modalButtonText}>Sign In</Text>}
-          </TouchableOpacity>
+          {orders.slice(0, 3).map((ord) => (
+            <TouchableOpacity
+              key={ord.id}
+              style={styles.orderItemCard}
+              onPress={() =>
+                router.push({
+                  pathname: '/track-order',
+                  params: { orderNumber: ord.orderNumber },
+                })
+              }
+              activeOpacity={0.85}
+            >
+              <View style={styles.orderItemTop}>
+                <View>
+                  <Text style={styles.orderNumber}>{ord.orderNumber}</Text>
+                  <Text style={styles.orderDate}>{formatDateTime(ord.createdAt)}</Text>
+                </View>
+                <View
+                  style={[
+                    styles.orderStatusBadge,
+                    ord.status === 'delivered' && styles.statusDelivered,
+                    ord.status === 'out_for_delivery' && styles.statusOut,
+                  ]}
+                >
+                  <Text
+                    style={[
+                      styles.orderStatusText,
+                      ord.status === 'delivered' && styles.statusDeliveredText,
+                      ord.status === 'out_for_delivery' && styles.statusOutText,
+                    ]}
+                  >
+                    {ord.status.replace(/_/g, ' ').toUpperCase()}
+                  </Text>
+                </View>
+              </View>
+
+              <View style={styles.orderItemsSummary}>
+                <Text style={styles.orderItemsText} numberOfLines={1}>
+                  {ord.items.map((i) => `${i.quantity}x ${i.name}`).join(', ')}
+                </Text>
+                <Text style={styles.orderTotalText}>{formatPrice(ord.total)}</Text>
+              </View>
+
+              <View style={styles.trackPromptRow}>
+                <Text style={styles.trackPromptText}>Tap to view 5-step live tracker</Text>
+                <ChevronRight size={14} color="#365314" />
+              </View>
+            </TouchableOpacity>
+          ))}
         </View>
 
-        <View style={styles.modalFooter}>
-          <Text style={styles.modalFooterText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={onSwitchToRegister}>
-            <Text style={styles.modalFooterLink}>Create one</Text>
+        {/* Menu Shortcuts */}
+        <View style={styles.menuCard}>
+          <TouchableOpacity
+            style={styles.menuRow}
+            onPress={() => setShowAddressModal(true)}
+          >
+            <MapPin size={18} color="#365314" />
+            <Text style={styles.menuLabel}>Saved Delivery Addresses</Text>
+            <ChevronRight size={16} color="#A8A29E" />
           </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity
+            style={styles.menuRow}
+            onPress={() => router.push('/(tabs)/favorites')}
+          >
+            <Heart size={18} color="#DC2626" />
+            <Text style={styles.menuLabel}>My Favorites ({favoriteIds.length})</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity
+            style={styles.menuRow}
+            onPress={() => router.push('/health-benefits')}
+          >
+            <Sparkles size={18} color="#D97706" />
+            <Text style={styles.menuLabel}>Himalayan Health & Superfood Guide</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity
+            style={styles.menuRow}
+            onPress={handleCallSupport}
+          >
+            <Phone size={18} color="#365314" />
+            <Text style={styles.menuLabel}>Direct Phone Support (+977 9713888002)</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          {isAuthenticated && (
+            <>
+              <View style={styles.menuDivider} />
+              <TouchableOpacity
+                style={styles.menuRow}
+                onPress={handleLogout}
+              >
+                <LogOut size={18} color="#DC2626" />
+                <Text style={[styles.menuLabel, { color: '#DC2626' }]}>Sign Out</Text>
+              </TouchableOpacity>
+            </>
+          )}
         </View>
-      </View>
-    </View>
+
+        {/* Brand Guarantee footer */}
+        <View style={styles.footerBranding}>
+          <Text style={styles.footerTitle}>Nature's Mud Nepal</Text>
+          <Text style={styles.footerSub}>Authentic Himalayan Harvest · Kathmandu & Pokhara Delivery</Text>
+          <Text style={styles.footerVersion}>App Version 1.0.0 (Expo SDK 52)</Text>
+        </View>
+      </ScrollView>
+
+      {/* Saved Addresses Modal */}
+      <Modal visible={showAddressModal} transparent animationType="slide">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Saved Addresses</Text>
+              <TouchableOpacity onPress={() => setShowAddressModal(false)}>
+                <Text style={styles.modalCloseText}>Done</Text>
+              </TouchableOpacity>
+            </View>
+
+            {addresses.map((addr) => (
+              <View key={addr.id} style={styles.addressCard}>
+                <View style={styles.addressTitleRow}>
+                  <Text style={styles.addressCardTitle}>{addr.title}</Text>
+                  {addr.isDefault && (
+                    <View style={styles.defaultPill}>
+                      <Text style={styles.defaultPillText}>Default</Text>
+                    </View>
+                  )}
+                </View>
+                <Text style={styles.addressCardText}>{addr.address}</Text>
+                <Text style={styles.addressCardPhone}>📞 {addr.phone}</Text>
+              </View>
+            ))}
+
+            <TouchableOpacity
+              style={styles.addAddressBtn}
+              onPress={() => {
+                Alert.alert('New Address', 'You can add additional addresses during checkout.');
+              }}
+            >
+              <Plus size={16} color="#365314" />
+              <Text style={styles.addAddressText}>Add New Delivery Address</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
 }
-
-// Register Modal
-function RegisterModal({ visible, onClose, onSwitchToLogin, name, setName, email, setEmail, phone, setPhone, password, setPassword, confirmPassword, setConfirmPassword, onRegister, isLoading }: any) {
-  if (!visible) return null;
-
-  return (
-    <View style={styles.modalOverlay} onTouchStart={onClose}>
-      <View style={styles.modalContainer} onTouchStart={(e) => e.stopPropagation()}>
-        <View style={styles.modalHeader}>
-          <Text style={styles.modalTitle}>Create Account</Text>
-          <TouchableOpacity style={styles.modalClose} onPress={onClose}>
-            <X style={styles.modalCloseIcon} />
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.modalSubtitle}>Join Nature's Mud for exclusive benefits</Text>
-
-        <View style={styles.modalForm}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Full Name</Text>
-            <TextInput
-              style={styles.input}
-              value={name}
-              onChangeText={setName}
-              placeholder="John Doe"
-              autoCapitalize="words"
-              autoCompleteType="name"
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Email</Text>
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="you@example.com"
-              autoCapitalize="none"
-              keyboardType="email-address"
-              autoCompleteType="email"
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Phone Number</Text>
-            <TextInput
-              style={styles.input}
-              value={phone}
-              onChangeText={setPhone}
-              placeholder="+977 98XXXXXXXX"
-              keyboardType="phone-pad"
-              autoCompleteType="tel"
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Password</Text>
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              placeholder="••••••••"
-              secureTextEntry
-              autoCompleteType="new-password"
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Confirm Password</Text>
-            <TextInput
-              style={styles.input}
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              placeholder="••••••••"
-              secureTextEntry
-              autoCompleteType="new-password"
-            />
-          </View>
-
-          <TouchableOpacity style={[styles.modalButton, isLoading && styles.modalButtonDisabled]} onPress={onRegister} disabled={isLoading}>
-            {isLoading ? <ActivityIndicator color="#FFFFFF" size="small" /> : <Text style={styles.modalButtonText}>Create Account</Text>}
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.modalFooter}>
-          <Text style={styles.modalFooterText}>Already have an account? </Text>
-          <TouchableOpacity onPress={onSwitchToLogin}>
-            <Text style={styles.modalFooterLink}>Sign In</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-// Need to import missing components
-import { RefreshControl, ActivityIndicator, X } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAF5',
+    backgroundColor: '#FAF9F6',
   },
-  guestHeader: {
-    paddingHorizontal: 20,
-    paddingVertical: 40,
-    alignItems: 'center',
-    gap: 16,
-  },
-  guestAvatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#F5F7EF',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  guestAvatarIcon: {
-    color: '#365314',
-  },
-  guestTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    textAlign: 'center',
-    fontFamily: 'Poppins_700Bold',
-  },
-  guestDesc: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    textAlign: 'center',
-    lineHeight: 22,
-    fontFamily: 'Inter_400Regular',
-  },
-  guestButtons: {
-    flexDirection: 'row',
-    gap: 12,
-    marginTop: 8,
-  },
-  guestButtonPrimary: {
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingHorizontal: 32,
-    paddingVertical: 14,
-  },
-  guestButtonText: {
-    color: '#FFFFFF',
-    fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  guestButtonOutline: {
-    borderWidth: 1,
-    borderColor: '#365314',
-    borderRadius: 9999,
-    paddingHorizontal: 32,
-    paddingVertical: 14,
-  },
-  guestButtonOutlineText: {
-    color: '#365314',
-    fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  guestBenefits: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    gap: 16,
-    marginTop: 16,
-    paddingHorizontal: 20,
-  },
-  guestBenefit: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 14,
     backgroundColor: '#FFFFFF',
-    borderRadius: 9999,
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.12)',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EFEA',
   },
-  guestBenefitIcon: {
-    color: '#365314',
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#1C1917',
   },
-  guestBenefitText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  quickLinks: {
-    paddingHorizontal: 20,
-    marginTop: 20,
-  },
-  quickLinksTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    marginBottom: 16,
-    fontFamily: 'Poppins_700Bold',
-  },
-  quickLinksGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-  },
-  quickLinkCard: {
-    width: '47%',
-    aspectRatio: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  quickLinkIconContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#F5F7EF',
+  chatBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#ECFCCB',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  quickLinkIcon: {
-    color: '#365314',
-  },
-  quickLinkLabel: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    textAlign: 'center',
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  appInfo: {
-    paddingVertical: 32,
-    alignItems: 'center',
-  },
-  appVersion: {
-    fontSize: 13,
-    color: '#2B2B2B',
-    opacity: 0.5,
-    fontFamily: 'Inter_400Regular',
-  },
-  appCopyright: {
-    fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.4,
-    marginTop: 4,
-    fontFamily: 'Inter_400Regular',
-  },
-  profileHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  scrollContent: {
+    padding: 16,
     gap: 16,
-    paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingBottom: 40,
+  },
+  profileCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    marginHorizontal: 20,
-    marginTop: 10,
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 16,
-    elevation: 4,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    gap: 14,
   },
   profileAvatar: {
-    position: 'relative',
-    width: 72,
-    height: 72,
-    borderRadius: 36,
-    backgroundColor: '#F5F7EF',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    backgroundColor: '#ECFCCB',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
-  profileAvatarImage: {
+  avatarImg: {
     width: '100%',
     height: '100%',
-    borderRadius: 36,
-  },
-  profileAvatarInitial: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#365314',
-    fontFamily: 'Poppins_700Bold',
-  },
-  verifiedBadge: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: '#059669',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#FFFFFF',
   },
   profileInfo: {
     flex: 1,
-    gap: 2,
+  },
+  nameRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   profileName: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#1C1917',
+  },
+  verifiedBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  verifiedText: {
+    fontSize: 10,
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
+    color: '#365314',
   },
   profileEmail: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#78716C',
+    marginTop: 2,
   },
   profilePhone: {
-    fontSize: 13,
-    color: '#2B2B2B',
-    opacity: 0.5,
-    fontFamily: 'Inter_400Regular',
-  },
-  editProfileButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#F8F4EC',
-    borderRadius: 9999,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  editIcon: {
-    color: '#365314',
-  },
-  editText: {
+    fontSize: 12,
     color: '#365314',
     fontWeight: '600',
-    fontSize: 13,
-    fontFamily: 'Poppins_600SemiBold',
+    marginTop: 2,
   },
-  statsRow: {
+  guestCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    gap: 14,
+  },
+  guestHeader: {
     flexDirection: 'row',
-    marginHorizontal: 20,
-    marginTop: 20,
+    alignItems: 'center',
     gap: 12,
   },
-  statCard: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    paddingVertical: 16,
+  guestIconBadge: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#ECFCCB',
+    justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
   },
-  statValue: {
-    fontSize: 24,
+  guestTitle: {
+    fontSize: 16,
     fontWeight: '800',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_800ExtraBold',
+    color: '#1C1917',
   },
-  statLabel: {
+  guestSub: {
     fontSize: 12,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
+    color: '#78716C',
+    marginTop: 2,
   },
-  recentOrdersSection: {
-    marginHorizontal: 20,
-    marginTop: 24,
-  },
-  sectionHeaderRow: {
+  guestButtonsRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 10,
+  },
+  signInBtn: {
+    flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    justifyContent: 'center',
+    backgroundColor: '#365314',
+    paddingVertical: 10,
+    borderRadius: 12,
+    gap: 6,
   },
-  sectionTitle: {
-    fontSize: 18,
+  signInBtnText: {
+    color: '#FFFFFF',
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 13,
   },
-  viewAllLink: {
+  registerBtn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F5F5F4',
+    paddingVertical: 10,
+    borderRadius: 12,
+  },
+  registerBtnText: {
+    color: '#1C1917',
+    fontWeight: '600',
+    fontSize: 13,
+  },
+  demoLoginBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginTop: 4,
+  },
+  demoLoginLabel: {
+    fontSize: 11,
+    color: '#78716C',
+    fontWeight: '600',
+  },
+  demoLoginChip: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
   },
-  viewAllText: {
-    fontSize: 13,
-    fontWeight: '600',
+  demoLoginChipText: {
+    fontSize: 11,
+    fontWeight: '700',
     color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
   },
-  viewAllArrow: {
-    color: '#365314',
-  },
-  orderCard: {
-    backgroundColor: '#FFFFFF',
+  loyaltyCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#FEF3C7',
     borderRadius: 16,
     padding: 16,
-    marginBottom: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#FDE68A',
   },
-  orderHeader: {
+  loyaltyLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  loyaltyTitle: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#92400E',
+  },
+  loyaltySub: {
+    fontSize: 11,
+    color: '#B45309',
+  },
+  loyaltyPointsBadge: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
+  loyaltyPointsVal: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#92400E',
+  },
+  sectionBox: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    gap: 12,
+  },
+  sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
   },
-  orderId: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
-  },
-  orderStatus: {
-    borderRadius: 9999,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  statusDelivered: {
-    backgroundColor: '#ECFDF5',
-  },
-  statusShipped: {
-    backgroundColor: '#EFF6FF',
-  },
-  statusProcessing: {
-    backgroundColor: '#FEFCE8',
-  },
-  statusDefault: {
-    backgroundColor: '#F3F4F6',
-  },
-  orderStatusText: {
-    fontSize: 11,
-    fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
-  },
-  orderDetails: {
+  sectionTitleRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
+    alignItems: 'center',
+    gap: 8,
+  },
+  sectionTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1C1917',
+  },
+  trackShortcutText: {
+    fontSize: 12,
+    color: '#365314',
+    fontWeight: '700',
+  },
+  orderItemCard: {
+    backgroundColor: '#F5F5F4',
+    borderRadius: 14,
+    padding: 12,
+    gap: 8,
+  },
+  orderItemTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  orderNumber: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#1C1917',
   },
   orderDate: {
-    fontSize: 12,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 11,
+    color: '#78716C',
   },
-  orderItems: {
-    fontSize: 12,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
+  orderStatusBadge: {
+    backgroundColor: '#FEF3C7',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
   },
-  orderTotal: {
-    fontSize: 14,
+  statusDelivered: {
+    backgroundColor: '#DCFCE7',
+  },
+  statusOut: {
+    backgroundColor: '#ECFCCB',
+  },
+  orderStatusText: {
+    fontSize: 10,
     fontWeight: '700',
+    color: '#B45309',
+  },
+  statusDeliveredText: {
+    color: '#16A34A',
+  },
+  statusOutText: {
     color: '#365314',
-    fontFamily: 'Poppins_700Bold',
   },
-  menuSection: {
-    marginHorizontal: 20,
-    marginTop: 20,
+  orderItemsSummary: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  menuSectionTitle: {
+  orderItemsText: {
+    flex: 1,
+    fontSize: 12,
+    color: '#57534E',
+    marginRight: 10,
+  },
+  orderTotalText: {
     fontSize: 13,
     fontWeight: '700',
-    color: '#2B2B2B',
-    opacity: 0.5,
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginBottom: 8,
-    marginLeft: 4,
-    fontFamily: 'Poppins_600SemiBold',
+    color: '#1C1917',
   },
-  menuItems: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
-  },
-  menuItem: {
+  trackPromptRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(43, 43, 43, 0.08)',
+    gap: 4,
+    borderTopWidth: 1,
+    borderTopColor: '#E7E5E4',
+    paddingTop: 6,
+    marginTop: 2,
   },
-  menuItemIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#F8F4EC',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 12,
-  },
-  menuItemIcon: {
+  trackPromptText: {
+    fontSize: 11,
+    fontWeight: '600',
     color: '#365314',
   },
-  menuItemContent: {
-    flex: 1,
+  menuCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
   },
-  menuItemLabel: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: '#2B2B2B',
-    fontFamily: 'Inter_500Medium',
-  },
-  menuItemBadge: {
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    marginRight: 8,
-  },
-  menuItemBadgeText: {
-    color: '#FFFFFF',
-    fontSize: 11,
-    fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
-  },
-  menuItemArrow: {
-    color: '#2B2B2B',
-    opacity: 0.3,
-  },
-  logoutSection: {
-    marginHorizontal: 20,
-    marginTop: 24,
-  },
-  logoutButton: {
+  menuRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    backgroundColor: '#FEF2F2',
-    borderRadius: 16,
-    paddingVertical: 16,
+    paddingVertical: 12,
+    gap: 12,
   },
-  logoutIcon: {
-    color: '#EF4444',
-  },
-  logoutText: {
-    color: '#EF4444',
+  menuLabel: {
+    flex: 1,
+    fontSize: 14,
     fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
+    color: '#1C1917',
   },
-  // Modal Styles
+  menuDivider: {
+    height: 1,
+    backgroundColor: '#F5F5F4',
+  },
+  footerBranding: {
+    alignItems: 'center',
+    paddingVertical: 20,
+    gap: 4,
+  },
+  footerTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#365314',
+  },
+  footerSub: {
+    fontSize: 11,
+    color: '#78716C',
+    textAlign: 'center',
+  },
+  footerVersion: {
+    fontSize: 10,
+    color: '#A8A29E',
+    marginTop: 4,
+  },
   modalOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    zIndex: 1000,
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'flex-end',
   },
-  modalContainer: {
+  modalContent: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: 24,
-    maxHeight: '85%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 20 },
-    shadowOpacity: 0.2,
-    shadowRadius: 40,
-    elevation: 12,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 20,
+    gap: 14,
+    maxHeight: '80%',
   },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   modalTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#1C1917',
   },
-  modalClose: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#F3F4F6',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalCloseIcon: {
-    color: '#2B2B2B',
-  },
-  modalSubtitle: {
+  modalCloseText: {
     fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    marginBottom: 24,
-    fontFamily: 'Inter_400Regular',
+    fontWeight: '700',
+    color: '#365314',
   },
-  modalForm: {
-    gap: 16,
+  addressCard: {
+    backgroundColor: '#F5F5F4',
+    borderRadius: 14,
+    padding: 14,
+    gap: 4,
   },
-  inputGroup: {
-    gap: 8,
-  },
-  inputLabelRow: {
+  addressTitleRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  inputLabel: {
+  addressCardTitle: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    color: '#1C1917',
   },
-  forgotPassword: {
-    padding: 4,
+  defaultPill: {
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
   },
-  forgotPasswordText: {
-    fontSize: 12,
-    fontWeight: '600',
+  defaultPillText: {
+    fontSize: 10,
+    fontWeight: '700',
     color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
   },
-  input: {
-    backgroundColor: '#F8F4EC',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 16,
-    color: '#2B2B2B',
-    fontFamily: 'Inter_400Regular',
+  addressCardText: {
+    fontSize: 12,
+    color: '#57534E',
+    lineHeight: 16,
   },
-  modalButton: {
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingVertical: 16,
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  modalButtonDisabled: {
-    opacity: 0.7,
-  },
-  modalButtonText: {
-    color: '#FFFFFF',
+  addressCardPhone: {
+    fontSize: 11,
+    color: '#365314',
     fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
+    marginTop: 2,
   },
-  modalFooter: {
+  addAddressBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    backgroundColor: '#ECFCCB',
+    borderRadius: 12,
+    paddingVertical: 12,
+    gap: 6,
+    marginTop: 6,
   },
-  modalFooterText: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
-  },
-  modalFooterLink: {
-    fontSize: 14,
-    fontWeight: '600',
+  addAddressText: {
+    fontSize: 13,
+    fontWeight: '700',
     color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
   },
 });

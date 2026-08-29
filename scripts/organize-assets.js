@@ -118,6 +118,31 @@ const copyRules = [
   { match: (f) => f.toLowerCase().includes('pumpkin_seeds_and_cranberries_po'), dest: 'products/pumpkin-seeds-and-cranberries.jpg' },
   { match: (f) => f.toLowerCase().includes('pumpkin_seeds_and_papaya_poster'), dest: 'products/pumpkin-seeds-and-papaya.jpg' },
   { match: (f) => f.toLowerCase().includes('pumpkin_seeds_immune_defense_poster'), dest: 'products/pumpkin-seeds-immune-defense.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_presenting_pumpkin_seeds_jar_2k_202608070700'), dest: 'products/pumpkin-seeds.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_presenting_pumpkin_seeds_jar_202608070838'), dest: 'products/pumpkin-seeds-2.jpg' },
+
+  // Authentic Almonds & Superfood Jars
+  { match: (f) => f.toLowerCase().includes('woman_holding_almond_jar_2k'), dest: 'products/almonds.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_holding_jar_of_almonds'), dest: 'products/almonds-2.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_holding_superfood_mix_jar'), dest: 'products/superfood-mix.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_showcasing_superfood_mix_jar'), dest: 'products/superfood-mix-2.jpg' },
+
+  // Papaya & Coconut Chips
+  { match: (f) => f.toLowerCase().includes('woman_presenting_papaya_pouch'), dest: 'products/papaya.jpg' },
+  { match: (f) => f.toLowerCase().includes('woman_presenting_papaya_product'), dest: 'products/papaya-2.jpg' },
+  { match: (f) => f.toLowerCase().includes('halved_coconut_on_wet_slate'), dest: 'products/dehydrated-coconut-chips.jpg' },
+
+  // Cashews, Pistachios, Macadamia & Figs
+  { match: (f) => f.toLowerCase().includes('woman_holding_glass_jar_2k_202608070839'), dest: 'products/cashewnuts.jpg' },
+  { match: (f) => f.toLowerCase().includes('product_jar_on_wood_surface_202608121420'), dest: 'products/cashewnuts-roasted.jpg' },
+  { match: (f) => f.toLowerCase().includes('superfood_product_advertisement_…_2k_202608150756') || f.toLowerCase().includes('superfood_product_advertisement'), dest: 'products/pistachios.jpg' },
+  { match: (f) => f.toLowerCase().includes('superfood_product_lineup_2k_202608150734') || f.toLowerCase().includes('superfood_product_lineup'), dest: 'products/macadamia.jpg' },
+  { match: (f) => f.toLowerCase().includes('healthy_snack_and_powder_combo'), dest: 'products/figs.jpg' },
+
+  // WhatsApp images provided by client
+  { match: (f) => f.includes('WhatsApp Image 2026-07-24 at 8.13.56 AM (1)'), dest: 'products/client-authentic-label-1.jpg' },
+  { match: (f) => f.includes('WhatsApp Image 2026-07-24 at 8.13.56 AM.jpeg'), dest: 'products/client-authentic-label-2.jpg' },
+  { match: (f) => f.includes('WhatsApp Image 2026-07-24 at 8.14.03 AM'), dest: 'products/client-authentic-label-3.jpg' },
 
   // Oatmeal / Bowls / Recipes
   { match: (f) => f.toLowerCase().includes('oatmeal_bowl_for_daily_routine'), dest: 'images/recipes/oatmeal-bowl-daily-routine.jpg' },

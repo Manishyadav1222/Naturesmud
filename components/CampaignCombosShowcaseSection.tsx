@@ -137,8 +137,8 @@ export default function CampaignCombosShowcaseSection() {
   return (
     <section className="section-padding relative overflow-hidden bg-gradient-to-b from-cream-50 via-white to-cream-50">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[radial-gradient(circle,rgba(58,107,53,0.06)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(217,164,65,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container-nm relative z-10">
         {/* Section Header */}
@@ -177,7 +177,7 @@ export default function CampaignCombosShowcaseSection() {
         </div>
 
         {/* Category & Campaign Tabs with auto-scroll ticker */}
-        <div className="flex items-center gap-2 pb-6 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-2 pb-6 overflow-x-auto no-scrollbar w-full max-w-full">
           {offers.map((offer) => {
             const isSelected = offer.id === currentOffer.id;
             return (
@@ -205,36 +205,39 @@ export default function CampaignCombosShowcaseSection() {
         </div>
 
         {/* Interactive 3D Bundle Highlight Card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentOffer.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setIsHovered(false)}
-            className="rounded-[2.5rem] bg-white border border-ink/8 p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(43,43,43,0.08)] relative overflow-hidden group"
-          >
-            {/* Top Auto-Cycle Progress Indicator */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-primary/10 overflow-hidden">
-              <motion.div
-                key={activeId}
-                initial={{ width: '0%' }}
-                animate={{ width: isHovered ? '100%' : '100%' }}
-                transition={{ duration: isHovered ? 0 : 5, ease: 'linear' }}
-                className="h-full bg-gradient-to-r from-primary via-gold to-primary"
-              />
-            </div>
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+          className="rounded-[2.5rem] bg-white border border-ink/8 p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(43,43,43,0.08)] relative overflow-hidden group min-h-[460px] flex flex-col justify-between"
+        >
+          {/* Top Auto-Cycle Progress Indicator */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-primary/10 overflow-hidden">
+            <motion.div
+              key={activeId}
+              initial={{ width: '0%' }}
+              animate={{ width: isHovered ? '100%' : '100%' }}
+              transition={{ duration: isHovered ? 0 : 5, ease: 'linear' }}
+              className="h-full bg-gradient-to-r from-primary via-gold to-primary"
+            />
+          </div>
 
-            {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-gold/15 via-primary/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+          {/* Background Glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-gold/15 via-primary/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Offer Details & Benefits */}
-              <div className="lg:col-span-7 space-y-5">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentOffer.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="relative z-10 w-full"
+            >
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Left Column: Offer Details & Benefits */}
+                <div className="lg:col-span-7 space-y-5">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <span className="px-3 py-1 rounded-full bg-gold/20 text-gold-900 text-xs font-extrabold uppercase tracking-wide border border-gold/40">
                     {currentOffer.badge}
@@ -352,7 +355,9 @@ export default function CampaignCombosShowcaseSection() {
                         <h4 className="font-heading font-bold text-sm text-ink truncate group-hover/card:text-primary transition-colors">
                           {item.name}
                         </h4>
-                        <p className="text-xs text-ink/50 font-mono mt-0.5">{item.weight}</p>
+                        <p className="text-xs text-ink/50 font-mono mt-0.5">
+                          {item.weight && /^\d+(\.00)?$/.test(item.weight.trim()) ? `${parseFloat(item.weight)} GM` : item.weight}
+                        </p>
                       </div>
                       <div className="text-right shrink-0">
                         <span className="text-xs font-bold text-ink">Rs. {item.price}</span>
@@ -364,6 +369,7 @@ export default function CampaignCombosShowcaseSection() {
             </div>
           </motion.div>
         </AnimatePresence>
+        </div>
       </div>
     </section>
   );

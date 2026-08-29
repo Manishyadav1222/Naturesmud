@@ -231,7 +231,6 @@ export default function RealCustomerReviewsSection() {
   const [reviewsList, setReviewsList] = useState<CustomerReview[]>(initialRealReviews);
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'baby-mother' | 'fitness' | 'health' | 'photo'>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isHoveredMarquee, setIsHoveredMarquee] = useState(false);
   const [likedReviews, setLikedReviews] = useState<Record<string, boolean>>({});
 
   // New review form states
@@ -361,7 +360,7 @@ export default function RealCustomerReviewsSection() {
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-2 pt-8 pb-2 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-2 pt-8 pb-2 overflow-x-auto no-scrollbar w-full max-w-full">
           {[
             { id: 'all', label: 'All Reviews (10+)' },
             { id: 'baby-mother', label: '🍼 Baby & Mother Care' },
@@ -384,24 +383,12 @@ export default function RealCustomerReviewsSection() {
         </div>
       </div>
 
-      {/* Auto-Scrolling Dual Marquee Rows */}
-      <div
-        className="w-full space-y-4 py-2"
-        onMouseEnter={() => setIsHoveredMarquee(true)}
-        onMouseLeave={() => setIsHoveredMarquee(false)}
-      >
+      {/* Auto-Scrolling Dual Marquee Rows (100% GPU-accelerated CSS) */}
+      <div className="w-full space-y-4 py-2">
         {/* Row 1: Leftward Marquee */}
         <div className="flex gap-4 overflow-hidden relative">
-          <motion.div
-            animate={{ x: isHoveredMarquee ? undefined : ['0%', '-50%'] }}
-            transition={{
-              repeat: Infinity,
-              ease: 'linear',
-              duration: 38,
-            }}
-            className="flex gap-4 shrink-0"
-          >
-            {[...row1, ...row1, ...row1].map((review, idx) => (
+          <div className="marquee-left-track gap-4">
+            {[...row1, ...row1].map((review, idx) => (
               <ReviewCard
                 key={`${review.id}-r1-${idx}`}
                 review={review}
@@ -409,21 +396,13 @@ export default function RealCustomerReviewsSection() {
                 onLike={(e) => handleLike(review.id, e)}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Row 2: Rightward Marquee */}
         <div className="flex gap-4 overflow-hidden relative">
-          <motion.div
-            animate={{ x: isHoveredMarquee ? undefined : ['-50%', '0%'] }}
-            transition={{
-              repeat: Infinity,
-              ease: 'linear',
-              duration: 42,
-            }}
-            className="flex gap-4 shrink-0"
-          >
-            {[...row2, ...row2, ...row2].map((review, idx) => (
+          <div className="marquee-right-track gap-4">
+            {[...row2, ...row2].map((review, idx) => (
               <ReviewCard
                 key={`${review.id}-r2-${idx}`}
                 review={review}
@@ -431,7 +410,7 @@ export default function RealCustomerReviewsSection() {
                 onLike={(e) => handleLike(review.id, e)}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 

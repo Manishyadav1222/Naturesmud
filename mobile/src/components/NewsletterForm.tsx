@@ -1,8 +1,6 @@
-'use client';
-
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { Mail, Check, Loader2 } from 'lucide-react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { Mail, Check } from 'lucide-react-native';
 import { newsletterApi } from '@/lib/api';
 
 interface NewsletterFormProps {
@@ -46,39 +44,9 @@ export function NewsletterForm({
       onSuccess?.();
     } catch (error: any) {
       setStatus('error');
-      setMessage(error.response?.data?.message || 'Something went wrong. Please try again.');
+      setMessage(error?.response?.data?.message || 'Something went wrong. Please try again.');
     }
   };
-
-  if (variant === 'minimal') {
-    return (
-      <View style={styles.minimalContainer}>
-        <TextInput
-          style={styles.minimalInput}
-          placeholder={placeholder}
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          autoComplete="email"
-          onSubmitEditing={handleSubmit}
-        />
-        <TouchableOpacity
-          style={[styles.minimalButton, status === 'loading' && styles.buttonLoading]}
-          onPress={handleSubmit}
-          disabled={status === 'loading'}
-        >
-          {status === 'loading' ? (
-            <Loader2 style={styles.loader} />
-          ) : status === 'success' ? (
-            <Check style={styles.successIcon} />
-          ) : (
-            <Mail style={styles.buttonIcon} />
-          )}
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
   if (variant === 'card') {
     return (
@@ -86,68 +54,73 @@ export function NewsletterForm({
         {showLabel && <Text style={styles.cardLabel}>Stay in the loop</Text>}
         <Text style={styles.cardDesc}>Get 10% off your first order + wellness tips from the Himalayas</Text>
         <View style={styles.inputWrapper}>
-          <Mail style={styles.inputIcon} />
+          <Mail size={18} color="#78716C" />
           <TextInput
             style={styles.cardInput}
             placeholder={placeholder}
+            placeholderTextColor="#A8A29E"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
-            autoComplete="email"
-            onSubmitEditing={handleSubmit}
           />
         </View>
         <TouchableOpacity
           style={[styles.cardButton, status === 'loading' && styles.buttonLoading]}
           onPress={handleSubmit}
-          disabled={status === 'loading' || !isValidEmail(email)}
+          disabled={status === 'loading'}
         >
           {status === 'loading' ? (
-            <Loader2 style={styles.loader} />
+            <ActivityIndicator size="small" color="#FFFFFF" />
           ) : status === 'success' ? (
-            <>
-              <Check style={styles.successIcon} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <Check size={16} color="#FFFFFF" />
               <Text style={styles.cardButtonText}>Subscribed!</Text>
-            </>
+            </View>
           ) : (
             <Text style={styles.cardButtonText}>{buttonText}</Text>
           )}
         </TouchableOpacity>
-        {message && <Text style={[styles.message, status === 'success' && styles.messageSuccess, status === 'error' && styles.messageError]}>{message}</Text>}
+        {message ? (
+          <Text style={[styles.message, status === 'success' ? styles.messageSuccess : styles.messageError]}>
+            {message}
+          </Text>
+        ) : null}
       </View>
     );
   }
 
-  // Default inline variant
   return (
     <View style={styles.container}>
-      {showLabel && <Text style={styles.label}>Email Address</Text>}
+      {showLabel && <Text style={styles.label}>Subscribe for Himalayan Harvest Updates</Text>}
       <View style={styles.inputWrapper}>
-        <Mail style={styles.inputIcon} />
+        <Mail size={18} color="#78716C" />
         <TextInput
           style={styles.input}
           placeholder={placeholder}
+          placeholderTextColor="#A8A29E"
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCapitalize="none"
-          autoComplete="email"
-          onSubmitEditing={handleSubmit}
         />
         <TouchableOpacity
           style={[styles.button, status === 'loading' && styles.buttonLoading]}
           onPress={handleSubmit}
-          disabled={status === 'loading' || !isValidEmail(email)}
+          disabled={status === 'loading'}
         >
           {status === 'loading' ? (
-            <Loader2 style={styles.loader} />
+            <ActivityIndicator size="small" color="#FFFFFF" />
           ) : (
             <Text style={styles.buttonText}>{buttonText}</Text>
           )}
         </TouchableOpacity>
       </View>
-      {message && <Text style={[styles.message, status === 'success' && styles.messageSuccess, status === 'error' && styles.messageError]}>{message}</Text>}
+      {message ? (
+        <Text style={[styles.message, status === 'success' ? styles.messageSuccess : styles.messageError]}>
+          {message}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -158,9 +131,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    color: '#1C1917',
   },
   inputWrapper: {
     flexDirection: 'row',
@@ -168,117 +140,74 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.1)',
-    overflow: 'hidden',
-  },
-  inputIcon: {
-    color: '#2B2B2B',
-    opacity: 0.4,
-    paddingHorizontal: 16,
+    borderColor: '#E7E5E4',
+    paddingLeft: 12,
+    paddingRight: 4,
+    height: 48,
+    gap: 8,
   },
   input: {
     flex: 1,
-    paddingVertical: 14,
-    paddingRight: 12,
-    fontSize: 15,
-    color: '#2B2B2B',
-    fontFamily: 'Inter_400Regular',
+    fontSize: 14,
+    color: '#1C1917',
   },
   button: {
     backgroundColor: '#365314',
-    paddingHorizontal: 20,
-    paddingVertical: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 8,
   },
   buttonLoading: {
-    opacity: 0.8,
+    opacity: 0.7,
   },
   buttonText: {
     color: '#FFFFFF',
-    fontWeight: '600',
-    fontSize: 15,
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    fontSize: 13,
   },
-  message: {
-    fontSize: 12,
-    fontFamily: 'Inter_400Regular',
-  },
-  messageSuccess: {
-    color: '#059669',
-  },
-  messageError: {
-    color: '#EF4444',
-  },
-
-  // Card variant
   cardContainer: {
-    gap: 12,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    gap: 10,
   },
   cardLabel: {
     fontSize: 16,
-    fontWeight: '700',
-    color: '#FFFFFF',
-    fontFamily: 'Poppins_700Bold',
+    fontWeight: '800',
+    color: '#1C1917',
   },
   cardDesc: {
-    fontSize: 13,
-    color: 'rgba(255, 255, 255, 0.7)',
-    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#78716C',
+    lineHeight: 16,
   },
   cardInput: {
     flex: 1,
-    paddingVertical: 14,
-    fontSize: 15,
-    color: '#2B2B2B',
-    fontFamily: 'Inter_400Regular',
+    fontSize: 14,
+    color: '#1C1917',
   },
   cardButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: '#365314',
+    height: 44,
+    borderRadius: 10,
     justifyContent: 'center',
-    gap: 8,
-    backgroundColor: '#D9A441',
-    borderRadius: 9999,
-    paddingVertical: 16,
+    alignItems: 'center',
   },
   cardButtonText: {
     color: '#FFFFFF',
-    fontWeight: '600',
-    fontSize: 15,
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    fontSize: 14,
   },
-  successIcon: {
-    color: '#FFFFFF',
+  message: {
+    fontSize: 12,
+    marginTop: 4,
   },
-
-  // Minimal variant
-  minimalContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  messageSuccess: {
+    color: '#16A34A',
   },
-  minimalInput: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 9999,
-    paddingHorizontal: 20,
-    paddingVertical: 14,
-    fontSize: 15,
-    color: '#2B2B2B',
-    fontFamily: 'Inter_400Regular',
-  },
-  minimalButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#365314',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonIcon: {
-    color: '#FFFFFF',
-  },
-  loader: {
-    color: '#FFFFFF',
+  messageError: {
+    color: '#DC2626',
   },
 });

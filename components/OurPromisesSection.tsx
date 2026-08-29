@@ -109,9 +109,9 @@ export default function OurPromisesSection() {
   return (
     <section className="section-padding relative overflow-hidden bg-gradient-to-b from-cream-50 via-white to-cream-50/80">
       {/* Background ambient decorative elements */}
-      <div className="absolute -top-40 -left-40 w-[550px] h-[550px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-gold/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(58,107,53,0.10)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 -right-40 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(217,164,65,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-[radial-gradient(circle,rgba(16,185,129,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container-nm relative z-10">
         {/* Section Header */}
@@ -226,14 +226,14 @@ export default function OurPromisesSection() {
         <ScrollReveal direction="up" delay={0.3} distance={25} className="mt-12 lg:mt-16">
           <div className="relative rounded-[2.2rem] bg-gradient-to-r from-[#173a1d] via-[#21522a] to-[#123524] p-7 sm:p-9 text-white shadow-[0_20px_50px_rgba(23,58,29,0.3)] overflow-hidden">
             {/* Ambient gold/emerald glows */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gold/15 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(217,164,65,0.12)_0%,transparent_70%)] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle,rgba(52,211,153,0.10)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="relative z-10 grid lg:grid-cols-12 gap-6 items-center">
               {/* Left Column: Shield Icon & Nepal Guarantee */}
               <div className="lg:col-span-8 space-y-3">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs font-bold text-white shadow-xs backdrop-blur-md">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs font-bold text-white shadow-xs">
                     <Flag className="w-3.5 h-3.5 text-gold-300" />
                     Himalayan Origin Promise
                   </span>
@@ -263,7 +263,7 @@ export default function OurPromisesSection() {
                 </Link>
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-heading font-semibold text-sm backdrop-blur-md transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-heading font-semibold text-sm transition-all duration-300"
                 >
                   <span>Shop Pure Harvest</span>
                   <ArrowRight className="w-4 h-4" />

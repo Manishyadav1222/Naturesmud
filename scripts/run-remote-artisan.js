@@ -74,7 +74,8 @@ if (!file_exists($phpBin)) {
 }
 
 $commands = [
-    'key:generate --force',
+    'config:clear',
+    'cache:clear',
     'migrate --force',
     'db:seed --force',
     'storage:link',

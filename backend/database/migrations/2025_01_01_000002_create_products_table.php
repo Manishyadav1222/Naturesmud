@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('is_new')->default(false);
             $table->decimal('weight', 8, 2)->nullable();
             $table->string('unit')->default('g');
+            $table->json('images')->nullable();
             $table->json('ingredients')->nullable();
             $table->json('nutrition_facts')->nullable();
             $table->json('benefits')->nullable();

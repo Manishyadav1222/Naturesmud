@@ -922,7 +922,12 @@ class LaravelDbService {
       isPublished = false,
       isActive = true,
       images = [],
+      image = null,
     } = data;
+
+    const finalImages = Array.isArray(images) && images.length > 0 
+      ? images 
+      : (image ? [image] : (images ? [images] : []));
 
     const finalSlug = slug || this.slugify(name);
     const finalSku =
@@ -960,7 +965,7 @@ class LaravelDbService {
         isFeatured ? 1 : 0,
         weight,
         unit,
-        JSON.stringify(images),
+        JSON.stringify(finalImages),
       ]
     );
 
@@ -994,7 +999,12 @@ class LaravelDbService {
     if (data.unit !== undefined) setField('unit', data.unit);
     if (data.weight !== undefined) setField('weight', data.weight);
     if (data.isFeatured !== undefined) setField('is_featured', data.isFeatured ? 1 : 0);
-    if (data.images !== undefined) setField('images', JSON.stringify(data.images));
+    if (data.images !== undefined) {
+      const arr = Array.isArray(data.images) ? data.images : [data.images];
+      setField('images', JSON.stringify(arr));
+    } else if (data.image !== undefined) {
+      setField('images', JSON.stringify([data.image]));
+    }
 
     // status / isActive / isPublished all map onto the single is_active column
     if (data.status !== undefined) {

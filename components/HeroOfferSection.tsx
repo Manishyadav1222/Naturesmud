@@ -142,12 +142,8 @@ export default function HeroOfferSection() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 70, scale: 0.95 }}
-      whileInView={{ opacity: 1, x: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.85, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full max-w-[580px] relative group mt-0"
+    <div
+      className="w-full max-w-[580px] relative group mt-0 overflow-hidden sm:overflow-visible"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
@@ -156,8 +152,8 @@ export default function HeroOfferSection() {
       {/* Ambient decorative glow around offer card */}
       <div className="absolute -inset-1 rounded-[2.2rem] bg-gradient-to-r from-gold/30 via-primary/25 to-secondary/30 blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none" />
 
-      {/* Main Glassmorphic Offer Card */}
-      <div className="relative rounded-[2.2rem] bg-white/95 backdrop-blur-2xl border border-white/90 p-5 sm:p-6 shadow-[0_20px_50px_rgba(58,107,53,0.12)] overflow-hidden">
+      {/* Main Offer Card */}
+      <div className="relative rounded-[2.2rem] bg-white border border-ink/8 p-5 sm:p-6 shadow-[0_15px_40px_rgba(58,107,53,0.08)] overflow-hidden">
         {/* Subtle decorative background pattern */}
         <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-gold/15 to-transparent rounded-full blur-2xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-xl pointer-events-none" />
@@ -250,16 +246,17 @@ export default function HeroOfferSection() {
           })}
         </div>
 
-        {/* Dynamic Offer Content Area */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentOffer.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="relative z-10 pt-2 space-y-3.5"
-          >
+        {/* Dynamic Offer Content Area with Fixed Min-Height to Prevent CLS / Scroll Jumping */}
+        <div className="relative min-h-[385px] flex flex-col justify-between">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentOffer.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 pt-2 space-y-3.5 flex flex-col justify-between h-full"
+            >
             {/* Title & Tagline */}
             <div>
               <div className="flex items-center gap-2">
@@ -299,7 +296,9 @@ export default function HeroOfferSection() {
                     <p className="text-[11px] font-bold text-dark leading-tight line-clamp-1">
                       {item.name}
                     </p>
-                    <p className="text-[10px] text-gray-500 font-mono mt-0.5">{item.weight}</p>
+                    <p className="text-[10px] text-gray-500 font-mono mt-0.5">
+                      {item.weight && /^\d+(\.00)?$/.test(item.weight.trim()) ? `${parseFloat(item.weight)} GM` : item.weight}
+                    </p>
 
                     {/* Plus connector between images */}
                     {i < currentOffer.items.length - 1 && (
@@ -387,7 +386,8 @@ export default function HeroOfferSection() {
             </div>
           </motion.div>
         </AnimatePresence>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

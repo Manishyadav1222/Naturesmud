@@ -9,9 +9,9 @@ describe('Utility Functions', () => {
   });
 
   describe('formatDate', () => {
-    it('formats date strings correctly to en-US style', () => {
-      expect(formatDate('2023-12-25')).toBe('December 25, 2023');
-      expect(formatDate('2024-01-01T12:00:00Z')).toBe('January 1, 2024');
+    it('formats date strings correctly to en-US/en-NP style', () => {
+      expect(formatDate('2023-12-25')).toBe('Dec 25, 2023');
+      expect(formatDate('2024-01-01T12:00:00Z')).toBe('Jan 1, 2024');
     });
   });
 

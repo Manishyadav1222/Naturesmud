@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Leaf, ChevronLeft, ChevronRight, Maximize2, X, Sparkles, ShieldCheck } from 'lucide-react';
+import { resolveImageUrl } from '@/lib/utils';
 
 interface ProductImageGalleryProps {
   images: string[];
@@ -18,12 +19,15 @@ export default function ProductImageGallery({
   discount = 0,
   badges = [],
 }: ProductImageGalleryProps) {
-  const galleryList = Array.isArray(images) && images.length > 0
+  const rawList = Array.isArray(images) && images.length > 0
     ? images
     : ['/products/sweet-potato-powder-100g.jpg'];
 
+  const galleryList = rawList.map((img) => resolveImageUrl(img));
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const [currentImg, setCurrentImg] = useState(() => galleryList[0]);
 
   const activeImage = galleryList[activeIndex] || galleryList[0];
 
@@ -57,6 +61,9 @@ export default function ProductImageGallery({
               fill
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              onError={(e: any) => {
+                e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+              }}
               className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
             />
           </motion.div>
@@ -143,6 +150,9 @@ export default function ProductImageGallery({
                   alt={`${productName} thumbnail ${idx + 1}`}
                   fill
                   sizes="80px"
+                  onError={(e: any) => {
+                    e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                  }}
                   className="object-cover object-center"
                 />
               </button>
@@ -180,6 +190,9 @@ export default function ProductImageGallery({
                   alt={productName}
                   fill
                   sizes="(max-width: 1200px) 90vw, 1000px"
+                  onError={(e: any) => {
+                    e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                  }}
                   className="object-contain"
                 />
               </div>

@@ -28,6 +28,9 @@ export async function GET(
     path.join(process.cwd(), 'admin-server', 'public', 'uploads', filename),
     path.resolve(__dirname, '../../../../public/uploads', filename),
     path.resolve(__dirname, '../../../../admin-server/public/uploads', filename),
+    path.join('/home8/kathma13/public_html/uploads', filename),
+    path.join('/home8/kathma13/admin-server/public/uploads', filename),
+    path.join('/home8/kathma13/frontend/public/uploads', filename),
   ];
 
   for (const filePath of searchPaths) {

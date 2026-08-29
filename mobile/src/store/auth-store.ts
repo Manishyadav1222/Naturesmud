@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
 import { Platform } from 'react-native';
 
-interface User {
+export interface User {
   id: string;
   name: string;
   email: string;
@@ -26,6 +26,7 @@ interface AuthState {
   clearAuth: () => void;
   setLoading: (loading: boolean) => void;
   updateUser: (data: Partial<User>) => void;
+  loginWithDemo: (type: 'customer' | 'wholesale') => void;
   getStoredToken: () => Promise<string | null>;
 }
 
@@ -34,23 +35,66 @@ const AUTH_STORAGE_KEY = 'naturesmud_auth';
 const secureStorage = {
   getItem: async (name: string): Promise<string | null> => {
     if (Platform.OS === 'web') {
-      return localStorage.getItem(name);
+      try {
+        return localStorage.getItem(name);
+      } catch {
+        return null;
+      }
     }
-    return SecureStore.getItemAsync(name);
+    try {
+      return await SecureStore.getItemAsync(name);
+    } catch {
+      return null;
+    }
   },
   setItem: async (name: string, value: string): Promise<void> => {
     if (Platform.OS === 'web') {
-      localStorage.setItem(name, value);
+      try {
+        localStorage.setItem(name, value);
+      } catch {}
       return;
     }
-    await SecureStore.setItemAsync(name, value);
+    try {
+      await SecureStore.setItemAsync(name, value);
+    } catch {}
   },
   removeItem: async (name: string): Promise<void> => {
     if (Platform.OS === 'web') {
-      localStorage.removeItem(name);
+      try {
+        localStorage.removeItem(name);
+      } catch {}
       return;
     }
-    await SecureStore.deleteItemAsync(name);
+    try {
+      await SecureStore.deleteItemAsync(name);
+    } catch {}
+  },
+};
+
+const DEMO_USERS: Record<'customer' | 'wholesale', User> = {
+  customer: {
+    id: 'usr_demo_01',
+    name: 'Aarav Sharma',
+    email: 'aarav@naturesmud.com',
+    phone: '+977 9841234567',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+    role: 'customer',
+    isVerified: true,
+    loyaltyPoints: 340,
+    referralCode: 'AARAV2026',
+    createdAt: '2025-01-15T08:00:00.000Z',
+  },
+  wholesale: {
+    id: 'usr_demo_02',
+    name: 'Himalayan Organic Mart',
+    email: 'partner@himalayanmart.np',
+    phone: '+977 9801987654',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+    role: 'wholesale',
+    isVerified: true,
+    loyaltyPoints: 1250,
+    referralCode: 'HIMALAYA100',
+    createdAt: '2024-11-20T10:30:00.000Z',
   },
 };
 
@@ -60,7 +104,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
-      isLoading: true,
+      isLoading: false,
 
       setAuth: (user, token) => {
         secureStorage.setItem('access_token', token);
@@ -93,6 +137,12 @@ export const useAuthStore = create<AuthState>()(
         }));
       },
 
+      loginWithDemo: (type) => {
+        const demoUser = DEMO_USERS[type];
+        const demoToken = `demo_jwt_token_${type}_${Date.now()}`;
+        get().setAuth(demoUser, demoToken);
+      },
+
       getStoredToken: async () => {
         return secureStorage.getItem('access_token');
       },
@@ -102,6 +152,7 @@ export const useAuthStore = create<AuthState>()(
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({
         user: state.user,
+        token: state.token,
         isAuthenticated: state.isAuthenticated,
       }),
     }

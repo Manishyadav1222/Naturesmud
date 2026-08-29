@@ -14,23 +14,47 @@
 
   * {
     @apply border-ink/10;
+    box-sizing: border-box;
   }
 
   html {
-    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #fafaf5;
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Lenis smooth scrolling rules */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
 
   body {
     margin: 0;
     padding: 0;
+    width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
     @apply bg-cream-50 font-body text-ink;
-    text-rendering: optimizeLegibility;
     background-color: #fafaf5;
+    -webkit-overflow-scrolling: touch;
   }
 
   header,
@@ -306,6 +330,60 @@
   .clip-leaf {
     clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
   }
+
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 0.5rem);
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+
+  /* Horizontal touch carousels with smooth inertia */
+  .smooth-carousel {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+  }
+
+  /* GPU-accelerated continuous CSS marquees */
+  .marquee-left-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-left-flow 45s linear infinite;
+  }
+
+  .marquee-right-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: marquee-right-flow 50s linear infinite;
+  }
+
+  .marquee-left-track:hover,
+  .marquee-right-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-left-flow {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee-right-flow {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Eliminate tap delay / highlight on mobile browsers */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Swiper overrides */
@@ -486,14 +564,13 @@
   animation: leaf-float-sway 3.5s ease-in-out infinite;
 }
 
-/* Category card jump animation - applied to wrapper */
+/* Category card smooth hover */
 .category-jump-card {
-  animation: category-slow-jump 3s ease-in-out infinite;
-  animation-delay: calc(var(--jump-delay, 0) * 1s);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 
 .category-jump-card:hover {
-  animation-play-state: paused;
+  transform: translateY(-6px);
 }
 
 /* Circular search bar */

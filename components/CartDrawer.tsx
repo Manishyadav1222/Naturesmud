@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Plus, Minus, ShoppingBag, Trash2 } from 'lucide-react';
 import { useCartStore, FREE_SHIPPING_THRESHOLD, resolveCartProduct } from '@/lib/store/cart-store';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, resolveImageUrl } from '@/lib/utils';
 
 export default function CartDrawer() {
   const { items, isDrawerOpen, closeDrawer, updateQuantity, removeItem, getSubtotal } =
@@ -94,10 +94,13 @@ export default function CartDrawer() {
                     <div key={item.productId} className="flex gap-4 py-3 border-b border-gray-50">
                       <Link href={`/products/${product.slug}`} onClick={closeDrawer} className="shrink-0 relative w-20 h-20 rounded-xl overflow-hidden bg-gray-100">
                         <Image
-                          src={product.image || '/products/naturesmud-all-products-100g.jpg'}
+                          src={resolveImageUrl(product.image)}
                           alt={product.name}
                           fill
                           sizes="80px"
+                          onError={(e: any) => {
+                            e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                          }}
                           className="object-cover"
                         />
                       </Link>
@@ -118,7 +121,11 @@ export default function CartDrawer() {
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>
-                        <p className="text-xs text-gray-500 mt-0.5">{product.weight}</p>
+                        {product.weight && (
+                          <p className="text-xs text-gray-500 mt-0.5">
+                            Net Wt: {/^\d+(\.00)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
+                          </p>
+                        )}
                         <div className="flex items-center justify-between mt-2">
                           <div className="flex items-center border border-gray-200 rounded-full">
                             <button

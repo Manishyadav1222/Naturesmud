@@ -1,20 +1,24 @@
 import axios from 'axios';
 import type { Reel } from '@/lib/types';
 
-const isServer = typeof window === 'undefined';
-let API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
-
-if (isServer && process.env.INTERNAL_API_URL) {
-  API_URL = process.env.INTERNAL_API_URL;
-} else if (!isServer) {
-  const host = window.location.hostname;
-  if (host === '127.0.0.1' && API_URL.includes('localhost')) {
-    API_URL = API_URL.replace('localhost', '127.0.0.1');
-  } else if (host === 'localhost' && API_URL.includes('127.0.0.1')) {
-    API_URL = API_URL.replace('127.0.0.1', 'localhost');
+export function getBaseApiUrl(): string {
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname;
+    if (host.includes('naturesmud.shop') || host.includes('naturesmud.com')) {
+      return 'https://api.naturesmud.shop/api';
+    }
+    if (host === '127.0.0.1' || host === 'localhost') {
+      return 'http://localhost:8000/api';
+    }
+    if (process.env.NEXT_PUBLIC_API_URL) {
+      return process.env.NEXT_PUBLIC_API_URL;
+    }
+    return `${window.location.origin}/api`;
   }
+  return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 }
 
+const API_URL = getBaseApiUrl();
 const cleanBaseUrl = API_URL.replace(/\/v1\/?$/, '').replace(/\/+$/, '');
 
 export const api = axios.create({
@@ -29,6 +33,7 @@ export const api = axios.create({
 
 // Clean up endpoint paths to prevent double /v1/v1/ and attach token
 api.interceptors.request.use((config) => {
+  config.baseURL = `${getBaseApiUrl().replace(/\/v1\/?$/, '').replace(/\/+$/, '')}/v1`;
   if (config.url) {
     config.url = config.url.replace(/^\/?v1\//, '/');
   }
@@ -41,7 +46,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 responses - redirect to login
+// Handle 401 responses safely without disrupting guest shoppers
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -49,8 +54,11 @@ api.interceptors.response.use(
       localStorage.removeItem('naturesmud_token');
       localStorage.removeItem('naturesmud_user');
 
-      if (!window.location.pathname.includes('/login')) {
-        window.location.href = '/login?redirect=' + encodeURIComponent(window.location.pathname);
+      // Only redirect if user was explicitly on an authenticated page (e.g. /account, /dashboard)
+      const currentPath = window.location.pathname;
+      const isProtectedPath = currentPath.startsWith('/account') || currentPath.startsWith('/dashboard');
+      if (isProtectedPath && !currentPath.includes('/login')) {
+        window.location.href = '/login?redirect=' + encodeURIComponent(currentPath);
       }
     }
     return Promise.reject(error);

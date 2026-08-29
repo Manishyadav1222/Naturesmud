@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Search, X, TrendingUp, Sparkles, Leaf } from 'lucide-react';
 import { useUIStore } from '@/lib/store/ui-store';
 import { products } from '@/lib/data/products';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, resolveImageUrl } from '@/lib/utils';
 
 export default function SearchOverlay() {
   const { isSearchOpen, closeSearch, searchQuery: initialSearchQuery } = useUIStore();
@@ -97,10 +97,13 @@ export default function SearchOverlay() {
                           >
                             <div className="w-12 h-12 relative shrink-0 rounded-xl overflow-hidden bg-gray-100">
                               <Image
-                                src={product.image || '/products/naturesmud-all-products-100g.jpg'}
+                                src={resolveImageUrl(product.image)}
                                 alt={product.name}
                                 fill
                                 sizes="48px"
+                                onError={(e: any) => {
+                                  e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                                }}
                                 className="object-cover"
                               />
                             </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('category')->nullable();
             $table->json('tags')->nullable();
             $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);  // Added is_featured column
             $table->timestamp('published_at')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();

@@ -6,12 +6,13 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Heart, ShoppingBag, Eye, Star, Leaf, BadgeCheck, Zap } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { formatPrice, calculateDiscount } from '@/lib/utils';
+import { formatPrice, calculateDiscount, resolveImageUrl } from '@/lib/utils';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useWishlistStore } from '@/lib/store/wishlist-store';
 import { useUIStore } from '@/lib/store/ui-store';
 import { classNames } from '@/lib/utils';
 import { toast } from 'sonner';
+import { useState, useEffect } from 'react';
 
 interface ProductCardProps {
   product: Product;
@@ -25,23 +26,25 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const inWishlist = isInWishlist(product.id);
   const discount = calculateDiscount(product.price, product.compareAtPrice);
   const badges = Array.isArray(product.badges) ? product.badges : [];
+  const [imgSrc, setImgSrc] = useState(() => resolveImageUrl(product.image));
+
+  useEffect(() => {
+    setImgSrc(resolveImageUrl(product.image));
+  }, [product.image]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow"
+    <div
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl transition-shadow duration-300"
     >
       {/* Image */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-gray-50">
         <Image
-          src={product.image || '/products/naturesmud-all-products-100g.jpg'}
+          src={imgSrc}
           alt={product.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           priority={index < 4}
+          onError={() => setImgSrc('/products/naturesmud-all-products-100g.jpg')}
           className="object-cover group-hover:scale-105 transition-transform duration-700"
         />
 
@@ -62,7 +65,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Organic badge top-right */}
         {badges.includes('organic') && (
           <div className="absolute top-3 right-3">
-            <span className="flex items-center gap-1 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-[11px] font-semibold text-primary">
+            <span className="flex items-center gap-1 bg-white/95 px-2.5 py-1 rounded-full text-[11px] font-semibold text-primary shadow-xs">
               <Leaf className="w-3 h-3" />
               Organic
             </span>
@@ -153,7 +156,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                 <span className="font-heading font-bold text-dark text-lg leading-none">
                   {formatPrice(product.price)}
                 </span>
-                {product.compareAtPrice && (
+                {product.compareAtPrice && product.compareAtPrice > product.price && (
                   <span className="text-xs text-gray-400 line-through">
                     {formatPrice(product.compareAtPrice)}
                   </span>
@@ -162,7 +165,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             </div>
             {product.weight && (
               <span className="text-[11px] font-mono text-ink/50 bg-cream-100 px-2 py-0.5 rounded-md">
-                {product.weight}
+                {/^\d+(\.00)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
               </span>
             )}
           </div>
@@ -172,7 +175,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                addItem(product.id);
+                addItem(product);
                 toast.success(`${product.name} added to cart`);
               }}
               className="py-2 px-2.5 rounded-xl bg-cream-100 hover:bg-cream-200 text-ink/80 hover:text-primary font-heading font-bold text-xs flex items-center justify-center gap-1.5 transition-all border border-ink/5 cursor-pointer active:scale-95"
@@ -186,7 +189,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                addItem(product.id);
+                addItem(product);
                 useCartStore.getState().closeDrawer();
                 router.push('/checkout');
               }}
@@ -199,6 +202,6 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

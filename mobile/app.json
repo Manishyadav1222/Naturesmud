@@ -18,11 +18,8 @@
       "infoPlist": {
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
-        },
-        "NSCameraUsageDescription": "Allow Nature's Mud to access your camera for profile photos",
-        "NSPhotoLibraryUsageDescription": "Allow Nature's Mud to access your photo library for profile photos"
-      },
-      "associatedDomains": ["applinks:naturesmud.com"]
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -30,19 +27,6 @@
         "backgroundColor": "#F8F4EC"
       },
       "package": "com.naturesmud.app",
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "autoVerify": true,
-          "data": [
-            {
-              "scheme": "https",
-              "host": "naturesmud.com"
-            }
-          ],
-          "category": ["BROWSABLE", "DEFAULT"]
-        }
-      ],
       "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
     },
     "web": {
@@ -53,24 +37,7 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-secure-store",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/splash.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#F8F4EC"
-        }
-      ],
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ]
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -79,11 +46,7 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "your-eas-project-id"
       }
-    },
-    "owner": "your-expo-username"
+    }
   }
 }

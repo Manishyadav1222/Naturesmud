@@ -1,202 +1,272 @@
-'use client';
-
-import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, RefreshControl } from 'react-native';
-import { Link } from 'expo-router';
-import { HeroCarousel } from '@/components/HeroCarousel';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+  RefreshControl,
+  Image,
+  Dimensions,
+  Linking,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import {
+  Search,
+  Bell,
+  Leaf,
+  ShieldCheck,
+  Truck,
+  Sparkles,
+  ArrowRight,
+  Heart,
+  Star,
+  ChevronRight,
+  MessageCircle,
+  Award,
+} from 'lucide-react-native';
+import { products, categories, getFeaturedProducts, getBestSellers } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
-import { CategoryCard } from '@/components/CategoryCard';
-import { RealCustomerReviewsSection } from '@/components/RealCustomerReviewsSection';
-import { ReelsSection } from '@/components/ReelsSection';
-import { NewsletterForm } from '@/components/NewsletterForm';
-import { ScrollReveal } from '@/components/ScrollReveal';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '@/lib/api';
-import { products as staticProducts, categories as staticCategories } from '@/lib/data/products';
-import { normalizeProduct } from '@/lib/data/products';
-import { ArrowRight, Sparkles, Leaf, ShieldCheck, Truck, Star } from 'lucide-react-native';
+import { useCartStore } from '@/store/cart-store';
+import { useUIStore } from '@/store/ui-store';
+import { toast } from '@/store/ui-store';
+
+const { width: screenWidth } = Dimensions.get('window');
 
 export default function HomeScreen() {
-  const [refreshing, setRefreshing] = React.useState(false);
+  const router = useRouter();
+  const { addItem } = useCartStore();
+  const { notifications } = useUIStore();
+  const [refreshing, setRefreshing] = useState(false);
 
-  const { data: productsData } = useQuery({
-    queryKey: ['products', 'featured'],
-    queryFn: async () => {
-      const res = await api.get('/products/featured', { params: { limit: 8 } });
-      return res.data.data;
-    },
-  });
+  const featured = getFeaturedProducts(6);
+  const bestSellers = getBestSellers(4);
+  const unreadCount = notifications.filter((n) => !n.isRead).length;
 
-  const { data: categoriesData } = useQuery({
-    queryKey: ['categories', 'home'],
-    queryFn: async () => {
-      const res = await api.get('/categories', { params: { limit: 6 } });
-      return res.data.data;
-    },
-  });
-
-  const featuredProducts = productsData
-    ? productsData.map((p: any) => normalizeProduct(p)).slice(0, 8)
-    : staticProducts.filter(p => p.isFeatured).slice(0, 8);
-
-  const bestSellers = staticProducts.filter(p => p.isBestSeller).slice(0, 4);
-
-  const categoriesList = categoriesData || staticCategories.slice(0, 6);
-
-  const features = [
-    { icon: Leaf, title: '100% Organic', desc: 'NOCB & USDA Certified' },
-    { icon: ShieldCheck, title: 'Lab Tested', desc: 'Third-party Verified' },
-    { icon: Truck, title: 'Free Shipping', desc: 'On orders above Rs. 3,000' },
-    { icon: Sparkles, title: 'Fair Trade', desc: 'Direct Farmer Partnerships' },
-  ];
-
-  const onRefresh = React.useCallback(async () => {
+  const onRefresh = async () => {
     setRefreshing(true);
-    // Refresh queries would go here
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 800));
     setRefreshing(false);
-  }, []);
+  };
+
+  const handleQuickAdd = (product: any) => {
+    addItem({
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      compareAtPrice: product.compareAtPrice,
+      image: product.image,
+      weight: product.weight,
+      category: product.category,
+    });
+    toast.success('Added to Cart', `${product.name} added.`);
+  };
+
+  const handleWhatsApp = () => {
+    Linking.openURL('https://wa.me/9779713888002?text=Namaste!%20I%20have%20an%20inquiry%20about%20Nature%27s%20Mud%20products.').catch(() => {});
+  };
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* Top Navbar */}
+      <View style={styles.navBar}>
+        <View style={styles.brandCol}>
+          <View style={styles.brandRow}>
+            <Leaf size={20} color="#365314" />
+            <Text style={styles.brandTitle}>Nature's Mud</Text>
+          </View>
+          <Text style={styles.brandTagline}>Pure Himalayan Superfoods 🇳🇵</Text>
+        </View>
+
+        <View style={styles.navActions}>
+          <TouchableOpacity
+            style={styles.navBtn}
+            onPress={() => router.push('/search')}
+          >
+            <Search size={20} color="#1C1917" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.navBtn}
+            onPress={() => router.push('/notifications')}
+          >
+            <Bell size={20} color="#1C1917" />
+            {unreadCount > 0 && <View style={styles.navBadgeDot} />}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.navBtn, styles.waBtn]}
+            onPress={handleWhatsApp}
+          >
+            <MessageCircle size={20} color="#365314" />
+          </TouchableOpacity>
+        </View>
+      </View>
+
       <ScrollView
-        style={styles.scrollView}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#365314']} />
         }
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Hero Carousel */}
-        <HeroCarousel />
-
-        {/* Features Strip */}
-        <ScrollReveal direction="up" distance={20}>
-          <View style={styles.featuresContainer}>
-            {features.map((feature, index) => (
-              <View key={index} style={styles.featureItem}>
-                <View style={styles.featureIconContainer}>
-                  <feature.icon style={styles.featureIcon} />
-                </View>
-                <Text style={styles.featureTitle}>{feature.title}</Text>
-                <Text style={styles.featureDesc}>{feature.desc}</Text>
-              </View>
-            ))}
+        {/* Hero Banner */}
+        <View style={styles.heroBanner}>
+          <View style={styles.heroBadge}>
+            <Award size={13} color="#365314" />
+            <Text style={styles.heroBadgeText}>100% Certified Organic Harvest</Text>
           </View>
-        </ScrollReveal>
-
-        {/* Categories */}
-        <ScrollReveal direction="up" distance={20} delay={100}>
-          <View style={styles.sectionHeader}>
-            <View style={styles.sectionHeaderLeft}>
-              <Text style={styles.sectionTitle}>Shop by Category</Text>
-              <Text style={styles.sectionSubtitle}>Explore our Himalayan harvest</Text>
-            </View>
-            <TouchableOpacity style={styles.viewAllLink}>
-              <Text style={styles.viewAllText}>View All</Text>
-              <ArrowRight style={styles.viewAllArrow} />
-            </TouchableOpacity>
-          </View>
-        </ScrollReveal>
-
-        <ScrollReveal direction="up" distance={20} delay={150}>
-          <View style={styles.categoriesGrid}>
-            {categoriesList.map((category, index) => (
-              <CategoryCard key={category.slug} category={category} />
-            ))}
-          </View>
-        </ScrollReveal>
-
-        {/* Featured Products */}
-        <ScrollReveal direction="up" distance={20} delay={200}>
-          <View style={styles.sectionHeader}>
-            <View style={styles.sectionHeaderLeft}>
-              <Text style={styles.sectionTitle}>Featured Products</Text>
-              <Text style={styles.sectionSubtitle}>Hand-picked favorites from our harvest</Text>
-            </View>
-            <TouchableOpacity style={styles.viewAllLink}>
-              <Text style={styles.viewAllText}>View All</Text>
-              <ArrowRight style={styles.viewAllArrow} />
-            </TouchableOpacity>
-          </View>
-        </ScrollReveal>
-
-        <ScrollReveal direction="up" distance={20} delay={250}>
-          <View style={styles.productsGrid}>
-            {featuredProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </View>
-        </ScrollReveal>
-
-        {/* Best Sellers */}
-        <ScrollReveal direction="up" distance={20} delay={300}>
-          <View style={styles.sectionHeader}>
-            <View style={styles.sectionHeaderLeft}>
-              <View style={styles.bestsellerBadge}>
-                <Star style={styles.bestsellerStar} />
-                <Text style={styles.bestsellerBadgeText}>Best Sellers</Text>
-              </View>
-              <Text style={styles.sectionTitle}>Customer Favorites</Text>
-              <Text style={styles.sectionSubtitle}>Most loved by our community</Text>
-            </View>
-            <TouchableOpacity style={styles.viewAllLink}>
-              <Text style={styles.viewAllText}>View All</Text>
-              <ArrowRight style={styles.viewAllArrow} />
-            </TouchableOpacity>
-          </View>
-        </ScrollReveal>
-
-        <ScrollReveal direction="up" distance={20} delay={350}>
-          <View style={styles.productsGrid}>
-            {bestSellers.map((product, index) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </View>
-        </ScrollReveal>
-
-        {/* Customer Reviews */}
-        <ScrollReveal direction="up" distance={20} delay={400}>
-          <RealCustomerReviewsSection />
-        </ScrollReveal>
-
-        {/* Reels Section */}
-        <ScrollReveal direction="up" distance={20} delay={450}>
-          <ReelsSection />
-        </ScrollReveal>
-
-        {/* Newsletter */}
-        <ScrollReveal direction="up" distance={20} delay={500}>
-          <View style={styles.newsletterContainer}>
-            <View style={styles.newsletterCard}>
-              <View style={styles.newsletterContent}>
-                <View style={styles.newsletterIcon}>
-                  <Sparkles style={styles.newsletterSparkle} />
-                </View>
-                <Text style={styles.newsletterTitle}>Join the Nature's Mud Family</Text>
-                <Text style={styles.newsletterDesc}>
-                  Get 10% off your first order, exclusive access to new harvests, and wellness tips from the Himalayas.
-                </Text>
-                <NewsletterForm />
-              </View>
-              <View style={styles.newsletterIllustration}>
-                <Image
-                  source={{ uri: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=300' }}
-                  style={styles.newsletterImage}
-                />
-              </View>
-            </View>
-          </View>
-        </ScrollReveal>
-
-        {/* Footer CTA */}
-        <View style={styles.footerCTA}>
-          <Text style={styles.footerCTATitle}>Ready to Experience the Himalayas?</Text>
-          <Text style={styles.footerCTADesc}>Pure, potent, and ethically sourced — delivered to your door.</Text>
-          <TouchableOpacity style={styles.footerCTAButton}>
-            <Text style={styles.footerCTAButtonText}>Start Shopping</Text>
-            <ArrowRight style={styles.footerCTAArrow} />
+          <Text style={styles.heroHeading}>Purity Straight From the Himalayas</Text>
+          <Text style={styles.heroDesc}>
+            Lab-tested Shilajit Resin, Wild Cliff Honey, and Vedic A2 Ghee delivered right to your doorstep.
+          </Text>
+          <TouchableOpacity
+            style={styles.heroCtaBtn}
+            onPress={() => router.push('/(tabs)/products')}
+          >
+            <Text style={styles.heroCtaText}>Explore Harvest</Text>
+            <ArrowRight size={16} color="#365314" />
           </TouchableOpacity>
+        </View>
+
+        {/* Value Props Strip */}
+        <View style={styles.valuesStrip}>
+          <View style={styles.valueItem}>
+            <Leaf size={18} color="#365314" />
+            <Text style={styles.valueTitle}>100% Organic</Text>
+            <Text style={styles.valueSub}>Zero chemicals</Text>
+          </View>
+          <View style={styles.valueItem}>
+            <ShieldCheck size={18} color="#365314" />
+            <Text style={styles.valueTitle}>Lab Tested</Text>
+            <Text style={styles.valueSub}>85+ Minerals</Text>
+          </View>
+          <View style={styles.valueItem}>
+            <Truck size={18} color="#365314" />
+            <Text style={styles.valueTitle}>Free Shipping</Text>
+            <Text style={styles.valueSub}>Over Rs. 3,000</Text>
+          </View>
+        </View>
+
+        {/* Shop By Category */}
+        <View style={styles.sectionHeader}>
+          <View>
+            <Text style={styles.sectionTitle}>Shop by Category</Text>
+            <Text style={styles.sectionSubtitle}>Authentic Himalayan specialties</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.viewAllBtn}
+            onPress={() => router.push('/(tabs)/products')}
+          >
+            <Text style={styles.viewAllText}>View All</Text>
+            <ChevronRight size={14} color="#365314" />
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoriesList}>
+          {categories.map((cat) => (
+            <TouchableOpacity
+              key={cat.id}
+              style={styles.categoryCard}
+              onPress={() => router.push('/(tabs)/products')}
+              activeOpacity={0.85}
+            >
+              <Image source={{ uri: cat.image }} style={styles.categoryImg} />
+              <View style={styles.categoryInfo}>
+                <Text style={styles.categoryName} numberOfLines={1}>{cat.name}</Text>
+                <Text style={styles.categoryCount}>{cat.productCount || '4+'} Items</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+
+        {/* Featured Harvest Carousel */}
+        <View style={styles.sectionHeader}>
+          <View>
+            <Text style={styles.sectionTitle}>Featured Harvest</Text>
+            <Text style={styles.sectionSubtitle}>Hand-picked customer favorites</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.viewAllBtn}
+            onPress={() => router.push('/(tabs)/products')}
+          >
+            <Text style={styles.viewAllText}>Explore</Text>
+            <ChevronRight size={14} color="#365314" />
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.featuredRow}>
+          {featured.map((product) => (
+            <View key={product.id} style={{ width: screenWidth * 0.52 }}>
+              <ProductCard
+                product={product}
+                variant="compact"
+                showQuickAdd
+                onQuickAdd={() => handleQuickAdd(product)}
+              />
+            </View>
+          ))}
+        </ScrollView>
+
+        {/* Himalayan Health Guide Banner */}
+        <TouchableOpacity
+          style={styles.healthBanner}
+          onPress={() => router.push('/health-benefits')}
+          activeOpacity={0.9}
+        >
+          <View style={styles.healthContent}>
+            <View style={styles.healthBadge}>
+              <Sparkles size={12} color="#FFFFFF" />
+              <Text style={styles.healthBadgeText}>Himalayan Wellness</Text>
+            </View>
+            <Text style={styles.healthTitle}>Why Himalayan Shilajit & Raw Honey?</Text>
+            <Text style={styles.healthDesc}>
+              Learn how ancient Ayurvedic foods elevate immunity, stamina, and cellular longevity.
+            </Text>
+            <View style={styles.readMoreRow}>
+              <Text style={styles.readMoreText}>Read Health Guide</Text>
+              <ArrowRight size={14} color="#FFFFFF" />
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        {/* Best Sellers Grid */}
+        <View style={styles.sectionHeader}>
+          <View>
+            <Text style={styles.sectionTitle}>Bestselling Products</Text>
+            <Text style={styles.sectionSubtitle}>Loved by thousands in Nepal</Text>
+          </View>
+        </View>
+
+        <View style={styles.bestSellersGrid}>
+          {bestSellers.map((product) => (
+            <View key={product.id} style={{ width: (screenWidth - 44) / 2 }}>
+              <ProductCard
+                product={product}
+                variant="default"
+                showQuickAdd
+                onQuickAdd={() => handleQuickAdd(product)}
+              />
+            </View>
+          ))}
+        </View>
+
+        {/* Testimonials */}
+        <View style={styles.reviewsBox}>
+          <Text style={styles.reviewsHeading}>What Our Customers Say</Text>
+          <View style={styles.reviewCard}>
+            <View style={styles.starsRow}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} size={14} color="#D97706" fill="#D97706" />
+              ))}
+            </View>
+            <Text style={styles.reviewQuote}>
+              "The Shilajit resin dissolved completely in my morning tea. Within a week I noticed steady energy throughout the day without caffeine crashes!"
+            </Text>
+            <Text style={styles.reviewerName}>— Dr. Rajesh B., Kathmandu</Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -206,233 +276,276 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAF5',
+    backgroundColor: '#FAF9F6',
   },
-  scrollView: {
-    flex: 1,
-  },
-  scrollContent: {
-    paddingBottom: 40,
-  },
-  featuresContainer: {
+  navBar: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
-    marginHorizontal: 20,
-    marginBottom: 32,
-    justifyContent: 'space-between',
-  },
-  featureItem: {
-    width: '47%',
     alignItems: 'center',
-    gap: 10,
-    padding: 16,
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.08)',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.03,
-    shadowRadius: 8,
-    elevation: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EFEA',
   },
-  featureIconContainer: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: '#F5F7EF',
+  brandCol: {
+    justifyContent: 'center',
+  },
+  brandRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  brandTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#1C1917',
+  },
+  brandTagline: {
+    fontSize: 11,
+    color: '#78716C',
+    fontWeight: '500',
+  },
+  navActions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  navBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: '#F5F5F4',
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
   },
-  featureIcon: {
+  waBtn: {
+    backgroundColor: '#ECFCCB',
+  },
+  navBadgeDot: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#DC2626',
+  },
+  scrollContent: {
+    padding: 16,
+    gap: 20,
+    paddingBottom: 40,
+  },
+  heroBanner: {
+    backgroundColor: '#365314',
+    borderRadius: 24,
+    padding: 20,
+  },
+  heroBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    marginBottom: 12,
+  },
+  heroBadgeText: {
+    fontSize: 11,
+    fontWeight: '700',
     color: '#365314',
   },
-  featureTitle: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    textAlign: 'center',
-    fontFamily: 'Poppins_700Bold',
+  heroHeading: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    lineHeight: 28,
+    marginBottom: 8,
   },
-  featureDesc: {
-    fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    textAlign: 'center',
-    fontFamily: 'Inter_400Regular',
+  heroDesc: {
+    fontSize: 13,
+    color: '#D9F99D',
+    lineHeight: 18,
+    marginBottom: 16,
+  },
+  heroCtaBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    gap: 6,
+  },
+  heroCtaText: {
+    color: '#365314',
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  valuesStrip: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+  },
+  valueItem: {
+    alignItems: 'center',
+    gap: 2,
+    flex: 1,
+  },
+  valueTitle: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#1C1917',
+    marginTop: 2,
+  },
+  valueSub: {
+    fontSize: 10,
+    color: '#78716C',
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginHorizontal: 20,
-    marginBottom: 16,
-  },
-  sectionHeaderLeft: {
-    flex: 1,
+    alignItems: 'flex-end',
+    marginTop: 4,
   },
   sectionTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    marginBottom: 4,
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#1C1917',
   },
   sectionSubtitle: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#78716C',
   },
-  viewAllLink: {
+  viewAllBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    paddingTop: 4,
+    gap: 2,
   },
   viewAllText: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '600',
     color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
   },
-  viewAllArrow: {
-    color: '#365314',
+  categoriesList: {
+    gap: 12,
   },
-  bestsellerBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#FEFCE8',
-    borderRadius: 9999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    alignSelf: 'flex-start',
-    marginBottom: 8,
+  categoryCard: {
+    width: 120,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
   },
-  bestsellerStar: {
-    color: '#F59E0B',
+  categoryImg: {
+    width: '100%',
+    height: 80,
   },
-  bestsellerBadgeText: {
+  categoryInfo: {
+    padding: 8,
+  },
+  categoryName: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#CA8A04',
-    fontFamily: 'Poppins_700Bold',
+    color: '#1C1917',
   },
-  categoriesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-    marginBottom: 32,
+  categoryCount: {
+    fontSize: 10,
+    color: '#78716C',
+    marginTop: 2,
   },
-  productsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-    marginBottom: 32,
+  featuredRow: {
+    gap: 12,
   },
-  newsletterContainer: {
-    marginHorizontal: 20,
-    marginBottom: 24,
+  healthBanner: {
+    backgroundColor: '#7B5E3B',
+    borderRadius: 20,
+    padding: 18,
   },
-  newsletterCard: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: '#2B2B2B',
-    borderRadius: 24,
-    overflow: 'hidden',
-    gap: 20,
-  },
-  newsletterContent: {
-    flex: 1,
-    minWidth: 280,
-    padding: 28,
-    justifyContent: 'center',
-    gap: 16,
-  },
-  newsletterIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: 'rgba(217, 164, 65, 0.2)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  newsletterSparkle: {
-    color: '#D9A441',
-  },
-  newsletterTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#FFFFFF',
-    fontFamily: 'Poppins_700Bold',
-  },
-  newsletterDesc: {
-    fontSize: 14,
-    color: 'rgba(255, 255, 255, 0.7)',
-    lineHeight: 22,
-    fontFamily: 'Inter_400Regular',
-  },
-  newsletterIllustration: {
-    width: 160,
-    height: '100%',
-    minHeight: 200,
-    position: 'relative',
-  },
-  newsletterImage: {
-    width: '100%',
-    height: '100%',
-  },
-  footerCTA: {
-    marginHorizontal: 20,
-    paddingVertical: 40,
-    alignItems: 'center',
-    gap: 16,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 16,
-    elevation: 3,
-  },
-  footerCTATitle: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    textAlign: 'center',
-    fontFamily: 'Poppins_700Bold',
-  },
-  footerCTADesc: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    textAlign: 'center',
-    fontFamily: 'Inter_400Regular',
-  },
-  footerCTAButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  healthContent: {
     gap: 8,
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingHorizontal: 32,
-    paddingVertical: 16,
-    marginTop: 8,
   },
-  footerCTAButtonText: {
+  healthBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
+  },
+  healthBadgeText: {
     color: '#FFFFFF',
-    fontWeight: '600',
+    fontSize: 10,
+    fontWeight: '700',
+  },
+  healthTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#FFFFFF',
+  },
+  healthDesc: {
+    fontSize: 12,
+    color: '#F8F4EC',
+    lineHeight: 17,
+  },
+  readMoreRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    marginTop: 4,
+  },
+  readMoreText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+    fontSize: 12,
+  },
+  bestSellersGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  reviewsBox: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    gap: 12,
+  },
+  reviewsHeading: {
     fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '800',
+    color: '#1C1917',
   },
-  footerCTAArrow: {
-    color: '#FFFFFF',
+  reviewCard: {
+    backgroundColor: '#F5F5F4',
+    borderRadius: 12,
+    padding: 12,
+    gap: 6,
+  },
+  starsRow: {
+    flexDirection: 'row',
+    gap: 2,
+  },
+  reviewQuote: {
+    fontSize: 12,
+    color: '#44403C',
+    fontStyle: 'italic',
+    lineHeight: 18,
+  },
+  reviewerName: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#365314',
   },
 });

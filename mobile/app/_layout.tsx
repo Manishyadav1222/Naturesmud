@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
-import { Slot, Stack } from 'expo-router';
+import { StyleSheet, View, Text, ActivityIndicator, StatusBar } from 'react-native';
+import { Stack } from 'expo-router';
 import { Providers } from '@/providers/Providers';
 import { useAuthStore } from '@/store/auth-store';
 import { useUIStore } from '@/store/ui-store';
-import { theme } from '@/theme';
 
 export default function RootLayout() {
   const { isLoading, getStoredToken } = useAuthStore();
-  const { setIsOnline } = useUIStore();
+  const { isOnline, setIsOnline } = useUIStore();
 
   useEffect(() => {
     // Check online status
@@ -26,10 +25,9 @@ export default function RootLayout() {
   }, [setIsOnline]);
 
   useEffect(() => {
-    // Initialize auth
+    // Initialize stored auth token
     const initAuth = async () => {
-      const token = await getStoredToken();
-      // Token validation would happen here
+      await getStoredToken();
     };
     initAuth();
   }, [getStoredToken]);
@@ -38,20 +36,35 @@ export default function RootLayout() {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#365314" />
-        <Text style={styles.loadingText}>Loading Nature's Mud...</Text>
+        <Text style={styles.loadingText}>Nature's Mud Nepal...</Text>
       </View>
     );
   }
 
   return (
     <Providers>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      {!isOnline && (
+        <View style={styles.offlineBanner}>
+          <Text style={styles.offlineText}>📡 Offline Mode · Browsing Cached Himalayan Harvest</Text>
+        </View>
+      )}
       <Stack
         screenOptions={{
           headerShown: false,
           contentStyle: styles.screenContent,
+          animation: 'slide_from_right',
         }}
       >
-        <Slot />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="products/[slug]" options={{ headerShown: false }} />
+        <Stack.Screen name="checkout" options={{ headerShown: false }} />
+        <Stack.Screen name="login" options={{ headerShown: false, presentation: 'modal' }} />
+        <Stack.Screen name="register" options={{ headerShown: false, presentation: 'modal' }} />
+        <Stack.Screen name="search" options={{ headerShown: false }} />
+        <Stack.Screen name="notifications" options={{ headerShown: false }} />
+        <Stack.Screen name="track-order" options={{ headerShown: false }} />
+        <Stack.Screen name="health-benefits" options={{ headerShown: false }} />
       </Stack>
     </Providers>
   );
@@ -62,16 +75,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FAFAF5',
-    gap: 16,
+    backgroundColor: '#FAF9F6',
+    gap: 12,
   },
   loadingText: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    color: '#365314',
   },
   screenContent: {
-    backgroundColor: '#FAFAF5',
+    backgroundColor: '#FAF9F6',
+  },
+  offlineBanner: {
+    backgroundColor: '#FEF3C7',
+    paddingVertical: 6,
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#FDE68A',
+  },
+  offlineText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#92400E',
   },
 });

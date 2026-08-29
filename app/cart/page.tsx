@@ -13,7 +13,7 @@ export default function CartPage() {
   const [couponApplied, setCouponApplied] = useState(false);
 
   const subtotal = getSubtotal();
-  const shipping = subtotal >= 2000 || subtotal === 0 ? 0 : 100;
+  const shipping = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0 : 100;
   const discount = couponApplied ? Math.round(subtotal * 0.1) : 0;
   const total = Math.max(0, subtotal - discount + shipping);
 
@@ -68,7 +68,11 @@ export default function CartPage() {
                         <Link href={`/products/${product.slug}`} className="font-heading font-semibold hover:text-[#3A6B35] transition-colors line-clamp-1">
                           {product.name}
                         </Link>
-                        <p className="text-sm text-gray-500 mt-0.5">{product.weight}</p>
+                        {product.weight && (
+                          <p className="text-xs text-gray-500 mt-0.5">
+                            Net Wt: {/^\d+(\.00)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
+                          </p>
+                        )}
                         <p className="text-sm text-[#3A6B35] font-medium mt-1">{formatPrice(product.price)}</p>
                       </div>
                       <button onClick={() => removeItem(item.productId)} className="text-gray-400 hover:text-red-500 transition-colors shrink-0" aria-label={`Remove ${product.name}`}>

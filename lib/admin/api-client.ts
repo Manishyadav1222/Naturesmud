@@ -103,18 +103,23 @@ export async function apiRequest<T = unknown>(
   } = options;
 
   const base = getAdminApiBase();
-  let url = `${base}${path}`;
+  const directBase = 'https://admin-api.naturesmud.shop/api/admin';
+  const fallbackBase = base === '/api/admin' ? directBase : '/api/admin';
 
-  if (params) {
-    const searchParams = new URLSearchParams();
-    Object.entries(params).forEach(([key, value]) => {
-      if (value !== null && value !== undefined && value !== '') {
-        searchParams.append(key, String(value));
-      }
-    });
-    const qs = searchParams.toString();
-    if (qs) url += `?${qs}`;
-  }
+  const formatUrl = (targetBase: string) => {
+    let u = `${targetBase}${path}`;
+    if (params) {
+      const searchParams = new URLSearchParams();
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== null && value !== undefined && value !== '') {
+          searchParams.append(key, String(value));
+        }
+      });
+      const qs = searchParams.toString();
+      if (qs) u += `?${qs}`;
+    }
+    return u;
+  };
 
   const requestHeaders: Record<string, string> = { ...headers };
   if (!formData) requestHeaders['Content-Type'] = 'application/json';
@@ -123,9 +128,9 @@ export async function apiRequest<T = unknown>(
     if (token) requestHeaders['Authorization'] = `Bearer ${token}`;
   }
 
-  const makeRequest = async (): Promise<Response> => {
+  const makeRequest = async (targetBase: string): Promise<Response> => {
     try {
-      return await fetch(url, {
+      return await fetch(formatUrl(targetBase), {
         method,
         headers: requestHeaders,
         body: formData ?? (body ? JSON.stringify(body) : undefined),
@@ -139,14 +144,31 @@ export async function apiRequest<T = unknown>(
     }
   };
 
-  let response = await makeRequest();
+  let response: Response;
+  try {
+    response = await makeRequest(base);
+  } catch (firstErr) {
+    if (fallbackBase && fallbackBase !== base) {
+      try {
+        response = await makeRequest(fallbackBase);
+      } catch {
+        throw firstErr;
+      }
+    } else {
+      throw firstErr;
+    }
+  }
 
   // Handle 401 by refreshing token once
   if (response.status === 401 && auth) {
     const newToken = await refreshTokens();
     if (newToken) {
       requestHeaders['Authorization'] = `Bearer ${newToken}`;
-      response = await makeRequest();
+      try {
+        response = await makeRequest(base);
+      } catch {
+        response = await makeRequest(fallbackBase);
+      }
     }
   }
 
@@ -200,23 +222,51 @@ export async function loginRequest(
   otpCode?: string,
   twoFactorToken?: string
 ): Promise<LoginResponse> {
-  let res: Response;
   const base = getAdminApiBase();
+  const directBase = 'https://admin-api.naturesmud.shop/api/admin';
+  const fallbackBase = base === '/api/admin' ? directBase : '/api/admin';
+
+  let res: Response;
   try {
     res = await fetch(`${base}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, otpCode, twoFactorToken }),
     });
-  } catch (err) {
-    throw new ApiClientError(
-      0,
-      `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
-      err
-    );
+  } catch (firstErr) {
+    if (fallbackBase && fallbackBase !== base) {
+      try {
+        res = await fetch(`${fallbackBase}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, otpCode, twoFactorToken }),
+        });
+      } catch (secondErr) {
+        throw new ApiClientError(
+          0,
+          `Unable to connect to the admin server. Please ensure the admin backend is running on https://admin-api.naturesmud.shop/api/admin`,
+          secondErr
+        );
+      }
+    } else {
+      throw new ApiClientError(
+        0,
+        `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
+        firstErr
+      );
+    }
   }
 
-  const data = (await res.json()) as ApiResponse<LoginResponse> & { message?: string };
+  let data: (ApiResponse<LoginResponse> & { message?: string });
+  try {
+    data = (await res.json()) as ApiResponse<LoginResponse> & { message?: string };
+  } catch (parseErr) {
+    throw new ApiClientError(
+      res.status,
+      `Invalid response from admin server (Status: ${res.status}). Expected JSON.`,
+      parseErr
+    );
+  }
 
   if (!res.ok) {
     throw new ApiClientError(res.status, data.message || 'Login failed', data);
@@ -230,23 +280,51 @@ export async function loginRequest(
 }
 
 export async function verifyOtpRequest(otpCode: string, otpToken: string): Promise<LoginResponse> {
-  let res: Response;
   const base = getAdminApiBase();
+  const directBase = 'https://admin-api.naturesmud.shop/api/admin';
+  const fallbackBase = base === '/api/admin' ? directBase : '/api/admin';
+
+  let res: Response;
   try {
     res = await fetch(`${base}/auth/verify-otp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ otpCode, otpToken }),
     });
-  } catch (err) {
-    throw new ApiClientError(
-      0,
-      `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
-      err
-    );
+  } catch (firstErr) {
+    if (fallbackBase && fallbackBase !== base) {
+      try {
+        res = await fetch(`${fallbackBase}/auth/verify-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ otpCode, otpToken }),
+        });
+      } catch (secondErr) {
+        throw new ApiClientError(
+          0,
+          `Unable to connect to the admin server. Please ensure the admin backend is running on https://admin-api.naturesmud.shop/api/admin`,
+          secondErr
+        );
+      }
+    } else {
+      throw new ApiClientError(
+        0,
+        `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
+        firstErr
+      );
+    }
   }
 
-  const data = (await res.json()) as ApiResponse<LoginResponse> & { message?: string };
+  let data: (ApiResponse<LoginResponse> & { message?: string });
+  try {
+    data = (await res.json()) as ApiResponse<LoginResponse> & { message?: string };
+  } catch (parseErr) {
+    throw new ApiClientError(
+      res.status,
+      `Invalid response from admin server (Status: ${res.status}). Expected JSON.`,
+      parseErr
+    );
+  }
 
   if (!res.ok) {
     throw new ApiClientError(res.status, data.message || 'OTP verification failed', data);

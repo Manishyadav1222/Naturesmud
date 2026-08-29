@@ -154,12 +154,43 @@ export default function AdminProductEditPage() {
         barcode: p.barcode || '',
       });
 
-      setImages((p.images || []).map((img: any) => ({
-        id: img.id,
-        url: img.url,
-        isPrimary: img.isPrimary,
-        preview: img.url,
-      })));
+      let rawImgs: any[] = [];
+      if (p.images) {
+        if (Array.isArray(p.images)) {
+          rawImgs = p.images;
+        } else if (typeof p.images === 'string') {
+          try {
+            const parsed = JSON.parse(p.images);
+            rawImgs = Array.isArray(parsed) ? parsed : [parsed];
+          } catch {
+            rawImgs = [p.images];
+          }
+        } else if (typeof p.images === 'object') {
+          rawImgs = [p.images];
+        }
+      } else if (p.image) {
+        rawImgs = [p.image];
+      }
+
+      const normalizedImgs: ProductImage[] = [];
+      for (let idx = 0; idx < rawImgs.length; idx++) {
+        const img = rawImgs[idx];
+        const url = typeof img === 'string' ? img : (img?.url || img?.preview || img?.secure_url || img?.path || '');
+        if (url) {
+          normalizedImgs.push({
+            id: String(img?.id || `img-${idx + 1}-${Date.now()}`),
+            url: url,
+            isPrimary: typeof img === 'object' && img?.isPrimary !== undefined ? Boolean(img.isPrimary) : idx === 0,
+            preview: url,
+          });
+        }
+      }
+
+      if (normalizedImgs.length > 0 && !normalizedImgs.some((img) => img.isPrimary)) {
+        normalizedImgs[0].isPrimary = true;
+      }
+
+      setImages(normalizedImgs);
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);
@@ -233,13 +264,17 @@ export default function AdminProductEditPage() {
             height: res.height,
             isPrimary: img.isPrimary,
           });
-        } else if (img.url) {
+        } else if (img.url || img.preview) {
           uploadedImages.push({
             id: img.id,
-            url: img.url,
+            url: img.url || img.preview,
             isPrimary: img.isPrimary,
           });
         }
+      }
+
+      if (uploadedImages.length > 0 && !uploadedImages.some((img) => img.isPrimary)) {
+        uploadedImages[0].isPrimary = true;
       }
 
       const productData = {

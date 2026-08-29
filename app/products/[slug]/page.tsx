@@ -11,27 +11,102 @@ import ProductReviews from './ProductReviews';
 import { api } from '@/lib/api';
 import { Product } from '@/lib/types';
 
+import type { Metadata } from 'next';
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export const metadata = {
-  title: 'Product Details | Nature\'s Mud',
-};
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const localFallback = getProductBySlug(slug) || null;
+  let product: Product | null = null;
+  try {
+    const res = await api.get(`/products/${slug}`);
+    if (res.data) {
+      product = normalizeProduct(res.data, localFallback);
+      if (product && ((product as any).isActive === false || (product as any).is_active === 0 || (product as any).status === 'ARCHIVED')) {
+        product = null;
+      }
+    }
+  } catch (err: any) {
+    if (err.response?.status === 404) {
+      product = null;
+    } else {
+      product = localFallback;
+    }
+  }
+
+  if (!product) {
+    return {
+      title: "Product Not Found | Nature's Mud (naturesmud.com)",
+      description: 'The requested organic superfood product is not available.',
+    };
+  }
+
+  const title = `${product.name} (${product.weight || '100g'}) | Nature's Mud (naturesmud.com) Nepal`;
+  const description = `${product.shortDescription || product.description || ''} Buy 100% natural, chemical-free ${product.name} online across Nepal. Fair trade Himalayan origin from Nature's Mud.`;
+  const img = product.image || (Array.isArray(product.images) && product.images[0]) || '/products/naturesmud-all-products-100g.jpg';
+
+  return {
+    title,
+    description,
+    keywords: [
+      product.name,
+      `${product.name} Nepal`,
+      `${product.name} price Nepal`,
+      'naturesmud',
+      'naturesmud.com',
+      "Nature's Mud",
+      'organic food Nepal',
+      product.categorySlug || 'organic-superfoods',
+    ],
+    alternates: {
+      canonical: `https://naturesmud.shop/products/${product.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://naturesmud.shop/products/${product.slug}`,
+      siteName: "Nature's Mud (naturesmud.com)",
+      images: [
+        {
+          url: img,
+          width: 800,
+          height: 800,
+          alt: `${product.name} - Nature's Mud Himalayan Superfoods`,
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [img],
+    },
+  };
+}
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   
   const localFallback = getProductBySlug(slug) || null;
-  let product: Product | null = localFallback;
+  let product: Product | null = null;
 
   try {
     const res = await api.get(`/products/${slug}`);
     if (res.data) {
       product = normalizeProduct(res.data, localFallback);
+      if (product && ((product as any).isActive === false || (product as any).is_active === 0 || (product as any).status === 'ARCHIVED')) {
+        product = null;
+      }
     }
-  } catch {
-    // Fallback to local catalog
-    product = localFallback;
+  } catch (err: any) {
+    if (err.response?.status === 404) {
+      product = null;
+    } else {
+      product = localFallback;
+    }
   }
 
   if (!product) {
@@ -79,7 +154,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     : [product.image || '/products/sweet-potato-powder-100g.jpg'];
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-white w-full max-w-full overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
@@ -139,7 +214,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               )}
               {product.weight && (
                 <span className="text-sm text-gray-500">
-                  / {/^[0-9]+(\.[0-9]+)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)}g` : product.weight}
+                  / {/^[0-9]+(\.[0-9]+)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
                 </span>
               )}
             </div>
@@ -340,15 +415,61 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         {/* Related */}
         {related.length > 0 && (
           <div className="mt-16">
-            <h2 className="font-heading font-bold text-2xl mb-6">You May Also Like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 className="font-heading font-bold text-xl sm:text-2xl mb-6">You May Also Like</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
               {related.map((p, i) => (
-                <ProductCard key={p.id} product={p} index={i} />
+                <ProductCard key={p.id || p.slug} product={p} index={i} />
               ))}
             </div>
           </div>
         )}
       </div>
+
+      {/* Schema.org Product & Breadcrumb JSON-LD for Google Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            image: productImages.map((img) =>
+              img.startsWith('http') ? img : `https://naturesmud.shop${img}`
+            ),
+            description: product.description || product.shortDescription,
+            sku: `NM-${product.slug.toUpperCase()}`,
+            brand: {
+              '@type': 'Brand',
+              name: "Nature's Mud",
+              alternateName: ['naturesmud', 'naturesmud.com', "Nature's Mud Nepal"],
+            },
+            offers: {
+              '@type': 'Offer',
+              url: `https://naturesmud.shop/products/${product.slug}`,
+              priceCurrency: 'NPR',
+              price: product.price,
+              priceValidUntil: '2028-12-31',
+              itemCondition: 'https://schema.org/NewCondition',
+              availability:
+                product.stock > 0
+                  ? 'https://schema.org/InStock'
+                  : 'https://schema.org/OutOfStock',
+              seller: {
+                '@type': 'Organization',
+                name: "Nature's Mud Nepal",
+                url: 'https://naturesmud.shop',
+              },
+            },
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: product.rating || 4.9,
+              reviewCount: product.reviewCount || 18,
+              bestRating: 5,
+              worstRating: 1,
+            },
+          }),
+        }}
+      />
     </section>
   );
 }

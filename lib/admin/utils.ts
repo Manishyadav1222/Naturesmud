@@ -277,26 +277,24 @@ export function getAdminApiBase(): string {
 
   // In browser:
   if (typeof window !== 'undefined') {
+    const origin = window.location.origin;
+    const hostname = window.location.hostname;
+
+    // When running in the browser on the deployed site (e.g. naturesmud.shop) or any domain,
+    // use the same-origin /api/admin so that Next.js server rewrites proxy requests smoothly,
+    // avoiding CORS, cross-subdomain DNS, and SSL issues.
+    if (origin && !origin.startsWith('http://localhost') && !origin.startsWith('http://127.0.0.1')) {
+      return '/api/admin';
+    }
+
+    // If accessed via localhost, check if an explicit local server is configured,
+    // otherwise route through /api/admin Next.js proxy
     const envUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
-    if (envUrl && !envUrl.includes('admin-server')) {
+    if (envUrl && envUrl.includes('localhost')) {
       return envUrl;
     }
 
-    const origin = window.location.origin;
-    const hostname = window.location.hostname;
-    const port = window.location.port;
-
-    // If running on custom/Nginx domain or standard ports
-    if (port === '80' || port === '443' || port === '') {
-      return `${origin}/api/admin`;
-    }
-
-    // If accessed via localhost
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return `http://${hostname}:4001/api/admin`;
-    }
-
-    return `${origin}/api/admin`;
+    return '/api/admin';
   }
 
   return process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:4001/api/admin';

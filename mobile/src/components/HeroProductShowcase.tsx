@@ -1,7 +1,5 @@
-'use client';
-
 import React, { useEffect, useRef } from 'react';
-import { View, Image, StyleSheet, Animated, Easing } from 'react-native';
+import { View, Text, Image, StyleSheet, Animated, Easing } from 'react-native';
 import { Leaf, Droplets, Zap, Sparkles } from 'lucide-react-native';
 
 const products = [
@@ -29,80 +27,54 @@ const products = [
 ];
 
 export function HeroProductShowcase() {
-  const rotationAnim = useRef(new Animated.Value(0)).current;
-  const floatAnim = useRef(new Animated.Value(0)).current;
+  const rotateAnim = useRef(new Animated.Value(0)).current;
+  const pulseAnim = useRef(new Animated.Value(1)).current;
   const currentIndex = useRef(0);
 
   useEffect(() => {
-    // Floating animation
+    // Continuous rotation for aura
     Animated.loop(
-      Animated.timing(floatAnim, {
+      Animated.timing(rotateAnim, {
         toValue: 1,
-        duration: 4000,
-        easing: Easing.inOut(Easing.sin),
+        duration: 20000,
+        easing: Easing.linear,
         useNativeDriver: true,
       })
     ).start();
 
-    // Rotation animation - change product every 5 seconds
-    const interval = setInterval(() => {
-      currentIndex.current = (currentIndex.current + 1) % products.length;
-      Animated.timing(rotationAnim, {
-        toValue: currentIndex.current,
-        duration: 800,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: true,
-      }).start();
-    }, 5000);
+    // Gentle breathing pulse
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, {
+          toValue: 1.05,
+          duration: 2500,
+          easing: Easing.inOut(Easing.ease),
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulseAnim, {
+          toValue: 1,
+          duration: 2500,
+          easing: Easing.inOut(Easing.ease),
+          useNativeDriver: true,
+        }),
+      ])
+    ).start();
+  }, [pulseAnim, rotateAnim]);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  const translateY = floatAnim.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [0, -12, 0],
-    useNativeDriver: true,
+  const spin = rotateAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
   });
 
-  const opacity = rotationAnim.interpolate({
-    inputRange: [currentIndex.current - 1, currentIndex.current, currentIndex.current + 1],
-    outputRange: [0, 1, 0],
-    useNativeDriver: true,
-  });
+  const currentProduct = products[currentIndex.current];
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.floatingWrapper, { transform: [{ translateY }] }]}>
-        <View style={styles.mainProductContainer}>
-          <View style={styles.glowRing} />
-          <View style={styles.productCard}>
-            <Image
-              source={{ uri: products[currentIndex.current].image }}
-              style={styles.productImage}
-            />
-          </View>
-        </View>
-
-        {/* Orbiting accent elements */}
-        {products[currentIndex.current].icons.map((Icon, i) => (
-          <View key={i} style={styles.orbitContainer}>
-            <Animated.View
-              style={[
-                styles.orbitElement,
-                {
-                  backgroundColor: products[currentIndex.current].accent + '20',
-                  borderColor: products[currentIndex.current].accent + '80',
-                },
-              ]}
-            >
-              <Icon style={[styles.orbitIcon, { color: products[currentIndex.current].accent }]} />
-            </Animated.View>
-          </View>
-        ))}
-
-        {/* Product label */}
+      <Animated.View style={[styles.glowRing, { transform: [{ rotate: spin }] }]} />
+      <Animated.View style={[styles.imageContainer, { transform: [{ scale: pulseAnim }] }]}>
+        <Image source={{ uri: currentProduct.image }} style={styles.productImage} />
         <View style={styles.productLabel}>
-          <Text style={styles.productName}>{products[currentIndex.current].name}</Text>
+          <Text style={styles.productName}>{currentProduct.name}</Text>
         </View>
       </Animated.View>
     </View>
@@ -111,83 +83,50 @@ export function HeroProductShowcase() {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    maxWidth: 400,
-    aspectRatio: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  floatingWrapper: {
-    width: '100%',
-    aspectRatio: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  mainProductContainer: {
-    width: '85%',
-    aspectRatio: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 240,
+    height: 240,
+    position: 'relative',
   },
   glowRing: {
     position: 'absolute',
-    width: '110%',
-    aspectRatio: 1,
-    borderRadius: '55%',
-    backgroundColor: 'rgba(54, 83, 20, 0.08)',
+    width: 230,
+    height: 230,
+    borderRadius: 115,
+    borderWidth: 2,
+    borderColor: '#BEF264',
+    borderStyle: 'dashed',
   },
-  productCard: {
-    width: '100%',
-    aspectRatio: 1,
-    borderRadius: 32,
-    overflow: 'hidden',
+  imageContainer: {
+    width: 180,
+    height: 180,
+    borderRadius: 90,
     backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 8,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 16 },
-    shadowOpacity: 0.12,
-    shadowRadius: 32,
-    elevation: 12,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    overflow: 'hidden',
   },
   productImage: {
     width: '100%',
     height: '100%',
   },
-  orbitContainer: {
-    position: 'absolute',
-    width: '100%',
-    aspectRatio: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  orbitElement: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 4,
-  },
-  orbitIcon: {
-    width: 24,
-    height: 24,
-  },
   productLabel: {
     position: 'absolute',
-    bottom: -40,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
+    bottom: 12,
+    backgroundColor: 'rgba(54, 83, 20, 0.9)',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
   },
   productName: {
-    fontSize: 18,
+    color: '#FFFFFF',
+    fontSize: 11,
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
   },
 });

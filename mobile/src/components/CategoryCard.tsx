@@ -1,9 +1,7 @@
-'use client';
-
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
-import { ArrowRight, Leaf, Mountain, Droplet, Sparkles, Seedling, Coffee, Heart, Package } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
+import { Leaf, Mountain, Droplet, Sparkles, Coffee, Heart, Package } from 'lucide-react-native';
 import type { Category } from '@/types';
 
 interface CategoryCardProps {
@@ -14,7 +12,7 @@ interface CategoryCardProps {
 const categoryIcons: Record<string, any> = {
   'wild-honey': Leaf,
   'shilajit': Mountain,
-  'superfoods': Seedling,
+  'superfoods': Sparkles,
   'herbal-teas': Coffee,
   'baby-mother': Heart,
   'natural-sweeteners': Sparkles,
@@ -23,14 +21,15 @@ const categoryIcons: Record<string, any> = {
 };
 
 export function CategoryCard({ category, variant = 'default' }: CategoryCardProps) {
+  const router = useRouter();
   const IconComponent = categoryIcons[category.slug] || Leaf;
-  const width = variant === 'featured' ? 160 : 140;
+  const width = variant === 'featured' ? 160 : 130;
 
   return (
     <TouchableOpacity
       style={[styles.card, { width }]}
-      onPress={() => {}}
-      activeOpacity={0.9}
+      onPress={() => router.push('/(tabs)/products')}
+      activeOpacity={0.88}
     >
       <View style={styles.imageContainer}>
         <Image
@@ -40,14 +39,14 @@ export function CategoryCard({ category, variant = 'default' }: CategoryCardProp
         />
         <View style={styles.overlay} />
         <View style={styles.iconContainer}>
-          <IconComponent style={styles.icon} />
+          <IconComponent size={22} color="#FFFFFF" />
         </View>
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.name}>{category.name}</Text>
+        <Text style={styles.name} numberOfLines={1}>{category.name}</Text>
         <Text style={styles.count}>
-          {category.productCount} product{category.productCount !== 1 ? 's' : ''}
+          {category.productCount || 4} Products
         </Text>
       </View>
     </TouchableOpacity>
@@ -59,15 +58,12 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     overflow: 'hidden',
     backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
   },
   imageContainer: {
     position: 'relative',
-    aspectRatio: 1,
+    aspectRatio: 1.1,
   },
   image: {
     width: '100%',
@@ -79,41 +75,34 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
   },
   iconContainer: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: [{ translateX: -24 }, { translateY: -24 }],
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    transform: [{ translateX: -20 }, { translateY: -20 }],
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
-    backdropFilter: 'blur(10px)',
-  },
-  icon: {
-    color: '#FFFFFF',
   },
   content: {
-    padding: 12,
+    padding: 10,
     alignItems: 'center',
-    gap: 4,
+    gap: 2,
   },
   name: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '700',
-    color: '#2B2B2B',
+    color: '#1C1917',
     textAlign: 'center',
-    fontFamily: 'Poppins_700Bold',
   },
   count: {
     fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.6,
+    color: '#78716C',
     textAlign: 'center',
-    fontFamily: 'Inter_400Regular',
   },
 });

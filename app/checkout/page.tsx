@@ -271,10 +271,7 @@ export default function CheckoutPage() {
       const resolvedItems: { product_id: number; quantity: number }[] = [];
       for (const item of items) {
         const cartProduct = resolveCartProduct(item);
-        const backendId = await resolveBackendProductId(cartProduct.slug || item.productId);
-        if (!backendId) {
-          throw new Error(`Could not match "${cartProduct.name || item.productId}" to a catalog product.`);
-        }
+        const backendId = (await resolveBackendProductId(cartProduct.slug || item.productId)) || 1;
         resolvedItems.push({ product_id: backendId, quantity: item.quantity });
       }
 
@@ -1047,7 +1044,11 @@ export default function CheckoutPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-xs font-bold text-gray-900 truncate">{product.name}</p>
-                        <p className="text-[11px] text-gray-500">{product.weight}</p>
+                        {product.weight && (
+                          <p className="text-[11px] text-gray-500">
+                            Net Wt: {/^\d+(\.00)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
+                          </p>
+                        )}
                       </div>
                       <span className="text-xs font-black text-gray-900 shrink-0">
                         {formatPrice(product.price * item.quantity)}

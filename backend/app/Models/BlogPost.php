@@ -11,7 +11,7 @@ class BlogPost extends Model
 
     protected $fillable = [
         'title', 'slug', 'excerpt', 'content', 'featured_image',
-        'author', 'category', 'tags', 'is_published', 'published_at',
+        'author', 'category', 'tags', 'is_published', 'is_featured', 'published_at',
         'meta_title', 'meta_description', 'views_count',
     ];
 
@@ -20,6 +20,7 @@ class BlogPost extends Model
         return [
             'tags' => 'array',
             'is_published' => 'boolean',
+            'is_featured' => 'boolean',
             'published_at' => 'datetime',
         ];
     }

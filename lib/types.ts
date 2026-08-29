@@ -1,5 +1,6 @@
 export interface Product {
   id: string;
+  dbId?: number;
   slug: string;
   name: string;
   category: string;
@@ -15,6 +16,9 @@ export interface Product {
   badges: ('new' | 'sale' | 'bestseller' | 'organic' | 'natural-sweetener' | 'superfood' | 'popular' | 'raw' | 'cold-pressed' | string)[];
   stock: number;
   weight: string;
+  packing?: string;
+  basePrice?: number;
+  mrp?: number;
   ingredients: string[];
   benefits: string[];
   nutrition: { label: string; value: string }[];
@@ -71,6 +75,7 @@ export interface BlogPost {
   tags: string[];
   tagsNp?: string[];
   featured?: boolean;
+  isFeatured?: boolean; // Added for admin sync
 }
 
 export interface Review {

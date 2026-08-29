@@ -645,11 +645,30 @@ export function normalizeProduct(raw: any): Product {
           ? raw.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
           : 'organic');
 
+  let rawImages: string[] = [];
+  if (Array.isArray(raw.images)) {
+    rawImages = raw.images.map((img: any) => (typeof img === 'string' ? img : (img?.url || img?.secure_url || img?.path || ''))).filter(Boolean);
+  } else if (typeof raw.images === 'string') {
+    try {
+      const parsed = JSON.parse(raw.images);
+      if (Array.isArray(parsed)) {
+        rawImages = parsed.map((img: any) => (typeof img === 'string' ? img : (img?.url || img?.secure_url || img?.path || ''))).filter(Boolean);
+      }
+    } catch {
+      if (raw.images.trim()) rawImages = [raw.images.trim()];
+    }
+  }
+
+  const finalImages = rawImages.length > 0
+    ? rawImages
+    : (raw.image ? [typeof raw.image === 'string' ? raw.image : (raw.image?.url || '/products/naturesmud-all-products-100g.jpg')] : ['/products/naturesmud-all-products-100g.jpg']);
+
   return {
     ...raw,
     category: categoryName,
     categorySlug: categorySlug,
-    images: raw.images || (raw.image ? [raw.image] : ['/products/naturesmud-all-products-100g.jpg']),
+    images: finalImages,
+    image: finalImages[0],
     badges: raw.badges || [],
     ingredients: raw.ingredients || [],
     benefits: raw.benefits || [],

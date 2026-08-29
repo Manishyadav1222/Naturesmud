@@ -18,6 +18,8 @@ import {
   Flame,
   ExternalLink,
   Share2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
 
@@ -100,43 +102,43 @@ const initialReels: BrandReel[] = [
   },
   {
     id: 5,
-    title: 'Whole Dried Cranberries — PACs for Bladder Defense',
-    description: 'Naturally tart whole cranberries with Type-A proanthocyanidins to support urinary tract wellness! 🍒✨',
-    video_url: '/videos/cranberries-product-reveal.mp4',
+    title: 'High-Altitude Himalayan Sweet Potato Breakfast',
+    description: 'Sustainably farmed above 2,200m in pristine mountain soil. Great for pre-workout energy! ⚡🏔️',
+    video_url: '/videos/sweet-potato-baby.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/cranberries.jpg',
-    product_name: 'Whole Dried Cranberries (100g)',
-    product_url: '/products/whole-dried-cranberries',
-    product_price: 380,
-    views: '31.5K',
-    likes: '2.6K',
+    cover_image: '/products/sweet-potato-powder.jpg',
+    product_name: 'Sweet Potato Powder (250g)',
+    product_url: '/products/sweet-potato-powder',
+    product_price: 650,
+    views: '52.1K',
+    likes: '4.6K',
     is_active: true,
     sort_order: 5,
   },
   {
     id: 6,
-    title: 'Roasted Himalayan Almonds — Brain Power & Vitamin E',
-    description: 'Dry slow-roasted mountain almonds for sustained cognitive memory and acetylcholine! 🧠🥜',
-    video_url: '/videos/almonds-mental-edge.mp4',
+    title: 'Pure Arabian Dehydrated Dates Powder Sweetener',
+    description: 'Natural low-glycemic potassium sweetener for baby porridge, milk, and healthy cooking! 🌴🍯',
+    video_url: '/videos/dates-powder-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/almonds.jpg',
-    product_name: 'Roasted Almonds (100g)',
-    product_url: '/products/roasted-almonds',
+    cover_image: '/products/dates-powder-100g.jpg',
+    product_name: 'Dates Powder (100g)',
+    product_url: '/products/dates-powder',
     product_price: 360,
-    views: '28.4K',
-    likes: '2.4K',
+    views: '49.3K',
+    likes: '4.1K',
     is_active: true,
     sort_order: 6,
   },
   {
     id: 7,
-    title: 'Ditch Refined White Sugar! Natural Dates Powder',
-    description: 'Micro-ground pure dates — the healthiest unrefined sweetener for baby cereal, tea, & kheer! 🍯',
-    video_url: '/videos/dates-powder-energy.mp4',
+    title: 'Crispy Roasted Himalayan Pumpkin Seeds',
+    description: 'High zinc and magnesium crunch for deep restorative sleep and reproductive wellness! 🎃💪',
+    video_url: '/videos/pumpkin-seeds-crunch.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/dates-powder-100g.jpg',
-    product_name: 'Dates Powder Sweetener (100g)',
-    product_url: '/products/dates-powder',
+    cover_image: '/products/pumpkin-seeds-100g.jpg',
+    product_name: 'Himalayan Pumpkin Seeds (100g)',
+    product_url: '/products/pumpkin-seeds',
     product_price: 390,
     views: '38.2K',
     likes: '3.1K',
@@ -166,6 +168,7 @@ export default function ReelsSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [isHoveredStream, setIsHoveredStream] = useState(false);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const openDrawer = useCartStore((s) => s.openDrawer);
 
   useEffect(() => {
@@ -185,7 +188,60 @@ export default function ReelsSection() {
     };
   }, []);
 
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const hasDraggedRef = useRef(false);
+  const [isDraggingState, setIsDraggingState] = useState(false);
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 340;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+      setIsHoveredStream(true);
+      setTimeout(() => setIsHoveredStream(false), 3000);
+    }
+  };
+
+  // Mouse Drag to Scroll handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    isDraggingRef.current = true;
+    hasDraggedRef.current = false;
+    startXRef.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    scrollLeftRef.current = scrollContainerRef.current.scrollLeft;
+    setIsDraggingState(true);
+    setIsHoveredStream(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    if (Math.abs(walk) > 4) {
+      hasDraggedRef.current = true;
+    }
+    scrollContainerRef.current.scrollLeft = scrollLeftRef.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      setIsDraggingState(false);
+      setTimeout(() => {
+        hasDraggedRef.current = false;
+        setIsHoveredStream(false);
+      }, 2500);
+    }
+  };
+
+
   const handleReelHover = useCallback((uniqueKey: string, reelId: number) => {
+    if (isDraggingRef.current) return;
     setPlayingReelId(reelId);
     Object.entries(videoRefs.current).forEach(([k, vid]) => {
       if (!vid) return;
@@ -215,7 +271,7 @@ export default function ReelsSection() {
         name: reel.product_name,
         price: reel.product_price || 650,
         image: reel.cover_image,
-        weight: '250g',
+        weight: '100g',
         category: 'Superfood',
       },
       1
@@ -224,10 +280,10 @@ export default function ReelsSection() {
   };
 
   return (
-    <section className="section-padding bg-gradient-to-b from-[#FAF7F2] via-white to-[#FAF7F2] overflow-hidden relative">
-      {/* Background ambient glowing spheres */}
-      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#2D5A27]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-[#C9982A]/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="section-padding bg-gradient-to-b from-[#FAF7F2] via-white to-[#FAF7F2] overflow-hidden relative select-none">
+      {/* Background ambient glowing textures */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[radial-gradient(circle,rgba(45,90,39,0.06)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(201,152,42,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container-nm relative z-10">
         {/* Section Header */}
@@ -265,11 +321,31 @@ export default function ReelsSection() {
             </p>
           </div>
 
-          {/* Sound Toggle Control */}
-          <div className="flex items-center gap-3">
+          {/* Sound & Scroll Controls */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Scroll Left & Right buttons */}
+            <div className="flex items-center gap-1.5 bg-white p-1 rounded-full border border-gray-200 shadow-xs">
+              <button
+                type="button"
+                onClick={() => handleScroll('left')}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 hover:text-[#2D5A27] hover:bg-gray-100 transition-colors cursor-pointer active:scale-95"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => handleScroll('right')}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 hover:text-[#2D5A27] hover:bg-gray-100 transition-colors cursor-pointer active:scale-95"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
             <button
               onClick={() => setIsMuted(!isMuted)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer border shadow-xs ${
+              className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer border shadow-xs ${
                 isMuted
                   ? 'bg-white text-gray-700 hover:text-gray-900 border-gray-200'
                   : 'bg-[#2D5A27] text-white border-[#2D5A27]'
@@ -277,48 +353,74 @@ export default function ReelsSection() {
               title={isMuted ? 'Turn Sound On' : 'Mute Videos'}
             >
               {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-              <span>{isMuted ? 'Muted (Click for Audio)' : '🔊 Audio Active'}</span>
+              <span className="hidden sm:inline">{isMuted ? 'Muted (Audio Off)' : '🔊 Audio Active'}</span>
+              <span className="sm:hidden">{isMuted ? 'Mute' : 'Audio'}</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Infinite Seamless Continuous Reel Conveyor Stream */}
-      <div
-        className="w-full relative overflow-hidden py-3"
-        onMouseEnter={() => setIsHoveredStream(true)}
-        onMouseLeave={() => setIsHoveredStream(false)}
-        onTouchStart={() => setIsHoveredStream(true)}
-        onTouchEnd={() => setIsHoveredStream(false)}
-      >
-        <motion.div
-          animate={{
-            x: isHoveredStream || playingReelId !== null ? undefined : ['0%', '-50%'],
-          }}
-          transition={{
-            repeat: Infinity,
-            ease: 'linear',
-            duration: 48,
-          }}
-          className="flex gap-5 shrink-0 px-4 select-none"
+      {/* Touch-Friendly, Drag-to-Scroll & User-Scrollable Reel Carousel */}
+      <div className="relative w-full max-w-full overflow-hidden group/carousel">
+        {/* Floating Left Navigation Button */}
+        <button
+          type="button"
+          onClick={() => handleScroll('left')}
+          className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-gray-900 shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-90 hover:opacity-100 cursor-pointer"
+          aria-label="Scroll reels left"
         >
-          {[...reels, ...reels].map((reel, index) => {
-            const uniqueKey = `stream-${reel.id}-${index}`;
-            const isThisPlaying = playingReelId === reel.id;
+          <ChevronLeft className="w-6 h-6 text-[#2D5A27]" />
+        </button>
 
-            return (
-              <div
-                key={uniqueKey}
-                onMouseEnter={() => handleReelHover(uniqueKey, reel.id)}
-                onMouseLeave={() => handleReelLeave(uniqueKey, reel.id)}
-                className="w-[260px] sm:w-[280px] h-[460px] sm:h-[490px] rounded-3xl overflow-hidden relative shrink-0 shadow-lg border border-gray-200/80 bg-gray-950 group cursor-pointer transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl flex flex-col justify-between"
-              >
+        {/* Floating Right Navigation Button */}
+        <button
+          type="button"
+          onClick={() => handleScroll('right')}
+          className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-gray-900 shadow-xl border border-gray-200 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 opacity-90 hover:opacity-100 cursor-pointer"
+          aria-label="Scroll reels right"
+        >
+          <ChevronRight className="w-6 h-6 text-[#2D5A27]" />
+        </button>
+
+        <div
+          ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={handleMouseUpOrLeave}
+          className={`w-full relative overflow-x-auto overflow-y-hidden py-3 px-4 sm:px-8 touch-pan-y touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
+            isDraggingState ? 'cursor-grabbing select-none' : 'cursor-grab'
+          }`}
+          onTouchStart={() => setIsHoveredStream(true)}
+          onTouchEnd={() => {
+            setTimeout(() => setIsHoveredStream(false), 2500);
+          }}
+        >
+          <div className="flex gap-4 sm:gap-5 w-max">
+            {reels.map((reel, index) => {
+              const uniqueKey = `stream-${reel.id}-${index}`;
+              const isThisPlaying = playingReelId === reel.id;
+
+              return (
+                <div
+                  key={uniqueKey}
+                  onClick={() => {
+                    if (hasDraggedRef.current) return;
+                    if (playingReelId === reel.id) {
+                      handleReelLeave(uniqueKey, reel.id);
+                    } else {
+                      handleReelHover(uniqueKey, reel.id);
+                    }
+                  }}
+                  className="w-[210px] sm:w-[250px] md:w-[260px] h-[370px] sm:h-[430px] md:h-[445px] rounded-3xl overflow-hidden relative shrink-0 shadow-md border border-gray-200/80 bg-gray-950 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl flex flex-col justify-between select-none"
+                >
                 {/* Background Video / Image Thumbnail */}
                 <div className="absolute inset-0 z-0">
                   <Image
                     src={reel.cover_image}
                     alt={reel.title}
                     fill
+                    sizes="(max-width: 640px) 230px, 280px"
                     className={`object-cover transition-opacity duration-300 ${
                       isThisPlaying ? 'opacity-0' : 'opacity-100'
                     }`}
@@ -332,16 +434,21 @@ export default function ReelsSection() {
                     loop
                     playsInline
                     preload="none"
+                    onError={(e) => {
+                      // Silently recover if video cannot load
+                      const el = e.currentTarget;
+                      if (el) el.style.display = 'none';
+                    }}
                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
                       isThisPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/35" />
                 </div>
 
                 {/* Top Bar with Facebook Badge */}
-                <div className="relative z-10 p-4 flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold">
+                <div className="relative z-10 p-3.5 sm:p-4 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/20 text-white text-[10px] sm:text-[11px] font-bold">
                     <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                     <span>Reel #{reel.id}</span>
                   </div>
@@ -361,19 +468,19 @@ export default function ReelsSection() {
                 {/* Center Play Indicator */}
                 {!isThisPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/25 border border-white/40 flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform">
                       <Play className="w-5 h-5 fill-white ml-0.5" />
                     </div>
                   </div>
                 )}
 
                 {/* Bottom Card Content */}
-                <div className="relative z-10 p-4 space-y-2.5">
+                <div className="relative z-10 p-3.5 sm:p-4 space-y-2">
                   <div>
-                    <h3 className="text-white text-sm sm:text-base font-bold line-clamp-1 font-heading">
+                    <h3 className="text-white text-xs sm:text-sm md:text-base font-bold line-clamp-1 font-heading leading-tight">
                       {reel.title}
                     </h3>
-                    <p className="text-white/80 text-xs line-clamp-2 mt-0.5 leading-snug">
+                    <p className="text-white/80 text-[11px] sm:text-xs line-clamp-2 mt-0.5 leading-snug">
                       {reel.description}
                     </p>
                   </div>
@@ -390,9 +497,9 @@ export default function ReelsSection() {
 
                     <button
                       onClick={(e) => handleAddToCart(reel, e)}
-                      className="px-3 py-1.5 rounded-xl bg-white hover:bg-[#EBC164] text-gray-900 text-xs font-black flex items-center gap-1.5 transition-all shrink-0 cursor-pointer shadow-sm"
+                      className="px-3 py-1.5 rounded-xl bg-white hover:bg-[#EBC164] text-gray-900 text-xs font-black flex items-center gap-1.5 transition-all shrink-0 cursor-pointer shadow-sm active:scale-95"
                     >
-                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <ShoppingBag className="w-3.5 h-3.5 text-[#2D5A27]" />
                       <span>Shop</span>
                     </button>
                   </div>
@@ -400,7 +507,8 @@ export default function ReelsSection() {
               </div>
             );
           })}
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

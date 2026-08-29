@@ -71,3 +71,84 @@ export const slugify = (text: string): string => {
 export const classNames = (...classes: (string | false | null | undefined)[]): string => {
   return classes.filter(Boolean).join(' ');
 };
+
+const IMAGE_ALIAS_MAP: Record<string, string> = {
+  '/products/dates.jpg': '/products/dates-powder-100g.jpg',
+  '/products/apples.jpg': '/products/dehydrated-apple.jpg',
+  '/products/raw-almonds.jpg': '/products/almonds-2.jpg',
+  '/products/flaxseed.jpg': '/products/flax-seeds.jpg',
+  '/products/apricots.jpg': '/products/papaya.jpg',
+  '/products/yarsagumba.jpg': '/products/shilajit.jpg',
+  '/products/honey.jpg': '/products/raw-honey.jpg',
+  '/products/trail-mix.jpg': '/products/superfood-mix.jpg',
+  '/products/turmeric.jpg': '/products/carrot-powder-marble.jpg',
+  '/products/ginger.jpg': '/products/sweet-potato-powder-100g.jpg',
+  '/products/mustard-seeds.jpg': '/products/chia-seeds.jpg',
+  '/products/beetroot.jpg': '/products/beetroot-powder-100g.jpg',
+  '/products/blueberries.jpg': '/products/dried-blueberries-100g.jpg',
+  '/products/cashews.jpg': '/products/cashewnuts.jpg',
+  '/products/cashew.jpg': '/products/cashewnuts.jpg',
+  '/products/pista.jpg': '/products/pistachios.jpg',
+  '/products/anjeer.jpg': '/products/figs.jpg',
+  '/products/coconut-chips.jpg': '/products/dehydrated-coconut-chips.jpg',
+  '/products/black-salt-jar.jpg': '/products/himalayan-black-salt-digestive.jpg',
+};
+
+export const resolveImageUrl = (
+  img?: any,
+  fallback = '/products/sweet-potato-powder-100g.jpg'
+): string => {
+  if (!img) return fallback;
+
+  let raw = '';
+  if (typeof img === 'string') {
+    raw = img.trim();
+  } else if (typeof img === 'object' && img !== null) {
+    raw = String(img.url || img.secure_url || img.preview || img.src || img.path || '').trim();
+  }
+
+  if (!raw) return fallback;
+
+  // Handle JSON stringified arrays or objects
+  if (raw.startsWith('[') || raw.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return resolveImageUrl(parsed[0], fallback);
+      }
+      if (parsed && typeof parsed === 'object') {
+        return resolveImageUrl(parsed, fallback);
+      }
+    } catch {
+      // not JSON, continue
+    }
+  }
+
+  if (IMAGE_ALIAS_MAP[raw]) {
+    return IMAGE_ALIAS_MAP[raw];
+  }
+
+  // Full URLs (Cloudinary, external CDN, full domain, data URI, blob URL)
+  if (
+    raw.startsWith('http://') ||
+    raw.startsWith('https://') ||
+    raw.startsWith('data:') ||
+    raw.startsWith('blob:')
+  ) {
+    return raw;
+  }
+
+  // Handle /uploads/ or uploads/
+  if (raw.startsWith('uploads/')) {
+    return `/${raw}`;
+  }
+
+  // Absolute path within public
+  if (raw.startsWith('/')) {
+    return raw;
+  }
+
+  // Relative image filename fallback to /products/
+  const resolved = `/products/${raw}`;
+  return IMAGE_ALIAS_MAP[resolved] || resolved;
+};

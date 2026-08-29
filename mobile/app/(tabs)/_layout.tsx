@@ -1,53 +1,42 @@
+import React from 'react';
 import { Tabs } from 'expo-router';
-import { useColorScheme } from 'react-native';
-import { Home, Search, ShoppingCart, User, Heart, Package } from 'lucide-react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Home, Package, ShoppingBag, Heart, User } from 'lucide-react-native';
+import { useCartStore } from '@/store/cart-store';
+import { useWishlistStore } from '@/store/wishlist-store';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === 'dark';
+  const { getTotalItems } = useCartStore();
+  const { favoriteIds } = useWishlistStore();
+
+  const cartCount = getTotalItems();
+  const favCount = favoriteIds.length;
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: isDark ? '#D9A441' : '#365314',
-        tabBarInactiveTintColor: isDark ? '#8A8A8A' : '#6B6B6B',
-        tabBarStyle: {
-          backgroundColor: isDark ? '#2B2B2B' : '#F8F4EC',
-          borderTopWidth: 0,
-          elevation: 8,
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: -2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 8,
-          height: 80,
-          paddingBottom: 10,
-        },
-        tabBarItemStyle: {
-          paddingTop: 8,
-        },
-        tabBarLabelStyle: {
-          fontSize: 11,
-          fontWeight: '600',
-          fontFamily: 'Inter_500Medium',
-        },
+        tabBarActiveTintColor: '#365314',
+        tabBarInactiveTintColor: '#78716C',
+        tabBarStyle: styles.tabBar,
+        tabBarLabelStyle: styles.tabBarLabel,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused, color }) => (
-            <Home size={24} color={color} strokeWidth={focused ? 3 : 2} />
+          tabBarIcon: ({ color, focused }) => (
+            <Home size={22} color={color} strokeWidth={focused ? 2.5 : 1.8} />
           ),
         }}
       />
       <Tabs.Screen
         name="products"
         options={{
-          title: 'Products',
-          tabBarIcon: ({ focused, color }) => (
-            <Package size={24} color={color} strokeWidth={focused ? 3 : 2} />
+          title: 'Catalog',
+          tabBarIcon: ({ color, focused }) => (
+            <Package size={22} color={color} strokeWidth={focused ? 2.5 : 1.8} />
           ),
         }}
       />
@@ -55,8 +44,15 @@ export default function TabLayout() {
         name="cart"
         options={{
           title: 'Cart',
-          tabBarIcon: ({ focused, color }) => (
-            <ShoppingCart size={24} color={color} strokeWidth={focused ? 3 : 2} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={styles.iconWrap}>
+              <ShoppingBag size={22} color={color} strokeWidth={focused ? 2.5 : 1.8} />
+              {cartCount > 0 && (
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>{cartCount > 9 ? '9+' : cartCount}</Text>
+                </View>
+              )}
+            </View>
           ),
         }}
       />
@@ -64,8 +60,15 @@ export default function TabLayout() {
         name="favorites"
         options={{
           title: 'Favorites',
-          tabBarIcon: ({ focused, color }) => (
-            <Heart size={24} color={color} strokeWidth={focused ? 3 : 2} />
+          tabBarIcon: ({ color, focused }) => (
+            <View style={styles.iconWrap}>
+              <Heart size={22} color={color} strokeWidth={focused ? 2.5 : 1.8} />
+              {favCount > 0 && (
+                <View style={[styles.badge, styles.favBadge]}>
+                  <Text style={styles.badgeText}>{favCount}</Text>
+                </View>
+              )}
+            </View>
           ),
         }}
       />
@@ -73,11 +76,54 @@ export default function TabLayout() {
         name="account"
         options={{
           title: 'Account',
-          tabBarIcon: ({ focused, color }) => (
-            <User size={24} color={color} strokeWidth={focused ? 3 : 2} />
+          tabBarIcon: ({ color, focused }) => (
+            <User size={22} color={color} strokeWidth={focused ? 2.5 : 1.8} />
           ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: '#FFFFFF',
+    borderTopWidth: 1,
+    borderTopColor: '#F0EFEA',
+    height: 64,
+    paddingBottom: 8,
+    paddingTop: 8,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+  },
+  tabBarLabel: {
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  iconWrap: {
+    position: 'relative',
+  },
+  badge: {
+    position: 'absolute',
+    top: -4,
+    right: -8,
+    backgroundColor: '#365314',
+    borderRadius: 8,
+    minWidth: 16,
+    height: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 3,
+  },
+  favBadge: {
+    backgroundColor: '#DC2626',
+  },
+  badgeText: {
+    color: '#FFFFFF',
+    fontSize: 9,
+    fontWeight: '800',
+  },
+});

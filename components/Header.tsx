@@ -33,7 +33,9 @@ const MotionLink = motion.create(Link);
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/products', label: 'Shop', hasMegaMenu: true },
-  { href: '/offers', label: 'Festival Offers', isSpecial: true },
+  { href: '/catalog', label: 'Catalog' },
+  { href: '#search', label: 'Search', isSearch: true },
+  { href: '/offers', label: 'Offers', isSpecial: true },
   { href: '/about', label: 'About Us' },
   { href: '/blog', label: 'Blog' },
   { href: '/recipes', label: 'Recipes' },
@@ -41,10 +43,10 @@ const navLinks = [
 ];
 
 const featuredCategories = [
-  { name: 'Nuts & Seeds', slug: 'nuts-seeds', image: '/products/almonds.jpg', count: '6 items' },
-  { name: 'Dehydrated Fruits', slug: 'dehydrated-fruits', image: '/products/blueberries.jpg', count: '4 items' },
-  { name: 'Organic Powders', slug: 'organic-powders', image: '/products/beetroot-powder.jpg', count: '3 items' },
-  { name: 'Cold-Pressed Oils', slug: 'cold-pressed-oils', image: '/products/coconut-oil.jpg', count: '2 items' },
+  { name: 'Dried Fruits', slug: 'dried-fruits', image: '/products/dehydrated-mango.jpg', count: '8 items' },
+  { name: 'Organic Powders', slug: 'powders', image: '/products/sweet-potato-powder-100g.jpg', count: '4 items' },
+  { name: 'Mountain Nuts', slug: 'nuts', image: '/products/almonds.jpg', count: '7 items' },
+  { name: 'Seeds & Salts', slug: 'seeds', image: '/products/pumpkin-seeds.jpg', count: '4 items' },
 ];
 
 export default function Header() {
@@ -65,9 +67,17 @@ export default function Header() {
   const safeWishlistCount = mounted ? wishlistCount : 0;
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -76,18 +86,30 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full pointer-events-none transition-all duration-300">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 flex items-center justify-between gap-2 sm:gap-4 pointer-events-auto">
+      <header
+        className={classNames(
+          'sticky top-0 z-50 w-full max-w-full transition-all duration-300',
+          isScrolled
+            ? 'bg-white/95 backdrop-blur-md border-b border-ink/8 shadow-sm py-2 sm:py-2.5'
+            : 'bg-transparent pt-3 sm:pt-4 pb-1 pointer-events-none'
+        )}
+      >
+        <div
+          className={classNames(
+            'mx-auto max-w-7xl w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4',
+            !isScrolled ? 'pointer-events-auto' : ''
+          )}
+        >
           {/* ── Left Zone: Brand Logo Capsule ── */}
           <MotionLink
             href="/"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className={classNames(
-              'flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-full border transition-all duration-300 backdrop-blur-xl shrink-0 shadow-soft',
+              'flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-full border transition-all duration-300 shrink-0',
               isScrolled
-                ? 'bg-white/90 border-ink/10 shadow-md'
-                : 'bg-white/80 border-white/60 hover:bg-white/95'
+                ? 'bg-transparent border-transparent hover:bg-black/5'
+                : 'bg-white/95 border-white/80 hover:bg-white shadow-soft'
             )}
           >
             <Logo asLink={false} />
@@ -99,10 +121,10 @@ export default function Header() {
           {/* ── Center Zone: Navigation Links & Actions Capsule ── */}
           <div
             className={classNames(
-              'flex items-center justify-between px-3 sm:px-6 py-2 sm:py-2.5 rounded-full border transition-all duration-300 backdrop-blur-xl shadow-soft',
+              'flex items-center justify-between px-3 sm:px-6 py-1.5 sm:py-2 rounded-full border transition-all duration-300',
               isScrolled
-                ? 'bg-white/90 border-ink/10 shadow-md'
-                : 'bg-white/80 border-white/60 hover:bg-white/95'
+                ? 'bg-cream-50/80 border-ink/5'
+                : 'bg-white/95 border-white/80 hover:bg-white shadow-soft'
             )}
           >
             {/* Desktop Navigation Links */}
@@ -143,7 +165,7 @@ export default function Header() {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 8, scale: 0.98 }}
                             transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 mt-2 w-[520px] rounded-3xl bg-white/95 backdrop-blur-2xl border border-ink/10 shadow-2xl p-5 overflow-hidden z-50 pointer-events-auto"
+                            className="absolute top-full left-0 mt-2 w-[520px] rounded-3xl bg-white border border-ink/10 shadow-2xl p-5 overflow-hidden z-50 pointer-events-auto"
                           >
                             <div className="flex items-center justify-between mb-4 pb-3 border-b border-ink/5">
                               <div>
@@ -201,6 +223,24 @@ export default function Header() {
                         )}
                       </AnimatePresence>
                     </div>
+                  );
+                }
+
+                if ((link as any).isSearch) {
+                  return (
+                    <button
+                      key="header-search-bar"
+                      type="button"
+                      onClick={openSearch}
+                      className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 bg-black/5 hover:bg-black/10 text-ink/80 hover:text-primary cursor-pointer border border-black/10 group"
+                      aria-label="Search Superfoods"
+                    >
+                      <Search className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" />
+                      <span>Search</span>
+                      <kbd className="hidden xl:inline text-[9px] bg-white border border-ink/10 rounded px-1 py-0.2 text-ink/50 font-mono shadow-xs ml-0.5">
+                        ⌘K
+                      </kbd>
+                    </button>
                   );
                 }
 
@@ -292,13 +332,13 @@ export default function Header() {
             </div>
           </div>
 
-          {/* ── Right Zone: Live Track Order Widget (Outside Header Bar on the far right) ── */}
-          <div className="flex items-center shrink-0 z-20">
+          {/* ── Right Zone: Live Track Order Widget (Desktop Only - Kept identical) ── */}
+          <div className="hidden lg:flex items-center shrink-0 z-20">
             <OrdersHeaderWidget />
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Drawer */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.nav
@@ -306,32 +346,89 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
+              className="lg:hidden bg-white border-t border-gray-100 shadow-2xl overflow-hidden pointer-events-auto w-full max-w-full"
               aria-label="Mobile navigation"
             >
-              <div className="px-4 py-4 space-y-1">
-                {navLinks.map((link) => (
+              <div className="px-4 py-4 space-y-1.5">
+                {/* Mobile Live Track Order & Status Card */}
+                <div className="pb-2">
                   <Link
-                    key={link.href}
-                    href={link.href}
+                    href="/track-order"
                     onClick={closeMobileMenu}
-                    className={classNames(
-                      'block px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-300',
-                      pathname === link.href
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-ink/80 hover:bg-gray-50 hover:pl-4'
-                    )}
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-primary/10 via-amber-500/5 to-gold/10 border border-primary/20 text-primary font-bold text-sm shadow-xs hover:shadow-md transition-all group"
                   >
-                    {link.label}
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center shadow-xs">
+                        <Sparkles className="w-4 h-4 text-gold-300" />
+                      </div>
+                      <div>
+                        <p className="font-heading text-sm text-gray-900 leading-tight">Live Order Tracking</p>
+                        <p className="text-[11px] text-gray-500 font-normal">Check delivery progress & invoice</p>
+                      </div>
+                    </div>
+                    <span className="flex items-center text-xs text-primary font-bold group-hover:translate-x-1 transition-transform">
+                      Track <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    </span>
                   </Link>
-                ))}
-                <Link
-                  href="/account"
-                  onClick={closeMobileMenu}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium text-ink/80 hover:bg-gray-50 transition-colors"
-                >
-                  <User className="w-4 h-4" /> My Account
-                </Link>
+                </div>
+
+                {navLinks.map((link) => {
+                  if ((link as any).isSearch) {
+                    return (
+                      <button
+                        key="mobile-search-btn"
+                        type="button"
+                        onClick={() => {
+                          closeMobileMenu();
+                          openSearch();
+                        }}
+                        className="w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium bg-primary/5 text-primary border border-primary/20 transition-all duration-200"
+                      >
+                        <span className="flex items-center gap-2.5">
+                          <Search className="w-4 h-4 text-primary" /> Search Superfoods &amp; Recipes
+                        </span>
+                        <kbd className="text-[10px] bg-white border border-primary/20 rounded px-1.5 py-0.5 text-primary font-mono">
+                          Tap
+                        </kbd>
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMobileMenu}
+                      className={classNames(
+                        'block px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+                        pathname === link.href
+                          ? 'bg-primary/10 text-primary font-bold'
+                          : link.isSpecial
+                          ? 'text-amber-900 bg-amber-50 font-bold border border-amber-200/60'
+                          : 'text-ink/80 hover:bg-gray-50 hover:pl-4'
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                
+                <div className="pt-2 border-t border-gray-100 flex items-center gap-2">
+                  <Link
+                    href="/account"
+                    onClick={closeMobileMenu}
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-bold text-ink/80 bg-gray-50 hover:bg-gray-100 transition-colors"
+                  >
+                    <User className="w-4 h-4 text-primary" /> My Account
+                  </Link>
+                  <Link
+                    href="/wishlist"
+                    onClick={closeMobileMenu}
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-bold text-ink/80 bg-gray-50 hover:bg-gray-100 transition-colors"
+                  >
+                    <Heart className="w-4 h-4 text-red-500" /> Wishlist ({safeWishlistCount})
+                  </Link>
+                </div>
               </div>
             </motion.nav>
           )}

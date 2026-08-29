@@ -8,7 +8,7 @@ import { useUIStore } from '@/lib/store/ui-store';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useWishlistStore } from '@/lib/store/wishlist-store';
 import { getProductById } from '@/lib/data/products';
-import { formatPrice, classNames } from '@/lib/utils';
+import { formatPrice, classNames, resolveImageUrl } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -26,11 +26,13 @@ export default function QuickViewModal() {
   const inWishlist = product ? isInWishlist(product.id) : false;
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
-  const imagesList = Array.isArray(product?.images) && product.images.length > 0
+  const rawImages = Array.isArray(product?.images) && product.images.length > 0
     ? product.images
     : [product?.image || '/products/sweet-potato-powder-100g.jpg'];
 
-  const currentDisplayImg = imagesList[selectedImgIndex] || imagesList[0];
+  const imagesList = rawImages.map((img) => resolveImageUrl(img));
+
+  const currentDisplayImg = imagesList[selectedImgIndex] || imagesList[0] || resolveImageUrl(product?.image);
 
   return (
     <Transition.Root show={!!product} as={Fragment}>
@@ -78,6 +80,9 @@ export default function QuickViewModal() {
                             alt={product.name}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
+                            onError={(e: any) => {
+                              e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                            }}
                             className="object-cover object-center transition-all duration-300"
                           />
                           {/* Badges */}
@@ -114,6 +119,9 @@ export default function QuickViewModal() {
                                   alt={`${product.name} ${idx + 1}`}
                                   fill
                                   sizes="56px"
+                                  onError={(e: any) => {
+                                    e.currentTarget.src = '/products/naturesmud-all-products-100g.jpg';
+                                  }}
                                   className="object-cover"
                                 />
                               </button>
@@ -150,7 +158,7 @@ export default function QuickViewModal() {
                             <p className="text-2xl font-bold text-gray-900">
                               {formatPrice(product.price)}
                             </p>
-                             {product.compareAtPrice && (
+                             {product.compareAtPrice && product.compareAtPrice > product.price && (
                                 <p className="text-lg text-gray-400 line-through decoration-gray-300">
                                   {formatPrice(product.compareAtPrice)}
                                 </p>

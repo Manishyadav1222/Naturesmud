@@ -23,7 +23,7 @@ const mapBlogPost = (post: any) => {
     tags: typeof post.tags === 'string' ? JSON.parse(post.tags) : post.tags || [],
     status,
     isPublished: Number(post.is_published) === 1,
-    isFeatured: false, // add a dummy or add to DB if needed
+    isFeatured: Number(post.is_featured) === 1, // Now properly mapped from DB
     publishedAt: post.published_at,
     metaTitle: post.meta_title,
     metaDescription: post.meta_description,
@@ -82,7 +82,7 @@ router.get('/:id', requireMinRole('VIEWER'), async (req, res, next) => {
 // POST /api/admin/blog - Create blog post
 router.post('/', requireMinRole('CONTENT_MANAGER'), async (req, res, next) => {
   try {
-    const { title, slug, excerpt, content, featuredImage, coverImage, author, category, tags, isPublished, status, seoTitle, seoDescription } = req.body;
+    const { title, slug, excerpt, content, featuredImage, coverImage, author, category, tags, isPublished, status, seoTitle, seoDescription, isFeatured } = req.body;
     
     // Auto-generate slug if not provided
     const finalSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -90,15 +90,33 @@ router.post('/', requireMinRole('CONTENT_MANAGER'), async (req, res, next) => {
     const finalImage = coverImage || featuredImage;
     const finalMetaTitle = seoTitle;
     const finalMetaDesc = seoDescription;
+    const finalIsFeatured = isFeatured ? 1 : 0;
 
     const [result] = await laravelDb.query(
       `INSERT INTO blog_posts (
         title, slug, excerpt, content, featured_image, author, category, tags, 
+        is_published, is_featured, published_at, meta_title, meta_description, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
+      [
+        title, finalSlug, excerpt, content, finalImage, author, category, JSON.stringify(tags || []),
+        isPub ? 1 : 0, finalIsFeatured, isPub ? new Date() : null, finalMetaTitle, finalMetaDesc
+      ]
+    );
+
+    const [rows] = await laravelDb.query('SELECT * FROM blog_posts WHERE id = ?', [(result as any).insertId]);
+    res.status(201).json({ data: mapBlogPost((rows as any[])[0]) });
+  } catch (err: any) {
+    if (err.message?.includes('ER_DUP_ENTRY') || err.code === 'ER_DUP_ENTRY') {
+      return res.status(400).json({ message: 'A blog post with this slug already exists' });
+    }
+    next(err);
+  }
+});thor, category, tags, 
         is_published, published_at, meta_title, meta_description, created_at, updated_at
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
       [
         title, finalSlug, excerpt, content, finalImage, author, category, JSON.stringify(tags || []),
-        isPub ? 1 : 0, isPub ? new Date() : null, finalMetaTitle, finalMetaDesc
+        isPub ? 1 : 0, finalIsFeatured, isPub ? new Date() : null, finalMetaTitle, finalMetaDesc
       ]
     );
 
@@ -148,6 +166,10 @@ router.put('/:id', requireMinRole('CONTENT_MANAGER'), async (req, res, next) => 
       if (isPub && !(rows as any[])[0].published_at) {
         setField('published_at', new Date());
       }
+    }
+
+    if (isFeatured !== undefined) {
+      setField('is_featured', isFeatured ? 1 : 0);
     }
 
     if (fields.length > 0) {

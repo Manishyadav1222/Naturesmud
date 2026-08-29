@@ -1,37 +1,45 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Calendar, Clock, User, ArrowLeft, Tag, Share2, Sparkles, BookOpen } from 'lucide-react';
-import { blogPosts } from '@/lib/data/content';
+import { masterBlogCatalog, getBlogPostBySlug } from '@/lib/data/blogs-database';
 import { api } from '@/lib/api';
+import BlogPostClient from '@/components/BlogPostClient';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  let post = blogPosts.find((p) => p.slug === slug);
+export async function generateStaticParams() {
+  return masterBlogCatalog.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
-  if (!post) {
-    try {
-      const res = await api.get(`/blogs/${slug}`);
-      if (res.data) {
-        post = {
-          id: String(res.data.id),
-          slug: res.data.slug,
-          title: res.data.title,
-          excerpt: res.data.excerpt || '',
-          content: [res.data.content || ''],
-          image: res.data.featured_image || '/products/cranberries.jpg',
-          category: res.data.category || 'Superfoods',
-          author: res.data.author || 'Nature\'s Mud Experts',
-          date: res.data.published_at ? new Date(res.data.published_at).toLocaleDateString('en-US') : 'Recent',
-          readTime: 6,
-          tags: res.data.tags || [],
-        };
-      }
-    } catch {
-      // fallback
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug || '');
+  let post: any = null;
+
+  try {
+    const res = await api.get(`/blogs/${slug}`);
+    if (res.data) {
+      post = {
+        id: String(res.data.id),
+        slug: res.data.slug,
+        title: res.data.title,
+        excerpt: res.data.excerpt || '',
+        content: Array.isArray(res.data.content) ? res.data.content : [res.data.content || ''],
+        image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
+        category: res.data.category || 'Superfoods',
+        author: res.data.author || "Nature's Mud Clinical Council",
+        date: res.data.published_at ? new Date(res.data.published_at).toLocaleDateString('en-US') : 'Recent',
+        readTime: 10,
+        tags: typeof res.data.tags === 'string' ? JSON.parse(res.data.tags) : res.data.tags || [],
+      };
     }
+  } catch (err: any) {
+    if (err.response?.status === 404) {
+      return {};
+    }
+    post = getBlogPostBySlug(slug);
   }
 
   if (!post) return {};
@@ -39,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${post.title} | Nature's Mud Organic Superfoods Nepal`,
     description: post.excerpt,
-    keywords: post.tags?.join(', ') || 'organic food nepal, baby nutrition, pregnancy care, himalayan superfoods',
+    keywords: Array.isArray(post.tags) ? post.tags.join(', ') : 'organic food nepal, baby nutrition, pregnancy care, himalayan superfoods',
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -49,44 +57,72 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-import BlogPostClient from '@/components/BlogPostClient';
-
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  let post = blogPosts.find((p) => p.slug === slug);
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug || '');
+  let post: any = null;
 
-  if (!post) {
-    try {
-      const res = await api.get(`/blogs/${slug}`);
-      if (res.data) {
-        post = {
-          id: String(res.data.id),
-          slug: res.data.slug,
-          title: res.data.title,
-          excerpt: res.data.excerpt || '',
-          content: Array.isArray(res.data.content) ? res.data.content : [res.data.content || ''],
-          image: res.data.featured_image || '/products/cranberries.jpg',
-          category: res.data.category || 'Superfoods',
-          author: res.data.author || 'Nature\'s Mud Experts',
-          date: res.data.published_at ? new Date(res.data.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recent',
-          readTime: 6,
-          tags: res.data.tags || ['organic food nepal', 'superfoods'],
-        };
-      }
-    } catch {
-      // fallback
+  try {
+    const res = await api.get(`/blogs/${slug}`);
+    const localPost = getBlogPostBySlug(slug);
+    if (res.data) {
+      post = {
+        id: String(res.data.id),
+        slug: res.data.slug,
+        title: res.data.title,
+        excerpt: res.data.excerpt || '',
+        content: Array.isArray(res.data.content) ? res.data.content : [res.data.content || ''],
+        image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
+        category: res.data.category || 'Superfoods',
+        author: res.data.author || "Nature's Mud Clinical Council",
+        date: res.data.published_at
+          ? new Date(res.data.published_at).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })
+          : 'Recent',
+        readTime: 10,
+        tags: typeof res.data.tags === 'string' ? JSON.parse(res.data.tags) : res.data.tags || [],
+        wallpapers: res.data.wallpapers || localPost?.wallpapers || [],
+        featuredProductName: res.data.featuredProductName || localPost?.featuredProductName,
+        featuredProductPrice: res.data.featuredProductPrice || localPost?.featuredProductPrice,
+        featuredProductSlug: res.data.featuredProductSlug || localPost?.featuredProductSlug,
+        featuredProductImage: res.data.featuredProductImage || localPost?.featuredProductImage,
+        faqs: res.data.faqs || localPost?.faqs || [],
+      };
     }
+  } catch (err: any) {
+    if (err.response?.status === 404) {
+      notFound();
+    }
+    post = getBlogPostBySlug(slug);
   }
 
   if (!post) notFound();
 
-  const related = blogPosts.filter((p) => p.id !== post?.id && (p.category === post?.category || true)).slice(0, 3);
+  const related = masterBlogCatalog
+    .filter((p) => p.id !== post?.id && (p.category === post?.category || true))
+    .slice(0, 3);
+
+  const faqSchema = post.faqs && post.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.faqs.map((f: any) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  } : null;
 
   return (
     <>
       <BlogPostClient post={post} relatedPosts={related} />
 
-      {/* JSON-LD Article Schema for Google, ChatGPT & AI Search */}
+      {/* JSON-LD Article Schema for Google, ChatGPT, Perplexity & AI Search */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -97,7 +133,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             description: post.excerpt,
             image: [post.image],
             author: {
-              '@type': 'Organization',
+              '@type': 'Person',
               name: post.author,
             },
             publisher: {
@@ -105,17 +141,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               name: "Nature's Mud",
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://naturesmud.com/logo.png',
+                url: 'https://naturesmud.shop/logo.png',
               },
             },
             datePublished: post.date,
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://naturesmud.com/blog/${post.slug}`,
+              '@id': `https://naturesmud.shop/blog/${post.slug}`,
             },
           }),
         }}
       />
+
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+      )}
     </>
   );
 }

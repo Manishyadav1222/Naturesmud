@@ -19,10 +19,19 @@ class ContentController extends Controller
 
     public function blogPosts(\Illuminate\Http\Request $request)
     {
+        $query = BlogPost::where('is_published', true);
+        
+        if ($request->category) {
+            $query->where('category', $request->category);
+        }
+        
+        // Allow filtering by featured posts
+        if ($request->has('featured') && filter_var($request->featured, FILTER_VALIDATE_BOOLEAN)) {
+            $query->where('is_featured', true);
+        }
+        
         return response()->json(
-            BlogPost::where('is_published', true)
-                ->when($request->category, fn ($q) => $q->where('category', $request->category))
-                ->latest('published_at')
+            $query->latest('published_at')
                 ->paginate($request->per_page ?? 12)
         );
     }

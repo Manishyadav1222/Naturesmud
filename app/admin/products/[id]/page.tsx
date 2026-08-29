@@ -12,6 +12,7 @@ import { Skeleton } from '@/components/admin/Skeleton';
 import { EmptyState } from '@/components/admin/EmptyState';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { formatNPR, formatNumber, formatDate, timeAgo, cn } from '@/lib/admin/utils';
+import { resolveImageUrl } from '@/lib/utils';
 import {
   ArrowLeft,
   Pencil,
@@ -152,7 +153,13 @@ export default function AdminProductDetailPage() {
     }
   };
 
-  const primaryImage = product?.images.find(img => img.isPrimary) || product?.images[0];
+  const primaryImage =
+    product?.images?.find(img => typeof img === 'object' && img?.isPrimary) ||
+    product?.images?.[0] ||
+    (product as any)?.image_url ||
+    (product as any)?.image;
+  const rawPrimaryUrl = typeof primaryImage === 'string' ? primaryImage : primaryImage?.url;
+  const primaryImageUrl = resolveImageUrl(rawPrimaryUrl, '/products/sweet-potato-powder-100g.jpg');
 
   if (isLoading) {
     return (
@@ -273,30 +280,42 @@ export default function AdminProductDetailPage() {
         <div className="space-y-6">
           <Card>
             <CardContent className="p-6">
-              {primaryImage ? (
+              {primaryImageUrl ? (
                 <img
-                  src={primaryImage.url}
+                  src={primaryImageUrl}
                   alt={product.name}
                   className="w-full aspect-square rounded-2xl object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/products/sweet-potato-powder-100g.jpg';
+                  }}
                 />
               ) : (
                 <div className="flex aspect-square items-center justify-center rounded-2xl bg-primary-50">
                   <Package className="h-16 w-16 text-primary-200" />
                 </div>
               )}
-              {product.images.length > 1 && (
+              {Array.isArray(product.images) && product.images.length > 1 && (
                 <div className="mt-4 grid grid-cols-4 gap-2">
-                  {product.images.map((img) => (
-                    <img
-                      key={img.id}
-                      src={img.url}
-                      alt={img.alt || product.name}
-                      className={cn(
-                        'h-16 w-full rounded-lg object-cover cursor-pointer border-2 transition-colors',
-                        img.isPrimary ? 'border-primary-500' : 'border-transparent hover:border-gray-300'
-                      )}
-                    />
-                  ))}
+                  {product.images.map((img: any, idx: number) => {
+                    const rawThumb = typeof img === 'string' ? img : img.url;
+                    const thumbUrl = resolveImageUrl(rawThumb, '/products/sweet-potato-powder-100g.jpg');
+                    const imgId = typeof img === 'string' ? `img-${idx}` : img.id;
+                    const isPrimary = typeof img === 'object' ? img.isPrimary : idx === 0;
+                    return (
+                      <img
+                        key={imgId}
+                        src={thumbUrl}
+                        alt={product.name}
+                        className={cn(
+                          'h-16 w-full rounded-lg object-cover cursor-pointer border-2 transition-colors',
+                          isPrimary ? 'border-primary-500' : 'border-transparent hover:border-gray-300'
+                        )}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = '/products/sweet-potato-powder-100g.jpg';
+                        }}
+                      />
+                    );
+                  })}
                 </div>
               )}
             </CardContent>

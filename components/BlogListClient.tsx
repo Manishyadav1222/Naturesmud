@@ -16,6 +16,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
   const [lang, setLang] = useState<'en' | 'np'>('en');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [visibleCount, setVisibleCount] = useState<number>(12);
 
   useEffect(() => {
     const saved = localStorage.getItem('naturesmud_blog_lang');
@@ -64,11 +65,17 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
 
   const featured = filteredPosts.find((p) => p.featured) || filteredPosts[0];
   const restPosts = filteredPosts.filter((p) => p.id !== featured?.id);
+  const displayedRestPosts = restPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < restPosts.length;
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 12);
+  };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B]">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B] w-full max-w-full overflow-x-hidden">
       {/* Top Banner with Language Switcher */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A18] via-[#2D5A27] to-[#1E3A18] text-white py-12 lg:py-16">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A18] via-[#2D5A27] to-[#1E3A18] text-white py-12 lg:py-16 w-full max-w-full">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9982A]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="container-nm px-4 relative z-10 max-w-6xl mx-auto">
           {/* Top Bar: Breadcrumb + Language Switcher */}
@@ -91,7 +98,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9982A]/20 text-[#EBC164] border border-[#C9982A]/40 text-xs font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{lang === 'en' ? 'Evidence-Based Nutrition & Recipes' : 'वैज्ञानिक पोषण तथा परम्परागत ज्ञान'}</span>
+              <span>{lang === 'en' ? 'Evidence-Based Nutrition & AI-Era Health Intelligence' : 'वैज्ञानिक पोषण तथा परम्परागत ज्ञान'}</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black font-heading leading-tight tracking-tight">
               {ui.pageTitle}
@@ -107,7 +114,10 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
               <input
                 type="text"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setVisibleCount(12);
+                }}
                 placeholder={ui.searchPlaceholder}
                 className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-white text-gray-900 placeholder-gray-400 text-sm font-medium border-2 border-transparent focus:border-[#C9982A] focus:outline-none shadow-lg"
               />
@@ -115,7 +125,10 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
               {searchTerm && (
                 <button
                   type="button"
-                  onClick={() => setSearchTerm('')}
+                  onClick={() => {
+                    setSearchTerm('');
+                    setVisibleCount(12);
+                  }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded-lg"
                 >
                   Clear
@@ -127,13 +140,16 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
       </section>
 
       {/* Category Pills Bar */}
-      <section className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-xs">
-        <div className="container-nm px-4 py-3 max-w-6xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+      <section className="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-xs w-full max-w-full overflow-hidden">
+        <div className="container-nm px-4 py-3 max-w-6xl mx-auto flex items-center justify-between gap-4 w-full max-w-full overflow-hidden">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full max-w-full">
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setVisibleCount(12);
+                }}
                 className={`px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#2D5A27] text-white shadow-sm'
@@ -154,7 +170,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
       </section>
 
       {/* Articles Feed */}
-      <main className="container-nm px-4 py-10 sm:py-14 max-w-6xl mx-auto">
+      <main className="container-nm px-4 py-10 sm:py-14 max-w-6xl mx-auto w-full max-w-full overflow-hidden">
         {filteredPosts.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 p-8 shadow-xs">
             <BookOpen className="w-12 h-12 text-gray-300 mx-auto mb-3" />
@@ -163,6 +179,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
               onClick={() => {
                 setSearchTerm('');
                 setSelectedCategory('ALL');
+                setVisibleCount(12);
               }}
               className="mt-4 px-4 py-2 rounded-xl bg-[#2D5A27] text-white text-xs font-bold hover:bg-[#23471e] transition-colors"
             >
@@ -223,7 +240,7 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                   </div>
 
                   <div className="mt-6 flex items-center gap-2 text-xs font-bold text-[#2D5A27] group-hover:translate-x-1 transition-transform">
-                    <span>{lang === 'en' ? 'Read Full Guide' : 'पूर्ण लेख पढ्नुहोस्'}</span>
+                    <span>{lang === 'en' ? 'Read Full 10-Min Guide' : 'पूर्ण लेख पढ्नुहोस्'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -231,9 +248,9 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
             )}
 
             {/* Articles Grid */}
-            {restPosts.length > 0 && (
+            {displayedRestPosts.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {restPosts.map((post) => (
+                {displayedRestPosts.map((post) => (
                   <Link
                     key={post.id}
                     href={`/blog/${post.slug}`}
@@ -275,6 +292,25 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
                     </div>
                   </Link>
                 ))}
+              </div>
+            )}
+
+            {/* See More / Load More Pagination Button */}
+            {hasMore && (
+              <div className="text-center pt-8 pb-4">
+                <button
+                  type="button"
+                  onClick={handleLoadMore}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-heading font-bold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all transform active:scale-95 cursor-pointer"
+                >
+                  <BookOpen className="w-5 h-5 text-[#EBC164]" />
+                  <span>
+                    {lang === 'en'
+                      ? `See More Articles (Showing ${displayedRestPosts.length + 1} of ${filteredPosts.length})`
+                      : `थप लेखहरू हेर्नुहोस् (${displayedRestPosts.length + 1} / ${filteredPosts.length})`}
+                  </span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             )}
           </div>

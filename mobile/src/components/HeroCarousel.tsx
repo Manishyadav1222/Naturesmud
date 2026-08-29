@@ -1,157 +1,109 @@
-'use client';
-
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, Animated, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
-import { ChevronLeft, ChevronRight, Sparkles, Leaf, Mountain, Award } from 'lucide-react-native';
-import { ScrollReveal } from '@/components/ScrollReveal';
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
+import { ChevronRight, Leaf, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const slides = [
   {
     id: 1,
-    title: 'Wild Honey from the Roof of the World',
-    subtitle: 'Harvested by Gurung honey hunters at 3,500m+',
-    description: 'Rare multi-floral honey with 100+ wildflower essences. Raw, unfiltered, enzyme-rich.',
-    ctaText: 'Shop Wild Honey',
-    ctaLink: '/products/wild-himalayan-honey-500g',
-    image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=800',
-    badge: 'Bestseller',
-    gradient: ['#365314', '#2D4312'],
+    title: 'Wild Himalayan Cliff Honey',
+    subtitle: 'Harvested by Gurung hunters at 3,500m+',
+    description: 'Raw, unfiltered, enzyme-rich honey with natural wildflower bio-compounds.',
+    ctaText: 'Shop Cliff Honey',
+    slug: 'wild-cliff-honey-500g',
+    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800',
+    badge: '100% Raw',
+    bgColor: '#365314',
   },
   {
     id: 2,
-    title: 'Pure Shilajit — 40 Days of Sun',
-    subtitle: 'Surya Tapi purified resin from 4,000m+',
-    description: '60%+ fulvic acid, 85+ trace minerals. The gold standard of Himalayan Shilajit.',
+    title: 'Pure Surya Tapi Shilajit Resin',
+    subtitle: 'Sun-purified above 16,000 ft in Himalayas',
+    description: '65%+ Fulvic Acid and 85+ bio-available ionic minerals for peak natural vitality.',
     ctaText: 'Explore Shilajit',
-    ctaLink: '/products/pure-shilajit-resin-20g',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
-    badge: 'Lab Tested',
-    gradient: ['#1E2E0D', '#2D4312'],
+    slug: 'pure-himalayan-shilajit-resin-50g',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+    badge: 'Lab Certified',
+    bgColor: '#1E2E0D',
   },
   {
     id: 3,
-    title: 'Morning Vitality Ritual',
-    subtitle: 'Curated 4-product wellness bundle',
-    description: 'Wild honey, turmeric latte, amla powder & green tea. Save 19% — start your day the Himalayan way.',
-    ctaText: 'Get the Bundle',
-    ctaLink: '/products/morning-vitality-bundle',
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=800',
-    badge: 'New Arrival',
-    gradient: ['#365314', '#1E2E0D'],
+    title: 'Vedic A2 Himalayan Cow Ghee',
+    subtitle: 'Wooden Bilona churned from grass-fed cows',
+    description: 'Rich in healthy butyrate, vitamins A, D, E, K2 with golden organic aroma.',
+    ctaText: 'Explore A2 Ghee',
+    slug: 'organic-a2-desi-cow-ghee-1l',
+    image: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=800',
+    badge: 'Ancient Recipe',
+    bgColor: '#7B5E3B',
   },
 ];
 
 export function HeroCarousel() {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const scrollX = useRef(new Animated.Value(0)).current;
-  const autoplayRef = useRef<any>(null);
-  const containerWidth = screenWidth - 40;
+  const scrollRef = useRef<ScrollView>(null);
 
-  // Auto-play
   useEffect(() => {
-    autoplayRef.current = setInterval(() => {
-      if (!isDragging) {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        animateToSlide(nextIndex);
-      }
-    }, 5000);
+    const timer = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      setCurrentIndex(nextIndex);
+      scrollRef.current?.scrollTo({ x: nextIndex * (screenWidth - 32), animated: true });
+    }, 4500);
 
-    return () => clearInterval(autoplayRef.current);
-  }, [currentIndex, isDragging]);
-
-  const animateToSlide = (index: number) => {
-    Animated.timing(scrollX, {
-      toValue: index * containerWidth,
-      duration: 500,
-      useNativeDriver: true,
-    }).start(() => {
-      setCurrentIndex(index);
-    });
-  };
-
-  const handleScroll = (event: any) => {
-    const offset = event.nativeEvent.contentOffset.x;
-    const index = Math.round(offset / containerWidth);
-    if (index !== currentIndex && index >= 0 && index < slides.length) {
-      setCurrentIndex(index);
-    }
-  };
-
-  const handleMomentumBegin = () => setIsDragging(true);
-  const handleMomentumEnd = () => setIsDragging(false);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
 
   return (
     <View style={styles.container}>
       <ScrollView
-        horizontal={true}
-        pagingEnabled={true}
+        ref={scrollRef}
+        horizontal
+        pagingEnabled
         showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={16}
-        onScroll={handleScroll}
-        onMomentumScrollBegin={handleMomentumBegin}
-        onMomentumScrollEnd={handleMomentumEnd}
-        scrollRef={scrollX as any}
-        style={styles.scrollView}
+        onMomentumScrollEnd={(e) => {
+          const index = Math.round(e.nativeEvent.contentOffset.x / (screenWidth - 32));
+          setCurrentIndex(index);
+        }}
         contentContainerStyle={styles.scrollContent}
       >
-        {slides.map((slide, index) => (
-          <View key={slide.id} style={[styles.slide, { width: containerWidth }]}>
-            <Image
-              source={{ uri: slide.image }}
-              style={styles.slideImage}
-              resizeMode="cover"
-            />
-            <View style={styles.gradientOverlay} />
-            <View style={styles.content}>
-              <View style={styles.badgeContainer}>
-                <View style={styles.badge}>
-                  {slide.badge === 'Bestseller' && <Star style={styles.badgeIcon} />}
-                  {slide.badge === 'Lab Tested' && <Award style={styles.badgeIcon} />}
-                  {slide.badge === 'New Arrival' && <Sparkles style={styles.badgeIcon} />}
-                  <Text style={styles.badgeText}>{slide.badge}</Text>
-                </View>
+        {slides.map((slide) => (
+          <View key={slide.id} style={styles.slideCard}>
+            <Image source={{ uri: slide.image }} style={styles.slideImage} />
+            <View style={styles.overlay} />
+
+            <View style={styles.slideContent}>
+              <View style={styles.badge}>
+                <Sparkles size={12} color="#365314" />
+                <Text style={styles.badgeText}>{slide.badge}</Text>
               </View>
-              <Text style={styles.title}>{slide.title}</Text>
-              <Text style={styles.subtitle}>{slide.subtitle}</Text>
-              <Text style={styles.description}>{slide.description}</Text>
+
+              <Text style={styles.slideTitle}>{slide.title}</Text>
+              <Text style={styles.slideSub}>{slide.subtitle}</Text>
+
               <TouchableOpacity
-                style={styles.ctaButton}
-                onPress={() => {}}
+                style={styles.ctaBtn}
+                onPress={() => router.push(`/products/${slide.slug}`)}
+                activeOpacity={0.85}
               >
                 <Text style={styles.ctaText}>{slide.ctaText}</Text>
-                <ChevronRight style={styles.ctaArrow} />
+                <ArrowRight size={14} color="#365314" />
               </TouchableOpacity>
             </View>
           </View>
         ))}
       </ScrollView>
 
-      {/* Indicators */}
-      <View style={styles.indicators}>
-        {slides.map((_, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.indicator,
-              index === currentIndex && styles.indicatorActive,
-            ]}
-            onPress={() => animateToSlide(index)}
+      {/* Dots Indicator */}
+      <View style={styles.dotsRow}>
+        {slides.map((_, i) => (
+          <View
+            key={i}
+            style={[styles.dot, currentIndex === i && styles.dotActive]}
           />
         ))}
-      </View>
-
-      {/* Navigation Arrows */}
-      <View style={styles.navArrows}>
-        <TouchableOpacity style={styles.navArrow} onPress={() => animateToSlide((currentIndex - 1 + slides.length) % slides.length)}>
-          <ChevronLeft style={styles.navArrowIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navArrow} onPress={() => animateToSlide((currentIndex + 1) % slides.length)}>
-          <ChevronRight style={styles.navArrowIcon} />
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -159,155 +111,99 @@ export function HeroCarousel() {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
-    marginHorizontal: 20,
-    marginTop: 16,
-    marginBottom: 24,
-    borderRadius: 24,
-    overflow: 'hidden',
-  },
-  scrollView: {
-    flex: 1,
+    marginVertical: 4,
+    gap: 8,
   },
   scrollContent: {
-    flexDirection: 'row',
+    gap: 0,
   },
-  slide: {
+  slideCard: {
+    width: screenWidth - 32,
+    height: 220,
+    borderRadius: 24,
+    overflow: 'hidden',
     position: 'relative',
+    backgroundColor: '#1C1917',
   },
   slideImage: {
-    width: '100%',
-    height: 280,
-  },
-  gradientOverlay: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'transparent',
+    width: '100%',
+    height: '100%',
   },
-  content: {
+  overlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    padding: 24,
-    paddingBottom: 32,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.45)',
   },
-  badgeContainer: {
-    marginBottom: 12,
+  slideContent: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    padding: 18,
+    gap: 6,
   },
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 9999,
-    paddingHorizontal: 14,
-    paddingVertical: 6,
+    gap: 4,
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
     alignSelf: 'flex-start',
-    backdropFilter: 'blur(10px)',
-  },
-  badgeIcon: {
-    color: '#D9A441',
+    marginBottom: 2,
   },
   badgeText: {
-    color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
+    color: '#365314',
   },
-  title: {
-    fontSize: 24,
+  slideTitle: {
+    fontSize: 19,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginTop: 8,
-    lineHeight: 32,
-    fontFamily: 'Poppins_800ExtraBold',
+    lineHeight: 24,
   },
-  subtitle: {
-    fontSize: 14,
-    color: 'rgba(255, 255, 255, 0.9)',
-    marginTop: 4,
-    fontFamily: 'Inter_400Regular',
+  slideSub: {
+    fontSize: 12,
+    color: '#D9F99D',
+    marginBottom: 4,
   },
-  description: {
-    fontSize: 13,
-    color: 'rgba(255, 255, 255, 0.75)',
-    marginTop: 8,
-    lineHeight: 20,
-    maxWidth: '85%',
-    fontFamily: 'Inter_400Regular',
-  },
-  ctaButton: {
+  ctaBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginTop: 16,
-    paddingHorizontal: 24,
-    paddingVertical: 14,
     backgroundColor: '#FFFFFF',
-    borderRadius: 9999,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 10,
     alignSelf: 'flex-start',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 4,
+    gap: 6,
   },
   ctaText: {
     color: '#365314',
-    fontSize: 14,
     fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 12,
   },
-  ctaArrow: {
-    color: '#365314',
-  },
-  indicators: {
-    position: 'absolute',
-    bottom: 16,
-    left: 0,
-    right: 0,
+  dotsRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 8,
-    zIndex: 10,
+    gap: 6,
+    marginTop: 4,
   },
-  indicator: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+  dot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#D6D3D1',
   },
-  indicatorActive: {
-    width: 24,
-    backgroundColor: '#FFFFFF',
-  },
-  navArrows: {
-    position: 'absolute',
-    top: '50%',
-    left: 0,
-    right: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 8,
-    marginTop: -20,
-    zIndex: 10,
-    pointerEvents: 'none',
-  },
-  navArrow: {
-    pointerEvents: 'auto',
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backdropFilter: 'blur(10px)',
-  },
-  navArrowIcon: {
-    color: '#FFFFFF',
+  dotActive: {
+    width: 20,
+    backgroundColor: '#365314',
   },
 });

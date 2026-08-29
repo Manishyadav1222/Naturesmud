@@ -1,8 +1,6 @@
-'use client';
-
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Animated, ScrollView, Dimensions } from 'react-native';
-import { Leaf, ShieldCheck, Truck, Recycle, Heart, Sparkles, Award, CheckCircle2, Users, Droplets, Zap, Star } from 'lucide-react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Leaf, ShieldCheck, Truck, Recycle, Heart, Sparkles, CheckCircle2, Users } from 'lucide-react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -28,288 +26,140 @@ const promises = [
   {
     id: 'farm-fresh',
     title: 'Farm-to-Door Freshness',
-    description: 'Harvested at peak potency and delivered within 72 hours through our cold-chain logistics — preserving nutrients, flavor, and vitality.',
+    description: 'Harvested at peak potency and delivered through our cold-chain logistics — preserving nutrients, flavor, and vitality.',
     icon: Truck,
     color: '#D9A441',
     bgColor: '#FEFCE8',
-    stats: ['72-Hour Delivery', 'Cold-Chain Logistics', 'Temperature Controlled'],
-  },
-  {
-    id: 'eco-packaging',
-    title: 'Zero-Waste Packaging',
-    description: 'Plastic-free, compostable, and recyclable packaging made from plant fibers — protecting the Himalayas we source from.',
-    icon: Recycle,
-    color: '#65A30D',
-    bgColor: '#F7FEE7',
-    stats: ['100% Plastic-Free', 'Home Compostable', 'Plant-Fiber Materials'],
-  },
-  {
-    id: 'fair-trade',
-    title: 'Fair Trade & Farmer Welfare',
-    description: 'Above-market prices paid directly to farming families — funding education, healthcare, and sustainable agriculture in mountain communities.',
-    icon: Users,
-    color: '#EC4899',
-    bgColor: '#FDF2F8',
-    stats: ['2,500+ Farm Families', 'Fair Price Guarantee', 'Community Development'],
-  },
-  {
-    id: 'satisfaction',
-    title: 'Love It or Return It',
-    description: 'If you\'re not completely satisfied with any product, return it within 30 days for a full refund — no questions asked.',
-    icon: Heart,
-    color: '#EF4444',
-    bgColor: '#FEF2F2',
-    stats: ['30-Day Returns', 'Full Refund', 'Free Return Shipping'],
+    stats: ['Fast Nepal Delivery', 'Eco-Packaging', 'Fresh Sealed'],
   },
 ];
 
 export function OurPromisesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-
-  const handleScroll = (event: any) => {
-    const contentOffset = event.nativeEvent.contentOffset.x;
-    const index = Math.round(contentOffset / (screenWidth - 40));
-    if (index >= 0 && index < promises.length) {
-      setActiveIndex(index);
-    }
-  };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <View style={styles.badge}>
-            <Sparkles style={styles.badgeIcon} />
-            <Text style={styles.badgeText}>Our Promises</Text>
-          </View>
-          <Text style={styles.title}>Six Promises, One Purpose</Text>
-          <Text style={styles.subtitle}>
-            Unwavering commitments that guide every decision — from farm to your family
-          </Text>
+        <View style={styles.badge}>
+          <Sparkles size={14} color="#365314" />
+          <Text style={styles.badgeText}>Our Guarantees</Text>
         </View>
-        <View style={styles.headerRight}>
-          <View style={styles.decorativeLeaf}>
-            <Leaf style={styles.leafIcon} />
-          </View>
-        </View>
+        <Text style={styles.title}>Promises Guided by Nature</Text>
+        <Text style={styles.subtitle}>
+          Unwavering commitments that guide every harvest — from high mountain farms to your family.
+        </Text>
       </View>
 
       <ScrollView
-        horizontal={true}
+        horizontal
         showsHorizontalScrollIndicator={false}
-        snapToInterval={screenWidth - 40}
-        decelerationRate="fast"
-        onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: false })}
-        scrollEventThrottle={16}
-        style={styles.carousel}
         contentContainerStyle={styles.carouselContent}
       >
         {promises.map((promise, index) => (
-          <TouchableOpacity
+          <View
             key={promise.id}
-            style={[styles.card, { borderColor: index === activeIndex ? promise.color : 'rgba(43, 43, 43, 0.1)' }]}
-            onPress={() => setActiveIndex(index)}
-            activeOpacity={0.95}
+            style={[styles.card, { borderColor: index === activeIndex ? promise.color : '#E7E5E4' }]}
           >
-            <View style={styles.cardContent}>
-              <View style={[styles.iconContainer, { backgroundColor: promise.bgColor }]}>
-                <promise.icon style={[styles.icon, { color: promise.color }]} />
-              </View>
-
-              <View style={styles.textContent}>
-                <Text style={styles.promiseTitle}>{promise.title}</Text>
-                <Text style={styles.promiseDesc}>{promise.description}</Text>
-              </View>
-
-              <View style={styles.statsContainer}>
-                {promise.stats.map((stat, i) => (
-                  <View key={i} style={styles.statItem}>
-                    <CheckCircle2 style={[styles.statIcon, { color: promise.color }]} />
-                    <Text style={styles.statText}>{stat}</Text>
-                  </View>
-                ))}
-              </View>
+            <View style={[styles.iconContainer, { backgroundColor: promise.bgColor }]}>
+              <promise.icon size={26} color={promise.color} />
             </View>
 
-            {/* Active indicator */}
-            <Animated.View
-              style={[
-                styles.activeIndicator,
-                { backgroundColor: promise.color },
-                { transform: [{ translateX: scrollX.interpolate({ inputRange: [index * (screenWidth - 40), (index + 1) * (screenWidth - 40)], outputRange: [0, screenWidth - 40] }) }] },
-              ]}
-            />
-          </TouchableOpacity>
+            <Text style={styles.promiseTitle}>{promise.title}</Text>
+            <Text style={styles.promiseDesc}>{promise.description}</Text>
+
+            <View style={styles.statsContainer}>
+              {promise.stats.map((stat, i) => (
+                <View key={i} style={styles.statItem}>
+                  <CheckCircle2 size={14} color={promise.color} />
+                  <Text style={styles.statText}>{stat}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
         ))}
       </ScrollView>
-
-      {/* Dots indicator */}
-      <View style={styles.dotsContainer}>
-        {promises.map((_, index) => (
-          <View
-            key={index}
-            style={[
-              styles.dot,
-              index === activeIndex && styles.dotActive,
-              { backgroundColor: index === activeIndex ? promises[activeIndex].color : 'rgba(43, 43, 43, 0.2)' },
-            ]}
-          />
-        ))}
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    marginHorizontal: 20,
+    marginVertical: 10,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 24,
-  },
-  headerLeft: {
-    flex: 1,
+    paddingHorizontal: 16,
+    marginBottom: 14,
   },
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#F5F7EF',
-    borderRadius: 9999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    gap: 4,
+    backgroundColor: '#ECFCCB',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
     alignSelf: 'flex-start',
-    marginBottom: 12,
-  },
-  badgeIcon: {
-    color: '#365314',
+    marginBottom: 6,
   },
   badgeText: {
-    fontSize: 12,
-    fontWeight: '600',
+    fontSize: 11,
+    fontWeight: '700',
     color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
   },
   title: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    marginBottom: 4,
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#1C1917',
   },
   subtitle: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    fontFamily: 'Inter_400Regular',
-  },
-  headerRight: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#F5F7EF',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  leafIcon: {
-    color: '#365314',
-  },
-  carousel: {
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    fontSize: 12,
+    color: '#78716C',
+    marginTop: 2,
   },
   carouselContent: {
-    gap: 16,
-    paddingBottom: 8,
+    paddingHorizontal: 16,
+    gap: 12,
   },
   card: {
-    width: screenWidth - 40,
+    width: screenWidth * 0.75,
     backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    borderWidth: 2,
-    padding: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.08,
-    shadowRadius: 24,
-    elevation: 6,
-  },
-  cardContent: {
-    gap: 16,
+    borderRadius: 18,
+    padding: 16,
+    borderWidth: 1.5,
+    gap: 10,
   },
   iconContainer: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  icon: {
-    width: 28,
-    height: 28,
-  },
-  textContent: {
-    gap: 8,
-  },
   promiseTitle: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
+    color: '#1C1917',
   },
   promiseDesc: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    lineHeight: 22,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#57534E',
+    lineHeight: 18,
   },
   statsContainer: {
-    gap: 10,
-    marginTop: 8,
+    gap: 6,
+    marginTop: 4,
+    borderTopWidth: 1,
+    borderTopColor: '#F5F5F4',
+    paddingTop: 8,
   },
   statItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-  },
-  statIcon: {
-    width: 18,
-    height: 18,
+    gap: 6,
   },
   statText: {
-    fontSize: 12,
-    color: '#2B2B2B',
-    opacity: 0.8,
-    fontFamily: 'Inter_400Regular',
-  },
-  activeIndicator: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    height: 4,
-    borderBottomLeftRadius: 22,
-    borderBottomRightRadius: 22,
-  },
-  dotsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 8,
-    paddingTop: 8,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-  dotActive: {
-    width: 24,
-    borderRadius: 4,
+    fontSize: 11,
+    color: '#292524',
+    fontWeight: '500',
   },
 });

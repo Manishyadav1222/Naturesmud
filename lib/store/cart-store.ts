@@ -15,12 +15,40 @@ export interface ResolvedCartProduct {
 }
 
 export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
+  // First look up against authoritative catalog by slug or ID
+  const slug = item.product?.slug || item.productId;
+  const found =
+    getProductBySlug(slug) ||
+    getProductById(item.productId) ||
+    (item.product?.id ? getProductById(String(item.product.id)) : undefined);
+
+  if (found) {
+    return {
+      id: found.id,
+      slug: found.slug,
+      name: found.name,
+      price: typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0'),
+      compareAtPrice: found.compareAtPrice,
+      image: found.image || item.product?.image || '/products/sweet-potato-powder.jpg',
+      weight: found.weight || '100 GM',
+      category: found.category || 'Organic',
+    };
+  }
+
   let snapPrice = 0;
   if (item.product && typeof item.product.price !== 'undefined') {
     snapPrice = typeof item.product.price === 'number' ? item.product.price : parseFloat(String(item.product.price) || '0');
   }
 
   if (item.product && item.product.name && snapPrice > 0) {
+    const rawWeight = item.product.weight;
+    let cleanWeight = '100 GM';
+    if (rawWeight && !/^\d+(\.00)?$/.test(String(rawWeight).trim())) {
+      cleanWeight = String(rawWeight);
+    } else if (rawWeight) {
+      cleanWeight = `${parseFloat(String(rawWeight))} GM`;
+    }
+
     return {
       id: item.product.id,
       slug: item.product.slug,
@@ -28,23 +56,8 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
       price: snapPrice,
       compareAtPrice: item.product.compareAtPrice,
       image: item.product.image || '/products/sweet-potato-powder.jpg',
-      weight: item.product.weight || '100g',
+      weight: cleanWeight,
       category: item.product.category || 'Organic',
-    };
-  }
-
-  const found = getProductById(item.productId) || getProductBySlug(item.productId);
-  if (found) {
-    const catalogPrice = typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0');
-    return {
-      id: found.id,
-      slug: found.slug,
-      name: found.name,
-      price: catalogPrice,
-      compareAtPrice: found.compareAtPrice,
-      image: found.image || (Array.isArray(found.images) ? found.images[0] : '/products/sweet-potato-powder.jpg'),
-      weight: found.weight || '100g',
-      category: found.category || 'Organic',
     };
   }
 
@@ -54,7 +67,7 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
     name: 'Pure Himalayan Product',
     price: 0,
     image: '/products/sweet-potato-powder.jpg',
-    weight: '100g',
+    weight: '100 GM',
     category: 'Organic',
   };
 }
@@ -84,38 +97,41 @@ export const useCartStore = create<CartState>()(
         let productSnapshot: CartProductSnapshot | undefined;
 
         if (typeof productOrId === 'object' && productOrId !== null) {
-          productId = String(productOrId.slug || productOrId.id);
+          const rawSlugOrId = String(productOrId.slug || productOrId.id || '');
+          const found = getProductBySlug(rawSlugOrId) || getProductById(rawSlugOrId);
+          productId = found ? found.slug : rawSlugOrId;
+
           const rawPrice = typeof productOrId.price === 'number' ? productOrId.price : parseFloat(productOrId.price || '0');
-          const rawCompare = productOrId.compareAtPrice ? (typeof productOrId.compareAtPrice === 'number' ? productOrId.compareAtPrice : parseFloat(productOrId.compareAtPrice)) : undefined;
-          
+          const canonicalPrice = found ? found.price : (isNaN(rawPrice) ? 0 : rawPrice);
+          const canonicalWeight = found ? found.weight : (productOrId.weight ? String(productOrId.weight) : '100 GM');
+
           productSnapshot = {
-            id: String(productOrId.id || productOrId.slug),
-            slug: productOrId.slug || String(productOrId.id),
-            name: productOrId.name || 'Organic Product',
-            price: isNaN(rawPrice) ? 0 : rawPrice,
-            compareAtPrice: rawCompare,
-            image: productOrId.image || (Array.isArray(productOrId.images) ? productOrId.images[0] : '/products/cranberries.jpg'),
-            weight: productOrId.weight || '',
+            id: String(found?.id || productOrId.id || productId),
+            slug: found?.slug || productOrId.slug || productId,
+            name: found?.name || productOrId.name || 'Organic Product',
+            price: canonicalPrice,
+            compareAtPrice: found?.compareAtPrice ?? productOrId.compareAtPrice,
+            image: found?.image || productOrId.image || (Array.isArray(productOrId.images) ? productOrId.images[0] : '/products/cranberries.jpg'),
+            weight: canonicalWeight,
             category: typeof productOrId.category === 'object' ? productOrId.category?.name : (productOrId.category || 'Organic'),
           };
         } else {
           productId = String(productOrId);
-          if (snapshot) {
+          const found = getProductBySlug(productId) || getProductById(productId);
+          if (found) {
+            productId = found.slug;
+            productSnapshot = {
+              id: found.id,
+              slug: found.slug,
+              name: found.name,
+              price: found.price,
+              compareAtPrice: found.compareAtPrice,
+              image: found.image,
+              weight: found.weight,
+              category: found.category,
+            };
+          } else if (snapshot) {
             productSnapshot = snapshot;
-          } else {
-            const found = getProductById(productId) || getProductBySlug(productId);
-            if (found) {
-              productSnapshot = {
-                id: found.id,
-                slug: found.slug,
-                name: found.name,
-                price: found.price,
-                compareAtPrice: found.compareAtPrice,
-                image: found.image,
-                weight: found.weight,
-                category: found.category,
-              };
-            }
           }
         }
 

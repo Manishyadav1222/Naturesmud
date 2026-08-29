@@ -48,43 +48,43 @@ export const babyMotherCombos: BabyMotherCombo[] = [
   {
     id: 'combo-baby-solids',
     title: 'Little Explorer First Solids Superfood Kit',
-    subtitle: 'Sprouted Organic Cereals, Walnut DHA Powder & Pure Date Sweetener',
+    subtitle: 'Organic Sweet Potato Powder, Carrot Powder & Pure Date Sweetener',
     stageName: '🍼 6–24m First Solids Care',
     badge: '22% OFF · Pediatrician Approved',
     categoryIcon: '🍼',
     categoryLabel: '6-24m Solids',
     discountPercentage: 22,
-    originalPrice: 1850,
-    offerPrice: 1450,
+    originalPrice: 1350,
+    offerPrice: 1050,
     couponCode: 'BABYFIRST10',
     tag: 'Gentle on Little Tumtum',
     doctorGuarantee: 'Zero added refined sugar, salt, or preservatives. Micro-pulverized for gentle infant swallowing.',
     items: [
       {
-        productId: 'baby-1',
-        name: 'Sprouted Ragi & Oats Porridge',
+        productId: '25',
+        name: 'Organic Sweet Potato Powder',
         weight: '100g',
-        image: '/products/superfood-mix.jpg',
-        price: 650,
+        image: '/products/sweet-potato-powder-100g.jpg',
+        price: 510,
       },
       {
-        productId: 'baby-2',
-        name: 'Almond & Walnut DHA Powder',
+        productId: '24',
+        name: 'Organic Carrot Powder',
         weight: '100g',
-        image: '/products/almonds.jpg',
-        price: 750,
+        image: '/products/carrot-powder.jpg',
+        price: 490,
       },
       {
-        productId: 'baby-3',
-        name: 'Sun-Dried Date Powder',
+        productId: '8',
+        name: 'Natural Dates Powder Sweetener',
         weight: '100g',
         image: '/products/dates-powder-100g.jpg',
-        price: 450,
+        price: 350,
       },
     ],
     highlights: [
-      'High Bio-Available Calcium for Bone Growth',
-      'Plant DHA for Rapid Infant Brain Development',
+      'High Beta-Carotene for Infant Eyesight Growth',
+      'Gentle Hypoallergenic Carbohydrates for First Weaning',
       '100% Sugar-Free & Preservative-Free',
       'Micro-Pulverized for Easy Swallowing',
     ],
@@ -92,38 +92,38 @@ export const babyMotherCombos: BabyMotherCombo[] = [
   {
     id: 'combo-pregnancy-nourish',
     title: 'Motherhood Pregnancy Complete Nourishment Box',
-    subtitle: 'High-Iron Sun-Dried Figs, Pure Saffron & Raw Himalayan Walnuts',
+    subtitle: 'High-Iron Sun-Dried Figs, Chia Seeds & Mountain Almonds',
     stageName: '🤰 Pregnancy Trimesters 1, 2 & 3',
     badge: '20% OFF · Gynecologist Pick',
     categoryIcon: '🤰',
     categoryLabel: 'Pregnancy',
     discountPercentage: 20,
-    originalPrice: 3600,
-    offerPrice: 2890,
+    originalPrice: 1935,
+    offerPrice: 1548,
     couponCode: 'MOMCARE10',
     tag: 'Folate & Iron Rich',
     doctorGuarantee: 'Natural whole food nutrition packed with organic folates, iron, magnesium, and essential fatty acids.',
     items: [
       {
-        productId: 'mom-1',
-        name: 'Organic Whole Chia Seeds',
-        weight: '100g',
+        productId: '16',
+        name: 'Premium Whole Dried Figs (Anjeer)',
+        weight: '200g',
+        image: '/products/dates-powder-product-shot.jpg',
+        price: 690,
+      },
+      {
+        productId: '12',
+        name: 'Premium Black Chia Seeds',
+        weight: '300g',
         image: '/products/chia-seeds.jpg',
-        price: 499,
+        price: 495,
       },
       {
-        productId: 'mom-2',
-        name: 'Pure Himalayan Shilajit Resin',
-        weight: '20g',
-        image: '/products/shilajit.jpg',
-        price: 1999,
-      },
-      {
-        productId: 'mom-3',
-        name: 'Himalayan Raw Forest Honey',
-        weight: '100g',
-        image: '/products/raw-honey.jpg',
-        price: 999,
+        productId: '18',
+        name: 'Raw Himalayan Mountain Almonds',
+        weight: '200g',
+        image: '/products/almonds.jpg',
+        price: 750,
       },
     ],
     highlights: [
@@ -136,82 +136,82 @@ export const babyMotherCombos: BabyMotherCombo[] = [
   {
     id: 'combo-postpartum-recovery',
     title: 'Sutkeri Postpartum Recovery & Lactation Support Pack',
-    subtitle: 'Methi-Gond Energy Ladoo Mix, Flax Lignans & Wild Mountain Honey',
+    subtitle: 'Virgin Coconut Oil, Roasted Almonds & Dates Powder',
     stageName: '🤱 Sutkeri Postpartum Recovery',
     badge: '25% OFF · Traditional Sutkeri Care',
     categoryIcon: '🤱',
     categoryLabel: 'Postpartum',
     discountPercentage: 25,
-    originalPrice: 2800,
-    offerPrice: 2100,
+    originalPrice: 1750,
+    offerPrice: 1310,
     couponCode: 'SUTKERI15',
     tag: 'Boosts Breastmilk Supply',
     doctorGuarantee: 'Time-tested Himalayan lactation galactagogues. Restores maternal core strength, pelvic tone, and hormonal balance.',
     items: [
       {
-        productId: 'sutkeri-1',
-        name: 'Golden Roasted Flax Seeds',
-        weight: '100g',
-        image: '/products/flax-seeds.jpg',
-        price: 449,
+        productId: '23',
+        name: 'Cold-Pressed Extra Virgin Coconut Oil',
+        weight: '180ml',
+        image: '/products/coconut-oil-product.jpg',
+        price: 650,
       },
       {
-        productId: 'sutkeri-2',
-        name: 'Pure Wild Honey Jar',
+        productId: '17',
+        name: 'Premium Roasted Himalayan Almonds',
         weight: '100g',
-        image: '/products/raw-honey.jpg',
-        price: 999,
+        image: '/products/almonds-2.jpg',
+        price: 750,
       },
       {
-        productId: 'sutkeri-3',
-        name: 'California Almonds Whole',
+        productId: '8',
+        name: 'Natural Dates Powder Sweetener',
         weight: '100g',
-        image: '/products/almonds.jpg',
-        price: 799,
+        image: '/products/dates-powder-100g.jpg',
+        price: 350,
       },
     ],
     highlights: [
-      'Clinically Proven Natural Galactagogues',
+      'Natural Lauric Acid for Breastmilk Immunity',
       'Fast-Tracks Postpartum Uterine Recovery',
-      'High Omega-3 Fatty Acids for Baby DHA Milk',
-      'Restores Maternal Bone Calcium',
+      'High Omega-3 Fatty Acids for Baby Brain DHA',
+      'Restores Maternal Bone Calcium & Stamina',
     ],
   },
   {
     id: 'combo-kids-crunch',
     title: 'Super-Kids Brain & Immunity Crunch Box',
-    subtitle: 'Turmeric Roasted Foxnut Makhana, Raw Pumpkin Seeds & Cranberries',
+    subtitle: 'Superfood Mix Dry Nuts, Raw Pumpkin Seeds & Whole Cranberries',
     stageName: '🧒 Toddlers & Kids (2+ Years)',
     badge: '21% OFF · School Snack',
     categoryIcon: '🧒',
     categoryLabel: 'Toddler 2y+',
     discountPercentage: 21,
-    originalPrice: 2100,
-    offerPrice: 1650,
+    originalPrice: 1755,
+    offerPrice: 1380,
     couponCode: 'KIDCRUNCH10',
-    tag: '100% Oil-Free Roasted',
-    doctorGuarantee: '100% oil-free dry roasted snacking. Replaces junk chips and biscuits with nutrient-dense mountain superfoods.',
+    tag: '100% Oil-Free Healthy Snack',
+    doctorGuarantee: '100% oil-free dry snacking. Replaces junk chips and biscuits with nutrient-dense mountain superfoods.',
     items: [
       {
-        productId: 'kid-1',
-        name: 'Antioxidant Superfood Mix',
-        weight: '100g',
+        productId: '20',
+        name: 'Himalayan Superfood Mix Dry Nuts',
+        weight: '300g',
         image: '/products/superfood-mix.jpg',
+        price: 690,
+      },
+      {
+        productId: '13',
+        name: 'Organic Himalayan Pumpkin Seeds',
+        weight: '300g',
+        image: '/products/pumpkin-seeds.jpg',
         price: 650,
       },
       {
-        productId: 'kid-2',
-        name: 'Raw Organic Pumpkin Seeds',
-        weight: '100g',
-        image: '/products/pumpkin-seeds.jpg',
-        price: 549,
-      },
-      {
-        productId: 'kid-3',
-        name: 'Dried Tart Cranberries',
+        productId: '7',
+        name: 'Whole Dried Cranberries',
         weight: '100g',
         image: '/products/cranberries.jpg',
-        price: 649,
+        price: 415,
       },
     ],
     highlights: [
@@ -247,19 +247,6 @@ export default function BabyMotherCombosSection() {
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  // Auto-scroll active tab into view horizontally inside container without affecting whole-page vertical scroll
-  useEffect(() => {
-    const currentBtn = tabRefs.current[activeIdx];
-    const container = tabsRef.current;
-    if (currentBtn && container) {
-      const scrollOffset =
-        currentBtn.offsetLeft - container.offsetLeft - (container.clientWidth / 2) + (currentBtn.clientWidth / 2);
-      container.scrollTo({
-        left: Math.max(0, scrollOffset),
-        behavior: 'smooth',
-      });
-    }
-  }, [activeIdx]);
 
   const handleCopyCode = (code: string) => {
     navigator.clipboard.writeText(code);
@@ -313,12 +300,8 @@ export default function BabyMotherCombosSection() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -70, scale: 0.95 }}
-      whileInView={{ opacity: 1, x: 0, scale: 1 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full max-w-[580px] relative group mt-0"
+    <div
+      className="w-full max-w-[580px] relative group mt-0 overflow-hidden sm:overflow-visible"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
@@ -327,8 +310,8 @@ export default function BabyMotherCombosSection() {
       {/* Ambient decorative glow around offer card */}
       <div className="absolute -inset-1 rounded-[2.2rem] bg-gradient-to-r from-amber-500/25 via-primary/20 to-gold/30 blur-xl opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none" />
 
-      {/* Main Glassmorphic Card (Identical in size & layout to HeroOfferSection) */}
-      <div className="relative rounded-[2.2rem] bg-white/95 backdrop-blur-2xl border border-white/90 p-5 sm:p-6 shadow-[0_20px_50px_rgba(58,107,53,0.12)] overflow-hidden">
+      {/* Main Card */}
+      <div className="relative rounded-[2.2rem] bg-white border border-ink/8 p-5 sm:p-6 shadow-[0_15px_40px_rgba(58,107,53,0.08)] overflow-hidden">
         {/* Subtle decorative background pattern */}
         <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-amber-400/15 via-gold/10 to-transparent rounded-full blur-2xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-xl pointer-events-none" />
@@ -421,16 +404,17 @@ export default function BabyMotherCombosSection() {
           })}
         </div>
 
-        {/* Dynamic Offer Content Area */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentCombo.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
-            className="relative z-10 pt-2 space-y-3.5"
-          >
+        {/* Dynamic Offer Content Area with Fixed Min-Height to Prevent CLS / Scroll Jumping */}
+        <div className="relative min-h-[385px] flex flex-col justify-between">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentCombo.id}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 pt-2 space-y-3.5 flex flex-col justify-between h-full"
+            >
             {/* Title & Tagline */}
             <div>
               <div className="flex items-center gap-2">
@@ -470,7 +454,9 @@ export default function BabyMotherCombosSection() {
                     <p className="text-[11px] font-bold text-dark leading-tight line-clamp-1">
                       {item.name}
                     </p>
-                    <p className="text-[10px] text-gray-500 font-mono mt-0.5">{item.weight}</p>
+                    <p className="text-[10px] text-gray-500 font-mono mt-0.5">
+                      {item.weight && /^\d+(\.00)?$/.test(item.weight.trim()) ? `${parseFloat(item.weight)} GM` : item.weight}
+                    </p>
 
                     {/* Plus connector between images */}
                     {i < currentCombo.items.length - 1 && (
@@ -558,7 +544,8 @@ export default function BabyMotherCombosSection() {
             </div>
           </motion.div>
         </AnimatePresence>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

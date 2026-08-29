@@ -2,6 +2,8 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -11,7 +13,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
   },
   experimental: {
-    optimizePackageImports: ['framer-motion', 'lucide-react', 'swiper'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', 'swiper', 'date-fns', 'clsx', 'tailwind-merge', 'sonner'],
   },
   async headers() {
     return [

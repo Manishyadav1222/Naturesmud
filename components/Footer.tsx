@@ -19,14 +19,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-ink text-white/80 relative overflow-hidden">
-      {/* Decorative organic blob */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-      <div className="absolute bottom-0 -left-32 w-80 h-80 rounded-full bg-gold/10 blur-3xl" />
-      <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full bg-secondary/10 blur-2xl" />
+    <footer className="bg-ink text-white/80 relative overflow-hidden w-full max-w-full">
+      {/* Decorative background glows */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-0 -left-32 w-80 h-80 bg-[radial-gradient(circle,rgba(217,164,65,0.10)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-40 h-40 bg-[radial-gradient(circle,rgba(122,169,92,0.10)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Trust badges */}
-      <div className="relative border-b border-white/10 bg-white/5 backdrop-blur-sm">
+      <div className="relative border-b border-white/10 bg-white/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
 { icon: Truck, title: 'Free Delivery', text: 'On orders over Rs. 10,000', accent: 'from-primary-500/20 to-primary-600/20 text-primary-300' },
@@ -110,9 +110,9 @@ export default function Footer() {
 
         {/* Link columns */}
         {[
-          { title: 'Company', links: footerLinks.company },
-          { title: 'Products', links: footerLinks.products },
-          { title: 'Support', links: footerLinks.support },
+          { title: 'Company & Story', links: footerLinks.company },
+          { title: 'Products & Superfoods', links: footerLinks.products },
+          { title: 'Support & Catalog', links: [...footerLinks.support, ...footerLinks.business] },
         ].map((col) => (
           <div key={col.title}>
             <h3 className="font-heading font-semibold text-white text-sm mb-5 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-primary after:rounded-full">
@@ -135,9 +135,9 @@ export default function Footer() {
         ))}
       </div>
 
-      {/* Newsletter - modern glass card */}
+      {/* Newsletter card */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14">
-        <div className="rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-secondary/20 border border-white/10 p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center backdrop-blur-sm">
+        <div className="rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-secondary/20 border border-white/10 p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1.5 font-heading text-xs font-semibold uppercase tracking-widest text-primary-200 mb-3">
               <Sparkles className="w-3 h-3" /> Join Our Community
@@ -159,7 +159,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="w-full rounded-full bg-white/10 border border-white/20 pl-11 pr-4 py-3.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 backdrop-blur transition-all"
+                className="w-full rounded-full bg-white/10 border border-white/20 pl-11 pr-4 py-3.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
               />
             </div>
             <button
@@ -177,7 +177,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="relative border-t border-white/10 bg-black/20 backdrop-blur-sm">
+      <div className="relative border-t border-white/10 bg-black/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/50">
             © {new Date().getFullYear()} Nature's Mud. All rights reserved.

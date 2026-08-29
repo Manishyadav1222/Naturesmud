@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface CartItem {
+export interface CartItem {
   id: string;
   slug: string;
   name: string;
@@ -12,7 +12,6 @@ interface CartItem {
   weight: string;
   category: string;
   quantity: number;
-  product?: any;
 }
 
 interface CartState {
@@ -23,30 +22,44 @@ interface CartState {
   clearCart: () => void;
   getSubtotal: () => number;
   getTotalItems: () => number;
+  getShippingCost: () => number;
+  getDiscountAmount: () => number;
+  getTotal: () => number;
   isInCart: (productId: string) => boolean;
   getItemQuantity: (productId: string) => number;
-  syncWithServer: () => Promise<void>;
-  applyCoupon: (code: string) => Promise<{ discount: number } | null>;
+  applyCoupon: (code: string) => { success: boolean; message: string; discountPercent?: number };
   removeCoupon: () => void;
   couponCode: string | null;
-  couponDiscount: number;
+  couponDiscountPercent: number;
 }
 
 const CART_STORAGE_KEY = 'naturesmud_cart';
+export const FREE_SHIPPING_THRESHOLD = 3000;
+export const STANDARD_SHIPPING_FEE = 150;
+
+const VALID_COUPONS: Record<string, number> = {
+  WELCOME10: 10,
+  NATURES15: 15,
+  HIMALAYA20: 20,
+  ORGANIC5: 5,
+};
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
       couponCode: null,
-      couponDiscount: 0,
+      couponDiscountPercent: 0,
 
       addItem: (item, quantity = 1) => {
         set((state) => {
           const existingIndex = state.items.findIndex((i) => i.id === item.id);
           if (existingIndex >= 0) {
             const newItems = [...state.items];
-            newItems[existingIndex].quantity += quantity;
+            newItems[existingIndex] = {
+              ...newItems[existingIndex],
+              quantity: newItems[existingIndex].quantity + quantity,
+            };
             return { items: newItems };
           }
           return { items: [...state.items, { ...item, quantity }] };
@@ -72,7 +85,7 @@ export const useCartStore = create<CartState>()(
       },
 
       clearCart: () => {
-        set({ items: [], couponCode: null, couponDiscount: 0 });
+        set({ items: [], couponCode: null, couponDiscountPercent: 0 });
       },
 
       getSubtotal: () => {
@@ -81,6 +94,26 @@ export const useCartStore = create<CartState>()(
 
       getTotalItems: () => {
         return get().items.reduce((sum, item) => sum + item.quantity, 0);
+      },
+
+      getShippingCost: () => {
+        const subtotal = get().getSubtotal();
+        if (subtotal === 0) return 0;
+        return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_FEE;
+      },
+
+      getDiscountAmount: () => {
+        const subtotal = get().getSubtotal();
+        const percent = get().couponDiscountPercent;
+        if (percent <= 0) return 0;
+        return Math.round((subtotal * percent) / 100);
+      },
+
+      getTotal: () => {
+        const subtotal = get().getSubtotal();
+        const shipping = get().getShippingCost();
+        const discount = get().getDiscountAmount();
+        return Math.max(0, subtotal + shipping - discount);
       },
 
       isInCart: (productId) => {
@@ -92,27 +125,25 @@ export const useCartStore = create<CartState>()(
         return item?.quantity || 0;
       },
 
-      syncWithServer: async () => {
-        // TODO: Implement server sync when user logs in
-        // This would merge local cart with server cart
-      },
-
-      applyCoupon: async (code) => {
-        // TODO: Call API to validate coupon
-        // For now, mock implementation
-        if (code === 'WELCOME10') {
-          set({ couponCode: 'WELCOME10', couponDiscount: get().getSubtotal() * 0.1 });
-          return { discount: get().getSubtotal() * 0.1 };
+      applyCoupon: (code) => {
+        const cleanCode = code.trim().toUpperCase();
+        if (VALID_COUPONS[cleanCode]) {
+          const discountPercent = VALID_COUPONS[cleanCode];
+          set({ couponCode: cleanCode, couponDiscountPercent: discountPercent });
+          return {
+            success: true,
+            message: `Coupon '${cleanCode}' applied! You saved ${discountPercent}%.`,
+            discountPercent,
+          };
         }
-        if (code === 'HIMALAYA20') {
-          set({ couponCode: 'HIMALAYA20', couponDiscount: get().getSubtotal() * 0.2 });
-          return { discount: get().getSubtotal() * 0.2 };
-        }
-        return null;
+        return {
+          success: false,
+          message: 'Invalid promo code. Try WELCOME10 or HIMALAYA20.',
+        };
       },
 
       removeCoupon: () => {
-        set({ couponCode: null, couponDiscount: 0 });
+        set({ couponCode: null, couponDiscountPercent: 0 });
       },
     }),
     {
@@ -121,7 +152,7 @@ export const useCartStore = create<CartState>()(
       partialize: (state) => ({
         items: state.items,
         couponCode: state.couponCode,
-        couponDiscount: state.couponDiscount,
+        couponDiscountPercent: state.couponDiscountPercent,
       }),
     }
   )

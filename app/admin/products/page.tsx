@@ -14,6 +14,7 @@ import { Skeleton } from '@/components/admin/Skeleton';
 import { EmptyState } from '@/components/admin/EmptyState';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 import { formatNPR, formatNumber, timeAgo, cn } from '@/lib/admin/utils';
+import { resolveImageUrl } from '@/lib/utils';
 import {
   Package,
   Plus,
@@ -379,7 +380,14 @@ export default function AdminProductsPage() {
                       <td className="px-6 py-4">
                         <Link href={`/admin/products/${product.id}`} className="flex items-center gap-3">
                           {product.image ? (
-                            <img src={product.image} alt={product.name} className="h-12 w-12 rounded-xl object-cover" />
+                            <img
+                              src={resolveImageUrl(product.image, '/products/sweet-potato-powder-100g.jpg')}
+                              alt={product.name}
+                              className="h-12 w-12 rounded-xl object-cover"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = '/products/sweet-potato-powder-100g.jpg';
+                              }}
+                            />
                           ) : (
                             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
                               <Package className="h-6 w-6 text-primary-600" />

@@ -266,7 +266,11 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
                     <td className="py-3.5 text-gray-400 font-mono">{idx + 1}</td>
                     <td className="py-3.5">
                       <p className="font-bold text-gray-900 text-sm">{name}</p>
-                      {item.weight && <p className="text-[11px] text-gray-400">{item.weight}</p>}
+                      {item.weight && (
+                        <p className="text-[11px] text-gray-400">
+                          {/^\d+(\.00)?$/.test(String(item.weight).trim()) ? `${parseFloat(String(item.weight))} GM` : item.weight}
+                        </p>
+                      )}
                       <p className="text-[10px] text-emerald-700 font-medium">100% Organic · Chemical Free</p>
                     </td>
                     <td className="py-3.5 text-center font-bold text-gray-800">{qty}</td>

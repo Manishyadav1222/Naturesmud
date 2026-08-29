@@ -86,10 +86,10 @@ const regionsData = [
     locations: 'Mustang · Jumla · Manang · Dolpa',
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     primaryProducts: [
-      { name: 'Wild Mustang Cliff Raw Honey', image: '/products/raw-honey.jpg', slug: 'raw-honey' },
-      { name: 'Wild Dried Himalayan Blueberries (100g)', image: '/products/dried-blueberries-100g.jpg', slug: 'dried-blueberries' },
-      { name: 'Raw Himalayan Walnut Halves', image: '/products/walnuts.jpg', slug: 'himalayan-walnuts' },
-      { name: 'Pure Himalayan Shilajit Resin', image: '/products/shilajit.jpg', slug: 'pure-shilajit-resin' },
+      { name: 'Dehydrated Himalayan Apple Rings', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
+      { name: 'Wild Dried Himalayan Blueberries (100g)', image: '/products/dried-blueberries.jpg', slug: 'dried-blueberries' },
+      { name: 'Raw Himalayan Mountain Almonds (200g)', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
+      { name: 'Ancient Himalayan Pink Rock Salt', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
     farmerCount: '75+ Indigenous Foragers & Harvesters',
     impactStory:

@@ -1,10 +1,11 @@
-'use client';
-
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { Link } from 'expo-router';
-import { Star, Star as StarFilled, Heart, Heart as HeartFilled, Tag, Zap, ShieldCheck } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
+import { Star, Heart, ShieldCheck, Zap } from 'lucide-react-native';
 import { formatPrice, calculateDiscount } from '@/lib/utils';
+import { useWishlistStore } from '@/store/wishlist-store';
+import { useCartStore } from '@/store/cart-store';
+import { toast } from '@/store/ui-store';
 import type { Product } from '@/types';
 
 const { width: screenWidth } = Dimensions.get('window');
@@ -22,23 +23,58 @@ export function ProductCard({
   showQuickAdd = false,
   onQuickAdd,
 }: ProductCardProps) {
-  const discount = product.compareAtPrice ? calculateDiscount(product.compareAtPrice, product.price) : 0;
-  const isCompact = variant === 'compact';
-  const isFeatured = variant === 'featured';
+  const router = useRouter();
+  const { toggleFavorite, isFavorite } = useWishlistStore();
+  const { addItem } = useCartStore();
 
-  const cardWidth = isCompact
-    ? (screenWidth - 56) / 2
-    : isFeatured
-    ? (screenWidth - 40) * 0.6
-    : (screenWidth - 56) / 2;
+  const favorited = isFavorite(product.id);
+  const discount = product.compareAtPrice
+    ? calculateDiscount(product.compareAtPrice, product.price)
+    : 0;
+
+  const isCompact = variant === 'compact';
+
+  const handleCardPress = () => {
+    router.push({
+      pathname: '/products/[slug]',
+      params: { slug: product.slug },
+    });
+  };
+
+  const handleToggleWishlist = () => {
+    const next = toggleFavorite(product.id);
+    if (next) {
+      toast.success('Wishlist Updated', `${product.name} saved.`);
+    } else {
+      toast.info('Removed from Wishlist', `${product.name} removed.`);
+    }
+  };
+
+  const handleDefaultQuickAdd = () => {
+    if (onQuickAdd) {
+      onQuickAdd();
+    } else {
+      addItem({
+        id: product.id,
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
+        compareAtPrice: product.compareAtPrice,
+        image: product.image,
+        weight: product.weight,
+        category: product.category,
+      });
+      toast.success('Added to Cart', `${product.name} added.`);
+    }
+  };
 
   return (
     <TouchableOpacity
-      style={[styles.card, { width: cardWidth }]}
-      onPress={() => {}}
-      activeOpacity={0.9}
+      style={[styles.card, isCompact && styles.cardCompact]}
+      onPress={handleCardPress}
+      activeOpacity={0.88}
     >
-      {/* Image */}
+      {/* Image & Overlay Badges */}
       <View style={styles.imageContainer}>
         <Image
           source={{ uri: product.image }}
@@ -46,47 +82,42 @@ export function ProductCard({
           resizeMode="cover"
         />
 
-        {/* Badges */}
-        <View style={styles.badges}>
+        {/* Badges Top-Left */}
+        <View style={styles.badgeColumn}>
           {discount > 0 && (
-            <View style={[styles.badge, styles.badgeDiscount]}>
-              <Text style={styles.badgeText}>{discount}% OFF</Text>
+            <View style={styles.discountBadge}>
+              <Text style={styles.discountText}>{discount}% OFF</Text>
             </View>
           )}
-          {product.badges.includes('bestseller') && (
-            <View style={[styles.badge, styles.badgeGold]}>
-              <Star style={styles.badgeIcon} />
-              <Text style={styles.badgeText}>Bestseller</Text>
-            </View>
-          )}
-          {product.badges.includes('new') && (
-            <View style={[styles.badge, styles.badgeNew]}>
-              <Text style={styles.badgeText}>New</Text>
-            </View>
-          )}
-          {product.badges.includes('organic') && (
-            <View style={[styles.badge, styles.badgeGreen]}>
-              <ShieldCheck style={styles.badgeIcon} />
-              <Text style={styles.badgeText}>Organic</Text>
+          {product.isFeatured && (
+            <View style={styles.featuredBadge}>
+              <Star size={10} color="#FFFFFF" fill="#FFFFFF" />
+              <Text style={styles.featuredText}>Popular</Text>
             </View>
           )}
         </View>
 
-        {/* Wishlist */}
+        {/* Wishlist Top-Right */}
         <TouchableOpacity
-          style={styles.wishlistButton}
-          onPress={(e) => { e.stopPropagation(); }}
+          style={styles.wishlistBtn}
+          onPress={handleToggleWishlist}
+          activeOpacity={0.8}
         >
-          <Heart style={styles.wishlistIcon} />
+          <Heart
+            size={16}
+            color={favorited ? '#DC2626' : '#1C1917'}
+            fill={favorited ? '#DC2626' : 'transparent'}
+          />
         </TouchableOpacity>
 
-        {/* Quick Add */}
-        {showQuickAdd && !isCompact && (
+        {/* Quick Add Overlay Button */}
+        {showQuickAdd && (
           <TouchableOpacity
-            style={styles.quickAddButton}
-            onPress={(e) => { e.stopPropagation(); onQuickAdd?.(); }}
+            style={styles.quickAddOverlay}
+            onPress={handleDefaultQuickAdd}
+            activeOpacity={0.85}
           >
-            <Zap style={styles.quickAddIcon} />
+            <Zap size={13} color="#FFFFFF" />
             <Text style={styles.quickAddText}>Quick Add</Text>
           </TouchableOpacity>
         )}
@@ -94,66 +125,39 @@ export function ProductCard({
 
       {/* Content */}
       <View style={styles.content}>
-        {/* Category */}
-        <Text style={styles.category}>{product.category}</Text>
+        <Text style={styles.category} numberOfLines={1}>
+          {product.category} · {product.weight}
+        </Text>
 
-        {/* Name */}
-        <Text style={styles.name} numberOfLines={2}>{product.name}</Text>
+        <Text style={styles.name} numberOfLines={2}>
+          {product.name}
+        </Text>
 
-        {/* Weight */}
-        <Text style={styles.weight}>{product.weight}</Text>
+        <View style={styles.ratingRow}>
+          <Star size={12} color="#D97706" fill="#D97706" />
+          <Text style={styles.ratingText}>{product.rating || 4.9}</Text>
+          <Text style={styles.reviewCount}>({product.reviewCount || 24})</Text>
+        </View>
 
-        {/* Rating */}
-        {(product.rating > 0 || !isCompact) && (
-          <View style={styles.ratingRow}>
-            <StarFilled style={styles.star} />
-            <Text style={styles.ratingText}>
-              {product.rating > 0 ? product.rating.toFixed(1) : 'New'}
-            </Text>
-            {product.reviewCount > 0 && (
-              <Text style={styles.reviewCount}>({product.reviewCount})</Text>
-            )}
-          </View>
-        )}
-
-        {/* Price */}
         <View style={styles.priceRow}>
           <Text style={styles.price}>{formatPrice(product.price)}</Text>
           {product.compareAtPrice && (
             <Text style={styles.comparePrice}>{formatPrice(product.compareAtPrice)}</Text>
           )}
         </View>
-
-        {/* Quick Add Button for compact */}
-        {showQuickAdd && isCompact && (
-          <TouchableOpacity
-            style={styles.compactAddButton}
-            onPress={(e) => { e.stopPropagation(); onQuickAdd?.(); }}
-          >
-            <Text style={styles.compactAddText}>Add to Cart</Text>
-          </TouchableOpacity>
-        )}
       </View>
     </TouchableOpacity>
   );
 }
 
-// Skeleton for loading state
-export function ProductCardSkeleton({ variant = 'default' }: { variant?: 'default' | 'compact' }) {
-  const isCompact = variant === 'compact';
-  const cardWidth = isCompact ? (screenWidth - 56) / 2 : (screenWidth - 56) / 2;
-
+export function ProductCardSkeleton() {
   return (
-    <View style={[styles.card, { width: cardWidth }]}>
-      <View style={styles.skeletonImage} />
-      <View style={styles.skeletonContent}>
-        <View style={styles.skeletonLine} />
-        <View style={[styles.skeletonLine, { width: '70%' }]} />
+    <View style={[styles.card, styles.skeletonCard]}>
+      <View style={[styles.imageContainer, styles.skeletonBox]} />
+      <View style={styles.content}>
         <View style={[styles.skeletonLine, { width: '40%' }]} />
-        <View style={styles.skeletonPriceRow}>
-          <View style={styles.skeletonPrice} />
-          <View style={styles.skeletonComparePrice} />
-        </View>
+        <View style={[styles.skeletonLine, { width: '80%', height: 14 }]} />
+        <View style={[styles.skeletonLine, { width: '50%' }]} />
       </View>
     </View>
   );
@@ -162,126 +166,101 @@ export function ProductCardSkeleton({ variant = 'default' }: { variant?: 'defaul
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+    borderRadius: 18,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
+    width: '100%',
+  },
+  cardCompact: {
+    borderRadius: 16,
   },
   imageContainer: {
+    width: '100%',
+    height: 145,
+    backgroundColor: '#F5F5F4',
     position: 'relative',
-    aspectRatio: 1,
-    backgroundColor: '#F5F7EF',
   },
   image: {
     width: '100%',
     height: '100%',
   },
-  badges: {
+  badgeColumn: {
     position: 'absolute',
     top: 8,
     left: 8,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     gap: 4,
   },
-  badge: {
+  discountBadge: {
+    backgroundColor: '#DC2626',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  discountText: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontWeight: '800',
+  },
+  featuredBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 3,
-    borderRadius: 9999,
+    backgroundColor: '#365314',
     paddingHorizontal: 6,
-    paddingVertical: 3,
+    paddingVertical: 2,
+    borderRadius: 6,
+    gap: 3,
   },
-  badgeDiscount: {
-    backgroundColor: '#EF4444',
-  },
-  badgeGold: {
-    backgroundColor: '#D9A441',
-  },
-  badgeNew: {
-    backgroundColor: '#3B82F6',
-  },
-  badgeGreen: {
-    backgroundColor: '#059669',
-  },
-  badgeIcon: {
+  featuredText: {
     color: '#FFFFFF',
-  },
-  badgeText: {
-    color: '#FFFFFF',
-    fontSize: 8,
+    fontSize: 9,
     fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
   },
-  wishlistButton: {
+  wishlistBtn: {
     position: 'absolute',
     top: 8,
     right: 8,
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
   },
-  wishlistIcon: {
-    color: '#2B2B2B',
-  },
-  quickAddButton: {
+  quickAddOverlay: {
     position: 'absolute',
     bottom: 8,
     left: 8,
     right: 8,
+    backgroundColor: 'rgba(54, 83, 20, 0.92)',
+    borderRadius: 10,
+    paddingVertical: 6,
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
-    gap: 6,
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingVertical: 8,
-    opacity: 0,
-  },
-  quickAddIcon: {
-    color: '#FFFFFF',
+    alignItems: 'center',
+    gap: 4,
   },
   quickAddText: {
     color: '#FFFFFF',
     fontSize: 11,
     fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
   },
   content: {
     padding: 12,
-    gap: 6,
+    gap: 4,
   },
   category: {
     fontSize: 10,
     fontWeight: '600',
-    color: '#365314',
+    color: '#78716C',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
-    fontFamily: 'Poppins_600SemiBold',
   },
   name: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    lineHeight: 18,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  weight: {
-    fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.5,
-    fontFamily: 'Inter_400Regular',
+    fontWeight: '700',
+    color: '#1C1917',
+    lineHeight: 17,
   },
   ratingRow: {
     flexDirection: 'row',
@@ -289,83 +268,41 @@ const styles = StyleSheet.create({
     gap: 4,
     marginTop: 2,
   },
-  star: {
-    color: '#F59E0B',
-  },
   ratingText: {
     fontSize: 11,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
+    fontWeight: '700',
+    color: '#B45309',
   },
   reviewCount: {
     fontSize: 10,
-    color: '#2B2B2B',
-    opacity: 0.5,
-    fontFamily: 'Inter_400Regular',
+    color: '#A8A29E',
   },
   priceRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'baseline',
     gap: 6,
     marginTop: 4,
   },
   price: {
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '800',
     color: '#365314',
-    fontFamily: 'Poppins_700Bold',
   },
   comparePrice: {
     fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.5,
+    color: '#A8A29E',
     textDecorationLine: 'line-through',
-    fontFamily: 'Inter_400Regular',
   },
-  compactAddButton: {
-    backgroundColor: '#365314',
-    borderRadius: 9999,
-    paddingVertical: 8,
-    alignItems: 'center',
-    marginTop: 8,
+  skeletonCard: {
+    borderColor: '#F0EFEA',
   },
-  compactAddText: {
-    color: '#FFFFFF',
-    fontSize: 11,
-    fontWeight: '700',
-    fontFamily: 'Poppins_700Bold',
-  },
-  // Skeleton styles
-  skeletonImage: {
-    height: '100%',
-    backgroundColor: '#E5E7EB',
-  },
-  skeletonContent: {
-    padding: 12,
-    gap: 8,
+  skeletonBox: {
+    backgroundColor: '#E7E5E4',
   },
   skeletonLine: {
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: '#E5E7EB',
-  },
-  skeletonPriceRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginTop: 8,
-  },
-  skeletonPrice: {
-    width: 60,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: '#E5E7EB',
-  },
-  skeletonComparePrice: {
-    width: 45,
-    height: 14,
-    borderRadius: 7,
-    backgroundColor: '#E5E7EB',
+    height: 10,
+    backgroundColor: '#E7E5E4',
+    borderRadius: 4,
+    marginBottom: 4,
   },
 });

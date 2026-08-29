@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = siteConfig.url || 'https://naturesmud.com';
+  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
 
   return {
     rules: [

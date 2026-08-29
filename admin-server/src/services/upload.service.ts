@@ -75,10 +75,14 @@ export const uploadToCloudinary = async (
     const cleanName = path.basename(originalName, rawExt).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30) || 'upload';
     const filename = `${cleanName}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}${ext}`;
 
-    // Target both root project public/uploads and local admin-server public/uploads
+    // Target both root project public/uploads, cPanel public_html/uploads, and local admin-server public/uploads
     const targetDirs = [
       path.resolve(process.cwd(), 'public', 'uploads'),
       path.resolve(process.cwd(), '..', 'public', 'uploads'),
+      path.resolve(process.cwd(), '..', 'public_html', 'uploads'),
+      path.resolve(process.cwd(), '..', 'frontend', 'public', 'uploads'),
+      '/home8/kathma13/public_html/uploads',
+      '/home8/kathma13/frontend/public/uploads',
       path.resolve(__dirname, '../../../public/uploads'),
       path.resolve(__dirname, '../../public/uploads'),
     ];

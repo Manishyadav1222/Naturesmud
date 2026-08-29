@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -75,6 +76,32 @@ if (env.NODE_ENV === 'development') {
 
 // Rate limiting
 app.use('/api', apiRateLimiter);
+
+// Static uploads serving
+const uploadsDirs = [
+  path.resolve(process.cwd(), 'public', 'uploads'),
+  path.resolve(__dirname, '../public/uploads'),
+  path.resolve(__dirname, '../../public/uploads'),
+];
+uploadsDirs.forEach((dir) => {
+  app.use('/uploads', express.static(dir));
+});
+
+// Root and Admin status handlers with browser auto-redirect to Admin Panel
+app.get(['/', '/api/admin'], (req, res) => {
+  const acceptsHtml = req.accepts('html') && !req.xhr && !req.headers['accept']?.includes('application/json');
+  if (acceptsHtml) {
+    return res.redirect(302, 'https://naturesmud.shop/admin');
+  }
+  res.status(200).json({
+    success: true,
+    service: "Nature's Mud Admin API",
+    status: 'online',
+    adminPanelUrl: 'https://naturesmud.shop/admin',
+    message: "Nature's Mud Admin API backend is running. Access the Admin Dashboard at https://naturesmud.shop/admin",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // Routes
 app.use('/api/admin', routes);

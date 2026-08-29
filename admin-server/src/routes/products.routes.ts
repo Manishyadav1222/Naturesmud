@@ -8,37 +8,87 @@ const router = Router();
 // All product routes require authentication
 router.use(authenticate);
 
-const mapProduct = (p: any) => ({
-  id: String(p.id),
-  name: p.name,
-  slug: p.slug,
-  sku: p.sku,
-  barcode: null,
-  description: p.description || null,
-  shortDescription: p.short_description || null,
-  price: Number(p.price),
-  compareAtPrice: p.compare_at_price != null ? Number(p.compare_at_price) : null,
-  cost: Number(p.cost_price || 0),
-  stock: Number(p.stock_quantity || 0),
-  lowStockThreshold: Number(p.low_stock_threshold || 0),
-  status: Number(p.is_active) === 1 ? 'ACTIVE' : 'ARCHIVED',
-  unit: p.unit || 'PC',
-  weight: p.weight != null ? Number(p.weight) : null,
-  length: null,
-  width: null,
-  height: null,
-  isFeatured: Number(p.is_featured) === 1,
-  isPublished: Number(p.is_active) === 1,
-  isActive: Number(p.is_active) === 1,
-  image: p.images ? (typeof p.images === 'string' ? JSON.parse(p.images)[0] : p.images[0]) : null,
-  images: p.images ? (typeof p.images === 'string' ? JSON.parse(p.images) : p.images) : [],
-  categoryId: p.category_id ? String(p.category_id) : null,
-  brandId: null,
-  category: p.category_name && p.category_id ? { id: String(p.category_id), name: p.category_name } : null,
-  brand: null,
-  createdAt: p.created_at,
-  updatedAt: p.updated_at,
-});
+const mapProduct = (p: any) => {
+  let rawImages: any[] = [];
+  if (p.images) {
+    if (typeof p.images === 'string') {
+      try {
+        const parsed = JSON.parse(p.images);
+        rawImages = Array.isArray(parsed) ? parsed : [parsed];
+      } catch {
+        rawImages = [p.images];
+      }
+    } else if (Array.isArray(p.images)) {
+      rawImages = p.images;
+    } else if (typeof p.images === 'object') {
+      rawImages = [p.images];
+    }
+  }
+
+  const normalizedImages: any[] = rawImages
+    .map((img: any, idx: number) => {
+      if (typeof img === 'string') {
+        const trimmed = img.trim();
+        return trimmed
+          ? {
+              id: `img-${idx + 1}`,
+              url: trimmed,
+              isPrimary: idx === 0,
+            }
+          : null;
+      }
+      if (img && typeof img === 'object') {
+        const url = img.url || img.secure_url || img.path || img.preview || '';
+        return url
+          ? {
+              id: String(img.id || `img-${idx + 1}`),
+              url: String(url).trim(),
+              isPrimary: Boolean(img.isPrimary ?? (idx === 0)),
+              publicId: img.publicId,
+              width: img.width,
+              height: img.height,
+            }
+          : null;
+      }
+      return null;
+    })
+    .filter(Boolean);
+
+  const primaryImageObj = normalizedImages.find((img: any) => img.isPrimary) || normalizedImages[0];
+  const primaryUrl = primaryImageObj?.url || null;
+
+  return {
+    id: String(p.id),
+    name: p.name,
+    slug: p.slug,
+    sku: p.sku,
+    barcode: p.barcode || null,
+    description: p.description || null,
+    shortDescription: p.short_description || null,
+    price: Number(p.price),
+    compareAtPrice: p.compare_at_price != null ? Number(p.compare_at_price) : null,
+    cost: Number(p.cost_price || 0),
+    stock: Number(p.stock_quantity || 0),
+    lowStockThreshold: Number(p.low_stock_threshold || 0),
+    status: Number(p.is_active) === 1 ? 'ACTIVE' : 'ARCHIVED',
+    unit: p.unit || 'PC',
+    weight: p.weight != null ? Number(p.weight) : null,
+    length: p.length != null ? Number(p.length) : null,
+    width: p.width != null ? Number(p.width) : null,
+    height: p.height != null ? Number(p.height) : null,
+    isFeatured: Number(p.is_featured) === 1,
+    isPublished: Number(p.is_active) === 1,
+    isActive: Number(p.is_active) === 1,
+    image: primaryUrl,
+    images: normalizedImages,
+    categoryId: p.category_id ? String(p.category_id) : null,
+    brandId: p.brand_id ? String(p.brand_id) : null,
+    category: p.category_name && p.category_id ? { id: String(p.category_id), name: p.category_name } : null,
+    brand: null,
+    createdAt: p.created_at,
+    updatedAt: p.updated_at,
+  };
+};
 
 // GET /api/admin/products - List products with filters
 router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {

@@ -34,6 +34,7 @@ class ContentSeeder extends Seeder
                 'excerpt' => 'Discover why superfoods grown at high altitudes pack more nutrients.',
                 'category' => 'Nutrition',
                 'tags' => ['superfoods', 'nutrition', 'himalayas'],
+                'is_featured' => true,
             ],
             [
                 'title' => '5 Healthy Breakfast Ideas with Chia Seeds',
@@ -63,6 +64,7 @@ class ContentSeeder extends Seeder
                     'category' => $blog['category'],
                     'tags' => $blog['tags'],
                     'is_published' => true,
+                    'is_featured' => $blog['is_featured'] ?? false,
                     'published_at' => now()->subDays(rand(1, 30)),
                     'meta_title' => $blog['title'] . ' | Nature\'s Mud Blog',
                     'meta_description' => $blog['excerpt'],

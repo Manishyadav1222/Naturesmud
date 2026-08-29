@@ -1,396 +1,278 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, FlatList, Dimensions } from 'react-native';
-import { Link, useRouter } from 'expo-router';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '@/lib/api';
+import React, { useState, useMemo } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { Search, Filter, Sparkles, SlidersHorizontal, ChevronDown } from 'lucide-react-native';
+import { products as allProducts, categories as allCategories } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
-import { CategoryCard } from '@/components/CategoryCard';
-import { ScrollReveal } from '@/components/ScrollReveal';
-import { useUIStore } from '@/store/ui-store';
-import type { Product, Category } from '@/types';
-import { products as staticProducts, normalizeProduct, categories as staticCategories } from '@/lib/data/products';
-import { Filter, ChevronDown, Search, X } from 'lucide-react-native';
+import { useCartStore } from '@/store/cart-store';
+import { toast } from '@/store/ui-store';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 export default function ProductsScreen() {
   const router = useRouter();
-  const { openSearch } = useUIStore();
+  const { addItem } = useCartStore();
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'rating' | 'newest'>('featured');
-  const [showSort, setShowSort] = useState(false);
+  const [sortBy, setSortBy] = useState<'featured' | 'price_asc' | 'price_desc' | 'rating'>('featured');
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
 
-  const { data: productsData } = useQuery({
-    queryKey: ['products', 'all'],
-    queryFn: async () => {
-      const res = await api.get('/products', { params: { per_page: 100 } });
-      return res.data.data;
-    },
-  });
+  const filteredProducts = useMemo(() => {
+    let list = allProducts;
 
-  const { data: categoriesData } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const res = await api.get('/categories');
-      return res.data.data;
-    },
-  });
-
-  const allProducts = productsData
-    ? productsData.map((p: any) => normalizeProduct(p))
-    : staticProducts;
-
-  const categoriesList = categoriesData || staticCategories;
-
-  const filteredProducts = allProducts.filter((p) => {
-    if (selectedCategory === 'all') return true;
-    return p.categorySlug === selectedCategory;
-  });
-
-  const sortedProducts = [...filteredProducts].sort((a, b) => {
-    switch (sortBy) {
-      case 'price-low': return a.price - b.price;
-      case 'price-high': return b.price - a.price;
-      case 'rating': return b.rating - a.rating;
-      case 'newest': return b.isFeatured ? -1 : 1;
-      default: return a.isFeatured ? -1 : 1;
+    if (selectedCategory !== 'all') {
+      list = list.filter(
+        (p) => p.categorySlug === selectedCategory || p.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
     }
-  });
 
-  const sortOptions = [
-    { value: 'featured', label: 'Featured First' },
-    { value: 'price-low', label: 'Price: Low to High' },
-    { value: 'price-high', label: 'Price: High to Low' },
-    { value: 'rating', label: 'Top Rated' },
-    { value: 'newest', label: 'Newest' },
-  ];
+    if (sortBy === 'price_asc') {
+      list = [...list].sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price_desc') {
+      list = [...list].sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'rating') {
+      list = [...list].sort((a, b) => b.rating - a.rating);
+    } else {
+      list = [...list].sort((a, b) => (a.isFeatured ? -1 : 1));
+    }
+
+    return list;
+  }, [selectedCategory, sortBy]);
+
+  const handleQuickAdd = (product: any) => {
+    addItem({
+      id: product.id,
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      compareAtPrice: product.compareAtPrice,
+      image: product.image,
+      weight: product.weight,
+      category: product.category,
+    });
+    toast.success('Added to Cart', `${product.name} added.`);
+  };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <Text style={styles.title}>All Products</Text>
-          <Text style={styles.subtitle}>{sortedProducts.length} products available</Text>
+        <View>
+          <Text style={styles.headerTitle}>Himalayan Harvest</Text>
+          <Text style={styles.headerSubtitle}>
+            {filteredProducts.length} certified organic products
+          </Text>
         </View>
-        <TouchableOpacity style={styles.searchButton} onPress={openSearch}>
-          <Search style={styles.searchIcon} />
+        <TouchableOpacity
+          style={styles.searchBtn}
+          onPress={() => router.push('/search')}
+        >
+          <Search size={20} color="#1C1917" />
         </TouchableOpacity>
       </View>
 
-      {/* Category Filter */}
-      <ScrollReveal direction="up" distance={20}>
-        <View style={styles.categoryFilter}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScrollContent}>
-            <TouchableOpacity
-              style={[styles.categoryChip, selectedCategory === 'all' && styles.categoryChipActive]}
-              onPress={() => setSelectedCategory('all')}
+      {/* Category Pills */}
+      <View style={styles.categoriesWrapper}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoriesScroll}
+        >
+          <TouchableOpacity
+            style={[styles.catPill, selectedCategory === 'all' && styles.catPillActive]}
+            onPress={() => setSelectedCategory('all')}
+          >
+            <Text
+              style={[
+                styles.catPillText,
+                selectedCategory === 'all' && styles.catPillTextActive,
+              ]}
             >
-              <Text style={[styles.categoryChipText, selectedCategory === 'all' && styles.categoryChipTextActive]}>All</Text>
-            </TouchableOpacity>
-            {categoriesList.map((cat) => (
-              <TouchableOpacity
-                key={cat.slug}
-                style={[styles.categoryChip, selectedCategory === cat.slug && styles.categoryChipActive]}
-                onPress={() => setSelectedCategory(cat.slug)}
+              All Harvest
+            </Text>
+          </TouchableOpacity>
+          {allCategories.map((cat) => (
+            <TouchableOpacity
+              key={cat.id}
+              style={[styles.catPill, selectedCategory === cat.slug && styles.catPillActive]}
+              onPress={() => setSelectedCategory(cat.slug)}
+            >
+              <Text
+                style={[
+                  styles.catPillText,
+                  selectedCategory === cat.slug && styles.catPillTextActive,
+                ]}
               >
-                <Text style={[styles.categoryChipText, selectedCategory === cat.slug && styles.categoryChipTextActive]}>{cat.name}</Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
-      </ScrollReveal>
+                {cat.name}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
 
-      {/* Sort & Results */}
-      <ScrollReveal direction="up" distance={20} delay={100}>
-        <View style={styles.toolbar}>
-          <Text style={styles.resultsText}>{sortedProducts.length} products</Text>
-          <TouchableOpacity style={styles.sortButton} onPress={() => setShowSort(!showShow)}>
-            <Text style={styles.sortButtonText}>{sortOptions.find(o => o.value === sortBy)?.label}</Text>
-            <ChevronDown style={[styles.sortIcon, showSort && styles.sortIconRotated]} />
+      {/* Filter & Sort Bar */}
+      <View style={styles.filterBar}>
+        <Text style={styles.resultsCount}>
+          Showing {filteredProducts.length} items
+        </Text>
+        <View style={styles.sortChipsRow}>
+          <TouchableOpacity
+            style={[styles.sortChip, sortBy === 'featured' && styles.sortChipActive]}
+            onPress={() => setSortBy('featured')}
+          >
+            <Text style={[styles.sortChipText, sortBy === 'featured' && styles.sortChipTextActive]}>
+              Popular
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.sortChip, sortBy === 'price_asc' && styles.sortChipActive]}
+            onPress={() => setSortBy('price_asc')}
+          >
+            <Text style={[styles.sortChipText, sortBy === 'price_asc' && styles.sortChipTextActive]}>
+              Price ↑
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.sortChip, sortBy === 'rating' && styles.sortChipActive]}
+            onPress={() => setSortBy('rating')}
+          >
+            <Text style={[styles.sortChipText, sortBy === 'rating' && styles.sortChipTextActive]}>
+              Rating
+            </Text>
           </TouchableOpacity>
         </View>
-      </ScrollReveal>
-
-      {/* Sort Dropdown */}
-      {showSort && (
-        <View style={styles.sortDropdownOverlay} onTouchStart={() => setShowSort(false)}>
-          <View style={styles.sortDropdown}>
-            {sortOptions.map((opt) => (
-              <TouchableOpacity
-                key={opt.value}
-                style={[styles.sortOption, sortBy === opt.value && styles.sortOptionActive]}
-                onPress={() => {
-                  setSortBy(opt.value as any);
-                  setShowSort(false);
-                }}
-              >
-                <Text style={[styles.sortOptionText, sortBy === opt.value && styles.sortOptionTextActive]}>{opt.label}</Text>
-                {sortBy === opt.value && <Check style={styles.checkIcon} />}
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-      )}
+      </View>
 
       {/* Products Grid */}
-      <ScrollReveal direction="up" distance={20} delay={200}>
-        {sortedProducts.length === 0 ? (
-          <View style={styles.emptyState}>
-            <Filter style={styles.emptyIcon} />
-            <Text style={styles.emptyTitle}>No products found</Text>
-            <Text style={styles.emptyDesc}>Try adjusting your filters or search</Text>
-            <TouchableOpacity style={styles.clearFiltersButton} onPress={() => { setSelectedCategory('all'); setSortBy('featured'); }}>
-              <X style={styles.clearIcon} />
-              <Text style={styles.clearText}>Clear All Filters</Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <View style={styles.productsGrid}>
-            {sortedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </View>
+      <FlatList
+        data={filteredProducts}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.productListContent}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <ProductCard
+            product={item}
+            variant="default"
+            showQuickAdd
+            onQuickAdd={() => handleQuickAdd(item)}
+          />
         )}
-      </ScrollReveal>
-
-      {/* Load More / Pagination placeholder */}
-      {sortedProducts.length > 20 && (
-        <View style={styles.loadMoreContainer}>
-          <TouchableOpacity style={styles.loadMoreButton}>
-            <Text style={styles.loadMoreText}>Load More Products</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </ScrollView>
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAFAF5',
-    paddingHorizontal: 20,
-    paddingTop: 10,
+    backgroundColor: '#FAF9F6',
   },
   header: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 24,
-  },
-  headerLeft: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    marginBottom: 4,
-    fontFamily: 'Poppins_700Bold',
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    fontFamily: 'Inter_400Regular',
-  },
-  searchButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
     backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EFEA',
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#1C1917',
+  },
+  headerSubtitle: {
+    fontSize: 12,
+    color: '#78716C',
+    marginTop: 2,
+  },
+  searchBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#F5F5F4',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
   },
-  searchIcon: {
-    color: '#2B2B2B',
-  },
-  categoryFilter: {
-    marginBottom: 20,
-  },
-  categoryScrollContent: {
-    gap: 10,
-    paddingBottom: 8,
-  },
-  categoryChip: {
+  categoriesWrapper: {
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.12)',
-    borderRadius: 9999,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0EFEA',
+  },
+  categoriesScroll: {
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    gap: 8,
   },
-  categoryChipActive: {
+  catPill: {
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 20,
+    backgroundColor: '#F5F5F4',
+  },
+  catPillActive: {
     backgroundColor: '#365314',
-    borderColor: '#365314',
   },
-  categoryChipText: {
+  catPillText: {
     fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
+    color: '#57534E',
+    fontWeight: '500',
   },
-  categoryChipTextActive: {
+  catPillTextActive: {
     color: '#FFFFFF',
+    fontWeight: '600',
   },
-  toolbar: {
+  filterBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  resultsCount: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#78716C',
+  },
+  sortChipsRow: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  sortChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 8,
+    backgroundColor: '#E7E5E4',
+  },
+  sortChipActive: {
+    backgroundColor: '#D9F99D',
+  },
+  sortChipText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#57534E',
+  },
+  sortChipTextActive: {
+    color: '#365314',
+  },
+  columnWrapper: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
     marginBottom: 16,
   },
-  resultsText: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
-  },
-  sortButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.12)',
-    borderRadius: 9999,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  sortButtonText: {
-    fontSize: 13,
-    fontWeight: '600',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  sortIcon: {
-    color: '#2B2B2B',
-  },
-  sortIconRotated: {
-    transform: [{ rotate: '180deg' }],
-  },
-  sortDropdownOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 100,
-  },
-  sortDropdown: {
-    position: 'absolute',
-    top: 60,
-    right: 0,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.12)',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.12,
-    shadowRadius: 24,
-    elevation: 8,
-    minWidth: 200,
-    overflow: 'hidden',
-  },
-  sortOption: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  sortOptionActive: {
-    backgroundColor: '#F5F7EF',
-  },
-  sortOptionText: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#2B2B2B',
-    fontFamily: 'Inter_500Medium',
-  },
-  sortOptionTextActive: {
-    color: '#365314',
-    fontWeight: '600',
-  },
-  checkIcon: {
-    color: '#365314',
-  },
-  productsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16,
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
+  productListContent: {
     paddingBottom: 40,
-  },
-  emptyState: {
-    alignItems: 'center',
-    paddingVertical: 60,
-    gap: 16,
-  },
-  emptyIcon: {
-    color: '#2B2B2B',
-    opacity: 0.3,
-  },
-  emptyTitle: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
-  },
-  emptyDesc: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    textAlign: 'center',
-    fontFamily: 'Inter_400Regular',
-  },
-  clearFiltersButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    marginTop: 8,
-    backgroundColor: '#F5F7EF',
-    borderRadius: 9999,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-  },
-  clearIcon: {
-    color: '#365314',
-  },
-  clearText: {
-    color: '#365314',
-    fontWeight: '600',
-    fontSize: 14,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  loadMoreContainer: {
-    alignItems: 'center',
-    paddingVertical: 32,
-  },
-  loadMoreButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    borderWidth: 1,
-    borderColor: 'rgba(43, 43, 43, 0.12)',
-    borderRadius: 9999,
-    paddingHorizontal: 24,
-    paddingVertical: 14,
-  },
-  loadMoreText: {
-    color: '#2B2B2B',
-    fontWeight: '600',
-    fontSize: 16,
-    fontFamily: 'Poppins_600SemiBold',
   },
 });

@@ -1,369 +1,164 @@
-'use client';
-
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
-import { Baby, Heart, ShieldCheck, Leaf, Sparkles, Star, ArrowRight } from 'lucide-react-native';
+import { useRouter } from 'expo-router';
+import { Baby, Heart, ShieldCheck, ArrowRight } from 'lucide-react-native';
+import { formatPrice } from '@/lib/utils';
 
 const combos = [
   {
-    id: 'newborn-essentials',
-    name: 'Newborn Essentials Kit',
-    description: 'Gentle care for baby\'s first days — organic oils, powders & balms',
-    price: 2999,
-    originalPrice: 3799,
-    image: 'https://images.unsplash.com/photo-1515488042261-424e6a5a7f3e?w=400',
-    badge: 'New Arrival',
-    ageGroup: '0-6 months',
-    products: ['Baby Massage Oil 100ml', 'Organic Baby Powder 50g', 'Diaper Rash Balm 30g', 'Soft Washcloths (3pk)'],
-  },
-  {
-    id: 'growing-baby',
-    name: 'Growing Baby Nutrition Pack',
-    description: 'Wholesome first foods & supplements for healthy development',
+    id: 'baby-weaning-combo',
+    name: 'Baby & Mother Wellness Bundle',
+    description: "Pure Himalayan A2 cow ghee, raw acacia honey & herbal baby massage oil.",
     price: 3499,
     originalPrice: 4299,
-    image: 'https://images.unsplash.com/photo-1593267530146-f9e4f817fbd8?w=400',
+    image: 'https://images.unsplash.com/photo-1515488042261-424e6a5a7f3e?w=400',
     badge: 'Pediatrician Recommended',
-    ageGroup: '6-24 months',
-    products: ['Ragi Porridge 200g', 'Millet Mix 200g', 'Dates Powder 100g', 'Ghee 200ml'],
-  },
-  {
-    id: 'mommy-care',
-    name: 'Mommy Postpartum Care',
-    description: 'Recovery & nourishment for new mothers — inside & out',
-    price: 3999,
-    originalPrice: 4999,
-    image: 'https://images.unsplash.com/photo-1587944637312-5c00768b2b2a?w=400',
-    badge: 'Best for Moms',
-    ageGroup: 'Postpartum',
-    products: ['Shatavari Powder 100g', 'Moringa Capsules 60ct', 'Nursing Tea 20 bags', 'Belly Butter 100g'],
   },
 ];
 
 export function BabyMotherCombosSection() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <View style={styles.badge}>
-            <Baby style={styles.badgeIcon} />
-            <Text style={styles.badgeText}>Baby & Mother Care</Text>
-          </View>
-          <Text style={styles.title}>Nurturing Nature\'s Tiniest</Text>
-          <Text style={styles.subtitle}>Safe, organic essentials for pregnancy, postpartum & baby\'s first years</Text>
+        <View style={styles.badge}>
+          <Baby size={14} color="#BE185D" />
+          <Text style={styles.badgeText}>Baby & Mother Care</Text>
         </View>
-        <View style={styles.headerRight}>
-          <View style={styles.decorativeHeart}>
-            <Heart style={styles.heartIcon} />
-          </View>
-        </View>
+        <Text style={styles.title}>Nurturing Nature's Tiniest</Text>
+        <Text style={styles.subtitle}>Safe, certified organic essentials for mother & baby.</Text>
       </View>
 
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.combosScroll}>
-        {combos.map((combo) => (
-          <TouchableOpacity key={combo.id} style={styles.comboCard} activeOpacity={0.95}>
-            <View style={styles.comboImageContainer}>
-              <Image source={{ uri: combo.image }} style={styles.comboImage} />
-              <View style={styles.comboBadge}>{combo.badge}</View>
-              <View style={styles.ageBadge}>{combo.ageGroup}</View>
+      {combos.map((combo) => (
+        <View key={combo.id} style={styles.card}>
+          <Image source={{ uri: combo.image }} style={styles.image} />
+          <View style={styles.body}>
+            <View style={styles.badgeRow}>
+              <Text style={styles.badgeLabel}>{combo.badge}</Text>
+            </View>
+            <Text style={styles.name}>{combo.name}</Text>
+            <Text style={styles.desc}>{combo.description}</Text>
+
+            <View style={styles.priceRow}>
+              <Text style={styles.price}>{formatPrice(combo.price)}</Text>
+              <Text style={styles.comparePrice}>{formatPrice(combo.originalPrice)}</Text>
             </View>
 
-            <View style={styles.comboContent}>
-              <Text style={styles.comboName}>{combo.name}</Text>
-              <Text style={styles.comboDesc}>{combo.description}</Text>
-
-              <View style={styles.comboPriceRow}>
-                <Text style={styles.comboPrice}>Rs. {combo.price.toLocaleString()}</Text>
-                <Text style={styles.comboOriginalPrice}>Rs. {combo.originalPrice.toLocaleString()}</Text>
-              </View>
-
-              <Text style={styles.comboSavings}>Save Rs. {combo.originalPrice - combo.price}</Text>
-
-              <View style={styles.comboFeatures}>
-                {combo.products.slice(0, 2).map((product, i) => (
-                  <View key={i} style={styles.featureItem}>
-                    <View style={styles.featureDot} />
-                    <Text style={styles.featureText}>{product}</Text>
-                  </View>
-                ))}
-                <View style={styles.featureItem}>
-                  <View style={styles.featureDot} />
-                  <Text style={styles.featureText}>+{combo.products.length - 2} more items</Text>
-                </View>
-              </View>
-
-              <TouchableOpacity style={styles.comboCTA}>
-                <Text style={styles.comboCTAText}>View Details</Text>
-                <ArrowRight style={styles.comboCTAArrow} />
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-
-      <View style={styles.trustIndicators}>
-        <View style={styles.trustItem}>
-          <View style={styles.trustIconContainer}>
-            <ShieldCheck style={styles.trustIcon} />
-          </View>
-          <View style={styles.trustTextContainer}>
-            <Text style={styles.trustTitle}>Pediatrician Approved</Text>
-            <Text style={styles.trustDesc}>Recommended by child health experts</Text>
+            <TouchableOpacity
+              style={styles.btn}
+              onPress={() => router.push('/(tabs)/products')}
+            >
+              <Text style={styles.btnText}>Explore Bundles</Text>
+              <ArrowRight size={14} color="#FFFFFF" />
+            </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.trustItem}>
-          <View style={styles.trustIconContainer}>
-            <Leaf style={styles.trustIcon} />
-          </View>
-          <View style={styles.trustTextContainer}>
-            <Text style={styles.trustTitle}>100% Organic</Text>
-            <Text style={styles.trustDesc}>No chemicals, no toxins, ever</Text>
-          </View>
-        </View>
-        <View style={styles.trustItem}>
-          <View style={styles.trustIconContainer}>
-            <Sparkles style={styles.trustIcon} />
-          </View>
-          <View style={styles.trustTextContainer}>
-            <Text style={styles.trustTitle}>Hypoallergenic</Text>
-            <Text style={styles.trustDesc}>Gentle on sensitive baby skin</Text>
-          </View>
-        </View>
-      </View>
+      ))}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 24,
-    padding: 20,
-    marginHorizontal: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.08,
-    shadowRadius: 24,
-    elevation: 6,
+    marginVertical: 12,
+    paddingHorizontal: 16,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 20,
-  },
-  headerLeft: {
-    flex: 1,
+    marginBottom: 12,
   },
   badge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#FDF2F8',
-    borderRadius: 9999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    gap: 4,
+    backgroundColor: '#FCE7F3',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
     alignSelf: 'flex-start',
-    marginBottom: 12,
-  },
-  badgeIcon: {
-    color: '#EC4899',
+    marginBottom: 6,
   },
   badgeText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#EC4899',
-    fontFamily: 'Poppins_600SemiBold',
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#BE185D',
   },
   title: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#2B2B2B',
-    marginBottom: 4,
-    fontFamily: 'Poppins_700Bold',
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#1C1917',
   },
   subtitle: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#78716C',
+    marginTop: 2,
   },
-  headerRight: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#FDF2F8',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  heartIcon: {
-    color: '#EC4899',
-  },
-  combosScroll: {
-    flexDirection: 'row',
-    gap: 16,
-    paddingBottom: 8,
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-    marginBottom: 20,
-  },
-  comboCard: {
-    width: '85%',
-    minWidth: 280,
-    backgroundColor: '#FAFAF5',
-    borderRadius: 20,
+  card: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 18,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#E7E5E4',
   },
-  comboImageContainer: {
-    position: 'relative',
-    aspectRatio: 1,
-  },
-  comboImage: {
+  image: {
     width: '100%',
-    height: '100%',
+    height: 140,
   },
-  comboBadge: {
-    position: 'absolute',
-    top: 12,
-    left: 12,
-    backgroundColor: '#D9A441',
-    borderRadius: 9999,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  ageBadge: {
-    position: 'absolute',
-    top: 12,
-    right: 12,
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    borderRadius: 9999,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
-  comboContent: {
+  body: {
     padding: 16,
     gap: 8,
   },
-  comboName: {
-    fontSize: 16,
+  badgeRow: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#FDF2F8',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  badgeLabel: {
+    fontSize: 10,
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
+    color: '#BE185D',
   },
-  comboDesc: {
-    fontSize: 13,
-    color: '#2B2B2B',
-    opacity: 0.7,
-    lineHeight: 20,
-    fontFamily: 'Inter_400Regular',
+  name: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#1C1917',
   },
-  comboPriceRow: {
+  desc: {
+    fontSize: 12,
+    color: '#57534E',
+    lineHeight: 17,
+  },
+  priceRow: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'baseline',
     gap: 8,
     marginTop: 4,
   },
-  comboPrice: {
-    fontSize: 20,
+  price: {
+    fontSize: 17,
     fontWeight: '800',
     color: '#365314',
-    fontFamily: 'Poppins_800ExtraBold',
   },
-  comboOriginalPrice: {
-    fontSize: 14,
-    color: '#2B2B2B',
-    opacity: 0.5,
+  comparePrice: {
+    fontSize: 12,
+    color: '#A8A29E',
     textDecorationLine: 'line-through',
-    fontFamily: 'Inter_400Regular',
   },
-  comboSavings: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#365314',
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  comboFeatures: {
-    gap: 6,
-    marginTop: 8,
-  },
-  featureItem: {
+  btn: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-  },
-  featureDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    justifyContent: 'center',
     backgroundColor: '#365314',
+    paddingVertical: 10,
+    borderRadius: 10,
+    gap: 6,
+    marginTop: 6,
   },
-  featureText: {
-    fontSize: 11,
-    color: '#2B2B2B',
-    opacity: 0.8,
-    fontFamily: 'Inter_400Regular',
-  },
-  comboCTA: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    borderWidth: 1,
-    borderColor: '#365314',
-    borderRadius: 9999,
-    paddingVertical: 12,
-    marginTop: 8,
-  },
-  comboCTAText: {
-    color: '#365314',
-    fontWeight: '600',
-    fontSize: 14,
-    fontFamily: 'Poppins_600SemiBold',
-  },
-  comboCTAArrow: {
-    color: '#365314',
-  },
-  trustIndicators: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-    paddingTop: 16,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(43, 43, 43, 0.1)',
-  },
-  trustItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-    flex: 1,
-    minWidth: '30%',
-  },
-  trustIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#F5F7EF',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  trustIcon: {
-    color: '#365314',
-  },
-  trustTextContainer: {
-    flex: 1,
-  },
-  trustTitle: {
-    fontSize: 12,
+  btnText: {
+    color: '#FFFFFF',
     fontWeight: '700',
-    color: '#2B2B2B',
-    fontFamily: 'Poppins_700Bold',
-  },
-  trustDesc: {
-    fontSize: 10,
-    color: '#2B2B2B',
-    opacity: 0.6,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 13,
   },
 });

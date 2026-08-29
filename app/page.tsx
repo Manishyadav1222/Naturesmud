@@ -48,6 +48,7 @@ import OurPromisesSection from '@/components/OurPromisesSection';
 import RealCustomerReviewsSection from '@/components/RealCustomerReviewsSection';
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
@@ -58,9 +59,10 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [productsRes, blogsRes] = await Promise.all([
+        const [productsRes, blogsRes, featuredBlogsRes] = await Promise.all([
           api.get('/products', { params: { per_page: 50 } }),
-          api.get('/blogs')
+          api.get('/blogs'),
+          api.get('/blogs', { params: { featured: true, per_page: 4 } })
         ]);
         if (productsRes.data && productsRes.data.data) {
           const apiProducts = productsRes.data.data.map((p: any) => normalizeProduct(p));
@@ -70,6 +72,7 @@ export default function HomePage() {
         if (blogsRes.data && blogsRes.data.data) {
           setLatestPosts(blogsRes.data.data.slice(0, 3));
         }
+        // Featured blogs would be handled by the featuredBlogsRes if needed
       } catch (error) {
         console.warn('Failed to fetch dynamic data for homepage, falling back to static data.');
       }
@@ -114,30 +117,22 @@ export default function HomePage() {
   });
 
   return (
-    <main>
+    <main className="w-full max-w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee]">
-        {/* Ambient background - soft warm beige gradient with organic shapes */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full">
+        {/* Ambient background - soft warm beige gradient with organic textures */}
         <div className="absolute inset-0 bg-hero-pattern opacity-60" />
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] bg-gold/10 rounded-full blur-3xl animate-float-slower" />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-float-slow [animation-delay:2s]" />
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(217,164,65,0.10)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-[radial-gradient(circle,rgba(122,169,92,0.10)_0%,transparent_70%)] pointer-events-none" />
         
         {/* Subtle decorative leaves */}
-        <motion.div
-          animate={{ rotate: [0, 15, 0, -12, 0], y: [0, -8, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-24 left-[8%] w-12 h-12 text-primary/15"
-        >
+        <div className="absolute top-24 left-[8%] w-12 h-12 text-primary/15 pointer-events-none rotate-12">
           <Leaf className="w-full h-full" />
-        </motion.div>
-        <motion.div
-          animate={{ rotate: [0, -18, 0, 12, 0], y: [0, 10, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-32 right-[12%] w-16 h-16 text-gold/15"
-        >
+        </div>
+        <div className="absolute bottom-32 right-[12%] w-16 h-16 text-gold/15 pointer-events-none -rotate-12">
           <Leaf className="w-full h-full" />
-        </motion.div>
+        </div>
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 sm:py-7 lg:py-8">
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
@@ -148,7 +143,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary/12 via-gold/15 to-primary/10 border border-primary/20 px-4 py-1.5 shadow-[0_2px_12px_rgba(58,107,53,0.06)] backdrop-blur-md"
+                className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary/12 via-gold/15 to-primary/10 border border-primary/20 px-4 py-1.5 shadow-[0_2px_12px_rgba(58,107,53,0.06)]"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
@@ -160,7 +155,7 @@ export default function HomePage() {
                 </span>
               </motion.div>
 
-              {/* Hero Heading with Luxury Editorial Typography */}
+              {/* Hero Heading with Luxury Editorial Typography & Exact Brand Match */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -169,7 +164,7 @@ export default function HomePage() {
               >
                 <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-black leading-[1.04] tracking-tight font-heading">
                   <span className="text-primary-800 block">
-                    Pure Nature,
+                    Nature&apos;s Mud
                   </span>
                   <span className="text-gold-600 block drop-shadow-xs">
                     Rooted in Nepal.
@@ -178,7 +173,7 @@ export default function HomePage() {
 
                 {/* Refined Narrative Description */}
                 <p className="text-sm sm:text-base text-ink/75 font-normal leading-relaxed max-w-lg pt-1">
-                  From the pristine Himalayan foothills above 3,000m to your doorstep — discover authentic wild honey, potent shilajit, organic seeds, and nutrient-dense superfoods crafted with love and integrity.
+                  Welcome to <strong>Nature&apos;s Mud Nepal (naturesmud.com)</strong>. From pristine Himalayan foothills above 3,000m to your doorstep — discover authentic wild honey, potent shilajit, organic seeds, and nutrient-dense 100g superfood powders crafted with 100% purity and zero chemicals.
                 </p>
               </motion.div>
 
@@ -200,7 +195,7 @@ export default function HomePage() {
 
                   <Link
                     href="/our-story"
-                    className="group inline-flex items-center gap-2 rounded-full bg-white/90 backdrop-blur-md border border-ink/12 px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-ink hover:bg-white hover:border-primary/30 hover:text-primary hover:shadow-[0_6px_20px_rgba(43,43,43,0.08)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer"
+                    className="group inline-flex items-center gap-2 rounded-full bg-white border border-ink/12 px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-ink hover:bg-white hover:border-primary/30 hover:text-primary hover:shadow-[0_6px_20px_rgba(43,43,43,0.08)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer"
                   >
                     <Leaf className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-12" />
                     <span>Our Story</span>
@@ -265,7 +260,7 @@ export default function HomePage() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="p-2.5 sm:p-3 rounded-2xl bg-white/85 backdrop-blur-md border border-white/90 hover:bg-white hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center shadow-xs"
+                    className="p-2.5 sm:p-3 rounded-2xl bg-white border border-ink/8 hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center shadow-xs"
                   >
                     <div className={`text-base sm:text-lg font-heading font-black ${stat.highlight ? 'text-primary' : 'text-ink'}`}>
                       <AnimatedCounter value={stat.value} />
@@ -285,22 +280,28 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="w-full flex justify-center lg:justify-end"
               >
-                <HeroProductShowcase />
+                <ErrorBoundary name="Product Showcase">
+                  <HeroProductShowcase />
+                </ErrorBoundary>
               </motion.div>
             </div>
           </div>
 
-          {/* Side-by-Side Dual Offer & Combos Section (Both at the exact same level & matching labels) */}
+          {/* Side-by-Side Dual Offer & Combos Section */}
           <div className="mt-8 lg:mt-10 pt-6 lg:pt-8 border-t border-ink/8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
               {/* Left Side Offer: Baby & Mother Care Combos */}
               <div className="w-full flex justify-center lg:justify-start">
-                <BabyMotherCombosSection />
+                <ErrorBoundary name="Baby & Mother Combos">
+                  <BabyMotherCombosSection />
+                </ErrorBoundary>
               </div>
 
               {/* Right Side Offer: Festival & Lifestyle Combos */}
               <div className="w-full flex justify-center lg:justify-end">
-                <HeroOfferSection />
+                <ErrorBoundary name="Festival Offers">
+                  <HeroOfferSection />
+                </ErrorBoundary>
               </div>
             </div>
           </div>
@@ -320,7 +321,7 @@ export default function HomePage() {
 
       {/* Features Strip — Truck hits Free Shipping card */}
       <ScrollReveal direction="up" distance={25}>
-        <section className="bg-white border-y border-ink/5">
+        <section className="bg-white border-y border-ink/5 overflow-hidden w-full max-w-full">
           <div className="container-nm py-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, i) => (
@@ -375,7 +376,7 @@ export default function HomePage() {
       </ScrollReveal>
 
       {/* Trending Marquee */}
-      <div className="bg-primary overflow-hidden py-3">
+      <div className="bg-primary overflow-hidden py-3 w-full max-w-full">
         <div className="marquee-container">
           <div className="marquee-content gap-8">
             {[...trendingProducts, ...trendingProducts].map((p, i) => (
@@ -392,7 +393,7 @@ export default function HomePage() {
 
       {/* Categories Section */}
       <ScrollReveal direction="up" distance={35}>
-        <section className="section-padding bg-cream-50">
+        <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
           <div className="container-nm">
             <div className="flex flex-col sm:flex-row items-end justify-between gap-6 mb-12 lg:mb-16">
               <div className="space-y-3 sm:space-y-4">
@@ -437,12 +438,14 @@ export default function HomePage() {
 
       {/* 02 — Instagram-style Reels Section (Watch NatureMud In Action) */}
       <ScrollReveal direction="up" distance={30}>
-        <ReelsSection />
+        <ErrorBoundary name="Reels Section">
+          <ReelsSection />
+        </ErrorBoundary>
       </ScrollReveal>
 
       {/* 03 — Featured Products */}
       <ScrollReveal direction="up" distance={35}>
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-white overflow-hidden w-full max-w-full">
           <div className="container-nm">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
               <div>
@@ -476,15 +479,19 @@ export default function HomePage() {
 
       {/* 04 — Special Mega Campaigns & Combos Showcase (Gym, Morning, Total Health, Focus, Festive & Tihar) */}
       <ScrollReveal direction="up" distance={35}>
-        <CampaignCombosShowcaseSection />
+        <ErrorBoundary name="Campaign Combos">
+          <CampaignCombosShowcaseSection />
+        </ErrorBoundary>
       </ScrollReveal>
 
       {/* 05 — Redesigned Interactive Our Promises Showcase */}
-      <OurPromisesSection />
+      <ErrorBoundary name="Promises Section">
+        <OurPromisesSection />
+      </ErrorBoundary>
 
       {/* Product Highlight Banner */}
       <ScrollReveal direction="up" distance={30}>
-        <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-16 sm:py-20 w-full max-w-full">
           <div className="absolute inset-0 bg-hero-pattern opacity-40" />
           <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
 
@@ -531,12 +538,14 @@ export default function HomePage() {
 
       {/* 06 — Modern Real Customer Reviews & Wall of Love */}
       <ScrollReveal direction="up" distance={30}>
-        <RealCustomerReviewsSection />
+        <ErrorBoundary name="Customer Reviews">
+          <RealCustomerReviewsSection />
+        </ErrorBoundary>
       </ScrollReveal>
 
       {/* 07 — Instagram Live Photo Gallery Section */}
       <ScrollReveal direction="up" distance={30}>
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-white overflow-hidden w-full max-w-full">
           <div className="container-nm">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
               <div>
@@ -588,7 +597,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
                     <div className="flex justify-end">
-                      <span className="p-2 rounded-full bg-black/40 backdrop-blur-md text-white">
+                      <span className="p-2 rounded-full bg-black/60 text-white">
                         <Instagram className="w-3.5 h-3.5 text-rose-400" />
                       </span>
                     </div>
@@ -616,7 +625,7 @@ export default function HomePage() {
 
       {/* Latest Posts */}
       <ScrollReveal direction="up" distance={30}>
-        <section className="section-padding bg-cream-50">
+        <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
           <div className="container-nm">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
               <div>
@@ -659,7 +668,7 @@ export default function HomePage() {
 
       {/* Newsletter */}
       <ScrollReveal direction="scale" distance={20}>
-        <section className="relative overflow-hidden bg-primary-600 py-16 sm:py-20">
+        <section className="relative overflow-hidden bg-primary-600 py-16 sm:py-20 w-full max-w-full">
           <div className="absolute inset-0 bg-hero-pattern opacity-30" />
           <div className="relative container-nm text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-white text-sm mb-6">
@@ -679,9 +688,87 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
+      {/* SEO Authority & Regional Knowledge Section for Nepal Search Dominance */}
+      <section className="py-16 bg-[#F8F5EE] border-t border-ink/10 text-ink">
+        <div className="container-nm">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-3">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-2xs">
+                About Nature&apos;s Mud Nepal (naturesmud.com)
+              </span>
+              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-ink">
+                Nepal&apos;s Trusted Organic Superfoods & Himalayan Nutrition Brand
+              </h2>
+              <p className="text-sm sm:text-base text-ink/75 leading-relaxed">
+                Welcome to <strong>Nature&apos;s Mud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan organic nutrition brand. We produce 100% natural, chemical-free dehydrated fruit and vegetable powders, wild-harvested honey, high-altitude shilajit, and raw mountain nuts.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-ink/80 leading-relaxed">
+              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-gold-600" />
+                  100% Natural Dehydrated Powders in 100g Glass Jars
+                </h3>
+                <p>
+                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link> (सखरखण्डको धुलो), <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder Natural Sweetener</Link> (खजुरको धुलो), <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link> (चुकन्दरको धुलो), and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is solar-dehydrated below 42°C to preserve natural vitamins, live enzymes, and minerals with <strong>0% added sugar and 0% preservatives</strong>.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+                  <Sprout className="w-4 h-4 text-primary" />
+                  Direct Fair-Trade Partnership with 180+ Nepali Farms
+                </h3>
+                <p>
+                  Nature&apos;s Mud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts: the fertile Terai plains (Chitwan, Nawalpur), midland hills (Kavre, Sindhupalchok, Palpa), and high Himalayan peaks (Mustang, Jumla). By eliminating middlemen, our farmers receive +35% above-market compensation.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+                  <Baby className="w-4 h-4 text-rose-500" />
+                  Safe Baby Weaning & Pediatric Nutrition
+                </h3>
+                <p>
+                  Trusted by thousands of Nepali mothers and pediatricians, our unrefined single-ingredient powders are ideal for infant porridge (लुटो), smoothies, and children&apos;s milk. 100% lab-verified with zero chemical additives or artificial colors.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-primary" />
+                  Express Delivery Across All 7 Provinces of Nepal
+                </h3>
+                <p>
+                  We deliver right to your doorstep across Kathmandu Valley (Kathmandu, Lalitpur, Bhaktapur) within 24 hours, and nationwide courier delivery to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Itahari, Hetauda, Nepalgunj, and beyond. Free shipping on orders over Rs. 10,000.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center pt-2">
+              <div className="inline-flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-ink/70">
+                <span className="font-bold text-ink">Popular Searches:</span>
+                <Link href="/products?category=powders" className="hover:text-primary underline">Sweet Potato Powder Nepal</Link>
+                <span>•</span>
+                <Link href="/products/dates-powder" className="hover:text-primary underline">Dates Powder Sweetener</Link>
+                <span>•</span>
+                <Link href="/products/beetroot-powder" className="hover:text-primary underline">Beetroot Powder Kathmandu</Link>
+                <span>•</span>
+                <Link href="/products/dehydrated-mango" className="hover:text-primary underline">Sun-Dried Mango Slices</Link>
+                <span>•</span>
+                <Link href="/products/chia-seeds" className="hover:text-primary underline">Organic Black Chia Seeds</Link>
+                <span>•</span>
+                <Link href="/catalog" className="hover:text-primary underline font-bold text-primary">View Product Catalog</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Trust section — 100% Natural hanging like pendulum */}
       <ScrollReveal direction="up" distance={20}>
-        <section className="bg-white py-10">
+        <section className="bg-white py-10 overflow-hidden w-full max-w-full">
           <div className="container-nm flex flex-wrap items-center justify-center gap-8">
             {['Certified Organic', 'From Local Farms', '100% Natural', 'No Pesticides', 'Fair Trade'].map((trust) => (
               <span

@@ -2,11 +2,11 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
 import { products } from '@/lib/data/products';
 import { recipes } from '@/lib/data/recipes';
-import { blogPosts } from '@/lib/data/content';
+import { masterBlogCatalog } from '@/lib/data/blogs-database';
 import { categories } from '@/lib/data/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url || 'https://naturesmud.com';
+  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
   const now = new Date();
 
   // 1. Core Static Pages
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/track-order`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
-  // 2. Product Detail Pages (All 29 Products & Combos)
+  // 2. Product Detail Pages (All Products & Combos)
   const productPages: MetadataRoute.Sitemap = products.map((product) => ({
     url: `${baseUrl}/products/${product.slug}`,
     lastModified: now,
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // 4. Recipe Detail Pages (All 78 Authentic Recipes)
+  // 4. Recipe Detail Pages
   const recipePages: MetadataRoute.Sitemap = recipes.map((recipe) => ({
     url: `${baseUrl}/recipes/${recipe.slug}`,
     lastModified: now,
@@ -52,12 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  // 5. Blog Article Pages (All 86 SEO & Medical Articles)
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  // 5. Blog Article Pages (All 100 SEO & AI Articles)
+  const blogPages: MetadataRoute.Sitemap = masterBlogCatalog.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date || now),
     changeFrequency: 'monthly',
-    priority: 0.75,
+    priority: 0.8,
   }));
 
   return [

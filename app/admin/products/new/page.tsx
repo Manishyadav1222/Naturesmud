@@ -204,12 +204,16 @@ export default function AdminProductCreatePage() {
             height: res.height,
             isPrimary: img.isPrimary,
           });
-        } else if (img.preview) {
+        } else if (img.url || img.preview) {
           uploadedImages.push({
-            url: img.preview,
+            url: img.url || img.preview,
             isPrimary: img.isPrimary,
           });
         }
+      }
+
+      if (uploadedImages.length > 0 && !uploadedImages.some((img) => img.isPrimary)) {
+        uploadedImages[0].isPrimary = true;
       }
 
       const productData = {

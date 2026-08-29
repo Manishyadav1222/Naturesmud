@@ -1,145 +1,128 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export interface ToastItem {
+  id: string;
+  type: 'success' | 'error' | 'info' | 'warning';
+  title: string;
+  message?: string;
+  duration?: number;
+  isRead?: boolean;
+}
+
+export interface AppNotification {
+  id: string;
+  title: string;
+  message: string;
+  time: string;
+  type: 'order' | 'promo' | 'system' | 'health';
+  isRead: boolean;
+  actionUrl?: string;
+}
 
 interface UIState {
-  // Theme
   theme: 'light' | 'dark' | 'system';
   setTheme: (theme: 'light' | 'dark' | 'system') => void;
 
-  // Online/Offline
   isOnline: boolean;
   setIsOnline: (online: boolean) => void;
 
-  // Modals
-  modals: Record<string, boolean>;
-  openModal: (id: string) => void;
-  closeModal: (id: string) => void;
-  closeAllModals: () => void;
-
-  // Bottom Sheets
-  bottomSheets: Record<string, boolean>;
-  openBottomSheet: (id: string) => void;
-  closeBottomSheet: (id: string) => void;
-
-  // Toasts/Notifications
-  toasts: Array<{
-    id: string;
-    type: 'success' | 'error' | 'info' | 'warning';
-    title: string;
-    message?: string;
-    duration?: number;
-  }>;
-  addToast: (toast: Omit<UIState['toasts'][0], 'id'>) => void;
+  toasts: ToastItem[];
+  addToast: (toast: Omit<ToastItem, 'id'>) => void;
   removeToast: (id: string) => void;
 
-  // Search
+  notifications: AppNotification[];
+  markNotificationRead: (id: string) => void;
+  markAllNotificationsRead: () => void;
+
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   recentSearches: string[];
   addRecentSearch: (query: string) => void;
   clearRecentSearches: () => void;
-
-  // Onboarding
-  hasCompletedOnboarding: boolean;
-  setHasCompletedOnboarding: (completed: boolean) => void;
-
-  // Tutorial steps
-  seenTutorials: string[];
-  markTutorialSeen: (id: string) => void;
-  hasSeenTutorial: (id: string) => boolean;
-
-  // App state
-  isAppActive: boolean;
-  setIsAppActive: (active: boolean) => void;
-
-  // Feature flags
-  features: Record<string, boolean>;
-  setFeature: (key: string, enabled: boolean) => void;
 }
 
 const UI_STORAGE_KEY = 'naturesmud_ui';
 
+const SAMPLE_NOTIFICATIONS: AppNotification[] = [
+  {
+    id: 'notif_1',
+    title: 'Order Out For Delivery 🚚',
+    message: 'Your order NM-98241 with Pure Himalayan Shilajit is out for delivery with our rider in Kathmandu.',
+    time: '20m ago',
+    type: 'order',
+    isRead: false,
+    actionUrl: '/track-order',
+  },
+  {
+    id: 'notif_2',
+    title: '🌿 20% Off Weekend Harvest Deal',
+    message: 'Use code HIMALAYA20 on checkout to get 20% off pure Raw Honey & A2 Ghee!',
+    time: '2h ago',
+    type: 'promo',
+    isRead: false,
+    actionUrl: '/products',
+  },
+  {
+    id: 'notif_3',
+    title: 'Health Tip: Morning Shilajit Ritual ☀️',
+    message: 'Dissolve a pea-sized portion of Nature’s Mud Shilajit resin in lukewarm water or milk every morning.',
+    time: '1d ago',
+    type: 'health',
+    isRead: true,
+    actionUrl: '/health-benefits',
+  },
+];
+
 export const useUIStore = create<UIState>()(
   persist(
     (set, get) => ({
-      // Theme
-      theme: 'system',
+      theme: 'light',
       setTheme: (theme) => set({ theme }),
 
-      // Online/Offline
       isOnline: true,
       setIsOnline: (isOnline) => set({ isOnline }),
 
-      // Modals
-      modals: {},
-      openModal: (id) => set((state) => ({ modals: { ...state.modals, [id]: true } })),
-      closeModal: (id) => set((state) => ({ modals: { ...state.modals, [id]: false } })),
-      closeAllModals: () => set({ modals: {} }),
-
-      // Bottom Sheets
-      bottomSheets: {},
-      openBottomSheet: (id) => set((state) => ({ bottomSheets: { ...state.bottomSheets, [id]: true } })),
-      closeBottomSheet: (id) => set((state) => ({ bottomSheets: { ...state.bottomSheets, [id]: false } })),
-
-      // Toasts
       toasts: [],
       addToast: (toast) => {
         const id = `toast_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
-        set((state) => ({
-          toasts: [...state.toasts, { ...toast, id }],
-        }));
+        const newToast: ToastItem = { ...toast, id, isRead: false };
+        set((state) => ({ toasts: [...state.toasts, newToast] }));
 
-        // Auto-remove after duration
         setTimeout(() => {
           get().removeToast(id);
-        }, toast.duration || 4000);
+        }, toast.duration || 3500);
       },
-      removeToast: (id) => set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
+      removeToast: (id) =>
+        set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
 
-      // Search
+      notifications: SAMPLE_NOTIFICATIONS,
+      markNotificationRead: (id) =>
+        set((state) => ({
+          notifications: state.notifications.map((n) =>
+            n.id === id ? { ...n, isRead: true } : n
+          ),
+        })),
+      markAllNotificationsRead: () =>
+        set((state) => ({
+          notifications: state.notifications.map((n) => ({ ...n, isRead: true })),
+        })),
+
       searchQuery: '',
       setSearchQuery: (searchQuery) => set({ searchQuery }),
-      recentSearches: [],
-      addRecentSearch: (query) =>
+      recentSearches: ['Shilajit Resin', 'Raw Cliff Honey', 'A2 Desi Cow Ghee', 'Herbal Tea', 'Chyawanprash'],
+      addRecentSearch: (query) => {
+        const trimmed = query.trim();
+        if (!trimmed) return;
         set((state) => ({
           recentSearches: [
-            query,
-            ...state.recentSearches.filter((q) => q !== query),
+            trimmed,
+            ...state.recentSearches.filter((q) => q.toLowerCase() !== trimmed.toLowerCase()),
           ].slice(0, 10),
-        })),
-      clearRecentSearches: () => set({ recentSearches: [] }),
-
-      // Onboarding
-      hasCompletedOnboarding: false,
-      setHasCompletedOnboarding: (hasCompletedOnboarding) => set({ hasCompletedOnboarding }),
-
-      // Tutorials
-      seenTutorials: [],
-      markTutorialSeen: (id) =>
-        set((state) => ({
-          seenTutorials: [...new Set([...state.seenTutorials, id])],
-        })),
-      hasSeenTutorial: (id) => get().seenTutorials.includes(id),
-
-      // App state
-      isAppActive: true,
-      setIsAppActive: (isAppActive) => set({ isAppActive }),
-
-      // Feature flags
-      features: {
-        reviews: true,
-        reels: true,
-        loyalty: true,
-        referrals: true,
-        subscriptions: true,
-        chat: false,
-        ar: false,
+        }));
       },
-      setFeature: (key, enabled) =>
-        set((state) => ({
-          features: { ...state.features, [key]: enabled },
-        })),
+      clearRecentSearches: () => set({ recentSearches: [] }),
     }),
     {
       name: UI_STORAGE_KEY,
@@ -147,22 +130,12 @@ export const useUIStore = create<UIState>()(
       partialize: (state) => ({
         theme: state.theme,
         recentSearches: state.recentSearches,
-        hasCompletedOnboarding: state.hasCompletedOnboarding,
-        seenTutorials: state.seenTutorials,
-        features: state.features,
+        notifications: state.notifications,
       }),
     }
   )
 );
 
-// Helper hook for toasts
-export function useToast() {
-  const addToast = useUIStore((state) => state.addToast);
-  const removeToast = useUIStore((state) => state.removeToast);
-  return { addToast, removeToast };
-}
-
-// Toast convenience functions
 export const toast = {
   success: (title: string, message?: string) =>
     useUIStore.getState().addToast({ type: 'success', title, message }),
