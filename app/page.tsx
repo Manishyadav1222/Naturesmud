@@ -119,65 +119,57 @@ export default function HomePage() {
   return (
     <main className="w-full max-w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full">
-        {/* Ambient background - soft warm beige gradient with organic textures */}
-        <div className="absolute inset-0 bg-hero-pattern opacity-60" />
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(217,164,65,0.10)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-[radial-gradient(circle,rgba(122,169,92,0.10)_0%,transparent_70%)] pointer-events-none" />
-        
-        {/* Subtle decorative leaves */}
-        <div className="absolute top-24 left-[8%] w-12 h-12 text-primary/15 pointer-events-none rotate-12">
-          <Leaf className="w-full h-full" />
-        </div>
-        <div className="absolute bottom-32 right-[12%] w-16 h-16 text-gold/15 pointer-events-none -rotate-12">
-          <Leaf className="w-full h-full" />
+      <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full">
+        {/* Background 50% Opacity Nepal/Himalayan Visual */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <Image
+            src="/images/himalayan-landscape.jpg"
+            alt="Misty Himalayan mountain ridges in Nepal"
+            fill
+            priority
+            className="object-cover object-center opacity-50 select-none mix-blend-multiply"
+          />
+          {/* Warm natural cream atmospheric gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/40 via-[#FAF7F2]/65 to-[#FAF7F2]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/90 via-[#FAF7F2]/75 to-[#FAF7F2]/30" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 sm:py-7 lg:py-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
           <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             {/* Left Content Column */}
             <div className="lg:col-span-6 xl:col-span-6 space-y-5 lg:space-y-6">
-              {/* Ultra-Clean Premium Trust Eyebrow Badge */}
+              {/* Refined Eyebrow Badge */}
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary/12 via-gold/15 to-primary/10 border border-primary/20 px-4 py-1.5 shadow-[0_2px_12px_rgba(58,107,53,0.06)]"
+                className="inline-flex items-center gap-2 tracking-[0.25em] text-xs font-semibold text-[#7A5230] uppercase font-sans"
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
-                </span>
-                <span className="text-xs font-bold tracking-wide text-primary flex items-center gap-1.5 font-heading">
-                  <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-                  0 Additives · 0 Preservatives · 180+ Partner Farms
-                </span>
+                <span className="w-5 h-px bg-[#7A5230]/60" />
+                <span>FROM THE HIMALAYAS</span>
+                <span className="w-5 h-px bg-[#7A5230]/60" />
               </motion.div>
 
-              {/* Hero Heading with Luxury Editorial Typography & Exact Brand Match */}
+              {/* Hero Heading with Elegant Serif & Aesop Proportions */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-3"
+                className="space-y-2"
               >
-                <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-black leading-[1.04] tracking-tight font-heading">
-                  <span className="text-primary-800 block">
-                    NaturesMud
-                  </span>
-                  <span className="text-gold-600 block drop-shadow-xs">
-                    Rooted in Nepal.
-                  </span>
+                <h1 className="text-4xl sm:text-5xl lg:text-[62px] leading-[1.08] font-normal tracking-[-0.01em] font-heading">
+                  <span className="block italic text-[#242220] font-normal">Grown in Nepal.</span>
+                  <span className="block text-[#1A3826] font-medium">Handled with care.</span>
+                  <span className="block text-[#7A5230] font-normal">Delivered to your home.</span>
                 </h1>
 
                 {/* Refined Narrative Description */}
-                <p className="text-sm sm:text-base text-ink/75 font-normal leading-relaxed max-w-lg pt-1">
-                  Welcome to <strong>NaturesMud Nepal (naturesmud.com)</strong>. From pristine Himalayan foothills above 3,000m to your doorstep — discover authentic wild honey, potent shilajit, seeds, and nutrient-dense 100g superfood powders crafted with 0 additives and 0 preservatives.
+                <p className="text-sm sm:text-base text-[#242220]/80 font-normal leading-relaxed max-w-lg pt-1 font-sans">
+                  Pure, unadulterated whole foods cultivated across Mustang, Jumla, Kavre, and the Terai. Direct farmer partnerships, gentle low-temperature dehydration, and 0 additives or preservatives.
                 </p>
               </motion.div>
 
-              {/* High-Conversion CTAs and Verified Social Proof */}
+              {/* High-Conversion CTAs */}
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -187,59 +179,59 @@ export default function HomePage() {
                 <div className="flex flex-wrap items-center gap-3.5">
                   <Link
                     href="/products"
-                    className="group relative inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-primary via-primary-600 to-emerald-700 px-7 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-white shadow-[0_8px_25px_rgba(58,107,53,0.32)] hover:shadow-[0_12px_32px_rgba(58,107,53,0.42)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-[#1A3826] hover:bg-[#132B1D] px-7 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-[#FAF7F2] tracking-wide shadow-sm hover:shadow transition-all duration-300 cursor-pointer font-sans"
                   >
-                    <span>Shop All Products</span>
+                    <span>Shop All Superfoods</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
 
                   <Link
                     href="/our-story"
-                    className="group inline-flex items-center gap-2 rounded-full bg-white border border-ink/12 px-6 py-3 sm:py-3.5 text-sm sm:text-base font-bold text-ink hover:bg-white hover:border-primary/30 hover:text-primary hover:shadow-[0_6px_20px_rgba(43,43,43,0.08)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 cursor-pointer"
+                    className="group inline-flex items-center gap-2 rounded-full border border-[#7A5230]/40 hover:border-[#7A5230] bg-[#FAF7F2]/80 hover:bg-[#FAF7F2] px-6 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-[#7A5230] tracking-wide transition-all duration-300 cursor-pointer font-sans"
                   >
-                    <Leaf className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-12" />
-                    <span>Our Story</span>
+                    <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-12" />
+                    <span>Farmer Provenance</span>
                   </Link>
                 </div>
 
                 {/* Social Proof Avatar Cluster + Micro-Trust Row */}
                 <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-1">
                   {/* Avatar Cluster */}
-                  <div className="flex items-center gap-2 pr-3 border-r border-ink/10">
+                  <div className="flex items-center gap-2 pr-3 border-r border-[#242220]/10">
                     <div className="flex -space-x-2">
-                      {['👩‍🍼', '🧔', '👩‍⚕️', '🏃‍♂️'].map((emoji, idx) => (
+                      {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
                         <div
                           key={idx}
-                          className="w-7 h-7 rounded-full bg-gradient-to-br from-cream-100 to-white border-2 border-white flex items-center justify-center text-xs shadow-xs"
+                          className="w-7 h-7 rounded-full bg-[#F5F1EA] border-2 border-[#FAF7F2] flex items-center justify-center text-xs shadow-xs"
                         >
                           {emoji}
                         </div>
                       ))}
                     </div>
-                    <div className="text-[11px] leading-tight">
-                      <div className="flex items-center text-amber-500">
+                    <div className="text-[11px] leading-tight font-sans">
+                      <div className="flex items-center text-[#7A5230]">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
+                          <Star key={i} className="w-2.5 h-2.5 fill-[#7A5230] text-[#7A5230]" />
                         ))}
-                        <span className="font-bold text-ink ml-1 font-mono">4.9/5</span>
+                        <span className="font-semibold text-[#242220] ml-1">4.9/5</span>
                       </div>
-                      <span className="text-ink/60 font-medium">25,000+ Happy Nepalis</span>
+                      <span className="text-[#242220]/60 font-normal">25,000+ Happy Nepalis</span>
                     </div>
                   </div>
 
                   {/* Micro-Trust Pills */}
-                  <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-semibold text-ink/70">
-                    <span className="inline-flex items-center gap-1 bg-white/70 px-2.5 py-1 rounded-full border border-ink/5 shadow-2xs">
-                      <ShieldCheck className="w-3.5 h-3.5 text-primary" />
-                      100% Himalayan
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-[#242220]/75 font-sans">
+                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
+                      100% Sourced in Nepal
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-white/70 px-2.5 py-1 rounded-full border border-ink/5 shadow-2xs">
-                      <Truck className="w-3.5 h-3.5 text-primary" />
-                      Free Shipping &gt; Rs. 10,000
+                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                      <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
+                      Free Delivery &gt; Rs. 10,000
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-white/70 px-2.5 py-1 rounded-full border border-ink/5 shadow-2xs">
-                      <BadgeCheck className="w-3.5 h-3.5 text-gold-600" />
-                      Cash on Delivery
+                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                      <Sparkles className="w-3.5 h-3.5 text-[#7A5230]" />
+                      0 Additives · 0 Preservatives
                     </span>
                   </div>
                 </div>
@@ -260,12 +252,12 @@ export default function HomePage() {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="p-2.5 sm:p-3 rounded-2xl bg-white border border-ink/8 hover:border-primary/20 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 text-center shadow-xs"
+                    className="p-2.5 sm:p-3 rounded-2xl bg-[#FAF7F2]/90 border border-[#EAE3D6] hover:border-[#1A3826]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center shadow-xs"
                   >
-                    <div className={`text-base sm:text-lg font-heading font-black ${stat.highlight ? 'text-primary' : 'text-ink'}`}>
+                    <div className={`text-base sm:text-lg font-heading font-normal ${stat.highlight ? 'text-[#1A3826]' : 'text-[#242220]'}`}>
                       <AnimatedCounter value={stat.value} />
                     </div>
-                    <div className="text-[10px] text-ink/60 font-semibold mt-0.5 truncate">{stat.label}</div>
+                    <div className="text-[10px] text-[#242220]/60 font-medium mt-0.5 truncate font-sans">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>

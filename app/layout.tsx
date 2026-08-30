@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Poppins, Inter } from 'next/font/google';
+import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import StorefrontShell from '@/components/StorefrontShell';
 import { siteConfig } from '@/lib/site';
 
 import { Toaster } from 'sonner';
 
-const poppins = Poppins({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cormorant',
   display: 'swap',
 });
 
@@ -247,14 +247,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-body bg-cream text-dark antialiased overflow-x-hidden w-full max-w-full">
+      <body className="font-body bg-[#FAF7F2] text-[#242220] antialiased overflow-x-hidden w-full max-w-full">
         <StorefrontShell>{children}</StorefrontShell>
         <Toaster position="bottom-right" richColors />
       </body>

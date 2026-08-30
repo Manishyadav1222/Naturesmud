@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --color-primary: #3a6b35;
-    --color-secondary: #7aa95c;
-    --color-cream: #f8f4ec;
-    --color-brown: #7b5e3b;
-    --color-gold: #d9a441;
-    --color-ink: #2b2b2b;
+    --color-primary: #1a3826;
+    --color-secondary: #2c5e40;
+    --color-cream: #faf7f2;
+    --color-brown: #7a5230;
+    --color-gold: #8c673b;
+    --color-ink: #242220;
   }
 
   * {
@@ -21,7 +21,7 @@
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #fafaf5;
+    background-color: #faf7f2;
     text-rendering: optimizeSpeed;
   }
 
@@ -52,8 +52,8 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    @apply bg-cream-50 font-body text-ink;
-    background-color: #fafaf5;
+    @apply bg-cream font-body text-ink;
+    background-color: #faf7f2;
     -webkit-overflow-scrolling: touch;
   }
 

@@ -1467,7 +1467,7 @@ export const products: Product[] = [
     "benefits": [
       "Contains 50%+ Lauric Acid (monolaurin) to bolster antiviral & antibacterial defenses",
       "Medium-Chain Triglycerides (MCTs) burn cleanly for instant cellular energy",
-      "Hypoallergenic moisturizer for infant baby massage and sensitive skin",
+      "Gentle, pure whole food moisturizer for baby massage and dry skin",
       "Deeply conditions hair follicles and prevents protein loss"
     ],
     "nutrition": [
@@ -1671,7 +1671,7 @@ export const products: Product[] = [
       "100% Pure Dehydrated Nepali Sweet Potato (Ipomoea batatas)"
     ],
     "benefits": [
-      "Rich in Vitamin A (Beta-Carotene) for infant eyesight and skin health",
+      "Rich in natural Beta-Carotene (Vitamin A) supporting healthy visual and cellular development",
       "Gentle complex carbohydrates for baby weaning porridge (6M+)",
       "Sustained clean glycogen energy for fitness, running, and gym workouts",
       "High in prebiotic dietary fiber for smooth gut digestion",

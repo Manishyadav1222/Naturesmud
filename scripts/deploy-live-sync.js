@@ -85,6 +85,7 @@ async function callApi(apiPath, method = 'GET') {
 async function uploadFile(localPath, remoteDir, remoteFileName) {
   const ftp = require('basic-ftp');
   const client = new ftp.Client();
+  client.timeout = 300000;
   try {
     await client.access({
       host: config.host,
@@ -276,12 +277,13 @@ async function main() {
       path.join(config.rootDir, 'public'),
       false,
       (entry) => {
+        const norm = entry.name.replace(/\\/g, '/');
         if (
-          entry.name.startsWith('videos/') ||
-          entry.name === 'videos' ||
-          entry.name.startsWith('images/posters/') ||
-          entry.name === 'images/posters' ||
-          entry.name.endsWith('.zip')
+          norm.startsWith('videos/') ||
+          norm === 'videos' ||
+          norm.startsWith('images/posters/') ||
+          norm === 'images/posters' ||
+          norm.endsWith('.zip')
         ) {
           return false;
         }

@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
       'A baby\'s skin is 30% thinner than adult skin, with an underdeveloped barrier function. This means chemicals from conventional products — pesticides, synthetic fragrances, parabens — absorb more readily into their bloodstream.',
       'The first 1,000 days (conception to age 2) are critical for immune system development. Exposure to endocrine disruptors during this window can have lifelong effects on hormonal health, metabolism, and cognitive development.',
       'Organic certification (NOCB, USDA NOP) guarantees: no synthetic pesticides, no GMOs, no synthetic fertilizers, no irradiation, and strict processing standards. For baby products, this is non-negotiable.',
-      'Our Baby & Mother Care range is pediatrician-reviewed, hypoallergenic tested, and made in small batches with Himalayan-sourced ingredients. Because your baby deserves the purest start.',
+      'Our Baby & Mother Care range is made in small batches with pure, 0-additive Himalayan-sourced ingredients. Because your baby deserves the purest start.',
     ],
     tags: ['baby', 'organic', 'pediatrician', 'skin-care', 'first-year', 'certification'],
     featured: false,

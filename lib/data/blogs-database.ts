@@ -1732,7 +1732,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     "sweet potato powder babies"
   ],
   "keyTakeaways": [
-    "Gentle on Immature Stomachs: Sweet potato is non-acidic, hypoallergenic, and highly digestible for 6-month-old infants.",
+    "Gentle on Immature Stomachs: Sweet potato is non-acidic, single-ingredient, and easily digestible for 6-month-old infants.",
     "Rich in Beta-Carotene: Supports developing infant vision, skin health, and normal immune function.",
     "Quick 2-Minute Preparation: Using pure dehydrated sweet potato powder eliminates 30 minutes of peeling, boiling, and blending."
   ],
@@ -3126,7 +3126,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       },
       {
         question: 'Is sweet potato powder gluten-free?',
-        answer: 'Yes! Sweet potato powder is 100% naturally gluten-free, grain-free, and hypoallergenic, making it ideal for toddlers and adults with celiac disease or sensitive gut linings.'
+        answer: 'Yes! Sweet potato powder is 100% naturally gluten-free, grain-free, and mild, making it ideal for toddlers and adults with celiac disease or sensitive gut linings.'
       }
     ],
     content: [
@@ -3190,7 +3190,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductPrice: 390,
     featuredProductImage: '/products/dates-powder-100g.jpg',
     content: [
-      "Traditional Nepali baby celebrations like Pasni (rice feeding ceremony) and daily morning lito often rely on cow milk and refined sugar. Here are 10 pediatrician-approved, zero-sugar recipes that replace sugar with NaturesMud Dates Powder.",
+      "Traditional Nepali baby celebrations like Pasni (rice feeding ceremony) and daily morning lito often rely on cow milk and refined sugar. Here are 10 wholesome, zero-sugar recipes that replace sugar with NaturesMud Dates Powder.",
       "### Recipe 1: Himalayan Superfood Ragi & Dates Porridge",
       "### Recipe 2: Creamy Oat & Sweet Potato Breakfast Bowl",
       "### Recipe 3: Festive Almond & Dates Festive Kheer",
@@ -3364,7 +3364,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "### Why Sweet Potato Powder is Superior:",
       "- **Slow-Burning Amylase Carbohydrates:** Delivers steady glycogen synthesis over 3+ hours without blood sugar volatility.",
       "- **High Potassium Electrolytes:** Prevents muscle cramping during intense climbs under high heat.",
-      "- **Zero Artificial Additives:** Hypoallergenic, easy on sensitive stomachs, and mixable into any hydration flask."
+      "- **Zero Artificial Additives:** Pure, easy on sensitive stomachs, and mixable into any hydration flask."
     ],
     tags: ['clean carbs', 'sweet potato powder', 'marathon fuel', 'trail running nepal', 'clean preworkout']
   },
@@ -3597,7 +3597,7 @@ const topicBlueprints = [
   { title: "10 Sugar-Free Traditional Nepali Baby Kheer & Porridge Recipes Using 100% Dates Powder (6M - 3Y)", slug: "sugar-free-baby-kheer-and-porridge-recipes-dates-sweetener", cat: "Infant & Family Nutrition", prod: "dates-powder", read: 10 },
   { title: "Natural Toddler Constipation Relief: Pediatric Guide to Soluble Fibers, Dates Powder & Soaked Flaxseeds", slug: "managing-toddler-constipation-naturally-fiber-rich-dates-flaxseed", cat: "Infant & Family Nutrition", prod: "flaxseed-crackers", read: 10 },
   { title: "Pediatric Brain Growth: Omega-3s, Zinc & Healthy Fats for Children from 1 to 5 Years in Nepal", slug: "pediatric-nutrition-brain-development-nuts-seeds-first-year", cat: "Infant & Family Nutrition", prod: "himalayan-walnuts", read: 10 },
-  { title: "Hypoallergenic First Weaning Foods: Why Dehydrated Root Powders Prevent Infant Gut Allergies", slug: "hypoallergenic-weaning-foods-why-root-vegetables-prevent-allergies", cat: "Infant & Family Nutrition", prod: "sweet-potato-powder", read: 10 },
+  { title: "Gentle First Weaning Foods: Why Dehydrated Root Powders Support Infant Gut Comfort", slug: "gentle-weaning-foods-why-root-vegetables-support-gut-comfort", cat: "Infant & Family Nutrition", prod: "sweet-potato-powder", read: 10 },
   { title: "Zinc & Calcium Superfoods for Toddler Bone Milestones: The Clean Single-Ingredient Blueprint", slug: "calcium-and-zinc-for-toddler-bone-growth-organic-seeds-guide", cat: "Infant & Family Nutrition", prod: "organic-pumpkin-seeds", read: 10 },
   { title: "Homemade Organic Cerelac Alternative: How to Make Clean Nutrient-Dense Baby Porridge at Home", slug: "homemade-organic-cerelac-alternative-nepali-superfoods-powder", cat: "Infant & Family Nutrition", prod: "sweet-potato-powder", read: 11 },
   { title: "Boosting Childhood Mucosal Immunity in Monsoon & Winter: Herbal Broths & Superfood Jars", slug: "boosting-childhood-mucosal-immunity-in-monsoon-winter-nepal", cat: "Infant & Family Nutrition", prod: "raw-honey", read: 10 },

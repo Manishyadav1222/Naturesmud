@@ -145,7 +145,7 @@ export const BABY_SAFE_PRODUCT_USAGE = {
   'sweet-potato-powder': {
     minAgeMonths: 6,
     preparation: 'Mix 1–2 tsp with breast milk, formula, or warm water to smooth puree. No cooking required.',
-    safetyNote: 'Single ingredient, hypoallergenic, naturally smooth texture when mixed.'
+    safetyNote: 'Single ingredient, gentle, naturally smooth texture when mixed.'
   },
   'dates-powder': {
     minAgeMonths: 6,

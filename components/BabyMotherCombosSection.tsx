@@ -41,24 +41,24 @@ export interface BabyMotherCombo {
   tag: string;
   highlights: string[];
   items: BabyMotherProductItem[];
-  doctorGuarantee: string;
+  purityNote: string;
 }
 
 export const babyMotherCombos: BabyMotherCombo[] = [
   {
     id: 'combo-baby-solids',
-    title: 'Little Explorer First Solids Superfood Kit',
-    subtitle: 'Organic Sweet Potato Powder, Carrot Powder & Pure Date Sweetener',
-    stageName: '🍼 6–24m First Solids Care',
-    badge: '5% OFF · Pediatrician Approved',
+    title: 'First Solids Whole Food Starter Kit',
+    subtitle: 'Pure Sweet Potato Powder, Carrot Powder & Sun-Dried Dates Powder',
+    stageName: '🍼 6–24m First Solids',
+    badge: '5% OFF · Single-Ingredient Foods',
     categoryIcon: '🍼',
     categoryLabel: '6-24m Solids',
     discountPercentage: 5,
     originalPrice: 1350,
     offerPrice: 1283,
     couponCode: 'STORE5',
-    tag: 'Gentle on Little Tumtum',
-    doctorGuarantee: 'Zero added refined sugar, salt, or preservatives. Micro-pulverized for gentle infant swallowing.',
+    tag: 'Gentle Single-Ingredient Foods',
+    purityNote: 'Pure whole vegetables and dried fruit with zero added sugar, zero salt, and zero preservatives. Finely ground for a smooth texture.',
     items: [
       {
         productId: '25',
@@ -83,10 +83,10 @@ export const babyMotherCombos: BabyMotherCombo[] = [
       },
     ],
     highlights: [
-      'High Beta-Carotene for Infant Eyesight Growth',
-      'Gentle Hypoallergenic Carbohydrates for First Weaning',
-      '100% Sugar-Free & Preservative-Free',
-      'Micro-Pulverized for Easy Swallowing',
+      'Naturally Rich in Beta-Carotene (Pro-Vitamin A)',
+      'Gentle, Single-Ingredient Carbohydrates for First Weaning',
+      '0 Added Sugar · 0 Preservatives',
+      'Finely Milled Powder for Smooth Texture',
     ],
   },
   {
@@ -94,7 +94,7 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     title: 'Motherhood Pregnancy Complete Nourishment Box',
     subtitle: 'High-Iron Sun-Dried Figs, Chia Seeds & Mountain Almonds',
     stageName: '🤰 Pregnancy Trimesters 1, 2 & 3',
-    badge: '5% OFF · Gynecologist Pick',
+    badge: '5% OFF · Maternal Nourishment',
     categoryIcon: '🤰',
     categoryLabel: 'Pregnancy',
     discountPercentage: 5,
@@ -102,7 +102,7 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     offerPrice: 1838,
     couponCode: 'STORE5',
     tag: 'Folate & Iron Rich',
-    doctorGuarantee: 'Natural whole food nutrition packed with organic folates, iron, magnesium, and essential fatty acids.',
+    purityNote: 'Natural whole food nutrition packed with plant folates, iron, magnesium, and essential fatty acids.',
     items: [
       {
         productId: '16',
@@ -127,9 +127,9 @@ export const babyMotherCombos: BabyMotherCombo[] = [
       },
     ],
     highlights: [
-      'Natural Plant-Based Folate & Organic Iron',
-      'Helps Prevent Morning Sickness & Fatigue',
-      'Strengthens Fetal Brain & Neural Spine',
+      'Natural Plant-Based Dietary Folate & Iron',
+      'Nutrient-Dense Whole Food Energy',
+      'Essential Fatty Acids & Trace Minerals',
       'Gentle on Maternal Digestion',
     ],
   },
@@ -137,7 +137,7 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     id: 'combo-postpartum-recovery',
     title: 'Sutkeri Postpartum Recovery & Lactation Support Pack',
     subtitle: 'Virgin Coconut Oil, Roasted Almonds & Dates Powder',
-    stageName: '🤱 Sutkeri Postpartum Recovery',
+    stageName: '🤱 Sutkeri Postpartum Care',
     badge: '5% OFF · Traditional Sutkeri Care',
     categoryIcon: '🤱',
     categoryLabel: 'Postpartum',
@@ -145,8 +145,8 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     originalPrice: 1750,
     offerPrice: 1663,
     couponCode: 'STORE5',
-    tag: 'Boosts Breastmilk Supply',
-    doctorGuarantee: 'Time-tested Himalayan lactation galactagogues. Restores maternal core strength, pelvic tone, and hormonal balance.',
+    tag: 'Traditional Postpartum Care',
+    purityNote: 'Traditional Himalayan postpartum nourishment with cold-pressed coconut oil, roasted almonds, and natural date sweetness.',
     items: [
       {
         productId: '23',
@@ -171,26 +171,26 @@ export const babyMotherCombos: BabyMotherCombo[] = [
       },
     ],
     highlights: [
-      'Natural Lauric Acid for Breastmilk Immunity',
-      'Fast-Tracks Postpartum Uterine Recovery',
-      'High Omega-3 Fatty Acids for Baby Brain DHA',
-      'Restores Maternal Bone Calcium & Stamina',
+      'Natural Lauric Acid from Cold-Pressed Coconut',
+      'Wholesome Energy for New Mothers',
+      'Natural Plant Calcium & Healthy Fats',
+      'Gentle, Sustained Daily Stamina',
     ],
   },
   {
     id: 'combo-kids-crunch',
-    title: 'Super-Kids Brain & Immunity Crunch Box',
+    title: 'Super-Kids Mountain Nutrition Crunch Box',
     subtitle: 'Superfood Mix Dry Nuts, Raw Pumpkin Seeds & Whole Cranberries',
     stageName: '🧒 Toddlers & Kids (2+ Years)',
-    badge: '5% OFF · School Snack',
+    badge: '5% OFF · Wholesome Snacking',
     categoryIcon: '🧒',
     categoryLabel: 'Toddler 2y+',
     discountPercentage: 5,
     originalPrice: 1755,
     offerPrice: 1667,
     couponCode: 'STORE5',
-    tag: '100% Oil-Free Healthy Snack',
-    doctorGuarantee: '100% oil-free dry snacking. Replaces junk chips and biscuits with nutrient-dense mountain superfoods.',
+    tag: '100% Oil-Free Whole Snack',
+    purityNote: '100% oil-free dry snacking. Nutrient-dense mountain nuts and seeds without artificial additives or refined sugars.',
     items: [
       {
         productId: '20',
@@ -215,10 +215,10 @@ export const babyMotherCombos: BabyMotherCombo[] = [
       },
     ],
     highlights: [
-      'High Calcium & Protein Crunchy Snack',
-      'Zinc & Magnesium for Restful Sleep & Growth',
-      'Antioxidants for Active Seasonal Immunity',
-      'Kid-Approved Natural Crunch & Taste',
+      'High-Protein Crunchy Mountain Snack',
+      'Natural Dietary Zinc & Magnesium',
+      'Antioxidants from Whole Sun-Dried Berries',
+      '0 Added Sugar · 0 Artificial Flavours',
     ],
   },
 ];
@@ -313,29 +313,28 @@ export default function BabyMotherCombosSection() {
       {/* Main Card */}
       <div className="relative rounded-[2.2rem] bg-white border border-ink/8 p-5 sm:p-6 shadow-[0_15px_40px_rgba(58,107,53,0.08)] overflow-hidden">
         {/* Subtle decorative background pattern */}
-        <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-amber-400/15 via-gold/10 to-transparent rounded-full blur-2xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#7A5230]/5 to-transparent rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-36 h-36 bg-gradient-to-tr from-[#1A3826]/5 to-transparent rounded-full blur-xl pointer-events-none" />
 
         {/* Top Auto-Cycle Subtle Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-amber-100/60 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-[#EAE3D6]/60 overflow-hidden">
           <motion.div
             key={activeIdx}
             initial={{ width: '0%' }}
             animate={{ width: isHovered ? '100%' : '100%' }}
             transition={{ duration: isHovered ? 0 : 4.0, ease: 'linear' }}
-            className="h-full bg-gradient-to-r from-amber-500 to-primary"
+            className="h-full bg-[#1A3826]"
           />
         </div>
 
-        {/* Top Header Row: Stage Ribbon & Pediatrician Social Proof */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-2.5 pb-3.5 border-b border-ink/8 pt-1">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-100 via-amber-50 to-primary/10 border border-amber-300/40 shadow-sm">
+        {/* Top Header Row: Stage Ribbon & Whole Food Guarantee */}
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-2.5 pb-3.5 border-b border-[#242220]/8 pt-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F1EA] border border-[#EAE3D6] shadow-xs">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-600 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-600" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1A3826]" />
             </span>
-            <span className="text-xs font-bold tracking-wide text-ink flex items-center gap-1.5 font-heading">
-              <Baby className="w-3.5 h-3.5 text-amber-700" />
+            <span className="text-xs font-medium tracking-wide text-[#242220] flex items-center gap-1.5 font-sans">
+              <Baby className="w-3.5 h-3.5 text-[#7A5230]" />
               {currentCombo.stageName}
             </span>
           </div>
@@ -345,24 +344,24 @@ export default function BabyMotherCombosSection() {
             <div className="flex items-center gap-1">
               <button
                 onClick={prevTab}
-                className="w-6 h-6 rounded-full bg-cream-100 hover:bg-cream-200 text-ink/70 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-6 h-6 rounded-full bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Previous combo"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={nextTab}
-                className="w-6 h-6 rounded-full bg-cream-100 hover:bg-cream-200 text-ink/70 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-6 h-6 rounded-full bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Next combo"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            {/* Pediatrician Guarantee Badge */}
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-amber-800 bg-amber-50 border border-amber-200/60 px-3 py-0.5 rounded-full">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-              <span>⭐ 4.9/5 (1,420+ Moms)</span>
+            {/* Whole Food Guarantee Badge */}
+            <div className="flex items-center gap-1 text-[11px] font-medium text-[#1A3826] bg-[#F5F1EA] border border-[#EAE3D6] px-3 py-0.5 rounded-full">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
+              <span>100% Pure Food · 0 Additives</span>
             </div>
           </div>
         </div>
@@ -384,17 +383,17 @@ export default function BabyMotherCombosSection() {
                   setActiveIdx(idx);
                   setIsAdded(false);
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 flex items-center gap-1.5 cursor-pointer border shrink-0 ${
+                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 flex items-center gap-1.5 cursor-pointer border shrink-0 font-sans ${
                   isSelected
-                    ? 'bg-gradient-to-r from-amber-600 to-amber-700 text-white border-amber-600 shadow-md shadow-amber-600/20 scale-[1.02]'
-                    : 'bg-cream-100/70 hover:bg-cream-200 text-ink/70 hover:text-ink border-transparent'
+                    ? 'bg-[#1A3826] text-[#FAF7F2] border-[#1A3826] shadow-xs'
+                    : 'bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 border-transparent'
                 }`}
               >
                 <span>{combo.categoryIcon}</span>
                 <span>{combo.categoryLabel}</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
-                    isSelected ? 'bg-white/20 text-white' : 'bg-amber-600/10 text-amber-800'
+                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold ${
+                    isSelected ? 'bg-white/20 text-[#FAF7F2]' : 'bg-[#7A5230]/10 text-[#7A5230]'
                   }`}
                 >
                   -{combo.discountPercentage}%
@@ -418,15 +417,15 @@ export default function BabyMotherCombosSection() {
             {/* Title & Tagline */}
             <div>
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 font-heading text-[10px] font-extrabold uppercase tracking-wider">
+                <span className="px-2.5 py-0.5 rounded-full bg-[#F5F1EA] text-[#1A3826] border border-[#EAE3D6] font-sans text-[10px] font-semibold tracking-wider uppercase">
                   {currentCombo.badge}
                 </span>
-                <span className="text-[11px] text-ink/50 font-medium">✨ {currentCombo.tag}</span>
+                <span className="text-[11px] text-[#242220]/60 font-normal">✨ {currentCombo.tag}</span>
               </div>
-              <h3 className="font-heading font-extrabold text-lg sm:text-xl text-dark mt-1 leading-snug">
+              <h3 className="font-heading font-normal text-xl sm:text-2xl text-[#1A3826] mt-1.5 leading-snug">
                 {currentCombo.title}
               </h3>
-              <p className="text-xs text-gray-600 mt-0.5 line-clamp-1">{currentCombo.subtitle}</p>
+              <p className="text-xs text-[#242220]/70 mt-0.5 line-clamp-1 font-sans">{currentCombo.subtitle}</p>
             </div>
 
             {/* Multi-Product Thumbnail Stack */}
@@ -472,48 +471,48 @@ export default function BabyMotherCombosSection() {
             {/* Combo Benefits Checklist */}
             <div className="grid sm:grid-cols-2 gap-1.5 py-0.5">
               {currentCombo.highlights.map((hl, i) => (
-                <div key={i} className="flex items-center gap-1.5 text-xs text-gray-700">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <div key={i} className="flex items-center gap-1.5 text-xs text-[#242220]/80 font-sans">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1A3826] shrink-0" />
                   <span className="line-clamp-1">{hl}</span>
                 </div>
               ))}
             </div>
 
-            {/* Pricing, Coupon & High-Conversion Action Button */}
-            <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+            {/* Pricing, Coupon & Action Buttons */}
+            <div className="pt-2 border-t border-[#242220]/8 flex flex-wrap items-center justify-between gap-3">
               {/* Prices */}
               <div>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-heading font-black text-2xl text-amber-700">
+                  <span className="font-heading font-normal text-2xl text-[#1A3826]">
                     Rs. {currentCombo.offerPrice.toLocaleString()}
                   </span>
-                  <span className="text-xs text-gray-400 line-through font-medium">
+                  <span className="text-xs text-[#242220]/40 line-through font-normal">
                     Rs. {currentCombo.originalPrice.toLocaleString()}
                   </span>
-                  <span className="text-[10px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-md">
+                  <span className="text-[10px] font-semibold text-[#7A5230] bg-[#F5F1EA] border border-[#EAE3D6] px-2 py-0.5 rounded-full font-sans">
                     SAVE {currentCombo.discountPercentage}%
                   </span>
                 </div>
-                <p className="text-[10px] text-gray-500 font-medium mt-0.5">
+                <p className="text-[10px] text-[#242220]/60 font-sans mt-0.5">
                   ✓ Free Delivery Across Nepal
                 </p>
               </div>
 
-              {/* 1-Click Action Buttons */}
+              {/* Action Buttons */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => handleCopyCode(currentCombo.couponCode)}
-                  className="hidden sm:inline-flex items-center gap-1 px-2.5 py-2 rounded-full text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="hidden sm:inline-flex items-center gap-1 px-2.5 py-2 rounded-full text-xs font-medium bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#7A5230] border border-[#EAE3D6] transition-all cursor-pointer shadow-xs active:scale-95 font-sans"
                   title="Click to copy voucher"
                 >
                   {copiedCode === currentCombo.couponCode ? (
                     <>
-                      <Check className="w-3 h-3 text-emerald-600" />
-                      <span className="text-emerald-700 text-[11px]">Copied!</span>
+                      <Check className="w-3 h-3 text-[#1A3826]" />
+                      <span className="text-[#1A3826] text-[11px]">Copied!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3 h-3 text-amber-700" />
+                      <Copy className="w-3 h-3 text-[#7A5230]" />
                       <span className="text-[11px]">Code: {currentCombo.couponCode}</span>
                     </>
                   )}
@@ -521,10 +520,10 @@ export default function BabyMotherCombosSection() {
 
                 <button
                   onClick={handleClaimCombo}
-                  className={`inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-bold text-white transition-all shadow-md active:scale-95 cursor-pointer ${
+                  className={`inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-medium transition-all shadow-xs active:scale-95 cursor-pointer font-sans ${
                     isAdded
-                      ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/30'
-                      : 'bg-cream-200 hover:bg-cream-300 text-ink/90 border border-ink/10'
+                      ? 'bg-[#1A3826] text-[#FAF7F2]'
+                      : 'bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220] border border-[#EAE3D6]'
                   }`}
                   title="Add to cart and continue shopping"
                 >
@@ -534,7 +533,7 @@ export default function BabyMotherCombosSection() {
 
                 <button
                   onClick={handleBuyNowCombo}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-800 shadow-[0_4px_16px_rgba(217,119,6,0.3)] hover:-translate-y-0.5 transition-all active:scale-95 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-medium text-[#FAF7F2] bg-[#1A3826] hover:bg-[#132B1D] shadow-sm hover:shadow transition-all active:scale-95 cursor-pointer font-sans"
                   title="Buy instantly and proceed to checkout"
                 >
                   <Zap className="w-3.5 h-3.5 fill-current" />

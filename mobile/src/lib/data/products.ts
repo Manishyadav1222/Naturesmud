@@ -45,7 +45,7 @@ export const categories: Category[] = [
     "id": "5",
     "slug": "baby-mother",
     "name": "Baby & Mother Care",
-    "description": "Pediatrician-approved organic essentials for your little one's purest start.",
+    "description": "Wholesome organic essentials for your little one's purest start.",
     "image": "https://images.unsplash.com/photo-1515488042261-424e6a5a7f3e?w=400",
     "productCount": 8,
     "isActive": true,
@@ -627,8 +627,8 @@ export const products: Product[] = [
     "id": "8",
     "slug": "baby-massage-oil-100ml",
     "name": "Baby Massage Oil 100ml",
-    "description": "Pediatrician-approved blend of cold-pressed Himalayan apricot kernel oil, sesame oil, and a touch of wild lavender. Specially formulated for newborn's delicate skin — hypoallergenic, non-comedogenic, and free from mineral oil, parabens, and synthetic fragrances. Supports healthy skin barrier development, improves circulation, and promotes better sleep through gentle massage. Used in NICUs across partner hospitals.",
-    "shortDescription": "Pediatrician-approved organic blend for newborn massage. Apricot, sesame, lavender.",
+    "description": "Gentle blend of cold-pressed Himalayan apricot kernel oil, sesame oil, and a touch of wild lavender. Specially formulated for newborn's delicate skin — pure, non-comedogenic, and free from mineral oil, parabens, and synthetic fragrances. Supports healthy skin barrier hydration and promotes relaxation through gentle touch.",
+    "shortDescription": "Pure botanical blend for newborn massage. Apricot, sesame, lavender.",
     "price": 1424,
     "compareAtPrice": 1499,
     "image": "https://images.unsplash.com/photo-1515488042261-424e6a5a7f3e?w=600",
@@ -654,7 +654,7 @@ export const products: Product[] = [
       "Promotes deeper, longer sleep",
       "Reduces colic and digestive discomfort",
       "Supports parent-baby bonding",
-      "Hypoallergenic — safe for sensitive skin"
+      "Gentle botanical formula — suitable for delicate skin"
     ],
     "nutrition": [],
     "usage": "Warm a few drops between palms. Gently massage baby's body using long strokes. Best after bath when skin is slightly damp. Use daily for optimal results. Patch test before first use.",
@@ -670,7 +670,7 @@ export const products: Product[] = [
       "massage",
       "oil",
       "organic",
-      "pediatrician-approved",
+      "gentle-formula",
       "newborn",
       "gift"
     ],
