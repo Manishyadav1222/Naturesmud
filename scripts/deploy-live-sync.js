@@ -281,8 +281,6 @@ async function main() {
         if (
           norm.startsWith('videos/') ||
           norm === 'videos' ||
-          norm.startsWith('images/posters/') ||
-          norm === 'images/posters' ||
           norm.endsWith('.zip')
         ) {
           return false;

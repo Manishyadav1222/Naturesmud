@@ -89,6 +89,27 @@ export async function POST(req: NextRequest) {
       // Non-blocking
     }
 
+    // Trigger Notification Automations (Customer confirmation + Admin order alert)
+    try {
+      const { triggerNotification } = await import('@/lib/notifications');
+      await triggerNotification({
+        event: 'ORDER_RECEIVED',
+        recipient: { name: customerName, phone: customerPhone, email: customerEmail },
+        orderNumber,
+        amount: Number(total),
+        items: items,
+      });
+      await triggerNotification({
+        event: 'ADMIN_NEW_ORDER',
+        recipient: { name: customerName, phone: customerPhone, email: customerEmail },
+        orderNumber,
+        amount: Number(total),
+        items: items,
+      });
+    } catch (notifErr) {
+      console.error('Non-blocking notification trigger error:', notifErr);
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Order notification registered.',
@@ -99,3 +120,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
 }
+

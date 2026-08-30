@@ -51,6 +51,7 @@ import AnimatedCounter from '@/components/AnimatedCounter';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import MobileHeroBackgroundCards, { POSTER_THEMES } from '@/components/MobileHeroBackgroundCards';
 import MobileCategorySection from '@/components/MobileCategorySection';
+import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
@@ -530,6 +531,17 @@ export default function HomePage() {
         <ErrorBoundary name="Reels Section">
           <ReelsSection />
         </ErrorBoundary>
+      </ScrollReveal>
+
+      {/* 🎯 Interactive Superfood Recommendation Quiz */}
+      <ScrollReveal direction="up" distance={30}>
+        <section className="py-6 sm:py-10 bg-[#FAF7F2] border-y border-ink/5">
+          <div className="container-nm">
+            <ErrorBoundary name="Product Recommendation Quiz">
+              <ProductRecommendationQuiz />
+            </ErrorBoundary>
+          </div>
+        </section>
       </ScrollReveal>
 
       {/* Featured Products */}
