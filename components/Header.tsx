@@ -85,6 +85,23 @@ export default function Header() {
 
   return (
     <>
+      {/* Top 5% OFF Festive Announcement Bar */}
+      <div className="w-full bg-gradient-to-r from-[#1B3D2F] via-[#2D5A27] to-[#1B3D2F] text-white text-[11px] sm:text-xs py-1.5 px-4 font-heading font-medium tracking-wide shadow-xs relative z-50">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2 mx-auto sm:mx-0">
+            <span className="bg-[#D9A441] text-dark text-[10px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">
+              5% OFF
+            </span>
+            <span>Festive Celebration Sale: Flat 5% OFF on all Himalayan superfoods & combos! Use Code: <strong className="text-[#F4E8C1] underline decoration-[#D9A441]">STORE5</strong></span>
+          </div>
+          <div className="hidden sm:flex items-center gap-4 text-white/80 text-[11px]">
+            <Link href="/offers" className="hover:text-white underline font-semibold flex items-center gap-1 transition-colors">
+              Explore Offers <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <header
         className={classNames(
           'sticky top-0 z-50 w-full max-w-full transition-all duration-300',

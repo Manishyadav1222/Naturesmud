@@ -40,7 +40,7 @@ const PLATFORM_COLORS: Record<string, string> = {
 const INITIAL_PLATFORMS: SocialPlatform[] = [
   { id: '1', name: 'INSTAGRAM', handle: '@naturesmud', followers: 12500, engagementRate: 4.2, postsCount: 356, connected: true },
   { id: '2', name: 'FACEBOOK', handle: '@naturesmud.np', followers: 8900, engagementRate: 3.1, postsCount: 240, connected: true },
-  { id: '3', name: 'YOUTUBE', handle: "Nature's Mud", followers: 4300, engagementRate: 5.8, postsCount: 68, connected: true },
+  { id: '3', name: 'YOUTUBE', handle: 'NaturesMud', followers: 4300, engagementRate: 5.8, postsCount: 68, connected: true },
   { id: '4', name: 'TIKTOK', handle: '@naturesmud', followers: 21000, engagementRate: 6.5, postsCount: 125, connected: false },
   { id: '5', name: 'WHATSAPP', handle: 'Business API', followers: 15000, engagementRate: 8.9, postsCount: 0, connected: true },
 ];

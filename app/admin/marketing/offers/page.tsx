@@ -60,11 +60,11 @@ const FESTIVE_PRESETS = [
     title: 'Dashain Maha Utsav Family Celebration Combo',
     subtitle: 'Mustang Forest Honey, Crunchy Himalayan Walnuts & Roasted Almonds',
     festivalName: '🇳🇵 Dashain Maha Dhamaka Offer',
-    badge: '35% OFF · Festive Special',
+    badge: '5% OFF · Festive Special',
     categoryIcon: '🇳🇵',
     categoryLabel: 'Festival Dhamaka',
-    discountPercentage: 35,
-    couponCode: 'DASHAIN35',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
     tag: 'Limited Festive Stock',
     themeColor: 'gold' as const,
     highlights: [
@@ -78,11 +78,11 @@ const FESTIVE_PRESETS = [
     title: 'Tihar Special Bhaitika Himalayan Gift Box',
     subtitle: 'Raw Mountain Honey + Organic Walnuts + Roasted Almonds in Deluxe Gift Box',
     festivalName: '✨ Tihar Bhaitika Gift Box Campaign',
-    badge: '30% OFF · Premium Gift Edition',
+    badge: '5% OFF · Premium Gift Edition',
     categoryIcon: '🎁',
     categoryLabel: 'Tihar Gift Box',
-    discountPercentage: 30,
-    couponCode: 'TIHARGIFT',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
     tag: 'Bhai Tihar Bestseller',
     themeColor: 'amber' as const,
     highlights: [
@@ -96,11 +96,11 @@ const FESTIVE_PRESETS = [
     title: 'Himalayan Gym & Workout Muscle Pack',
     subtitle: 'High-Protein Raw Walnuts, Zinc-Rich Pumpkin Seeds & Chia Omega-3',
     festivalName: '🏋️ Workout & Muscle Recovery Combo',
-    badge: '32% OFF · High Plant Protein',
+    badge: '5% OFF · High Plant Protein',
     categoryIcon: '🏋️‍♂️',
     categoryLabel: 'Gym & Workout',
-    discountPercentage: 32,
-    couponCode: 'GYMPOWER10',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
     tag: 'Athletes #1 Pick',
     themeColor: 'emerald' as const,
     highlights: [
@@ -114,11 +114,11 @@ const FESTIVE_PRESETS = [
     title: 'Daily Morning Diet & Breakfast Cleanse Kit',
     subtitle: 'Metabolism Kickstart with Raw Mustang Honey, Chia Seeds & Pink Salt',
     festivalName: '🌅 Morning Diet & Cleanse Combo',
-    badge: '28% OFF · Clean Metabolism',
+    badge: '5% OFF · Clean Metabolism',
     categoryIcon: '🌅',
     categoryLabel: 'Morning Diet',
-    discountPercentage: 28,
-    couponCode: 'MORNING10',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
     tag: 'Morning Ritual',
     themeColor: 'amber' as const,
     highlights: [
@@ -132,11 +132,11 @@ const FESTIVE_PRESETS = [
     title: 'Maha Daily Health & Immunity Shield',
     subtitle: '3-in-1 Himalayan Superfood Mix, Roasted Almonds & Beetroot Powder',
     festivalName: '🧘 Total Health & Immunity Combo',
-    badge: '30% OFF · Complete Wellness',
+    badge: '5% OFF · Complete Wellness',
     categoryIcon: '🧘',
     categoryLabel: 'Health & Vitality',
-    discountPercentage: 30,
-    couponCode: 'HEALTH10',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
     tag: 'Family Favorite',
     themeColor: 'purple' as const,
     highlights: [
@@ -564,13 +564,13 @@ function OfferEditorModal({
     title: '',
     subtitle: '',
     festivalName: '🇳🇵 Dashain & Tihar Maha Utsav Offer',
-    badge: '35% OFF · Festival Dhamaka',
+    badge: '5% OFF · Festival Dhamaka',
     categoryIcon: '🇳🇵',
     categoryLabel: 'Festival Dhamaka',
-    discountPercentage: '30',
+    discountPercentage: '5',
     originalPrice: '0',
     offerPrice: '0',
-    couponCode: 'FESTIVE30',
+    couponCode: 'STORE5',
     tag: 'Limited Festive Stock',
     themeColor: 'gold' as FestivalOffer['themeColor'],
     isFestival: true,
@@ -581,7 +581,7 @@ function OfferEditorModal({
   const [highlights, setHighlights] = useState<string[]>([
     'Free Express Doorstep Delivery Across Nepal',
     'Special Festive Wooden Gift Box Packaging',
-    '100% Certified Organic & Chemical-Free',
+    '0 Additives · 0 Preservatives · 100% Pure',
   ]);
   const [newHighlight, setNewHighlight] = useState('');
   const [productSearch, setProductSearch] = useState('');
@@ -596,13 +596,13 @@ function OfferEditorModal({
           title: offer.title || '',
           subtitle: offer.subtitle || '',
           festivalName: offer.festivalName || '🇳🇵 Dashain & Tihar Maha Utsav Offer',
-          badge: offer.badge || '35% OFF · Festival Dhamaka',
+          badge: offer.badge || '5% OFF · Special Offer',
           categoryIcon: offer.categoryIcon || '🇳🇵',
           categoryLabel: offer.categoryLabel || 'Festival Dhamaka',
-          discountPercentage: String(offer.discountPercentage || 30),
+          discountPercentage: String(offer.discountPercentage || 5),
           originalPrice: String(offer.originalPrice || 0),
           offerPrice: String(offer.offerPrice || 0),
-          couponCode: offer.couponCode || 'FESTIVE30',
+          couponCode: offer.couponCode || 'STORE5',
           tag: offer.tag || 'Bestseller Combo',
           themeColor: offer.themeColor || 'gold',
           isFestival: offer.isFestival !== false,
@@ -629,20 +629,20 @@ function OfferEditorModal({
         }));
 
         const originalTotal = defaultItems.reduce((sum, item) => sum + item.price, 0);
-        const discountPct = 30;
+        const discountPct = 5;
         const offerTotal = Math.round(originalTotal * (1 - discountPct / 100));
 
         setForm({
           title: 'Dashain & Tihar Maha Utsav Himalayan Combo',
           subtitle: 'Pure Himalayan Superfood Bundle with Honey, Walnuts & Roasted Almonds',
           festivalName: '🇳🇵 Dashain & Tihar Maha Dhamaka Offer',
-          badge: '30% OFF · Festive Dhamaka',
+          badge: '5% OFF · Festive Dhamaka',
           categoryIcon: '🇳🇵',
           categoryLabel: 'Festival Dhamaka',
           discountPercentage: String(discountPct),
           originalPrice: String(originalTotal),
           offerPrice: String(offerTotal),
-          couponCode: 'FESTIVE30',
+          couponCode: 'STORE5',
           tag: 'Festive Bestseller',
           themeColor: 'gold',
           isFestival: true,
@@ -652,7 +652,7 @@ function OfferEditorModal({
         setHighlights([
           'Free Express Doorstep Delivery Across Nepal',
           'Special Festive Wooden Gift Box Packaging',
-          '100% Certified Organic & Chemical-Free',
+          '0 Additives · 0 Preservatives · 100% Pure',
         ]);
       }
     }
@@ -710,7 +710,7 @@ function OfferEditorModal({
     }
 
     setSelectedItems(updated);
-    handleRecalculatePrices(updated, Number(form.discountPercentage) || 30);
+    handleRecalculatePrices(updated, Number(form.discountPercentage) || 5);
   };
 
   const handleUpdateItemWeight = (index: number, weight: string) => {
@@ -723,13 +723,13 @@ function OfferEditorModal({
     const updated = [...selectedItems];
     updated[index] = { ...updated[index], price: Number(priceStr) || 0 };
     setSelectedItems(updated);
-    handleRecalculatePrices(updated, Number(form.discountPercentage) || 30);
+    handleRecalculatePrices(updated, Number(form.discountPercentage) || 5);
   };
 
   const handleRemoveItem = (index: number) => {
     const updated = selectedItems.filter((_, i) => i !== index);
     setSelectedItems(updated);
-    handleRecalculatePrices(updated, Number(form.discountPercentage) || 30);
+    handleRecalculatePrices(updated, Number(form.discountPercentage) || 5);
   };
 
   const handleDiscountChange = (newDiscount: string) => {
@@ -759,8 +759,8 @@ function OfferEditorModal({
   };
 
   const handleGenerateCode = () => {
-    const cleanTag = form.tag.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, 6) || 'FESTIVE';
-    const disc = form.discountPercentage || '30';
+    const cleanTag = form.tag.replace(/[^A-Z0-9]/gi, '').toUpperCase().slice(0, 6) || 'STORE';
+    const disc = form.discountPercentage || '5';
     setForm((prev) => ({ ...prev, couponCode: `${cleanTag}${disc}` }));
   };
 
@@ -1147,10 +1147,10 @@ function OfferEditorModal({
                     className="w-full accent-primary h-2 bg-amber-200 rounded-lg cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-gray-400 mt-1">
+                    <span>5% (Storewide)</span>
                     <span>10%</span>
-                    <span>25%</span>
-                    <span>35% (Festive)</span>
-                    <span>50%</span>
+                    <span>15%</span>
+                    <span>20%</span>
                   </div>
                 </div>
 
@@ -1183,7 +1183,7 @@ function OfferEditorModal({
                   </div>
                   <Input
                     required
-                    placeholder="e.g. FESTIVE30"
+                    placeholder="e.g. STORE5"
                     value={form.couponCode}
                     onChange={(e) => setForm({ ...form, couponCode: e.target.value.toUpperCase() })}
                   />
@@ -1192,7 +1192,7 @@ function OfferEditorModal({
                 <div>
                   <label className="mb-1 block text-xs font-bold text-gray-700">Badge Label Text</label>
                   <Input
-                    placeholder="e.g. 35% OFF · Festive Dhamaka"
+                    placeholder="e.g. 5% OFF · Storewide Special"
                     value={form.badge}
                     onChange={(e) => setForm({ ...form, badge: e.target.value })}
                   />

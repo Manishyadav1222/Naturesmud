@@ -25,7 +25,7 @@ export const frontendEnvSchema = z.object({
  * Backend Environment Variables Schema
  */
 export const backendEnvSchema = z.object({
-  APP_NAME: z.string().min(1).default("Nature's Mud"),
+  APP_NAME: z.string().min(1).default("NaturesMud"),
   APP_ENV: z.enum(['local', 'staging', 'production']).default('local'),
   APP_KEY: z.string().min(32).optional(),
   APP_DEBUG: z.enum(['true', 'false']).default('true'),

@@ -94,7 +94,7 @@ function TrackOrderContent() {
   ];
 
   const waInquiryLink = `https://wa.me/9779713888002?text=${encodeURIComponent(
-    `Hello Nature's Mud! I'd like to check the delivery update for my order #${orderId || ''}.`
+    `Hello NaturesMud! I'd like to check the delivery update for my order #${orderId || ''}.`
   )}`;
 
   return (

@@ -13,7 +13,7 @@ export const categories: Category[] = [
     id: 'c2',
     slug: 'powders',
     name: 'Powders',
-    description: 'Pure solar-dehydrated superfoods — sweet potato, dates, beetroot & carrot',
+    description: 'Pure dehydrated whole foods with 0 additives — sweet potato, dates, beetroot & carrot',
     image: '/products/sweet-potato-powder-100g.jpg',
     productCount: 4,
   },

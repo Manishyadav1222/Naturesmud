@@ -74,7 +74,7 @@ export default function ContactPage() {
               Nepal Sourcing Hub & Showrooms
             </div>
             <h1 className="text-3xl sm:text-5xl font-black font-heading tracking-tight">
-              Get in Touch with Nature's Mud
+              Get in Touch with NaturesMud
             </h1>
             <p className="text-white/80 text-base sm:text-lg mt-3 max-w-2xl mx-auto leading-relaxed">
               Have questions about our dehydrated fruits, baby superfoods, or bulk wholesale? Visit our Kathmandu showroom or send us a message below.
@@ -96,8 +96,8 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
-                      <p className="font-bold text-gray-900">Samakhushi / Gongabu Chowk</p>
-                      <p className="text-xs text-gray-500">Near Kumari Bank, Arya Complex, Kathmandu, Nepal</p>
+                      <p className="font-bold text-gray-900">Kathmandu, Nepal</p>
+                      <p className="text-xs text-gray-500">Kathmandu Sourcing Hub, Nepal</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -137,7 +137,7 @@ export default function ContactPage() {
                             .join('\n')
                         : '';
                       text = [
-                        `*🧾 Nature's Mud Nepal - Customer Inquiry & Order Invoice*`,
+                        `*🧾 NaturesMud Nepal - Customer Inquiry & Order Invoice*`,
                         `━━━━━━━━━━━━━━━━━━━━`,
                         `📄 *Invoice No:* #${invoiceNumber}`,
                         `📦 *Order No:* ${latestOrder.orderNumber}`,
@@ -155,7 +155,7 @@ export default function ContactPage() {
                         }`,
                         `💰 *Total Amount:* Rs. ${Number(latestOrder.total).toLocaleString()}`,
                         `━━━━━━━━━━━━━━━━━━━━`,
-                        `Hello Nature's Mud team! I have a question regarding my order/invoice above:`,
+                        `Hello NaturesMud team! I have a question regarding my order/invoice above:`,
                       ]
                         .filter(Boolean)
                         .join('\n');
@@ -181,19 +181,27 @@ export default function ContactPage() {
                 <div className="space-y-2.5 text-xs text-gray-700">
                   <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
                     <p className="font-bold text-gray-900">Kids Kottage (Gongabu)</p>
-                    <p className="text-gray-500">Arya Complex, Gongabu Chowk, Kathmandu</p>
+                    <p className="text-gray-500">Arya Complex, Kathmandu</p>
                   </div>
                   <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
                     <p className="font-bold text-gray-900">Kids Kottage (Kupondol & Kapan)</p>
                     <p className="text-gray-500">Kupondol, Lalitpur & Kapan, Kathmandu</p>
                   </div>
                   <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <p className="font-bold text-gray-900">Kids Kottage (Pokhara)</p>
-                    <p className="text-gray-500">New Road, Pokhara, Gandaki</p>
+                    <p className="font-bold text-gray-900">Zero to Ten (Chabahil)</p>
+                    <p className="text-gray-500">Chabahil, Kathmandu</p>
                   </div>
                   <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <p className="font-bold text-gray-900">Zero to Ten & Baby Love</p>
-                    <p className="text-gray-500">Chabahil, Kathmandu & Hetauda Outlets</p>
+                    <p className="font-bold text-gray-900">Kids Kottage (Surkhet)</p>
+                    <p className="text-gray-500">Surkhet Branch, Karnali Province</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
+                    <p className="font-bold text-gray-900">Kids Kottage (Pokhara)</p>
+                    <p className="text-gray-500">Pokhara Showroom, Gandaki Province</p>
+                  </div>
+                  <div className="p-2.5 rounded-xl bg-gray-50 border border-gray-100">
+                    <p className="font-bold text-gray-900">Baby Love (Hetauda)</p>
+                    <p className="text-gray-500">Hetauda Showroom, Makwanpur</p>
                   </div>
                 </div>
               </div>
@@ -214,7 +222,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-lg font-bold text-emerald-900 font-heading">Thank You! Message Received</h3>
                     <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto">
-                      Your inquiry has been logged in our system. A Nature's Mud representative will contact you shortly.
+                      Your inquiry has been logged in our system. A NaturesMud representative will contact you shortly.
                     </p>
                     <button
                       onClick={() => setIsSubmitted(false)}
@@ -328,7 +336,7 @@ export default function ContactPage() {
                 <div className="p-4 border-b border-gray-100 flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
                     <MapPin className="w-4 h-4 text-[#2D5A27]" />
-                    <span>Location: Gongabu Chowk & Samakhushi Hub, Kathmandu</span>
+                    <span>Location: Kathmandu, Nepal</span>
                   </div>
                   <a
                     href="https://maps.google.com/?q=Gongabu+Chowk+Kathmandu+Nepal"
@@ -341,7 +349,7 @@ export default function ContactPage() {
                 </div>
                 <div className="h-64 w-full bg-gray-100">
                   <iframe
-                    title="Nature's Mud Kathmandu Location"
+                    title="NaturesMud Kathmandu Location"
                     src="https://maps.google.com/maps?q=Gongabu%20Chowk,%20Kathmandu,%20Nepal&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"

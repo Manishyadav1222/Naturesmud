@@ -270,40 +270,33 @@ async function main() {
     output.on('close', resolve);
     archive.on('error', reject);
     archive.pipe(output);
-    const publicFiles = [
-      'catalog.pdf',
-      'Nature_Mud_Product_Catalog.pdf',
-      'official-product-catalog.jpg',
-      'products/cashewnuts-roasted.jpg',
-      'products/cashewnuts.jpg',
-      'products/client-authentic-label-1.jpg',
-      'products/client-authentic-label-2.jpg',
-      'products/client-authentic-label-3.jpg',
-      'products/dehydrated-coconut-chips.jpg',
-      'products/figs.jpg',
-      'products/macadamia.jpg',
-      'products/pistachios.jpg',
-    ];
 
-    // Add all files in public/images/blog
-    const blogImgDir = path.join(config.rootDir, 'public', 'images', 'blog');
-    if (fs.existsSync(blogImgDir)) {
-      fs.readdirSync(blogImgDir).forEach(f => {
-        if (fs.statSync(path.join(blogImgDir, f)).isFile()) {
-          publicFiles.push(`images/blog/${f}`);
+    // Archive all public directory assets recursively (excluding heavy video files)
+    archive.directory(
+      path.join(config.rootDir, 'public'),
+      false,
+      (entry) => {
+        if (
+          entry.name.startsWith('videos/') ||
+          entry.name === 'videos' ||
+          entry.name.startsWith('images/posters/') ||
+          entry.name === 'images/posters' ||
+          entry.name.endsWith('.zip')
+        ) {
+          return false;
         }
-      });
-    }
-
-    for (const rel of publicFiles) {
-      const full = path.join(config.rootDir, 'public', rel);
-      if (fs.existsSync(full)) {
-        archive.file(full, { name: rel, mode: 0o644 });
+        if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
+          entry.mode = 0o755;
+        } else {
+          entry.mode = 0o644;
+        }
+        return entry;
       }
-    }
+    );
+
     archive.finalize();
   });
-  console.log(`✅ Public assets package created (${(fs.statSync(publicZip).size / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`✅ Complete public assets package created (${(fs.statSync(publicZip).size / 1024 / 1024).toFixed(2)} MB)`);
 
   // 4. Remote cleanup & upload
   console.log('\n[4/6] 🌐 Uploading & extracting build to cPanel...');

@@ -47,16 +47,16 @@ const regionsData = [
     farmerCountEn: '110+ Smallholder Farming Families',
     farmerCountNp: '११०+ साना किसान परिवारहरू',
     impactStoryEn:
-      'In the fertile alluvial soils of Chitwan and Nawalpur, we partner with smallholder root and vegetable growers. Before our direct partnership, post-harvest perishability forced farmers to sell at distress prices. By introducing solar micro-dehydration hubs directly at farm sites, farmers receive 35% above market prices, and zero fresh crop is wasted.',
+      'In the fertile alluvial soils of Chitwan and Nawalpur, we partner with smallholder root and fruit growers. Before our direct partnership, post-harvest perishability forced farmers to sell at distress prices. By introducing low-temperature dehydration hubs directly at farm sites, farmers receive 35% above market prices, and zero fresh crop is wasted.',
     impactStoryNp:
-      'चितवन र नवलपुरको मलिलो माटोमा हामी साना किसानहरूसँग प्रत्यक्ष सहकार्य गर्छौं। पहिले बजार नपाउँदा किसानहरूले सस्तोमा बेच्नुपर्थ्यो। नेचर्स मडले फार्म नजिकै सौर्य डिहाइड्रेसन केन्द्र स्थापना गरेपछि किसानहरूले बजारभन्दा ३५% बढी मूल्य पाउँछन् र बाली खेर जाँदैन।',
+      'चितवन र नवलपुरको मलिलो माटोमा हामी साना किसानहरूसँग प्रत्यक्ष सहकार्य गर्छौं। पहिले बजार नपाउँदा किसानहरूले सस्तोमा बेच्नुपर्थ्यो। नेचर्स मडले फार्म नजिकै न्यून-तापक्रम डिहाइड्रेसन केन्द्र स्थापना गरेपछि किसानहरूले बजारभन्दा ३५% बढी मूल्य पाउँछन् र बाली खेर जाँदैन।',
     farmerQuoteEn:
-      '"We used to lose 40% of our sweet potato crop to market distress. With Nature\'s Mud, our harvest is cleaned, sliced, and solar-dried within 6 hours, and we get paid on the spot with dignity."',
+      '"We used to lose 40% of our sweet potato crop to market distress. With NaturesMud, our harvest is cleaned, sliced, and gently dehydrated within 6 hours, and we get paid on the spot with dignity."',
     farmerQuoteNp:
       '"हाम्रो सखरखण्ड पहिले ४०% कुहिएर जान्थ्यो। नेचर्स मडसँग जोडिएपछि बाली टिपेको ६ घण्टामै सफा गरी सुकाइन्छ र उचित मूल्य तुरुन्तै हात पर्छ।"',
     farmerNameEn: 'Ram Bahadur Chaudhary',
     farmerNameNp: 'रामबहादुर चौधरी',
-    farmerRoleEn: 'Chitwan Organic Root Growers Cooperative',
+    farmerRoleEn: 'Chitwan Root & Fruit Growers Cooperative',
     farmerRoleNp: 'चितवन अर्ग्यानिक कृषि सहकारी',
     stats: [
       { labelEn: 'Fair Trade Premium', labelNp: 'उचित किसान मूल्य', value: '+35% Above Market' },
@@ -86,7 +86,7 @@ const regionsData = [
     impactStoryNp:
       'काभ्रे र पाल्पाका पहाडी फाँटहरूमा रासायनिक विषादीरहित अर्ग्यानिक माटो छ। यहाँका महिला कृषक समूहहरूले परम्परागत प्राङ्गारिक मल र हिमाली मुहानको पानी प्रयोग गरी रातो चुकन्दर, बेसार र अदुवा उब्जाउँछन्।',
     farmerQuoteEn:
-      '"Our beetroots grow slowly in the cool hill mist, packing dense nitrates and earthy sweetness. Nature\'s Mud cold-grinds them into fine powder without heat, preserving every ounce of natural life."',
+      '"Our beetroots grow slowly in the cool hill mist, packing dense nitrates and earthy sweetness. NaturesMud cold-grinds them into fine powder without heat, preserving every ounce of natural life with 0 additives."',
     farmerQuoteNp:
       '"हाम्रा चुकन्दर पहाडको चिसो हावापानीमा प्राकृतिक रूपमा हुर्कन्छन्। नेचर्स मडले ताप उत्पन्न नहुने विधिबाट पिँधेर यसको सम्पूर्ण पौष्टिकता जस्ताको तस्तै राख्छ।"',
     farmerNameEn: 'Sita Maya Tamang',
@@ -110,18 +110,18 @@ const regionsData = [
     locationsNp: 'मुस्ताङ · जुम्ला · मनाङ · डोल्पा',
     primaryProducts: [
       { nameEn: 'Dehydrated Himalayan Apple Rings', nameNp: 'हिमाली स्याउको सुकुटी', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
-      { nameEn: 'Wild Dried Himalayan Blueberries (100g)', nameNp: 'हिमाली जंगली ब्लुबेरी (१००g)', image: '/products/dried-blueberries.jpg', slug: 'dried-blueberries' },
+      { nameEn: 'Pure Mustang Wild Cliff Honey', nameNp: 'मुस्ताङ भिर मह', image: '/products/authentic-cliff-honey.jpg', slug: 'raw-honey' },
       { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
       { nameEn: 'Ancient Himalayan Pink Rock Salt', nameNp: 'शुद्ध हिमाली बिरे नुन / सिधे नुन', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
     farmerCountEn: '75+ Indigenous Foragers & Harvesters',
     farmerCountNp: '७५+ हिमाली जडीबुटी सङ्कलक',
     impactStoryEn:
-      'At 3,000 meters altitude in Mustang and Jumla, nature thrives in its purest state. Here, wild bees harvest nectar from high-altitude medicinal flora, and wild blueberries absorb intense ultraviolet alpine light to develop unmatched antioxidant anthocyanin levels. We supply safety gear and fair forward contracts directly to indigenous foragers.',
+      'At 3,000 meters altitude in Mustang and Jumla, nature thrives in its purest state. Here, wild bees harvest multi-floral nectar from high-altitude flora on vertical cliffs, and mountain orchards produce crisp, sweet apples. We supply safety gear and fair forward contracts directly to indigenous foragers.',
     impactStoryNp:
-      'मुस्ताङ र जुम्लाका ३,००० मिटर अग्ला भिरपाखामा जंगली मौरीले बहुमूल्य हिमाली जडीबुटीबाट मह बनाउँछन्। उच्च उचाइका ब्लुबेरीमा भरपूर एन्टिअक्सिडेन्ट हुन्छ। हामी हिमाली सङ्कलकहरूलाई सुरक्षा उपकरण र उचित पारिश्रमिक उपलब्ध गराउँछौं।',
+      'मुस्ताङ र जुम्लाका ३,००० मिटर अग्ला भिरपाखामा जंगली मौरीले बहुमूल्य हिमाली जडीबुटीबाट मह बनाउँछन्। उच्च उचाइका स्याउमा भरपूर पौष्टिकता हुन्छ। हामी हिमाली सङ्कलकहरूलाई सुरक्षा उपकरण र उचित पारिश्रमिक उपलब्ध गराउँछौं।',
     farmerQuoteEn:
-      '"Foraging wild cliff honey is our ancestral heritage. Nature\'s Mud lab-tests every batch for purity and ensures we receive respectful livelihood compensation without middlemen."',
+      '"Foraging wild cliff honey is our ancestral heritage. NaturesMud lab-tests every batch for purity and ensures we receive respectful livelihood compensation without middlemen."',
     farmerQuoteNp:
       '"भिर मह काढ्ने हाम्रो पुख्र्यौली पेशा हो। नेचर्स मडले प्रत्येक ब्याचको शुद्धता परीक्षण गर्छ र बिचौलिया बिना हामीलाई उचित आम्दानी दिन्छ।"',
     farmerNameEn: 'Pasang Norbu Gurung',
@@ -147,10 +147,10 @@ const processSteps = [
   },
   {
     number: '02',
-    titleEn: 'Solar & Low-Temp Dehydration (<42°C)',
-    titleNp: 'सौर्य तथा कम तापक्रम डिहाइड्रेसन (<४२°C)',
-    descEn: 'Gently dehydrated in closed solar dehydrators to preserve 98% of natural vitamins, live enzymes, and rich colors without sulfur chemicals.',
-    descNp: '४२ डिग्री भन्दा कम तापक्रममा बन्द सौर्य डिहाइड्रेटरमा सुकाइन्छ, जसले सल्फर केमिकल बिना ९८% भिटामिन र इन्जाइम सुरक्षित राख्छ।',
+    titleEn: 'Low-Temp Dehydration (<42°C)',
+    titleNp: 'कम तापक्रम डिहाइड्रेसन (<४२°C)',
+    descEn: 'Gently dehydrated in closed sanitary dehydrators to preserve 98% of natural vitamins, live enzymes, and rich colors with 0 additives and 0 preservatives.',
+    descNp: '४२ डिग्री भन्दा कम तापक्रममा बन्द डिहाइड्रेटरमा सुकाइन्छ, जसले केमिकल बिना ९८% भिटामिन र इन्जाइम सुरक्षित राख्छ।',
     icon: Sun,
   },
   {
@@ -175,10 +175,10 @@ const showrooms = [
   {
     typeEn: 'Central Sourcing Hub & HQ',
     typeNp: 'मुख्य कार्यालय तथा हब',
-    nameEn: 'Gongabu & Samakhushi',
-    nameNp: 'गोंगबु तथा सामाखुशी',
-    addressEn: 'Arya Complex, Gongabu Chowk (near Kumari Bank), Kathmandu',
-    addressNp: 'आर्या कम्प्लेक्स, गोंगबु चोक (कुमारी बैंक नजिक), काठमाडौँ',
+    nameEn: 'Kathmandu, Nepal',
+    nameNp: 'काठमाडौँ, नेपाल',
+    addressEn: 'Kathmandu Sourcing Hub, Kathmandu, Nepal',
+    addressNp: 'काठमाडौँ हब, काठमाडौँ, नेपाल',
     phone: '+977 9713888002',
     icon: Building2,
   },
@@ -193,23 +193,43 @@ const showrooms = [
     icon: Store,
   },
   {
+    typeEn: 'Retail Stockist',
+    typeNp: 'काठमाडौँ बिक्री केन्द्र',
+    nameEn: 'Zero to Ten (Chabahil)',
+    nameNp: 'जिरो टु टेन (चाबहिल)',
+    addressEn: 'Chabahil, Kathmandu Valley',
+    addressNp: 'चाबहिल, काठमाडौँ उपत्यका',
+    phone: 'Baby & pure nutrition shelves',
+    icon: Store,
+  },
+  {
     typeEn: 'Regional Partner',
-    typeNp: 'गण्डकी प्रदेश हब',
-    nameEn: 'Kids Kottage Pokhara',
-    nameNp: 'किड्स कटेज पोखरा',
-    addressEn: 'New Road, Pokhara, Gandaki Province',
-    addressNp: 'न्यूरोड, पोखरा, गण्डकी प्रदेश',
+    typeNp: 'कर्णाली प्रदेश हब',
+    nameEn: 'Kids Kottage Surkhet',
+    nameNp: 'किड्स कटेज सुर्खेत',
+    addressEn: 'Surkhet Branch, Karnali Province',
+    addressNp: 'सुर्खेत शाखा, कर्णाली प्रदेश',
     phone: 'All 100g products available',
     icon: Store,
   },
   {
-    typeEn: 'Retail Stockists',
-    typeNp: 'अन्य बिक्री केन्द्र',
-    nameEn: 'Chabahil & Hetauda Outlets',
-    nameNp: 'चाबहिल तथा हेटौँडा',
-    addressEn: 'Zero to Ten (Chabahil, KTM) & Baby Love (Hetauda)',
-    addressNp: 'जिरो टु टेन (चाबहिल) र बेबी लभ (हेटौँडा)',
-    phone: 'Baby & organic nutrition shelves',
+    typeEn: 'Regional Partner',
+    typeNp: 'गण्डकी प्रदेश हब',
+    nameEn: 'Kids Kottage Pokhara',
+    nameNp: 'किड्स कटेज पोखरा',
+    addressEn: 'Pokhara Showroom, Gandaki Province',
+    addressNp: 'पोखरा शोरुम, गण्डकी प्रदेश',
+    phone: 'All products available',
+    icon: Store,
+  },
+  {
+    typeEn: 'Regional Partner',
+    typeNp: 'बागमती प्रदेश हब',
+    nameEn: 'Baby Love Hetauda',
+    nameNp: 'बेबी लभ हेटौँडा',
+    addressEn: 'Hetauda Showroom, Makwanpur',
+    addressNp: 'हेटौँडा शोरुम, मकवानपुर',
+    phone: 'All products available',
     icon: Store,
   },
 ];
@@ -280,8 +300,8 @@ export default function AboutPage() {
 
               <p className="text-emerald-100/90 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
                 {isEn
-                  ? 'Nature’s Mud was born out of a profound mission: connecting Nepali families with 100% natural, chemical-free superfoods while ensuring rural farming families across Terai, Hilly, and Alpine regions receive fair, dignified livelihoods.'
-                  : 'नेचर्स मडको एउटै मूल उद्देश्य छ: नेपाली परिवारहरूलाई १००% शुद्ध, रसायनरहित सुपरफुड उपलब्ध गराउँदै तराई, पहाड र हिमालका साना किसानहरूलाई उचित मूल्य र सम्मानजनक जीवनयापन सुनिश्चित गर्नु।'}
+                  ? 'NaturesMud was born out of a profound mission: connecting Nepali families with 0 additive, 0 preservative superfoods while ensuring rural farming families across Terai, Hilly, and Alpine regions receive fair, dignified livelihoods.'
+                  : 'नेचर्स मडको एउटै मूल उद्देश्य छ: नेपाली परिवारहरूलाई ०% मिसावट, रसायनरहित सुपरफुड उपलब्ध गराउँदै तराई, पहाड र हिमालका साना किसानहरूलाई उचित मूल्य र सम्मानजनक जीवनयापन सुनिश्चित गर्नु।'}
               </p>
 
               {/* Trust Metric Badges */}
@@ -293,9 +313,9 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="font-heading font-black text-2xl sm:text-3xl text-[#D9A441]">100%</div>
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-[#D9A441]">0%</div>
                   <div className="text-xs text-emerald-100/80 mt-0.5">
-                    {isEn ? 'Zero Preservatives' : '०% केमिकल / प्रिजर्भेटिभ'}
+                    {isEn ? 'Additives / Preservatives' : '०% केमिकल / प्रिजर्भेटिभ'}
                   </div>
                 </div>
                 <div>
@@ -331,7 +351,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-stone-900 group">
                 <Image
                   src="/products/naturesmud-all-products-100g.jpg"
-                  alt="Nature's Mud 100g authentic organic product lineup from Nepal"
+                  alt="NaturesMud 100g authentic pure product lineup from Nepal"
                   fill
                   priority
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -509,12 +529,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. The 4-Step Zero-Preservative Solar Dehydration Flow */}
+      {/* 3. The 4-Step Zero-Preservative Dehydration Flow */}
       <section className="py-20 bg-[#F4EFE6]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-xs mb-3">
-              {isEn ? 'Zero Chemicals · Solar Science' : 'रसायनरहित · सौर्य प्रविधि'}
+              {isEn ? '0 Additives · Gentle Science' : '०% मिसावट · सुरक्षित प्रविधि'}
             </span>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight">
               {isEn
@@ -523,8 +543,8 @@ export default function AboutPage() {
             </h2>
             <p className="text-stone-600 mt-3 text-base leading-relaxed">
               {isEn
-                ? 'Commercial drying often uses high oven heat or toxic sulfur fumes. Here is why our cold solar technology locks in 98% bioactive nutrients.'
-                : 'बजारका उत्पादनहरू उच्च तापक्रम वा सल्फर केमिकल प्रयोग गरी सुकाइन्छन्। हाम्रो चिसो सौर्य प्रविधिले ९८% प्राकृतिक पोषक तत्व जस्ताको तस्तै राख्छ।'}
+                ? 'Commercial drying often uses high heat or chemical fumes. Here is why our gentle low-temperature dehydration locks in 98% bioactive nutrients with 0 additives and 0 preservatives.'
+                : 'बजारका उत्पादनहरू उच्च तापक्रम वा सल्फर केमिकल प्रयोग गरी सुकाइन्छन्। हाम्रो न्यून-तापक्रम प्रविधिले ९८% प्राकृतिक पोषक तत्व र इन्जाइम जस्ताको तस्तै राख्छ।'}
             </p>
           </div>
 

@@ -46,7 +46,7 @@ export function Logo({
     <Link
       href={href}
       className={`relative inline-flex items-center group transition-transform duration-300 hover:scale-105 active:scale-95 ${className}`}
-      aria-label="Nature's Mud — Pure Food. Real Nature. Home"
+      aria-label="NaturesMud — Pure Food. Real Nature. Home"
     >
       {imageElement}
     </Link>

@@ -121,7 +121,7 @@ describe('ProductCard Component', () => {
   it('displays bestseller badge', () => {
     render(<ProductCard product={mockProduct} />);
     
-    expect(screen.getByText('Bestseller')).toBeInTheDocument();
+    expect(screen.getByText(/Bestseller/i)).toBeInTheDocument();
   });
 
   it('displays organic badge', () => {

@@ -42,12 +42,12 @@ export interface BrandReel {
 const initialReels: BrandReel[] = [
   {
     id: 1,
-    title: 'Pure Himalayan 100% Organic Superfoods Collection',
-    description: 'Farm-fresh Dehydrated Sweet Potato, Dates Powder, Beetroot Powder & Wild Blueberries in 100g glass jars! 🌿🏔️',
+    title: 'Pure Himalayan Superfoods Collection — 0 Additives · 0 Preservatives',
+    description: 'Farm-fresh Dehydrated Sweet Potato, Dates Powder, Beetroot Powder & Tarai Mango in 100g glass jars! 🌿🏔️',
     video_url: '/videos/sweet-potato-powder-video.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
     cover_image: '/products/naturesmud-all-products-100g.jpg',
-    product_name: "Nature's Mud 100g Range",
+    product_name: 'NaturesMud 100g Range',
     product_url: '/products/sweet-potato-powder',
     product_price: 380,
     views: '58.4K',
@@ -147,16 +147,16 @@ const initialReels: BrandReel[] = [
   },
   {
     id: 8,
-    title: 'Wild Himalayan Dried Blueberries for Focus',
-    description: 'High-altitude dark anthocyanin berries to defend eye strain and boost cognitive memory! 🫐💜',
-    video_url: '/videos/blueberries-stress.mp4',
+    title: 'High-Anthocyanin Wild Alpine Blueberries',
+    description: 'Wild harvested at 3,200m in Himalayan frontiers! Shield your eyes from screen fatigue and boost brain memory. 🫐🏔️',
+    video_url: '/videos/naturesmud-product-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
     cover_image: '/products/dried-blueberries-100g.jpg',
     product_name: 'Dried Blueberries (100g)',
     product_url: '/products/dried-blueberries',
-    product_price: 650,
-    views: '33.6K',
-    likes: '2.8K',
+    product_price: 618,
+    views: '45.2K',
+    likes: '4.1K',
     is_active: true,
     sort_order: 8,
   },
@@ -301,7 +301,7 @@ export default function ReelsSection() {
 
             <div className="flex flex-wrap items-center gap-3">
               <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-gray-900">
-                Nature's Mud in Action
+                NaturesMud in Action
               </h2>
               <a
                 href="https://www.facebook.com/profile.php?id=61589084257990"

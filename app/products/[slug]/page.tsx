@@ -38,13 +38,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!product) {
     return {
-      title: "Product Not Found | Nature's Mud (naturesmud.com)",
-      description: 'The requested organic superfood product is not available.',
+      title: "Product Not Found | NaturesMud (naturesmud.com)",
+      description: 'The requested superfood product is not available.',
     };
   }
 
-  const title = `${product.name} (${product.weight || '100g'}) | Nature's Mud (naturesmud.com) Nepal`;
-  const description = `${product.shortDescription || product.description || ''} Buy 100% natural, chemical-free ${product.name} online across Nepal. Fair trade Himalayan origin from Nature's Mud.`;
+  const title = `${product.name} (${product.weight || '100g'}) | NaturesMud (naturesmud.com) Nepal`;
+  const description = `${product.shortDescription || product.description || ''} Buy 100% pure food ${product.name} with 0 additives and 0 preservatives online across Nepal. Sourced with integrity from NaturesMud.`;
   const img = product.image || (Array.isArray(product.images) && product.images[0]) || '/products/naturesmud-all-products-100g.jpg';
 
   return {
@@ -56,9 +56,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       `${product.name} price Nepal`,
       'naturesmud',
       'naturesmud.com',
-      "Nature's Mud",
-      'organic food Nepal',
-      product.categorySlug || 'organic-superfoods',
+      'NaturesMud',
+      'pure food Nepal',
+      product.categorySlug || 'pure-superfoods',
     ],
     alternates: {
       canonical: `https://naturesmud.shop/products/${product.slug}`,
@@ -67,13 +67,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description,
       url: `https://naturesmud.shop/products/${product.slug}`,
-      siteName: "Nature's Mud (naturesmud.com)",
+      siteName: 'NaturesMud (naturesmud.com)',
       images: [
         {
           url: img,
           width: 800,
           height: 800,
-          alt: `${product.name} - Nature's Mud Himalayan Superfoods`,
+          alt: `${product.name} - NaturesMud Himalayan Superfoods`,
         },
       ],
       type: 'website',
@@ -239,7 +239,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             <div className="space-y-3 mb-8">
               {[
                 { icon: Truck, text: 'Free delivery on orders over Rs. 10,000' },
-                { icon: ShieldCheck, text: 'Quality checked & certified organic' },
+                { icon: ShieldCheck, text: 'Quality checked · 0 Additives · 0 Preservatives' },
                 { icon: Leaf, text: '100% natural — no artificial anything' },
               ].map((item) => (
                 <p key={item.text} className="flex items-center gap-3 text-sm text-gray-700">
@@ -300,7 +300,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             'sweet-potato-powder': {
               videoUrl: '/videos/naturesmud-screen-reel.mp4',
               title: 'Organic Sweet Potato Dehydration & Baby Weaning Story',
-              desc: 'Watch how farm-fresh Nepali sweet potatoes are gently solar-dehydrated and micro-milled into silky 100g powder.',
+              desc: 'Watch how farm-fresh Nepali sweet potatoes are gently dehydrated and micro-milled into silky 100g powder with 0 additives.',
             },
             'dates-powder': {
               videoUrl: '/videos/dates-powder-energy.mp4',
@@ -319,7 +319,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             },
             'carrot-powder': {
               videoUrl: '/videos/naturesmud-product-reel.mp4',
-              title: "Nature's Mud 100g Pure Food Collection in Action",
+              title: 'NaturesMud 100g Pure Food Collection in Action',
               desc: 'Single-ingredient superfoods from Nepal’s 3 ecological belts delivered in eco glass jars.',
             },
             'roasted-almonds': {
@@ -440,8 +440,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             sku: `NM-${product.slug.toUpperCase()}`,
             brand: {
               '@type': 'Brand',
-              name: "Nature's Mud",
-              alternateName: ['naturesmud', 'naturesmud.com', "Nature's Mud Nepal"],
+              name: 'NaturesMud',
+              alternateName: ['naturesmud', 'naturesmud.com', 'NaturesMud Nepal'],
             },
             offers: {
               '@type': 'Offer',
@@ -456,7 +456,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   : 'https://schema.org/OutOfStock',
               seller: {
                 '@type': 'Organization',
-                name: "Nature's Mud Nepal",
+                name: 'NaturesMud Nepal',
                 url: 'https://naturesmud.shop',
               },
             },

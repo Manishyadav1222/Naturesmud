@@ -146,7 +146,7 @@ export default function GalleryPage() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-ink tracking-tight">
-            Nature's Mud Photo Gallery
+            NaturesMud Photo Gallery
           </h1>
           <p className="text-ink/70 text-base sm:text-lg mt-4 leading-relaxed">
             Every photo post from our Instagram directly synced here. Explore authentic farm harvests, kitchen rituals, and clean Himalayan superfoods.

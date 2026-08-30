@@ -14,7 +14,7 @@ export function CampaignCombosShowcaseSection() {
         <Text style={styles.badgeText}>Limited Season Bundles</Text>
       </View>
       <Text style={styles.title}>Himalayan Vitality Combinations</Text>
-      <Text style={styles.subtitle}>Save up to 25% on matched Ayurvedic superfoods</Text>
+      <Text style={styles.subtitle}>Save 5% on matched Ayurvedic superfoods</Text>
 
       <View style={styles.card}>
         <Image
@@ -28,7 +28,7 @@ export function CampaignCombosShowcaseSection() {
           </Text>
 
           <View style={styles.priceRow}>
-            <Text style={styles.price}>{formatPrice(3850)}</Text>
+            <Text style={styles.price}>{formatPrice(4085)}</Text>
             <Text style={styles.comparePrice}>{formatPrice(4300)}</Text>
           </View>
 

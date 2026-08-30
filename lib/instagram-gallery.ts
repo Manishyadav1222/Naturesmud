@@ -105,7 +105,7 @@ export const defaultInstagramGalleryPosts: InstagramGalleryPost[] = [
   },
   {
     id: 'insta_nm_005',
-    caption: 'Raw, slow-roasted Himalayan Almonds rich in natural Vitamin E, magnesium, and plant protein. 🥜 Unsalted, unoiled, and packed fresh in eco-friendly jars. #RoastedAlmonds #BrainFood #PlantProtein #NatureMud',
+    caption: 'Raw, slow-roasted Himalayan Almonds rich in natural Vitamin E, magnesium, and plant protein. 🥜 Unsalted, unoiled, and packed fresh in eco-friendly jars. #RoastedAlmonds #BrainFood #PlantProtein #NaturesMud',
     media_type: 'IMAGE',
     media_url: '/products/almonds-2.jpg',
     permalink: 'https://www.instagram.com/p/C_nm_almonds05/',
@@ -294,7 +294,7 @@ export async function syncInstagramPhotoPosts(): Promise<{
         const existingIndex = updatedList.findIndex((p) => p.id === item.id);
         const postData: InstagramGalleryPost = {
           id: item.id,
-          caption: item.caption || `Nature's Mud Instagram post`,
+          caption: item.caption || `NaturesMud Instagram post`,
           media_type: item.media_type === 'CAROUSEL_ALBUM' ? 'CAROUSEL_ALBUM' : 'IMAGE',
           media_url: imageMediaUrl,
           permalink: item.permalink || `https://www.instagram.com/p/${item.id}/`,
@@ -368,7 +368,7 @@ export function ingestInstagramWebhookPost(webhookItem: {
 
   const newPost: InstagramGalleryPost = {
     id: webhookItem.id,
-    caption: webhookItem.caption || `Nature's Mud Photo Post`,
+    caption: webhookItem.caption || `NaturesMud Photo Post`,
     media_type: webhookItem.media_type as 'IMAGE' | 'CAROUSEL_ALBUM',
     media_url: webhookItem.media_url,
     permalink: webhookItem.permalink || `https://www.instagram.com/p/${webhookItem.id}/`,

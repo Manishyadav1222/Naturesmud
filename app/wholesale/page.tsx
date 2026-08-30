@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Package, Truck, BadgePercent, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Wholesale | Nature\'s Mud',
-  description: 'Partner with Nature\'s Mud for wholesale organic products. Premium quality, competitive pricing, and reliable supply across Nepal.',
+  title: 'Wholesale | NaturesMud',
+  description: 'Partner with NaturesMud for wholesale pure food products with 0 additives and 0 preservatives. Consistent supply across Nepal.',
 };
 
 const benefits = [
@@ -27,7 +27,7 @@ export default function WholesalePage() {
           </nav>
           <h1 className="font-heading font-bold text-3xl sm:text-4xl text-[#2B2B2B]">Wholesale Partnership</h1>
           <p className="text-gray-600 mt-2 max-w-2xl">
-            Bring premium organic nutrition to your customers with Nature's Mud wholesale.
+            Bring pure food and genuine whole-food nutrition to your customers with NaturesMud wholesale.
           </p>
         </div>
       </section>
@@ -103,7 +103,7 @@ export default function WholesalePage() {
               <div className="bg-[#3A6B35] text-white rounded-2xl p-6">
                 <h3 className="font-heading font-semibold text-lg mb-2">Ready to start?</h3>
                 <p className="text-sm text-white/90 mb-4">Our wholesale team will get back to you within 24 hours.</p>
-                <a href="https://wa.me/9779713888002?text=Hello%20Nature%27s%20Mud!%20I%27m%20interested%20in%20wholesale%20partnership." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#3A6B35] rounded-full font-semibold hover:bg-[#F8F4EC] transition-colors">
+                <a href="https://wa.me/9779713888002?text=Hello%20NaturesMud!%20I%27m%20interested%20in%20wholesale%20partnership." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#3A6B35] rounded-full font-semibold hover:bg-[#F8F4EC] transition-colors">
                   Chat on WhatsApp
                 </a>
               </div>

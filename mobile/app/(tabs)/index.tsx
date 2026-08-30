@@ -116,7 +116,7 @@ export default function HomeScreen() {
         <View style={styles.heroBanner}>
           <View style={styles.heroBadge}>
             <Award size={13} color="#365314" />
-            <Text style={styles.heroBadgeText}>100% Certified Organic Harvest</Text>
+            <Text style={styles.heroBadgeText}>0 Additives · 0 Preservatives Harvest</Text>
           </View>
           <Text style={styles.heroHeading}>Purity Straight From the Himalayas</Text>
           <Text style={styles.heroDesc}>

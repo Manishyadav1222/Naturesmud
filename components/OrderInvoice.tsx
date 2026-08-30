@@ -81,7 +81,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
 
   const getWhatsAppShareUrl = () => {
     const lines = [
-      `*🧾 Nature's Mud Nepal - Official Order Invoice*`,
+      `*🧾 NaturesMud Nepal - Official Order Invoice*`,
       `━━━━━━━━━━━━━━━━━━━━`,
       `📄 *Invoice No:* #${invoiceNumber}`,
       `📦 *Order No:* ${order.orderNumber}`,
@@ -101,7 +101,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
       order.paymentReference ? `🔢 *Ref ID:* ${order.paymentReference}` : null,
       `💰 *Grand Total:* Rs. ${Number(order.total).toLocaleString()}`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `Thank you for trusting Nature's Mud Nepal! 🙏`,
+      `Thank you for trusting NaturesMud Nepal! 🙏`,
     ]
       .filter(Boolean)
       .join('\n');
@@ -172,7 +172,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
           <div className="text-xs text-gray-500 space-y-1 mt-3">
             <p className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />
-              Samakhushi, Gongabu Chowk, Kathmandu, Nepal
+              Kathmandu, Nepal
             </p>
             <p className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />

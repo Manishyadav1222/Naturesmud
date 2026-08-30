@@ -90,7 +90,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const activeTitle = (lang === 'np' && tr?.titleNp) ? tr.titleNp : post.title;
   const activeExcerpt = (lang === 'np' && tr?.excerptNp) ? tr.excerptNp : post.excerpt;
   const activeCategory = (lang === 'np' && tr?.categoryNp) ? tr.categoryNp : (post.category || 'Superfoods & Wellness');
-  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "Nature's Mud Clinical Council");
+  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "NaturesMud Clinical Council");
   const activeDate = (lang === 'np' && tr?.dateNp) ? tr.dateNp : (post.date || 'Recent');
   const activeContent: string[] = Array.isArray(post.content) ? post.content : [post.content || ''];
   const activeTags: string[] = (lang === 'np' && tr?.tagsNp) ? tr.tagsNp : (post.tags || ['organic nepal', 'himalayan nutrition', 'wellness']);
@@ -115,10 +115,10 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     } else {
       points.push(
         "100% pure Himalayan single-origin harvest from pesticide-free cooperative farms across Nepal.",
-        "Low-temperature solar dehydration (<45°C) preserves live enzymes, vitamins, and bioflavonoids."
+        "Gentle low-temperature dehydration (<42°C) preserves live enzymes, vitamins, and bioflavonoids."
       );
     }
-    points.push("Eco-friendly, recyclable glass jar packaging with nationwide doorstep delivery across all 77 districts of Nepal.");
+    points.push("Earth-friendly, recyclable glass jar packaging with nationwide doorstep delivery across all 77 districts of Nepal.");
     return points.slice(0, 4);
   })();
 
@@ -129,12 +129,12 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     }
     return [
       {
-        question: `What makes Nature's Mud Himalayan products 100% chemical-free?`,
-        answer: `Nature's Mud sources exclusively from pesticide-free high-altitude cooperative farms in Nepal. Our superfoods contain zero refined white sugar, zero artificial coloring agents (no Tartrazine), and zero synthetic preservatives.`
+        question: `What makes NaturesMud Himalayan products 100% chemical-free?`,
+        answer: `NaturesMud sources exclusively from pesticide-free cooperative farms in Nepal. Our superfoods contain 0 additives, 0 preservatives, and zero artificial dyes.`
       },
       {
         question: `How are these superfoods processed to retain active enzymes?`,
-        answer: `All our botanical roots, superfood powders, and fruits are slowly solar-dehydrated below 45°C in controlled solar domes. This locks in heat-sensitive vitamins, live digestive enzymes, and dense antioxidant polyphenols.`
+        answer: `All our botanical roots, superfood powders, and fruits are gently dehydrated below 42°C in controlled low-temperature chambers. This locks in heat-sensitive vitamins, live digestive enzymes, and dense antioxidant polyphenols with 0 additives and 0 preservatives.`
       },
       {
         question: `How should I consume and store this product daily?`,
@@ -218,7 +218,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     // Default signature bundle
     return {
       slug: 'himalayan-superfood-lineup-pack',
-      name: "Nature's Mud Himalayan Superfood Collection (5-Jar Starter Kit)",
+      name: 'NaturesMud Himalayan Superfood Collection (5-Jar Starter Kit)',
       price: 1450,
       image: post.image || '/products/naturesmud-all-products-100g.jpg',
       description: 'Includes pure Himalayan superfoods in reusable glass jars with free festive greeting card.'
@@ -276,7 +276,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   };
 
   const handleWhatsAppShare = () => {
-    const text = encodeURIComponent(`*${activeTitle}*\n\nRead this complete guide from Nature's Mud Nepal:\n${window.location.href}`);
+    const text = encodeURIComponent(`*${activeTitle}*\n\nRead this complete guide from NaturesMud Nepal:\n${window.location.href}`);
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
@@ -286,7 +286,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
         id: activeFeaturedProduct.slug,
         slug: activeFeaturedProduct.slug,
         name: activeFeaturedProduct.name,
-        price: Math.round(activeFeaturedProduct.price * 0.90),
+        price: Math.round(activeFeaturedProduct.price * 0.95),
         image: activeFeaturedProduct.image,
         weight: '100g',
         category: post.category || 'Superfood',
@@ -723,7 +723,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
           {/* Featured Superfood Bundle Spotlight Box (Guaranteed on every post) */}
           <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FAF7F2] via-amber-50/40 to-white border-2 border-[#2D5A27]/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-[#C9982A] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
-              🎋 10% OFF Special Discount Applied
+              🎋 5% OFF Special Discount Applied
             </div>
 
             <div className="flex items-center gap-5 w-full md:w-auto">
@@ -746,13 +746,13 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 </h4>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-base sm:text-lg font-black text-[#2D5A27]">
-                    Rs. {Math.round(activeFeaturedProduct.price * 0.90)}
+                    Rs. {Math.round(activeFeaturedProduct.price * 0.95)}
                   </span>
                   <span className="text-xs sm:text-sm text-gray-400 line-through">
                     Rs. {activeFeaturedProduct.price}
                   </span>
                   <span className="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
-                    Save 10%
+                    Save 5%
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
@@ -774,7 +774,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 className="flex-1 md:flex-none px-5 py-3 rounded-xl bg-[#2D5A27] hover:bg-[#23471e] text-white text-xs font-black flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 <ShoppingBag className="w-4 h-4 text-[#EBC164]" />
-                <span>Buy Now (10% OFF)</span>
+                <span>Buy Now (5% OFF)</span>
               </button>
             </div>
           </div>

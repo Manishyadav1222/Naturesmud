@@ -402,7 +402,7 @@ export default function AdminMessagesPage() {
                 {selectedMessage.phone && (
                   <a
                     href={`https://wa.me/${selectedMessage.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                      `Namaste ${selectedMessage.name}! This is Nature's Mud Nepal following up on your inquiry about "${selectedMessage.subject}".`
+                      `Namaste ${selectedMessage.name}! This is NaturesMud Nepal following up on your inquiry about "${selectedMessage.subject}".`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -416,9 +416,9 @@ export default function AdminMessagesPage() {
 
                 <a
                   href={`mailto:${selectedMessage.email}?subject=${encodeURIComponent(
-                    `Re: ${selectedMessage.subject} - Nature's Mud Nepal`
+                    `Re: ${selectedMessage.subject} - NaturesMud Nepal`
                   )}&body=${encodeURIComponent(
-                    `Namaste ${selectedMessage.name},\n\nThank you for reaching out to Nature's Mud Nepal regarding "${selectedMessage.subject}".\n\n`
+                    `Namaste ${selectedMessage.name},\n\nThank you for reaching out to NaturesMud Nepal regarding "${selectedMessage.subject}".\n\n`
                   )}`}
                   className="px-4 py-2.5 rounded-xl bg-[#2D5A27] hover:bg-[#23471e] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
                 >

@@ -82,15 +82,15 @@ export default function HomePage() {
 
   const stats = [
     { icon: Users, label: 'Happy Customers', value: '25,000+' },
-    { icon: Sprout, label: 'Certified Organic Farms', value: '180+' },
+    { icon: Sprout, label: 'Partner Farms', value: '180+' },
     { icon: PackageCheck, label: 'Products Delivered', value: '150+' },
     { icon: Star, label: 'Average Rating', value: '4.9/5' },
   ];
 
   const features = [
     { icon: Truck, title: 'Free Shipping Over Rs. 10,000', desc: 'On all orders across Nepal', color: 'bg-primary-100 text-primary' },
-    { icon: ShieldCheck, title: 'Certified Organic', desc: '100% Pure Himalayan Wholesomeness', color: 'bg-emerald-100 text-emerald-600' },
-    { icon: Recycle, title: 'Eco-Friendly Packaging', desc: 'Plastic-free, recyclable', color: 'bg-lime-100 text-lime-600' },
+    { icon: ShieldCheck, title: '0 Additives · 0 Preservatives', desc: '100% Pure Himalayan Wholesomeness', color: 'bg-emerald-100 text-emerald-600' },
+    { icon: Recycle, title: 'Earth-Friendly Packaging', desc: 'Recyclable glass & biodegradable', color: 'bg-lime-100 text-lime-600' },
     { icon: Sparkles, title: 'Farm Fresh Daily', desc: 'Direct sourcing, no middlemen', color: 'bg-gold/20 text-gold-700' },
   ];
 
@@ -151,7 +151,7 @@ export default function HomePage() {
                 </span>
                 <span className="text-xs font-bold tracking-wide text-primary flex items-center gap-1.5 font-heading">
                   <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-                  100% Pure Himalayan Whole Foods · 180+ Certified Farms
+                  0 Additives · 0 Preservatives · 180+ Partner Farms
                 </span>
               </motion.div>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
               >
                 <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-black leading-[1.04] tracking-tight font-heading">
                   <span className="text-primary-800 block">
-                    Nature&apos;s Mud
+                    NaturesMud
                   </span>
                   <span className="text-gold-600 block drop-shadow-xs">
                     Rooted in Nepal.
@@ -173,7 +173,7 @@ export default function HomePage() {
 
                 {/* Refined Narrative Description */}
                 <p className="text-sm sm:text-base text-ink/75 font-normal leading-relaxed max-w-lg pt-1">
-                  Welcome to <strong>Nature&apos;s Mud Nepal (naturesmud.com)</strong>. From pristine Himalayan foothills above 3,000m to your doorstep — discover authentic wild honey, potent shilajit, organic seeds, and nutrient-dense 100g superfood powders crafted with 100% purity and zero chemicals.
+                  Welcome to <strong>NaturesMud Nepal (naturesmud.com)</strong>. From pristine Himalayan foothills above 3,000m to your doorstep — discover authentic wild honey, potent shilajit, seeds, and nutrient-dense 100g superfood powders crafted with 0 additives and 0 preservatives.
                 </p>
               </motion.div>
 
@@ -254,7 +254,7 @@ export default function HomePage() {
               >
                 {[
                   { value: '25,000+', label: 'Happy Customers', highlight: true },
-                  { value: '180+', label: 'Organic Products', highlight: false },
+                  { value: '100%', label: '0 Additives', highlight: false },
                   { value: '150+', label: 'Farm Partners', highlight: false },
                   { value: '4.9★', label: 'Customer Rating', highlight: true },
                 ].map((stat) => (
@@ -581,7 +581,7 @@ export default function HomePage() {
               {[
                 { src: '/products/dates-powder.jpg', label: 'Dates Powder Fuel', likes: 342, tag: 'Dates Powder' },
                 { src: '/products/coconut-oil.jpg', label: 'Virgin Cold-Pressed', likes: 512, tag: 'Coconut Oil' },
-                { src: '/products/blueberries-2.jpg', label: 'Wild Superfood Bowl', likes: 678, tag: 'Blueberries' },
+                { src: '/products/authentic-dehydrated-mango.jpg', label: 'Tarai Sun-Ripened Mango', likes: 678, tag: 'Mango' },
                 { src: '/products/almonds-2.jpg', label: 'Roasted Himalayan Almonds', likes: 819, tag: 'Almonds' },
               ].map((item, i) => (
                 <Link
@@ -676,7 +676,7 @@ export default function HomePage() {
               Join our inner circle
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Get 10% Off Your First Order
+              Get 5% Off Your First Order
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
               Subscribe and get exclusive offers, health tips, and recipes delivered straight.
@@ -694,13 +694,13 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center space-y-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-2xs">
-                About Nature&apos;s Mud Nepal (naturesmud.com)
+                About NaturesMud Nepal (naturesmud.com)
               </span>
               <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-ink">
-                Nepal&apos;s Trusted Organic Superfoods & Himalayan Nutrition Brand
+                Nepal&apos;s Trusted Superfoods & Himalayan Nutrition Brand
               </h2>
               <p className="text-sm sm:text-base text-ink/75 leading-relaxed">
-                Welcome to <strong>Nature&apos;s Mud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan organic nutrition brand. We produce 100% natural, chemical-free dehydrated fruit and vegetable powders, wild-harvested honey, high-altitude shilajit, and raw mountain nuts.
+                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition brand. We produce 100% natural, chemical-free dehydrated fruit and vegetable powders, wild-harvested honey, high-altitude shilajit, and raw mountain nuts.
               </p>
             </div>
 
@@ -711,7 +711,7 @@ export default function HomePage() {
                   100% Natural Dehydrated Powders in 100g Glass Jars
                 </h3>
                 <p>
-                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link> (सखरखण्डको धुलो), <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder Natural Sweetener</Link> (खजुरको धुलो), <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link> (चुकन्दरको धुलो), and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is solar-dehydrated below 42°C to preserve natural vitamins, live enzymes, and minerals with <strong>0% added sugar and 0% preservatives</strong>.
+                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link> (सखरखण्डको धुलो), <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder Natural Sweetener</Link> (खजुरको धुलो), <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link> (चुकन्दरको धुलो), and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is gently dehydrated below 42°C to preserve natural vitamins, live enzymes, and minerals with <strong>0 additives and 0 preservatives</strong>.
                 </p>
               </div>
 
@@ -721,7 +721,7 @@ export default function HomePage() {
                   Direct Fair-Trade Partnership with 180+ Nepali Farms
                 </h3>
                 <p>
-                  Nature&apos;s Mud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts: the fertile Terai plains (Chitwan, Nawalpur), midland hills (Kavre, Sindhupalchok, Palpa), and high Himalayan peaks (Mustang, Jumla). By eliminating middlemen, our farmers receive +35% above-market compensation.
+                  NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts: the fertile Terai plains (Chitwan, Nawalpur), midland hills (Kavre, Sindhupalchok, Palpa), and high Himalayan peaks (Mustang, Jumla). By eliminating middlemen, our farmers receive +35% above-market compensation.
                 </p>
               </div>
 
@@ -757,7 +757,7 @@ export default function HomePage() {
                 <span>•</span>
                 <Link href="/products/dehydrated-mango" className="hover:text-primary underline">Sun-Dried Mango Slices</Link>
                 <span>•</span>
-                <Link href="/products/chia-seeds" className="hover:text-primary underline">Organic Black Chia Seeds</Link>
+                <Link href="/products/chia-seeds" className="hover:text-primary underline">Chia Seeds Nepal</Link>
                 <span>•</span>
                 <Link href="/catalog" className="hover:text-primary underline font-bold text-primary">View Product Catalog</Link>
               </div>
@@ -770,7 +770,7 @@ export default function HomePage() {
       <ScrollReveal direction="up" distance={20}>
         <section className="bg-white py-10 overflow-hidden w-full max-w-full">
           <div className="container-nm flex flex-wrap items-center justify-center gap-8">
-            {['Certified Organic', 'From Local Farms', '100% Natural', 'No Pesticides', 'Fair Trade'].map((trust) => (
+            {['0 Additives · 0 Preservatives', 'From Local Farms', '100% Natural', 'Pure Himalayan', 'Fair Trade'].map((trust) => (
               <span
                 key={trust}
                 className={`flex items-center gap-2 text-ink/50 font-heading text-sm ${

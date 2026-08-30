@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Heart, Brain, Zap, Shield, Leaf, Moon } from 'lucide-react';
 
 export const metadata = {
-  title: 'Health Benefits | Nature\'s Mud',
-  description: 'Discover the health benefits of organic superfoods, nuts, seeds, and healthy snacks from Nature\'s Mud.',
+  title: 'Health Benefits | NaturesMud',
+  description: 'Discover the health benefits of pure superfoods, nuts, seeds, and healthy whole foods from NaturesMud with 0 additives and 0 preservatives.',
 };
 
 const benefits = [
@@ -23,13 +23,13 @@ export default function HealthBenefitsPage() {
           <nav className="text-sm text-gray-500 mb-3" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2">
               <li><Link href="/" className="hover:text-[#3A6B35]">Home</Link></li>
-              <li aria-hidden="true">/</li>
+              <li>/</li>
               <li className="text-[#3A6B35] font-medium">Health Benefits</li>
             </ol>
           </nav>
           <h1 className="font-heading font-bold text-3xl sm:text-4xl text-[#2B2B2B]">Health Benefits</h1>
           <p className="text-gray-600 mt-2 max-w-2xl">
-            How Nature's Mud products support your wellness journey.
+            How NaturesMud products support your wellness journey.
           </p>
         </div>
       </section>

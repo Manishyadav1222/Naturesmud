@@ -39,7 +39,7 @@ export default function WhatsAppButton() {
         : '';
 
       const lines = [
-        `*🧾 Nature's Mud Nepal - Customer Inquiry & Order Invoice*`,
+        `*🧾 NaturesMud Nepal - Customer Inquiry & Order Invoice*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `📄 *Invoice No:* #${invoiceNumber}`,
         `📦 *Order No:* ${latestOrder.orderNumber}`,
@@ -58,7 +58,7 @@ export default function WhatsAppButton() {
         latestOrder.paymentReference ? `🔢 *Ref ID:* ${latestOrder.paymentReference}` : null,
         `💰 *Total Amount:* Rs. ${Number(latestOrder.total).toLocaleString()}`,
         `━━━━━━━━━━━━━━━━━━━━`,
-        `Hello Nature's Mud team! I have a question regarding my order and invoice above:`,
+        `Hello NaturesMud team! I have a question regarding my order and invoice above:`,
       ]
         .filter(Boolean)
         .join('\n');

@@ -32,9 +32,9 @@ export default function OurPromisesSection() {
     {
       id: 'purity',
       number: '01',
-      tag: 'Certified Purity',
+      tag: '0 Additives · 0 Preservatives',
       title: '100% Raw Himalayan Purity',
-      subtitle: 'Zero Chemicals. Zero Additives. Unprocessed High-Altitude Potency.',
+      subtitle: '0 Additives. 0 Preservatives. Unprocessed High-Altitude Potency.',
       icon: ShieldCheck,
       color: 'from-emerald-500/20 via-primary/15 to-emerald-600/10',
       accentColor: 'text-emerald-600',
@@ -44,22 +44,22 @@ export default function OurPromisesSection() {
       image: '/products/superfood-mix-2.jpg',
       metrics: [
         { label: 'Purity Tested', value: '100% Pure', icon: Droplets },
-        { label: 'Synthetic Chemicals', value: '0.0%', icon: Zap },
-        { label: 'Lab Parameters', value: '40+ Tested', icon: Award },
+        { label: '0 Additives', value: 'Verified', icon: Zap },
+        { label: '0 Preservatives', value: 'Guaranteed', icon: Award },
       ],
       points: [
-        '3rd-Party Certified for 40+ pesticide residues and heavy metals',
-        'Sun-dried at low temperatures to lock in delicate antioxidants',
-        'Strictly free from refined sugars, preservatives, or artificial dyes',
+        'Lab-verified for safety, purity, and mineral density',
+        'Gently dehydrated at low temperatures to lock in delicate antioxidants',
+        '0 Additives, 0 Preservatives, and zero artificial dyes',
       ],
-      interactivePill: '🧪 Lab Report Batch #NM-2026 Verified',
+      interactivePill: '🧪 Lab Verified Batch #NM-2026',
     },
     {
       id: 'fairtrade',
       number: '02',
       tag: 'Direct Provenance',
-      title: '180+ Smallholder Organic Farms',
-      subtitle: 'Direct Fair-Trade Across Mustang, Jumla & The Himalayan Foothills.',
+      title: '180+ Smallholder Nepali Farms',
+      subtitle: 'Direct Fair-Trade Across Terai, Midland Hills & Himalayan Peaks.',
       icon: Sprout,
       color: 'from-amber-500/20 via-gold/15 to-amber-600/10',
       accentColor: 'text-amber-700',
@@ -68,23 +68,23 @@ export default function OurPromisesSection() {
       glowColor: 'from-amber-500/20 via-gold/20 to-amber-700/10',
       image: '/products/walnuts.jpg',
       metrics: [
-        { label: 'Organic Partners', value: '180+ Farms', icon: Users },
+        { label: 'Farm Partners', value: '180+ Farms', icon: Users },
         { label: 'Middlemen Cut', value: '0%', icon: ShieldCheck },
         { label: 'Women-Led Co-ops', value: '68%', icon: Heart },
       ],
       points: [
-        'Direct fair-wage contracts with mountain smallholder cooperatives',
+        'Direct fair-wage contracts with smallholder cooperatives across Nepal',
         'Full seed-to-shelf traceability: know exactly which region grew your food',
-        'Supporting regenerative organic agriculture across 7 provinces of Nepal',
+        'Supporting sustainable agriculture across all ecological belts of Nepal',
       ],
-      interactivePill: '🏔️ Direct Sourced from Mustang & Jumla',
+      interactivePill: '🏔️ Direct Sourced from Terai, Hills & Himalayas',
     },
     {
       id: 'sustainability',
       number: '03',
-      tag: 'Earth Regenerative',
+      tag: 'Earth-Friendly',
       title: 'Zero-Plastic Circular Lifecycle',
-      subtitle: 'Amber Glass, Natural Jute & 100% Biodegradable Packaging.',
+      subtitle: 'Amber Glass, Natural Jute & Biodegradable Packaging.',
       icon: Recycle,
       color: 'from-primary/20 via-lime-500/15 to-primary-700/10',
       accentColor: 'text-primary-700',
@@ -102,7 +102,7 @@ export default function OurPromisesSection() {
         'Biodegradable natural jute outer sacks handmade by local artisans',
         'Circular Jar Return Program: Get Rs. 50 off when returning empty jars',
       ],
-      interactivePill: '🌱 100% Plastic-Free & Reusable',
+      interactivePill: '🌱 Earth-Friendly & Reusable Packaging',
     },
   ];
 
@@ -247,7 +247,7 @@ export default function OurPromisesSection() {
                   Taste the Pure Himalayan Difference, Risk-Free
                 </h3>
                 <p className="text-white/80 text-xs sm:text-sm leading-relaxed max-w-2xl">
-                  If any Nature&apos;s Mud product does not delight your senses with unmatched freshness,
+                  If any NaturesMud product does not delight your senses with unmatched freshness,
                   purity, and mountain potency, we will refund 100% of your payment or deliver a fresh replacement with zero hassles.
                 </p>
               </div>

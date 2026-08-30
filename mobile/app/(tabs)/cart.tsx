@@ -90,7 +90,7 @@ export default function CartScreen() {
           <View style={styles.emptyValues}>
             <View style={styles.emptyValueItem}>
               <ShieldCheck size={18} color="#365314" />
-              <Text style={styles.emptyValueText}>100% Certified Organic</Text>
+              <Text style={styles.emptyValueText}>0 Additives · 0 Preservatives</Text>
             </View>
             <View style={styles.emptyValueItem}>
               <Truck size={18} color="#365314" />

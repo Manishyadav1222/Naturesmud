@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!recipe) return {};
 
   return {
-    title: `${recipe.title} | Nature's Mud Organic Recipes Nepal`,
+    title: `${recipe.title} | NaturesMud Pure Recipes Nepal`,
     description: recipe.excerpt,
     keywords: recipe.tags?.join(', ') || 'healthy recipes nepal, baby food recipe, organic recipes',
     openGraph: {
@@ -212,7 +212,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
             image: [recipe.image],
             author: {
               '@type': 'Organization',
-              name: "Nature's Mud Culinary Team",
+              name: 'NaturesMud Culinary Team',
             },
             prepTime: `PT${recipe.prepTime}M`,
             cookTime: `PT${recipe.cookTime}M`,

@@ -4,13 +4,13 @@ import { products } from '@/lib/data/products';
 import { categories } from '@/lib/data/categories';
 
 export const metadata: Metadata = {
-  title: "Official Product Catalog & Price List 2026 | Nature's Mud Nepal",
+  title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
   description:
-    "Explore the complete official 2026 product catalog and price list for Nature's Mud Nepal. Download the master catalog, browse 25 certified dehydrated fruits, organic superfood powders, mountain nuts, seeds, and cold-pressed virgin oils.",
+    "Explore the complete official 2026 product catalog and price list for NaturesMud Nepal. Download the master catalog, browse 25 certified dehydrated fruits, pure superfood powders, mountain nuts, seeds, and cold-pressed virgin oils.",
   keywords: [
-    "Nature's Mud catalog",
-    "Nature's Mud price list",
-    "Nepal organic food catalog",
+    "NaturesMud catalog",
+    "NaturesMud price list",
+    "Nepal pure food catalog",
     "dehydrated fruit price list Nepal",
     "sweet potato powder price Nepal",
     "beetroot powder Nepal",
@@ -21,17 +21,17 @@ export const metadata: Metadata = {
     canonical: 'https://naturesmud.shop/catalog',
   },
   openGraph: {
-    title: "Official Product Catalog & Price List 2026 | Nature's Mud Nepal",
+    title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
     description:
-      "Browse 25 certified organic superfoods, dehydrated fruits, mountain nuts, and cold-pressed virgin oils from Nature's Mud Nepal. Download the complete master catalog.",
+      "Browse 25 certified pure superfoods, dehydrated fruits, mountain nuts, and cold-pressed virgin oils from NaturesMud Nepal. Download the complete master catalog.",
     url: 'https://naturesmud.shop/catalog',
-    siteName: "Nature's Mud (naturesmud.shop)",
+    siteName: 'NaturesMud (naturesmud.shop)',
     images: [
       {
         url: '/products/naturesmud-all-products-100g.jpg',
         width: 1200,
         height: 630,
-        alt: "Nature's Mud Nepal Product Catalog",
+        alt: "NaturesMud Nepal Product Catalog",
       },
     ],
     type: 'website',

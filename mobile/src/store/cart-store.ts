@@ -38,10 +38,13 @@ export const FREE_SHIPPING_THRESHOLD = 3000;
 export const STANDARD_SHIPPING_FEE = 150;
 
 const VALID_COUPONS: Record<string, number> = {
-  WELCOME10: 10,
-  NATURES15: 15,
-  HIMALAYA20: 20,
+  STORE5: 5,
+  WELCOME5: 5,
+  FESTIVAL5: 5,
   ORGANIC5: 5,
+  WELCOME10: 5,
+  NATURES15: 5,
+  HIMALAYA20: 5,
 };
 
 export const useCartStore = create<CartState>()(

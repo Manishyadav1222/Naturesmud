@@ -302,7 +302,7 @@ export default function AdminOrderDetailPage() {
           {order.customer?.phone && (
             <a
               href={`https://wa.me/${order.customer.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
-                `Namaste ${order.customer.name}! This is Nature's Mud regarding your order ${order.orderNumber}.`
+                `Namaste ${order.customer.name}! This is NaturesMud regarding your order ${order.orderNumber}.`
               )}`}
               target="_blank"
               rel="noopener noreferrer"

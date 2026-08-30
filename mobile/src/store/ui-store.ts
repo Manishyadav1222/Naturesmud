@@ -57,8 +57,8 @@ const SAMPLE_NOTIFICATIONS: AppNotification[] = [
   },
   {
     id: 'notif_2',
-    title: '🌿 20% Off Weekend Harvest Deal',
-    message: 'Use code HIMALAYA20 on checkout to get 20% off pure Raw Honey & A2 Ghee!',
+    title: '🌿 5% Off Weekend Harvest Deal',
+    message: 'Use code STORE5 on checkout to get 5% off pure Himalayan Superfoods!',
     time: '2h ago',
     type: 'promo',
     isRead: false,

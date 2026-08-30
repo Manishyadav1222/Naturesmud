@@ -331,7 +331,7 @@ export default function CheckoutPage() {
         .join('\n');
 
       const waInvoiceText = [
-        `*🧾 Nature's Mud Nepal - Official Order Invoice*`,
+        `*🧾 NaturesMud Nepal - Official Order Invoice*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `📄 *Invoice No:* #${invoiceNumber}`,
         `📦 *Order No:* #${order.order_number}`,
@@ -403,7 +403,7 @@ export default function CheckoutPage() {
     const finalAmount = Number(placedOrder.total) || total;
 
     const directWaLines = [
-      `*🌿 Namaste Nature's Mud Nepal!*`,
+      `*🌿 Namaste NaturesMud Nepal!*`,
       ``,
       `I have just placed an order on your website:`,
       `━━━━━━━━━━━━━━━━━━━━`,
@@ -448,7 +448,7 @@ export default function CheckoutPage() {
                 </h1>
 
                 <p className="text-gray-600 text-sm sm:text-base mt-2 max-w-md mx-auto">
-                  Thank you for choosing Nature&apos;s Mud Nepal. Your order has been registered in our central Kathmandu hub.
+                  Thank you for choosing NaturesMud Nepal. Your order has been registered in our central Kathmandu hub.
                 </p>
               </div>
 
@@ -543,7 +543,7 @@ export default function CheckoutPage() {
                   ? placedOrder.items
                   : [
                       {
-                        name: 'Nature&apos;s Mud Himalayan Superfoods Package',
+                        name: 'NaturesMud Himalayan Superfoods Package',
                         quantity: 1,
                         price: subtotal,
                       },

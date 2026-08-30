@@ -119,7 +119,6 @@ export const useCartStore = create<CartState>()(
           productId = String(productOrId);
           const found = getProductBySlug(productId) || getProductById(productId);
           if (found) {
-            productId = found.slug;
             productSnapshot = {
               id: found.id,
               slug: found.slug,
@@ -132,6 +131,16 @@ export const useCartStore = create<CartState>()(
             };
           } else if (snapshot) {
             productSnapshot = snapshot;
+          } else {
+            productSnapshot = {
+              id: productId,
+              slug: productId,
+              name: 'Pure Himalayan Product',
+              price: 0,
+              image: '/products/sweet-potato-powder.jpg',
+              weight: '100 GM',
+              category: 'Organic',
+            };
           }
         }
 
@@ -158,7 +167,10 @@ export const useCartStore = create<CartState>()(
       removeItem: (productId) => {
         set({
           items: get().items.filter(
-            (item) => item.productId !== productId && item.product?.slug !== productId
+            (item) =>
+              item.productId !== productId &&
+              item.product?.slug !== productId &&
+              item.product?.id !== productId
           ),
         });
       },
@@ -170,14 +182,16 @@ export const useCartStore = create<CartState>()(
         }
         set({
           items: get().items.map((item) =>
-            item.productId === productId || item.product?.slug === productId
+            item.productId === productId ||
+            item.product?.slug === productId ||
+            item.product?.id === productId
               ? { ...item, quantity }
               : item
           ),
         });
       },
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], isDrawerOpen: false }),
       openDrawer: () => set({ isDrawerOpen: true }),
       closeDrawer: () => set({ isDrawerOpen: false }),
 

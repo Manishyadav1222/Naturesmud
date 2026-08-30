@@ -52,11 +52,11 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     id: 'dehydrated-fruits',
     title: 'DEHYDRATED FRUITS',
     subtitle: 'NATURALLY NUTRITIOUS',
-    tagline: 'Solar-dehydrated tropical slices below 42°C with 0% added sugar or sulfur dioxide.',
+    tagline: 'Naturally dehydrated tropical slices below 42°C with 0 additives and 0 preservatives.',
     badge: 'Standup Ziplock Pouches',
     heroImage: '/products/authentic-dehydrated-mango.jpg',
-    heroImageAlt: "Nature's Mud Premium Dehydrated Mango Pouch",
-    accentColor: '#C9982A',
+    heroImageAlt: 'NaturesMud Premium Dehydrated Mango Pouch',
+    accentColor: '#D9A441',
     productIds: ['dehydrated-mango', 'dehydrated-pineapple', 'dehydrated-apple', 'dehydrated-coconut-chips', 'dehydrated-papaya'],
   },
   {
@@ -65,41 +65,41 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     subtitle: 'STRESS DEFENSE — LITTLE BERRIES, BIG GOODNESS',
     tagline: 'High-altitude wild alpine berries and nutrient-dense sun-dried figs in airtight glass jars.',
     badge: 'Antioxidant & Cognitive Power',
-    heroImage: '/products/dried-blueberries-100g.jpg',
-    heroImageAlt: "Nature's Mud Dried Blueberries & Cranberries Glass Jars",
+    heroImage: '/products/authentic-dehydrated-mango.jpg',
+    heroImageAlt: 'NaturesMud Dried Fruits & Berries Collection',
     accentColor: '#8E2800',
     productIds: ['dried-blueberries', 'dried-cranberries', 'dried-figs'],
   },
   {
     id: 'powders-salts',
-    title: "NATURE'S POWDERS & ESSENTIAL SALTS",
+    title: 'NATURESMUD POWDERS & ESSENTIAL SALTS',
     subtitle: 'OUR SIGNATURE POWDER & SALT COLLECTION',
     tagline: '100% fine micro-milled superfood powders and ancient volcanic ionic mineral rock salts.',
     badge: 'Zero Sugar • 84+ Trace Minerals',
     heroImage: '/products/sweet-potato-powder-100g.jpg',
-    heroImageAlt: "Nature's Mud Signature Powders & Himalayan Salts Collection",
+    heroImageAlt: 'NaturesMud Signature Powders & Himalayan Salts Collection',
     accentColor: '#3A6B35',
     productIds: ['dates-powder', 'beetroot-powder', 'carrot-powder', 'sweet-potato-powder', 'himalayan-pink-salt', 'pure-himalayan-black-salt-bire-noon'],
   },
   {
     id: 'nuts-mixes',
-    title: 'PREMIUM NUTS & MIXES',
-    subtitle: 'RAW ALMOND — BRAIN FUEL, MENTAL CLARITY',
-    tagline: 'Jumbo whole cashews, mountain almonds, Californian pistachios, and rich macadamias.',
-    badge: 'Oil-Free Roasted & Raw Whole',
-    heroImage: '/products/authentic-almonds.jpg',
-    heroImageAlt: "Nature's Mud Raw Almond & Whole Nuts Collection",
-    accentColor: '#A75D5D',
-    productIds: ['raw-himalayan-almonds', 'roasted-almonds', 'premium-cashewnuts', 'roasted-cashewnuts', 'premium-pistachios', 'superfood-trail-mix', 'macadamia-nuts'],
+    title: 'MOUNTAIN NUTS & ROASTED MIXES',
+    subtitle: 'HEART HEALTH & SUSTAINED ENERGY',
+    tagline: 'Whole-kernel mountain almonds, high-omega walnuts, and crunchy cashew nuts.',
+    badge: 'Zero Salt • Zero Trans Fats',
+    heroImage: '/products/almonds.jpg',
+    heroImageAlt: 'NaturesMud Raw Almond & Whole Nuts Collection',
+    accentColor: '#B85D19',
+    productIds: ['almonds', 'walnuts', 'cashews', 'superfood-mix'],
   },
   {
     id: 'seeds-oils',
-    title: 'ORGANIC SEEDS & PREMIER OILS',
-    subtitle: 'OUR SIGNATURE SEED & COLD-PRESSED OIL COLLECTION',
-    tagline: 'Micro-cleaned hydrophilic seeds and 100% pure cold-pressed virgin coconut milk oil.',
-    badge: 'Plant Omega-3 ALA • Lauric Acid',
-    heroImage: '/products/chia-seeds.jpg',
-    heroImageAlt: "Nature's Mud Organic Seeds & Cold-Pressed Virgin Oils",
+    title: 'ORGANIC SEEDS & COLD-PRESSED OILS',
+    subtitle: 'CELLULAR WELLNESS & PURE LIPIDS',
+    tagline: 'Pesticide-free certified seeds and single-origin extra virgin wood-pressed coconut oil.',
+    badge: 'Cold-Extracted • Unrefined',
+    heroImage: '/products/flax-seeds.jpg',
+    heroImageAlt: 'NaturesMud Organic Seeds & Cold-Pressed Virgin Oils',
     accentColor: '#1B3D2F',
     productIds: ['chia-seeds', 'pumpkin-seeds', 'virgin-coconut-oil-500ml', 'virgin-coconut-oil-180ml'],
   },
@@ -171,7 +171,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
   }, [initialProducts, searchQuery, selectedCategory, selectedPackaging, sortBy]);
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Nature's Mud! I reviewed your official 2026 Product Catalog & Price List and would like to place an order / wholesale inquiry."
+    "Hello NaturesMud! I reviewed your official 2026 Product Catalog & Price List and would like to place an order / wholesale inquiry."
   );
 
   return (
@@ -200,11 +200,11 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 <Leaf className="w-3.5 h-3.5 text-[#C9982A]" /> Official Master Catalog • 25 Certified Products
               </div>
               <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-                Nature's <span className="text-[#C9982A]">Mud</span> Product Catalog
+                NaturesMud Product Catalog
               </h1>
               <p className="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
                 Official price list and specifications matching our master catalog edition. Explore all 25
-                solar-dehydrated fruits, whole-food powders, organic salts, raw nuts, and cold-pressed virgin oils.
+                naturally dehydrated fruits, whole-food powders, organic salts, raw nuts, and cold-pressed virgin oils.
               </p>
 
               {/* Quick stats pills */}
@@ -345,7 +345,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                     Master 5-Section Catalog Layout
                   </h3>
                   <p className="text-xs text-gray-600">
-                    Organized exactly according to the Nature's Mud 2026 Master Flyer with certified official MRP.
+                    Organized exactly according to the NaturesMud 2026 Master Flyer with certified official MRP.
                   </p>
                 </div>
               </div>
@@ -642,7 +642,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 Official Printable Flyer
               </span>
               <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-gray-900">
-                Nature's Mud 2026 Master Product Flyer
+                NaturesMud 2026 Master Product Flyer
               </h2>
               <p className="text-xs sm:text-sm text-gray-500 mt-2">
                 Click the preview below to inspect in high definition, or download the original high-res poster and
@@ -680,7 +680,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
             >
               <img
                 src="/official-product-catalog.jpg"
-                alt="Nature's Mud Official Product Catalog 2026"
+                alt="NaturesMud Official Product Catalog 2026"
                 className="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
@@ -835,7 +835,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
             </h2>
 
             <p className="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
-              Nature's Mud supplies certified superfoods and dehydrated fruits to retail stores, pediatric clinics,
+              NaturesMud supplies certified superfoods and dehydrated fruits to retail stores, pediatric clinics,
               ayurvedic pharmacies, sports gyms, and hospitality partners nationwide across Nepal.
             </p>
 
@@ -887,7 +887,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 <div className="flex items-center gap-2">
                   <Leaf className="w-4 h-4 text-[#C9982A]" />
                   <span className="font-heading font-bold text-sm">
-                    Nature's Mud Official 2026 Master Product Catalog Flyer
+                    NaturesMud Official 2026 Master Product Catalog Flyer
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -911,7 +911,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
               <div className="overflow-y-auto p-4 flex items-center justify-center bg-black/40">
                 <img
                   src="/official-product-catalog.jpg"
-                  alt="Nature's Mud Official Master Product Catalog 2026"
+                  alt="NaturesMud Official Master Product Catalog 2026"
                   className="max-h-[80vh] w-auto object-contain rounded-lg shadow-xl"
                 />
               </div>

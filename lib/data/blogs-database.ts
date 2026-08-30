@@ -24,6 +24,836 @@ export interface ExtendedBlogPost extends BlogPost {
 
 // Generate the master 100 comprehensive SEO blogs catalog
 export const allBlogPosts: ExtendedBlogPost[] = [
+  {
+  "id": "b-fitness-trekking-snacks-nepal",
+  "title": "Best Snacks for Trekking in Nepal: High-Altitude Nutrition & Trail Energy",
+  "slug": "best-snacks-for-trekking-in-nepal-himalayan-hiking",
+  "excerpt": "The ultimate guide to packing lightweight, calorie-dense, nutritious trail snacks for trekking in the Himalayas. Discover optimal nut-seed ratios, hydration, and high-altitude energy.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Himalayan Fitness Team",
+  "readTime": 8,
+  "featured": true,
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "tags": [
+    "best snacks for trekking in nepal",
+    "hiking snacks nepal",
+    "trekking food himalayas",
+    "trail snacks kathmandu",
+    "high altitude nutrition"
+  ],
+  "keyTakeaways": [
+    "Caloric Density Matters: At high altitudes (3,000m+), aim for snacks providing 400–500 kcal per 100g, balancing complex carbs, healthy fats, and clean protein.",
+    "Lightweight Packing: Raw mountain almonds, walnuts, pumpkin seeds, and dates powder offer maximum energy per gram without adding heavy pack weight.",
+    "Electrolyte & Hydration Support: Pair soaked chia seeds and a pinch of Himalayan pink salt with water to prevent dehydration on steep ascents.",
+    "Sustained Blood Sugar: Avoid high-sugar candy bars that cause rapid crashes; choose whole dates powder, dried fruits, and raw nuts for even energy release."
+  ],
+  "content": [
+    "### Introduction: Fueling for Himalayan High-Altitude Trails",
+    "Trekking through Nepal’s breathtaking landscapes—from the Annapurna Circuit and Everest Base Camp to Langtang Valley—burns anywhere from 3,500 to 5,500 calories per day depending on elevation gain, cold ambient temperatures, and backpack weight.",
+    "At altitudes above 2,500 meters, your metabolic rate increases while appetite often decreases due to mild hypoxia. Relying solely on teahouse meals (dal bhat, noodles, and porridge) can leave you short on quick-digesting clean fats, electrolytes, and antioxidants needed for continuous muscle endurance.",
+    "Carrying smart, shelf-stable, nutrient-dense snacks is critical for maintaining steady energy, preventing muscle breakdown, and ensuring you reach your daily pass safely and energized.",
+    "",
+    "### The Science of High-Altitude Trail Snacks",
+    "When selecting trail snacks for hiking in Nepal, consider four fundamental criteria:",
+    "- **1. High Caloric Density per Gram:** Every 100 grams in your daypack must count. Nuts and seeds provide 600 kcal/100g from clean unsaturated fatty acids.",
+    "- **2. Complex Carbs for Glycogen Sparing:** Slow-burning carbohydrates (rolled oats, sun-dried mango, dried blueberries) fuel steep uphill climbs without insulin spikes.",
+    "- **3. Non-Melting & Weather-Resistant:** Chocolate bars melt in the low valleys and freeze rock-solid above 4,000m. Dried fruits, raw nuts, and date energy balls maintain perfect chewiness at any temperature.",
+    "- **4. Electrolyte Retention:** High altitude accelerates fluid loss through rapid respiration. Trace minerals from Himalayan pink rock salt help your cells retain water effectively.",
+    "",
+    "### Top 5 Packable Snacks for Trekking in Nepal",
+    "",
+    "#### 1. Custom Himalayan Superfood Trail Mix",
+    "Mix equal parts [NaturesMud Raw Mountain Almonds](/products/almonds), [Raw Walnuts](/products/walnuts), [Organic Pumpkin Seeds](/products/pumpkin-seeds), and [Wild Dried Blueberries](/products/dried-blueberries-100g). Pack 80g portions into individual zip bags for 450 kcal of clean endurance fuel per walking session.",
+    "",
+    "#### 2. No-Bake Dates & Nut Energy Balls",
+    "Dense, bite-sized balls made from [NaturesMud Natural Dates Powder](/products/dates-powder-100g), rolled oats, and crushed cashews deliver immediate natural fructose and sustained complex carbs without crumbling in your backpack.",
+    "",
+    "#### 3. Hydration Chia Gel (The Mountain Runner's Secret)",
+    "Before starting your morning ascent, stir 1 tablespoon of [NaturesMud Organic Chia Seeds](/products/chia-seeds) and a pinch of [Himalayan Pink Salt](/products/pink-salt) into 500ml of water. Drink midway through your climb for steady cellular hydration.",
+    "",
+    "#### 4. Sun-Dried Mango & Dried Fruits",
+    "[NaturesMud Sun-Dried Mango](/products/dehydrated-mango) provides non-sticky, quick-acting glucose, vitamin C for cellular repair, and potassium to prevent calf cramps during downhill descents.",
+    "",
+    "#### 5. Teahouse Porridge Booster Pack",
+    "Carry a small 100g container of [NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g) or Dates Powder to stir directly into basic teahouse oats for a nutrient-packed mountain breakfast.",
+    "",
+    "### Daily Nutrition Schedule on the Trail",
+    "- **07:00 AM (Breakfast):** Teahouse oats/porridge + 1 tbsp dates powder + handful of almonds.",
+    "- **10:30 AM (Mid-Morning Ascent):** 50g trail mix + hydration water with chia seeds.",
+    "- **01:30 PM (Lunch):** Traditional Dal Bhat + fresh hot lemon ginger tea.",
+    "- **04:00 PM (Afternoon Pass / Push):** 2 Dates & Nut Energy Balls + sun-dried mango slices.",
+    "- **07:00 PM (Dinner & Recovery):** Dal bhat or vegetable soup + pinch of Himalayan pink salt for electrolyte replenishment.",
+    "",
+    "### Practical Trekking Storage Tips",
+    "- Store nuts and dried fruits in heavy-duty resealable ziplock bags to guard against mountain moisture and monsoon drizzle.",
+    "- Keep your day's snacks in the top lid pocket of your backpack so you can snack without stopping your rhythm.",
+    "- Carry a reusable lightweight spoon for mixing chia gels or porridge boosters on rest breaks."
+  ],
+  "faqs": [
+    {
+      "question": "How many grams of trail snacks should I carry per day while trekking?",
+      "answer": "Aim for 150 to 250 grams of nutrient-dense trail snacks (approx. 700–1,100 kcal) per person per day to supplement your three daily teahouse meals."
+    },
+    {
+      "question": "Are nuts and dried fruits safe at freezing high altitudes?",
+      "answer": "Yes! Unlike candy bars that freeze into solid blocks, whole almonds, walnuts, pumpkin seeds, and sun-dried fruits retain good chewable texture even in sub-zero alpine conditions."
+    },
+    {
+      "question": "What is the best way to prevent altitude-related dehydration on trails?",
+      "answer": "Drink 3 to 4 liters of clean water daily, enhanced with soaked chia seeds and a pinch of natural Himalayan pink rock salt to maintain vital cellular electrolyte balance."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-trail-mix-recipe",
+  "title": "Healthy Trail Mix Recipe for Hiking: Homemade Himalayan Energy Mix",
+  "slug": "healthy-trail-mix-recipe-for-hiking-nepal",
+  "excerpt": "Make your own healthy, clean trail mix for hiking and outdoor endurance. High in plant protein, zinc, healthy omega fats, and naturally sweet dried fruits.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Culinary Team",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/combos/superfood-lineup.jpg",
+  "tags": [
+    "healthy trail mix recipe",
+    "trail mix recipe",
+    "homemade trail mix",
+    "hiking snacks",
+    "nuts and seeds mix nepal"
+  ],
+  "keyTakeaways": [
+    "The 50-30-20 Ratio: 50% raw nuts (healthy fats), 30% dried fruits (quick glucose), and 20% seeds (zinc & magnesium) create the ideal energy profile.",
+    "Zero Refined Sugar: Use unsweetened sun-dried mango, dried blueberries, and raw almonds instead of candy-coated commercial trail mixes.",
+    "Long Shelf-Life: Stays fresh and crunchy in an airtight container for up to 3 months without refrigeration.",
+    "Cost-Effective: Making your own trail mix at home in Nepal saves 40% compared to imported pre-packaged trail snacks."
+  ],
+  "content": [
+    "### Introduction: Why Commercial Trail Mix Fails Hikers",
+    "Most store-bought trail mixes sold in city supermarkets are loaded with hydrogenated oils, refined white sugar, chocolate candies, and excessive sodium that trigger energy crashes after 45 minutes on the trail.",
+    "Crafting your own **Homemade Himalayan Trail Mix** allows you to choose 100% clean, raw, unsalted nuts, zinc-rich seeds, and sun-dried fruits that deliver sustained stamina for hours of continuous walking.",
+    "",
+    "### The Perfect 4-Component Trail Mix Formula",
+    "- **1. Raw Crunch (50%):** [NaturesMud Raw Himalayan Almonds](/products/almonds) & [Raw Mountain Walnuts](/products/walnuts) for healthy fats, vitamin E, and cellular anti-inflammatory protection.",
+    "- **2. Natural Sweetness & Carbs (30%):** [NaturesMud Wild Dried Blueberries](/products/dried-blueberries-100g) and [Sun-Dried Mango Slices](/products/dehydrated-mango) for quick muscle glycogen replenishment.",
+    "- **3. Superfood Seeds (15%):** [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) and [Black Chia Seeds](/products/chia-seeds) for zinc, magnesium, and muscle recovery.",
+    "- **4. Mineral Accent (5%):** A light pinch of finely ground [Himalayan Pink Rock Salt](/products/pink-salt) to replenish sodium lost through sweating.",
+    "",
+    "### Recipe & Preparation Instructions",
+    "- **Prep Time:** 5 minutes | **Yield:** 500g (Approx. 10 trail portions)",
+    "- In a large bowl, combine 150g chopped almonds, 100g chopped walnuts, 75g pumpkin seeds, 100g chopped dried mango, and 75g dried blueberries.",
+    "- Toss thoroughly until evenly distributed. Divide into 50g zip pouches for easy portion control on trekking days."
+  ],
+  "faqs": [
+    {
+      "question": "Should nuts in trail mix be roasted or raw?",
+      "answer": "Raw or dry-roasted unsalted nuts are best because they preserve heat-sensitive omega fats and avoid inflammatory processed cooking oils."
+    },
+    {
+      "question": "How do I keep trail mix crunchy during monsoon hiking?",
+      "answer": "Store in heavy-duty food-grade ziplock bags with air pressed out, and store individual portions in airtight sealed jars until hike morning."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-pre-hike-nutrition",
+  "title": "What to Eat Before Hiking in Nepal: Pre-Hike Breakfast & Hydration Guide",
+  "slug": "what-to-eat-before-hiking-in-nepal-trail-nutrition",
+  "excerpt": "Discover what to eat 2 hours before a strenuous hike in Nepal to prevent early fatigue, muscle cramps, and energy crashes on steep mountain ascents.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Sports Nutrition Team",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/recipes/oatmeal-bowl-daily-routine.jpg",
+  "tags": [
+    "what to eat before hiking",
+    "pre hike breakfast",
+    "hiking nutrition nepal",
+    "trail prep kathmandu"
+  ],
+  "keyTakeaways": [
+    "Eat 90–120 Minutes Before: Give your stomach sufficient time to digest complex carbs and moderate healthy fats before climbing.",
+    "Low Glycemic Index Base: Rolled oats sweetened with dates powder provide 3 to 4 hours of steady glucose release.",
+    "Pre-Hydration Protocol: Drink 500ml of water with a pinch of pink salt 1 hour before departure to prime your cardiovascular volume."
+  ],
+  "content": [
+    "### The Goal of Pre-Hike Nutrition",
+    "Steep ascents in Nepal—such as hiking up Shivapuri peak, Nagarkot trails, or the early morning pass on the Annapurna circuit—demand immediate and sustained muscular energy.",
+    "Eating heavy fried foods (puri tarkari, oily parathas) right before climbing draws blood into the digestive tract, causing sluggishness, nausea, and cramping. Conversely, skipping breakfast depletes liver glycogen within 45 minutes.",
+    "",
+    "### Top 3 Ideal Pre-Hike Breakfast Ideas",
+    "- **1. Supercharged Teahouse Oats:** 1 cup rolled oats cooked in water or almond milk, stirred with 1 tbsp [NaturesMud Dates Powder](/products/dates-powder-100g), 1 tbsp [Chia Seeds](/products/chia-seeds), and sliced almonds.",
+    "- **2. Sweet Potato Energy Porridge:** 2 tbsp [NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g) whisked with warm milk, cinnamon, and raw mountain honey.",
+    "- **3. Chia Overnight Oats:** Prepared the night before with oats, chia, curd, and sun-dried mango slices for instant grab-and-go morning fuel."
+  ],
+  "faqs": [
+    {
+      "question": "Can I drink coffee or tea before hiking?",
+      "answer": "Yes, moderate black coffee or green tea provides natural alertness, but always drink 1 extra glass of pure water to offset caffeine’s mild diuretic effect."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-energy-balls-hiking",
+  "title": "Homemade Energy Balls for Hiking: No-Bake High-Calorie Trail Bites",
+  "slug": "homemade-energy-balls-for-hiking-nepal-trails",
+  "excerpt": "A 10-minute, no-bake energy ball recipe packed with dates powder, raw mountain nuts, chia seeds, and coconut oil. The ultimate portable snack for day hikes and trekking.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Kitchen",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "tags": [
+    "homemade energy balls for hiking",
+    "hiking energy bites",
+    "dates energy balls",
+    "no bake snacks nepal"
+  ],
+  "keyTakeaways": [
+    "10-Minute Prep: No cooking or baking required; simply knead, roll, and chill.",
+    "Dense Clean Calories: Each 30g energy ball delivers ~120 kcal of sustained energy from dates, nuts, and healthy coconut MCTs.",
+    "Durable & Crush-Proof: Holds shape inside backpacks without melting or crumbling into powder."
+  ],
+  "content": [
+    "### Why Energy Balls Beat Processed Protein Bars",
+    "Commercial protein bars frequently contain artificial sweeteners (sucralose, maltitol), synthetic soy isolates, and palm oils that cause digestive distress during heavy exercise.",
+    "These **Homemade Himalayan Energy Balls** use whole-food ingredients: [NaturesMud Natural Dates Powder](/products/dates-powder-100g) for binder and sweetness, crushed raw almonds and cashews for protein, chia seeds for hydration, and virgin coconut oil for medium-chain triglycerides (MCTs).",
+    "",
+    "### Step-by-Step Recipe",
+    "- **Ingredients:** 1 cup oat flour, 1/2 cup dates powder, 1/3 cup crushed almonds, 2 tbsp chia seeds, 2 tbsp virgin coconut oil, 2 tbsp raw honey or warm water.",
+    "- **Method:** Mix dry ingredients, fold in melted coconut oil and honey, knead into a dough, roll into 12 balls, and chill for 20 minutes."
+  ],
+  "faqs": [
+    {
+      "question": "How long do homemade energy balls last without refrigeration on a trek?",
+      "answer": "They remain fresh, firm, and safe to eat for up to 2 weeks at ambient mountain temperatures in a sealed container."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-pre-workout-oatmeal",
+  "title": "Pre-Workout Oatmeal With Chia & Dried Fruit: 60-Minute Glycogen Loader",
+  "slug": "pre-workout-oatmeal-with-chia-and-dried-fruit",
+  "excerpt": "How to make the perfect pre-workout oatmeal bowl with chia seeds, wild dried blueberries, and dates powder for explosive gym energy and endurance.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Fitness Nutrition",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/recipes/oatmeal-bowl-daily-routine.jpg",
+  "tags": [
+    "pre workout oatmeal",
+    "chia oatmeal gym",
+    "healthy gym breakfast nepal",
+    "clean pre workout meal"
+  ],
+  "keyTakeaways": [
+    "Optimal Timing: Consume 45 to 60 minutes before lifting or high-intensity interval training.",
+    "Hydration Matrix: Soaked chia seeds inside warm oats slow down carbohydrate absorption for a steady energy curve.",
+    "Antioxidant Recovery: Anthocyanins in dried blueberries protect muscle tissue from oxidative stress."
+  ],
+  "content": [
+    "### The Ideal Pre-Workout Glycogen Matrix",
+    "Lifting heavy weights or performing intense sprint intervals depletes intra-muscular glycogen stores rapidly. To train at peak capacity, your pre-workout meal must supply easily accessible carbohydrates without triggering heavy insulin crashes.",
+    "Combining rolled oats, [NaturesMud Dates Powder](/products/dates-powder-100g), [Organic Chia Seeds](/products/chia-seeds), and [Wild Dried Blueberries](/products/dried-blueberries-100g) delivers the exact balance of rapid-absorbing fruit fructose and slow-release oat beta-glucan fiber."
+  ],
+  "faqs": [
+    {
+      "question": "Can I add whey protein powder to this oatmeal?",
+      "answer": "Yes! Add 1 scoop of protein powder after cooking the oats to preserve protein structure, or simply top with crushed raw almonds for natural whole-food protein."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-post-workout-smoothie",
+  "title": "Post-Workout Smoothie With Dates & Chia: Rapid Muscle Recovery Guide",
+  "slug": "post-workout-smoothie-with-dates-and-chia-nepal",
+  "excerpt": "Replenish glycogen, repair muscle fibers, and restore electrolytes with a velvety post-workout recovery smoothie made with dates powder, chia seeds, and banana.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Sports Nutrition",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/recipes/beetroot-smoothie-bowl.jpg",
+  "tags": [
+    "post workout smoothie",
+    "dates and chia smoothie",
+    "muscle recovery drink nepal",
+    "gym smoothie kathmandu"
+  ],
+  "keyTakeaways": [
+    "30-Minute Anabolic Window: Consume within 30 to 45 minutes post-workout to maximize muscle glycogen synthesis.",
+    "Natural Potassium & Electrolytes: Dates and bananas replace intracellular potassium lost during heavy perspiration.",
+    "Omega-3 Anti-Inflammatory: Chia seed ALA helps reduce delayed onset muscle soreness (DOMS)."
+  ],
+  "content": [
+    "### The Science of Post-Workout Muscle Recovery",
+    "After intense resistance training, your muscles are sensitized to nutrient uptake. Consuming fast-absorbing natural carbohydrates paired with complete plant proteins and anti-inflammatory healthy fats accelerates muscle protein synthesis.",
+    "Blend 1 frozen banana, 1.5 tbsp [NaturesMud Dates Powder](/products/dates-powder-100g), 1 tbsp [Soaked Chia Seeds](/products/chia-seeds), 1 cup milk or coconut water, and a pinch of [Himalayan Pink Salt](/products/pink-salt) for a creamy, restaurant-quality recovery shake."
+  ],
+  "faqs": [
+    {
+      "question": "Is dates powder better than table sugar in a post-workout smoothie?",
+      "answer": "Yes! Dates powder provides whole-food glucose and fructose alongside 23 essential amino acids, magnesium, iron, and potassium that table sugar completely lacks."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-high-protein-nuts-seeds",
+  "title": "High-Protein Nut & Seed Snacks: Whole-Food Fuel Without Powders",
+  "slug": "high-protein-nut-and-seed-snacks-nepal",
+  "excerpt": "Discover the highest protein nuts and seeds available in Nepal. Complete amino acid profiles, daily serving recommendations, and clean snacking tips.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Nutrition Lab",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "tags": [
+    "high protein nut and seed snack",
+    "plant protein nepal",
+    "protein without powder",
+    "gym snacks kathmandu"
+  ],
+  "keyTakeaways": [
+    "Pumpkin Seeds Champion: Delivers an astounding 30g of plant protein per 100g, plus high natural zinc.",
+    "Almonds for Muscle: 21g protein per 100g with rich vitamin E and healthy monounsaturated fats.",
+    "Chia Complete Protein: Contains all 9 essential amino acids in a highly bioavailable plant form."
+  ],
+  "content": [
+    "### Whole-Food Plant Protein for Fitness Enthusiasts",
+    "You don't need artificial synthetic protein powders to hit your daily muscle maintenance targets. Whole nuts and seeds provide dense, unadulterated plant protein bundled with fiber, healthy fats, and cellular micronutrients.",
+    "Combining [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) (30g protein/100g), [Raw Himalayan Almonds](/products/almonds) (21g protein/100g), and [Walnuts](/products/walnuts) (15g protein/100g) gives you a complete, clean protein snack for office desks and post-gym recovery."
+  ],
+  "faqs": [
+    {
+      "question": "Which seed has the highest protein content?",
+      "answer": "Organic pumpkin seeds (pepitas) lead the pack with approximately 30 grams of pure plant protein per 100g serving."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-gym-beginners-breakfast",
+  "title": "Healthy Breakfast for Gym Beginners: Simple 5-Minute Morning Fuel",
+  "slug": "healthy-breakfast-for-gym-beginners-nepal",
+  "excerpt": "Starting your gym journey in Kathmandu? Here are the 5 best, easiest whole-food breakfast recipes to fuel muscle growth, burn fat, and sustain morning energy.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Fitness Team",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/recipes/sweet-potato-stirred-smoothie.jpg",
+  "tags": [
+    "healthy breakfast for gym beginners",
+    "gym beginner diet nepal",
+    "clean morning breakfast kathmandu"
+  ],
+  "keyTakeaways": [
+    "Simplicity is Key: Stick to meals that take under 5 minutes so you never skip breakfast before morning workouts.",
+    "Macro Balance: Aim for 20g protein, 40g complex carbs, and 10g healthy fats.",
+    "Zero Refined Sugar: Swap morning milk-tea sugar with natural dates powder to avoid 10:00 AM lethargy."
+  ],
+  "content": [
+    "### Building Sustainable Fitness Nutrition from Day 1",
+    "The most common mistake gym beginners make is adopting extreme diets that are impossible to maintain alongside a busy work schedule in Nepal.",
+    "Starting your morning with wholesome, nutrient-dense staples—such as [NaturesMud Sweet Potato Pancakes](/recipes/fluffy-sweet-potato-pancakes-powder-recipe), Chia Overnight Oats, or a High-Nitrate Beetroot Smoothie—sets a positive metabolic tone for the entire day."
+  ],
+  "faqs": [
+    {
+      "question": "Should I eat before or after morning gym workouts?",
+      "answer": "If working out intensely for over 45 minutes, have a light snack (half a banana with dates powder or 1 glass chia water) 30 minutes before, followed by a full breakfast after."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-kathmandu-runners-snacks",
+  "title": "Healthy Snacks for Kathmandu Runners: Pre-Run Energy & Recovery Guide",
+  "slug": "healthy-snacks-for-kathmandu-runners",
+  "excerpt": "Fuel your morning runs around Kathmandu, Patan, and trails. How to eat for light digestion, fast energy, and clean anti-pollution cellular recovery.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Running Club",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/blog/himalayan-beetroot-nitric-oxide-stamina.jpg",
+  "tags": [
+    "healthy snacks for kathmandu runners",
+    "running snacks nepal",
+    "pre run food kathmandu",
+    "marathon nutrition nepal"
+  ],
+  "keyTakeaways": [
+    "Light Digestibility: Runners need fast-clearing fuels that do not bounce in the stomach during strides.",
+    "Nitric Oxide Boost: Beetroot powder boosts blood vessel vasodilation, increasing oxygen delivery to working calves and quads.",
+    "Hydration Shield: Pre-hydrate with chia seed water to sustain fluid volume during outdoor runs."
+  ],
+  "content": [
+    "### Running in Kathmandu: Unique Nutritional Demands",
+    "Whether running 5K morning laps around Tudikhel, hill repeats at Swayambhu, or 20K trail runs in Godavari, runners in Kathmandu need light, non-acidic fuel that boosts cardiovascular endurance and counters urban oxidative stress.",
+    "Drinking a glass of water stirred with 1 tsp of [NaturesMud Pure Beetroot Powder](/products/beetroot-powder-100g) 30 minutes prior to running provides concentrated dietary nitrates that improve running economy and delay muscular fatigue."
+  ],
+  "faqs": [
+    {
+      "question": "What is the best quick snack 15 minutes before a run?",
+      "answer": "Two dried dates or 1 tbsp of NaturesMud dates powder mixed in 100ml warm water gives instant, gentle glucose without stomach heaviness."
+    }
+  ]
+},
+  {
+  "id": "b-fitness-dates-nut-energy-balls",
+  "title": "Dates & Nut Energy Balls: The Ultimate Clean Snacking Master Guide",
+  "slug": "dates-and-nut-energy-balls-recipe",
+  "excerpt": "Detailed recipe and storage guide for no-bake dates and nut energy balls. Ideal for desk workers, fitness athletes, and outdoor hikers across Nepal.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Kitchen",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "tags": [
+    "dates and nut energy balls",
+    "dates energy balls recipe",
+    "healthy office snack nepal"
+  ],
+  "keyTakeaways": [
+    "No Added Sugar: 100% natural sweetness from pure dates powder and raw honey.",
+    "Rich in Magnesium & Iron: Helps prevent fatigue and muscle twitching during stressful workdays.",
+    "Meal Prep 20 Balls in 10 Minutes: Keep in a glass desk jar for instant healthy snacking."
+  ],
+  "content": [
+    "### The Ultimate Clean Snack for Active Lifestyles",
+    "When afternoon 3:00 PM hunger strikes at the office or midway through a trekking trail, reaching for biscuits or fried samosas wrecks energy levels and causes sluggishness.",
+    "These **Dates & Nut Energy Balls** combine the natural caramel richness of [NaturesMud Natural Dates Powder](/products/dates-powder-100g) with raw almonds, cashews, chia seeds, and virgin coconut oil for sustained vitality."
+  ],
+  "faqs": [
+    {
+      "question": "Can children take these energy balls to school?",
+      "answer": "Yes! They are a fantastic, 100% natural lunchbox snack for school-aged children and teenagers, providing clean energy without artificial colorings or white sugar."
+    }
+  ]
+},
+  {
+  "id": "b-baby-starting-solids-guide-nepal",
+  "title": "Starting Solid Foods: A Simple Guide for Nepali Parents (WHO & UNICEF Guidelines)",
+  "slug": "starting-solid-foods-simple-guide-nepali-parents",
+  "excerpt": "An evidence-based guide for Nepali parents on starting complementary feeding at 6 months. Learn readiness signs, safe textures, hygienic prep, and first foods.",
+  "category": "Baby & Family Nutrition",
+  "date": "2026-08-30",
+  "author": "NaturesMud Pediatric Nutrition Advisory",
+  "readTime": 8,
+  "featured": true,
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "tags": [
+    "starting solid foods simple guide nepali parents",
+    "baby food nepal",
+    "complementary feeding 6 months",
+    "weaning foods kathmandu",
+    "infant nutrition nepal"
+  ],
+  "keyTakeaways": [
+    "Wait Until 6 Months: Exclusive breastfeeding is recommended for the first 6 months (180 days) of life according to WHO and UNICEF.",
+    "Look for Development Readiness: Baby should sit upright with support, have good head/neck control, and show curiosity toward family food.",
+    "Zero Added Salt & Zero Added Sugar: Infant kidneys cannot process excess sodium, and sugar sets poor taste preferences. Keep first foods 100% natural.",
+    "One Single Ingredient at a Time: Introduce one new single-ingredient food and wait 2 to 3 days to monitor for any digestive sensitivity or allergic reaction.",
+    "Smooth, Lump-Free Texture: Start with silky, smooth purees or soft mashes to prevent choking hazards."
+  ],
+  "content": [
+    "### Introduction: Complementary Feeding at 6 Months",
+    "The transition from exclusive breastfeeding (or infant formula) to complementary solid foods is one of the most vital developmental milestones in your baby's first year of life.",
+    "According to the **World Health Organization (WHO)** and **UNICEF**, infants should begin complementary feeding at approximately 6 months of age (180 days). At this stage, breast milk remains the primary source of nutrition, but complementary foods are introduced to meet increasing energetic, iron, and micronutrient requirements.",
+    "",
+    "### Signs Your Baby is Ready for Solid Foods",
+    "Do not rush solids before 6 months. Verify that your baby demonstrates these essential developmental readiness signs:",
+    "- **Good Head & Neck Control:** The baby can hold their head steady and upright without wobbling.",
+    "- **Sitting Upright with Minimal Support:** The baby can sit safely in a highchair or lap to ensure clear swallowing pathways.",
+    "- **Diminished Tongue-Thrust Reflex:** The baby no longer automatically pushes solid food out of their mouth with their tongue.",
+    "- **Curiosity & Reach:** The baby opens their mouth when food approaches and reaches for family meals.",
+    "",
+    "### The Golden Rules of Starting Solids Safely",
+    "- **1. No Added Sugar, Salt, or Honey:** Under 12 months, babies must NEVER be given honey (risk of infant botulism), added table salt (burdens immature kidneys), or refined sugars.",
+    "- **2. The 3-Day Single-Food Rule:** When introducing a new food (e.g. single-ingredient sweet potato puree), offer it for 2 to 3 consecutive days before introducing another new ingredient. This helps identify any food intolerance or allergy easily.",
+    "- **3. Texture Progression:** Begin with silky, liquid-smooth purees (mixed with expressed breast milk or warm boiled water). By 7–8 months, transition to thicker mashes, and by 9–10 months, soft dissolvable finger foods.",
+    "- **4. Strict Kitchen Hygiene:** Always wash hands with soap, sterilize infant feeding bowls and spoons, and use boiled, cooled drinking water.",
+    "",
+    "### Ideal First Foods for Nepali Babies",
+    "- **Single-Ingredient Vegetable Purees:** Steamed and blended sweet potato ([NaturesMud Pure Sweet Potato Powder](/products/sweet-potato-powder-100g) whisked with warm water/breast milk), carrot puree, or pumpkin mash.",
+    "- **Single-Ingredient Fruit Purees:** Steamed apple puree, ripe banana mash, or soft ripe papaya puree.",
+    "- **Traditional Grains & Porridges:** Well-cooked, finely strained rice flour porridge, ragi (kodo) porridge, or jaulo (soft rice-dal mash without salt or spices).",
+    "",
+    "### Responsive Feeding: Follow Your Baby's Cues",
+    "Complementary feeding is a learning experience, not a calorie race. Allow your baby to explore textures and tastes at their own pace.",
+    "- **Fullness Signs:** Turning head away, clamping lips shut, pushing the spoon away, or becoming fussy. Never force-feed.",
+    "- **Hunger Signs:** Leaning forward, opening mouth, following the spoon eagerly with their eyes.",
+    "",
+    "### Important Medical & Pediatric Notice",
+    "*This guide is for general educational purposes based on WHO and pediatric complementary feeding literature. Always consult your pediatrician or primary health worker for personalized feeding guidance, premature infant care, severe allergies, or feeding difficulties.*"
+  ],
+  "faqs": [
+    {
+      "question": "Why must honey be strictly avoided for babies under 1 year of age?",
+      "answer": "Honey can contain spores of Clostridium botulinum bacteria, which can produce dangerous toxins in an infant’s immature digestive tract, causing infant botulism."
+    },
+    {
+      "question": "How many times a day should a 6-month-old eat solid food?",
+      "answer": "Start with 1 to 2 small meals per day (2 to 3 teaspoons per meal) while continuing frequent on-demand breastfeeding or formula feeding."
+    },
+    {
+      "question": "Can I add salt or spices to make baby food taste better?",
+      "answer": "No. Babies’ kidneys are immature and cannot excrete excess salt. Babies do not need added seasonings; they enjoy the pure, natural flavors of wholesome foods."
+    }
+  ]
+},
+  {
+  "id": "b-baby-10-simple-recipes-solids",
+  "title": "10 Simple Baby Food Recipes for Starting Solids (6–12 Months)",
+  "slug": "10-simple-baby-food-recipes-starting-solids-nepal",
+  "excerpt": "Nutrient-dense, easy-to-digest homemade baby food recipes for Nepali parents. 100% natural, zero added sugar, zero salt, and strictly pediatric safety compliant.",
+  "category": "Baby & Family Nutrition",
+  "date": "2026-08-30",
+  "author": "NaturesMud Pediatric Nutrition Team",
+  "readTime": 8,
+  "featured": false,
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "tags": [
+    "10 simple baby food recipes for starting solids",
+    "baby food recipes nepal",
+    "homemade baby food kathmandu",
+    "infant weaning recipes"
+  ],
+  "keyTakeaways": [
+    "Single-Ingredient Simplicity: Start with single-ingredient steamed purees before attempting complex multi-food combinations.",
+    "Natural Sweetness: Sweet potato, carrot, and ripe banana provide gentle, baby-friendly flavors without added sweeteners.",
+    "Iron-Rich Complements: Combine grain porridges with vegetable mashes to support healthy infant iron absorption.",
+    "Hygienic Storage: Prepare small fresh batches; refrigerate in sterilized glass jars for up to 24–48 hours maximum."
+  ],
+  "content": [
+    "### Safe, Evidence-Based Homemade Baby Meals",
+    "Preparing homemade baby food gives parents complete transparency over ingredients, hygiene, and freshness. All recipes below are 100% free of added sugar, salt, preservatives, or artificial additives.",
+    "",
+    "### Top 10 Stage-Appropriate Baby Food Recipes",
+    "",
+    "#### 1. Silky Sweet Potato Puree (6+ Months)",
+    "Whisk 1 tablespoon of [NaturesMud 100% Pure Sweet Potato Powder](/products/sweet-potato-powder-100g) with 3–4 tablespoons of warm boiled water or expressed breast milk until completely smooth and velvety. Serve warm.",
+    "",
+    "#### 2. Steamed Apple & Cinnamon Mash (6+ Months)",
+    "Peel, core, and steam 1 sweet apple until fork-tender. Puree with a tiny pinch of Ceylon cinnamon for natural aroma.",
+    "",
+    "#### 3. Ripe Banana & Avocado Puree (6+ Months)",
+    "Mash 1/4 ripe banana with 1/4 ripe avocado using a fork until lump-free. Provides clean healthy fats for infant energy.",
+    "",
+    "#### 4. Golden Carrot & Sweet Potato Mash (7+ Months)",
+    "Steam carrots and sweet potatoes together until tender; puree with warm water into a vibrant orange mash rich in beta-carotene.",
+    "",
+    "#### 5. Traditional Nepali Ragi (Kodo) Porridge (7+ Months)",
+    "Cook finely ground finger-millet (kodo) flour in boiling water until thick and glossy. Stir in expressed milk or warm water before serving.",
+    "",
+    "#### 6. Soft Moong Dal & Rice Khichdi / Jaulo (8+ Months)",
+    "Pressure-cook split yellow moong dal and rice with turmeric until completely soft. Mash thoroughly with a spoon. Zero salt.",
+    "",
+    "#### 7. Steamed Pear & Sweet Potato Puree (7+ Months)",
+    "Blend steamed soft pear slices with rehydrated sweet potato puree for gentle digestive fiber.",
+    "",
+    "#### 8. Steamed Green Pea & Spinach Puree (8+ Months)",
+    "Steam fresh sweet peas and tender spinach leaves; puree and pass through a fine sieve to remove any fibrous skins.",
+    "",
+    "#### 9. Oats & Steamed Apple Porridge (8+ Months)",
+    "Cook fine rolled oats in water until soft; stir in pureed steamed apple for natural comforting sweetness.",
+    "",
+    "#### 10. Soft Mashed Papaya & Curd (9+ Months)",
+    "Mash soft ripe papaya with 1 tablespoon of fresh plain homemade curd (dahi) for natural gut probiotics."
+  ],
+  "faqs": [
+    {
+      "question": "Can I freeze baby food purees for later use?",
+      "answer": "Yes, spoon freshly prepared purees into sterilized BPA-free silicone ice cube trays. Once frozen, store cubes in a sealed freezer bag for up to 1 month."
+    }
+  ]
+},
+  {
+  "id": "b-baby-food-labels-nepal",
+  "title": "Baby Food Labels in Nepal: What Parents Should Check Before Buying",
+  "slug": "baby-food-labels-in-nepal-what-parents-should-check",
+  "excerpt": "Learn how to read commercial baby food labels in Nepal. Identify hidden added sugars, artificial flavorings, salt, shelf-life preservatives, and safety certifications.",
+  "category": "Baby & Family Nutrition",
+  "date": "2026-08-30",
+  "author": "NaturesMud Consumer Safety Team",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "tags": [
+    "baby food labels in nepal what parents should check",
+    "reading baby food labels",
+    "packaged baby food nepal",
+    "child health kathmandu"
+  ],
+  "keyTakeaways": [
+    "Ingredient List Order: Ingredients are listed in descending order by weight; avoid products where sugar, corn syrup, or maltodextrin are in the top 3.",
+    "Check for Added Sodium: Commercial baby foods should contain 0mg added salt.",
+    "Look for 100% Single-Ingredient Purity: Choose transparent products that contain only the pure vegetable or fruit without anti-caking agents.",
+    "Verify Manufacturing & Expiry Dates: Always inspect packaging seals and tamper-evident caps."
+  ],
+  "content": [
+    "### The Hidden Reality of Commercial Baby Foods in Nepal",
+    "Many commercial infant cereals and packaged jarred foods sold in Nepali pharmacies and grocery stores contain high percentages of added sugars (sucrose, glucose syrup, maltodextrin) designed to make foods artificially addictive to infant palates.",
+    "Developing healthy eating habits begins by teaching babies to appreciate the subtle, natural flavors of whole vegetables, grains, and fruits without sugar masking.",
+    "",
+    "### Critical Checklist for Reading Baby Food Labels",
+    "- **1. Ingredient Simplicity:** If buying sweet potato powder, the ingredient label should say *100% Dehydrated Sweet Potato*—nothing else.",
+    "- **2. Watch for Hidden Sugar Aliases:** Invert sugar, dextrose, malt syrup, fruit juice concentrates, and corn syrup solids are all forms of added refined sugars.",
+    "- **3. Inspect Allergen Declarations:** Check if the product was manufactured in a facility handling milk, wheat, soy, or tree nuts.",
+    "- **4. Packaging Quality:** Ensure jars have airtight vacuum safety buttons and sealed foil lids."
+  ],
+  "faqs": [
+    {
+      "question": "Is maltodextrin safe in baby cereals?",
+      "answer": "While legally permitted, maltodextrin is a highly processed carbohydrate that spikes blood sugar quickly. Whole grains and single-ingredient vegetable powders are vastly superior."
+    }
+  ]
+},
+  {
+  "id": "b-baby-variety-complementary-diet",
+  "title": "How to Build Variety Into a Baby's Complementary Diet (6–24 Months)",
+  "slug": "how-to-build-variety-into-baby-complementary-diet-nepal",
+  "excerpt": "Why dietary diversity matters in early infant development. Practical strategies for introducing different colors, textures, and food groups safely.",
+  "category": "Baby & Family Nutrition",
+  "date": "2026-08-30",
+  "author": "NaturesMud Pediatric Advisory",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "tags": [
+    "how to build variety into babys complementary diet",
+    "baby food variety nepal",
+    "infant dietary diversity",
+    "toddler nutrition kathmandu"
+  ],
+  "keyTakeaways": [
+    "Eat the Rainbow: Exposing infants to orange, green, red, and yellow foods broadens micronutrient intake and reduces picky eating later.",
+    "Rotate Across 4 Core Groups: Include staples (grains), pulses/legumes, vegetables/fruits, and dairy/protein.",
+    "Patience in Repetition: A baby may need to be offered a new food 8 to 15 times before accepting it."
+  ],
+  "content": [
+    "### Why Food Variety Matters for Growing Infants",
+    "During the complementary feeding window (6 to 24 months), an infant's taste buds and digestive microbiome undergo critical development. Exposing babies to a wide variety of whole food flavors and natural textures prevents selective eating behaviors and ensures a broad spectrum of vitamins and minerals.",
+    "",
+    "### The 4 Essential Complementary Food Groups",
+    "- **1. Grains & Roots:** Rice, oats, finger-millet (kodo), and sweet potatoes for energy and B-vitamins.",
+    "- **2. Legumes & Pulses:** Yellow moong dal, masoor dal, and well-cooked chickpeas for iron and plant protein.",
+    "- **3. Colorful Fruits & Vegetables:** Carrots, spinach, pumpkin, apples, papayas, and steamed pears for vitamins A, C, and dietary fiber.",
+    "- **4. Healthy Fats & Dairy:** Curd (dahi), breast milk, and tiny amounts of pure cold-pressed coconut oil for brain development."
+  ],
+  "faqs": [
+    {
+      "question": "What if my baby spits out a new vegetable puree?",
+      "answer": "This is completely normal! Spitting out food is often a surprise reaction to an unfamiliar flavor or texture, not dislike. Reintroduce the food gently after a few days without pressure."
+    }
+  ]
+},
+  {
+  "id": "b-baby-sweet-potato-puree-recipe",
+  "title": "Sweet Potato Puree for Babies: Simple Homemade Baby Food Recipe (6+ Months)",
+  "slug": "sweet-potato-puree-for-babies-simple-recipe-nepal",
+  "excerpt": "Step-by-step recipe for making silky smooth sweet potato puree for infants starting solids. Natural beta-carotene, gentle digestion, and zero added sugar.",
+  "category": "Baby & Family Nutrition",
+  "date": "2026-08-30",
+  "author": "NaturesMud Kitchen",
+  "readTime": 6,
+  "featured": false,
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "tags": [
+    "sweet potato puree for babies",
+    "sweet potato baby food recipe",
+    "first baby foods nepal",
+    "sweet potato powder babies"
+  ],
+  "keyTakeaways": [
+    "Gentle on Immature Stomachs: Sweet potato is non-acidic, hypoallergenic, and highly digestible for 6-month-old infants.",
+    "Rich in Beta-Carotene: Supports developing infant vision, skin health, and normal immune function.",
+    "Quick 2-Minute Preparation: Using pure dehydrated sweet potato powder eliminates 30 minutes of peeling, boiling, and blending."
+  ],
+  "content": [
+    "### Why Sweet Potato is the Gold-Standard First Food",
+    "Pediatricians worldwide frequently recommend sweet potato as an ideal first solid food because of its naturally mild sweet flavor, silky smooth texture when pureed, and high concentration of dietary fiber, potassium, and vitamin A precursor beta-carotene.",
+    "",
+    "### Preparation Instructions",
+    "- **Method 1 (Using NaturesMud Sweet Potato Powder):** Whisk 1 tbsp of [NaturesMud Organic Sweet Potato Powder](/products/sweet-potato-powder-100g) with 3–4 tbsp of warm boiled drinking water or breast milk. Stir until silky and lump-free.",
+    "- **Method 2 (Fresh Sweet Potato):** Peel and cube 1 medium sweet potato. Steam for 15–20 minutes until completely tender. Puree in a blender with cooking liquid or expressed breast milk.",
+    "- **Serving:** Offer 1 to 2 teaspoons at room temperature using a soft silicone baby spoon."
+  ],
+  "faqs": [
+    {
+      "question": "Can I mix sweet potato puree with breast milk?",
+      "answer": "Yes! Mixing purees with familiar breast milk or formula provides a comforting, familiar taste that helps babies accept new solid textures readily."
+    }
+  ]
+},
+  {
+  "id": "b-chia-seed-pudding-recipe-master-guide",
+  "title": "Chia Seed Pudding Recipe: The Ultimate 5-Minute Healthy Make-Ahead Breakfast",
+  "slug": "chia-seed-pudding-recipe",
+  "excerpt": "Learn how to make the perfect creamy chia seed pudding in just 5 minutes. Includes exact seed-to-milk ratios, vegan substitutions, meal-prep storage tips, and healthy superfood toppings.",
+  "category": "Recipes & DIY",
+  "date": "2026-08-30",
+  "author": "NaturesMud Culinary Nutrition Team",
+  "readTime": 6,
+  "image": "/images/blog/chia-seed-pudding-recipe.jpg",
+  "featured": true,
+  "tags": [
+    "chia seed pudding recipe",
+    "chia pudding",
+    "healthy breakfast",
+    "how to make chia pudding",
+    "chia seeds nepal",
+    "clean eating kathmandu",
+    "dates powder recipes",
+    "overnight chia pudding"
+  ],
+  "keyTakeaways": [
+    "Golden Ratio: Use 1 part chia seeds to 4 parts liquid (e.g., 4 tablespoons chia seeds to 1 cup milk) for the ultimate creamy, tapioca-style pudding.",
+    "The 5-Minute Stir Trick: Whisk thoroughly once, wait 5 minutes for seeds to start gelling, then whisk a second time to prevent clumping at the bottom.",
+    "100% Naturally Sweetened: Sweeten cleanly with NaturesMud Natural Dates Powder or Raw Mountain Honey instead of refined white sugar.",
+    "Meal Prep Friendly: Stays fresh, thick, and delicious in airtight glass mason jars in the refrigerator for up to 5–7 days.",
+    "Nutrient Powerhouse: Delivers 5.2g plant protein, 7.8g prebiotic dietary fiber, and over 3,200mg Omega-3 ALA per serving."
+  ],
+  "content": [
+    "### Introduction: The Ultimate Zero-Cooking Superfood Breakfast",
+    "If you are looking for a breakfast that takes less than five minutes of active prep, requires zero morning cooking, and keeps you energized, full, and focused until lunch, **Chia Seed Pudding** is the undisputed champion of clean eating.",
+    "When tiny chia seeds are soaked in liquid, their soluble mucilaginous fiber absorbs up to 10 to 12 times their weight in moisture. Within hours, they transform any milk—dairy, almond, coconut, or oat—into a rich, velvety pudding with a satisfying texture reminiscent of traditional tapioca.",
+    "Packed with plant-based Omega-3 fatty acids (alpha-linolenic acid), prebiotic dietary fiber, calcium, iron, and magnesium, this recipe is 100% gluten-free, naturally sweetened, and tailor-made for busy professionals, students, fitness enthusiasts, and growing families across Nepal.",
+    "",
+    "### Quick Recipe Summary",
+    "Here is everything you need to know at a glance before starting your prep:",
+    "- **Prep Time:** 5 minutes",
+    "- **Chill Time:** 2–4 hours (or overnight for best results)",
+    "- **Total Time:** 2 hours 5 minutes",
+    "- **Servings:** 2 portions (approx. 200g per serving)",
+    "- **Dietary Profile:** 100% Vegetarian, Gluten-Free, Refined Sugar-Free, Dairy-Free / Vegan adaptable",
+    "",
+    "### Ingredients You Will Need",
+    "Making the world's best chia pudding requires just 3 foundational ingredients, plus your favorite wholesome toppings:",
+    "",
+    "#### Base Pudding Ingredients:",
+    "- **4 tbsp (approx. 40g)** [NaturesMud Premium Organic Black Chia Seeds](/products/chia-seeds)",
+    "- **1 cup (240ml)** Milk of your choice (Unsweetened almond milk, creamy coconut milk, oat milk, or farm-fresh dairy milk)",
+    "- **1 to 1.5 tbsp** [NaturesMud Natural Dates Powder](/products/dates-powder-100g) (or 1 tbsp [Raw Himalayan Honey](/products/raw-honey))",
+    "- **1/2 tsp** Pure vanilla extract (optional, for bakery-style aroma)",
+    "- **Pinch (1/8 tsp)** [NaturesMud Himalayan Pink Rock Salt](/products/pink-salt) (balances sweetness and enhances rich flavors)",
+    "",
+    "#### Wholesome Crunchy & Fruity Toppings:",
+    "- **2 tbsp** [NaturesMud Wild Dried Blueberries](/products/dried-blueberries-100g) (rich in anthocyanins)",
+    "- **2 tbsp** [NaturesMud Sun-Dried Mango Slices](/products/dehydrated-mango) (chopped into bite-sized ribbons)",
+    "- **1 tbsp** [NaturesMud Raw Himalayan Almonds](/products/almonds) & [Roasted Cashewnuts](/products/cashewnuts-roasted) (crushed for crunch)",
+    "- **1 tsp** [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) (for zinc and healthy fats)",
+    "",
+    "### Step-by-Step Instructions",
+    "Follow these 4 foolproof steps for the silkiest, clump-free chia pudding every single time:",
+    "",
+    "#### Step 1: Combine the Base in a Glass Jar",
+    "In a medium mixing bowl or directly inside a 500ml glass mason jar, add the milk, vanilla extract, pinch of pink salt, and **NaturesMud Dates Powder** (or raw honey). Whisk vigorously until the sweetener is completely dissolved.",
+    "",
+    "#### Step 2: Add Chia Seeds & Whisk Thoroughly",
+    "Add the 4 tablespoons of **NaturesMud Organic Chia Seeds**. Use a small wire whisk or fork to mix vigorously for 30 to 45 seconds, making sure all seeds are submerged and separated from one another.",
+    "",
+    "#### Step 3: The Critical 5-Minute Second Stir (Pro Tip)",
+    "Let the mixture sit on the kitchen counter undisturbed for **5 minutes**. As the seeds begin to absorb liquid and form a light gel halo, whisk vigorously a second time for 30 seconds. *This crucial step prevents the heavier seeds from settling to the bottom and forming a solid cemented clump.*",
+    "",
+    "#### Step 4: Seal, Chill, and Hydrate",
+    "Cover the mason jar tightly with its lid and place it in the refrigerator for at least **2 to 4 hours**, or ideally overnight (6 to 8 hours). When ready, stir well with a spoon, scoop into serving bowls or glass cups, and layer generously with dried blueberries, mango slices, crushed almonds, and pumpkin seeds.",
+    "",
+    "### How the Recipe Should Look & Feel",
+    "When properly hydrated, your chia seed pudding should look and feel:",
+    "- **Texture:** Thick, spoonable, and cohesive like classic rice pudding or tapioca custard. It should hold its shape on a spoon without sliding off like a liquid.",
+    "- **Consistency:** Uniform and smooth without watery liquid pools floating on top or hard seed clumps stuck at the bottom.",
+    "- **Taste:** Creamy, delicately sweet with comforting caramel undertones from the dates powder and a satisfying gentle poppy crunch from the hydrated seeds.",
+    "",
+    "### Ingredient Substitutions & Flavor Variations",
+    "Customize your chia pudding based on your dietary preferences and pantry staples:",
+    "- **Plant-Based / Vegan Milk:** Almond milk produces a light, nutty pudding. Canned coconut milk creates an ultra-thick, decadent dessert-like custard. Oat milk delivers smooth, naturally sweet comfort.",
+    "- **Sweetener Options:** Replace dates powder with 100% pure raw mountain honey, pure maple syrup, or half a mashed ripe banana for a fruity twist.",
+    "- **Chocolate Energy Pudding:** Whisk in 1 tablespoon of unsweetened raw cacao powder and 1 extra teaspoon of dates powder for an antioxidant-packed chocolate breakfast.",
+    "- **Ruby Beetroot Stamina Pudding:** Whisk in 1 teaspoon of [NaturesMud Pure Himalayan Beetroot Powder](/products/beetroot-powder-100g) for an electric pink color, earthy sweet flavor, and natural nitric oxide energy boost.",
+    "- **Golden Turmeric Anti-Inflammatory Pudding:** Add 1/2 tsp organic turmeric powder, 1/4 tsp cinnamon, and a pinch of black pepper.",
+    "",
+    "### How to Store It & How Long Does It Last?",
+    "- **Refrigeration:** Store chia seed pudding in an airtight glass container or sealed mason jar at 2°C to 5°C. It will stay completely fresh, creamy, and safe to eat for **5 to 7 days**.",
+    "- **Meal Prep Strategy:** Make a triple batch on Sunday evening (divided into 5 individual small glass jars) for a Grab-and-Go breakfast throughout the entire work week.",
+    "- **Topping Timing:** Always add fresh nuts, granola, and dried fruits *right before serving* to maintain maximum crunch and avoid sogginess.",
+    "- **Freezer Friendly?** Yes! You can freeze chia pudding in freezer-safe jars for up to 2 months. Thaw overnight in the refrigerator before enjoying.",
+    "",
+    "### Common Mistakes & How to Avoid Them",
+    "1. **Skipping the 5-Minute Second Stir:** If you put the jar straight into the fridge after one quick stir, seeds will sink to the bottom and create a dense rubbery layer. Always do the second stir after 5 minutes.",
+    "2. **Incorrect Liquid-to-Seed Ratio:** Using too much milk results in a runny soup; using too little creates a dry, overly stiff paste. Stick to the **1:4 ratio** (1/4 cup chia to 1 cup liquid).",
+    "3. **Using Sub-Standard Raw Seeds:** Low-grade bulk chia often contains dirt, stems, or old oxidized seeds that fail to gel properly. Always choose clean, hygienically packed, fresh whole chia seeds.",
+    "4. **Adding Crunchy Toppings Too Early:** Adding nuts or toasted granola before refrigeration causes them to absorb moisture and turn limp. Keep toppings separate until the moment you eat.",
+    "",
+    "### Accurate Nutrition Information (Per Serving)",
+    "*Calculated for 1 serving (recipe yields 2 servings using unsweetened almond milk and 1 tbsp dates powder):*",
+    "- **Calories:** 165 kcal",
+    "- **Protein:** 5.2 g",
+    "- **Dietary Fiber:** 7.8 g (Prebiotic Soluble & Insoluble)",
+    "- **Total Fat:** 8.5 g (Healthy Omega-3 ALA: 3,200 mg)",
+    "- **Net Carbohydrates:** 7.5 g",
+    "- **Natural Sugar:** 4.2 g (from whole dates powder, zero added refined sugars)",
+    "- **Calcium:** 220 mg (22% Daily Value)",
+    "- **Magnesium:** 78 mg (20% Daily Value)",
+    "- **Iron:** 1.8 mg (10% Daily Value)",
+    "",
+    "### Frequently Asked Questions",
+    "",
+    "#### Can I make chia pudding overnight?",
+    "Yes, in fact, overnight is the ideal method! Allowing chia seeds to chill for 6 to 8 hours ensures 100% full hydration of the soluble fiber matrix, giving you the creamiest, most digestible texture possible.",
+    "",
+    "#### Can I use plant-based milk?",
+    "Absolutely. Chia pudding works magnificently with almond milk, oat milk, coconut milk, soy milk, or cashew milk. Creamier milks (like coconut or oat) yield a richer, thicker custard.",
+    "",
+    "#### Can I add dried fruit?",
+    "Yes! Adding chopped sun-dried mango, dried blueberries, cranberries, or raisins adds wonderful chewy texture and natural fruit sweetness without requiring any processed white sugar.",
+    "",
+    "#### How long does chia pudding last in the fridge?",
+    "Stored in an airtight glass mason jar in the refrigerator, chia pudding maintains peak freshness, flavor, and nutritional potency for 5 to 7 days.",
+    "",
+    "### NaturesMud Ingredient Recommendation",
+    "For the cleanest taste, highest omega-3 density, and guaranteed silky gelling action, use genuine, laboratory-tested ingredients from **NaturesMud Nepal**:",
+    "- **[NaturesMud Organic Black Chia Seeds (100g / 250g Jar)](/products/chia-seeds):** Premium graded whole black chia seeds rich in soluble mucilage fiber and omega-3 ALA.",
+    "- **[NaturesMud 100% Natural Dates Powder (100g Jar)](/products/dates-powder-100g):** Pure sun-dried Arabian dates finely milled into a versatile, nutrient-rich caramel sweetener.",
+    "- **[NaturesMud Wild Dried Blueberries](/products/dried-blueberries-100g):** Plump, antioxidant-dense dried berries for vibrant breakfast topping.",
+    "- **[NaturesMud Sun-Dried Mango Slices](/products/dehydrated-mango):** 100% pure sun-dried tropical mango slices with zero added sulfur or sugar.",
+    "- **[NaturesMud Raw Himalayan Almonds & Walnuts](/products/almonds):** Premium mountain nuts loaded with vitamin E, brain-healthy fats, and satisfying morning crunch.",
+    "",
+    "### Related Healthy Himalayan Recipes",
+    "- [Creamy Chia Seed Overnight Oats](/recipes/creamy-chia-seed-overnight-oats-recipe-nepal)",
+    "- [Fluffy Sweet Potato Pancakes (Using Sweet Potato Powder)](/recipes/fluffy-sweet-potato-pancakes-powder-recipe)",
+    "- [High-Nitrate Beetroot Stamina Smoothie](/recipes/high-nitrate-beetroot-smoothie-powder-recipe)",
+    "- [Crunchy Homemade Superfood Granola With Nuts & Seeds](/recipes/homemade-superfood-granola-nuts-seeds-nepal)",
+    "- [No-Bake Date & Nut Energy Balls](/recipes/no-bake-healthy-energy-balls-dates-powder-recipe)",
+    "",
+    "### Final Tips for Chia Pudding Perfection",
+    "1. **Adjust Thickness Easily:** If your pudding is too thick after chilling, stir in 1–2 tablespoons of milk. If it is too thin, stir in 1 teaspoon of chia seeds and let sit for 15 minutes.",
+    "2. **Kid-Friendly Parfait:** Layer chia pudding with Greek yogurt, fruit puree, and dates powder in clear glasses for an exciting, nutrient-packed after-school dessert.",
+    "3. **Hydration Bonus:** Because chia seeds hold substantial water, eating chia pudding actively helps maintain cellular hydration and smooth digestive regularity throughout the day."
+  ],
+  "faqs": [
+    {
+      "question": "Can I make chia pudding overnight?",
+      "answer": "Yes, overnight chilling (6 to 8 hours) is the optimal method for complete seed hydration and maximum creaminess."
+    },
+    {
+      "question": "Can I use plant-based milk?",
+      "answer": "Yes, almond milk, oat milk, coconut milk, and soy milk all work perfectly and create delicious dairy-free vegan chia pudding."
+    },
+    {
+      "question": "Can I add dried fruit?",
+      "answer": "Yes, topping with wild dried blueberries, sun-dried mango, cranberries, or raisins provides rich natural sweetness, antioxidants, and chewy texture."
+    },
+    {
+      "question": "How long does chia pudding last in the fridge?",
+      "answer": "In an airtight sealed glass jar, chia pudding stays completely fresh and delicious for 5 to 7 days."
+    }
+  ]
+},
   // -------------------------------------------------------------
   // MASTER ARTICLE 1: HOW TO EAT CHIA SEEDS (2026-08-30)
   // -------------------------------------------------------------
@@ -34,7 +864,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'Learn how to eat chia seeds safely and effectively. Discover ideal soaking ratios, 10 simple everyday recipes, digestive tips, and common mistakes to avoid in Nepal.',
     image: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
     category: 'Seeds, Nuts & Superfoods',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-30',
     readTime: 8,
     featured: true,
@@ -42,7 +872,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductName: 'Premium Black Chia Seeds (300g)',
     featuredProductPrice: 396,
     featuredProductImage: '/products/chia-seeds.jpg',
-    metaDescription: "Complete practical guide on how to eat chia seeds. Learn proper soaking ratios, 10 daily recipes, and digestive tips from Nature's Mud Nepal.",
+    metaDescription: "Complete practical guide on how to eat chia seeds. Learn proper soaking ratios, 10 daily recipes, and digestive tips from NaturesMud Nepal.",
     keyTakeaways: [
       'Always soak chia seeds in a 1:6 liquid ratio for at least 15–20 minutes before consuming.',
       'Packed with 9.8g dietary fiber and 5.0g plant-based Omega-3 (ALA) per 2-tablespoon serving.',
@@ -98,7 +928,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'Discover the real nutritional facts about dried and dehydrated fruits. Learn about sugar concentration, fiber benefits, portion sizing, and how to avoid sulfur-treated snacks in Nepal.',
     image: '/products/authentic-dehydrated-mango.jpg',
     category: 'Dried Fruits & Healthy Snacking',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-30',
     readTime: 7,
     featured: true,
@@ -127,8 +957,8 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "Walking through grocery stores or dry fruit markets in Kathmandu, dried fruits are frequently promoted as the ultimate healthy snack. From sun-dried mango slices and apple rings to cranberries and figs, they offer a convenient, shelf-stable way to enjoy fruit year-round.",
       "The health value of dried fruit depends entirely on how the fruit was dried, what was added during processing, and how much you consume.",
       "### What Actually Happens When Fruit is Dried?",
-      "Fresh fruits consist of 75% to 90% water. During solar dehydration, this moisture evaporates, concentrating the dietary fiber, minerals (like potassium and iron), and antioxidant polyphenols from several pieces of fruit into a single handful.",
-      "Low-temperature solar dehydration (below 42°C) preserves heat-sensitive enzymes, vitamins, and natural fruit sugars without burning the fruit or altering its biological value.",
+      "Fresh fruits consist of 75% to 90% water. During low-temperature dehydration, this moisture evaporates, concentrating the dietary fiber, minerals (like potassium and iron), and antioxidant polyphenols from several pieces of fruit into a single handful.",
+      "Low-temperature low-temperature dehydration (below 42°C) preserves heat-sensitive enzymes, vitamins, and natural fruit sugars without burning the fruit or altering its biological value.",
       "### The Sugar & Calorie Question: Natural vs. Added Sugar",
       "It is vital to distinguish between intrinsic natural fruit sugars and extrinsic added sugars. Unsweetened dehydrated fruits contain only the fruit's native fructose and glucose bound to dietary fiber. In contrast, candied commercial dried fruits are steeped in refined cane sugar syrup, significantly increasing empty calories.",
       "### The Hidden Problem: Sulfur Dioxide in Wholesale Markets",
@@ -149,7 +979,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'A practical guide to introducing sweet potato powder to babies in Nepal. Learn when to start, nutritional benefits, digestive safety, and easy daily recipes.',
     image: '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg',
     category: 'Infant & Family Nutrition',
-    author: "Nature's Mud Clinical Council",
+    author: "NaturesMud Clinical Council",
     date: '2026-08-30',
     readTime: 8,
     featured: true,
@@ -201,7 +1031,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Discover why pediatricians and health-conscious families across Nepal are replacing refined white sugar with 100% sun-dried dates powder in teas, baby food, and traditional sweets.",
     image: '/products/dates-powder-100g.jpg',
     category: 'Metabolic & Sugar-Free Living',
-    author: "Nature's Mud Clinical Council",
+    author: "NaturesMud Clinical Council",
     date: '2026-08-30',
     readTime: 8,
     featured: true,
@@ -266,7 +1096,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Explore the science-backed health benefits of raw and roasted pumpkin seeds. Learn how their high zinc, magnesium, and plant protein support immunity, sleep quality, and heart health in Nepal.",
     image: '/products/pumpkin-seeds.jpg',
     category: 'Seeds, Nuts & Superfoods',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-30',
     readTime: 8,
     featured: true,
@@ -326,7 +1156,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Explore the key nutritional and practical differences between seasonal fresh mangoes and year-round sun-dried mango slices in Nepal. Learn about calorie density, fiber, and how to choose unsulfured dried fruit.",
     image: '/products/authentic-dehydrated-mango.jpg',
     category: 'Dried Fruits & Healthy Snacking',
-    author: "Nature's Mud Clinical Council",
+    author: "NaturesMud Clinical Council",
     date: '2026-08-30',
     readTime: 7,
     featured: true,
@@ -344,7 +1174,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     faqs: [
       {
             "question": "Does dried mango have added sugar?",
-            "answer": "Pure dehydrated mango from Nature’s Mud contains zero added sugar—it is 100% whole mango. However, always check labels on supermarket brands, as candied mangoes are often boiled in heavy sugar syrup."
+            "answer": "Pure dehydrated mango from NaturesMud contains zero added sugar—it is 100% whole mango. However, always check labels on supermarket brands, as candied mangoes are often boiled in heavy sugar syrup."
       },
       {
             "question": "Is dried mango healthy for weight loss?",
@@ -366,7 +1196,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "| **Shelf Life** | 3 to 5 days | 12 months (sealed glass jar) |",
       "| **Portability** | Requires peeling & refrigeration | Ready-to-eat pocket snack |",
       "### How to Spot Genuine, Chemical-Free Dried Mango in Nepal",
-      "- **Color:** Authentic solar-dried mango has a warm, deep amber-golden shade with natural variations. If it looks fluorescent or neon-yellow, it has likely been treated with sulfur dioxide gas.",
+      "- **Color:** Authentic gently dried mango has a warm, deep amber-golden shade with natural variations. If it looks fluorescent or neon-yellow, it has likely been treated with sulfur dioxide gas.",
       "- **Ingredients:** Look for '100% Mango' on the label. Avoid products listing cane sugar, glucose syrup, or citric acid.",
       "- **Texture:** Premium dehydrated mango should be naturally pliable and chewy, not hard like plastic or overly sticky like candy."
 ],
@@ -383,7 +1213,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "A comprehensive guide to Nepal’s most potent indigenous superfoods—from high-altitude Shilajit and raw mountain honey to sweet potato powder and native seeds.",
     image: '/images/blog/himalayan-shilajit-ayurveda-biohacking.jpg',
     category: 'Ayurveda & Biohacking',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-30',
     readTime: 10,
     featured: true,
@@ -436,7 +1266,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Ditch ultra-processed junk food and fried snacks. Discover the 10 best nutrient-dense, guilt-free snacks available in Kathmandu for work, study, and daily fitness.",
     image: '/images/combos/superfood-lineup.jpg',
     category: 'Dried Fruits & Healthy Snacking',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-30',
     readTime: 8,
     featured: true,
@@ -458,7 +1288,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       },
       {
             "question": "Where can I buy chemical-free healthy snacks in Nepal?",
-            "answer": "Nature’s Mud (naturesmud.shop) offers 100% natural, preservative-free dried fruits, roasted nuts, seeds, and superfoods delivered directly to your doorstep in Nepal."
+            "answer": "NaturesMud (naturesmud.shop) offers 100% natural, preservative-free dried fruits, roasted nuts, seeds, and superfoods delivered directly to your doorstep in Nepal."
       }
 ],
     content: [
@@ -487,7 +1317,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Protect your valuable dry fruits and seeds from monsoon humidity, mold, and rancidity. Learn proper storage temperatures, airtight glass methods, and pantry hacks.",
     image: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
     category: 'Clean Cooking & Storage',
-    author: "Nature's Mud Clinical Council",
+    author: "NaturesMud Clinical Council",
     date: '2026-08-30',
     readTime: 7,
     featured: true,
@@ -521,7 +1351,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "1. **Use Airtight Glass Jars:** Ditch thin plastic bags. Transfer nuts and dried fruits immediately into heavy-duty airtight glass jars with silicone gaskets.",
       "2. **The Monsoon Cold-Storage Strategy:** When indoor humidity climbs above 70%, store open jars of walnuts, almonds, and pumpkin seeds in the refrigerator. Cold temperatures halt fat degradation.",
       "3. **Keep Dried Fruits and Nuts in Separate Jars:** Dried fruits naturally retain 12–15% moisture. Storing them in the same jar with crispy nuts will cause the nuts to absorb moisture and lose their crunch.",
-      "4. **Buy in Sensible Batch Sizes:** Rather than purchasing massive bulk quantities that sit open for months, buy fresh 200g to 300g sealed packs as needed from Nature's Mud."
+      "4. **Buy in Sensible Batch Sizes:** Rather than purchasing massive bulk quantities that sit open for months, buy fresh 200g to 300g sealed packs as needed from NaturesMud."
 ],
     tags: ["how to store nuts and seeds","nuts online Nepal","dried fruits storage Nepal","natural foods Nepal","organic food Nepal"]
   },
@@ -536,7 +1366,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Looking for healthy sugar alternatives in Nepal? Compare dates powder, raw mountain honey, traditional jaggery (gud), and stevia to find the best sweetener for your lifestyle.",
     image: '/products/raw-honey.jpg',
     category: 'Metabolic & Sugar-Free Living',
-    author: "Nature's Mud Clinical Council",
+    author: "NaturesMud Clinical Council",
     date: '2026-08-30',
     readTime: 9,
     featured: true,
@@ -576,7 +1406,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "- **For Baby Food & Family Baking:** 100% Sun-Dried Dates Powder is unmatched because it delivers whole-fruit dietary fiber and minerals with zero chemical processing.",
       "- **For Morning Immunity & Sore Throats:** Raw Wild Himalayan Honey stirred into lukewarm water with lemon and ginger.",
       "- **For Strict Calorie Restriction:** Pure green stevia leaf powder.",
-      "Experience clean, unadulterated whole-food sweeteners delivered across Nepal with Nature's Mud."
+      "Experience clean, unadulterated whole-food sweeteners delivered across Nepal with NaturesMud."
 ],
     tags: ["natural sweeteners Nepal","sugar free sweetener Kathmandu","dates powder vs honey","organic food Nepal","healthy sweeteners"]
   },
@@ -591,7 +1421,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'As the Himalayas warm at an unprecedented rate, new and unstable glacial lakes are forming. Discover why scientists are warning that the August 2026 flood might not be an isolated event.',
     image: '/images/blog/nepal-glacial-lake-threat-2026.jpg',
     category: 'News & Environment',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-29',
     readTime: 5,
     featured: true,
@@ -640,7 +1470,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "With 14 projects damaged and 431 MW wiped from the grid in minutes, the August 2026 flood has exposed a critical vulnerability in Nepal's hydropower-driven economic strategy.",
     image: '/images/blog/nepal-hydropower-damage-2026.jpg',
     category: 'News & Economy',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-29',
     readTime: 6,
     featured: true,
@@ -693,7 +1523,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "The August 2026 flood didn't just destroy hydropower; it wiped out the Kerung border crossing. Explore the geopolitical and economic fallout of the Gyirong Port destruction.",
     image: '/images/blog/nepal-glacier-avalanche-2026.jpg',
     category: 'News & Economy',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-29',
     readTime: 4,
     featured: true,
@@ -741,7 +1571,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
     image: '/images/blog/nepal-glacier-avalanche-2026.jpg', // Placeholder for news image
     category: 'News & Environment',
-    author: "Nature's Mud Editorial Team",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-29',
     readTime: 6,
     featured: true,
@@ -794,11 +1624,11 @@ export const allBlogPosts: ExtendedBlogPost[] = [
   {
     id: 'b-rakhi-01',
     slug: 'healthy-raksha-bandhan-gifting-guide-nepal-superfood-hampers',
-    title: "The Ultimate Healthy Raksha Bandhan Gifting Guide: Why Modern Siblings in Nepal Are Replacing Toxic Sweets with Nature's Mud Superfood Hampers",
-    excerpt: "Ditch refined sugar crashes and adulterated festive sweets this Rakhi. Discover why health-conscious siblings across Kathmandu, Pokhara, and Nepal are gifting Nature’s Mud luxury superfood hampers featuring solar-dehydrated fruits, pure mountain honey, and organic nuts.",
+    title: "The Ultimate Healthy Raksha Bandhan Gifting Guide: Why Modern Siblings in Nepal Are Replacing Toxic Sweets with NaturesMud Superfood Hampers",
+    excerpt: "Ditch refined sugar crashes and adulterated festive sweets this Rakhi. Discover why health-conscious siblings across Kathmandu, Pokhara, and Nepal are gifting NaturesMud luxury superfood hampers featuring naturally dehydrated fruits, pure mountain honey, and organic nuts.",
     image: '/images/blog/rakhi-gift-hampers-natures-mud.jpg',
     category: 'Festive Wellness & Gifting',
-    author: "Nature's Mud Clinical Council & Festive Living Team",
+    author: "NaturesMud Clinical Council & Festive Living Team",
     date: '2026-08-27',
     readTime: 10,
     featured: true,
@@ -806,10 +1636,10 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductName: 'Dehydrated Himalayan Apple & Superfood Festive Hamper',
     featuredProductPrice: 1450,
     featuredProductImage: '/images/blog/rakhi-gift-hampers-natures-mud.jpg',
-    metaDescription: "Complete 2026 guide to healthy Raksha Bandhan gifting in Nepal. Explore Nature's Mud luxury superfood hampers with dehydrated Himalayan fruits, raw honey, and organic mountain nuts.",
+    metaDescription: "Complete 2026 guide to healthy Raksha Bandhan gifting in Nepal. Explore NaturesMud luxury superfood hampers with dehydrated Himalayan fruits, raw honey, and organic mountain nuts.",
     keyTakeaways: [
       "Traditional festive mithai in Nepal often contains up to 65% refined sugar, artificial colorants (Tartrazine), and adulterated synthetic mawa.",
-      "Nature’s Mud curated Rakhi wellness hampers feature solar-dehydrated Himalayan apples, pure raw mountain honey, and whole nuts in eco-friendly glass jars.",
+      "NaturesMud curated Rakhi wellness hampers feature naturally dehydrated Himalayan apples, pure raw mountain honey, and whole nuts in eco-friendly glass jars.",
       "Gifting nutrient density elevates the sacred Rakhi thread into an authentic biological vow of lifelong health, vitality, and longevity.",
       "Custom wooden hampers with direct same-day doorstep delivery available across Kathmandu Valley and nationwide delivery across Nepal at naturesmud.com."
     ],
@@ -819,8 +1649,8 @@ export const allBlogPosts: ExtendedBlogPost[] = [
         answer: 'Commercial sweets are heavily loaded with bleached white sugar, hydrogenated trans fats (vanaspati), and synthetic food colorants. High festival demand also leads to widespread mawa adulteration with starch and detergents, causing acute digestive distress and metabolic fatigue.'
       },
       {
-        question: 'What items are included in the Nature’s Mud Rakhi Gift Hamper?',
-        answer: 'Our signature Rakhi hampers include premium solar-dehydrated Himalayan apple slices (zero added sugar), cold-pressed raw mountain honey, jumbo California/Himalayan almonds, and whole cashew nuts presented in luxury sustainable packaging with reusable glass jars.'
+        question: 'What items are included in the NaturesMud Rakhi Gift Hamper?',
+        answer: 'Our signature Rakhi hampers include premium naturally dehydrated Himalayan apple slices (zero added sugar), cold-pressed raw mountain honey, jumbo California/Himalayan almonds, and whole cashew nuts presented in luxury sustainable packaging with reusable glass jars.'
       },
       {
         question: 'Can I customize my Rakhi gift hamper and deliver it outside Kathmandu?',
@@ -831,7 +1661,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "### 1. The Sacred Meaning of Raksha Bandhan vs. The Modern Festive Health Crisis",
       "For centuries across the fertile valleys and majestic Himalayan ridges of Nepal, Raksha Bandhan has stood as one of the most sacred celebrations of kinship and love. When a sister ties the sacred Rakhi thread around her brother's wrist, she is offering an earnest prayer for his longevity, health, and protection. In return, the brother pledges his lifelong support and offers gifts as a token of unshakeable devotion.",
       "However, in recent decades, a deeply troubling commercial trend has hijacked this ancient festival. The sacred act of feeding prasad has transformed into a barrage of industrially produced, chemical-laden sweets—from processed gulab jamuns floating in bleached glucose syrup to milk-based barfis loaded with hydrogenated vegetable fats (dalda) and synthetic preservatives. Instead of bestowing health and longevity, modern festive gifting has become a primary trigger for severe glycemic spikes, lethargy, childhood dental decay, and acute digestive distress.",
-      "In 2026, a powerful cultural and nutritional awakening is sweeping through Kathmandu, Lalitpur, Bhaktapur, Pokhara, and beyond. Modern siblings are declaring independence from commercial sugar bombs. They are choosing **Nature’s Mud Luxury Superfood Hampers**—elevating the sacred Rakhi vow into an authentic biological act of lifelong protection.",
+      "In 2026, a powerful cultural and nutritional awakening is sweeping through Kathmandu, Lalitpur, Bhaktapur, Pokhara, and beyond. Modern siblings are declaring independence from commercial sugar bombs. They are choosing **NaturesMud Luxury Superfood Hampers**—elevating the sacred Rakhi vow into an authentic biological act of lifelong protection.",
       "",
       "### 2. The Dark Truth Behind Festive Mithai: Sugar, Synthetic Colors & Adulterated Mawa",
       "During the peak festive rush of Raksha Bandhan and Janai Purnima, sweet manufacturing units across South Asia face unprecedented demand that outstrips authentic dairy supplies by more than 400%. Independent food safety inspections consistently reveal horrifying realities behind commercial sweets:",
@@ -839,15 +1669,15 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "- **Chemical Dyes Linked to Neuro-inflammation:** The dazzling yellow and orange hues of traditional festive laddus are frequently achieved with petroleum-derived coal tar dyes like Tartrazine (E102) and Sunset Yellow (E110), both scientifically documented to provoke pediatric hyperactivity, skin rashes, and histaminic reactions.",
       "- **Massive Glycemic Overload:** A single commercial milk sweet contains up to 35–45 grams of pure sucrose with zero dietary fiber, forcing a sudden 300% surge in circulating insulin followed by acute reactive hypoglycemia, brain fog, and chronic metabolic fatigue.",
       "",
-      "### 3. The New Luxury: Why Gifting Nature’s Mud Superfood Hampers is the True Act of Sibling Protection",
-      "True luxury is no longer defined by ornate gold-foil cardboard boxes containing toxic sugar cubes. Modern educated Nepali families recognize that **the ultimate luxury is vibrant, unadulterated health**. When you gift a Nature’s Mud wellness hamper from naturesmud.com, you are presenting pure, organic food directly harvested from Nepal’s pristine high-altitude terraced farms.",
-      "Every product in a Nature’s Mud festive hamper adheres to our uncompromising **Zero-Compromise Purity Standard**:",
+      "### 3. The New Luxury: Why Gifting NaturesMud Superfood Hampers is the True Act of Sibling Protection",
+      "True luxury is no longer defined by ornate gold-foil cardboard boxes containing toxic sugar cubes. Modern educated Nepali families recognize that **the ultimate luxury is vibrant, unadulterated health**. When you gift a NaturesMud wellness hamper from naturesmud.com, you are presenting pure, organic food directly harvested from Nepal’s pristine high-altitude terraced farms.",
+      "Every product in a NaturesMud festive hamper adheres to our uncompromising **Zero-Compromise Purity Standard**:",
       "1. **100% Certified Chemical-Free:** Zero added white sugar, zero artificial sweeteners, zero sulfur dioxide, zero potassium sorbate, and zero artificial coloring agents.",
-      "2. **Solar-Dehydrated at Low Heat (<42°C):** Unlike industrial blast ovens that denature live vitamins and enzymes, our fruits are slowly solar-dehydrated to lock in explosive natural flavors and bioavailable polyphenols.",
+      "2. **naturally dehydrated at Low Heat (<42°C):** Unlike industrial blast ovens that denature live vitamins and enzymes, our fruits are slowly naturally dehydrated to lock in explosive natural flavors and bioavailable polyphenols.",
       "3. **Zero Waste Glass Jars & Food-Grade Standup Pouches:** Elegant, airtight packaging that keeps superfoods fresh for months while eliminating single-use plastic waste.",
       "",
       "### 4. Anatomy of the Perfect Rakhi Wellness Hamper",
-      "What makes a Nature’s Mud Raksha Bandhan gift box so extraordinary? It is a symphony of complementary textures, aromas, and clinical nutrients designed to nourish every organ system:",
+      "What makes a NaturesMud Raksha Bandhan gift box so extraordinary? It is a symphony of complementary textures, aromas, and clinical nutrients designed to nourish every organ system:",
       "- **Sun-Dried Himalayan Apple Slices (100g Pouch):** Sourced from high-altitude orchards in Mustang and Jumla. Crispy, naturally sweet rings loaded with quercetin and pectin that support cardiac endothelial function and steady digestion.",
       "- **Pure Raw Mountain Honey (Glass Bottle):** Unpasteurized, cold-extracted honey brimming with active antimicrobial enzymes, propolis, and living pollen to fortify respiratory immunity against seasonal monsoon chills.",
       "- **California & Himalayan Raw Almonds (200g Glass Jar):** Hand-selected whole almonds rich in alpha-tocopherol (natural Vitamin E) and bioavailable magnesium for cognitive endurance and cardiovascular resilience.",
@@ -855,13 +1685,13 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "- **Pure Dates Powder Sweetener (100g Jar):** The ultimate natural replacement for refined sugar in tea, morning porridge, and festive cooking—offering potassium, iron, and prebiotic fiber.",
       "",
       "### 5. Tailored Hampers for Every Sibling",
-      "Every brother and sister has unique wellness goals. Nature's Mud makes it effortless to personalize your festive parcel:",
-      "- **For the Fitness & Gym-Loving Brother:** Combine Nature's Mud Pure Himalayan Beetroot Powder (for 230% nitric oxide boost and muscle stamina) with Raw Pumpkin Seeds (rich in zinc and plant protein) and Mountain Almonds.",
+      "Every brother and sister has unique wellness goals. NaturesMud makes it effortless to personalize your festive parcel:",
+      "- **For the Fitness & Gym-Loving Brother:** Combine NaturesMud Pure Himalayan Beetroot Powder (for 230% nitric oxide boost and muscle stamina) with Raw Pumpkin Seeds (rich in zinc and plant protein) and Mountain Almonds.",
       "- **For the Sweet-Toothed Sister:** Delight her with Dehydrated Sweet Mango Slices, Dehydrated Papaya, Wild Dried Blueberries, and Cold-Pressed Virgin Coconut Oil for glowing skin and luxurious hair.",
       "- **For the Health-Conscious Parents & Elders:** Curate a heart-protective basket featuring Ancient Himalayan Pink Rock Salt, Pure Black Salt (Bire Noon), Whole Dried Cranberries (for urinary tract protection), and Black Chia Seeds.",
       "",
       "### 6. Sustainable Elegance & Zero-Waste Aesthetics",
-      "Unlike conventional gift boxes that end up in landfills within 24 hours of the festival, Nature’s Mud packaging is crafted for permanent reusability. Our heavy-duty embossed glass jars with black metal lids make stunning spice and dry fruit containers for any kitchen. Each gift box is lined with biodegradable pine wood wool and tied with eco-friendly jute cords, reflecting the true harmony between human wellness and Mother Nature.",
+      "Unlike conventional gift boxes that end up in landfills within 24 hours of the festival, NaturesMud packaging is crafted for permanent reusability. Our heavy-duty embossed glass jars with black metal lids make stunning spice and dry fruit containers for any kitchen. Each gift box is lined with biodegradable pine wood wool and tied with eco-friendly jute cords, reflecting the true harmony between human wellness and Mother Nature.",
       "",
       "### 7. How to Order & Express Doorstep Delivery Across Nepal",
       "With Raksha Bandhan approaching this weekend, securing your handcrafted hampers is completely hassle-free:",
@@ -871,7 +1701,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "- **Corporate & Bulk Orders:** Contact our dedicated gifting concierge at info@naturesmud.com or WhatsApp **+977 9713888002**.",
       "",
       "### Conclusion: Honor the Sacred Bond with Living Health",
-      "This Raksha Bandhan, make your gift as enduring and pure as the love you celebrate. When you choose Nature’s Mud, you aren't just giving a present; you are honoring the sacred promise of lifelong protection with the finest healing foods our Himalayan motherland has to offer."
+      "This Raksha Bandhan, make your gift as enduring and pure as the love you celebrate. When you choose NaturesMud, you aren't just giving a present; you are honoring the sacred promise of lifelong protection with the finest healing foods our Himalayan motherland has to offer."
     ],
     tags: ['raksha bandhan', 'rakhi gift hampers nepal', 'healthy gifts kathmandu', 'natures mud gift box', 'sugar free sweets']
   },
@@ -893,7 +1723,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     metaDescription: "Celebrate sacred sibling ties with Ayurvedic purity. How pure Himalayan Beetroot Powder and natural dates create divine satvik Rakhi sweets that elevate blood stamina and cellular vitality.",
     keyTakeaways: [
       "In ancient Ayurvedic texts, festive food was considered sacred medicine (Aushadha) to protect prana during the seasonal monsoon transition (Varsha Ritu).",
-      "Nature’s Mud 100% Pure Himalayan Beetroot Powder delivers dietary nitrates that increase nitric oxide by 230%, enhancing circulation, stamina, and heart resilience.",
+      "NaturesMud 100% Pure Himalayan Beetroot Powder delivers dietary nitrates that increase nitric oxide by 230%, enhancing circulation, stamina, and heart resilience.",
       "Traditional Shravan Purnima fasting is deeply disrupted by refined sugar; breaking the fast with satvik superfoods preserves the digestive fire (Agni).",
       "Includes an exclusive 10-minute satvik recipe: Divine Coconut-Beetroot Ladoos sweetened purely with 100% natural Dates Powder without refined cane sugar."
     ],
@@ -907,15 +1737,15 @@ export const allBlogPosts: ExtendedBlogPost[] = [
         answer: 'Dietary inorganic nitrates in beetroot powder are converted by oral microbiome enzymes into nitric oxide (NO). Nitric oxide dilates blood vessels, reduces cardiac workload, and optimizes oxygen utilization across skeletal muscles and the brain.'
       },
       {
-        question: 'How do I make satvik sweets using Nature’s Mud Beetroot Powder?',
-        answer: 'Simply combine freshly grated coconut or almond flour with 2 tablespoons of Nature’s Mud Beetroot Powder, 3 tablespoons of Nature’s Mud Dates Powder, and a splash of warm coconut oil. Roll into vibrant crimson balls for an exquisite, nutrient-rich prasad.'
+        question: 'How do I make satvik sweets using NaturesMud Beetroot Powder?',
+        answer: 'Simply combine freshly grated coconut or almond flour with 2 tablespoons of NaturesMud Beetroot Powder, 3 tablespoons of NaturesMud Dates Powder, and a splash of warm coconut oil. Roll into vibrant crimson balls for an exquisite, nutrient-rich prasad.'
       }
     ],
     content: [
       "### 1. The Vedic Roots of Raksha Bandhan: Protection of Body, Mind, and Prana",
       "In the timeless Vedic traditions of the Sanatana Dharma, Raksha Bandhan transcends a mere social exchange of bracelets and sweets. The word *Raksha* signifies universal divine protection, while *Bandhan* represents the sacred cosmic knot that binds souls together in mutual service. When Indrani tied the sacred talisman on Indra's wrist, or when Draupadi tore a strip of her silk sari to bind Lord Krishna’s bleeding finger, the essence was the preservation of life force—*Prana*.",
       "According to the Charaka Samhita and Sushruta Samhita, true protection can never exist solely as an external amulet; it must be manifested within the physical vessel through **Aushadha-Sama Ahara** (food that acts as sacred medicine). During Shravan Purnima, when the lunar pull is at its peak and the monsoon season (Varsha Ritu) weakens the internal digestive fire (Agni), consuming toxic, tamasic foods invites sickness and metabolic imbalance.",
-      "By offering pure, satvik superfoods from Nature’s Mud, siblings uphold the Vedic ideal of shielding their loved ones from the cellular inside out.",
+      "By offering pure, satvik superfoods from NaturesMud, siblings uphold the Vedic ideal of shielding their loved ones from the cellular inside out.",
       "",
       "### 2. The Divine Symbolism of Satvik Nourishment (Bal Krishna, Ganesha, and Sacred Offerings)",
       "In sacred iconographic art, Lord Ganesha—the remover of all obstacles (Vighnaharta)—is invariably depicted holding a modak, representing the sweet reward of spiritual wisdom and disciplined nourishment. Similarly, Bal Krishna, the supreme protector of his devotees, is worshipped through offerings of unadulterated churned butter, pure honey, and sun-ripened forest fruits.",
@@ -925,37 +1755,37 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "3. **Prana-Yukt (Rich in Living Life Energy):** Raw, sun-dried foods that retain the living vital force of the high Himalayan soil.",
       "",
       "### 3. The Science of Himalayan Beetroot Powder: Cellular Nitrates, Hemoglobin & Physical Stamina",
-      "Why is **Nature’s Mud 100% Pure Himalayan Beetroot Powder (100g)** becoming the centerpiece of modern festive offerings? The answer lies at the intersection of ancient Ayurvedic hematology and modern vascular medicine.",
+      "Why is **NaturesMud 100% Pure Himalayan Beetroot Powder (100g)** becoming the centerpiece of modern festive offerings? The answer lies at the intersection of ancient Ayurvedic hematology and modern vascular medicine.",
       "In Ayurveda, red beetroot is classified as a potent tonic for **Rakta Dhatu** (the circulating blood tissue) and **Ranjaka Pitta** (the liver enzyme responsible for hemoglobin synthesis). Modern clinical research confirms this ancient insight:",
       "- **230% Surge in Endothelial Nitric Oxide (NO):** High-altitude Nepali beetroots develop extraordinarily dense concentrations of inorganic dietary nitrates (NO3-). When consumed, oral commensal bacteria reduce these nitrates to nitrite, which is converted in acidic gastric and vascular environments into nitric oxide.",
       "- **Superior Blood Oxygenation & Hemodynamic Flow:** Nitric oxide dilates rigid arterial walls, reducing systolic blood pressure, improving peripheral blood flow, and ensuring optimal oxygen delivery to the brain and working muscles.",
-      "- **Combatting Festive Fatigue:** During long festival days involving temple visits, traditional ceremonies, and social gatherings, a single teaspoon of Nature’s Mud Beetroot Powder in warm water provides 6–8 hours of sustained physical and mental stamina without caffeine jitters.",
+      "- **Combatting Festive Fatigue:** During long festival days involving temple visits, traditional ceremonies, and social gatherings, a single teaspoon of NaturesMud Beetroot Powder in warm water provides 6–8 hours of sustained physical and mental stamina without caffeine jitters.",
       "",
       "### 4. Breaking the Shravan Purnima Fast: Preserving the Digestive Fire (Agni)",
       "Millions of devout sisters and brothers observe a strict fast on Raksha Bandhan morning until the sacred Rakhi is tied. Breaking a fast with heavy, oily, deep-fried sweets like jalebi or rasbari shocks the dormant digestive tract, sparking acute acid reflux, lethargy, and an insulin surge that triggers fat storage.",
-      "Ayurveda strictly advises breaking religious fasts with **light, sweet, and cooling satvik foods** that gently awaken Agni. A festive drink prepared with Nature’s Mud Beetroot Powder, natural Dates Powder, and fresh coconut water delivers vital electrolytes (potassium, sodium, magnesium) and quick, natural fructose without taxing pancreatic enzymes.",
+      "Ayurveda strictly advises breaking religious fasts with **light, sweet, and cooling satvik foods** that gently awaken Agni. A festive drink prepared with NaturesMud Beetroot Powder, natural Dates Powder, and fresh coconut water delivers vital electrolytes (potassium, sodium, magnesium) and quick, natural fructose without taxing pancreatic enzymes.",
       "",
       "### 5. Step-by-Step Festive Recipe: Divine Beetroot-Dates Ladoos (100% Sugar-Free & Satvik)",
       "Transform your prasad plate into a vibrant work of divine art with this delicious 10-minute recipe that children, adults, and diabetic grandparents can enjoy with complete peace of mind:",
       "- **Ingredients:**",
       "  - 1 cup desiccated coconut or blanched almond flour",
-      "  - 3 tablespoons **Nature’s Mud Pure Himalayan Beetroot Powder** (for a royal crimson hue and nitric oxide stamina)",
-      "  - 4 tablespoons **Nature’s Mud Natural Dates Powder** (for wholesome, low-glycemic sweetness)",
-      "  - 2 tablespoons cold-pressed Nature’s Mud Virgin Coconut Oil or pure A2 cow ghee",
+      "  - 3 tablespoons **NaturesMud Pure Himalayan Beetroot Powder** (for a royal crimson hue and nitric oxide stamina)",
+      "  - 4 tablespoons **NaturesMud Natural Dates Powder** (for wholesome, low-glycemic sweetness)",
+      "  - 2 tablespoons cold-pressed NaturesMud Virgin Coconut Oil or pure A2 cow ghee",
       "  - 1/4 teaspoon freshly ground green cardamom powder",
-      "  - Handful of chopped Nature’s Mud Himalayan Almonds and Cashews for garnish",
+      "  - Handful of chopped NaturesMud Himalayan Almonds and Cashews for garnish",
       "- **Preparation Method:**",
       "  1. In a heavy-bottomed pan, gently warm the virgin coconut oil on low flame. Add the desiccated coconut and toast for 2 minutes until fragrant.",
       "  2. Turn off the heat and allow the mixture to cool slightly (to preserve heat-sensitive enzymes).",
-      "  3. Stir in Nature’s Mud Beetroot Powder, Dates Powder, and cardamom powder. Mix thoroughly until the coconut takes on an intense, jewel-like ruby-red color.",
+      "  3. Stir in NaturesMud Beetroot Powder, Dates Powder, and cardamom powder. Mix thoroughly until the coconut takes on an intense, jewel-like ruby-red color.",
       "  4. Shape the warm dough into compact round ladoos using your palms. Roll each ball in toasted almond flakes or crushed chia seeds.",
       "  5. Offer with devotion on your Rakhi thali as a divine, healing prasad.",
       "",
       "### 6. Ethically Sourced from the Pristine Mid-Hills of Nepal",
-      "When you choose Nature’s Mud, your festive celebrations support rural Nepali farming communities. Our beetroots are grown organically in the mineral-dense alluvial soils of Kavre and Palpa by smallholder family farmers who avoid synthetic pesticides. By paying premium fair-trade prices, Nature’s Mud ensures that your Rakhi blessing brings prosperity to the very hands that cultivate our sacred land.",
+      "When you choose NaturesMud, your festive celebrations support rural Nepali farming communities. Our beetroots are grown organically in the mineral-dense alluvial soils of Kavre and Palpa by smallholder family farmers who avoid synthetic pesticides. By paying premium fair-trade prices, NaturesMud ensures that your Rakhi blessing brings prosperity to the very hands that cultivate our sacred land.",
       "",
       "### Conclusion: Bestow the True Blessing of Prana",
-      "As you tie the sacred Rakhi thread this year, make the blessing real. Bestow upon your beloved brother or sister the divine gift of pure blood, vigorous stamina, and vibrant longevity with Nature’s Mud Himalayan Superfoods."
+      "As you tie the sacred Rakhi thread this year, make the blessing real. Bestow upon your beloved brother or sister the divine gift of pure blood, vigorous stamina, and vibrant longevity with NaturesMud Himalayan Superfoods."
     ],
     tags: ['ayurveda', 'raksha bandhan', 'beetroot powder nepal', 'satvik rakhi food', 'divine brother sister bond']
   },
@@ -984,7 +1814,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     faqs: [
       {
         question: 'Why are raw Himalayan almonds superior to ordinary roasted market almonds?',
-        answer: 'Commercial almonds are often chemically fumigated, pasteurized with toxic propylene oxide gas, and deep-fried in inflammatory seed oils. Nature’s Mud raw mountain almonds are sun-dried below 42°C, keeping delicate polyphenols, living enzymes, and heart-healthy oleic acids undamaged.'
+        answer: 'Commercial almonds are often chemically fumigated, pasteurized with toxic propylene oxide gas, and deep-fried in inflammatory seed oils. NaturesMud raw mountain almonds are sun-dried below 42°C, keeping delicate polyphenols, living enzymes, and heart-healthy oleic acids undamaged.'
       },
       {
         question: 'How do chia seeds support cardiovascular health for young professionals?',
@@ -992,24 +1822,24 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       },
       {
         question: 'What is the best way to consume almonds and chia seeds together?',
-        answer: 'Soak 1 tablespoon of Nature’s Mud Chia Seeds in coconut milk or water overnight, and top with 6–8 crushed raw Himalayan almonds and a drizzle of raw mountain honey for a high-protein, zero-sugar festive breakfast.'
+        answer: 'Soak 1 tablespoon of NaturesMud Chia Seeds in coconut milk or water overnight, and top with 6–8 crushed raw Himalayan almonds and a drizzle of raw mountain honey for a high-protein, zero-sugar festive breakfast.'
       }
     ],
     content: [
       "### 1. The Sacred Promise of Protection: From Silk Threads to Cellular Armor",
       "The ritual of Raksha Bandhan is built around a solemn pledge: *'I promise to protect you through all trials and seasons of life.'* In the modern 21st century, the greatest threats confronting our brothers and sisters are no longer physical invasions or ancient battlefield perils. Today, the most insidious dangers are chronic metabolic burnout, cardiovascular stiffness, relentless screen-induced oxidative stress, and sedentary lifestyle diseases.",
-      "How can a brother or sister truly protect their sibling from these modern hazards? Gifting a box of cheap processed sweets is contradictory to the very essence of the vow. Instead, gifting **Nature’s Mud Raw Himalayan Almonds and Organic Black Chia Seeds** provides genuine physiological armor—delivering the exact micronutrients required to fortify cell membranes, soothe vascular inflammation, and shield cognitive longevity.",
+      "How can a brother or sister truly protect their sibling from these modern hazards? Gifting a box of cheap processed sweets is contradictory to the very essence of the vow. Instead, gifting **NaturesMud Raw Himalayan Almonds and Organic Black Chia Seeds** provides genuine physiological armor—delivering the exact micronutrients required to fortify cell membranes, soothe vascular inflammation, and shield cognitive longevity.",
       "",
       "### 2. The Nutritional Superiority of Raw Mountain Almonds: Alpha-Tocopherol & Vascular Health",
       "Dry fruits have been gifted during festivals for millennia because they represent life in dormancy—concentrated nutritional vitality capable of surviving harsh winters without spoiling. However, not all almonds are created equal:",
       "- **The Problem with Commercial Market Almonds:** The majority of mass-market commercial almonds imported into Nepal undergo chemical pasteurization with toxic propylene oxide gas, or are heavily roasted in rancid industrial vegetable oils and coated with synthetic salt. This processing oxidizes fragile monounsaturated fatty acids and destroys over 70% of natural Vitamin E.",
-      "- **The Nature’s Mud Standard:** Our raw Himalayan mountain almonds are hand-harvested from high-altitude slopes, naturally sun-dried in clean mountain air below 42°C, and packed raw into airtight glass jars.",
+      "- **The NaturesMud Standard:** Our raw Himalayan mountain almonds are hand-harvested from high-altitude slopes, naturally sun-dried in clean mountain air below 42°C, and packed raw into airtight glass jars.",
       "- **Clinically Active Alpha-Tocopherol:** A single 30g serving provides 50% of the daily requirement for alpha-tocopherol—the most biologically active form of Vitamin E in the human body. As a lipid-soluble antioxidant, Vitamin E intercalates into cellular lipid bilayers, preventing lipid peroxidation of LDL particles and shielding arterial walls from plaque formation.",
       "- **Bioavailable Magnesium for Nervous System Relaxation:** Each serving delivers 76mg of organic magnesium, which activates the parasympathetic nervous system, lowers cortisol, and promotes restful sleep for overworked corporate siblings.",
       "",
       "### 3. Black Chia Seeds Unlocked: 4,915mg of Plant Omega-3 ALA & Soluble Gut Fiber",
-      "Complementing raw almonds in our luxury Rakhi pairing is **Nature’s Mud Organic Black Chia Seeds (300g)**—one of the most nutrient-dense botanical treasures in human history. Originally revered by ancient Aztec and Mayan messengers who ran hundreds of miles fueled by chia (*'strength'* in the Mayan tongue), modern clinical trials continue to validate their extraordinary physiological power:",
-      "- **Richest Terrestrial Source of Omega-3 ALA:** Just two tablespoons (28g) of Nature's Mud Chia Seeds deliver an astonishing **4,915mg of Alpha-Linolenic Acid (ALA)**. Omega-3 fatty acids compete with arachidonic acid in metabolic pathways, significantly reducing inflammatory cytokines (TNF-alpha, IL-6) and lowering systemic C-reactive protein (CRP).",
+      "Complementing raw almonds in our luxury Rakhi pairing is **NaturesMud Organic Black Chia Seeds (300g)**—one of the most nutrient-dense botanical treasures in human history. Originally revered by ancient Aztec and Mayan messengers who ran hundreds of miles fueled by chia (*'strength'* in the Mayan tongue), modern clinical trials continue to validate their extraordinary physiological power:",
+      "- **Richest Terrestrial Source of Omega-3 ALA:** Just two tablespoons (28g) of NaturesMud Chia Seeds deliver an astonishing **4,915mg of Alpha-Linolenic Acid (ALA)**. Omega-3 fatty acids compete with arachidonic acid in metabolic pathways, significantly reducing inflammatory cytokines (TNF-alpha, IL-6) and lowering systemic C-reactive protein (CRP).",
       "- **Prebiotic Mucilage Fiber (10g per ounce):** When exposed to water, chia seeds form a hydrophilic gel capable of absorbing 12 times their weight in liquid. This gel coats the intestinal mucosal lining, slowing glucose absorption into the bloodstream and preventing post-meal insulin spikes.",
       "- **Complete Plant-Based Amino Acid Profile:** Unlike most grains and seeds, chia contains all 9 essential amino acids, making it an ideal post-workout recovery food for active young adults.",
       "",
@@ -1028,19 +1858,19 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "### 6. Practical Festive Recipes: Rakhi Morning Chia Pudding with Crushed Almonds & Honey",
       "Encourage your sibling to enjoy their gift with this effortless, 5-minute breakfast ritual:",
       "- **Ingredients:**",
-      "  - 3 tablespoons **Nature’s Mud Black Chia Seeds**",
+      "  - 3 tablespoons **NaturesMud Black Chia Seeds**",
       "  - 1 cup almond milk, coconut milk, or fresh whole milk",
-      "  - 1 tablespoon cold-extracted Nature’s Mud Raw Mountain Honey",
-      "  - 8–10 crushed **Nature’s Mud Himalayan Almonds**",
+      "  - 1 tablespoon cold-extracted NaturesMud Raw Mountain Honey",
+      "  - 8–10 crushed **NaturesMud Himalayan Almonds**",
       "  - A sprinkle of wild dried blueberries for natural sweetness",
       "- **Preparation:**",
       "  Whisk chia seeds and milk in a glass cup and refrigerate overnight. In the morning, top with crushed almonds, wild berries, and raw honey. A royal, protein-rich breakfast fit for festive celebrations.",
       "",
       "### 7. Sustainable Glass Jar Packaging Keeps Nutrient Potency Intact",
-      "Polyunsaturated fatty acids (like Omega-3s in chia) and delicate Vitamin E are vulnerable to photo-oxidation when stored in thin commercial plastic bags exposed to supermarket fluorescent lighting. Nature’s Mud packages both seeds and nuts in heavy-walled glass jars with airtight seal liners. This shields delicate fatty acids from oxygen and moisture, ensuring that every spoonful delivers the full clinical potency of the harvest.",
+      "Polyunsaturated fatty acids (like Omega-3s in chia) and delicate Vitamin E are vulnerable to photo-oxidation when stored in thin commercial plastic bags exposed to supermarket fluorescent lighting. NaturesMud packages both seeds and nuts in heavy-walled glass jars with airtight seal liners. This shields delicate fatty acids from oxygen and moisture, ensuring that every spoonful delivers the full clinical potency of the harvest.",
       "",
       "### Conclusion: A Gift That Truly Protects",
-      "When you hand your brother or sister a jar of Nature’s Mud raw mountain almonds and organic chia seeds alongside your Rakhi thread, you are giving a gift of tangible, lasting health. You are providing the building blocks for a healthier heart, a sharper mind, and an energetic life. That is the true, timeless spirit of Raksha Bandhan."
+      "When you hand your brother or sister a jar of NaturesMud raw mountain almonds and organic chia seeds alongside your Rakhi thread, you are giving a gift of tangible, lasting health. You are providing the building blocks for a healthier heart, a sharper mind, and an energetic life. That is the true, timeless spirit of Raksha Bandhan."
     ],
     tags: ['dry fruits gift nepal', 'himalayan almonds', 'chia seeds omega 3', 'rakhi nutrition', 'natures mud almonds']
   },
@@ -1051,7 +1881,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: "Transform your festive dining table into a breathtaking visual and nutritional masterpiece. Learn how to craft edible superfood rangolis and wholesome festive desserts using wild Himalayan blueberries, beetroot powder, and mountain nuts without synthetic dyes.",
     image: '/images/blog/healthy-rakshabandhan-superfood-rangoli.jpg',
     category: 'Festive Culinary & Recipes',
-    author: "Chef Bipin Thapa & Nature's Mud Culinary Team",
+    author: "Chef Bipin Thapa & NaturesMud Culinary Team",
     date: '2026-08-24',
     readTime: 10,
     featured: true,
@@ -1059,7 +1889,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductName: 'Wild Dried Himalayan Blueberries & Festive Pantry Pack',
     featuredProductPrice: 1290,
     featuredProductImage: '/products/dried-blueberries-100g.jpg',
-    metaDescription: "Creative festive culinary guide for Raksha Bandhan. Discover how to create vibrant antioxidant rangolis and clean festive desserts with Nature's Mud wild blueberries and beetroot powder.",
+    metaDescription: "Creative festive culinary guide for Raksha Bandhan. Discover how to create vibrant antioxidant rangolis and clean festive desserts with NaturesMud wild blueberries and beetroot powder.",
     keyTakeaways: [
       "Traditional food dyes like Tartrazine (Yellow 5) and Sunset Yellow have been linked to allergic reactions and hyperactivity; natural superfood pigments provide vibrant, healing alternatives.",
       "Wild Himalayan blueberries possess one of the highest ORAC antioxidant ratings on earth, counteracting festive oxidative stress.",
@@ -1069,7 +1899,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     faqs: [
       {
         question: 'Can superfood powders replace artificial food coloring in traditional festival sweets?',
-        answer: 'Yes! Nature’s Mud Beetroot Powder creates brilliant magenta, Carrot Powder yields warm sun-kissed orange, and pulverized wild blueberries create rich purple hues without synthetic chemical additives or artificial flavors.'
+        answer: 'Yes! NaturesMud Beetroot Powder creates brilliant magenta, Carrot Powder yields warm sun-kissed orange, and pulverized wild blueberries create rich purple hues without synthetic chemical additives or artificial flavors.'
       },
       {
         question: 'What are the health benefits of wild Himalayan dried blueberries?',
@@ -1083,7 +1913,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     content: [
       "### 1. The Art of the Festive Dining Table: When Food Becomes a Sacred Rangoli",
       "In Nepali and Hindu tradition, the *Rangoli* (or *Mandala*) is a sacred geometric meditation. Created at doorsteps, prayer altars, and festive dining tables, it symbolizes the radiant beauty of the cosmos, inviting prosperity, divine grace, and joyous harmony into the household. Traditionally, rangolis were made from natural powders—turmeric, rice flour, vermilion, and fresh flower petals—reminding us of our sacred connection to the earth.",
-      "This Raksha Bandhan, culinary innovators and mindful hostesses across Kathmandu are expanding this ancient visual art to the dining table by creating **Edible Superfood Rangolis**. Using Nature’s Mud intense botanical powders, whole mountain nuts, and antioxidant-rich berries, families are turning festive thalis into stunning, edible masterworks that delight the eyes while healing the body.",
+      "This Raksha Bandhan, culinary innovators and mindful hostesses across Kathmandu are expanding this ancient visual art to the dining table by creating **Edible Superfood Rangolis**. Using NaturesMud intense botanical powders, whole mountain nuts, and antioxidant-rich berries, families are turning festive thalis into stunning, edible masterworks that delight the eyes while healing the body.",
       "",
       "### 2. The Danger of Synthetic Food Dyes in Festive Sweets",
       "Before creating natural festive colors, we must understand the urgent need to eliminate synthetic commercial food dyes. During festival season, commercial sweet shops achieve eye-catching neon pinks, bright oranges, and artificial greens using industrial petroleum-derived additives:",
@@ -1093,45 +1923,45 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "Why subject your beloved family to petroleum dyes when Mother Nature has perfected the most stunning, antioxidant-rich color palette on earth?",
       "",
       "### 3. Nature’s Pigment Chemistry: Pure Healing Hues from Himalayan Superfoods",
-      "Nature’s Mud whole-food powders provide breathtaking, 100% natural culinary colorants that double as clinical superfoods:",
-      "- **Royal Crimson & Magenta (Betacyanins):** Derived from cold-dehydrated **Nature's Mud Pure Himalayan Beetroot Powder**. Betacyanins are powerful free-radical scavengers that protect vascular integrity and impart a regal ruby tone to frostings, kheer, and drinks.",
-      "- **Warm Golden Amber & Sun-Kissed Orange (Carotenoids):** Created with **Nature's Mud Organic Carrot Powder**, delivering bioavailable beta-carotene and lutein for ocular protection.",
-      "- **Deep Midnight Indigo & Violet (Anthocyanins):** Hand-harvested **Nature's Mud Wild Dried Himalayan Blueberries**. Anthocyanins are potent flavonoids that fortify blood-brain barrier permeability and give puddings, yogurts, and smoothies a majestic purple hue.",
-      "- **Rich Earthy Brown & Creamy Tan:** Achieved using **Nature's Mud Natural Dates Powder**, offering caramel-like undertones without a single crystal of refined cane sugar.",
+      "NaturesMud whole-food powders provide breathtaking, 100% natural culinary colorants that double as clinical superfoods:",
+      "- **Royal Crimson & Magenta (Betacyanins):** Derived from cold-dehydrated **NaturesMud Pure Himalayan Beetroot Powder**. Betacyanins are powerful free-radical scavengers that protect vascular integrity and impart a regal ruby tone to frostings, kheer, and drinks.",
+      "- **Warm Golden Amber & Sun-Kissed Orange (Carotenoids):** Created with **NaturesMud Organic Carrot Powder**, delivering bioavailable beta-carotene and lutein for ocular protection.",
+      "- **Deep Midnight Indigo & Violet (Anthocyanins):** Hand-harvested **NaturesMud Wild Dried Himalayan Blueberries**. Anthocyanins are potent flavonoids that fortify blood-brain barrier permeability and give puddings, yogurts, and smoothies a majestic purple hue.",
+      "- **Rich Earthy Brown & Creamy Tan:** Achieved using **NaturesMud Natural Dates Powder**, offering caramel-like undertones without a single crystal of refined cane sugar.",
       "",
       "### 4. The Antioxidant Powerhouse: Wild Dried Blueberries & Cellular Longevity",
-      "The crown jewel of our antioxidant festive spread is **Nature’s Mud Wild Dried Himalayan Blueberries (100g)**. Unlike commercial farmed blueberries (which are pumped with water and pesticide sprays), wild mountain blueberries grow under harsh high-altitude UV radiation. To survive, the plants produce extraordinarily dense concentrations of defensive anthocyanins and proanthocyanidins.",
+      "The crown jewel of our antioxidant festive spread is **NaturesMud Wild Dried Himalayan Blueberries (100g)**. Unlike commercial farmed blueberries (which are pumped with water and pesticide sprays), wild mountain blueberries grow under harsh high-altitude UV radiation. To survive, the plants produce extraordinarily dense concentrations of defensive anthocyanins and proanthocyanidins.",
       "Laboratory testing reveals that wild Himalayan blueberries possess an **ORAC (Oxygen Radical Absorbance Capacity) rating nearly 3 times higher than standard cultivated berries**. When incorporated into festival sweets, they neutralize the oxidative stress caused by travel, irregular sleeping schedules, and festive overindulgence.",
       "",
       "### 5. 3 Signature Festive Recipes for a Clean Raksha Bandhan",
       "",
       "#### Recipe 1: Royal Beetroot & Wild Blueberry Festive Parfait",
       "- **Servings:** 4 | **Prep Time:** 10 mins",
-      "- **Ingredients:** 2 cups thick Greek yogurt or coconut yogurt, 2 tablespoons Nature’s Mud Pure Beetroot Powder, 2 tablespoons Nature’s Mud Dates Powder, 1/2 cup Nature’s Mud Wild Dried Blueberries, 1/4 cup chopped roasted almonds.",
+      "- **Ingredients:** 2 cups thick Greek yogurt or coconut yogurt, 2 tablespoons NaturesMud Pure Beetroot Powder, 2 tablespoons NaturesMud Dates Powder, 1/2 cup NaturesMud Wild Dried Blueberries, 1/4 cup chopped roasted almonds.",
       "- **Method:** Whisk 1 cup of yogurt with beetroot powder and 1 tablespoon dates powder until a vibrant pink cream forms. In clear festive glass cups, alternate layers of white yogurt, wild blueberries, pink beetroot cream, and crunchy almonds. Chill for 30 minutes before serving.",
       "",
       "#### Recipe 2: Creamy Coconut & Chia Seed Festive Shrikhand",
       "- **Servings:** 4 | **Prep Time:** 15 mins",
-      "- **Ingredients:** 2 cups hung curd (chakka) or cashew cream, 3 tablespoons Nature’s Mud Black Chia Seeds, 3 tablespoons Nature’s Mud Raw Mountain Honey, 1/4 teaspoon cardamom powder, saffron strands soaked in 1 tbsp warm milk.",
+      "- **Ingredients:** 2 cups hung curd (chakka) or cashew cream, 3 tablespoons NaturesMud Black Chia Seeds, 3 tablespoons NaturesMud Raw Mountain Honey, 1/4 teaspoon cardamom powder, saffron strands soaked in 1 tbsp warm milk.",
       "- **Method:** Fold chia seeds, saffron milk, cardamom, and raw honey into the smooth hung curd. Allow to rest for 20 minutes so the chia seeds soften into a silky, luscious texture. Garnish with whole pistachios and edible marigold petals.",
       "",
       "#### Recipe 3: Roasted Almond & Dried Apple Festive Granola Crunch",
       "- **Servings:** 6 | **Prep Time:** 15 mins",
-      "- **Ingredients:** 1 cup rolled oats, 1/2 cup Nature’s Mud Dehydrated Apple Slices (chopped), 1/2 cup Nature’s Mud Himalayan Almonds (chopped), 2 tbsp pumpkin seeds, 2 tbsp virgin coconut oil, 2 tbsp raw honey, 1/2 tsp cinnamon.",
+      "- **Ingredients:** 1 cup rolled oats, 1/2 cup NaturesMud Dehydrated Apple Slices (chopped), 1/2 cup NaturesMud Himalayan Almonds (chopped), 2 tbsp pumpkin seeds, 2 tbsp virgin coconut oil, 2 tbsp raw honey, 1/2 tsp cinnamon.",
       "- **Method:** Toss oats, almonds, and pumpkin seeds in coconut oil, honey, and cinnamon. Toast in a pan on medium heat for 6–8 minutes until golden. Remove from heat, fold in chopped dehydrated apple rings, and serve over fresh fruit bowls or homemade kheer.",
       "",
       "### 6. Presenting Your Festive Spread: Styling an Edible Superfood Rangoli",
       "Ready to create an unforgettable centerpiece for your Rakhi celebration? Follow our signature food styling guide:",
       "1. **The Base:** Place a large brass thali, round wooden charcuterie board, or clean white marble platter in the center of your dining table.",
       "2. **The Outer Ring (Floral Blessings):** Arrange fresh yellow and orange marigold flowers around the perimeter.",
-      "3. **The Nutrient Circles:** Inside the floral border, create a concentric circle of golden Nature's Mud roasted almonds and cashews. Follow with an inner circle of black chia seeds and pumpkin seeds.",
+      "3. **The Nutrient Circles:** Inside the floral border, create a concentric circle of golden NaturesMud roasted almonds and cashews. Follow with an inner circle of black chia seeds and pumpkin seeds.",
       "4. **The Sacred Center:** Place a glass bowl filled with vibrant pink Beetroot-Dates Ladoos or a jar of wild dried blueberries in the very center, surrounded by ceremonial Rakhi threads and brass oil diyas.",
       "",
       "### 7. Ethically Sourced, Preservative-Free & Proudly Made in Nepal",
-      "Every ingredient in our festive catalog represents sustainable, regenerative agriculture across Nepal’s mountain districts. We partner directly with women's farming cooperatives and local forest harvesters, paying honest living wages that empower rural communities. When you celebrate with Nature's Mud, your joy reverberates through the majestic hills of our country.",
+      "Every ingredient in our festive catalog represents sustainable, regenerative agriculture across Nepal’s mountain districts. We partner directly with women's farming cooperatives and local forest harvesters, paying honest living wages that empower rural communities. When you celebrate with NaturesMud, your joy reverberates through the majestic hills of our country.",
       "",
       "### Conclusion: A Festival of True Radiance",
-      "Raksha Bandhan is a celebration of life, bond, and shared memories. Let your festive table reflect the purity, beauty, and vitality of nature itself. Celebrate with clean superfoods, share genuine health, and create timeless memories with Nature’s Mud."
+      "Raksha Bandhan is a celebration of life, bond, and shared memories. Let your festive table reflect the purity, beauty, and vitality of nature itself. Celebrate with clean superfoods, share genuine health, and create timeless memories with NaturesMud."
     ],
     tags: ['superfood rangoli', 'raksha bandhan recipes', 'wild blueberries nepal', 'clean festive sweets', 'preservative free rakhi']
   },
@@ -1157,7 +1987,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     metaDescription: 'Complete guide to replacing white sugar with 100% pure dehydrated Dates Powder for weaning infants, tea, and baking in Nepal.',
     keyTakeaways: [
       'Refined white sugar spikes insulin by 300% and triggers early childhood dental decay and hyperactivity.',
-      'Nature’s Mud 100g Dates Powder contains whole-fruit fiber, 2.5mg iron, and 650mg potassium per 100g.',
+      'NaturesMud 100g Dates Powder contains whole-fruit fiber, 2.5mg iron, and 650mg potassium per 100g.',
       'Replaces sugar 1:1 in morning chiya, baby porridge, traditional kheer, and modern whole-grain baking.',
       'Low Glycemic Index (GI ~42) prevents afternoon energy slumps and diabetic glucose surges.'
     ],
@@ -1176,25 +2006,25 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       }
     ],
     content: [
-      "White refined cane sugar is increasingly recognized by international metabolic researchers as a primary driver of non-alcoholic fatty liver disease, pediatric obesity, childhood dental cavities, and chronic low-grade gut inflammation. In Nepal, health-conscious mothers, pediatric specialists, and diabetic dietitians are spearheading a nutritional revolution by switching to **Nature's Mud Natural Dates Powder (100g)** — a single-ingredient whole food sweetener created exclusively from slowly dehydrated, premium mountain dates.",
+      "White refined cane sugar is increasingly recognized by international metabolic researchers as a primary driver of non-alcoholic fatty liver disease, pediatric obesity, childhood dental cavities, and chronic low-grade gut inflammation. In Nepal, health-conscious mothers, pediatric specialists, and diabetic dietitians are spearheading a nutritional revolution by switching to **NaturesMud Natural Dates Powder (100g)** — a single-ingredient whole food sweetener created exclusively from slowly dehydrated, premium mountain dates.",
       
       "### The Metabolic Comparison: Dates Powder vs. Refined Table Sugar",
       "When refined sugar is industrially manufactured, the natural sugarcane juice is stripped of all vitamins, minerals, and polyphenols through chemical bleaching and bone char filtration, leaving behind pure empty sucrose that causes rapid glycemic spikes.",
       
-      "In contrast, Nature's Mud Dates Powder preserves the complete botanical architecture of the whole date fruit:",
+      "In contrast, NaturesMud Dates Powder preserves the complete botanical architecture of the whole date fruit:",
       "- **Whole Dietary Fiber (7.8g/100g):** Forms a gel-like matrix in the small intestine that slows glucose absorption, ensuring steady 4-hour cognitive energy without sugar crashes.",
       "- **Non-Heme Bioavailable Iron (2.5mg/100g):** Supports erythrocyte hemoglobin formation and active oxygen transport, crucial for growing toddlers and postpartum mothers.",
       "- **Electrolyte Potassium (650mg/100g):** Balances cellular fluid levels, regulates nerve transmission, and prevents nighttime leg cramps.",
       "- **Magnesium & Vitamin B6:** Essential co-factors for neurotransmitter synthesis (serotonin and GABA), promoting calm mood and restful sleep in children.",
 
       "### Nutritional Breakdown Table (Per 100g Serving)",
-      "| Nutrient | White Refined Sugar | Nature's Mud Dates Powder (100g) | Daily Value Contribution |\n| :--- | :--- | :--- | :--- |\n| **Calories** | 387 kcal (Empty) | 277 kcal (Nutrient-Dense) | Clean metabolic fuel |\n| **Dietary Fiber** | 0.0 g | 7.8 g | 31% of daily fiber goal |\n| **Iron** | 0.0 mg | 2.5 mg | Essential for baby hemoglobin |\n| **Potassium** | 0.0 mg | 650 mg | 18% of cardiovascular daily need |\n| **Antioxidant Polyphenols**| Zero | 4,200 µmol TE | Potent cellular defense |\n| **Glycemic Index (GI)** | 68 (High Spike) | 42 (Low-Impact) | Steady insulin release |",
+      "| Nutrient | White Refined Sugar | NaturesMud Dates Powder (100g) | Daily Value Contribution |\n| :--- | :--- | :--- | :--- |\n| **Calories** | 387 kcal (Empty) | 277 kcal (Nutrient-Dense) | Clean metabolic fuel |\n| **Dietary Fiber** | 0.0 g | 7.8 g | 31% of daily fiber goal |\n| **Iron** | 0.0 mg | 2.5 mg | Essential for baby hemoglobin |\n| **Potassium** | 0.0 mg | 650 mg | 18% of cardiovascular daily need |\n| **Antioxidant Polyphenols**| Zero | 4,200 µmol TE | Potent cellular defense |\n| **Glycemic Index (GI)** | 68 (High Spike) | 42 (Low-Impact) | Steady insulin release |",
 
       "### Pediatric First Weaning Recipes (6 Months to 3 Years)",
       "Introducing wholesome solid foods during the golden 1,000-day window sets the foundation for lifelong taste preferences. Here is how to incorporate Dates Powder into daily family meals:",
       
       "#### 1. The 5-Minute Golden Baby Porridge (Lito / Kheer)",
-      "- **Ingredients:** 2 tablespoons of organic roasted ragi (finger millet) or sweet potato powder, 150ml lukewarm water or breastmilk, 1 level teaspoon of Nature's Mud Dates Powder, 1 pinch of cinnamon.",
+      "- **Ingredients:** 2 tablespoons of organic roasted ragi (finger millet) or sweet potato powder, 150ml lukewarm water or breastmilk, 1 level teaspoon of NaturesMud Dates Powder, 1 pinch of cinnamon.",
       "- **Method:** Whisk ragi or sweet potato powder in warm water over medium heat for 3 minutes until smooth. Remove from heat and stir in Dates Powder. Serve at room temperature for instant, easily digestible nourishment.",
 
       "#### 2. Guilt-Free Family Morning Chiya (Nepali Spiced Tea)",
@@ -1230,7 +2060,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     faqs: [
       {
         question: 'How do I prepare sweet potato powder for baby feeding?',
-        answer: 'Simply whisk 2 tablespoons of Nature’s Mud Sweet Potato Powder into 100ml of warm water, milk, or vegetable broth. Stir for 60 seconds to achieve a velvety, lump-free puree instantly without boiling or peeling.'
+        answer: 'Simply whisk 2 tablespoons of NaturesMud Sweet Potato Powder into 100ml of warm water, milk, or vegetable broth. Stir for 60 seconds to achieve a velvety, lump-free puree instantly without boiling or peeling.'
       },
       {
         question: 'Is sweet potato powder gluten-free?',
@@ -1238,7 +2068,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       }
     ],
     content: [
-      "Sweet potatoes cultivated in the rich alluvial soils of Nepal's fertile mid-hills have long been revered as one of Earth's most nutritionally complete root vegetables. **Nature's Mud Organic Sweet Potato Powder (100g)** is created through proprietary solar-assisted low-temperature dehydration and micro-milling, preserving delicate heat-sensitive enzymes, vitamins, and antioxidant carotenoids.",
+      "Sweet potatoes cultivated in the rich alluvial soils of Nepal's fertile mid-hills have long been revered as one of Earth's most nutritionally complete root vegetables. **NaturesMud Organic Sweet Potato Powder (100g)** is created through proprietary solar-assisted low-temperature dehydration and micro-milling, preserving delicate heat-sensitive enzymes, vitamins, and antioxidant carotenoids.",
 
       "### 1. The Gold Standard for Baby First Solids (6 Months+)",
       "During the critical initial months of infant complementary feeding, the baby's gastrointestinal tract is transitioning from liquid milk to complex carbohydrates. Sweet Potato Powder is the ideal first food:",
@@ -1274,7 +2104,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     content: [
       "At 6 months of age, an infant's innate iron stores accumulated during gestation begin to deplete rapidly. Breastmilk provides bioavailable nutrition, but introducing iron-rich complementary solid foods is vital for preventing cognitive delays and motor development issues.",
       "### Key Iron-Rich Superfoods for Weaning:",
-      "1. **Nature's Mud Dates Powder:** Provides 2.5mg of non-heme iron per 100g, combined with natural Vitamin C co-factors to maximize intestinal iron absorption.",
+      "1. **NaturesMud Dates Powder:** Provides 2.5mg of non-heme iron per 100g, combined with natural Vitamin C co-factors to maximize intestinal iron absorption.",
       "2. **Dehydrated Sweet Potato Powder:** Rich in Vitamin A and prebiotic fibers to support healthy mucosal lining and iron transport.",
       "3. **Milled Pumpkin & Chia Seeds:** Rich in bioavailable zinc and magnesium to support cellular division and immune antibody synthesis.",
       "### Weekly Pediatric Weaning Schedule & Meal Matrix...",
@@ -1289,7 +2119,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'Transform traditional Nepali festive dishes into wholesome, zero-sugar baby superfoods with dehydrated dates powder and organic root powders.',
     image: '/products/dates-powder-100g.jpg',
     category: 'Infant & Family Nutrition',
-    author: "Nature's Mud Pediatric Culinary Team",
+    author: "NaturesMud Pediatric Culinary Team",
     date: '2026-08-15',
     readTime: 10,
     featured: false,
@@ -1298,7 +2128,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductPrice: 390,
     featuredProductImage: '/products/dates-powder-100g.jpg',
     content: [
-      "Traditional Nepali baby celebrations like Pasni (rice feeding ceremony) and daily morning lito often rely on cow milk and refined sugar. Here are 10 pediatrician-approved, zero-sugar recipes that replace sugar with Nature's Mud Dates Powder.",
+      "Traditional Nepali baby celebrations like Pasni (rice feeding ceremony) and daily morning lito often rely on cow milk and refined sugar. Here are 10 pediatrician-approved, zero-sugar recipes that replace sugar with NaturesMud Dates Powder.",
       "### Recipe 1: Himalayan Superfood Ragi & Dates Porridge",
       "### Recipe 2: Creamy Oat & Sweet Potato Breakfast Bowl",
       "### Recipe 3: Festive Almond & Dates Festive Kheer",
@@ -1382,7 +2212,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       "2. **Cognitive Neuroprotection:** Researchers at the University of Chile discovered that fulvic acid inhibits the self-aggregation of tau proteins in the brain, offering profound protection against neurodegenerative decline and memory loss.",
       "3. **Collagen & Joint Resilience:** Upregulates extracellular matrix genes, accelerating post-exercise tendon repair and reducing arthritic joint stiffness.",
 
-      "### How to Test and Consume Nature's Mud Shilajit Resin",
+      "### How to Test and Consume NaturesMud Shilajit Resin",
       "Dissolve a small grain-of-rice to pea-sized portion (approx. 300mg) in a glass of warm spring water or raw milk every morning 30 minutes before breakfast. Experience steady, non-jittery physical stamina and acute mental focus throughout the day."
     ],
     tags: ['shilajit resin', 'fulvic acid', 'testosterone boost', 'mitochondrial health', 'ayurvedic biohacking', 'himalayan shilajit']
@@ -1423,7 +2253,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'The scientific breakdown of how cold-dehydrated red beetroots from Nepal\'s hill cooperatives enhance cardiovascular stamina and cellular oxygenation.',
     image: '/products/beetroot-powder-100g.jpg',
     category: 'Athletic Nutrition & Fitness',
-    author: "Nature's Mud Sports Science Lab",
+    author: "NaturesMud Sports Science Lab",
     date: '2026-08-19',
     readTime: 12,
     featured: true,
@@ -1439,7 +2269,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       'One 100g jar delivers the concentrated nitrate equivalent of 1.5 kilograms of fresh farm beetroots.'
     ],
     content: [
-      "Harvested from pesticide-free terraced hill farms in Kavre and Sindhupalchok, **Nature's Mud Pure Himalayan Beetroot Powder (100g)** is an ergogenic powerhouse celebrated by professional athletes and cardiovascular specialists.",
+      "Harvested from pesticide-free terraced hill farms in Kavre and Sindhupalchok, **NaturesMud Pure Himalayan Beetroot Powder (100g)** is an ergogenic powerhouse celebrated by professional athletes and cardiovascular specialists.",
       
       "### The Nitrate-Nitrite-Nitric Oxide Pathway",
       "When consumed, natural inorganic nitrates in beetroot powder interact with oral commensal bacteria, converting into nitrite (NO2-), which is subsequently reduced into bioactive **Nitric Oxide (NO)** in the acidic gastric environment and bloodstream:",
@@ -1487,7 +2317,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'High-altitude wild berries foraged at 3,200m altitude pack dense dark-violet anthocyanins to defend against digital screen eye strain and support memory.',
     image: '/products/dried-blueberries-100g.jpg',
     category: 'Brain & Cognitive Health',
-    author: "Nature's Mud Herbal Pharmacognosy Team",
+    author: "NaturesMud Herbal Pharmacognosy Team",
     date: '2026-08-20',
     readTime: 11,
     featured: true,
@@ -1503,7 +2333,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
       '100% wild-harvested and sun-dried with 0% added refined sugar, sulfur dioxide, or chemical preservatives.'
     ],
     content: [
-      "Unlike commercially farmed, cultivated blueberries which are plied with chemical pesticides, fungicides, and synthetic irrigation in flat lowlands, **Nature's Mud Wild Dried Himalayan Blueberries (100g)** grow wild across high alpine forest borders at 3,000 to 3,600 meters altitude.",
+      "Unlike commercially farmed, cultivated blueberries which are plied with chemical pesticides, fungicides, and synthetic irrigation in flat lowlands, **NaturesMud Wild Dried Himalayan Blueberries (100g)** grow wild across high alpine forest borders at 3,000 to 3,600 meters altitude.",
       
       "### The Extreme Alpine Radiation Defense",
       "To survive intense ultraviolet solar radiation, sub-zero winter freezes, and thin mountain air, wild Himalayan berries synthesize massive concentrations of **Anthocyanins** — the potent dark-purple antioxidant pigments:",
@@ -1548,7 +2378,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'The biophysical mechanism behind chia seed soluble mucilage fiber in coating stomach walls, calming acid reflux, and feeding microbiome bacteria.',
     image: '/products/chia-seeds.jpg',
     category: 'Gut & Digestive Health',
-    author: "Nature's Mud Gastroenterology Advisory",
+    author: "NaturesMud Gastroenterology Advisory",
     date: '2026-08-18',
     readTime: 11,
     featured: false,
@@ -1628,7 +2458,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'How Nature\'s Mud works across Nepal’s 3 ecological belts to eliminate exploitative middlemen and deliver single-origin, chemical-free nutrition.',
     image: '/products/sweet-potato-powder-100g.jpg',
     category: 'Sustainable Sourcing & Ethics',
-    author: "Nature's Mud Agricultural Cooperative Council",
+    author: "NaturesMud Agricultural Cooperative Council",
     date: '2026-08-20',
     readTime: 12,
     featured: false,
@@ -1657,7 +2487,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     excerpt: 'The complete daily protocol for integrating Sweet Potato Powder, Dates Powder, Wild Blueberries, Cranberries & Pumpkin Seeds into family wellness.',
     image: '/images/combos/superfood-lineup.jpg',
     category: 'Combos & Wellness Protocols',
-    author: "Nature's Mud Holistic Wellness Team",
+    author: "NaturesMud Holistic Wellness Team",
     date: '2026-08-21',
     readTime: 13,
     featured: true,
@@ -1665,14 +2495,14 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featuredProductName: 'Himalayan Superfood Complete Lineup Pack',
     featuredProductPrice: 1850,
     featuredProductImage: '/images/combos/superfood-lineup.jpg',
-    metaDescription: 'Complete 7-day protocol for using the 5-jar Nature’s Mud Himalayan superfood starter pack for energy, digestion, and zero-sugar living.',
+    metaDescription: 'Complete 7-day protocol for using the 5-jar NaturesMud Himalayan superfood starter pack for energy, digestion, and zero-sugar living.',
     keyTakeaways: [
       'Contains 5 full-sized 100g glass jars: Sweet Potato Powder, Dates Powder, Wild Blueberries, Cranberries & Pumpkin Seeds.',
       'Eliminates processed breakfast cereals, refined sugars, and synthetic multivitamin pills.',
       'Saves over Rs. 550 compared to purchasing individual jars, with free doorstep delivery across Nepal.'
     ],
     content: [
-      "Modern kitchen cupboards are often cluttered with synthetic vitamin capsules, processed breakfast cereals loaded with refined sugars, and artificial flavor enhancers. **Nature's Mud Himalayan Superfood Complete Lineup Pack** provides a complete, 100% whole-food replacement system in five premium 100g glass jars.",
+      "Modern kitchen cupboards are often cluttered with synthetic vitamin capsules, processed breakfast cereals loaded with refined sugars, and artificial flavor enhancers. **NaturesMud Himalayan Superfood Complete Lineup Pack** provides a complete, 100% whole-food replacement system in five premium 100g glass jars.",
       
       "### The 7-Day Family Transformation Protocol",
       "- **Morning (7:00 AM - Energy & Digestion):** Whisk 1 spoon of Sweet Potato Powder and 1 spoon of Dates Powder into warm milk or oatmeal for steady, crash-free cognitive fuel.",
@@ -1797,10 +2627,10 @@ const topicBlueprints = [
   // 81-90
   { title: "From Terai to Himalayan Cliffs: The Direct Farmer Fair-Trade Revolution Bringing Chemical-Free Superfoods to Nepal", slug: "three-belts-organic-farming-terai-hills-himalayas-nepal", cat: "Sustainable Sourcing & Ethics", prod: "sweet-potato-powder", read: 12 },
   { title: "Why Amber Glass Jar Packaging Preserves Antioxidants & Minerals 300% Better Than Plastic Pouches", slug: "why-glass-jar-packaging-preserves-antioxidants-better-than-plastic", cat: "Sustainable Sourcing & Ethics", prod: "sweet-potato-powder", read: 10 },
-  { title: "Empowering Women Agricultural Cooperatives Across Rural Nepal: The Nature’s Mud Social Impact", slug: "the-women-farmers-of-nepal-building-sustainable-mountain-livelihoods", cat: "Sustainable Sourcing & Ethics", prod: "dates-powder", read: 11 },
+  { title: "Empowering Women Agricultural Cooperatives Across Rural Nepal: The NaturesMud Social Impact", slug: "the-women-farmers-of-nepal-building-sustainable-mountain-livelihoods", cat: "Sustainable Sourcing & Ethics", prod: "dates-powder", read: 11 },
   { title: "How to Spot Truly Organic Superfoods in Nepal: A Consumer Guide to Certifications and Testing", slug: "understanding-organic-certifications-and-pesticide-residue-testing", cat: "Sustainable Sourcing & Ethics", prod: "sweet-potato-powder", read: 10 },
   { title: "Regenerative Agriculture on Mountain Terraces: Protecting Himalayan Topsoil for Future Generations", slug: "regenerative-agriculture-in-the-himalayas-protecting-topsoil", cat: "Sustainable Sourcing & Ethics", prod: "beetroot-powder", read: 11 },
-  { title: "Low-Temperature Solar Dehydration Technology: Preserving Delicate Live Enzymes and Vitamins", slug: "solar-dehydration-technology-preserving-enzymes-without-high-heat", cat: "Sustainable Sourcing & Ethics", prod: "sweet-potato-powder", read: 10 },
+  { title: "Low-Temperature low-temperature dehydration Technology: Preserving Delicate Live Enzymes and Vitamins", slug: "low-temperature dehydration-technology-preserving-enzymes-without-high-heat", cat: "Sustainable Sourcing & Ethics", prod: "sweet-potato-powder", read: 10 },
   { title: "Wildcrafted vs Farmed: Why High-Altitude Wild Foraged Mountain Berries Have Greater Phytonutrient Purity", slug: "wildcrafted-vs-farmed-the-purity-of-foraged-himalayan-superfoods", cat: "Sustainable Sourcing & Ethics", prod: "dried-blueberries", read: 11 },
   { title: "Zero-Waste Sustainable Kitchens: Cooking with Long Shelf-Life Concentrated Pure Powders", slug: "zero-waste-sustainable-kitchens-with-long-shelf-life-powders", cat: "Sustainable Sourcing & Ethics", prod: "dates-powder", read: 10 },
   { title: "Carbon-Negative Mountain Logistics: Direct From Himalayan Villages to Your Kathmandu Doorstep", slug: "carbon-negative-supply-chains-from-himalayan-valleys-to-your-door", cat: "Sustainable Sourcing & Ethics", prod: "himalayan-superfood-lineup-pack", read: 10 },
@@ -1904,7 +2734,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
     excerpt: `A master scientific, nutritional, and practical guide to ${item.title.toLowerCase()} using clean Himalayan single-origin botanicals and zero-chemical glass packaging.`,
     image: thumbImage,
     category: item.cat,
-    author: "Nature's Mud Clinical Research Council",
+    author: "NaturesMud Clinical Research Council",
     date: dateStr,
     readTime: item.read,
     featured: idx < 6,
@@ -1912,7 +2742,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
     featuredProductName: prodInfo.name,
     featuredProductPrice: prodInfo.price,
     featuredProductImage: prodInfo.image,
-    metaDescription: `In-depth evidence-based guide on ${item.title}. Discover nutritional facts, clinical benefits, and daily recipes from Nature's Mud Nepal.`,
+    metaDescription: `In-depth evidence-based guide on ${item.title}. Discover nutritional facts, clinical benefits, and daily recipes from NaturesMud Nepal.`,
     keyTakeaways: [
       `100% single-origin Himalayan botanicals harvested from pesticide-free cooperative farms in Nepal.`,
       `Zero added refined sugars, artificial preservatives, maltodextrins, or chemical binders.`,
@@ -1922,7 +2752,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
     faqs: [
       {
         question: `Why is this Himalayan superfood superior to commercial alternatives?`,
-        answer: `Nature's Mud sources directly from high-altitude terraced farms in Nepal where extreme UV sunlight and sub-zero climates force plants to produce up to 4x higher concentrations of protective polyphenols and antioxidants.`
+        answer: `NaturesMud sources directly from high-altitude terraced farms in Nepal where extreme UV sunlight and sub-zero climates force plants to produce up to 4x higher concentrations of protective polyphenols and antioxidants.`
       },
       {
         question: `How should I store and consume this product daily?`,
@@ -1930,13 +2760,13 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
       }
     ],
     content: [
-      `In today's fast-paced environment, modern urban families face unprecedented challenges from ultra-processed artificial foods, hidden refined sugars, and environmental pollution. **Nature's Mud ${prodInfo.name}** provides a clean, single-ingredient whole food antidote designed to restore metabolic equilibrium and cellular vitality.`,
+      `In today's fast-paced environment, modern urban families face unprecedented challenges from ultra-processed artificial foods, hidden refined sugars, and environmental pollution. **NaturesMud ${prodInfo.name}** provides a clean, single-ingredient whole food antidote designed to restore metabolic equilibrium and cellular vitality.`,
 
       `### 1. The High-Altitude Botanical Advantage`,
       `Botanical crops cultivated across Nepal's high-altitude valleys (1,500m to 3,500m+) develop unique phytochemical profiles. Subjected to intense ultraviolet solar radiation and extreme temperature variations, these plants synthesize dense matrices of protective bioflavonoids, carotenoids, and adaptogenic compounds:`,
       `- **Superior Nutrient Density:** Laboratory assays confirm significantly higher antioxidant and mineral concentrations compared to mass-produced lowland crops.`,
       `- **Pesticide-Free Alluvial Soils:** Cultivated without synthetic chemical sprays, honoring traditional organic farming wisdom passed down across generations.`,
-      `- **Solar Dehydration Processing:** Slowly dehydrated in controlled solar domes below 45°C to preserve heat-sensitive enzymes, live vitamins, and aromatic phytonutrients.`,
+      `- **low-temperature dehydration Processing:** Slowly dehydrated in controlled solar domes below 45°C to preserve heat-sensitive enzymes, live vitamins, and aromatic phytonutrients.`,
 
       `### 2. Clinical Health Benefits & Biological Mechanisms`,
       `Incorporating this pure Himalayan superfood into your daily routine delivers systemic, clinically measurable improvements across multiple organ systems:`,
@@ -1950,7 +2780,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
       `- **Guilt-Free Healthy Baking:** Whisk directly into pancake batters, oatmeal cookies, or traditional porridge.`,
 
       `### Conclusion`,
-      `True health is not found in synthetic capsules or chemical powders, but in the unadulterated healing power of pure earth. Experience the vitality of the Himalayas with Nature's Mud.`
+      `True health is not found in synthetic capsules or chemical powders, but in the unadulterated healing power of pure earth. Experience the vitality of the Himalayas with NaturesMud.`
     ],
     tags: [prodKey, 'himalayan superfood', 'organic nepal', 'natures mud blog', item.cat.toLowerCase()]
   };

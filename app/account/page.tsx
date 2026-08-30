@@ -399,7 +399,7 @@ export default function AccountPage() {
             <div className="p-8 sm:p-12">
               <div className="flex items-center gap-2 mb-2">
                 <Leaf className="w-6 h-6 text-primary" />
-                <span className="font-heading font-bold text-xl text-primary">Nature's Mud</span>
+                <span className="font-heading font-bold text-xl text-primary">NaturesMud</span>
               </div>
               <h1 className="font-heading font-bold text-3xl text-dark mb-2">
                 {mode === 'login' ? 'Welcome Back' : 'Create Account'}
@@ -407,7 +407,7 @@ export default function AccountPage() {
               <p className="text-gray-500 text-sm mb-8">
                 {mode === 'login'
                   ? 'Log in to track orders, manage wishlist, and checkout faster.'
-                  : 'Join Nature\'s Mud for exclusive offers and faster checkout.'}
+                  : 'Join NaturesMud for exclusive offers and faster checkout.'}
               </p>
 
               {/* Tabs */}

@@ -6,8 +6,8 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: "Evidence-Based Nutrition & Himalayan Health Blogs | Nature's Mud Nepal",
-  description: "100+ comprehensive 10-minute scientific guides on infant weaning, zero-sugar living, Ayurvedic longevity, and Himalayan superfoods.",
+  title: "Evidence-Based Nutrition & Himalayan Health Blogs | NaturesMud Nepal",
+  description: "Comprehensive scientific guides on infant weaning, 0-additive living, Ayurvedic longevity, and Himalayan superfoods.",
   keywords: "dates powder baby food, sweet potato powder weaning, himalayan shilajit resin, organic nepal superfoods, nutrition blogs kathmandu",
 };
 
@@ -34,7 +34,7 @@ export default async function BlogPage() {
           : 'Recent',
         rawDate: p.published_at || p.created_at || '',
         readTime: Number(p.read_time || 10),
-        author: p.author?.name || p.author || "Nature's Mud Clinical Council",
+        author: p.author?.name || p.author || "NaturesMud Clinical Council",
         featured: p.is_featured === true || (p.slug && p.slug.startsWith('healthy-raksha-bandhan')),
         isFeatured: p.is_featured === true,
       }));

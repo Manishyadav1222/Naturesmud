@@ -2,6 +2,348 @@ import { Recipe } from '@/lib/types';
 
 export const recipes: Recipe[] = [
   {
+  "id": "r-himalayan-trail-mix-hiking",
+  "slug": "healthy-trail-mix-recipe-for-hiking-nepal",
+  "title": "Himalayan Superfood Trail Mix (For Hiking & Trekking)",
+  "excerpt": "Nutrient-dense, non-melting trail mix packed with raw mountain almonds, walnuts, pumpkin seeds, wild dried blueberries, and sun-dried mango slices.",
+  "image": "/images/combos/superfood-lineup.jpg",
+  "category": "Fitness & Gym",
+  "prepTime": 5,
+  "cookTime": 0,
+  "servings": 10,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1 cup NaturesMud Raw Himalayan Almonds (chopped)",
+    "1 cup NaturesMud Raw Mountain Walnuts (chopped)",
+    "1/2 cup NaturesMud Organic Pumpkin Seeds",
+    "1/2 cup NaturesMud Wild Dried Blueberries",
+    "1/2 cup NaturesMud Sun-Dried Mango Slices (diced)",
+    "1/4 tsp NaturesMud Himalayan Pink Rock Salt"
+  ],
+  "instructions": [
+    "In a large stainless steel bowl, add chopped almonds, walnuts, and pumpkin seeds.",
+    "Add diced sun-dried mango, dried blueberries, and a light pinch of Himalayan pink salt.",
+    "Toss gently until all ingredients are evenly distributed.",
+    "Divide into 50g resealable snack bags and store in an airtight container."
+  ],
+  "tags": [
+    "trail mix recipe",
+    "hiking snacks",
+    "trekking food nepal",
+    "healthy energy mix"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-baby-sweet-potato-puree",
+  "slug": "sweet-potato-puree-for-babies-simple-recipe-nepal",
+  "title": "Silky Sweet Potato Puree for Babies (6+ Months)",
+  "excerpt": "Gentle, hypoallergenic 2-minute baby puree made with pure organic sweet potato powder and warm water or breast milk. Zero added sugar or salt.",
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "category": "Baby Food",
+  "prepTime": 2,
+  "cookTime": 0,
+  "servings": 1,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1 tbsp (10g) NaturesMud Organic Sweet Potato Powder (100g Jar)",
+    "3 to 4 tbsp warm boiled drinking water or expressed breast milk"
+  ],
+  "instructions": [
+    "In a sterilized infant feeding bowl, add 1 tablespoon of NaturesMud Sweet Potato Powder.",
+    "Gradually pour in warm boiled water or expressed breast milk while whisking with a clean baby spoon.",
+    "Continue stirring for 30 seconds until the puree is silky smooth, lump-free, and creamy.",
+    "Test the temperature on your wrist before feeding. Serve immediately."
+  ],
+  "tags": [
+    "baby food recipe",
+    "sweet potato puree for babies",
+    "weaning food nepal",
+    "infant first solids"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-chia-seed-pudding-master",
+  "slug": "chia-seed-pudding-recipe",
+  "title": "Creamy Chia Seed Pudding (With Dried Fruits & Dates Powder)",
+  "excerpt": "The ultimate 5-minute make-ahead breakfast pudding made with organic chia seeds, almond milk, dates powder, wild blueberries, and raw mountain almonds.",
+  "image": "/images/recipes/chia-seed-pudding-recipe.jpg",
+  "category": "Breakfast",
+  "prepTime": 5,
+  "cookTime": 0,
+  "servings": 2,
+  "difficulty": "Easy",
+  "ingredients": [
+    "4 tbsp (40g) NaturesMud Organic Black Chia Seeds",
+    "1 cup (240ml) almond milk, oat milk, or fresh dairy milk",
+    "1.5 tbsp NaturesMud Natural Dates Powder (or Raw Mountain Honey)",
+    "1/2 tsp vanilla extract",
+    "Pinch of NaturesMud Himalayan Pink Salt",
+    "2 tbsp NaturesMud Wild Dried Blueberries",
+    "2 tbsp chopped NaturesMud Sun-Dried Mango Slices",
+    "1 tbsp crushed NaturesMud Raw Himalayan Almonds & Pumpkin Seeds"
+  ],
+  "instructions": [
+    "In a mason jar or bowl, whisk milk, dates powder, vanilla extract, and a pinch of pink salt until dissolved.",
+    "Add NaturesMud chia seeds and whisk vigorously for 45 seconds to separate all seeds.",
+    "Let sit for 5 minutes, then whisk a second time to prevent seeds from sinking to the bottom.",
+    "Cover and refrigerate for 2 to 4 hours (or overnight) until thick, creamy, and spoonable.",
+    "Serve chilled, topped with wild blueberries, sun-dried mango, and crushed almonds."
+  ],
+  "tags": [
+    "chia seed pudding recipe",
+    "chia pudding",
+    "healthy breakfast",
+    "vegan pudding",
+    "dates powder recipes"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-chia-seed-pudding-master",
+  "slug": "chia-seed-pudding-recipe",
+  "title": "Creamy Chia Seed Pudding (With Dried Fruits & Dates Powder)",
+  "excerpt": "The ultimate 5-minute make-ahead breakfast pudding made with organic chia seeds, almond milk, dates powder, wild blueberries, and raw mountain almonds.",
+  "image": "/images/recipes/chia-seed-pudding-recipe.jpg",
+  "category": "Breakfast",
+  "prepTime": 5,
+  "cookTime": 0,
+  "servings": 2,
+  "difficulty": "Easy",
+  "ingredients": [
+    "4 tbsp (40g) NaturesMud Organic Black Chia Seeds",
+    "1 cup (240ml) almond milk, oat milk, or fresh dairy milk",
+    "1.5 tbsp NaturesMud Natural Dates Powder (or Raw Mountain Honey)",
+    "1/2 tsp vanilla extract",
+    "Pinch of NaturesMud Himalayan Pink Salt",
+    "2 tbsp NaturesMud Wild Dried Blueberries",
+    "2 tbsp chopped NaturesMud Sun-Dried Mango Slices",
+    "1 tbsp crushed NaturesMud Raw Himalayan Almonds & Pumpkin Seeds"
+  ],
+  "instructions": [
+    "In a mason jar or bowl, whisk milk, dates powder, vanilla extract, and a pinch of pink salt until dissolved.",
+    "Add NaturesMud chia seeds and whisk vigorously for 45 seconds to separate all seeds.",
+    "Let sit for 5 minutes, then whisk a second time to prevent seeds from sinking to the bottom.",
+    "Cover and refrigerate for 2 to 4 hours (or overnight) until thick, creamy, and spoonable.",
+    "Serve chilled, topped with wild blueberries, sun-dried mango, and crushed almonds."
+  ],
+  "tags": [
+    "chia seed pudding recipe",
+    "chia pudding",
+    "healthy breakfast",
+    "vegan pudding",
+    "dates powder recipes"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-sweetpotato-pancakes-powder",
+  "slug": "fluffy-sweet-potato-pancakes-powder-recipe",
+  "title": "Fluffy Sweet Potato Pancakes (Using Sweet Potato Powder)",
+  "excerpt": "Golden, fluffy 10-minute pancakes naturally sweetened with organic sweet potato powder and dates powder. 100% sugar-free breakfast for babies & families.",
+  "image": "/images/blog/himalayan-baby-nutrition-sweet-potato.jpg",
+  "category": "Breakfast",
+  "prepTime": 3,
+  "cookTime": 7,
+  "servings": 3,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1/3 cup NaturesMud Organic Sweet Potato Powder (100g Jar)",
+    "2/3 cup whole wheat flour or ground rolled oats",
+    "1 tbsp NaturesMud Natural Dates Powder",
+    "1 egg (or 1 chia egg: 1 tbsp chia + 3 tbsp water)",
+    "3/4 cup milk or almond milk",
+    "1 tbsp melted NaturesMud Cold-Pressed Virgin Coconut Oil",
+    "1 tsp baking powder & 1/2 tsp cinnamon"
+  ],
+  "instructions": [
+    "In a bowl, whisk sweet potato powder, whole wheat flour, baking powder, and cinnamon.",
+    "In another bowl, whisk egg, milk, melted coconut oil, and dates powder.",
+    "Combine wet and dry ingredients and let the batter rest for 3 minutes to hydrate.",
+    "Pour 1/4-cup scoops onto a medium-hot greased tawa and cook for 2 minutes per side until golden.",
+    "Serve warm with raw Himalayan honey and sliced mountain almonds."
+  ],
+  "tags": [
+    "sweet potato pancakes",
+    "sweet potato powder recipes",
+    "baby food",
+    "sugar free pancakes"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-beetroot-smoothie-stamina",
+  "slug": "high-nitrate-beetroot-smoothie-powder-recipe",
+  "title": "High-Nitrate Beetroot Stamina Smoothie (Using Beetroot Powder)",
+  "excerpt": "Boost running stamina, muscle blood flow, and skin radiance with concentrated dietary nitrates from pure Himalayan beetroot powder.",
+  "image": "/images/blog/himalayan-beetroot-nitric-oxide-stamina.jpg",
+  "category": "Fitness & Gym",
+  "prepTime": 3,
+  "cookTime": 0,
+  "servings": 1,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1 tsp (5g) NaturesMud Pure Himalayan Beetroot Powder",
+    "1 ripe banana (frozen)",
+    "2 tbsp NaturesMud Wild Dried Blueberries (rehydrated)",
+    "1 tbsp NaturesMud Premium Black Chia Seeds (soaked)",
+    "1 cup coconut water or almond milk",
+    "1 tbsp fresh lime juice"
+  ],
+  "instructions": [
+    "Add banana, softened wild blueberries, beetroot powder, soaked chia seeds, and coconut water to a blender.",
+    "Blend on high for 45 to 60 seconds until silky electric ruby-red.",
+    "Squeeze in fresh lime juice and pulse for 5 seconds.",
+    "Drink 30–45 minutes prior to gym training or trekking for sustained vascular oxygen flow."
+  ],
+  "tags": [
+    "beetroot smoothie",
+    "beetroot powder recipe",
+    "nitric oxide",
+    "pre workout drink"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-dates-caramel-smoothie",
+  "slug": "creamy-caramel-dates-powder-smoothie-recipe",
+  "title": "Creamy Caramel Dates Smoothie (Using Dates Powder)",
+  "excerpt": "A velvety, sugar-free caramel smoothie with whole dates powder, roasted cashews, and bananas for lasting afternoon energy.",
+  "image": "/products/dates-powder-100g.jpg",
+  "category": "Smoothies & Drinks",
+  "prepTime": 3,
+  "cookTime": 0,
+  "servings": 1,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1.5 tbsp NaturesMud Natural Dates Powder",
+    "1 frozen banana",
+    "1 cup chilled milk or oat milk",
+    "1 tbsp NaturesMud Roasted Cashewnuts or peanut butter",
+    "1 tbsp NaturesMud Black Chia Seeds",
+    "1/4 tsp ground cinnamon"
+  ],
+  "instructions": [
+    "Add frozen banana, dates powder, roasted cashews, chia seeds, and cinnamon to a blender.",
+    "Pour in cold milk and blend on high for 60 seconds until rich and creamy.",
+    "Pour into a chilled glass and top with crushed cashews and a dusting of dates powder."
+  ],
+  "tags": [
+    "dates smoothie",
+    "dates powder recipes",
+    "healthy smoothie",
+    "caramel smoothie"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-homemade-granola-superfood",
+  "slug": "homemade-superfood-granola-nuts-seeds-nepal",
+  "title": "Crunchy Homemade Granola With Nuts, Seeds & Dried Fruits",
+  "excerpt": "Crispy, cluster-rich, 100% sugar-free homemade granola baked with rolled oats, mountain almonds, pumpkin seeds, dates powder, and coconut oil.",
+  "image": "/images/combos/superfood-lineup.jpg",
+  "category": "Breakfast",
+  "prepTime": 5,
+  "cookTime": 20,
+  "servings": 8,
+  "difficulty": "Easy",
+  "ingredients": [
+    "3 cups rolled oats",
+    "1/2 cup NaturesMud Raw Himalayan Almonds (chopped)",
+    "1/2 cup NaturesMud Raw Walnuts (chopped)",
+    "1/2 cup NaturesMud Organic Pumpkin Seeds",
+    "1/4 cup NaturesMud Black Chia Seeds",
+    "1/3 cup NaturesMud Natural Dates Powder",
+    "1/3 cup NaturesMud Virgin Coconut Oil (melted)",
+    "1/4 cup NaturesMud Raw Mountain Honey",
+    "1/2 cup NaturesMud Sun-Dried Mango & Dried Blueberries"
+  ],
+  "instructions": [
+    "Toss oats, nuts, seeds, dates powder, cinnamon, and pink salt with melted coconut oil and honey.",
+    "Press firmly into an even compact layer on a baking sheet lined with parchment paper.",
+    "Bake at 160°C (320°F) for 20–22 minutes until golden-brown.",
+    "Let cool completely undisturbed for 45 minutes to form crunchy clusters.",
+    "Break into clusters, toss with dried mango and blueberries, and store in an airtight glass jar."
+  ],
+  "tags": [
+    "homemade granola recipe",
+    "healthy granola",
+    "granola nepal",
+    "clean breakfast cereal"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-energy-balls-dates-nuts",
+  "slug": "no-bake-healthy-energy-balls-dates-powder-recipe",
+  "title": "No-Bake Healthy Energy Balls (With Dates Powder & Nuts)",
+  "excerpt": "Delicious 10-minute no-bake energy balls made with dates powder, raw mountain nuts, chia seeds, and coconut oil. Sugar-free clean snack for office & workouts.",
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "category": "Healthy Snack",
+  "prepTime": 10,
+  "cookTime": 0,
+  "servings": 12,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1 cup rolled oats (pulsed into coarse flour)",
+    "1/2 cup NaturesMud Natural Dates Powder",
+    "1/4 cup NaturesMud Raw Mountain Almonds (crushed)",
+    "1/4 cup NaturesMud Roasted Cashewnuts (crushed)",
+    "2 tbsp NaturesMud Black Chia Seeds",
+    "2 tbsp NaturesMud Organic Pumpkin Seeds",
+    "2 tbsp NaturesMud Virgin Coconut Oil",
+    "2 tbsp warm water or raw honey to bind"
+  ],
+  "instructions": [
+    "In a bowl, mix rolled oat flour, dates powder, crushed nuts, chia seeds, and pumpkin seeds.",
+    "Add melted coconut oil and warm water. Knead by hand into a sticky dough.",
+    "Roll 1-tablespoon portions into firm bite-sized balls.",
+    "Chill in the refrigerator for 20 minutes to set. Store in an airtight glass jar for up to 3 weeks."
+  ],
+  "tags": [
+    "energy balls recipe",
+    "healthy energy balls",
+    "no bake energy bites",
+    "clean office snacks"
+  ],
+  "featured": true
+},
+  {
+  "id": "r-chia-overnight-oats-nepal",
+  "slug": "creamy-chia-seed-overnight-oats-recipe-nepal",
+  "title": "Creamy Chia Seed Overnight Oats (Easy 3-Minute Breakfast)",
+  "excerpt": "Make-ahead creamy chia overnight oats naturally sweetened with dates powder, curd, sliced mountain almonds, and sun-dried mango. Zero morning cooking.",
+  "image": "/images/recipes/oatmeal-bowl-daily-routine.jpg",
+  "category": "Breakfast",
+  "prepTime": 3,
+  "cookTime": 0,
+  "servings": 1,
+  "difficulty": "Easy",
+  "ingredients": [
+    "1/2 cup rolled oats",
+    "1 tbsp NaturesMud Premium Black Chia Seeds",
+    "1 tbsp NaturesMud Natural Dates Powder",
+    "2/3 cup milk or almond milk",
+    "2 tbsp fresh curd (dahi)",
+    "1 tbsp sliced NaturesMud Raw Almonds",
+    "1 tbsp chopped NaturesMud Sun-Dried Mango Slices"
+  ],
+  "instructions": [
+    "In a 300ml glass jar, combine oats, chia seeds, dates powder, cinnamon, milk, and curd.",
+    "Whisk vigorously with a fork for 30 seconds until completely mixed.",
+    "Seal the jar and refrigerate overnight (at least 6 hours).",
+    "In the morning, top with sliced almonds, sun-dried mango, and blueberries. Enjoy chilled!"
+  ],
+  "tags": [
+    "overnight oats with chia seeds",
+    "chia overnight oats",
+    "healthy breakfast prep",
+    "sugar free overnight oats"
+  ],
+  "featured": true
+},
+  {
     id: 'r-sweetpotato-porridge-100g',
     slug: '5-minute-sweet-potato-dates-baby-porridge-100g',
     title: '5-Minute Organic Sweet Potato & Dates Weaning Porridge for Infants (6M+)',
@@ -13,16 +355,16 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "2 tbsp Nature's Mud Organic Sweet Potato Powder (100g Jar)",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
+      "2 tbsp NaturesMud Organic Sweet Potato Powder (100g Jar)",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener (100g Jar)",
       '1/2 cup warm boiled water or breastmilk / formula',
       '1 pinch ground cardamom (optional)',
       '1/2 tsp cow ghee (optional for 8M+)',
     ],
     instructions: [
-      "In a clean bowl or small saucepan, whisk 2 tbsp of Nature's Mud Sweet Potato Powder into 1/2 cup of lukewarm water or milk until perfectly smooth.",
+      "In a clean bowl or small saucepan, whisk 2 tbsp of NaturesMud Sweet Potato Powder into 1/2 cup of lukewarm water or milk until perfectly smooth.",
       'Warm gently on low flame for 2–3 minutes while stirring continuously until it achieves a silky, creamy consistency.',
-      "Turn off the heat and stir in 1 tsp of Nature's Mud Dates Powder for natural, gentle caramel sweetness.",
+      "Turn off the heat and stir in 1 tsp of NaturesMud Dates Powder for natural, gentle caramel sweetness.",
       'Allow to cool to lukewarm feeding temperature before serving your baby.',
     ],
     tags: ['baby food', 'sweet potato powder', 'dates powder', 'weaning', 'sugar-free baby'],
@@ -40,14 +382,14 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "1 tsp (5g) Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey",
+      "1 tsp (5g) NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1 tsp NaturesMud Mustang Raw Wild Honey",
       '250ml chilled coconut water or pure spring water',
       '1 tbsp fresh lemon juice',
       '1 pinch Himalayan Pink Rock Salt',
     ],
     instructions: [
-      "In a shaker bottle, combine Nature's Mud Beetroot Powder with chilled coconut water or spring water.",
+      "In a shaker bottle, combine NaturesMud Beetroot Powder with chilled coconut water or spring water.",
       'Add freshly squeezed lemon juice, Mustang raw honey, and a pinch of pink rock salt for cellular electrolyte balance.',
       'Shake vigorously for 15 seconds until completely blended into a vibrant crimson elixir.',
       'Consume 30–45 minutes prior to gym training, running, or mountain trekking for sustained vascular pump.',
@@ -67,16 +409,16 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "1/4 cup Nature's Mud Wild Dried Himalayan Blueberries (100g Jar)",
-      "1 tbsp Nature's Mud Organic Black Chia Seeds",
+      "1/4 cup NaturesMud Wild Dried Himalayan Blueberries (100g Jar)",
+      "1 tbsp NaturesMud Organic Black Chia Seeds",
       "1/2 cup rolled oats",
       '1 cup almond milk or dairy milk',
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
-      "1 tbsp crushed Nature's Mud Himalayan Walnut Halves",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
+      "1 tbsp crushed NaturesMud Himalayan Walnut Halves",
     ],
     instructions: [
       'In a wide-mouth glass jar, mix rolled oats, chia seeds, Dates Powder, and milk.',
-      "Fold in half of the Nature's Mud Wild Dried Blueberries so they slowly rehydrate and infuse their rich purple juices overnight.",
+      "Fold in half of the NaturesMud Wild Dried Blueberries so they slowly rehydrate and infuse their rich purple juices overnight.",
       'Seal the jar and refrigerate for 4 hours or overnight.',
       'Before serving, top with remaining wild blueberries and crunchy crushed walnuts.',
     ],
@@ -97,9 +439,9 @@ export const recipes: Recipe[] = [
     ingredients: [
       '2 cups foxnut makhana (lightly roasted in cow ghee)',
       '1 liter full-cream organic milk',
-      "4 tbsp Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (sliced)",
-      "2 tbsp Nature's Mud Raw Himalayan Walnut Halves (crushed)",
+      "4 tbsp NaturesMud Natural Dates Powder Sweetener (100g Jar)",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (sliced)",
+      "2 tbsp NaturesMud Raw Himalayan Walnut Halves (crushed)",
       '4 pods green cardamom (crushed)',
       'Pinch of pure saffron strands',
     ],
@@ -107,7 +449,7 @@ export const recipes: Recipe[] = [
       'Coarsely crush half of the roasted makhana while leaving the other half whole for texture.',
       'In a heavy-bottom pot, bring 1 liter of milk to a gentle boil with crushed cardamom and saffron.',
       'Add the makhana and simmer on low heat for 10–12 minutes until the milk thickens into creamy rabri texture.',
-      "Stir in 4 tablespoons of Nature's Mud Dates Powder and mix for 1 minute before removing from heat (zero white sugar needed).",
+      "Stir in 4 tablespoons of NaturesMud Dates Powder and mix for 1 minute before removing from heat (zero white sugar needed).",
       'Garnish generously with sliced roasted almonds and walnuts. Serve warm or chilled.',
     ],
     tags: ['dessert', 'kheer', 'dates powder', 'sugar free', 'festive'],
@@ -118,19 +460,19 @@ export const recipes: Recipe[] = [
     slug: 'himalayan-superfood-breakfast-bowl',
     title: 'Himalayan Superfood Breakfast Bowl with Chia Seeds & Wild Honey',
     excerpt: 'Start your morning with this nutrient-dense breakfast bowl featuring black chia seeds, wild Mustang honey, crushed walnuts, and antioxidant berries.',
-    image: 'https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?w=800&q=80',
+    image: '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg',
     category: 'Breakfast',
     prepTime: 10,
     cookTime: 0,
     servings: 2,
     difficulty: 'Easy',
     ingredients: [
-      "1/2 cup Nature's Mud Organic Black Chia Seeds",
+      "1/2 cup NaturesMud Organic Black Chia Seeds",
       '2 cups unsweetened almond milk or fresh dairy milk',
-      "1 tbsp Nature's Mud Mustang Raw Honey",
-      "1/4 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
-      "1/4 cup Nature's Mud Himalayan Walnut Halves (crushed)",
-      "1/4 cup Nature's Mud Wild Dried Blueberries",
+      "1 tbsp NaturesMud Mustang Raw Honey",
+      "1/4 cup NaturesMud Roasted Himalayan Almonds (chopped)",
+      "1/4 cup NaturesMud Himalayan Walnut Halves (crushed)",
+      "1/4 cup NaturesMud Wild Dried Blueberries",
       '1 tsp pure vanilla extract',
     ],
     instructions: [
@@ -148,20 +490,20 @@ export const recipes: Recipe[] = [
     slug: 'moringa-green-smoothie',
     title: 'Energizing Moringa & Spinach Green Smoothie with Raw Honey',
     excerpt: 'A revitalizing morning green smoothie packed with organic moringa leaf powder, ripe banana, and chia seeds for steady energy.',
-    image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=800&q=80',
+    image: '/images/blog/himalayan-beetroot-nitric-oxide-stamina.jpg',
     category: 'Smoothies',
     prepTime: 5,
     cookTime: 0,
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "1 tsp Nature's Mud Organic Moringa Leaf Powder",
+      "1 tsp NaturesMud Organic Moringa Leaf Powder",
       '1 ripe banana',
       '1 cup fresh baby spinach',
       '1/2 cup plain probiotic curd or Greek yogurt',
       '1/2 cup pure coconut water or spring water',
-      "1 tbsp Nature's Mud Organic Black Chia Seeds",
-      "1 tsp Nature's Mud Mustang Raw Honey",
+      "1 tbsp NaturesMud Organic Black Chia Seeds",
+      "1 tsp NaturesMud Mustang Raw Honey",
     ],
     instructions: [
       'Add spinach, banana, moringa powder, chia seeds, yogurt, and coconut water into a high-speed blender.',
@@ -177,15 +519,15 @@ export const recipes: Recipe[] = [
     slug: 'sweet-potato-dates-baby-weaning-porridge',
     title: 'Organic Sweet Potato & Dates Weaning Porridge for Infants (6M+)',
     excerpt: 'A gentle, naturally sweet first solid food packed with beta-carotene, dietary fiber, and natural non-heme iron for growing babies.',
-    image: 'https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=800&q=80',
+    image: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
     category: 'Baby Food',
     prepTime: 3,
     cookTime: 5,
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "2 tbsp Nature's Mud Organic Sweet Potato Powder",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Organic Sweet Potato Powder",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       '1/2 cup warm boiled water or breastmilk / formula',
       '1 pinch ground cardamom (optional)',
       '1/2 tsp cow ghee (optional for 8M+)',
@@ -204,19 +546,19 @@ export const recipes: Recipe[] = [
     slug: 'pre-workout-beetroot-sweet-potato-pump-shake',
     title: 'Pre-Workout Sweet Potato & Beetroot Nitric Oxide Power Shake',
     excerpt: 'Fuel intense workouts with sustained complex carbohydrates and dietary nitrates for muscular blood flow and endurance.',
-    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&q=80',
+    image: '/products/superfood-mix.jpg',
     category: 'Fitness & Pre-Workout',
     prepTime: 4,
     cookTime: 0,
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "2 tbsp Nature's Mud Organic Sweet Potato Powder",
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder",
+      "2 tbsp NaturesMud Organic Sweet Potato Powder",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder",
       '1 scoop vanilla or unflavored plant protein (or 1 cup milk)',
       '1 cup chilled water or almond milk',
       '1/2 frozen banana',
-      "1 tbsp Nature's Mud Natural Dates Powder",
+      "1 tbsp NaturesMud Natural Dates Powder",
     ],
     instructions: [
       'Place all ingredients in a blender or shaker bottle with a wire whisk ball.',
@@ -231,19 +573,19 @@ export const recipes: Recipe[] = [
     slug: 'raw-honey-roasted-almond-energy-bites',
     title: 'Raw Mustang Honey & Roasted Almond No-Bake Energy Bites',
     excerpt: 'Portable, protein-rich energy balls made with dry roasted almonds, crushed walnuts, pumpkin seeds, and raw honey.',
-    image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=800&q=80',
+    image: '/images/blog/himalayan-shilajit-ayurveda-biohacking.jpg',
     category: 'Snacks & Bites',
     prepTime: 15,
     cookTime: 0,
     servings: 12,
     difficulty: 'Easy',
     ingredients: [
-      "1 cup Nature's Mud Roasted Himalayan Almonds (finely crushed)",
-      "1/2 cup Nature's Mud Himalayan Walnut Halves (crushed)",
-      "1/4 cup Nature's Mud Raw Pumpkin Seeds",
-      "3 tbsp Nature's Mud Mustang Raw Honey",
-      "2 tbsp Nature's Mud Natural Dates Powder",
-      "1 tbsp Nature's Mud Virgin Coconut Oil (melted)",
+      "1 cup NaturesMud Roasted Himalayan Almonds (finely crushed)",
+      "1/2 cup NaturesMud Himalayan Walnut Halves (crushed)",
+      "1/4 cup NaturesMud Raw Pumpkin Seeds",
+      "3 tbsp NaturesMud Mustang Raw Honey",
+      "2 tbsp NaturesMud Natural Dates Powder",
+      "1 tbsp NaturesMud Virgin Coconut Oil (melted)",
       '1 pinch Himalayan Pink Rock Salt',
     ],
     instructions: [
@@ -260,18 +602,18 @@ export const recipes: Recipe[] = [
     slug: 'sun-dried-mango-coconut-chia-parfait',
     title: 'Sun-Dried Mango & Coconut Chia Seed Overnight Parfait',
     excerpt: 'Layered tropical perfection with sun-dried mango compote, coconut chia pudding, and roasted almond crumbles.',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80',
+    image: '/images/recipes/beetroot-smoothie-bowl.jpg',
     category: 'Desserts & Breakfast',
     prepTime: 10,
     cookTime: 0,
     servings: 2,
     difficulty: 'Easy',
     ingredients: [
-      "1/2 cup Nature's Mud Sun-Dried Himalayan Mango (chopped & soaked)",
-      "1/3 cup Nature's Mud Organic Black Chia Seeds",
+      "1/2 cup NaturesMud Sun-Dried Himalayan Mango (chopped & soaked)",
+      "1/3 cup NaturesMud Organic Black Chia Seeds",
       '1.5 cups coconut milk',
-      "2 tbsp Nature's Mud Mustang Raw Honey",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (slivered)",
+      "2 tbsp NaturesMud Mustang Raw Honey",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (slivered)",
     ],
     instructions: [
       'Soak chopped sun-dried mango in 1/4 cup warm water for 15 minutes to rehydrate slightly, then pulse in blender to form a coarse compote.',
@@ -287,7 +629,7 @@ export const recipes: Recipe[] = [
     slug: 'ayurvedic-golden-turmeric-raw-honey-elixir',
     title: 'Ayurvedic Golden Turmeric & Raw Honey Elixir with Pink Rock Salt',
     excerpt: 'Traditional Himalayan immunity tea for soothing sore throats, boosting lymphatic drainage, and restful evening calm.',
-    image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=800&q=80',
+    image: '/products/raw-honey.jpg',
     category: 'Ayurvedic Drinks',
     prepTime: 5,
     cookTime: 3,
@@ -297,9 +639,9 @@ export const recipes: Recipe[] = [
       '1 cup warm whole milk or oat milk',
       '1/2 tsp organic turmeric powder',
       '1 pinch freshly ground black pepper',
-      "1 pinch Nature's Mud Himalayan Pink Rock Salt",
-      "1 tsp Nature's Mud Mustang Raw Honey (added after cooling slightly)",
-      "1/2 tsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
+      "1 pinch NaturesMud Himalayan Pink Rock Salt",
+      "1 tsp NaturesMud Mustang Raw Honey (added after cooling slightly)",
+      "1/2 tsp NaturesMud Cold-Pressed Virgin Coconut Oil",
     ],
     instructions: [
       'Simmer milk with turmeric, black pepper, pink salt, and coconut oil for 2 minutes.',
@@ -314,7 +656,7 @@ export const recipes: Recipe[] = [
     slug: 'brain-boosting-walnut-wild-blueberry-oatmeal',
     title: 'Brain-Boosting Walnut & Wild Blueberry Superfood Oatmeal',
     excerpt: 'Warm morning rolled oats topped with high-altitude wild blueberries, omega-3 walnut halves, and natural dates sweetener.',
-    image: 'https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?w=800&q=80',
+    image: '/products/pumpkin-seeds.jpg',
     category: 'Breakfast',
     prepTime: 5,
     cookTime: 6,
@@ -323,9 +665,9 @@ export const recipes: Recipe[] = [
     ingredients: [
       '1/2 cup rolled oats',
       '1 cup water or milk',
-      "2 tbsp Nature's Mud Wild Dried Blueberries",
-      "1/4 cup Nature's Mud Himalayan Walnut Halves",
-      "1 tbsp Nature's Mud Natural Dates Powder",
+      "2 tbsp NaturesMud Wild Dried Blueberries",
+      "1/4 cup NaturesMud Himalayan Walnut Halves",
+      "1 tbsp NaturesMud Natural Dates Powder",
       '1/2 tsp ground cinnamon',
     ],
     instructions: [
@@ -341,7 +683,7 @@ export const recipes: Recipe[] = [
     slug: 'roasted-pumpkin-sunflower-seed-trail-salad',
     title: 'Crispy Roasted Pumpkin & Sunflower Seed Garden Trail Salad',
     excerpt: 'Toss organic mixed greens with crunchy pepitas, sunflower seeds, sliced dehydrated apples, and cold-pressed mustard oil dressing.',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80',
+    image: '/products/authentic-dehydrated-mango.jpg',
     category: 'Salads',
     prepTime: 10,
     cookTime: 0,
@@ -349,13 +691,13 @@ export const recipes: Recipe[] = [
     difficulty: 'Easy',
     ingredients: [
       '4 cups fresh organic salad greens (spinach, lettuce, arugula)',
-      "2 tbsp Nature's Mud Raw Pumpkin Seeds (lightly toasted)",
-      "2 tbsp Nature's Mud Organic Sunflower Seeds",
-      "1/4 cup Nature's Mud Dehydrated Apple Slices (chopped)",
-      "1 tbsp Nature's Mud Mustang Raw Honey",
+      "2 tbsp NaturesMud Raw Pumpkin Seeds (lightly toasted)",
+      "2 tbsp NaturesMud Organic Sunflower Seeds",
+      "1/4 cup NaturesMud Dehydrated Apple Slices (chopped)",
+      "1 tbsp NaturesMud Mustang Raw Honey",
       '1 tbsp lemon juice',
       '1 tbsp cold-pressed olive or mustard oil',
-      "1 pinch Nature's Mud Himalayan Pink Rock Salt",
+      "1 pinch NaturesMud Himalayan Pink Rock Salt",
     ],
     instructions: [
       'Whisk lemon juice, raw honey, oil, and pink salt in a small jar to make the dressing.',
@@ -371,18 +713,18 @@ export const recipes: Recipe[] = [
     slug: 'dehydrated-papaya-digestive-fruit-salad',
     title: 'Dehydrated Sweet Papaya Digestive Bowl with Fresh Lime & Mint',
     excerpt: 'An invigorating post-meal digestive fruit cup loaded with natural papain enzyme to soothe stomach fullness.',
-    image: 'https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=800&q=80',
+    image: '/images/blog/healthy-rakshabandhan-superfood-rangoli.jpg',
     category: 'Digestive Snacks',
     prepTime: 5,
     cookTime: 0,
     servings: 2,
     difficulty: 'Easy',
     ingredients: [
-      "1/2 cup Nature's Mud Dehydrated Sweet Papaya (cut into bite-sized pieces)",
+      "1/2 cup NaturesMud Dehydrated Sweet Papaya (cut into bite-sized pieces)",
       '1 cup diced fresh seasonal fruits (orange, pomegranate, kiwi)',
       '1 tbsp fresh lime juice',
       '6 fresh mint leaves (finely torn)',
-      "1 pinch Nature's Mud Himalayan Pink Rock Salt",
+      "1 pinch NaturesMud Himalayan Pink Rock Salt",
     ],
     instructions: [
       'In a bowl, toss diced fresh fruits with dehydrated sweet papaya pieces.',
@@ -397,19 +739,19 @@ export const recipes: Recipe[] = [
     slug: 'sweet-potato-dates-fluffy-banana-pancakes',
     title: 'Gluten-Free Sweet Potato & Dates Powder Fluffy Banana Pancakes',
     excerpt: 'Naturally sweetened, flourless breakfast pancakes made with sweet potato powder, ripe bananas, and dates sweetener.',
-    image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=800&q=80',
+    image: '/images/blog/himalayan-baby-nutrition-sweet-potato.jpg',
     category: 'Breakfast',
     prepTime: 5,
     cookTime: 8,
     servings: 2,
     difficulty: 'Easy',
     ingredients: [
-      "1/3 cup Nature's Mud Organic Sweet Potato Powder",
-      "2 tbsp Nature's Mud Natural Dates Powder",
+      "1/3 cup NaturesMud Organic Sweet Potato Powder",
+      "2 tbsp NaturesMud Natural Dates Powder",
       '1 large ripe banana (mashed)',
       '2 free-range eggs (or 1/4 cup chia gel for eggless)',
       '1/2 tsp baking powder',
-      "1 tbsp Nature's Mud Virgin Coconut Oil for cooking",
+      "1 tbsp NaturesMud Virgin Coconut Oil for cooking",
     ],
     instructions: [
       'In a bowl, mash banana until smooth. Whisk in eggs (or chia gel).',
@@ -426,17 +768,17 @@ export const recipes: Recipe[] = [
     slug: 'himalayan-barley-grass-morning-detox-water',
     title: 'Himalayan Barley Grass Detox Morning Green Water',
     excerpt: 'An alkalizing morning tonic to awaken metabolism, cleanse the digestive tract, and provide living green chlorophyll.',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80',
+    image: '/images/recipes/oatmeal-bowl-daily-routine.jpg',
     category: 'Detox Drinks',
     prepTime: 2,
     cookTime: 0,
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "1 tsp Nature's Mud Organic Barley Grass Powder",
+      "1 tsp NaturesMud Organic Barley Grass Powder",
       '1 glass lukewarm or room temperature water (250ml)',
       '1/2 freshly squeezed lemon',
-      "1 tsp Nature's Mud Mustang Raw Honey (optional)",
+      "1 tsp NaturesMud Mustang Raw Honey (optional)",
     ],
     instructions: [
       'Add Barley Grass Powder to an empty dry glass.',
@@ -452,7 +794,7 @@ export const recipes: Recipe[] = [
     slug: 'virgin-coconut-oil-superfood-granola-bark',
     title: 'Cold-Pressed Virgin Coconut Oil Granola Bark with Himalayan Nuts',
     excerpt: 'Crunchy homemade granola bark bound together with cold-pressed virgin coconut oil, raw honey, and whole mountain nuts.',
-    image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?w=800&q=80',
+    image: '/products/almonds-2.jpg',
     category: 'Snacks & Baking',
     prepTime: 10,
     cookTime: 20,
@@ -460,12 +802,12 @@ export const recipes: Recipe[] = [
     difficulty: 'Medium',
     ingredients: [
       '2 cups rolled oats',
-      "1/2 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
-      "1/2 cup Nature's Mud Himalayan Walnut Halves (chopped)",
-      "1/4 cup Nature's Mud Raw Pumpkin Seeds",
-      "1/3 cup Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
-      "1/3 cup Nature's Mud Mustang Raw Honey",
-      "1 pinch Nature's Mud Himalayan Pink Rock Salt",
+      "1/2 cup NaturesMud Roasted Himalayan Almonds (chopped)",
+      "1/2 cup NaturesMud Himalayan Walnut Halves (chopped)",
+      "1/4 cup NaturesMud Raw Pumpkin Seeds",
+      "1/3 cup NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
+      "1/3 cup NaturesMud Mustang Raw Honey",
+      "1 pinch NaturesMud Himalayan Pink Rock Salt",
     ],
     instructions: [
       'Preheat oven to 160°C (320°F) and line a baking tray with parchment paper.',
@@ -482,20 +824,20 @@ export const recipes: Recipe[] = [
     slug: 'himalayan-beetroot-berry-radiance-bowl',
     title: 'Himalayan Beetroot & Berry Radiance Smoothie Bowl',
     excerpt: 'A thick, antioxidant-loaded smoothie bowl loaded with beetroot powder, frozen berries, and topped with crunchy seeds.',
-    image: 'https://images.unsplash.com/photo-1585672840462-85e839e38dc0?w=800&q=80',
+    image: '/products/walnuts.jpg',
     category: 'Smoothie Bowls',
     prepTime: 8,
     cookTime: 0,
     servings: 1,
     difficulty: 'Easy',
     ingredients: [
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder",
       '1 cup frozen mixed berries or banana',
       '1/2 cup Greek yogurt or almond milk',
-      "1 tbsp Nature's Mud Organic Black Chia Seeds",
-      "1 tbsp Nature's Mud Raw Pumpkin Seeds (for topping)",
-      "1 tbsp Nature's Mud Wild Dried Blueberries (for topping)",
-      "1 tsp Nature's Mud Mustang Raw Honey",
+      "1 tbsp NaturesMud Organic Black Chia Seeds",
+      "1 tbsp NaturesMud Raw Pumpkin Seeds (for topping)",
+      "1 tbsp NaturesMud Wild Dried Blueberries (for topping)",
+      "1 tsp NaturesMud Mustang Raw Honey",
     ],
     instructions: [
       'Blend frozen berries, yogurt, beetroot powder, honey, and chia seeds on low speed until thick and scoopable.',
@@ -510,7 +852,7 @@ export const recipes: Recipe[] = [
     slug: 'dehydrated-apple-cinnamon-warm-quinoa-porridge',
     title: 'Dehydrated Apple & Cinnamon Warm Quinoa Porridge',
     excerpt: 'A warm, protein-packed breakfast made with mountain quinoa, dehydrated crisp apple slices, and ground cinnamon.',
-    image: 'https://images.unsplash.com/photo-1505253758473-96b3015f27eb?w=800&q=80',
+    image: '/products/chia-seeds.jpg',
     category: 'Breakfast',
     prepTime: 5,
     cookTime: 12,
@@ -519,10 +861,10 @@ export const recipes: Recipe[] = [
     ingredients: [
       '1/2 cup rinsed quinoa (or steel cut oats)',
       '1.5 cups milk or water',
-      "1/2 cup Nature's Mud Dehydrated Apple Slices (chopped)",
-      "1 tbsp Nature's Mud Natural Dates Powder",
+      "1/2 cup NaturesMud Dehydrated Apple Slices (chopped)",
+      "1 tbsp NaturesMud Natural Dates Powder",
       '1/2 tsp ground cinnamon',
-      "2 tbsp Nature's Mud Himalayan Walnut Halves (crushed)",
+      "2 tbsp NaturesMud Himalayan Walnut Halves (crushed)",
     ],
     instructions: [
       'Simmer quinoa and chopped dehydrated apples in milk for 12 minutes until soft and creamy.',
@@ -537,18 +879,18 @@ export const recipes: Recipe[] = [
     slug: 'traditional-sutkeri-himalayan-nut-laddu',
     title: 'Traditional Postpartum (Sutkeri) Nut Powder & Raw Honey Laddu',
     excerpt: 'Nutrient-rich lactation and recovery laddus made with roasted almonds, walnuts, flax seeds, dates powder, and raw honey.',
-    image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80',
+    image: '/images/recipes/sweet-potato-stirred-smoothie.jpg',
     category: 'Mothercare & Ayurvedic Sweets',
     prepTime: 20,
     cookTime: 5,
     servings: 15,
     difficulty: 'Medium',
     ingredients: [
-      "1 cup Nature's Mud Roasted Himalayan Almonds (powdered)",
-      "1 cup Nature's Mud Himalayan Walnut Halves (powdered)",
-      "1/2 cup Nature's Mud Organic Golden Flax Seeds (lightly toasted & milled)",
-      "1/2 cup Nature's Mud Natural Dates Powder",
-      "4 tbsp Nature's Mud Mustang Raw Honey",
+      "1 cup NaturesMud Roasted Himalayan Almonds (powdered)",
+      "1 cup NaturesMud Himalayan Walnut Halves (powdered)",
+      "1/2 cup NaturesMud Organic Golden Flax Seeds (lightly toasted & milled)",
+      "1/2 cup NaturesMud Natural Dates Powder",
+      "4 tbsp NaturesMud Mustang Raw Honey",
       '3 tbsp pure cow ghee',
       '1/2 tsp ground nutmeg & cardamom',
     ],
@@ -567,18 +909,18 @@ export const recipes: Recipe[] = [
     slug: 'flaxseed-chia-omega-mountain-crackers',
     title: 'Flaxseed & Chia Omega Mountain Crackers with Pink Rock Salt',
     excerpt: 'Crispy 2-ingredient keto and diabetic-friendly baked seed crackers with Himalayan pink salt.',
-    image: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?w=800&q=80',
+    image: '/products/dates-powder-100g.jpg',
     category: 'Healthy Snacks',
     prepTime: 10,
     cookTime: 30,
     servings: 4,
     difficulty: 'Easy',
     ingredients: [
-      "1/2 cup Nature's Mud Organic Golden Flax Seeds",
-      "1/2 cup Nature's Mud Organic Black Chia Seeds",
-      "1/4 cup Nature's Mud Organic Sunflower Seeds",
+      "1/2 cup NaturesMud Organic Golden Flax Seeds",
+      "1/2 cup NaturesMud Organic Black Chia Seeds",
+      "1/4 cup NaturesMud Organic Sunflower Seeds",
       '3/4 cup water',
-      "1/2 tsp Nature's Mud Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Himalayan Pink Rock Salt",
       '1/2 tsp dried oregano or rosemary',
     ],
     instructions: [
@@ -595,7 +937,7 @@ export const recipes: Recipe[] = [
     slug: 'natural-dates-powder-himalayan-masala-chai',
     title: 'Natural Dates Powder Himalayan Masala Chai (100% Sugar-Free)',
     excerpt: 'Brew rich, aromatic Nepali milk tea sweetened exclusively with unrefined mineral-rich dates powder.',
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=800&q=80',
+    image: '/products/shilajit.jpg',
     category: 'Beverages & Teas',
     prepTime: 2,
     cookTime: 5,
@@ -608,7 +950,7 @@ export const recipes: Recipe[] = [
       '1 inch fresh ginger (crushed)',
       '2 green cardamoms (cracked)',
       '1 small cinnamon stick',
-      "2 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tsp NaturesMud Natural Dates Powder Sweetener",
     ],
     instructions: [
       'Boil water with crushed ginger, cardamom, and cinnamon for 2 minutes.',
@@ -624,18 +966,18 @@ export const recipes: Recipe[] = [
     slug: 'anti-inflammatory-pineapple-ginger-recovery-tea',
     title: 'Anti-Inflammatory Dehydrated Pineapple & Ginger Recovery Infusion',
     excerpt: 'A soothing post-workout or joint recovery tonic packed with natural bromelain and gingerol.',
-    image: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=800&q=80',
+    image: '/products/authentic-dehydrated-mango.jpg',
     category: 'Herbal Teas',
     prepTime: 3,
     cookTime: 5,
     servings: 2,
     difficulty: 'Easy',
     ingredients: [
-      "1/4 cup Nature's Mud Dehydrated Himalayan Pineapple (sliced)",
+      "1/4 cup NaturesMud Dehydrated Himalayan Pineapple (sliced)",
       '2 cups water',
       '1 inch fresh sliced ginger',
       '1 sprig fresh mint',
-      "1 tsp Nature's Mud Mustang Raw Honey (stirred in before serving)",
+      "1 tsp NaturesMud Mustang Raw Honey (stirred in before serving)",
     ],
     instructions: [
       'Bring water, ginger slices, and dehydrated pineapple to a gentle simmer in a teapot for 5 minutes.',
@@ -657,13 +999,13 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tbsp Nature's Mud Organic Sweet Potato Powder (100g Jar)",
-      "1 tsp Nature's Mud Organic Carrot Powder (100g Jar)",
+      "1 tbsp NaturesMud Organic Sweet Potato Powder (100g Jar)",
+      "1 tsp NaturesMud Organic Carrot Powder (100g Jar)",
       "1/2 cup warm boiled water or expressed breastmilk / infant formula",
       "1 drop pure cow ghee or virgin coconut oil (optional for 8M+)"
     ],
     instructions: [
-      "In a clean feeding bowl, whisk Nature's Mud Sweet Potato Powder and Carrot Powder into 1/2 cup of lukewarm boiled water or milk.",
+      "In a clean feeding bowl, whisk NaturesMud Sweet Potato Powder and Carrot Powder into 1/2 cup of lukewarm boiled water or milk.",
       "Stir gently on low heat for 2 minutes until it transforms into a silky, lump-free golden-orange puree.",
       "Add one drop of ghee or virgin coconut oil to enhance fat-soluble Vitamin A absorption.",
       "Allow to cool to lukewarm feeding temperature. Test on your wrist before feeding."
@@ -675,7 +1017,7 @@ export const recipes: Recipe[] = [
     id: "r-baby-dates-ragi-sheera",
     slug: "baby-iron-rich-ragi-dates-powder-sheera",
     title: "Himalayan Ragi & Dates Powder Iron-Rich Baby Sheera (7M+)",
-    excerpt: "Traditional finger millet (kodo/ragi) cooked into a creamy sheera sweetened exclusively with non-heme iron and potassium from Nature's Mud Dates Powder.",
+    excerpt: "Traditional finger millet (kodo/ragi) cooked into a creamy sheera sweetened exclusively with non-heme iron and potassium from NaturesMud Dates Powder.",
     image: "/products/dates-powder-health-poster.jpg",
     category: "Baby Food",
     prepTime: 3,
@@ -684,7 +1026,7 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 tbsp organic sprouted Ragi (Finger Millet) flour",
-      "1.5 tsp Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
+      "1.5 tsp NaturesMud Natural Dates Powder Sweetener (100g Jar)",
       "3/4 cup water or whole milk",
       "1/2 tsp pure cow ghee",
       "1 pinch green cardamom powder"
@@ -692,7 +1034,7 @@ export const recipes: Recipe[] = [
     instructions: [
       "Roast ragi flour in cow ghee in a small pan over low flame for 2 minutes until fragrant.",
       "Slowly pour in water/milk while whisking briskly to prevent lumps from forming.",
-      "Simmer for 3 minutes until thick and glossy. Stir in Nature's Mud Dates Powder and cardamom.",
+      "Simmer for 3 minutes until thick and glossy. Stir in NaturesMud Dates Powder and cardamom.",
       "Turn off the flame and let it cool. Serves as a filling, high-iron morning meal for infants."
     ],
     tags: ["baby food","dates powder","ragi sheera","iron rich baby","natural sweetener"],
@@ -710,9 +1052,9 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Dehydrated Himalayan Apple Rings (rehydrated in warm water) or 1 fresh apple",
-      "1 tsp Nature's Mud Premium Black Chia Seeds (pre-soaked in 3 tbsp warm water for 15 mins)",
-      "1/2 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Dehydrated Himalayan Apple Rings (rehydrated in warm water) or 1 fresh apple",
+      "1 tsp NaturesMud Premium Black Chia Seeds (pre-soaked in 3 tbsp warm water for 15 mins)",
+      "1/2 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 pinch cinnamon powder"
     ],
     instructions: [
@@ -737,14 +1079,14 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 tbsp organic ground baby rice cereal or oats",
-      "1/2 tsp Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1/2 tsp NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1/2 cup warm water or baby milk",
       "1/2 tsp unsalted butter or ghee"
     ],
     instructions: [
       "Whisk rice cereal into warm water in a small pan over low heat for 3 minutes until smooth.",
-      "Stir in 1/2 tsp Nature's Mud Beetroot Powder and 1 tsp Dates Powder until an attractive ruby-pink hue is achieved.",
+      "Stir in 1/2 tsp NaturesMud Beetroot Powder and 1 tsp Dates Powder until an attractive ruby-pink hue is achieved.",
       "Enrich with ghee, remove from heat, and cool before serving."
     ],
     tags: ["baby food","beetroot powder","dates powder","pink porridge","infant iron"],
@@ -764,8 +1106,8 @@ export const recipes: Recipe[] = [
     ingredients: [
       "2 tbsp organic yellow moong dal",
       "2 tbsp aged Nepali rice",
-      "1 tsp Nature's Mud Organic Himalayan Pumpkin Seeds (finely ground into baby meal)",
-      "1/2 tsp Nature's Mud Organic Carrot Powder",
+      "1 tsp NaturesMud Organic Himalayan Pumpkin Seeds (finely ground into baby meal)",
+      "1/2 tsp NaturesMud Organic Carrot Powder",
       "1.5 cups water",
       "1/2 tsp pure cow ghee",
       "1 pinch roasted cumin powder"
@@ -793,8 +1135,8 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1 ripe banana (mashed)",
       "1/2 cup rolled oat flour",
-      "1.5 tbsp Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
-      "1 tbsp Nature's Mud Organic Sweet Potato Powder",
+      "1.5 tbsp NaturesMud Natural Dates Powder Sweetener (100g Jar)",
+      "1 tbsp NaturesMud Organic Sweet Potato Powder",
       "1/3 cup coconut milk or formula",
       "1/2 tsp virgin coconut oil (for pan greasing)"
     ],
@@ -819,15 +1161,15 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "3 tbsp Nature's Mud Organic Sweet Potato Powder",
-      "2 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "1 tsp Nature's Mud Roasted Himalayan Almonds (crushed into fine powder)",
+      "3 tbsp NaturesMud Organic Sweet Potato Powder",
+      "2 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "1 tsp NaturesMud Roasted Himalayan Almonds (crushed into fine powder)",
       "1 cup whole cow milk or almond milk",
       "1 tbsp pure cow ghee",
       "1 pinch ground green cardamom"
     ],
     instructions: [
-      "In a saucepan, melt ghee and stir in Nature's Mud Sweet Potato Powder over low heat for 1 minute.",
+      "In a saucepan, melt ghee and stir in NaturesMud Sweet Potato Powder over low heat for 1 minute.",
       "Slowly whisk in milk to achieve a lump-free, velvety consistency.",
       "Add Dates Powder, almond meal, and cardamom. Cook while stirring continuously for 4–5 minutes until it thickens into a glossy halwa.",
       "Serve warm as a high-density, nutrient-packed evening snack."
@@ -847,7 +1189,7 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "2 slices Nature's Mud Dehydrated Sweet Papaya (soaked in warm water for 15 mins)",
+      "2 slices NaturesMud Dehydrated Sweet Papaya (soaked in warm water for 15 mins)",
       "1/2 ripe Haas avocado",
       "2 tbsp water or breastmilk"
     ],
@@ -872,11 +1214,11 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "2 ripe bananas (mashed)",
-      "1/2 cup Nature's Mud Organic Sweet Potato Powder",
-      "3 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "1/4 cup Nature's Mud Raw Himalayan Walnuts (finely chopped)",
+      "1/2 cup NaturesMud Organic Sweet Potato Powder",
+      "3 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "1/4 cup NaturesMud Raw Himalayan Walnuts (finely chopped)",
       "1 whole egg",
-      "2 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "2 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1/2 tsp baking soda",
       "1/2 tsp cinnamon"
     ],
@@ -902,8 +1244,8 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1 tbsp Nature's Mud Organic Sweet Potato Powder",
-      "1 tbsp Nature's Mud Organic Carrot Powder",
+      "1 tbsp NaturesMud Organic Sweet Potato Powder",
+      "1 tbsp NaturesMud Organic Carrot Powder",
       "1 cup warm vegetable broth or water",
       "1/2 tsp cow ghee",
       "1 pinch roasted cumin powder"
@@ -928,14 +1270,14 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1.5 tsp (8g) Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1.5 tsp (8g) NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
       "100ml cold pressed fresh apple juice or coconut water",
       "1 tbsp freshly squeezed lime juice",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 inch fresh ginger (grated and pressed for juice)"
     ],
     instructions: [
-      "In a shaker or small blender, add Nature's Mud Beetroot Powder, apple juice/coconut water, lime juice, and ginger juice.",
+      "In a shaker or small blender, add NaturesMud Beetroot Powder, apple juice/coconut water, lime juice, and ginger juice.",
       "Add the Himalayan Pink Rock Salt for cellular membrane transport and cramping defense.",
       "Shake vigorously with 2 ice cubes for 20 seconds.",
       "Drink 30–45 minutes before heavy compound lifting, hill sprints, or high-altitude climbing."
@@ -947,7 +1289,7 @@ export const recipes: Recipe[] = [
     id: "r-sweetpotato-protein-waffles",
     slug: "sweet-potato-powder-clean-glycogen-protein-waffles",
     title: "Slow-Release Clean Glycogen Sweet Potato Protein Waffles",
-    excerpt: "Crispy golden fitness waffles packed with complex carbohydrates from solar-dehydrated sweet potato powder and pure plant protein.",
+    excerpt: "Crispy golden fitness waffles packed with complex carbohydrates from naturally dehydrated sweet potato powder and pure plant protein.",
     image: "/products/sweet-potato-product-poster.jpg",
     category: "Fitness & Gym",
     prepTime: 5,
@@ -955,21 +1297,21 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Medium",
     ingredients: [
-      "1/3 cup Nature's Mud Organic Sweet Potato Powder (100g Jar)",
+      "1/3 cup NaturesMud Organic Sweet Potato Powder (100g Jar)",
       "1 scoop vanilla plant protein or whey isolate",
       "1/2 cup rolled oat flour",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1 tsp baking powder",
       "3/4 cup almond milk",
       "1 whole egg (or 1 tbsp soaked chia seeds for vegan option)",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)"
     ],
     instructions: [
       "Preheat your waffle iron and grease lightly with virgin coconut oil.",
       "In a blender, combine Sweet Potato Powder, protein powder, oat flour, Dates Powder, baking powder, milk, egg, and melted coconut oil.",
       "Blend for 30 seconds until a smooth batter forms.",
       "Pour onto the hot waffle maker and cook for 4–5 minutes until deep golden and crisp.",
-      "Serve topped with Nature's Mud Wild Blueberries and Mustang Raw Wild Honey."
+      "Serve topped with NaturesMud Wild Blueberries and Mustang Raw Wild Honey."
     ],
     tags: ["fitness","sweet potato powder","protein waffles","clean carbs","muscle fuel"],
     featured: true,
@@ -986,11 +1328,11 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
       "1/2 cup pure spring water or coconut water",
-      "1.5 tbsp Nature's Mud Mustang Raw Wild Honey",
+      "1.5 tbsp NaturesMud Mustang Raw Wild Honey",
       "1 tbsp fresh lemon juice",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Stir chia seeds into water and let rest for 15 minutes, stirring twice to break up clumps as a thick gel forms.",
@@ -1013,11 +1355,11 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder",
       "1 cup fresh orange juice",
       "1 cup crushed ice",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey",
-      "1/4 tsp Nature's Mud Himalayan Pink Rock Salt",
+      "1 tsp NaturesMud Mustang Raw Wild Honey",
+      "1/4 tsp NaturesMud Himalayan Pink Rock Salt",
       "4 fresh mint leaves"
     ],
     instructions: [
@@ -1040,12 +1382,12 @@ export const recipes: Recipe[] = [
     servings: 8,
     difficulty: "Easy",
     ingredients: [
-      "1 cup Nature's Mud Organic Himalayan Pumpkin Seeds",
-      "1/2 cup Nature's Mud Natural Dates Powder Sweetener (or 1 cup pitted soft dates)",
-      "1/2 cup Nature's Mud Roasted Himalayan Almonds (coarsely chopped)",
-      "1/4 cup Nature's Mud Whole Dried Cranberries",
-      "2 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1 cup NaturesMud Organic Himalayan Pumpkin Seeds",
+      "1/2 cup NaturesMud Natural Dates Powder Sweetener (or 1 cup pitted soft dates)",
+      "1/2 cup NaturesMud Roasted Himalayan Almonds (coarsely chopped)",
+      "1/4 cup NaturesMud Whole Dried Cranberries",
+      "2 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "In a food processor, pulse pumpkin seeds, Dates Powder, and melted coconut oil until a sticky dough forms.",
@@ -1069,11 +1411,11 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "2 tbsp Nature's Mud Organic Sweet Potato Powder (100g Jar)",
+      "2 tbsp NaturesMud Organic Sweet Potato Powder (100g Jar)",
       "1 frozen banana",
-      "1 tbsp Nature's Mud Roasted Himalayan Almonds (ground into butter or whole)",
+      "1 tbsp NaturesMud Roasted Himalayan Almonds (ground into butter or whole)",
       "1 cup unsweetened almond milk or chilled dairy milk",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 pinch cinnamon"
     ],
     instructions: [
@@ -1096,12 +1438,12 @@ export const recipes: Recipe[] = [
     servings: 10,
     difficulty: "Easy",
     ingredients: [
-      "1 cup Nature's Mud Raw Himalayan Walnuts",
-      "1/3 cup Nature's Mud Natural Dates Powder Sweetener",
+      "1 cup NaturesMud Raw Himalayan Walnuts",
+      "1/3 cup NaturesMud Natural Dates Powder Sweetener",
       "3 tbsp raw cacao powder",
-      "1 tbsp Nature's Mud Premium Black Chia Seeds",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1 pinch Nature's Mud Himalayan Pink Rock Salt"
+      "1 tbsp NaturesMud Premium Black Chia Seeds",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1 pinch NaturesMud Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Blend walnuts, Dates Powder, cacao powder, chia seeds, coconut oil, and pink salt in a food processor until it clumps together.",
@@ -1123,10 +1465,10 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Organic Himalayan Moringa Leaf Powder",
+      "1 tsp NaturesMud Organic Himalayan Moringa Leaf Powder",
       "250ml pure chilled coconut water",
       "1 tbsp freshly squeezed lime juice",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Combine all ingredients in a shaker bottle with ice cubes.",
@@ -1148,11 +1490,11 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "2 slices Nature's Mud Dehydrated Himalayan Pineapple (soaked in 50ml warm water)",
+      "2 slices NaturesMud Dehydrated Himalayan Pineapple (soaked in 50ml warm water)",
       "1/2 tsp organic turmeric powder",
       "1 pinch black pepper",
       "1 tbsp fresh lime juice",
-      "1 pinch Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1 pinch NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Blend soaked pineapple with its soaking water, turmeric, black pepper, lime juice, and pink salt until liquefied.",
@@ -1175,16 +1517,16 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1 cup fine semolina (suji)",
       "3 tbsp pure cow ghee",
-      "1/2 cup Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
+      "1/2 cup NaturesMud Natural Dates Powder Sweetener (100g Jar)",
       "2.5 cups hot water or warm milk",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (slivered)",
-      "2 tbsp Nature's Mud Raw Himalayan Walnuts (crushed)",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (slivered)",
+      "2 tbsp NaturesMud Raw Himalayan Walnuts (crushed)",
       "1/2 tsp ground green cardamom",
       "A few strands of pure saffron"
     ],
     instructions: [
       "In a heavy-bottomed kadai, melt ghee and roast suji on low heat for 6–8 minutes until aromatic and light golden brown.",
-      "Separately dissolve Nature's Mud Dates Powder and saffron in hot water/milk.",
+      "Separately dissolve NaturesMud Dates Powder and saffron in hot water/milk.",
       "Slowly pour the warm dates-infused liquid into the roasted suji while stirring vigorously to avoid lumps.",
       "Cook for 3–4 minutes until the halwa leaves the sides of the pan.",
       "Garnish with slivered roasted almonds, crushed walnuts, and cardamom. Serve warm."
@@ -1206,14 +1548,14 @@ export const recipes: Recipe[] = [
     ingredients: [
       "2 cups coarse chickpea flour (besan)",
       "1/2 cup pure cow ghee",
-      "3/4 cup Nature's Mud Natural Dates Powder Sweetener",
+      "3/4 cup NaturesMud Natural Dates Powder Sweetener",
       "1/2 tsp freshly ground cardamom",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds (lightly toasted for garnish)"
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds (lightly toasted for garnish)"
     ],
     instructions: [
       "Heat ghee in a pan on low flame and add besan. Roast patiently for 12–15 minutes until nutty and deep golden.",
       "Transfer roasted besan mixture to a wide bowl and allow to cool until lukewarm.",
-      "Add Nature's Mud Dates Powder and cardamom. Mix thoroughly with clean hands so the dates powder incorporates evenly.",
+      "Add NaturesMud Dates Powder and cardamom. Mix thoroughly with clean hands so the dates powder incorporates evenly.",
       "Shape into 12 round laddoos, pressing a toasted pumpkin seed onto the center of each.",
       "Store in an airtight glass jar for up to 3 weeks."
     ],
@@ -1233,10 +1575,10 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1.5 cups unsweetened desiccated coconut",
-      "2 tbsp Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
-      "4 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "1/4 cup Nature's Mud Raw Himalayan Walnuts (finely chopped)",
-      "2 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "2 tbsp NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
+      "4 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "1/4 cup NaturesMud Raw Himalayan Walnuts (finely chopped)",
+      "2 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1/4 cup warm coconut milk"
     ],
     instructions: [
@@ -1261,10 +1603,10 @@ export const recipes: Recipe[] = [
     servings: 12,
     difficulty: "Medium",
     ingredients: [
-      "3/4 cup Nature's Mud Natural Dates Powder Sweetener",
-      "1/2 cup Nature's Mud Raw Himalayan Walnuts (chopped)",
-      "1/2 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
-      "1/4 cup Nature's Mud Organic Himalayan Pumpkin Seeds",
+      "3/4 cup NaturesMud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Raw Himalayan Walnuts (chopped)",
+      "1/2 cup NaturesMud Roasted Himalayan Almonds (chopped)",
+      "1/4 cup NaturesMud Organic Himalayan Pumpkin Seeds",
       "2 tbsp pure cow ghee",
       "1/2 tsp cardamom powder"
     ],
@@ -1291,17 +1633,17 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1/2 cup basmati or Taichin rice (soaked for 20 mins)",
       "1 liter full-cream organic cow milk",
-      "1/2 cup Nature's Mud Natural Dates Powder Sweetener (100g Jar)",
-      "2 tbsp Nature's Mud Raw Himalayan Walnuts (cracked)",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (slivered)",
-      "2 tbsp Nature's Mud Wild Dried Himalayan Blueberries",
+      "1/2 cup NaturesMud Natural Dates Powder Sweetener (100g Jar)",
+      "2 tbsp NaturesMud Raw Himalayan Walnuts (cracked)",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (slivered)",
+      "2 tbsp NaturesMud Wild Dried Himalayan Blueberries",
       "4 green cardamom pods (cracked)",
       "1 pinch Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Bring milk to a gentle boil in a heavy pot. Drain soaked rice and add to the milk.",
       "Simmer on low flame for 20 minutes, stirring frequently until rice is tender and milk thickens to a creamy consistency.",
-      "Stir in Nature's Mud Dates Powder, cardamom, and a pinch of pink salt to amplify natural richness.",
+      "Stir in NaturesMud Dates Powder, cardamom, and a pinch of pink salt to amplify natural richness.",
       "Simmer for 3 more minutes until the dates powder dissolves completely into a caramel hue.",
       "Top with walnuts, almonds, and wild blueberries. Serve warm or chilled."
     ],
@@ -1320,11 +1662,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Medium",
     ingredients: [
-      "1 cup Nature's Mud Dehydrated Himalayan Apple Rings (chopped)",
+      "1 cup NaturesMud Dehydrated Himalayan Apple Rings (chopped)",
       "1 cup rolled oats",
-      "1/2 cup Nature's Mud Raw Himalayan Walnuts (chopped)",
-      "1/3 cup Nature's Mud Natural Dates Powder Sweetener",
-      "3 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "1/2 cup NaturesMud Raw Himalayan Walnuts (chopped)",
+      "1/3 cup NaturesMud Natural Dates Powder Sweetener",
+      "3 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1 tsp ground cinnamon",
       "1 pinch Himalayan Pink Rock Salt"
     ],
@@ -1352,12 +1694,12 @@ export const recipes: Recipe[] = [
     ingredients: [
       "2 ripe avocados",
       "1/3 cup unsweetened raw cacao powder",
-      "1/3 cup Nature's Mud Natural Dates Powder Sweetener",
-      "2 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "1/3 cup NaturesMud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1/4 cup almond milk",
       "1 tsp pure vanilla extract",
-      "1 pinch Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "2 tbsp Nature's Mud Wild Dried Himalayan Blueberries (for garnish)"
+      "1 pinch NaturesMud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Wild Dried Himalayan Blueberries (for garnish)"
     ],
     instructions: [
       "Scoop avocado flesh into a high-speed blender.",
@@ -1380,11 +1722,11 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Sun-Dried Himalayan Mango Slices (rehydrated in 1/2 cup warm water for 15 mins)",
-      "3 tbsp Nature's Mud Premium Black Chia Seeds",
+      "1/2 cup NaturesMud Sun-Dried Himalayan Mango Slices (rehydrated in 1/2 cup warm water for 15 mins)",
+      "3 tbsp NaturesMud Premium Black Chia Seeds",
       "1 cup coconut yogurt or Greek yogurt",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds (for topping)",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds (for topping)",
       "1/2 tsp pure vanilla extract"
     ],
     instructions: [
@@ -1409,8 +1751,8 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "3 frozen bananas (sliced)",
-      "2 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (chopped)",
+      "2 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (chopped)",
       "1/4 cup almond milk or coconut milk",
       "1/2 tsp vanilla extract"
     ],
@@ -1435,10 +1777,10 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1/2 cup natural creamy peanut butter",
-      "3 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "2 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "3 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1/2 cup 70% dark chocolate chips (melted with 1 tsp coconut oil)",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "In a bowl, mix peanut butter, Dates Powder, melted coconut oil, and a pinch of pink salt.",
@@ -1463,12 +1805,12 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 cup whole wheat flour",
-      "1.5 tbsp Nature's Mud Pure Himalayan Beetroot Powder",
+      "1.5 tbsp NaturesMud Pure Himalayan Beetroot Powder",
       "2 tbsp raw cacao powder",
-      "2 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1 tsp baking powder",
       "1 cup milk",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)"
     ],
     instructions: [
       "Whisk dry ingredients together in a bowl.",
@@ -1491,18 +1833,18 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1/3 cup Nature's Mud Wild Dried Himalayan Blueberries (100g Jar)",
+      "1/3 cup NaturesMud Wild Dried Himalayan Blueberries (100g Jar)",
       "1/2 cup rolled oats or thick Greek yogurt",
-      "1 tbsp Nature's Mud Premium Black Chia Seeds",
-      "1 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds",
-      "1 tbsp Nature's Mud Raw Himalayan Walnuts",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tbsp NaturesMud Premium Black Chia Seeds",
+      "1 tbsp NaturesMud Organic Himalayan Pumpkin Seeds",
+      "1 tbsp NaturesMud Raw Himalayan Walnuts",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "3/4 cup almond milk"
     ],
     instructions: [
       "Soak oats, chia seeds, and Dates Powder in almond milk for 5 minutes (or overnight).",
       "Pour into a wide breakfast ceramic bowl.",
-      "Artfully arrange Nature's Mud Wild Dried Blueberries, raw walnut halves, and pumpkin seeds on top.",
+      "Artfully arrange NaturesMud Wild Dried Blueberries, raw walnut halves, and pumpkin seeds on top.",
       "Enjoy a powerhouse breakfast that shields eyes against digital screen fatigue and sharpens cognitive memory."
     ],
     tags: ["breakfast","blueberries","chia seeds","walnuts","brain food","antioxidants"],
@@ -1521,13 +1863,13 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 cup whole wheat flour",
-      "2 tbsp Nature's Mud Organic Carrot Powder (100g Jar)",
-      "2 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Organic Carrot Powder (100g Jar)",
+      "2 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1 tsp baking powder",
       "1/2 tsp ground cinnamon",
       "1 cup milk",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
-      "Nature's Mud Mustang Raw Wild Honey (for drizzling)"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
+      "NaturesMud Mustang Raw Wild Honey (for drizzling)"
     ],
     instructions: [
       "In a mixing bowl, whisk together flour, Carrot Powder, Dates Powder, baking powder, and cinnamon.",
@@ -1552,13 +1894,13 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 cup rolled oats",
-      "1 tbsp Nature's Mud Organic Golden Flax Seeds (freshly ground)",
-      "1 tbsp Nature's Mud Premium Black Chia Seeds",
-      "1/4 cup Nature's Mud Whole Dried Cranberries",
-      "2 tbsp Nature's Mud Roasted Himalayan Almonds (chopped)",
+      "1 tbsp NaturesMud Organic Golden Flax Seeds (freshly ground)",
+      "1 tbsp NaturesMud Premium Black Chia Seeds",
+      "1/4 cup NaturesMud Whole Dried Cranberries",
+      "2 tbsp NaturesMud Roasted Himalayan Almonds (chopped)",
       "1 grated fresh apple",
       "1.5 cups almond milk",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey"
+      "1 tbsp NaturesMud Mustang Raw Wild Honey"
     ],
     instructions: [
       "In a glass storage bowl, combine oats, ground flax seeds, chia seeds, cranberries, grated apple, and almond milk.",
@@ -1582,10 +1924,10 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1/2 cup rolled oats",
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "2 tbsp Nature's Mud Wild Dried Himalayan Blueberries",
-      "1 tbsp Nature's Mud Raw Himalayan Walnuts",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Wild Dried Himalayan Blueberries",
+      "1 tbsp NaturesMud Raw Himalayan Walnuts",
       "1 cup whole milk or oat milk",
       "1 pinch Himalayan Pink Rock Salt"
     ],
@@ -1612,11 +1954,11 @@ export const recipes: Recipe[] = [
     ingredients: [
       "4 slices thick whole grain bread",
       "2 whole eggs",
-      "2 tbsp Nature's Mud Organic Sweet Potato Powder (100g Jar)",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Organic Sweet Potato Powder (100g Jar)",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1/3 cup milk",
       "1/2 tsp ground cinnamon",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil"
     ],
     instructions: [
       "In a wide shallow dish, whisk eggs, milk, Sweet Potato Powder, Dates Powder, and cinnamon until smooth.",
@@ -1642,16 +1984,16 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1/2 cup white quinoa (rinsed)",
       "1.5 cups almond milk or dairy milk",
-      "1/3 cup Nature's Mud Whole Dried Cranberries",
-      "1/4 cup Nature's Mud Raw Himalayan Walnuts (toasted and chopped)",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "1/3 cup NaturesMud Whole Dried Cranberries",
+      "1/4 cup NaturesMud Raw Himalayan Walnuts (toasted and chopped)",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1/2 tsp vanilla extract",
       "1/2 tsp ground cinnamon"
     ],
     instructions: [
       "In a saucepan, bring milk and rinsed quinoa to a gentle simmer.",
       "Cover and cook on low heat for 12 minutes until quinoa is tender and fluffy.",
-      "Stir in Nature's Mud Dried Cranberries, Dates Powder, cinnamon, and vanilla.",
+      "Stir in NaturesMud Dried Cranberries, Dates Powder, cinnamon, and vanilla.",
       "Spoon into warm bowls and top generously with toasted walnuts."
     ],
     tags: ["breakfast","quinoa bowl","cranberries","walnuts","gluten free breakfast"],
@@ -1670,8 +2012,8 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 tsp ceremonial green matcha powder or green tea",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 cup hot oat milk or almond milk (steamed)",
       "1 pinch cinnamon"
     ],
@@ -1698,11 +2040,11 @@ export const recipes: Recipe[] = [
     ingredients: [
       "2 slices rustic artisanal sourdough bread",
       "1 ripe Hass avocado",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds (lightly dry roasted)",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds (lightly dry roasted)",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp chili flakes or crushed black pepper",
       "1 tsp freshly squeezed lemon juice",
-      "1 tsp Nature's Mud Cold-Pressed Virgin Coconut Oil or Olive Oil"
+      "1 tsp NaturesMud Cold-Pressed Virgin Coconut Oil or Olive Oil"
     ],
     instructions: [
       "Toast sourdough slices until golden and crisp.",
@@ -1726,12 +2068,12 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/4 cup Nature's Mud Premium Black Chia Seeds",
+      "1/4 cup NaturesMud Premium Black Chia Seeds",
       "1 cup coconut milk or almond milk",
       "1/2 tsp turmeric powder",
-      "1 tsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "2 tbsp Nature's Mud Wild Dried Himalayan Blueberries",
+      "1 tsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
+      "2 tbsp NaturesMud Wild Dried Himalayan Blueberries",
       "1 pinch black pepper"
     ],
     instructions: [
@@ -1755,9 +2097,9 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "1.5 cups rolled oats",
-      "1/2 cup Nature's Mud Dehydrated Himalayan Apple Rings (chopped)",
-      "1/3 cup Nature's Mud Raw Himalayan Walnuts",
-      "3 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Dehydrated Himalayan Apple Rings (chopped)",
+      "1/3 cup NaturesMud Raw Himalayan Walnuts",
+      "3 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1.5 cups milk",
       "1 tsp cinnamon",
       "1/2 tsp baking powder"
@@ -1783,13 +2125,13 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 glass (250ml) lukewarm filtered water",
       "1/2 fresh lime (squeezed)",
-      "1/2 tsp Nature's Mud Mustang Raw Wild Honey (optional)"
+      "1/2 tsp NaturesMud Mustang Raw Wild Honey (optional)"
     ],
     instructions: [
-      "Stir Nature's Mud Himalayan Pink Rock Salt into lukewarm water until completely dissolved.",
+      "Stir NaturesMud Himalayan Pink Rock Salt into lukewarm water until completely dissolved.",
       "Add fresh lime juice and raw honey.",
       "Drink first thing in the morning on an empty stomach to kickstart peristalsis and replenish overnight mineral depletion."
     ],
@@ -1810,7 +2152,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1 cup fresh whole-milk curd / dahi (probiotic)",
       "1 cup chilled water",
-      "1/2 tsp Nature's Mud Pure Himalayan Black Salt (Bire Noon)",
+      "1/2 tsp NaturesMud Pure Himalayan Black Salt (Bire Noon)",
       "1/2 tsp roasted cumin seed powder",
       "6 fresh mint leaves",
       "1 pinch green chili (optional for zing)"
@@ -1835,16 +2177,16 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey (never boiled)",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey (never boiled)",
       "1 cup lukewarm water (below 40°C to preserve live enzymes)",
       "1 tsp freshly extracted ginger juice",
       "1 tbsp fresh lemon juice",
-      "1 pinch Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1 pinch NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Warm water until comfortably lukewarm (never boiling, as high heat destroys honey enzymes).",
       "Stir in fresh ginger juice, lemon juice, and a pinch of pink salt.",
-      "Add 1 tbsp Nature's Mud Mustang Raw Honey and whisk until dissolved.",
+      "Add 1 tbsp NaturesMud Mustang Raw Honey and whisk until dissolved.",
       "Sip slowly upon waking to soothe respiratory passages and strengthen the immune shield."
     ],
     tags: ["ayurveda","raw honey","mustang honey","immunity tonic","cold and flu"],
@@ -1854,7 +2196,7 @@ export const recipes: Recipe[] = [
     id: "r-papaya-bromelain-gut-elixir",
     slug: "papain-bromelain-dehydrated-papaya-pineapple-gut-tea",
     title: "Papain & Bromelain Dehydrated Papaya & Pineapple Gut Soothing Infusion",
-    excerpt: "A warm proteolytic fruit infusion utilizing solar-dehydrated papaya and pineapple to break down heavy meals and soothe digestive distress.",
+    excerpt: "A warm proteolytic fruit infusion utilizing naturally dehydrated papaya and pineapple to break down heavy meals and soothe digestive distress.",
     image: "/products/papaya.jpg",
     category: "Ayurveda & Health",
     prepTime: 5,
@@ -1862,11 +2204,11 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "3 slices Nature's Mud Dehydrated Sweet Papaya",
-      "2 slices Nature's Mud Dehydrated Himalayan Pineapple",
+      "3 slices NaturesMud Dehydrated Sweet Papaya",
+      "2 slices NaturesMud Dehydrated Himalayan Pineapple",
       "2.5 cups pure water",
       "1/2 inch crushed fresh ginger",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey (stirred in before drinking)"
+      "1 tsp NaturesMud Mustang Raw Wild Honey (stirred in before drinking)"
     ],
     instructions: [
       "In a saucepan, bring water, crushed ginger, papaya slices, and pineapple rings to a gentle simmer.",
@@ -1891,15 +2233,15 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1 cup whole milk or oat milk",
       "1/2 tsp organic turmeric powder",
-      "1 tsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 pinch freshly cracked black pepper (essential for curcumin bioavailability)",
       "1 pinch cinnamon and nutmeg"
     ],
     instructions: [
       "Warm milk in a small saucepan over medium-low heat.",
       "Whisk in turmeric powder, black pepper, cinnamon, nutmeg, and Dates Powder.",
-      "Turn off the heat and stir in 1 tsp of Nature's Mud Cold-Pressed Virgin Coconut Oil.",
+      "Turn off the heat and stir in 1 tsp of NaturesMud Cold-Pressed Virgin Coconut Oil.",
       "Froth with a hand whisk and drink warm 30 minutes before sleep."
     ],
     tags: ["ayurveda","golden milk","coconut oil","turmeric","anti inflammatory","deep sleep"],
@@ -1917,10 +2259,10 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Organic Barley Grass Powder (100g Jar)",
+      "1 tsp NaturesMud Organic Barley Grass Powder (100g Jar)",
       "200ml cold coconut water or spring water",
       "1 tbsp fresh lime juice",
-      "1/2 tsp Nature's Mud Mustang Raw Wild Honey"
+      "1/2 tsp NaturesMud Mustang Raw Wild Honey"
     ],
     instructions: [
       "Add Barley Grass Powder to cold coconut water or spring water in a shaker bottle.",
@@ -1943,13 +2285,13 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Organic Himalayan Moringa Leaf Powder",
+      "1 tsp NaturesMud Organic Himalayan Moringa Leaf Powder",
       "3 cups vegetable or bone stock",
       "2 cloves crushed garlic",
       "1 inch sliced ginger",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 tbsp chopped cilantro",
-      "1/2 tsp Nature's Mud Cold-Pressed Mustard Oil"
+      "1/2 tsp NaturesMud Cold-Pressed Mustard Oil"
     ],
     instructions: [
       "Simmer garlic, ginger, and pink salt in stock for 10 minutes.",
@@ -1972,15 +2314,15 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "A pea-sized portion (300mg) Nature's Mud Pure Himalayan Shilajit Resin",
+      "A pea-sized portion (300mg) NaturesMud Pure Himalayan Shilajit Resin",
       "1 cup warm almond milk or cow milk",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
+      "1 tsp NaturesMud Mustang Raw Wild Honey",
       "1 pinch green cardamom and saffron"
     ],
     instructions: [
       "Heat milk until comfortably warm.",
-      "Add Nature's Mud Shilajit Resin and whisk gently for 1 minute until completely dissolved into the milk.",
+      "Add NaturesMud Shilajit Resin and whisk gently for 1 minute until completely dissolved into the milk.",
       "Add Dates Powder, Mustang Raw Honey, cardamom, and saffron strands.",
       "Drink in the morning or early evening to restore mitochondrial ATP cellular energy."
     ],
@@ -2000,14 +2342,14 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 cup brewed holy basil (tulsi) tea",
-      "Pea-sized portion (300mg) Nature's Mud Pure Himalayan Shilajit Resin",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey",
+      "Pea-sized portion (300mg) NaturesMud Pure Himalayan Shilajit Resin",
+      "1 tsp NaturesMud Mustang Raw Wild Honey",
       "1 slice fresh lemon"
     ],
     instructions: [
       "Steep tulsi leaves in hot water for 4 minutes.",
       "Strain into a mug and let cool slightly below boiling point.",
-      "Stir in Nature's Mud Shilajit resin until fully dissolved.",
+      "Stir in NaturesMud Shilajit resin until fully dissolved.",
       "Add Mustang Raw Wild Honey and a slice of lemon before sipping."
     ],
     tags: ["ayurveda","shilajit tea","tulsi","honey","adaptogens"],
@@ -2029,7 +2371,7 @@ export const recipes: Recipe[] = [
       "1 tbsp black tea leaves (fermented brick or CTC tea)",
       "1/2 cup whole milk",
       "1 tbsp unsalted butter or ghee",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Boil tea leaves in water for 5 minutes until deep reddish-brown.",
@@ -2056,10 +2398,10 @@ export const recipes: Recipe[] = [
       "1/2 cup edible gum crystals (dink / gond)",
       "1/2 cup pure cow ghee",
       "1 cup whole wheat flour or makhana powder",
-      "3/4 cup Nature's Mud Natural Dates Powder Sweetener",
-      "1/2 cup Nature's Mud Raw Himalayan Walnuts (crushed)",
-      "1/4 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds",
+      "3/4 cup NaturesMud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Raw Himalayan Walnuts (crushed)",
+      "1/4 cup NaturesMud Roasted Himalayan Almonds (chopped)",
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds",
       "1 tsp dry ginger powder (sutho)",
       "1/2 tsp nutmeg and cardamom"
     ],
@@ -2067,7 +2409,7 @@ export const recipes: Recipe[] = [
       "In a heavy pan, heat ghee and fry gond in small batches until puffed like popcorn. Remove and crush lightly.",
       "In the same ghee, roast whole wheat flour on low heat for 10 minutes until deep golden and fragrant.",
       "Add crushed gond, chopped walnuts, almonds, pumpkin seeds, sutho, and cardamom.",
-      "Turn off the heat and thoroughly mix in Nature's Mud Dates Powder while warm.",
+      "Turn off the heat and thoroughly mix in NaturesMud Dates Powder while warm.",
       "Transfer to a greased tray, level flat, and let set before cutting into nourishing postpartum squares."
     ],
     tags: ["sutkeri","postpartum","gundpak","dates powder","walnuts","lactation"],
@@ -2085,12 +2427,12 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tbsp Nature's Mud Organic Golden Flax Seeds (freshly ground)",
-      "1 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds",
-      "1/4 cup Nature's Mud Wild Dried Himalayan Blueberries",
+      "1 tbsp NaturesMud Organic Golden Flax Seeds (freshly ground)",
+      "1 tbsp NaturesMud Organic Himalayan Pumpkin Seeds",
+      "1/4 cup NaturesMud Wild Dried Himalayan Blueberries",
       "1 cup unsweetened almond milk",
       "1/2 frozen banana",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener"
+      "1 tsp NaturesMud Natural Dates Powder Sweetener"
     ],
     instructions: [
       "Grind whole flax seeds and pumpkin seeds in a spice grinder.",
@@ -2113,11 +2455,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Organic Himalayan Pumpkin Seeds",
+      "1/2 cup NaturesMud Organic Himalayan Pumpkin Seeds",
       "1/2 cup unhulled sesame seeds",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp cinnamon"
     ],
     instructions: [
@@ -2142,10 +2484,10 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/3 cup Nature's Mud Whole Dried Cranberries",
+      "1/3 cup NaturesMud Whole Dried Cranberries",
       "2 tbsp dried mountain hibiscus flowers",
       "3 cups pure water",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
       "1 sprig fresh rosemary or mint",
       "Ice cubes for serving"
     ],
@@ -2170,11 +2512,11 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 cup fresh pomegranate juice",
       "1 tbsp fresh lime juice (Vitamin C enhances plant iron absorption)",
-      "1 pinch Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1 pinch NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "In a glass, whisk Beetroot Powder and Dates Powder into fresh pomegranate juice.",
@@ -2196,9 +2538,9 @@ export const recipes: Recipe[] = [
     servings: 10,
     difficulty: "Medium",
     ingredients: [
-      "1/2 cup Nature's Mud Natural Dates Powder Sweetener",
-      "1/2 cup Nature's Mud Raw Himalayan Walnuts (crushed)",
-      "1/4 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
+      "1/2 cup NaturesMud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Raw Himalayan Walnuts (crushed)",
+      "1/4 cup NaturesMud Roasted Himalayan Almonds (chopped)",
       "2 tbsp organic fenugreek (methi) powder",
       "1/2 cup rolled oats flour",
       "3 tbsp pure cow ghee",
@@ -2207,7 +2549,7 @@ export const recipes: Recipe[] = [
     instructions: [
       "Roast oats flour and methi powder in ghee over low heat for 6 minutes until aromatic.",
       "Turn off heat and add chopped walnuts, almonds, and ground fennel.",
-      "Add Nature's Mud Dates Powder while warm and mix thoroughly.",
+      "Add NaturesMud Dates Powder while warm and mix thoroughly.",
       "Roll into 10 bite-sized laddoos.",
       "Consume 1 laddoo daily with a warm glass of milk for new nursing mothers."
     ],
@@ -2226,15 +2568,15 @@ export const recipes: Recipe[] = [
     servings: 10,
     difficulty: "Easy",
     ingredients: [
-      "1 cup Nature's Mud Organic Golden Flax Seeds (roasted & ground)",
-      "1/2 cup Nature's Mud Natural Dates Powder Sweetener",
-      "1/4 cup Nature's Mud Roasted Himalayan Almonds (crushed)",
+      "1 cup NaturesMud Organic Golden Flax Seeds (roasted & ground)",
+      "1/2 cup NaturesMud Natural Dates Powder Sweetener",
+      "1/4 cup NaturesMud Roasted Himalayan Almonds (crushed)",
       "2 tbsp pure cow ghee",
       "1/2 tsp cardamom"
     ],
     instructions: [
       "Warm ghee in a pan, turn off heat, and stir in ground flax seeds and crushed almonds.",
-      "Mix in Nature's Mud Dates Powder and cardamom.",
+      "Mix in NaturesMud Dates Powder and cardamom.",
       "Roll into 10 round digestive laddoos. Eat 1 daily for hormone balance and digestive regularity."
     ],
     tags: ["womens health","flax seeds","dates powder","digestive laddoo"],
@@ -2252,12 +2594,12 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Medium",
     ingredients: [
-      "1 cup Nature's Mud Organic Golden Flax Seeds (finely ground)",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds (finely ground)",
+      "1 cup NaturesMud Organic Golden Flax Seeds (finely ground)",
+      "2 tbsp NaturesMud Premium Black Chia Seeds (finely ground)",
       "1/2 cup boiling water",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp roasted cumin seeds",
-      "1 tsp Nature's Mud Cold-Pressed Virgin Coconut Oil"
+      "1 tsp NaturesMud Cold-Pressed Virgin Coconut Oil"
     ],
     instructions: [
       "In a bowl, mix ground flax seeds, ground chia seeds, pink salt, and roasted cumin.",
@@ -2281,11 +2623,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Organic Himalayan Pumpkin Seeds (lightly toasted)",
+      "1/2 cup NaturesMud Organic Himalayan Pumpkin Seeds (lightly toasted)",
       "2 cups fresh sweet basil leaves (washed and dried)",
       "2 cloves garlic",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "1/3 cup cold-pressed extra virgin olive oil or Nature's Mud Virgin Coconut Oil",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
+      "1/3 cup cold-pressed extra virgin olive oil or NaturesMud Virgin Coconut Oil",
       "2 tbsp fresh lemon juice",
       "2 tbsp nutritional yeast or grated parmesan"
     ],
@@ -2311,8 +2653,8 @@ export const recipes: Recipe[] = [
     ingredients: [
       "2 sweet potatoes (cubed)",
       "2 carrots (sliced into batons)",
-      "2 tbsp Nature's Mud Cold-Pressed Mustard Oil or Virgin Coconut Oil",
-      "1 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Cold-Pressed Mustard Oil or Virgin Coconut Oil",
+      "1 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 tsp dried rosemary or thyme",
       "1/2 tsp cracked black pepper"
     ],
@@ -2337,12 +2679,12 @@ export const recipes: Recipe[] = [
     servings: 12,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
+      "1/2 cup NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
       "1/4 cup unsweetened raw cacao powder",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
-      "2 tbsp Nature's Mud Raw Himalayan Walnuts (crushed)",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener (or keto sweetener)",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
+      "2 tbsp NaturesMud Raw Himalayan Walnuts (crushed)",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener (or keto sweetener)",
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp pure vanilla extract"
     ],
     instructions: [
@@ -2368,11 +2710,11 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 cups rolled oats",
-      "1/2 cup Nature's Mud Himalayan Superfood Energy Trail Mix",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
-      "3 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)",
-      "3 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 cup NaturesMud Himalayan Superfood Energy Trail Mix",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
+      "3 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil (melted)",
+      "3 tbsp NaturesMud Mustang Raw Wild Honey",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 tsp ground cinnamon"
     ],
     instructions: [
@@ -2398,8 +2740,8 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 cups cooked or canned chickpeas (thoroughly dried with a towel)",
-      "1 tbsp Nature's Mud Traditional Cold-Pressed Mustard Oil",
-      "1 tsp Nature's Mud Pure Himalayan Black Salt (Bire Noon)",
+      "1 tbsp NaturesMud Traditional Cold-Pressed Mustard Oil",
+      "1 tsp NaturesMud Pure Himalayan Black Salt (Bire Noon)",
       "1/2 tsp turmeric powder",
       "1/2 tsp red chili powder",
       "1/2 tsp roasted cumin powder",
@@ -2428,10 +2770,10 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "200g firm tofu (pressed and cubed)",
-      "1/3 cup Nature's Mud Dehydrated Himalayan Pineapple (chopped and soaked in 1/4 cup warm water)",
+      "1/3 cup NaturesMud Dehydrated Himalayan Pineapple (chopped and soaked in 1/4 cup warm water)",
       "2 tbsp soy sauce or tamari",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil",
       "1 tsp grated fresh ginger",
       "1 tbsp toasted sesame seeds"
     ],
@@ -2456,11 +2798,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Easy",
     ingredients: [
-      "1/4 cup Nature's Mud Wild Dried Himalayan Blueberries (soaked in warm water for 10 mins)",
+      "1/4 cup NaturesMud Wild Dried Himalayan Blueberries (soaked in warm water for 10 mins)",
       "3 tbsp extra virgin olive oil",
       "2 tbsp aged balsamic vinegar",
-      "1 tsp Nature's Mud Mustang Raw Wild Honey",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1 tsp NaturesMud Mustang Raw Wild Honey",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 small shallot or garlic clove",
       "Freshly cracked black pepper"
     ],
@@ -2485,8 +2827,8 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 ripe Hass avocados",
-      "1 tsp Nature's Mud Organic Himalayan Moringa Leaf Powder",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1 tsp NaturesMud Organic Himalayan Moringa Leaf Powder",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 small red onion (finely diced)",
       "1 ripe tomato (diced)",
       "1 lime (juiced)",
@@ -2513,13 +2855,13 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1 can (400g) organic chickpeas (rinsed and drained)",
-      "1.5 tbsp Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1.5 tbsp NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
       "3 tbsp sesame tahini",
       "3 tbsp extra virgin olive oil",
       "2 tbsp fresh lemon juice",
       "1 clove garlic",
-      "1 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds (for garnish)"
+      "1 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds (for garnish)"
     ],
     instructions: [
       "In a food processor, blend chickpeas, Beetroot Powder, tahini, olive oil, lemon juice, garlic, and pink salt.",
@@ -2541,9 +2883,9 @@ export const recipes: Recipe[] = [
     servings: 8,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Wild Dried Himalayan Blueberries (rehydrated in 1/2 cup warm water)",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
-      "2 tbsp Nature's Mud Mustang Raw Wild Honey",
+      "1/2 cup NaturesMud Wild Dried Himalayan Blueberries (rehydrated in 1/2 cup warm water)",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
+      "2 tbsp NaturesMud Mustang Raw Wild Honey",
       "1 tbsp fresh lemon juice"
     ],
     instructions: [
@@ -2567,10 +2909,10 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Medium",
     ingredients: [
-      "1 cup Nature's Mud Roasted Himalayan Almonds (soaked in water for 4 hours)",
+      "1 cup NaturesMud Roasted Himalayan Almonds (soaked in water for 4 hours)",
       "4 cups pure spring water",
-      "2 tbsp Nature's Mud Natural Dates Powder Sweetener",
-      "1/4 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Natural Dates Powder Sweetener",
+      "1/4 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp pure vanilla extract"
     ],
     instructions: [
@@ -2595,10 +2937,10 @@ export const recipes: Recipe[] = [
     servings: 12,
     difficulty: "Medium",
     ingredients: [
-      "2 cups Nature's Mud Organic Himalayan Pumpkin Seeds",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener (optional)"
+      "2 cups NaturesMud Organic Himalayan Pumpkin Seeds",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener (optional)"
     ],
     instructions: [
       "Toast pumpkin seeds in a dry skillet on medium-low for 4–5 minutes until puffed and fragrant.",
@@ -2622,12 +2964,12 @@ export const recipes: Recipe[] = [
     servings: 10,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Whole Dried Cranberries",
-      "1/2 cup Nature's Mud Roasted Himalayan Almonds",
-      "1/3 cup Nature's Mud Natural Dates Powder Sweetener",
+      "1/2 cup NaturesMud Whole Dried Cranberries",
+      "1/2 cup NaturesMud Roasted Himalayan Almonds",
+      "1/3 cup NaturesMud Natural Dates Powder Sweetener",
       "1/2 cup unsweetened shredded coconut",
       "Zest of 1 fresh orange",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil"
     ],
     instructions: [
       "In a food processor, pulse almonds, cranberries, Dates Powder, orange zest, and coconut oil until finely chopped and sticky.",
@@ -2653,8 +2995,8 @@ export const recipes: Recipe[] = [
       "1 large English cucumber (juiced or blended and strained)",
       "1.5 cups sparkling water or chilled spring water",
       "2 tbsp fresh lime juice",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "1 tbsp Nature's Mud Mustang Raw Wild Honey",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
+      "1 tbsp NaturesMud Mustang Raw Wild Honey",
       "6 fresh mint leaves"
     ],
     instructions: [
@@ -2678,8 +3020,8 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "500g baby potatoes (boiled, peeled, and pricked with a fork)",
-      "3 tbsp Nature's Mud Traditional Cold-Pressed Mustard Oil",
-      "1 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "3 tbsp NaturesMud Traditional Cold-Pressed Mustard Oil",
+      "1 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 tsp cumin seeds",
       "1 tsp timur (Sichuan pepper) powder",
       "1 tbsp ginger-garlic paste",
@@ -2688,7 +3030,7 @@ export const recipes: Recipe[] = [
       "2 tbsp fresh chopped coriander"
     ],
     instructions: [
-      "Heat Nature's Mud Cold-Pressed Mustard Oil in a kadai until lightly smoking, then reduce flame to medium.",
+      "Heat NaturesMud Cold-Pressed Mustard Oil in a kadai until lightly smoking, then reduce flame to medium.",
       "Add cumin seeds and let splutter for 10 seconds.",
       "Add ginger-garlic paste, turmeric, chili powder, timur, and boiled baby potatoes.",
       "Stir-fry potatoes for 8–10 minutes until deeply coated in the aromatic pungent oil and crisp on the edges.",
@@ -2709,13 +3051,13 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Sun-Dried Himalayan Mango Slices (soaked in warm water for 15 mins)",
+      "1/2 cup NaturesMud Sun-Dried Himalayan Mango Slices (soaked in warm water for 15 mins)",
       "1.5 cups fresh whole milk curd / dahi",
       "1/2 cup chilled water",
-      "1 tbsp Nature's Mud Natural Dates Powder Sweetener",
+      "1 tbsp NaturesMud Natural Dates Powder Sweetener",
       "1/2 tsp ground green cardamom",
-      "1 pinch Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "1 tbsp Nature's Mud Roasted Himalayan Almonds (slivered for topping)"
+      "1 pinch NaturesMud Ancient Himalayan Pink Rock Salt",
+      "1 tbsp NaturesMud Roasted Himalayan Almonds (slivered for topping)"
     ],
     instructions: [
       "Blend soaked mango slices with 2 tbsp of their soaking water until smooth.",
@@ -2738,10 +3080,10 @@ export const recipes: Recipe[] = [
     servings: 6,
     difficulty: "Easy",
     ingredients: [
-      "1 cup Nature's Mud Organic Golden Flax Seeds",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
+      "1 cup NaturesMud Organic Golden Flax Seeds",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
       "1/2 cup water",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1 tbsp chopped fresh rosemary or oregano",
       "1/2 tsp garlic powder"
     ],
@@ -2766,9 +3108,9 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1 tsp Nature's Mud Pure Himalayan Beetroot Powder",
+      "1 tsp NaturesMud Pure Himalayan Beetroot Powder",
       "1/2 tsp raw cacao powder",
-      "1.5 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "1.5 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 cup hot oat milk or dairy milk",
       "1/4 tsp pure vanilla extract",
       "1 pinch cinnamon"
@@ -2793,11 +3135,11 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1.5 tsp Nature's Mud Organic Barley Grass Powder",
+      "1.5 tsp NaturesMud Organic Barley Grass Powder",
       "2 cups chilled spring water",
       "3 tbsp fresh lemon juice",
-      "1.5 tbsp Nature's Mud Mustang Raw Wild Honey",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1.5 tbsp NaturesMud Mustang Raw Wild Honey",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "6 crushed fresh mint leaves"
     ],
     instructions: [
@@ -2821,13 +3163,13 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "1.5 cups aged Basmati or Jumla Marshi red rice",
-      "1/3 cup Nature's Mud Whole Dried Cranberries",
-      "1/3 cup Nature's Mud Roasted Himalayan Almonds (slivered)",
+      "1/3 cup NaturesMud Whole Dried Cranberries",
+      "1/3 cup NaturesMud Roasted Himalayan Almonds (slivered)",
       "2 tbsp pure cow ghee",
       "1 cinnamon stick",
       "2 bay leaves",
       "3 cloves",
-      "1 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "3 cups water"
     ],
     instructions: [
@@ -2856,10 +3198,10 @@ export const recipes: Recipe[] = [
       "2 ripe tomatoes (diced)",
       "1 small red onion (diced)",
       "1/2 white radish (mula, diced)",
-      "1 tsp Nature's Mud Pure Himalayan Black Salt (Bire Noon)",
+      "1 tsp NaturesMud Pure Himalayan Black Salt (Bire Noon)",
       "1/2 tsp roasted cumin powder",
       "2 tbsp fresh lemon juice",
-      "1 tsp Nature's Mud Traditional Cold-Pressed Mustard Oil",
+      "1 tsp NaturesMud Traditional Cold-Pressed Mustard Oil",
       "2 tbsp chopped fresh cilantro"
     ],
     instructions: [
@@ -2884,8 +3226,8 @@ export const recipes: Recipe[] = [
     difficulty: "Medium",
     ingredients: [
       "2 cups whole wheat flour (atta)",
-      "2 tbsp Nature's Mud Pure Himalayan Beetroot Powder (100g Jar)",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "2 tbsp NaturesMud Pure Himalayan Beetroot Powder (100g Jar)",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/2 tsp carom seeds (ajwain)",
       "1 tbsp pure cow ghee or oil",
       "3/4 cup warm water (as needed for kneading)"
@@ -2912,11 +3254,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Easy",
     ingredients: [
-      "1 cup Nature's Mud Raw Himalayan Walnuts",
+      "1 cup NaturesMud Raw Himalayan Walnuts",
       "2 cloves garlic",
       "1/2 cup fresh cilantro leaves",
       "2 tbsp fresh lemon juice",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/3 cup warm water",
       "1/2 tsp ground fenugreek and coriander"
     ],
@@ -2940,11 +3282,11 @@ export const recipes: Recipe[] = [
     servings: 1,
     difficulty: "Easy",
     ingredients: [
-      "1/3 cup Nature's Mud Dehydrated Sweet Papaya (rehydrated in warm water)",
-      "1 tbsp Nature's Mud Premium Black Chia Seeds",
+      "1/3 cup NaturesMud Dehydrated Sweet Papaya (rehydrated in warm water)",
+      "1 tbsp NaturesMud Premium Black Chia Seeds",
       "1/2 cup thick coconut milk",
       "1 frozen banana",
-      "1 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds (for topping)"
+      "1 tbsp NaturesMud Organic Himalayan Pumpkin Seeds (for topping)"
     ],
     instructions: [
       "Blend rehydrated papaya, coconut milk, and frozen banana until thick like soft serve.",
@@ -2965,11 +3307,11 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Medium",
     ingredients: [
-      "1 cup Nature's Mud Organic Sweet Potato Powder",
+      "1 cup NaturesMud Organic Sweet Potato Powder",
       "1/2 cup cassava flour or tapioca starch",
       "1/2 cup boiling water",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil"
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil"
     ],
     instructions: [
       "Mix sweet potato powder, cassava flour, and pink salt.",
@@ -2992,13 +3334,13 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "2 cups cooked aged Basmati rice",
-      "1 tsp Nature's Mud Organic Himalayan Moringa Leaf Powder",
-      "2 tbsp Nature's Mud Traditional Cold-Pressed Mustard Oil",
+      "1 tsp NaturesMud Organic Himalayan Moringa Leaf Powder",
+      "2 tbsp NaturesMud Traditional Cold-Pressed Mustard Oil",
       "1 tsp brown mustard seeds",
       "8 curry leaves",
-      "2 tbsp Nature's Mud Organic Himalayan Pumpkin Seeds",
+      "2 tbsp NaturesMud Organic Himalayan Pumpkin Seeds",
       "2 tbsp fresh lemon juice",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt"
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt"
     ],
     instructions: [
       "Heat mustard oil in a pan; add mustard seeds, curry leaves, and pumpkin seeds until crackling.",
@@ -3020,10 +3362,10 @@ export const recipes: Recipe[] = [
     servings: 4,
     difficulty: "Easy",
     ingredients: [
-      "1.5 cups Nature's Mud Roasted Himalayan Almonds",
-      "1.5 tbsp Nature's Mud Mustang Raw Wild Honey",
+      "1.5 cups NaturesMud Roasted Himalayan Almonds",
+      "1.5 tbsp NaturesMud Mustang Raw Wild Honey",
       "1/2 tsp smoked paprika",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "1/4 tsp cayenne pepper"
     ],
     instructions: [
@@ -3046,13 +3388,13 @@ export const recipes: Recipe[] = [
     servings: 2,
     difficulty: "Easy",
     ingredients: [
-      "1/2 cup Nature's Mud Organic Himalayan Pumpkin Seeds (lightly toasted)",
+      "1/2 cup NaturesMud Organic Himalayan Pumpkin Seeds (lightly toasted)",
       "2 cups vegetable stock",
       "1 small leek or onion (chopped)",
       "2 cloves garlic",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "2 tbsp fresh dill or cilantro",
-      "1 tbsp Nature's Mud Cold-Pressed Virgin Coconut Oil"
+      "1 tbsp NaturesMud Cold-Pressed Virgin Coconut Oil"
     ],
     instructions: [
       "Sauté leek and garlic in coconut oil for 3 minutes.",
@@ -3077,7 +3419,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       "1.5 cups fresh whole milk curd / dahi",
       "1 grated English cucumber",
-      "1/2 tsp Nature's Mud Pure Himalayan Black Salt (Bire Noon)",
+      "1/2 tsp NaturesMud Pure Himalayan Black Salt (Bire Noon)",
       "1/2 tsp roasted cumin powder",
       "1 tbsp fresh chopped mint",
       "1 pinch red chili powder"
@@ -3103,11 +3445,11 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1.5 cups rolled oats",
-      "1/2 cup Nature's Mud Whole Dried Cranberries",
-      "1/2 cup Nature's Mud Roasted Himalayan Almonds (chopped)",
-      "2 tbsp Nature's Mud Premium Black Chia Seeds",
-      "1/3 cup Nature's Mud Mustang Raw Wild Honey",
-      "1/4 cup Nature's Mud Cold-Pressed Virgin Coconut Oil (melted)"
+      "1/2 cup NaturesMud Whole Dried Cranberries",
+      "1/2 cup NaturesMud Roasted Himalayan Almonds (chopped)",
+      "2 tbsp NaturesMud Premium Black Chia Seeds",
+      "1/3 cup NaturesMud Mustang Raw Wild Honey",
+      "1/4 cup NaturesMud Cold-Pressed Virgin Coconut Oil (melted)"
     ],
     instructions: [
       "Toss oats, cranberries, almonds, and chia seeds.",
@@ -3132,9 +3474,9 @@ export const recipes: Recipe[] = [
       "1 apple (diced)",
       "1 banana (sliced)",
       "1/2 cup pomegranate seeds",
-      "2 tbsp Nature's Mud Whole Dried Cranberries",
-      "1 tsp Nature's Mud Pure Himalayan Black Salt (Bire Noon)",
-      "1 tsp Nature's Mud Natural Dates Powder Sweetener",
+      "2 tbsp NaturesMud Whole Dried Cranberries",
+      "1 tsp NaturesMud Pure Himalayan Black Salt (Bire Noon)",
+      "1 tsp NaturesMud Natural Dates Powder Sweetener",
       "1 tbsp fresh lime juice",
       "1/2 tsp chaat masala"
     ],
@@ -3159,11 +3501,11 @@ export const recipes: Recipe[] = [
     difficulty: "Easy",
     ingredients: [
       "1/3 cup sesame tahini",
-      "1 tsp Nature's Mud Organic Barley Grass Powder",
+      "1 tsp NaturesMud Organic Barley Grass Powder",
       "3 tbsp warm water",
       "2 tbsp fresh lemon juice",
       "1 clove garlic",
-      "1/2 tsp Nature's Mud Ancient Himalayan Pink Rock Salt",
+      "1/2 tsp NaturesMud Ancient Himalayan Pink Rock Salt",
       "2 tbsp fresh parsley or dill"
     ],
     instructions: [

@@ -30,8 +30,8 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
 { icon: Truck, title: 'Free Delivery', text: 'On orders over Rs. 10,000', accent: 'from-primary-500/20 to-primary-600/20 text-primary-300' },
-            { icon: Leaf, title: '100% Natural', text: 'No artificial anything', accent: 'from-secondary-500/20 to-secondary-600/20 text-secondary-300' },
-            { icon: ShieldCheck, title: 'Quality Assured', text: 'Tested & certified', accent: 'from-gold-500/20 to-gold-600/20 text-gold-300' },
+            { icon: Leaf, title: '0 Additives · 0 Preservatives', text: 'Pure Himalayan wholesomeness', accent: 'from-secondary-500/20 to-secondary-600/20 text-secondary-300' },
+            { icon: ShieldCheck, title: 'Quality Assured', text: 'Tested & verified', accent: 'from-gold-500/20 to-gold-600/20 text-gold-300' },
           ].map((item, idx) => (
             <div
               key={item.title}
@@ -59,7 +59,7 @@ export default function Footer() {
               <Leaf className="w-5 h-5" />
             </span>
             <span className="font-heading font-bold text-white text-2xl tracking-tight">
-              Nature's <span className="text-gradient">Mud</span>
+              Natures<span className="text-gradient">Mud</span>
             </span>
           </Link>
           <p className="text-sm text-white/60 leading-relaxed max-w-sm">
@@ -146,7 +146,7 @@ export default function Footer() {
               Stay Fresh & Inspired
             </h3>
             <p className="text-sm text-white/70">
-              Get 10% off your first order, healthy recipes, and exclusive offers straight to your inbox.
+              Get 5% off your first order, healthy recipes, and exclusive offers straight to your inbox.
             </p>
           </div>
 
@@ -180,7 +180,7 @@ export default function Footer() {
       <div className="relative border-t border-white/10 bg-black/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/50">
-            © {new Date().getFullYear()} Nature's Mud. All rights reserved.
+            © {new Date().getFullYear()} NaturesMud. All rights reserved.
           </p>
           <div className="flex gap-6 text-xs text-white/50">
             {[

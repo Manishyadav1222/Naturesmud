@@ -120,7 +120,7 @@ export default function FestivalOffersPage() {
             </h1>
 
             <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed font-body">
-              Celebrate with 100% natural, chemical-free Himalayan superfoods. Exclusive festival combo savings up to 35% OFF with free express delivery across Nepal.
+              Celebrate with 100% natural, chemical-free Himalayan superfoods. Exclusive festival combo savings of 5% OFF with free express delivery across Nepal.
             </p>
 
             {/* Live Ticker */}
@@ -318,7 +318,7 @@ export default function FestivalOffersPage() {
                       {/* Direct WhatsApp Order */}
                       <a
                         href={`https://wa.me/9779713888002?text=${encodeURIComponent(
-                          `Hello Nature's Mud! I want to order the Festival Combo: "${offer.title}" (Rs. ${offer.offerPrice}). Coupon: ${offer.couponCode}`
+                          `Hello NaturesMud! I want to order the Festival Combo: "${offer.title}" (Rs. ${offer.offerPrice}). Coupon: ${offer.couponCode}`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"

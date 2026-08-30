@@ -26,15 +26,15 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name} (naturesmud.com)`,
   },
   description:
-    "Nature's Mud Nepal (naturesmud.com) — 100% pure chemical-free Himalayan dehydrated superfood powders (Sweet Potato, Beetroot, Dates, Carrot), wild honey, shilajit, organic seeds & nuts. Direct from 180+ certified farms across Nepal.",
+    "NaturesMud Nepal (naturesmud.com) — 0 Additives · 0 Preservatives · pure Himalayan naturally dehydrated superfood powders (Sweet Potato, Beetroot, Dates, Carrot), wild honey, shilajit, organic seeds & nuts. Direct from 180+ farms across Nepal.",
   keywords: [
     'naturesmud',
     'naturesmud.com',
     'naturesmud.shop',
-    "Nature's Mud",
+    'NaturesMud',
     'Nature Mud',
     'Natures Mud',
-    "Nature's Mud Nepal",
+    'NaturesMud Nepal',
     'Nature Mud Nepal',
     'natures mud shop',
     'organic food Nepal',
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     'carrot powder Nepal',
     'Himalayan Shilajit resin',
     'raw honey Nepal',
-    'dried blueberries Nepal',
     'organic baby food powder Nepal',
     'cold pressed coconut oil Nepal',
     'chia seeds Nepal',
@@ -62,10 +61,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteConfig.url,
-    siteName: "Nature's Mud (naturesmud.com)",
+    siteName: 'NaturesMud (naturesmud.com)',
     title: `${siteConfig.name} (naturesmud.com) — ${siteConfig.tagline}`,
     description:
-      "Official website of Nature's Mud Nepal (naturesmud.com). 100% pure Himalayan organic superfoods, dehydrated fruit powders, nuts & seeds delivered nationwide.",
+      'Official website of NaturesMud Nepal (naturesmud.com). 0 Additives · 0 Preservatives — pure Himalayan organic superfoods, naturally dehydrated fruit powders, nuts & seeds delivered nationwide.',
     images: [
       {
         url: '/products/naturesmud-all-products-100g.jpg',
@@ -79,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${siteConfig.name} (naturesmud.com) — ${siteConfig.tagline}`,
     description:
-      "Nature's Mud Nepal (naturesmud.com) delivers premium dehydrated fruits, organic powders, and mountain nuts across Nepal.",
+      'NaturesMud Nepal (naturesmud.com) delivers premium naturally dehydrated fruits, organic powders, and mountain nuts across Nepal. 0 Additives · 0 Preservatives.',
     images: ['/products/naturesmud-all-products-100g.jpg'],
   },
   verification: {
@@ -123,14 +122,14 @@ const jsonLd = {
       '@type': ['Organization', 'Brand'],
       '@id': `${siteConfig.url}/#organization`,
       name: siteConfig.name,
-      legalName: "Nature's Mud Nepal Pvt. Ltd.",
+      legalName: "NaturesMud Nepal Pvt. Ltd.",
       alternateName: [
         'naturesmud',
         'naturesmud.com',
         'naturesmud.shop',
         'Nature Mud',
         'Natures Mud',
-        "Nature's Mud Nepal",
+        'NaturesMud Nepal',
         'Nature Mud Nepal',
         'NaturesMud',
         'नेचर्स मड',
@@ -143,7 +142,7 @@ const jsonLd = {
       email: siteConfig.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Samakhushi, Gongabu Chowk (near Kumari Bank)',
+        streetAddress: 'Kathmandu, Nepal',
         addressLocality: 'Kathmandu',
         addressRegion: 'Bagmati',
         postalCode: '44600',
@@ -182,7 +181,7 @@ const jsonLd = {
     {
       '@type': 'Store',
       '@id': `${siteConfig.url}/#store`,
-      name: "Nature's Mud Nepal (naturesmud.com)",
+      name: 'NaturesMud Nepal (naturesmud.com)',
       url: siteConfig.url,
       telephone: siteConfig.phone,
       priceRange: 'Rs. 200 - Rs. 2000',
@@ -193,7 +192,7 @@ const jsonLd = {
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Samakhushi, Gongabu Chowk',
+        streetAddress: 'Kathmandu, Nepal',
         addressLocality: 'Kathmandu',
         addressRegion: 'Bagmati',
         postalCode: '44600',
@@ -203,42 +202,42 @@ const jsonLd = {
     {
       '@type': 'ItemList',
       '@id': `${siteConfig.url}/#featured-products`,
-      name: "Nature's Mud Best-Selling Organic Superfoods Nepal",
+      name: 'NaturesMud Best-Selling Pure Superfoods Nepal',
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
-          name: "Organic Sweet Potato Powder (100g)",
+          name: 'Organic Sweet Potato Powder (100g)',
           url: `${siteConfig.url}/products/sweet-potato-powder`,
         },
         {
           '@type': 'ListItem',
           position: 2,
-          name: "Organic Beetroot Powder (100g)",
+          name: 'Organic Beetroot Powder (100g)',
           url: `${siteConfig.url}/products/beetroot-powder`,
         },
         {
           '@type': 'ListItem',
           position: 3,
-          name: "Natural Dates Powder Sweetener (100g)",
+          name: 'Natural Dates Powder Sweetener (100g)',
           url: `${siteConfig.url}/products/dates-powder`,
         },
         {
           '@type': 'ListItem',
           position: 4,
-          name: "Wild Dried Himalayan Blueberries (100g)",
-          url: `${siteConfig.url}/products/dried-blueberries`,
+          name: 'Dehydrated Himalayan Mango (100g)',
+          url: `${siteConfig.url}/products/dehydrated-mango`,
         },
         {
           '@type': 'ListItem',
           position: 5,
-          name: "Pure Mustang Wild Cliff Honey",
+          name: 'Pure Mustang Wild Cliff Honey',
           url: `${siteConfig.url}/products/raw-honey`,
         },
         {
           '@type': 'ListItem',
           position: 6,
-          name: "Himalayan Shilajit Resin",
+          name: 'Himalayan Shilajit Resin',
           url: `${siteConfig.url}/products/pure-shilajit-resin`,
         },
       ],

@@ -21,7 +21,7 @@ describe('Wishlist Store', () => {
 
     const { items, getItemCount, isInWishlist } = useWishlistStore.getState();
     expect(items).toHaveLength(1);
-    expect(items[0].productId).toBe('1');
+    expect(items[0]).toBe('1');
     expect(getItemCount()).toBe(1);
     expect(isInWishlist('1')).toBe(true);
   });

@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         })(),
         image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
         category: res.data.category || 'Superfoods',
-        author: res.data.author || "Nature's Mud Clinical Council",
+        author: res.data.author || "NaturesMud Clinical Council",
         date: res.data.published_at ? new Date(res.data.published_at).toLocaleDateString('en-US') : 'Recent',
         readTime: 10,
         tags: typeof res.data.tags === 'string' ? JSON.parse(res.data.tags) : res.data.tags || [],
@@ -56,9 +56,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
 
   return {
-    title: `${post.title} | Nature's Mud Organic Superfoods Nepal`,
+    title: `${post.title} | NaturesMud Pure Superfoods Nepal`,
     description: post.excerpt,
-    keywords: Array.isArray(post.tags) ? post.tags.join(', ') : 'organic food nepal, baby nutrition, pregnancy care, himalayan superfoods',
+    keywords: Array.isArray(post.tags) ? post.tags.join(', ') : 'pure food nepal, baby nutrition, pregnancy care, himalayan superfoods',
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         })(),
         image: res.data.featured_image || res.data.image || '/products/sweet-potato-powder-100g.jpg',
         category: res.data.category || 'Superfoods',
-        author: res.data.author || "Nature's Mud Clinical Council",
+        author: res.data.author || "NaturesMud Clinical Council",
         date: res.data.published_at
           ? new Date(res.data.published_at).toLocaleDateString('en-US', {
               month: 'short',
@@ -131,12 +131,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Auto-generate FAQs for schema if none provided
   const activeFaqs = (post.faqs && post.faqs.length > 0) ? post.faqs : [
     {
-      question: `Why choose Nature's Mud 100% organic Himalayan superfoods?`,
-      answer: `Nature's Mud sources directly from 180+ pesticide-free cooperative farms in the high-altitude Himalayas of Nepal. Our products are 100% chemical-free with zero added sugars or preservatives.`
+      question: `Why choose NaturesMud pure Himalayan superfoods?`,
+      answer: `NaturesMud sources directly from 180+ pesticide-free cooperative farms in the high-altitude Himalayas of Nepal. Our products contain 0 additives and 0 preservatives.`
     },
     {
       question: `How are these superfoods processed and packaged?`,
-      answer: `All botanicals and fruits are solar-dehydrated below 45°C to preserve live enzymes and antioxidants, then packaged in UV-protective, eco-friendly glass jars.`
+      answer: `All botanicals and fruits are gently dehydrated below 42°C to preserve live enzymes and antioxidants, then packaged in UV-protective, recyclable glass jars.`
     },
     {
       question: `Do you deliver across Nepal?`,
@@ -177,7 +177,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             },
             publisher: {
               '@type': 'Organization',
-              name: "Nature's Mud",
+              name: "NaturesMud",
               logo: {
                 '@type': 'ImageObject',
                 url: 'https://naturesmud.shop/logo.png',

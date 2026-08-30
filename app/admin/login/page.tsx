@@ -183,7 +183,7 @@ export default function AdminLoginPage() {
               <Leaf className="h-7 w-7 text-primary-950" />
             </div>
             <div>
-              <p className="text-xl font-bold text-white">Nature's Mud</p>
+              <p className="text-xl font-bold text-white">NaturesMud</p>
               <p className="text-sm text-primary-200">Admin Dashboard</p>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function AdminLoginPage() {
             <h1 className="text-4xl font-bold leading-tight text-white">
               Grow your natural
               <br />
-              skincare empire.
+              superfood empire.
             </h1>
             <p className="max-w-md text-lg text-primary-200">
               Manage products, orders, customers, marketing campaigns, and analytics — all from one powerful dashboard.
@@ -218,7 +218,7 @@ export default function AdminLoginPage() {
           </div>
 
           <p className="text-sm text-primary-300">
-            © {new Date().getFullYear()} Nature's Mud. All rights reserved.
+            © {new Date().getFullYear()} NaturesMud. All rights reserved.
           </p>
         </div>
       </div>
@@ -232,7 +232,7 @@ export default function AdminLoginPage() {
               <Leaf className="h-7 w-7 text-white" />
             </div>
             <div>
-              <p className="text-xl font-bold text-gray-900">Nature's Mud</p>
+              <p className="text-xl font-bold text-gray-900">NaturesMud</p>
               <p className="text-sm text-gray-500">Admin Dashboard</p>
             </div>
           </div>

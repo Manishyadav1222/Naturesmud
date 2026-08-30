@@ -27,7 +27,7 @@ export function BabyMotherCombosSection() {
           <Text style={styles.badgeText}>Baby & Mother Care</Text>
         </View>
         <Text style={styles.title}>Nurturing Nature's Tiniest</Text>
-        <Text style={styles.subtitle}>Safe, certified organic essentials for mother & baby.</Text>
+        <Text style={styles.subtitle}>Safe, 0 additive essentials for mother & baby.</Text>
       </View>
 
       {combos.map((combo) => (

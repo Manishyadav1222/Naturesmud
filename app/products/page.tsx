@@ -7,8 +7,8 @@ import { api } from '@/lib/api';
 import { Product } from '@/lib/types';
 
 export const metadata = {
-  title: "Products | Nature's Mud",
-  description: 'Explore our full range of 100% natural and organic food products.',
+  title: "Products | NaturesMud",
+  description: 'Explore our full range of pure food products with 0 additives and 0 preservatives.',
 };
 
 export const dynamic = 'force-dynamic';
@@ -77,8 +77,8 @@ export default async function ProductsPage({
               </h1>
               <p className="text-gray-600 mt-2 max-w-2xl text-sm sm:text-base">
                 {category
-                  ? categories.find((c) => c.slug === category)?.description || 'Premium organic superfoods and nutrition.'
-                  : 'Discover our certified solar-dehydrated fruits, organic superfood powders, mountain nuts, seeds, and cold-pressed virgin oils.'}
+                  ? categories.find((c) => c.slug === category)?.description || 'Pure superfoods and whole food nutrition with 0 additives.'
+                  : 'Discover our certified dehydrated fruits, superfood powders, mountain nuts, seeds, and cold-pressed virgin oils with 0 additives and 0 preservatives.'}
               </p>
             </div>
 

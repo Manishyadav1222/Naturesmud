@@ -15,8 +15,8 @@ export function HeroOfferSection() {
           <Text style={styles.badgeText}>Special Promotion</Text>
         </View>
 
-        <Text style={styles.heading}>Use Code: HIMALAYA20</Text>
-        <Text style={styles.subheading}>Get 20% off pure Raw Honey & A2 Vedic Ghee on checkout.</Text>
+        <Text style={styles.heading}>Use Code: STORE5</Text>
+        <Text style={styles.subheading}>Get 5% off across all Himalayan Superfoods on checkout.</Text>
 
         <View style={styles.benefitsRow}>
           <View style={styles.benefitItem}>

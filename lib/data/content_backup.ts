@@ -90,7 +90,7 @@ export const blogPosts: BlogPost[] = [
     readTime: 6,
     content: [
       'Commercial supermarket honey is frequently ultra-filtered, adulterated with industrial sugar syrups, and heated past 65°C—a process that permanently destroys active enzymes, pollen grains, and medicinal flavonoids.',
-      '### What Makes Nature’s Mud Mustang Honey Exceptional?',
+      '### What Makes NaturesMud Mustang Honey Exceptional?',
       'Harvested from wild high-altitude flora in the trans-Himalayan valleys of Nepal, our **Raw Mustang Honey** is completely unheated and chemical-free.',
       '### Verified Health Benefits:',
       '- **Potent Antibacterial Activity:** Contains natural glucose oxidase which produces micro-doses of hydrogen peroxide for soothing sore throats.',
@@ -294,7 +294,7 @@ export const blogPosts: BlogPost[] = [
     readTime: 8,
     content: [
       'In a modern food system flooded with ultra-processed convenience foods, preserving the purity of our daily pantry staples is an act of family health protection.',
-      '### The Nature’s Mud 4-Pillar Promise:',
+      '### The NaturesMud 4-Pillar Promise:',
       '1. **Direct Farmer Partnerships:** Sourcing only from ethical growers who use compost and organic pest management.',
       '2. **Sun-Dried & Cold-Pressed:** Avoiding destructive industrial heat processing.',
       '3. **Zero Synthetic Preservatives:** No sulfur dioxide, artificial glazes, or petroleum-derived colorings.',
@@ -316,7 +316,7 @@ export const testimonials: Testimonial[] = [
     id: 't2',
     author: 'Dr. Ramesh Adhikari',
     role: 'Pediatric Consultant · Lalitpur',
-    content: 'I frequently advise expectant and new mothers to choose whole, chemical-free dry fruits and unpasteurized Himalayan honey over commercial supplements. Nature’s Mud quality is outstanding.',
+    content: 'I frequently advise expectant and new mothers to choose whole, chemical-free dry fruits and unpasteurized Himalayan honey over commercial supplements. NaturesMud quality is outstanding.',
     rating: 5,
   },
   {
@@ -431,7 +431,7 @@ export const faqs: FAQItem[] = [
   {
     id: 'f-superfood-3',
     question: 'Do your superfoods contain added sugars, glazes, or preservatives?',
-    answer: 'Never. Every single product in Nature’s Mud is 100% chemical-free and unadulterated. We do not use sulfur dioxide, artificial preservatives, synthetic dyes, or refined sugars. What you receive is pure, wholesome nutrition straight from nature.',
+    answer: 'Never. Every single product in NaturesMud is 100% chemical-free and unadulterated. We do not use sulfur dioxide, artificial preservatives, synthetic dyes, or refined sugars. What you receive is pure, wholesome nutrition straight from nature.',
     category: 'Superfoods & Honey',
   },
 

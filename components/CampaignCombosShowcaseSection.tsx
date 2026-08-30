@@ -153,7 +153,7 @@ export default function CampaignCombosShowcaseSection() {
               </h2>
               <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/15 text-gold-800 text-xs font-bold font-heading border border-gold/30">
                 <Flame className="w-3.5 h-3.5 text-gold-600 animate-pulse" />
-                Up to 35% OFF
+                Flat 5% OFF
               </span>
             </div>
             <p className="section-subtitle text-ink/70 text-base sm:text-lg max-w-2xl mt-3 leading-relaxed">

@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
     // Format rich WhatsApp message
     const waLines = [
-      `*🌿 Namaste Nature's Mud Nepal!*`,
+      `*🌿 Namaste NaturesMud Nepal!*`,
       ``,
       `I have just placed an order on your website:`,
       `━━━━━━━━━━━━━━━━━━━━`,

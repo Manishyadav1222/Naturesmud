@@ -9,7 +9,7 @@ export const products: Product[] = [
     "name": "Dehydrated Mango",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 395,
+    "price": 375,
     "compareAtPrice": 395,
     "mrp": 395,
     "rating": 4.9,
@@ -20,23 +20,22 @@ export const products: Product[] = [
       "/products/dehydrated-mango.jpg",
       "/products/mango.jpg"
     ],
-    "description": "Golden, intensely flavorful sun-dried mango slices made from tree-ripened Nepali mangoes. Solar-dehydrated at low temperatures with no added sugar, sulfur dioxide, or preservatives—just 100% pure tropical sweetness packed with Vitamins A & C.",
-    "shortDescription": "100% pure sun-dried sweet mango slices without added sugar or sulfur in a Standup Ziplock Pouch.",
+    "description": "Golden, intensely flavorful naturally dried mango slices sourced directly from the Tarai lowlands of Nepal. Gently dehydrated at low temperatures with 0 additives and 0 preservatives—pure tropical sweetness packed with Vitamins A & C.",
+    "shortDescription": "Pure naturally dried sweet mango slices with 0 additives and 0 preservatives in a Standup Ziplock Pouch.",
     "badges": [
-      "bestseller",
-      "organic"
+      "bestseller"
     ],
     "stock": 120,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
     "ingredients": [
-      "100% Pure Sun-Dried Himalayan Mango (Zero Added Sugar, Zero Sulfur)"
+      "100% Pure Himalayan Mango (0 Additives, 0 Preservatives)"
     ],
     "benefits": [
       "Explosive tropical flavor from 100% natural fruit sugars",
       "Packed with natural Vitamin C and Vitamin A for skin & immunity",
       "Healthy lunchbox and office snack with zero artificial coloring",
-      "Solar-dehydrated below 42°C to preserve natural enzymes"
+      "Gently dehydrated below 42°C to preserve natural enzymes"
     ],
     "nutrition": [
       {
@@ -79,7 +78,7 @@ export const products: Product[] = [
     "name": "Dehydrated Pineapple",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 495,
+    "price": 470,
     "compareAtPrice": 495,
     "mrp": 495,
     "rating": 4.9,
@@ -144,7 +143,7 @@ export const products: Product[] = [
     "name": "Dehydrated Apple",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 510,
+    "price": 485,
     "compareAtPrice": 510,
     "mrp": 510,
     "rating": 4.8,
@@ -209,7 +208,7 @@ export const products: Product[] = [
     "name": "Dehydrated Coconut Chip",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 495,
+    "price": 470,
     "compareAtPrice": 495,
     "mrp": 495,
     "rating": 4.8,
@@ -274,7 +273,7 @@ export const products: Product[] = [
     "name": "Dehydrated Papaya",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 395,
+    "price": 375,
     "compareAtPrice": 395,
     "mrp": 395,
     "rating": 4.9,
@@ -285,8 +284,8 @@ export const products: Product[] = [
       "/products/papaya-2.jpg",
       "/products/dehydrated-mango.jpg"
     ],
-    "description": "Chewy, naturally sweet papaya spears solar-dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. Free from sulfur dioxide, artificial colors, and added sugar.",
-    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking.",
+    "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
+    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices with 0 additives and 0 preservatives for healthy gut digestion and snacking.",
     "badges": [
       "bestseller"
     ],
@@ -339,7 +338,7 @@ export const products: Product[] = [
     "name": "Dried Blueberries",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 650,
+    "price": 618,
     "compareAtPrice": 650,
     "mrp": 650,
     "rating": 5,
@@ -354,14 +353,13 @@ export const products: Product[] = [
     "description": "Wild alpine berries foraged at 3,200m in pristine Himalayan frontiers. Densely concentrated in dark-violet Anthocyanins to shield eyes against smartphone screen fatigue, enhance memory, and protect against cellular oxidation.",
     "shortDescription": "Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar.",
     "badges": [
-      "bestseller",
-      "organic"
+      "bestseller"
     ],
     "stock": 80,
     "weight": "100 GM",
     "packing": "Glass Jar",
     "ingredients": [
-      "100% Wild Himalayan Dried Blueberries (Zero Sugar Added)"
+      "100% Wild Himalayan Dried Blueberries (0 Additives, 0 Preservatives)"
     ],
     "benefits": [
       "Dense Anthocyanins cross blood-brain barrier for cognitive sharpness",
@@ -406,7 +404,7 @@ export const products: Product[] = [
     "name": "Dried Cranberry",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 415,
+    "price": 394,
     "compareAtPrice": 415,
     "mrp": 415,
     "rating": 4.8,
@@ -426,7 +424,7 @@ export const products: Product[] = [
     "weight": "100 GM",
     "packing": "Glass Jar",
     "ingredients": [
-      "100% Premium Whole Dried Cranberries"
+      "100% Premium Whole Dried Cranberries (0 Additives, 0 Preservatives)"
     ],
     "benefits": [
       "Rich in Type-A PACs that prevent bacterial adhesion in urinary tract",
@@ -471,7 +469,7 @@ export const products: Product[] = [
     "name": "Dates Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 350,
+    "price": 333,
     "compareAtPrice": 350,
     "mrp": 350,
     "rating": 4.9,
@@ -543,7 +541,7 @@ export const products: Product[] = [
     "name": "Beetroot Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 430,
+    "price": 409,
     "compareAtPrice": 430,
     "mrp": 430,
     "rating": 4.9,
@@ -615,7 +613,7 @@ export const products: Product[] = [
     "name": "Pink Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "price": 180,
+    "price": 171,
     "compareAtPrice": 180,
     "mrp": 180,
     "rating": 4.8,
@@ -681,7 +679,7 @@ export const products: Product[] = [
     "name": "Black Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "price": 150,
+    "price": 143,
     "compareAtPrice": 150,
     "mrp": 150,
     "rating": 4.9,
@@ -743,7 +741,7 @@ export const products: Product[] = [
     "name": "Chia Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 495,
+    "price": 470,
     "compareAtPrice": 495,
     "mrp": 495,
     "rating": 4.9,
@@ -813,7 +811,7 @@ export const products: Product[] = [
     "name": "Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 650,
+    "price": 618,
     "compareAtPrice": 650,
     "mrp": 650,
     "rating": 4.9,
@@ -884,7 +882,7 @@ export const products: Product[] = [
     "name": "Premium Cashewnut",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 750,
+    "price": 713,
     "compareAtPrice": 750,
     "mrp": 750,
     "rating": 4.9,
@@ -953,7 +951,7 @@ export const products: Product[] = [
     "name": "Roasted Cashewnut",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 750,
+    "price": 713,
     "compareAtPrice": 750,
     "mrp": 750,
     "rating": 4.8,
@@ -1018,7 +1016,7 @@ export const products: Product[] = [
     "name": "Dried Figs",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 690,
+    "price": 656,
     "compareAtPrice": 690,
     "mrp": 690,
     "rating": 4.9,
@@ -1089,7 +1087,7 @@ export const products: Product[] = [
     "name": "Roasted Almond",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 750,
+    "price": 713,
     "compareAtPrice": 750,
     "mrp": 750,
     "rating": 4.9,
@@ -1158,7 +1156,7 @@ export const products: Product[] = [
     "name": "Almond",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 750,
+    "price": 713,
     "compareAtPrice": 750,
     "mrp": 750,
     "rating": 4.9,
@@ -1229,7 +1227,7 @@ export const products: Product[] = [
     "name": "Pistachio",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 895,
+    "price": 850,
     "compareAtPrice": 895,
     "mrp": 895,
     "rating": 4.9,
@@ -1298,7 +1296,7 @@ export const products: Product[] = [
     "name": "Mix dry Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 690,
+    "price": 656,
     "compareAtPrice": 690,
     "mrp": 690,
     "rating": 5,
@@ -1373,7 +1371,7 @@ export const products: Product[] = [
     "name": "Macademia Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 850,
+    "price": 808,
     "compareAtPrice": 850,
     "mrp": 850,
     "rating": 4.9,
@@ -1443,7 +1441,7 @@ export const products: Product[] = [
     "name": "Coconut oil",
     "category": "Oils",
     "categorySlug": "oils",
-    "price": 1750,
+    "price": 1663,
     "compareAtPrice": 1750,
     "mrp": 1750,
     "rating": 5,
@@ -1515,7 +1513,7 @@ export const products: Product[] = [
     "name": "Coconut oil",
     "category": "Oils",
     "categorySlug": "oils",
-    "price": 650,
+    "price": 618,
     "compareAtPrice": 650,
     "mrp": 650,
     "rating": 4.9,
@@ -1581,7 +1579,7 @@ export const products: Product[] = [
     "name": "Carrot Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 490,
+    "price": 466,
     "compareAtPrice": 490,
     "mrp": 490,
     "rating": 4.8,
@@ -1648,7 +1646,7 @@ export const products: Product[] = [
     "name": "Sweet Potato Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 510,
+    "price": 485,
     "compareAtPrice": 510,
     "mrp": 510,
     "rating": 5,
@@ -1721,174 +1719,95 @@ export const products: Product[] = [
   }
 ];
 
-export function cleanDisplayWeight(rawWeight?: any, unit?: string, fallback?: string): string {
-  if (fallback && !/^\d+(\.\d+)?$/.test(fallback.trim())) {
-    return fallback;
-  }
-  if (!rawWeight) return fallback || '';
-  const s = String(rawWeight).trim();
-  const num = parseFloat(s);
-  if (!isNaN(num)) {
-    const u = (unit || '').toLowerCase();
-    if (u === 'ml' || s.toLowerCase().includes('ml')) {
-      return `${num}ml`;
-    }
-    return `${num} GM`;
-  }
-  return s;
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
 }
 
 export function getProductById(id: string | number): Product | undefined {
-  const str = String(id).trim();
-  return (
-    products.find((p) => p.id === str) ||
-    products.find((p) => p.dbId && String(p.dbId) === str) ||
-    products.find((p) => p.slug === str) ||
-    products.find((p) => p.slug.toLowerCase() === str.toLowerCase())
-  );
+  return products.find((p) => String(p.id) === String(id) || String(p.dbId) === String(id));
 }
 
-export function getProductBySlug(slug: string): Product | undefined {
-  const str = String(slug).trim().toLowerCase();
-  return (
-    products.find((p) => p.slug.toLowerCase() === str) ||
-    products.find((p) => p.id === str) ||
-    products.find((p) => p.dbId && String(p.dbId) === str)
-  );
+export function getFeaturedProducts(): Product[] {
+  return products.filter((p) => p.isFeatured);
 }
 
-export function normalizeProduct(rawProduct: any, fallback?: Product | null): Product {
-  if (!rawProduct && fallback) return fallback;
-  if (!rawProduct) return fallback as Product;
+export function getBestSellerProducts(): Product[] {
+  return products.filter((p) => p.isBestSeller);
+}
 
-  const product =
-    rawProduct && typeof rawProduct === 'object' && 'data' in rawProduct && rawProduct.data && !Array.isArray(rawProduct.data)
-      ? rawProduct.data
-      : rawProduct;
+export function getProductsByCategory(categorySlug: string): Product[] {
+  return products.filter((p) => p.categorySlug === categorySlug);
+}
 
-  const localFallback = fallback || getProductBySlug(product.slug) || getProductById(String(product.id));
+export const categories = [
+  {
+    name: 'Dried Fruits',
+    slug: 'dried-fruits',
+    description: '100% pure sun-dried fruits with zero added sugar or sulfur dioxide',
+    image: '/products/authentic-dehydrated-mango.jpg',
+    count: products.filter((p) => p.categorySlug === 'dried-fruits').length,
+  },
+  {
+    name: 'Organic Powders',
+    slug: 'powders',
+    description: 'Micro-pulverized 100% organic vegetable & fruit superfood powders',
+    image: '/products/sweet-potato-powder-100g.jpg',
+    count: products.filter((p) => p.categorySlug === 'powders').length,
+  },
+  {
+    name: 'Mountain Nuts',
+    slug: 'nuts',
+    description: 'Premium Himalayan almonds, walnuts, and mountain crunch',
+    image: '/products/authentic-almonds.jpg',
+    count: products.filter((p) => p.categorySlug === 'nuts').length,
+  },
+  {
+    name: 'Seeds & Salts',
+    slug: 'seeds',
+    description: 'Raw high-altitude superfood seeds and pure Himalayan rock salt',
+    image: '/products/pumpkin-seeds.jpg',
+    count: products.filter((p) => p.categorySlug === 'seeds').length,
+  },
+];
 
-  const categoryName =
-    typeof product.category === 'object' && product.category !== null
-      ? (product.category.name || localFallback?.category || 'Organic')
-      : typeof product.category === 'string' && product.category.trim().length > 0
-      ? product.category
-      : localFallback?.category || 'Organic';
+export function normalizeProduct(raw: any, fallback?: Product | null): Product {
+  if (!raw) return (fallback || undefined) as unknown as Product;
+  const slug = raw.slug || fallback?.slug || String(raw.id || '');
+  const local = fallback || getProductBySlug(slug) || products.find((p) => String(p.id) === String(raw.id) || String(p.dbId) === String(raw.id));
 
-  const categorySlug =
-    typeof product.category === 'object' && product.category !== null
-      ? (product.category.slug || product.categorySlug || localFallback?.categorySlug || 'organic')
-      : product.categorySlug ||
-        (typeof product.category === 'string'
-          ? product.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
-          : localFallback?.categorySlug || 'organic');
-
-  const candidateRaw: any[] = [];
-  if (product.images) {
-    if (Array.isArray(product.images)) {
-      candidateRaw.push(...product.images);
-    } else if (typeof product.images === 'string') {
-      try {
-        const parsed = JSON.parse(product.images);
-        if (Array.isArray(parsed)) candidateRaw.push(...parsed);
-        else if (parsed && typeof parsed === 'object') candidateRaw.push(parsed);
-        else if (product.images.trim()) candidateRaw.push(product.images.trim());
-      } catch {
-        if (product.images.trim()) candidateRaw.push(product.images.trim());
-      }
-    } else if (typeof product.images === 'object') {
-      candidateRaw.push(product.images);
-    }
-  }
-
-  if (Array.isArray(product.images_list) && product.images_list.length > 0) {
-    candidateRaw.push(...product.images_list);
-  }
-  if (product.image) candidateRaw.push(product.image);
-  if (product.image_url) candidateRaw.push(product.image_url);
-
-  let primaryCandidate: string | null = null;
-  for (const item of candidateRaw) {
-    if (item && typeof item === 'object' && item.isPrimary) {
-      const resolved = resolveImageUrl(item, '');
-      if (resolved && !resolved.includes('undefined') && !resolved.includes('null')) {
-        primaryCandidate = resolved;
-        break;
-      }
-    }
-  }
-
-  const validImages: string[] = [];
-  for (const item of candidateRaw) {
-    if (!item) continue;
-    const resolved = resolveImageUrl(item, '');
-    if (
-      resolved &&
-      !resolved.includes('undefined') &&
-      !resolved.includes('null') &&
-      !validImages.includes(resolved)
-    ) {
-      validImages.push(resolved);
-    }
-  }
-
-  if (primaryCandidate && validImages.includes(primaryCandidate)) {
-    const idx = validImages.indexOf(primaryCandidate);
-    if (idx > 0) {
-      validImages.splice(idx, 1);
-      validImages.unshift(primaryCandidate);
-    }
-  }
-
-  const rawImages =
-    validImages.length > 0
-      ? validImages
-      : localFallback?.images && localFallback.images.length > 0
-      ? localFallback.images.map((img) => resolveImageUrl(img))
-      : [resolveImageUrl(localFallback?.image || '/products/sweet-potato-powder-100g.jpg')];
-
-  const mainImage =
-    primaryCandidate ||
-    (validImages.length > 0
-      ? validImages[0]
-      : resolveImageUrl(localFallback?.image || rawImages[0]));
+  const compareAtPrice = Number(raw.compare_at_price || raw.compareAtPrice || local?.compareAtPrice || raw.price || local?.price || 0);
+  const rawPrice = Number(raw.price || local?.price || 0);
+  const price = rawPrice > 0 ? (rawPrice <= compareAtPrice ? rawPrice : Math.round(compareAtPrice * 0.95)) : Math.round(compareAtPrice * 0.95);
 
   return {
-    ...localFallback,
-    ...product,
-    id: String(product.id || localFallback?.id || ''),
-    slug: String(product.slug || localFallback?.slug || ''),
-    name: String(product.name || localFallback?.name || ''),
-    category: categoryName,
-    categorySlug: categorySlug,
-    price: Number(product.price ?? localFallback?.price ?? 0),
-    compareAtPrice:
-      product.compareAtPrice !== undefined
-        ? Number(product.compareAtPrice)
-        : product.compare_at_price !== undefined
-        ? Number(product.compare_at_price)
-        : localFallback?.compareAtPrice !== undefined
-        ? Number(localFallback.compareAtPrice)
-        : Number(product.price ?? localFallback?.price ?? 0),
-    mrp: Number(product.mrp ?? localFallback?.mrp ?? product.price ?? localFallback?.price ?? 0),
-    basePrice: Number(product.basePrice ?? localFallback?.basePrice ?? 0),
-    packing: String(product.packing || localFallback?.packing || 'Glass Jar'),
-    rating: Number(product.rating ?? product.rating_avg ?? localFallback?.rating ?? 5),
-    reviewCount: Number(product.reviewCount ?? product.review_count ?? product.rating_count ?? localFallback?.reviewCount ?? 0),
-    image: mainImage,
-    images: rawImages,
-    description: String(product.description || localFallback?.description || ''),
-    shortDescription: String(product.shortDescription || product.short_description || localFallback?.shortDescription || ''),
-    badges: Array.isArray(product.badges) ? product.badges : localFallback?.badges || [],
-    stock: Number(product.stock ?? product.stock_quantity ?? localFallback?.stock ?? 100),
-    weight: cleanDisplayWeight(product.weight, product.unit, localFallback?.weight),
-    ingredients: Array.isArray(product.ingredients) ? product.ingredients : localFallback?.ingredients || [],
-    benefits: Array.isArray(product.benefits) ? product.benefits : localFallback?.benefits || [],
-    nutrition: Array.isArray(product.nutrition) ? product.nutrition : localFallback?.nutrition || [],
-    usage: String(product.usage || localFallback?.usage || ''),
-    storage: String(product.storage || localFallback?.storage || ''),
-    isFeatured: Boolean(product.isFeatured ?? product.is_featured ?? localFallback?.isFeatured ?? false),
-    isBestSeller: Boolean(product.isBestSeller ?? product.is_bestseller ?? product.is_best_seller ?? localFallback?.isBestSeller ?? false),
-    tags: Array.isArray(product.tags) ? product.tags : localFallback?.tags || [],
+    id: String(raw.id || local?.id || slug),
+    dbId: typeof raw.id === 'number' ? raw.id : (local?.dbId || parseInt(raw.id, 10) || undefined),
+    slug: slug,
+    name: raw.name || local?.name || 'NaturesMud Product',
+    category: typeof raw.category === 'object' && raw.category !== null ? raw.category.name : (raw.category || local?.category || 'Organic'),
+    categorySlug: typeof raw.category === 'object' && raw.category !== null ? raw.category.slug : (raw.categorySlug || local?.categorySlug || 'organic'),
+    price: price,
+    compareAtPrice: compareAtPrice > price ? compareAtPrice : (local?.compareAtPrice || Math.round(price / 0.95)),
+    mrp: Number(raw.mrp || compareAtPrice || local?.mrp || price),
+    rating: Number(raw.rating || local?.rating || 4.9),
+    reviewCount: Number(raw.reviewCount || raw.reviews_count || local?.reviewCount || 24),
+    image: resolveImageUrl(raw.image || local?.image || '/products/naturesmud-all-products-100g.jpg'),
+    images: Array.isArray(raw.images) && raw.images.length > 0
+      ? raw.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : img.url || img.image_url))
+      : (local?.images || [resolveImageUrl(raw.image || local?.image || '/products/naturesmud-all-products-100g.jpg')]),
+    description: raw.description || local?.description || '',
+    shortDescription: raw.shortDescription || raw.short_description || local?.shortDescription || '',
+    badges: Array.isArray(raw.badges) ? raw.badges : (local?.badges || []),
+    stock: typeof raw.stock === 'number' ? raw.stock : (local?.stock ?? 100),
+    weight: raw.weight || local?.weight || '100 GM',
+    packing: raw.packing || local?.packing || 'Standup Ziplock Pouch',
+    ingredients: Array.isArray(raw.ingredients) ? raw.ingredients : (local?.ingredients || []),
+    benefits: Array.isArray(raw.benefits) ? raw.benefits : (local?.benefits || []),
+    nutrition: Array.isArray(raw.nutrition) ? raw.nutrition : (local?.nutrition || []),
+    usage: raw.usage || local?.usage || '',
+    storage: raw.storage || local?.storage || '',
+    isFeatured: Boolean(raw.isFeatured ?? raw.is_featured ?? local?.isFeatured),
+    isBestSeller: Boolean(raw.isBestSeller ?? raw.is_bestseller ?? local?.isBestSeller),
+    tags: Array.isArray(raw.tags) ? raw.tags : (local?.tags || []),
   };
 }

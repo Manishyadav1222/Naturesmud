@@ -15,12 +15,12 @@ export default function AdminSettingsPage() {
   const [activeTab, setActiveTab] = useState('general');
   const [saved, setSaved] = useState(false);
   const [settings, setSettings] = useState({
-    storeName: "Nature's Mud",
-    tagline: '100% Natural Himalayan Beauty Products',
+    storeName: 'NaturesMud',
+    tagline: 'Pure Food · Real Nature · 0 Additives · 0 Preservatives',
     supportEmail: 'support@naturesmud.com',
     supportPhone: '+977-1-5550123',
-    address: 'Thamel, Kathmandu, Nepal',
-    whatsapp: '+977-9841234567',
+    address: 'Kathmandu, Nepal',
+    whatsapp: '+977-9713888002',
     facebook: 'https://facebook.com/naturesmud',
     instagram: 'https://instagram.com/naturesmud',
     tiktok: 'https://tiktok.com/@naturesmud',
@@ -32,8 +32,8 @@ export default function AdminSettingsPage() {
     orderPrefix: 'NM',
     maintenance: 'false',
     analytics: 'true',
-    seoTitle: "Nature's Mud - Natural Skincare & Beauty Products Nepal",
-    seoDescription: 'Discover natural handmade beauty products crafted in Nepal. Dead Sea mud masks, soaps, and more.',
+    seoTitle: 'NaturesMud — Pure Himalayan Superfoods & Whole Food Nutrition Nepal',
+    seoDescription: 'Authentic pure Himalayan superfoods, whole food powders, and dehydrated fruits with 0 additives and 0 preservatives.',
     announcement: 'Free shipping on orders over Rs. 10,000!',
   });
 

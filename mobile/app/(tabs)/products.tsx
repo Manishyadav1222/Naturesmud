@@ -69,7 +69,7 @@ export default function ProductsScreen() {
         <View>
           <Text style={styles.headerTitle}>Himalayan Harvest</Text>
           <Text style={styles.headerSubtitle}>
-            {filteredProducts.length} certified organic products
+            {filteredProducts.length} pure whole food products
           </Text>
         </View>
         <TouchableOpacity
