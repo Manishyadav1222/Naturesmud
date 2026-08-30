@@ -1,0 +1,30 @@
+[
+  {
+    "id": "wa-1788126955799",
+    "orderNumber": "FAIL-954233",
+    "recipientPhone": "9779713888002",
+    "messageType": "NEW_ORDER_INVOICE",
+    "status": "FAILED",
+    "retryCount": 1,
+    "lastAttemptAt": "2026-08-30T21:55:55.808Z",
+    "invoiceFile": "https://naturesmud.shop/uploads/invoices/INV-FAIL954233.pdf",
+    "errorMessage": "Invalid OAuth access token - Cannot parse access token"
+  },
+  {
+    "id": "wa-1788126954231",
+    "orderNumber": "TEST-954181",
+    "recipientPhone": "9779713888002",
+    "messageType": "NEW_ORDER_INVOICE",
+    "status": "SENT",
+    "retryCount": 1,
+    "lastAttemptAt": "2026-08-30T21:55:54.232Z",
+    "invoiceFile": "https://naturesmud.shop/uploads/invoices/INV-TEST954181.pdf",
+    "whatsappMessageId": "mock-wamid-1788126954231",
+    "apiResponse": {
+      "simulated": true,
+      "messageId": "mock-wamid-1788126954231",
+      "timestamp": "2026-08-30T21:55:54.231Z"
+    },
+    "sentAt": "2026-08-30T21:55:54.231Z"
+  }
+]

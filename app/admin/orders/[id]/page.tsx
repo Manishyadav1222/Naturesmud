@@ -36,6 +36,10 @@ import {
   ShieldCheck,
   Eye,
   X,
+  Send,
+  MessageSquare,
+  AlertCircle,
+  RefreshCw,
 } from 'lucide-react';
 
 interface OrderItem {
@@ -149,8 +153,26 @@ export default function AdminOrderDetailPage() {
   const [showReturnDialog, setShowReturnDialog] = useState(false);
   const [showReceiptModal, setShowReceiptModal] = useState(false);
 
+  // WhatsApp Automation State
+  const [waLog, setWaLog] = useState<any>(null);
+  const [isSendingWa, setIsSendingWa] = useState(false);
+  const [waFeedback, setWaFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+
   const orderId = params?.id as string;
   const canManageOrders = hasPermission(PERMISSIONS.MANAGE_ORDERS);
+
+  const fetchWhatsAppStatus = useCallback(async (orderNumber: string) => {
+    try {
+      const cleanNum = orderNumber.replace('#', '').trim();
+      const res = await fetch(`/api/orders/${cleanNum}/whatsapp`);
+      const data = await res.json();
+      if (data.success && data.data) {
+        setWaLog(data.data);
+      }
+    } catch {
+      // Non-blocking
+    }
+  }, []);
 
   const fetchOrder = useCallback(async () => {
     if (!orderId) return;
@@ -159,6 +181,9 @@ export default function AdminOrderDetailPage() {
       setError(null);
       const res = await api.get<{ data: OrderDetail }>(`/orders/${orderId}`);
       setOrder(res.data);
+      if (res.data?.orderNumber) {
+        fetchWhatsAppStatus(res.data.orderNumber);
+      }
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);
@@ -168,11 +193,56 @@ export default function AdminOrderDetailPage() {
     } finally {
       setIsLoading(false);
     }
-  }, [orderId]);
+  }, [orderId, fetchWhatsAppStatus]);
 
   useEffect(() => {
     fetchOrder();
   }, [fetchOrder]);
+
+  const handleSendWhatsApp = async (forceResend = false) => {
+    if (!order) return;
+    try {
+      setIsSendingWa(true);
+      setWaFeedback(null);
+      const cleanNum = order.orderNumber.replace('#', '').trim();
+      const res = await fetch(`/api/orders/${cleanNum}/whatsapp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          forceResend,
+          orderData: {
+            orderNumber: order.orderNumber,
+            customerName: order.customer?.name || order.shippingAddress?.fullName || 'Valued Customer',
+            customerPhone: order.customer?.phone || order.shippingAddress?.phone || '9800000000',
+            customerEmail: order.customer?.email,
+            shippingAddress: order.shippingAddress?.addressLine1 || 'Kathmandu, Nepal',
+            shippingCity: order.shippingAddress?.city || 'Kathmandu',
+            isValley: order.isValley,
+            paymentMethod: order.paymentMethod,
+            paymentStatus: order.paymentStatus,
+            paymentReference: order.paymentReference,
+            subtotal: order.subtotal,
+            discount: order.discount,
+            shippingFee: order.shippingFee,
+            total: order.grandTotal,
+            items: order.items,
+          },
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setWaFeedback({ type: 'success', message: 'WhatsApp invoice notification sent successfully!' });
+        fetchWhatsAppStatus(order.orderNumber);
+      } else {
+        setWaFeedback({ type: 'error', message: data.error || 'Failed to send WhatsApp notification' });
+        fetchWhatsAppStatus(order.orderNumber);
+      }
+    } catch (err: any) {
+      setWaFeedback({ type: 'error', message: err.message || 'WhatsApp network error' });
+    } finally {
+      setIsSendingWa(false);
+    }
+  };
 
   const handleStatusChange = async (status: string) => {
     if (!order || !canManageOrders) return;
@@ -298,7 +368,45 @@ export default function AdminOrderDetailPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Download Official PDF Invoice */}
+          <a
+            href={`/api/orders/${order.orderNumber.replace('#', '')}/invoice`}
+            target="_blank"
+            download
+            className="px-3 py-2 rounded-xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"
+          >
+            <Download className="w-3.5 h-3.5 text-[#2D5A27]" />
+            <span>Download Invoice</span>
+          </a>
+
+          {/* Official WhatsApp Business Cloud API Action */}
+          <Button
+            size="sm"
+            onClick={() => handleSendWhatsApp(waLog?.status === 'SENT')}
+            disabled={isSendingWa}
+            className={`text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all ${
+              waLog?.status === 'SENT'
+                ? 'bg-[#1A3826] hover:bg-[#152e20]'
+                : waLog?.status === 'FAILED'
+                ? 'bg-rose-600 hover:bg-rose-700'
+                : 'bg-[#25D366] hover:bg-[#20ba5a]'
+            }`}
+          >
+            {isSendingWa ? (
+              <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+            ) : (
+              <Send className="w-3.5 h-3.5" />
+            )}
+            <span>
+              {isSendingWa
+                ? 'Sending...'
+                : waLog?.status === 'SENT'
+                ? 'Resend WhatsApp'
+                : 'Send WhatsApp'}
+            </span>
+          </Button>
+
           {order.customer?.phone && (
             <a
               href={`https://wa.me/${order.customer.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(
@@ -306,10 +414,10 @@ export default function AdminOrderDetailPage() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs"
+              className="px-3 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>WhatsApp Customer</span>
+              <span className="hidden sm:inline">WhatsApp Customer</span>
             </a>
           )}
 
@@ -324,6 +432,32 @@ export default function AdminOrderDetailPage() {
           )}
         </div>
       </div>
+
+      {/* WhatsApp Action Feedback Toast/Banner */}
+      {waFeedback && (
+        <div
+          className={`p-3 rounded-2xl text-xs font-bold flex items-center justify-between gap-3 ${
+            waFeedback.type === 'success'
+              ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+              : 'bg-rose-50 text-rose-800 border border-rose-200'
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            {waFeedback.type === 'success' ? (
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            ) : (
+              <AlertCircle className="w-4 h-4 text-rose-600" />
+            )}
+            <span>{waFeedback.message}</span>
+          </div>
+          <button
+            onClick={() => setWaFeedback(null)}
+            className="text-gray-400 hover:text-gray-600 text-xs font-bold"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       {/* Status & Payment Action Banner */}
       <Card className="border-l-4 border-l-[#2D5A27] bg-white">
@@ -527,8 +661,116 @@ export default function AdminOrderDetailPage() {
           </Card>
         </div>
 
-        {/* Right 4 Cols: Customer, Shipping & History */}
+        {/* Right 4 Cols: WhatsApp Audit, Customer, Shipping & History */}
         <div className="lg:col-span-4 space-y-6">
+          {/* Official WhatsApp Business Platform Delivery Status & Audit Log */}
+          <Card className="border border-emerald-200 bg-gradient-to-br from-emerald-50/30 to-white overflow-hidden shadow-sm">
+            <CardHeader className="bg-emerald-100/40 pb-3">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-xs font-bold text-emerald-950 flex items-center gap-1.5 font-heading uppercase tracking-wider">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#2D5A27]" />
+                  WhatsApp Invoice Dispatch
+                </CardTitle>
+                <Badge
+                  className={`text-[10px] font-bold ${
+                    waLog?.status === 'SENT'
+                      ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      : waLog?.status === 'QUEUED'
+                      ? 'bg-amber-100 text-amber-800 border-amber-300'
+                      : waLog?.status === 'FAILED'
+                      ? 'bg-rose-100 text-rose-800 border-rose-300'
+                      : 'bg-gray-100 text-gray-600 border-gray-200'
+                  }`}
+                >
+                  {waLog?.status || 'NOT_SENT'}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="p-4 space-y-3 text-xs">
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-gray-500">
+                  <span>Recipient:</span>
+                  <span className="font-mono font-bold text-gray-900">
+                    +{waLog?.recipientPhone || '9779713888002'}
+                  </span>
+                </div>
+                <div className="flex justify-between text-gray-500">
+                  <span>Message Type:</span>
+                  <span className="font-bold text-gray-900">New Order Tax Invoice</span>
+                </div>
+                <div className="flex justify-between text-gray-500">
+                  <span>Invoice PDF:</span>
+                  <a
+                    href={`/api/orders/${order.orderNumber.replace('#', '')}/invoice`}
+                    target="_blank"
+                    className="font-bold text-[#2D5A27] hover:underline flex items-center gap-1"
+                  >
+                    <span>INV-{order.orderNumber.replace('#', '')}.pdf</span>
+                    <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
+                </div>
+
+                {waLog?.whatsappMessageId && (
+                  <div className="flex justify-between text-gray-500">
+                    <span>Meta Message ID:</span>
+                    <span className="font-mono text-[10px] text-gray-700 truncate max-w-[140px]" title={waLog.whatsappMessageId}>
+                      {waLog.whatsappMessageId}
+                    </span>
+                  </div>
+                )}
+
+                {waLog?.sentAt && (
+                  <div className="flex justify-between text-gray-500">
+                    <span>Sent At:</span>
+                    <span className="text-gray-900 font-medium">{formatDateTime(waLog.sentAt)}</span>
+                  </div>
+                )}
+
+                {typeof waLog?.retryCount !== 'undefined' && waLog.retryCount > 0 && (
+                  <div className="flex justify-between text-gray-500">
+                    <span>Dispatch Attempts:</span>
+                    <span className="font-bold text-gray-900">{waLog.retryCount}</span>
+                  </div>
+                )}
+
+                {waLog?.errorMessage && (
+                  <div className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px]">
+                    <p className="font-bold">Error details:</p>
+                    <p className="font-mono text-[10px] mt-0.5">{waLog.errorMessage}</p>
+                  </div>
+                )}
+              </div>
+
+              <div className="pt-2 border-t border-emerald-100 flex gap-2">
+                <Button
+                  size="sm"
+                  onClick={() => handleSendWhatsApp(waLog?.status === 'SENT')}
+                  disabled={isSendingWa}
+                  className={`w-full text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs ${
+                    waLog?.status === 'SENT'
+                      ? 'bg-[#1A3826] hover:bg-[#152e20] text-white'
+                      : waLog?.status === 'FAILED'
+                      ? 'bg-rose-600 hover:bg-rose-700 text-white'
+                      : 'bg-[#25D366] hover:bg-[#20ba5a] text-white'
+                  }`}
+                >
+                  {isSendingWa ? (
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  ) : (
+                    <Send className="w-3.5 h-3.5" />
+                  )}
+                  <span>
+                    {isSendingWa
+                      ? 'Dispatching...'
+                      : waLog?.status === 'SENT'
+                      ? 'Resend WhatsApp'
+                      : 'Send WhatsApp'}
+                  </span>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Customer Info */}
           <Card>
             <CardHeader className="pb-3">

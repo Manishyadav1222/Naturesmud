@@ -89,6 +89,41 @@ export async function POST(req: NextRequest) {
       // Non-blocking
     }
 
+    // Trigger Official WhatsApp Business Platform Cloud API Invoice Notification
+    try {
+      const { NotificationService } = await import('@/lib/notification-service');
+      const orderInput = {
+        orderNumber,
+        customerName,
+        customerPhone,
+        customerEmail,
+        shippingAddress,
+        shippingCity,
+        isValley,
+        paymentMethod,
+        paymentStatus: hasReceipt ? 'PAID' : 'PENDING',
+        paymentReference,
+        subtotal: Number(subtotal || total),
+        discount: Number(discount || 0),
+        shippingFee: Number(shippingFee || 0),
+        total: Number(total),
+        items: Array.isArray(items)
+          ? items.map((it: any) => ({
+              name: it.name || it.product_name || 'Himalayan Superfood Item',
+              quantity: Number(it.quantity || 1),
+              price: Number(it.price || it.unit_price || 0),
+            }))
+          : [],
+      };
+
+      // Non-blocking trigger
+      NotificationService.WhatsApp.sendNewOrder(orderInput).catch((waErr) => {
+        console.error('Non-blocking WhatsApp Cloud API error:', waErr);
+      });
+    } catch (waServiceErr) {
+      console.error('Non-blocking WhatsApp Notification Service error:', waServiceErr);
+    }
+
     // Trigger Notification Automations (Customer confirmation + Admin order alert)
     try {
       const { triggerNotification } = await import('@/lib/notifications');
@@ -120,4 +155,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
 }
+
 
