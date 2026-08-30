@@ -722,8 +722,8 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
 
           {/* Featured Superfood Bundle Spotlight Box (Guaranteed on every post) */}
           <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FAF7F2] via-amber-50/40 to-white border-2 border-[#2D5A27]/30 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-[#C9982A] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
-              🎋 5% OFF Special Discount Applied
+            <div className="absolute top-0 right-0 bg-[#2D5A27] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-xs">
+              🌿 100% Pure Superfood
             </div>
 
             <div className="flex items-center gap-5 w-full md:w-auto">
@@ -746,13 +746,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 </h4>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-base sm:text-lg font-black text-[#2D5A27]">
-                    Rs. {Math.round(activeFeaturedProduct.price * 0.95)}
-                  </span>
-                  <span className="text-xs sm:text-sm text-gray-400 line-through">
                     Rs. {activeFeaturedProduct.price}
-                  </span>
-                  <span className="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
-                    Save 5%
                   </span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
@@ -774,7 +768,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
                 className="flex-1 md:flex-none px-5 py-3 rounded-xl bg-[#2D5A27] hover:bg-[#23471e] text-white text-xs font-black flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 <ShoppingBag className="w-4 h-4 text-[#EBC164]" />
-                <span>Buy Now (5% OFF)</span>
+                <span>Buy Now</span>
               </button>
             </div>
           </div>

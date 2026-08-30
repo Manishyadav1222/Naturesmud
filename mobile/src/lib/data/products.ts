@@ -90,15 +90,15 @@ export const products: Product[] = [
     "name": "Wild Himalayan Honey 500g",
     "description": "Our flagship wild honey is harvested by traditional Gurung honey hunters who scale 300ft cliffs in the Annapurna region. This rare multi-floral honey contains nectar from 100+ wildflower species including rhododendron, wild cherry, and medicinal herbs found only above 3,500m. Each batch is raw, unfiltered, and cold-extracted to preserve 200+ natural enzymes, antioxidants, and pollen. The flavor profile is complex — floral front notes with woody undertones and a subtle medicinal finish. Perfect for daily wellness, culinary use, or as a premium gift.",
     "shortDescription": "Rare multi-floral honey from 3,500m+ cliffs. Raw, unfiltered, 100+ wildflower essences.",
-    "price": 2849,
-    "compareAtPrice": 2999,
+    "price": 395,
+    "compareAtPrice": 395,
     "image": "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600",
     "images": [
       "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600",
       "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600",
       "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600"
     ],
-    "weight": "500g glass jar",
+    "weight": "100 GM",
     "category": "Wild Himalayan Honey",
     "categorySlug": "wild-honey",
     "badges": [
@@ -175,7 +175,8 @@ export const products: Product[] = [
     "metaTitle": "Wild Himalayan Honey 500g | Raw Multi-floral Honey from 3500m+ Cliffs",
     "metaDescription": "Buy authentic wild Himalayan honey harvested by Gurung honey hunters. 100+ wildflower essences, raw, unfiltered, enzyme-rich. Free shipping on orders above Rs. 3,000.",
     "createdAt": "2024-01-15T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 395
   },
   {
     "id": "2",
@@ -183,13 +184,13 @@ export const products: Product[] = [
     "name": "Wild Himalayan Honey 250g",
     "description": "Smaller jar of our flagship wild honey — perfect for first-time buyers or gifting. Same rare multi-floral honey harvested from 3,500m+ cliffs by traditional Gurung honey hunters. Raw, unfiltered, cold-extracted to preserve 200+ natural enzymes.",
     "shortDescription": "Rare multi-floral honey from 3,500m+ cliffs. 250g starter size.",
-    "price": 1519,
-    "compareAtPrice": 1599,
+    "price": 750,
+    "compareAtPrice": 750,
     "image": "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600",
     "images": [
       "https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=600"
     ],
-    "weight": "250g glass jar",
+    "weight": "200 GM",
     "category": "Wild Himalayan Honey",
     "categorySlug": "wild-honey",
     "badges": [
@@ -240,7 +241,8 @@ export const products: Product[] = [
       "starter"
     ],
     "createdAt": "2024-02-01T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 750
   },
   {
     "id": "3",
@@ -248,14 +250,14 @@ export const products: Product[] = [
     "name": "Pure Shilajit Resin 20g",
     "description": "The gold standard of Shilajit. Harvested from 4,000m+ altitudes in the Nepalese Himalayas, purified through the ancient 40-day Surya Tapi (sun-drying) method in copper vessels. This process concentrates fulvic acid to 60%+ and preserves 85+ trace minerals in their most bioavailable ionic form. Each batch is third-party lab tested for heavy metals, purity, and potency. The resin is glossy, blackish-brown, with a distinct bittersweet taste and earthy aroma — hallmarks of authenticity.",
     "shortDescription": "40-day Surya Tapi purified resin from 4,000m+. 60%+ fulvic acid, 85+ minerals.",
-    "price": 4084,
-    "compareAtPrice": 4299,
+    "price": 510,
+    "compareAtPrice": 510,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600",
     "images": [
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600",
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600"
     ],
-    "weight": "20g resin in glass jar",
+    "weight": "100 GM",
     "category": "Pure Shilajit",
     "categorySlug": "shilajit",
     "badges": [
@@ -325,7 +327,8 @@ export const products: Product[] = [
     "metaTitle": "Pure Shilajit Resin 20g | 40-Day Surya Tapi Purified | 60%+ Fulvic Acid",
     "metaDescription": "Authentic Himalayan Shilajit resin, 40-day sun purified. 60%+ fulvic acid, 85+ trace minerals. Lab tested. Free shipping on orders above Rs. 3,000.",
     "createdAt": "2024-01-20T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 510
   },
   {
     "id": "4",
@@ -333,13 +336,13 @@ export const products: Product[] = [
     "name": "Pure Shilajit Resin 10g",
     "description": "Starter size of our premium 40-day Surya Tapi purified Shilajit resin. Perfect for first-time users to experience the benefits before committing to a larger jar. Same 60%+ fulvic acid potency.",
     "shortDescription": "40-day Surya Tapi purified resin. 10g starter size.",
-    "price": 2089,
-    "compareAtPrice": 2199,
+    "price": 650,
+    "compareAtPrice": 650,
     "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600",
     "images": [
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600"
     ],
-    "weight": "10g resin in glass jar",
+    "weight": "100 GM",
     "category": "Pure Shilajit",
     "categorySlug": "shilajit",
     "badges": [
@@ -380,7 +383,8 @@ export const products: Product[] = [
       "fulvic-acid"
     ],
     "createdAt": "2024-02-15T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 650
   },
   {
     "id": "5",
@@ -388,13 +392,13 @@ export const products: Product[] = [
     "name": "Organic Moringa Powder 200g",
     "description": "Known as the \"Miracle Tree,\" our moringa is grown at 1,200m altitude in nutrient-rich Himalayan foothill soil. Leaves are shade-dried at low temperatures to preserve maximum nutrition. Each batch tests at 25%+ protein, 90+ nutrients, 46 antioxidants, and 36 anti-inflammatory compounds. Vibrant green color indicates freshness and chlorophyll content.",
     "shortDescription": "Nutrient-dense superfood from Himalayan foothills. 90+ nutrients, 46 antioxidants.",
-    "price": 1044,
-    "compareAtPrice": 1099,
+    "price": 430,
+    "compareAtPrice": 430,
     "image": "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600",
     "images": [
       "https://images.unsplash.com/photo-1590736969955-71cc94901144?w=600"
     ],
-    "weight": "200g resealable pouch",
+    "weight": "100 GM",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
     "badges": [
@@ -460,7 +464,8 @@ export const products: Product[] = [
       "vegan"
     ],
     "createdAt": "2024-01-10T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 430
   },
   {
     "id": "6",
@@ -468,13 +473,13 @@ export const products: Product[] = [
     "name": "Organic Chia Seeds 500g",
     "description": "Premium black chia seeds grown in the fertile Himalayan foothills without pesticides. These tiny seeds are nutritional powerhouses — rich in omega-3 fatty acids (ALA), fiber, protein, and essential minerals. They absorb 10x their weight in liquid, forming a gel that supports hydration and digestive health. Perfect for puddings, smoothies, baking, or as an egg substitute.",
     "shortDescription": "Omega-3 rich superfood from Himalayan foothills. High fiber, complete protein.",
-    "price": 902,
-    "compareAtPrice": 949,
+    "price": 350,
+    "compareAtPrice": 350,
     "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600",
     "images": [
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"
     ],
-    "weight": "500g resealable pouch",
+    "weight": "100 GM",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
     "badges": [
@@ -537,7 +542,8 @@ export const products: Product[] = [
       "keto"
     ],
     "createdAt": "2024-01-25T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 350
   },
   {
     "id": "7",
@@ -545,13 +551,13 @@ export const products: Product[] = [
     "name": "Organic Dates Powder 300g",
     "description": "Nature's perfect 1:1 sugar replacement. Made from 100% organic dates dried and ground at low temperatures — no additives, no fillers, just pure fruit. Rich caramel flavor with notes of toffee and butterscotch. Low glycemic index, high fiber, and packed with potassium, magnesium, and antioxidants. Perfect for baking, smoothies, coffee, or anywhere you'd use sugar.",
     "shortDescription": "1:1 natural sugar replacement. Low GI, high fiber, caramel flavor.",
-    "price": 807,
-    "compareAtPrice": 849,
+    "price": 415,
+    "compareAtPrice": 415,
     "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600",
     "images": [
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"
     ],
-    "weight": "300g resealable pouch",
+    "weight": "100 GM",
     "category": "Natural Sweeteners",
     "categorySlug": "natural-sweeteners",
     "badges": [
@@ -614,7 +620,8 @@ export const products: Product[] = [
       "vegan"
     ],
     "createdAt": "2024-11-01T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 415
   },
   {
     "id": "8",
@@ -741,13 +748,13 @@ export const products: Product[] = [
     "name": "Morning Vitality Ritual Bundle",
     "description": "Curated 4-product combo to start your day the Himalayan way. Includes: Wild Himalayan Honey 250g, Organic Turmeric Latte Mix 100g, Organic Amla Powder 100g, and Himalayan Green Tea 50g. Save 5% vs buying individually. Perfect gift for wellness enthusiasts or your own morning upgrade.",
     "shortDescription": "4-product morning wellness bundle. Honey, turmeric latte, amla, green tea. Save 5%.",
-    "price": 4000,
-    "compareAtPrice": 4210,
+    "price": 180,
+    "compareAtPrice": 180,
     "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600",
     "images": [
       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600"
     ],
-    "weight": "Bundle (4 products)",
+    "weight": "100 GM",
     "category": "Wellness Kits & Combos",
     "categorySlug": "wellness-kits",
     "badges": [
@@ -788,7 +795,8 @@ export const products: Product[] = [
       "starter"
     ],
     "createdAt": "2024-11-15T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 180
   },
   {
     "id": "11",
@@ -796,13 +804,13 @@ export const products: Product[] = [
     "name": "Himalayan Walnuts 250g",
     "description": "Premium walnuts from wild-growing trees at 2,000-3,000m in the Karnali region. The cold climate and mineral-rich soil produce exceptionally flavorful kernels with high oil content (65%+). Hand-shelled to preserve whole halves. Rich in omega-3, antioxidants, and melatonin for brain health and sleep quality.",
     "shortDescription": "Wild-grown from 2,000-3,000m. High omega-3, hand-shelled whole halves.",
-    "price": 1139,
-    "compareAtPrice": 1199,
+    "price": 495,
+    "compareAtPrice": 495,
     "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600",
     "images": [
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"
     ],
-    "weight": "250g resealable pouch",
+    "weight": "300 GM",
     "category": "Nuts & Seeds",
     "categorySlug": "nuts-seeds",
     "badges": [
@@ -863,7 +871,8 @@ export const products: Product[] = [
       "keto"
     ],
     "createdAt": "2024-03-01T10:00:00Z",
-    "updatedAt": "2024-11-20T10:00:00Z"
+    "updatedAt": "2024-11-20T10:00:00Z",
+    "mrp": 495
   },
   {
     "id": "12",

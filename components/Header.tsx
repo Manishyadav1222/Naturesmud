@@ -90,9 +90,9 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 mx-auto sm:mx-0">
             <span className="bg-[#D9A441] text-dark text-[10px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">
-              5% OFF
+              COMBO OFFERS
             </span>
-            <span>Festive Celebration Sale: Flat 5% OFF on all Himalayan superfoods & combos! Use Code: <strong className="text-[#F4E8C1] underline decoration-[#D9A441]">STORE5</strong></span>
+            <span>Festive Celebration Sale: Exclusive Discounts & Gifts on Himalayan Combos & Hampers! Use Code: <strong className="text-[#F4E8C1] underline decoration-[#D9A441]">STORE5</strong></span>
           </div>
           <div className="hidden sm:flex items-center gap-4 text-white/80 text-[11px]">
             <Link href="/offers" className="hover:text-white underline font-semibold flex items-center gap-1 transition-colors">

@@ -70,7 +70,7 @@ const productsFilePath = path.join(__dirname, '..', 'lib', 'data', 'products.ts'
 let content = fs.readFileSync(productsFilePath, 'utf8').replace(/\r\n/g, '\n');
 const marker = 'export const products: Product[] = ';
 const startIdx = content.indexOf(marker) + marker.length;
-const endIdx = content.indexOf('export function cleanDisplayWeight');
+const endIdx = content.indexOf('export function');
 const jsonText = content.substring(startIdx, endIdx).trim().replace(/;$/, '');
 const products = JSON.parse(jsonText);
 

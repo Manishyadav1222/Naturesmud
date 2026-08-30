@@ -6,6 +6,7 @@ export interface Product {
   shortDescription: string;
   price: number;
   compareAtPrice?: number;
+  mrp?: number;
   image: string;
   images: string[];
   weight: string;
