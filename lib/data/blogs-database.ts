@@ -24,6 +24,1068 @@ export interface ExtendedBlogPost extends BlogPost {
 
 // Generate the master 100 comprehensive SEO blogs catalog
 export const allBlogPosts: ExtendedBlogPost[] = [
+{
+  "id": "b-emergency-1-what-to-eat-during-emergency-nepal",
+  "title": "What to Eat During an Emergency in Nepal: Healthy, Shelf-Stable Foods to Keep at Home",
+  "slug": "what-to-eat-during-an-emergency-in-nepal-healthy-shelf-stable-foods",
+  "excerpt": "When monsoon floods, highway blockades, or seismic shocks hit Nepal, cooking gas and electricity often vanish. Here is the ultimate guide to healthy, zero-cooking shelf-stable emergency foods.",
+  "category": "Emergency & Preparedness",
+  "date": "2026-08-30",
+  "author": "NaturesMud Disaster Preparedness Advisory",
+  "readTime": 9,
+  "featured": true,
+  "image": "/images/combos/wellness-pack.jpg",
+  "tags": [
+    "emergency food nepal",
+    "shelf stable foods kathmandu",
+    "earthquake food prep nepal",
+    "emergency nutrition",
+    "disaster pantry nepal",
+    "zero cooking survival food"
+  ],
+  "keyTakeaways": [
+    "Zero-Cooking Priority: When power grids fail and LPG cylinders run dry, your survival depends on foods that need zero heat—like raw nuts, chia seeds, and whole dates powder.",
+    "Hydration Multiplying: Chia seeds absorb up to 12 times their weight in water, helping your body retain critical fluids when safe drinking water is rationed.",
+    "Calorie Density Over Bulk: 100g of raw almonds and pumpkin seeds delivers nearly 600 kcal and 25g of pure protein without requiring cooking fuel.",
+    "Avoid High-Sodium Traps: Packaged instant noodles with MSG trigger severe dehydration; choose pure dried fruits and pink salt ORS formulas instead."
+  ],
+  "tableOfContents": [
+    {
+      "id": "reality-of-disruption",
+      "title": "The Reality of Disruption in Nepal"
+    },
+    {
+      "id": "instant-noodle-myth",
+      "title": "The Danger of Relying on Instant Noodles"
+    },
+    {
+      "id": "top-emergency-superfoods",
+      "title": "Top 6 Shelf-Stable Emergency Superfoods"
+    },
+    {
+      "id": "diy-electrolyte-ors",
+      "title": "DIY Emergency Electrolyte Solution (ORS)"
+    },
+    {
+      "id": "72-hour-ration-plan",
+      "title": "72-Hour Family Emergency Ration Plan"
+    },
+    {
+      "id": "pantry-hygiene-monsoon",
+      "title": "Moisture and Pest Protection in Nepal"
+    }
+  ],
+  "content": [
+    "### The Reality of Disruption in Nepal",
+    "In Nepal, emergencies are not theoretical scenarios—they are recurring seasonal realities. From monsoon landslides washing out the Prithvi and Mugling highways to unpredictable seismic tremors and winter power cuts, supply chains to urban centers like Kathmandu and Pokhara can be severed within hours.",
+    "Most urban households panic-buy white rice and instant noodles. However, during a serious earthquake or flood, the first two infrastructure assets to fail are tap water and domestic cooking gas (LPG). If you cannot boil water or run a gas burner, a 25kg bag of raw rice is essentially useless.",
+    "True household resilience means stockpiling nutrient-dense, calorie-dense, shelf-stable foods that require **zero cooking, zero refrigeration, and minimal drinking water**.",
+    "",
+    "### The Danger of Relying on Instant Noodles",
+    "Instant noodles (wai-wai, rāmen) are the default emergency ration in Nepal, but nutritional science reveals they are among the worst foods to consume during a crisis:",
+    "- **High Sodium Content:** A single packet contains over 1,200mg of processed sodium and MSG, triggering intense thirst and accelerating dehydration when clean bottled water is severely limited.",
+    "- **Zero Bioavailable Micronutrients:** Refined wheat flour causes rapid blood sugar spikes followed by crippling lethargy and brain fog within 90 minutes.",
+    "- **Cooking Dependency:** Eating hard, uncooked fried noodles irritates the intestinal lining, increasing the risk of acute gastrointestinal distress during stressful evacuation situations.",
+    "",
+    "### Top 6 Shelf-Stable Emergency Superfoods to Keep at Home",
+    "Here are the top zero-cooking, shelf-stable staples every Nepali home should maintain in their emergency pantry:",
+    "",
+    "#### 1. Raw Mountain Almonds & Walnuts",
+    "[NaturesMud Raw Mountain Almonds](/products/almonds) provide 580 kcal, 21g of plant protein, and heart-healthy monounsaturated fats per 100 grams. Because they contain almost zero moisture, raw almonds stay crunchy and fresh in airtight glass jars for 12 to 18 months.",
+    "",
+    "#### 2. Organic Chia Seeds (The Hydration Buffer)",
+    "[NaturesMud Organic Chia Seeds](/products/chia-seeds) are an indispensable survival asset. Their hydrophilic soluble fiber forms a gel that holds water inside the digestive tract, prolonging hydration and maintaining bowel regularity during stressful disruptions.",
+    "",
+    "#### 3. 100% Pure Dates Powder",
+    "When refined sugar causes crashes, [NaturesMud Natural Dates Powder](/products/dates-powder-100g) supplies clean fructose, glucose, dietary iron, and potassium. It dissolves instantly in room-temperature water to create an energizing drink for children, pregnant mothers, and seniors.",
+    "",
+    "#### 4. Raw Pumpkin Seeds (Pepitas)",
+    "Packing an astonishing 30g of pure plant protein per 100g, [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) are rich in natural zinc and magnesium, essential minerals that support immune defense against waterborne pathogens.",
+    "",
+    "#### 5. Sun-Dried Fruits (Mango, Apple & Blueberries)",
+    "[NaturesMud Dehydrated Mango](/products/dehydrated-mango) and [Dried Blueberries](/products/dried-blueberries-100g) provide non-perishable vitamin C and cellular antioxidants. They require zero preparation and provide immediate stamina during physically demanding relief efforts.",
+    "",
+    "#### 6. Himalayan Pink Rock Salt",
+    "[NaturesMud Himalayan Pink Salt](/products/pink-salt) is millions of years old and never spoils. It supplies 84 trace minerals necessary to formulate emergency Oral Rehydration Salts (ORS) at home.",
+    "",
+    "### DIY Emergency Electrolyte Solution (ORS)",
+    "If bottled water or medical ORS packets run out, you can save lives by preparing this clean homemade electrolyte solution in under 60 seconds:",
+    "- **1 Liter** of safe drinking water",
+    "- **1/2 Teaspoon** [NaturesMud Himalayan Pink Salt](/products/pink-salt) (Sodium & trace minerals)",
+    "- **2 Tablespoons** [NaturesMud Natural Dates Powder](/products/dates-powder-100g) (Glucose & Potassium)",
+    "- **1 Tablespoon** [NaturesMud Chia Seeds](/products/chia-seeds) (Hydration buffer & mucilage)",
+    "Stir vigorously and sip slowly. This formula prevents hypovolemic dehydration, stabilizes blood pressure, and sustains physical endurance.",
+    "",
+    "### 72-Hour Family Emergency Ration Plan (Per Person)",
+    "| Day | Morning (No Cooking) | Afternoon Energy | Evening Sustenance |",
+    "|---|---|---|---|",
+    "| **Day 1** | 40g Chia Seeds in 400ml water + 30g Almonds | 50g Dehydrated Mango + 30g Pumpkin Seeds | 2 tbsp Dates Powder in water + 40g Walnuts |",
+    "| **Day 2** | 40g Chia Seeds + 1 tbsp Dates Powder shake | 50g Dried Blueberries + 30g Cashewnuts | 40g Mix Dry Nuts + pinch of Pink Salt water |",
+    "| **Day 3** | 40g Raw Almonds + 2 Dried Figs | 40g Pumpkin Seeds + Dehydrated Apple slices | 40g Chia Seed gel + 30g Roasted Almonds |",
+    "",
+    "### Moisture and Pest Protection in Nepal's Climate",
+    "Kathmandu's monsoon humidity (often exceeding 85% RH) can spoil emergency food caches if packed incorrectly:",
+    "- **Use Heavy Glass Jars with Gaskets:** Rodents can chew through thin plastic bags in minutes. Heavy food-grade glass jars or airtight metal tins are rodent-proof and moisture-proof.",
+    "- **Oxygen Absorbers or Bay Leaves:** Place whole bay leaves or food-safe silica gel packets in dry storage containers to deter pantry weevils.",
+    "- **The 6-Month Rotation Rule:** Every 6 months, integrate your stored nuts and dried fruits into daily smoothies and cooking, replacing them with freshly sealed packages."
+  ],
+  "faqs": [
+    {
+      "question": "How much emergency food should an urban household in Nepal keep?",
+      "answer": "A standard family of 4 should maintain at least 72 hours of zero-cooking rations (approximately 1.5 kg of raw nuts, 1 kg of seeds, 1 kg of dried fruits, and 1 kg of dates powder) alongside 12 liters of drinking water per person."
+    },
+    {
+      "question": "What if there is no cooking gas or clean water to boil?",
+      "answer": "Whole foods like raw mountain almonds, chia seeds, dehydrated fruits, and dates powder need zero boiling or heat. Chia seeds hydrate safely in room-temperature filtered water within 15 minutes."
+    },
+    {
+      "question": "How do I prevent stored dry fruits from molding during the monsoon?",
+      "answer": "Store them in airtight glass jars with rubber airtight gaskets in a cool, dark cupboard off the ground. Avoid opening the jars during high-humidity rainy days to keep ambient moisture out."
+    }
+  ],
+  "featuredProductSlug": "chia-seeds",
+  "featuredProductName": "Chia Seeds",
+  "featuredProductPrice": 495,
+  "featuredProductImage": "/products/chia-seeds.jpg"
+},
+{
+  "id": "b-emergency-2-best-emergency-snacks-hiking-nepal",
+  "title": "Best Emergency Snacks for Hiking and Outdoor Adventures in Nepal",
+  "slug": "best-emergency-snacks-for-hiking-and-outdoor-adventures-in-nepal",
+  "excerpt": "When mountain weather turns and a day hike becomes an unplanned night above 3,000 meters, your emergency snacks make the difference between hypothermia and survival. Here is what to pack.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Himalayan Mountaineering Team",
+  "readTime": 8,
+  "featured": true,
+  "image": "/images/combos/sports-nutrition-combo.jpg",
+  "tags": [
+    "emergency snacks hiking nepal",
+    "hiking survival food himalayas",
+    "trail emergency food",
+    "outdoor snacks kathmandu",
+    "high altitude hiking nutrition"
+  ],
+  "keyTakeaways": [
+    "Caloric Density Rule: Emergency trail food must provide 450–600 kcal per 100g so you can carry 24 hours of survival energy in under 300 grams of pack space.",
+    "Sub-Zero Temperature Resistance: Chocolate bars and syrup gels freeze solid at 3,500m; dried figs, blueberries, almonds, and dates remain chewable in sub-zero frost.",
+    "Electrolyte Shield: Cold diuresis causes rapid mineral loss; carrying Himalayan pink salt crystals prevents debilitating quadricep and calf cramps on steep descents.",
+    "The \"Sacred\" Emergency Pouch: Keep 150g of high-calorie superfoods in a sealed waterproof pouch that is never eaten during normal trail snacking."
+  ],
+  "tableOfContents": [
+    {
+      "id": "stranded-on-trail",
+      "title": "What Happens When You Get Stranded on a Nepal Trail?"
+    },
+    {
+      "id": "caloric-density-survival",
+      "title": "The Caloric Density Survival Metric"
+    },
+    {
+      "id": "top-5-emergency-snacks",
+      "title": "Top 5 Emergency Snacks for Mountain Treks"
+    },
+    {
+      "id": "why-candy-fails",
+      "title": "Why Candy Bars and Biscuits Fail in the Cold"
+    },
+    {
+      "id": "sacred-pouch-protocol",
+      "title": "The 1,200-Calorie Sacred Emergency Pouch"
+    },
+    {
+      "id": "trailside-energy-rationing",
+      "title": "How to Ration Energy While Awaiting Rescue"
+    }
+  ],
+  "content": [
+    "### What Happens When You Get Stranded on a Nepal Trail?",
+    "Every year in Nepal, hikers on popular day trails like Shivapuri Peak, Champadevi, Nagarkot ridges, and Langtang lower valleys get caught by sudden mountain squalls, washed-out bridge crossings, or twisted ankles after sunset.",
+    "When temperatures drop toward freezing and darkness envelops the ridge, shivering can burn over 400 calories per hour as your body fights to maintain core body temperature. If your stomach is empty and your glycogen reserves are depleted, hypothermia sets in rapidly.",
+    "Carrying a dedicated emergency ration—separate from your daytime snacks—is the single most important safety rule of mountain adventure.",
+    "",
+    "### The Caloric Density Survival Metric",
+    "On a rugged mountain ridge, you cannot carry bulky fruits or heavy cans. You need maximum usable metabolic energy per gram of weight carried:",
+    "- **Raw Mountain Almonds:** ~580 kcal / 100g (Healthy lipids + protein)",
+    "- **Pumpkin Seeds:** ~570 kcal / 100g (Zinc, iron, magnesium + protein)",
+    "- **Dates Powder / Paste:** ~320 kcal / 100g (Instant bioavailable glucose)",
+    "- **Dried Blueberries:** ~330 kcal / 100g (Anthocyanin anti-inflammatory power)",
+    "- **Commercial Biscuits:** ~420 kcal / 100g (Trans fats, crashes blood sugar in 45 min)",
+    "",
+    "### Top 5 Emergency Snacks for Mountain Treks in Nepal",
+    "",
+    "#### 1. Raw Mountain Almonds & Roasted Cashews",
+    "[NaturesMud Raw Mountain Almonds](/products/almonds) and [Roasted Cashewnuts](/products/cashewnuts-roasted) provide dense fatty acids that metabolize slowly over 4 to 6 hours, fueling continuous shivering and core heat generation without requiring digestive enzyme spikes.",
+    "",
+    "#### 2. High-Altitude Dried Blueberries & Cranberries",
+    "[NaturesMud Dried Blueberries](/products/dried-blueberries-100g) and [Dried Cranberry](/products/dried-cranberry-100g) supply quick fructose to warm numb fingers and restore mental focus when navigating faint trails in thick mist.",
+    "",
+    "#### 3. Dried Mountain Figs",
+    "[NaturesMud Dried Figs](/products/dried-figs-200g) are dense, chewy, and loaded with natural calcium, magnesium, and slow-burning soluble fiber. Unlike sugary snacks, they provide steady, hours-long satiety without stomach acidity.",
+    "",
+    "#### 4. Chia Seed Water Solution",
+    "Carry 50g of [NaturesMud Organic Chia Seeds](/products/chia-seeds) in a small ziplock bag. If clean water is scarce, mixing chia into your canteen maximizes fluid retention inside your tissues, preventing altitude-induced dehydration headache.",
+    "",
+    "#### 5. Himalayan Pink Salt Crystals",
+    "Trace minerals from [NaturesMud Himalayan Pink Salt](/products/pink-salt) prevent severe muscle spasms when you must hike an extra 4 hours in the dark to reach the nearest village or road head.",
+    "",
+    "### Why Candy Bars and Biscuits Fail in the Cold",
+    "Many recreational hikers toss dairy milk chocolates and glucose biscuits into their daypacks. At high altitudes in Nepal, these fail for two physiological reasons:",
+    "- **They Freeze Rock-Solid:** At temperatures below 5°C, commercial candy bars harden into jaw-breaking bricks. Whole dried fruits and raw almonds retain elasticity and remain easily chewable.",
+    "- **The Sugar Crash Trap:** Refined sucrose triggers an insulin spike that plummets circulating blood glucose within 60 minutes, leaving you shivering, exhausted, and mentally disoriented.",
+    "",
+    "### The 1,200-Calorie Sacred Emergency Pouch Protocol",
+    "Assemble this lightweight (approx. 220g) emergency pack in a heavy-duty waterproof bag and place it in the bottom of your backpack:",
+    "- **80g** [NaturesMud Raw Almonds](/products/almonds) (~465 kcal)",
+    "- **50g** [NaturesMud Pumpkin Seeds](/products/pumpkin-seeds) (~285 kcal)",
+    "- **50g** [NaturesMud Dehydrated Mango](/products/dehydrated-mango) (~165 kcal)",
+    "- **40g** [NaturesMud Dried Figs](/products/dried-figs-200g) (~100 kcal)",
+    "- **1 Small pinch pouch** [NaturesMud Pink Salt](/products/pink-salt)",
+    "**Total Energy: ~1,015–1,200 kcal.** Label this pouch *'EMERGENCY ONLY'*. Never touch it during normal trail snacking."
+  ],
+  "faqs": [
+    {
+      "question": "What should I eat if I experience mild altitude sickness symptoms while hiking?",
+      "answer": "Sip warm water mixed with a pinch of Himalayan pink salt and dates powder to stabilize hydration and blood glucose. Avoid heavy, greasy teahouse fried foods, and consume small, frequent handfuls of dried fruit and chia water while planning a controlled descent."
+    },
+    {
+      "question": "How long can emergency trail snacks stay in my backpack?",
+      "answer": "Raw almonds, pumpkin seeds, and properly dehydrated fruits stay perfectly fresh in sealed waterproof bags for up to 6 months. Inspect the seals after every major hike and replace once every trekking season."
+    },
+    {
+      "question": "Why is salt essential in an outdoor emergency pack?",
+      "answer": "Rapid breathing in dry mountain air expels electrolytes. Without sodium and trace minerals, drinking pure melted snow or filtered stream water can cause hyponatremia, extreme leg cramps, and disorientation."
+    }
+  ],
+  "featuredProductSlug": "almonds",
+  "featuredProductName": "Almonds",
+  "featuredProductPrice": 750,
+  "featuredProductImage": "/products/almonds.jpg"
+},
+{
+  "id": "b-emergency-3-how-to-make-healthy-trail-mix",
+  "title": "How to Make a Healthy Trail Mix for Hiking, Trekking and Emergencies",
+  "slug": "how-to-make-a-healthy-trail-mix-for-hiking-trekking-and-emergencies",
+  "excerpt": "Skip store-bought mixes packed with refined sugar and rancid oils. Master the 50-30-15-5 ratio to craft high-energy Himalayan trail mix for trail stamina and emergency pantries.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Expedition Nutritionist",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/combos/superfood-lineup.jpg",
+  "tags": [
+    "healthy trail mix recipe nepal",
+    "diy trail mix for hiking",
+    "trail mix ratio",
+    "emergency trail mix",
+    "nuts and dried fruits mix"
+  ],
+  "keyTakeaways": [
+    "The 50-30-15-5 Formulation: 50% raw nuts (sustained lipids), 30% dried fruits (quick glucose), 15% seeds (micronutrients), 5% Himalayan pink salt (electrolytes).",
+    "Zero Refined Sugar or Sulfur: Use sun-dried mango and wild blueberries with zero chemical preservatives or confectionery coatings.",
+    "Multi-Purpose Utility: Serves as a high-calorie hiking snack and doubles as a 6-month shelf-stable emergency reserve at home.",
+    "Cost Efficiency: Preparing your own blend using premium bulk ingredients saves 40% compared to imported pre-bagged trail mixes."
+  ],
+  "tableOfContents": [
+    {
+      "id": "why-commercial-mixes-fail",
+      "title": "Why Commercial Trail Mix Fails Hikers"
+    },
+    {
+      "id": "the-50-30-15-5-formula",
+      "title": "The Scientific 50-30-15-5 Ratio"
+    },
+    {
+      "id": "himalayan-master-recipe",
+      "title": "The Master Himalayan Trail Mix Recipe"
+    },
+    {
+      "id": "variations-by-activity",
+      "title": "Specialized Variations: Running, Trekking & Survival"
+    },
+    {
+      "id": "preventing-spoilage",
+      "title": "How to Keep Trail Mix Crisp in Nepal"
+    }
+  ],
+  "content": [
+    "### Why Commercial Trail Mix Fails Hikers",
+    "Most 'trail mix' bags sold in retail shops in Kathmandu are confectionery products masquerading as health food. They contain sugar-glazed peanuts, hydrogenated palm oil, candy chocolate drops, and dried fruit treated with sulfur dioxide.",
+    "Consuming this on a steep trek up Mardi Himal or Shivapuri triggers an acute glucose spike, followed by a heavy insulin crash that causes sluggish calves and severe mental fatigue within 45 minutes.",
+    "A true whole-food trail mix is designed to provide steady, unspiking metabolic fuel for hours of continuous movement.",
+    "",
+    "### The Scientific 50-30-15-5 Ratio",
+    "To achieve sustained physical endurance and long-term shelf stability, follow this golden proportion by weight:",
+    "- **50% Raw Nuts (Healthy Fats & Satiety):** Monounsaturated and polyunsaturated fatty acids that metabolize slowly, providing steady aerobic endurance.",
+    "- **30% Sun-Dried Fruits (Glycogen Sparing):** Natural fructose and glucose that bypass digestive lag to feed working leg muscles immediately.",
+    "- **15% Superfood Seeds (Zinc & Amino Acids):** Plant protein, zinc, iron, and magnesium to facilitate muscle contraction and recovery.",
+    "- **5% Mineral Accent (Electrolyte Defense):** Pure ground Himalayan pink rock salt to replenish sodium lost in heavy mountain perspiration.",
+    "",
+    "### The Master Himalayan Trail Mix Recipe",
+    "**Yield:** 500g (10 trail-ready 50g portions) | **Prep Time:** 5 minutes",
+    "",
+    "#### Ingredients:",
+    "- **150g** [NaturesMud Raw Mountain Almonds](/products/almonds) (Coarsely chopped)",
+    "- **100g** [NaturesMud Raw Cashewnuts](/products/cashewnuts-roasted) or Walnuts",
+    "- **100g** [NaturesMud Dehydrated Mango](/products/dehydrated-mango) (Cut into bite-sized strips)",
+    "- **50g** [NaturesMud Dried Blueberries](/products/dried-blueberries-100g)",
+    "- **75g** [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds)",
+    "- **20g** [NaturesMud Chia Seeds](/products/chia-seeds)",
+    "- **5g** (approx. 1/2 tsp) [NaturesMud Himalayan Pink Salt](/products/pink-salt)",
+    "",
+    "#### Instructions:",
+    "1. In a large, clean stainless-steel or glass bowl, combine the almonds, cashews, and pumpkin seeds.",
+    "2. Add the chopped dehydrated mango, dried blueberries, and chia seeds.",
+    "3. Sprinkle the fine Himalayan pink salt evenly across the surface.",
+    "4. Toss gently using clean hands or wooden spoons until the seeds and salt adhere evenly to the dried fruits.",
+    "5. Divide into 50g snack-sized zip bags or store in an airtight glass jar.",
+    "",
+    "### Specialized Variations",
+    "- **For High-Altitude Mountain Trekking:** Add 50g of chopped [NaturesMud Dried Figs](/products/dried-figs-200g) for concentrated potassium against mountain cramps.",
+    "- **For Morning Runners:** Double the [NaturesMud Dried Blueberries](/products/dried-blueberries-100g) for rapid carbohydrate delivery and anti-pollution cellular defense.",
+    "- **For Emergency Home Storage:** Keep the nuts whole and seal in a 1-liter airtight Mason jar with an oxygen absorber. Stays pristine for up to 9 months."
+  ],
+  "faqs": [
+    {
+      "question": "Should nuts in trail mix be raw or roasted?",
+      "answer": "Raw or dry-roasted unsalted nuts are best. Commercially oil-fried nuts go rancid quickly and contain inflammatory vegetable oils that hinder cardiovascular performance."
+    },
+    {
+      "question": "How long does homemade trail mix stay fresh in Kathmandu?",
+      "answer": "In an airtight glass jar kept in a cool, dark cupboard, it stays perfectly crisp and fresh for 3 to 6 months without refrigeration."
+    },
+    {
+      "question": "Can I use this trail mix as an emergency meal replacement?",
+      "answer": "Yes! Two 50g portions provide over 500 kcal of clean proteins, unadulterated fats, and complex carbohydrates, equivalent to a wholesome light meal during a power outage or transit delay."
+    }
+  ],
+  "featuredProductSlug": "mix-dry-nuts",
+  "featuredProductName": "Mix dry Nuts",
+  "featuredProductPrice": 690,
+  "featuredProductImage": "/products/mix-dry-nuts.jpg"
+},
+{
+  "id": "b-emergency-4-best-long-lasting-foods-home-nepal",
+  "title": "Best Long-Lasting Foods to Keep at Home in Nepal",
+  "slug": "best-long-lasting-foods-to-keep-at-home-in-nepal",
+  "excerpt": "From unexpected highway blockades to long power outages, discover the 8 healthiest, longest-lasting whole foods to store in Nepali homes without refrigeration.",
+  "category": "Emergency & Preparedness",
+  "date": "2026-08-30",
+  "author": "NaturesMud Nutritional Safety Board",
+  "readTime": 8,
+  "featured": false,
+  "image": "/images/combos/healthy-snack-powder-combo.jpg",
+  "tags": [
+    "long lasting foods nepal",
+    "shelf stable foods kathmandu",
+    "non perishable foods nepal",
+    "pantry stocking nepal",
+    "healthy survival food"
+  ],
+  "keyTakeaways": [
+    "12+ Month Natural Shelf Life: Pure virgin coconut oil, Himalayan rock salts, chia seeds, and whole dates powder naturally resist spoilage for over a year.",
+    "Vegetable Powders Replace Fresh Produce: Superfood powders (sweet potato, beetroot, carrot) retain 95% of active phytonutrients when fresh markets close.",
+    "Healthy Fat Preservation: Virgin coconut oil contains antimicrobial lauric acid that prevents rancidity without synthetic preservatives.",
+    "Pest-Proof Storage: Use thick glass jars with silicone seals to prevent monsoon humidity and rodents from breaching your food reserve."
+  ],
+  "tableOfContents": [
+    {
+      "id": "urban-food-vulnerability",
+      "title": "The Vulnerabilities of Urban Kitchens in Nepal"
+    },
+    {
+      "id": "top-8-long-lasting-foods",
+      "title": "Top 8 Long-Lasting Whole Foods"
+    },
+    {
+      "id": "coconut-oil-power",
+      "title": "Virgin Coconut Oil: The Ultimate Calorie Reserve"
+    },
+    {
+      "id": "vegetable-powders-crisis",
+      "title": "Vegetable Powders as Fresh Produce Backups"
+    },
+    {
+      "id": "monsoon-storage-rules",
+      "title": "Pantry Storage Rules for Nepal’s Climate"
+    }
+  ],
+  "content": [
+    "### The Vulnerabilities of Urban Kitchens in Nepal",
+    "Most modern homes in Kathmandu, Lalitpur, and Pokhara rely on refrigerator storage for vegetables, dairy, and cooked food. But during extended seasonal load-shedding, inverter drain, or natural disruptions, refrigerators become bacterial incubators within 48 hours.",
+    "Furthermore, when fresh vegetable supplies from Dhading, Kavre, and the Terai are interrupted by highway blockades, vegetable prices surge tenfold, and fresh greens disappear from neighborhood stalls.",
+    "Stocking resilient, long-lasting whole foods provides peace of mind and safeguards your family’s nutritional security.",
+    "",
+    "### Top 8 Long-Lasting Whole Foods for Nepali Homes",
+    "",
+    "#### 1. Extra Virgin Coconut Oil (Shelf Life: 24+ Months)",
+    "[NaturesMud Extra Virgin Cold-Pressed Coconut Oil](/products/virgin-coconut-oil-500ml) is an absolute survival essential. Packed with Medium Chain Triglycerides (MCTs) and antimicrobial lauric acid, it provides 900 kcal per 100g, requires zero refrigeration, and remains stable at room temperature for over two years.",
+    "",
+    "#### 2. Organic Chia Seeds (Shelf Life: 24 Months)",
+    "[NaturesMud Organic Chia Seeds](/products/chia-seeds) naturally contain high antioxidant levels that protect their delicate omega-3 fatty acids from oxidation. In an airtight glass container, they remain potent and fully viable for up to two years.",
+    "",
+    "#### 3. 100% Pure Natural Dates Powder (Shelf Life: 12–18 Months)",
+    "Unlike fresh dates that can ferment in summer heat, [NaturesMud Dates Powder](/products/dates-powder-100g) is micro-pulverized with minimal residual moisture. It serves as an instant sweetener and mineral supplement in baby weaning, oats, and hot water.",
+    "",
+    "#### 4. Raw Mountain Almonds & Walnuts (Shelf Life: 12 Months)",
+    "Unsalted, raw nuts stored in sealed glass jars provide essential brain-boosting lipids, vitamin E, and clean plant protein.",
+    "",
+    "#### 5. Himalayan Pink Salt & Black Salt (Indefinite Shelf Life)",
+    "[NaturesMud Himalayan Pink Salt](/products/pink-salt) and [Black Salt](/products/black-salt) are pure subterranean mineral salts that never expire, rot, or grow mold. They provide critical sodium and sulfur for cooking and electrolyte rehydration.",
+    "",
+    "#### 6. Dehydrated Vegetable Powders (Shelf Life: 12 Months)",
+    "[NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g), [Beetroot Powder](/products/beetroot-powder-100g), and [Carrot Powder](/products/carrot-powder-100g) provide concentrated dietary fiber, vitamin A, beta-carotene, and potassium when fresh vegetables are unavailable.",
+    "",
+    "#### 7. Sun-Dried Fruits (Shelf Life: 9–12 Months)",
+    "Dehydrated fruits such as [NaturesMud Dehydrated Mango](/products/dehydrated-mango), [Dehydrated Pineapple](/products/dehydrated-pineapple), and [Dried Blueberries](/products/dried-blueberries-100g) retain natural fructose and immune-supporting vitamin C.",
+    "",
+    "#### 8. Organic Pumpkin Seeds (Shelf Life: 12 Months)",
+    "[NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) are packed with zinc and plant protein, making them an ideal daily immunity booster during emergencies.",
+    "",
+    "### Vegetable Powders as Fresh Produce Backups",
+    "When market supplies freeze, nutritional scurvy and micronutrient deficiencies can develop if diets are restricted to white rice and dried lentils alone. Stirring 1 tablespoon of [NaturesMud Carrot Powder](/products/carrot-powder-100g) or [Beetroot Powder](/products/beetroot-powder-100g) into dal or plain porridge instantly supplies your family with essential daily vitamins."
+  ],
+  "faqs": [
+    {
+      "question": "What foods can last 1 to 2 years at room temperature in Nepal without spoiling?",
+      "answer": "Pure virgin coconut oil, Himalayan pink salt, black salt, raw chia seeds, and dates powder can comfortably last 1 to 2 years when stored in airtight glass containers away from direct sunlight."
+    },
+    {
+      "question": "How can I get daily vegetables when markets are closed during blockades?",
+      "answer": "100% pure vegetable superfood powders (sweet potato, carrot, beetroot) are dehydrated at low temperatures, retaining dietary fiber, beta-carotene, and minerals. Stir them directly into soups, rotis, or water."
+    },
+    {
+      "question": "Do dried nuts go rancid in Kathmandu's summer heat?",
+      "answer": "Nuts can oxidize if exposed to open air and heat. Always store nuts in airtight glass jars in the coolest, darkest cupboard of your home. Freezing them for 48 hours before jarring prevents insect eggs and doubles shelf life."
+    }
+  ],
+  "featuredProductSlug": "coconut-oil-500ml",
+  "featuredProductName": "Coconut oil (500ml)",
+  "featuredProductPrice": 1750,
+  "featuredProductImage": "/products/coconut-oil-500ml.jpg"
+},
+{
+  "id": "b-fitness-5-what-to-eat-before-morning-run-nepal",
+  "title": "What to Eat Before a Morning Run: Simple Energy Snacks for Nepalese Runners",
+  "slug": "what-to-eat-before-a-morning-run-simple-energy-snacks-for-nepalese-runners",
+  "excerpt": "Lacing up your running shoes at 5:30 AM in Kathmandu? Discover what to eat 15 to 45 minutes before hitting the road to prevent early muscle fatigue and stomach cramps.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Running Club Nutrition Team",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/recipes/oatmeal-bowl-daily-routine.jpg",
+  "tags": [
+    "what to eat before morning run",
+    "pre run snacks nepal",
+    "running nutrition kathmandu",
+    "morning running energy",
+    "marathon fuel nepal"
+  ],
+  "keyTakeaways": [
+    "The 30-Minute Glycogen Window: Eat 100–150 kcal of light, easily digestible simple carbs that clear your stomach quickly before running.",
+    "Gentle on the Gut: Pure dates powder in warm water delivers rapid glucose without causing the stomach sloshing of heavy breakfast foods.",
+    "Nitrate Vasodilation: 1 tsp of beetroot powder taken 45 minutes prior expands blood vessels, improving oxygen economy on steep Kathmandu inclines.",
+    "Avoid Heavy Milk Tea: Traditional milk chiya and fried biscuits delay gastric emptying, triggering acid reflux and stitch cramps during hard strides."
+  ],
+  "tableOfContents": [
+    {
+      "id": "fasted-vs-fueled",
+      "title": "The Morning Runner’s Dilemma: Fasted vs. Fueled"
+    },
+    {
+      "id": "530am-physiology",
+      "title": "What Your Body Needs at 5:30 AM"
+    },
+    {
+      "id": "top-4-pre-run-snacks",
+      "title": "Top 4 Pre-Run Energy Snacks"
+    },
+    {
+      "id": "timing-protocol",
+      "title": "The 15, 30, and 60-Minute Timing Protocol"
+    },
+    {
+      "id": "avoid-milk-tea-trap",
+      "title": "Why Milk Tea & Biscuits Sabotage Runners"
+    }
+  ],
+  "content": [
+    "### The Morning Runner’s Dilemma: Fasted vs. Fueled",
+    "Every runner in Nepal faces the 5:30 AM dilemma. You wake up early to beat the dust, traffic, and morning smog in Kathmandu or Pokhara. Should you run completely fasted, or grab a bite first?",
+    "Science shows that after an 8-hour overnight fast, liver glycogen levels are depleted by over 70%. If you run fasted for more than 35 minutes or attempt hill repeats, your body begins breaking down muscle tissue for gluconeogenesis, leaving you feeling sluggish, lightheaded, and drained by kilometer four.",
+    "The solution is not a heavy breakfast—it is a **micro-snack** designed for rapid gastric clearance and immediate cellular stamina.",
+    "",
+    "### What Your Body Needs at 5:30 AM",
+    "A runner's pre-workout snack must satisfy three strict nutritional rules:",
+    "- **1. Low in Fat & Fiber:** High fat and heavy fiber take 2 to 3 hours to digest, causing abdominal cramps and intestinal stitches.",
+    "- **2. High in Fast-Clearing Natural Carbs:** Simple fructose and glucose enter the bloodstream within 15 minutes to fuel muscle contraction.",
+    "- **3. Cellular Pre-Hydration:** 250–350ml of fluid with trace electrolytes to prime blood plasma volume before sweat loss begins.",
+    "",
+    "### Top 4 Pre-Run Energy Snacks for Nepali Runners",
+    "",
+    "#### 1. The 60-Second Dates Elixir (Best for 15–20 Mins Before Run)",
+    "Stir 1.5 tablespoons of [NaturesMud Natural Dates Powder](/products/dates-powder-100g) into 200ml of lukewarm water. Dates powder dissolves cleanly and supplies 25g of bioavailable glucose, potassium, and magnesium. It absorbs effortlessly without sitting heavy in your gut.",
+    "",
+    "#### 2. High-Nitrate Beetroot Stamina Shot (Best for 40–50 Mins Before Run)",
+    "Mix 1 teaspoon of [NaturesMud Pure Beetroot Powder](/products/beetroot-powder-100g) into a glass of water or fresh orange juice. Dietary nitrates convert to nitric oxide in your blood, dilating vessels and enhancing oxygen delivery to working calves and quads.",
+    "",
+    "#### 3. Chia Seed Hydration Gel",
+    "Stir 1 tablespoon of [NaturesMud Organic Chia Seeds](/products/chia-seeds) with a micro-pinch of [Himalayan Pink Salt](/products/pink-salt) in 300ml of water. Drink 30 minutes before your run for sustained hydration.",
+    "",
+    "#### 4. Banana with Dates Powder Dusting",
+    "Slice half a banana and dust with 1 teaspoon of [NaturesMud Dates Powder](/products/dates-powder-100g). Provides fast, gentle carbs and abundant potassium to prevent calf cramps on uphill runs.",
+    "",
+    "### The Timing Protocol",
+    "- **15 Minutes Before Departure:** 1 glass warm water with 1 tbsp dates powder (instant glucose).",
+    "- **30 Minutes Before Departure:** Half banana + chia hydration water.",
+    "- **60 Minutes Before Departure (Long Trail Run / Half Marathon):** Small bowl of rolled oats sweetened with dates powder and topped with sliced almonds.",
+    "",
+    "### Why Milk Tea & Biscuits Sabotage Runners",
+    "Drinking sweetened buffalo milk tea (chiya) paired with processed white-flour biscuits before running is the most common mistake in Nepal. Dairy fats and commercial sugar trigger gastric acid splash during bouncing strides, resulting in painful side stitches, nausea, and sluggish performance."
+  ],
+  "faqs": [
+    {
+      "question": "Is it better to run on an empty stomach (fasted) or eat first?",
+      "answer": "For light recovery jogs under 30 minutes, fasted running is fine. For tempo runs, intervals, or runs exceeding 40 minutes, consuming 100–150 kcal of light carbs (like dates water) significantly boosts endurance and protects muscle tissue."
+    },
+    {
+      "question": "What should I eat before tackling steep uphill routes like Swayambhu or Shivapuri?",
+      "answer": "Take 1 tsp of NaturesMud Beetroot Powder in water 45 minutes prior for a nitric oxide endurance boost, accompanied by 2 dried figs or dates powder for steady hill-climbing power."
+    },
+    {
+      "question": "How can I prevent early morning running cramps?",
+      "answer": "Add a small pinch of pure Himalayan pink salt to your pre-run water. It supplies bioavailable sodium, magnesium, and potassium that stabilize nerve transmissions during muscular exertion."
+    }
+  ],
+  "featuredProductSlug": "dates-powder",
+  "featuredProductName": "Dates Powder",
+  "featuredProductPrice": 350,
+  "featuredProductImage": "/products/dates-powder.jpg"
+},
+{
+  "id": "b-fitness-6-healthy-snacks-kathmandu-runners",
+  "title": "Healthy Snacks for Kathmandu Runners: Easy Pre-Run and Post-Run Ideas",
+  "slug": "healthy-snacks-for-kathmandu-runners-easy-pre-run-and-post-run-ideas",
+  "excerpt": "Urban running in the Kathmandu Valley requires smart nutrition. Here is how to fuel for steep hills, recover from urban smog, and repair muscle fibers quickly with clean superfoods.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Running Club",
+  "readTime": 8,
+  "featured": false,
+  "image": "/images/blog/himalayan-beetroot-nitric-oxide-stamina.jpg",
+  "tags": [
+    "healthy snacks kathmandu runners",
+    "post run recovery nepal",
+    "running nutrition kathmandu",
+    "plant protein runners",
+    "anti pollution superfoods runners"
+  ],
+  "keyTakeaways": [
+    "Dual-Window Nutrition Strategy: Fast, light carbohydrates pre-run for cellular stamina; a 4:1 carb-to-protein ratio post-run for rapid muscle recovery.",
+    "Antioxidant Shielding: Running outdoors in Kathmandu exposes lungs to fine particulates; wild blueberries and beetroot powder neutralize exercise-induced oxidative stress.",
+    "The 30-Minute Anabolic Window: Consuming whole-food protein and potassium within 45 minutes of finishing your run speeds glycogen replenishment and prevents sore muscles.",
+    "Zero Refined Powders: Achieve complete athletic recovery using real whole foods like pumpkin seeds, almonds, and sweet potato powder."
+  ],
+  "tableOfContents": [
+    {
+      "id": "kathmandu-running-physiology",
+      "title": "The Physiology of Running in Kathmandu"
+    },
+    {
+      "id": "top-3-pre-run-bites",
+      "title": "Top 3 Pre-Run Quick Bites"
+    },
+    {
+      "id": "top-3-post-run-recovery",
+      "title": "Top 3 Post-Run Recovery Meals"
+    },
+    {
+      "id": "anti-pollution-superfoods",
+      "title": "Antioxidant Superfoods for City Runners"
+    },
+    {
+      "id": "weekly-mealprep-runners",
+      "title": "Weekly Running Snack Prep for Busy Professionals"
+    }
+  ],
+  "content": [
+    "### The Physiology of Running in Kathmandu",
+    "Running in the Kathmandu Valley—whether logging laps around Tudikhel, hill reps at Swayambhu, or trail loops in Godavari—is uniquely demanding. Altitude (1,350m–1,600m), steep hill gradients, and winter PM2.5 air pollution increase cellular oxidative stress and metabolic demands.",
+    "To run consistently without burning out or getting sick, runners in Kathmandu need dual-action nutrition: clean fuel to power their stride and concentrated cellular antioxidants to protect their respiratory and cardiovascular systems.",
+    "",
+    "### Top 3 Pre-Run Quick Bites for Fast Stamina",
+    "",
+    "#### 1. High-Nitrate Beetroot Tonic",
+    "Drink 1 glass of water stirred with 1 tsp of [NaturesMud Pure Beetroot Powder](/products/beetroot-powder-100g) 30 to 45 minutes before departure. The natural dietary nitrates widen blood vessels, increasing oxygen delivery to working calves and quads on steep climbs.",
+    "",
+    "#### 2. Dates Powder & Banana Energy Mash",
+    "Mash 1 small banana with 1 tbsp of [NaturesMud Natural Dates Powder](/products/dates-powder-100g). Provides potassium to prevent calf cramps and two forms of natural carbohydrate for immediate absorption.",
+    "",
+    "#### 3. Wild Blueberry Handful",
+    "Eat 25g of [NaturesMud Wild Dried Blueberries](/products/dried-blueberries-100g). Packed with concentrated anthocyanins, they provide quick, easily tolerated carbohydrates that fight free-radical damage during intense cardio.",
+    "",
+    "### Top 3 Post-Run Recovery Meals for Muscle Repair",
+    "",
+    "#### 1. The Himalayan Superfood Muscle Recovery Shake",
+    "Blend 1 glass of milk or curd, 1.5 tbsp [NaturesMud Dates Powder](/products/dates-powder-100g), 1 tbsp [NaturesMud Chia Seeds](/products/chia-seeds), and 20g crushed [Raw Almonds](/products/almonds). Supplies 15g of whole plant protein, healthy omega fats, and potassium to stop post-run catabolism.",
+    "",
+    "#### 2. Sweet Potato Recovery Porridge",
+    "Whisk 2 tablespoons of [NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g) into warm milk or water, topped with pumpkin seeds and raw honey. Replenishes muscle glycogen with low-glycemic, anti-inflammatory beta-carotene.",
+    "",
+    "#### 3. High-Protein Seed & Fig Bowl",
+    "Mix 30g of [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) (delivering 9g of pure plant protein) with 2 chopped [Dried Figs](/products/dried-figs-200g) and a pinch of [Himalayan Pink Salt](/products/pink-salt).",
+    "",
+    "### Antioxidant Superfoods for City Runners",
+    "Kathmandu's traffic emissions and road dust generate free radicals inside respiratory tissues. Regular runners should include:",
+    "- **Wild Dried Blueberries:** Rich in anthocyanin pigments that accelerate lung tissue repair.",
+    "- **Beetroot Powder:** Contains betalain antioxidants that reduce exercise-induced cellular inflammation.",
+    "- **Raw Almonds:** High in natural alpha-tocopherol (Vitamin E), which protects muscle cell membranes."
+  ],
+  "faqs": [
+    {
+      "question": "What is the best post-run snack if I don't want to use artificial protein powders?",
+      "answer": "A bowl of curd mixed with 2 tablespoons of organic pumpkin seeds (which are 30% pure plant protein) and 1 tablespoon of dates powder delivers the ideal 4:1 carb-to-protein ratio using 100% natural whole foods."
+    },
+    {
+      "question": "How soon after a run should I eat my main breakfast?",
+      "answer": "Consume a light recovery snack within 30 to 45 minutes of finishing your run, followed by your regular breakfast (such as eggs, dal bhat, or oats) within 90 minutes."
+    },
+    {
+      "question": "How can Kathmandu runners protect their lungs naturally from smog?",
+      "answer": "Incorporate antioxidant-rich superfoods like wild dried blueberries, beetroot powder, and chia seeds into your daily diet to combat systemic oxidative stress, and schedule outdoor runs during early morning hours before traffic peaks."
+    }
+  ],
+  "featuredProductSlug": "beetroot-powder",
+  "featuredProductName": "Beetroot Powder",
+  "featuredProductPrice": 430,
+  "featuredProductImage": "/products/beetroot-powder.jpg"
+},
+{
+  "id": "b-fitness-7-best-foods-pack-nepal-trek",
+  "title": "Best Foods to Pack for a Nepal Trek: Lightweight and Energy-Rich Options",
+  "slug": "best-foods-to-pack-for-a-nepal-trek-lightweight-and-energy-rich-options",
+  "excerpt": "Every gram in your daypack counts on the Annapurna, Manaslu, and Everest trails. Here are the most calorie-dense, lightweight superfoods to pack for trekking in Nepal.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud High-Altitude Trekking Specialist",
+  "readTime": 9,
+  "featured": true,
+  "image": "/images/blog/purity-wellness-rakhi-chia-almonds.jpg",
+  "tags": [
+    "best foods to pack for nepal trek",
+    "trekking food nepal",
+    "high altitude trail snacks",
+    "lightweight hiking food",
+    "everest base camp snacks"
+  ],
+  "keyTakeaways": [
+    "Weight-to-Calorie Optimization: Target snacks with 450–600 kcal per 100g to carry 7 days of supplementary energy in under 1.2 kg of pack weight.",
+    "Combat Altitude Anorexia: Mild hypoxia above 3,500m suppresses appetite; nutrient-dense, easily chewable bites ensure you hit your daily 4,000 kcal target.",
+    "Enhance Teahouse Meals: Stir 100g jars of sweet potato powder or dates powder into teahouse porridge for a potassium and complex carb supercharge.",
+    "Monsoon & Snow Durability: Moisture-proof your snacks in heavy-duty resealable bags to survive driving rain in low valleys and sub-zero frost at high passes."
+  ],
+  "tableOfContents": [
+    {
+      "id": "trekking-calorie-deficit",
+      "title": "The High-Altitude Trekking Calorie Deficit"
+    },
+    {
+      "id": "gram-for-gram-principle",
+      "title": "The \"Gram-for-Gram\" Nutrition Principle"
+    },
+    {
+      "id": "top-7-lightweight-superfoods",
+      "title": "Top 7 Lightweight Trekking Superfoods"
+    },
+    {
+      "id": "teahouse-meal-boosters",
+      "title": "How to Supercharge Teahouse Meals"
+    },
+    {
+      "id": "daypack-snack-schedule",
+      "title": "Daily Trail Snacking Schedule"
+    },
+    {
+      "id": "waterproofing-protocol",
+      "title": "Waterproofing & Packing Protocol"
+    }
+  ],
+  "content": [
+    "### The High-Altitude Trekking Calorie Deficit",
+    "Trekking across Nepal's iconic passes—whether crossing Thorong La (5,416m), Cho La (5,420m), or Larkya La (5,106m)—burns between 3,800 and 5,500 calories per day depending on pack weight, steepness, and ambient cold.",
+    "While teahouse lodges provide vital carbohydrates through dal bhat, noodles, and fried potatoes, these meals lack quick-clearing electrolytes, healthy omega lipids, and concentrated antioxidants. Furthermore, at altitudes above 3,500 meters, appetite often plummets due to mild hypoxia (altitude anorexia).",
+    "Carrying lightweight, energy-dense snacks ensures you maintain continuous muscular power and mental focus between distant teahouses.",
+    "",
+    "### The 'Gram-for-Gram' Nutrition Principle",
+    "A golden rule among experienced Himalayan mountain guides: *Never carry water weight in your food.* Fresh apples and oranges are delicious, but at 85% water, they add heavy dead weight to your shoulders.",
+    "By packing properly dehydrated fruits, raw nuts, and superfood powders, you carry 100% pure nutrition and rehydrate on the trail using boiled mountain water.",
+    "",
+    "### Top 7 Lightweight Trekking Superfoods",
+    "",
+    "#### 1. Organic Pumpkin Seeds (Pepitas)",
+    "[NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) deliver 570 kcal and 30g of plant protein per 100g. They are exceptionally rich in zinc and magnesium, preventing debilitating night cramps inside cold teahouse sleeping bags.",
+    "",
+    "#### 2. Raw Mountain Almonds & Walnuts",
+    "[NaturesMud Raw Mountain Almonds](/products/almonds) supply stable, long-burning monounsaturated fats that sustain your body during 6-hour endurance pushes across high ridges.",
+    "",
+    "#### 3. Sun-Dried Mango & Pineapple Slices",
+    "[NaturesMud Dehydrated Mango](/products/dehydrated-mango) and [Dehydrated Pineapple](/products/dehydrated-pineapple) are lightweight, naturally sweet, and non-sticky. They provide instant glucose to power your legs on steep stone staircases.",
+    "",
+    "#### 4. Wild Dried Blueberries",
+    "[NaturesMud Dried Blueberries](/products/dried-blueberries-100g) are packed with concentrated anthocyanins that protect against UV radiation and oxidative muscle breakdown at high altitudes.",
+    "",
+    "#### 5. 100% Pure Natural Dates Powder",
+    "A 100g jar of [NaturesMud Dates Powder](/products/dates-powder-100g) weighs virtually nothing in your pack and transforms bland teahouse tsampa or oatmeal into a high-potassium power breakfast.",
+    "",
+    "#### 6. Dried Mountain Figs",
+    "[NaturesMud Dried Figs](/products/dried-figs-200g) provide dense, satisfying chewiness and abundant dietary calcium to support bone and muscle endurance.",
+    "",
+    "#### 7. Himalayan Pink Rock Salt Crystals",
+    "Carrying a small 50g pouch of [NaturesMud Himalayan Pink Salt](/products/pink-salt) allows you to turn plain boiled water into an instant mineral-rich electrolyte drink.",
+    "",
+    "### Daily Trail Snacking Schedule",
+    "- **07:00 AM (Teahouse Breakfast):** Oats porridge + 1 tbsp dates powder + handful of almonds.",
+    "- **10:30 AM (Mid-Morning Pass Ascent):** 40g Trail mix (pumpkin seeds, almonds, dried mango).",
+    "- **01:30 PM (Teahouse Lunch):** Fresh Dal Bhat + hot lemon tea.",
+    "- **04:00 PM (Afternoon Descent / Push):** 2 Dried Figs + handful of dried blueberries.",
+    "- **07:30 PM (Teahouse Recovery):** Garlic soup + pinch of Himalayan pink salt for rehydration."
+  ],
+  "faqs": [
+    {
+      "question": "How much snack weight should I pack for a 10-day Nepal trek?",
+      "answer": "Budget roughly 120 to 150 grams of nutrient-dense nuts, seeds, and dried fruits per day (approx. 1.2 to 1.5 kg total for a 10-day trek). This provides 650–850 kcal daily of supplementary trail fuel."
+    },
+    {
+      "question": "Why is dal bhat alone not enough for high-altitude trekking days?",
+      "answer": "Dal bhat is excellent for lunch and dinner, but trekking burns calories continuously over 6 to 8 hours. Eating large meals during the day slows down blood flow to leg muscles; small, frequent handfuls of nuts and dried fruits maintain even blood glucose without sluggishness."
+    },
+    {
+      "question": "What are the best snacks for crossing high mountain passes like Thorong La or Cho La?",
+      "answer": "On summit and pass days (which start at 4:00 AM in sub-zero dark), carry dried blueberries, dates powder water, and raw almonds in your chest pocket where body heat keeps them warm and ready to eat."
+    }
+  ],
+  "featuredProductSlug": "pumpkin-seeds",
+  "featuredProductName": "Pumpkin Seeds",
+  "featuredProductPrice": 650,
+  "featuredProductImage": "/products/pumpkin-seeds.jpg"
+},
+{
+  "id": "b-fitness-8-homemade-energy-balls-hiking-running",
+  "title": "Homemade Energy Balls for Hiking, Running and Trekking",
+  "slug": "homemade-energy-balls-for-hiking-running-and-trekking",
+  "excerpt": "Ditch expensive commercial bars loaded with artificial preservatives. Learn how to make 5-ingredient no-bake Himalayan energy balls that withstand heat and frost.",
+  "category": "Fitness & Outdoor",
+  "date": "2026-08-30",
+  "author": "NaturesMud Culinary & Sports Nutrition Lab",
+  "readTime": 7,
+  "featured": false,
+  "image": "/images/combos/energy-trio.jpg",
+  "tags": [
+    "homemade energy balls nepal",
+    "no bake energy balls recipe",
+    "hiking energy bites",
+    "dates energy balls",
+    "trail running snacks"
+  ],
+  "keyTakeaways": [
+    "10-Minute No-Bake Prep: Zero cooking or baking needed; simply blend, roll into balls, and chill.",
+    "Balanced Macro Distribution: 60% complex carbs from dates and oats, 25% healthy fats from nuts and coconut oil, 15% clean plant protein.",
+    "Weather-Proof & Crush-Proof: Maintains texture in tropical Terai heat and sub-zero Himalayan ridges without melting or disintegrating.",
+    "Cost-Effective: Homemade balls cost under Rs. 35 each, saving 60% compared to imported Western sports bars."
+  ],
+  "tableOfContents": [
+    {
+      "id": "why-commercial-bars-fail",
+      "title": "Why Commercial Protein Bars Fail Outdoors"
+    },
+    {
+      "id": "science-of-energy-balls",
+      "title": "The Science of the No-Bake Energy Ball"
+    },
+    {
+      "id": "master-5-ingredient-recipe",
+      "title": "The Master 5-Ingredient Himalayan Recipe"
+    },
+    {
+      "id": "3-custom-variations",
+      "title": "3 Gourmet Trail Variations"
+    },
+    {
+      "id": "rolling-texture-tips",
+      "title": "Rolling & Texture Mastery"
+    },
+    {
+      "id": "storage-trail-packing",
+      "title": "Storage & Multi-Day Trail Packing"
+    }
+  ],
+  "content": [
+    "### Why Commercial Protein Bars Fail Outdoors",
+    "Most commercial 'energy bars' available in Kathmandu are held together with high-fructose corn syrup, fractionated palm oil, and synthetic binding agents. On the trail, they present serious drawbacks:",
+    "- In warm lower valleys, chocolate coatings melt into a sticky mess inside your backpack.",
+    "- At high elevations above 3,500m, synthetic syrups freeze into rock-hard slabs that risk chipping teeth.",
+    "- Artificial sugar alcohols (maltitol, sorbitol) trigger uncomfortable gastrointestinal bloating and cramping during uphill climbs.",
+    "Homemade Himalayan energy balls solve every one of these problems using pure whole foods.",
+    "",
+    "### The Master 5-Ingredient Himalayan Energy Ball Recipe",
+    "**Yield:** 12 to 14 balls (Approx. 30g each, ~130 kcal per ball) | **Time:** 10 minutes",
+    "",
+    "#### Ingredients:",
+    "- **1/2 Cup (75g)** [NaturesMud Natural Dates Powder](/products/dates-powder-100g) (Natural binder & glucose)",
+    "- **1 Cup (90g)** Rolled Oats or Roasted Barley Flour (Tsampa)",
+    "- **1/3 Cup (50g)** [NaturesMud Raw Mountain Almonds](/products/almonds) (Finely crushed)",
+    "- **2 Tablespoons** [NaturesMud Organic Chia Seeds](/products/chia-seeds) (Hydration & omega-3)",
+    "- **2 Tablespoons** [NaturesMud Extra Virgin Coconut Oil](/products/virgin-coconut-oil-500ml) (Melted MCT fats)",
+    "- **2 to 3 Tablespoons** Warm water or raw Himalayan honey (To bind)",
+    "- **1 Pinch** [NaturesMud Himalayan Pink Salt](/products/pink-salt)",
+    "",
+    "#### Step-by-Step Method:",
+    "1. **Combine Dry Ingredients:** In a mixing bowl, blend the rolled oats (or tsampa), dates powder, crushed almonds, chia seeds, and pink salt.",
+    "2. **Add Healthy Fats:** Pour in the melted virgin coconut oil. Stir thoroughly until the mixture resembles coarse wet sand.",
+    "3. **Bind the Dough:** Gradually drizzle warm water or raw honey one tablespoon at a time, kneading with clean hands until a dense, pliable dough forms that holds together when squeezed.",
+    "4. **Roll into Bites:** Scoop 1 tablespoon portions of dough and roll firmly between your palms into tight 30g balls.",
+    "5. **Chill & Set:** Place on a plate and chill in the refrigerator for 20 minutes to solidify the coconut oil. Pack into an airtight container.",
+    "",
+    "### 3 Gourmet Trail Variations",
+    "- **Alpine Blueberry Antioxidant Blast:** Fold in 2 tablespoons of finely chopped [NaturesMud Dried Blueberries](/products/dried-blueberries-100g) for a tart antioxidant punch.",
+    "- **Himalayan Sweet Potato Stamina Ball:** Substitute 3 tablespoons of oats with [NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g) and add 1/2 tsp ground cinnamon.",
+    "- **High-Zinc Seed Power Bomb:** Roll the finished balls in toasted [NaturesMud Pumpkin Seeds](/products/pumpkin-seeds) for extra crunch and 5g additional protein.",
+    "",
+    "### Storage & Multi-Day Trail Packing",
+    "- **At Room Temperature:** Keeps firm and fresh in a sealed container for up to 3 weeks.",
+    "- **On the Trail:** Pack 4 balls per day into small reusable silicone pouches or parchment paper wrappers. They survive backpack compression without crumbling."
+  ],
+  "faqs": [
+    {
+      "question": "How long do homemade energy balls last without refrigeration on a trek?",
+      "answer": "Because they use dried dates powder, rolled oats, and stable virgin coconut oil, these energy balls last 2 to 3 weeks at ambient mountain temperatures without any refrigeration."
+    },
+    {
+      "question": "Can I make these without a food processor or blender?",
+      "answer": "Yes! Because NaturesMud Dates Powder is already micro-pulverized, you don't need a heavy blender. Simply chop the almonds with a knife and knead the mixture by hand in a bowl."
+    },
+    {
+      "question": "Are these energy balls healthy for children and school lunchboxes?",
+      "answer": "They are an outstanding, 100% natural snack for school-age children and teenagers, providing clean energy without artificial additives, colors, or refined white sugar."
+    }
+  ],
+  "featuredProductSlug": "dates-powder",
+  "featuredProductName": "Dates Powder",
+  "featuredProductPrice": 350,
+  "featuredProductImage": "/products/dates-powder.jpg"
+},
+{
+  "id": "b-emergency-9-dried-fruits-nuts-emergencies-storage",
+  "title": "Dried Fruits and Nuts for Emergencies: How to Store Them and Use Them",
+  "slug": "dried-fruits-and-nuts-for-emergencies-how-to-store-and-use",
+  "excerpt": "Raw nuts and sun-dried fruits are nature’s original survival rations. Learn how to prevent rancidity, defeat monsoon mold, and utilize them during unexpected crises.",
+  "category": "Emergency & Preparedness",
+  "date": "2026-08-30",
+  "author": "NaturesMud Food Preservation Council",
+  "readTime": 8,
+  "featured": false,
+  "image": "/products/authentic-almonds.jpg",
+  "tags": [
+    "dried fruits nuts emergencies",
+    "how to store nuts nepal",
+    "prevent nut rancidity",
+    "emergency food storage kathmandu",
+    "long term food preservation"
+  ],
+  "keyTakeaways": [
+    "The 4 Storage Enemies: Oxygen, light, heat, and monsoon humidity accelerate lipid oxidation; controlling these factors extends shelf life from 2 months to 24 months.",
+    "Glass Jars Outperform Plastic: Rodents easily chew through plastic sacks; heavy-duty glass containers with rubber hermetic gaskets provide an impenetrable barrier.",
+    "Pre-Freeze Sterilization: Freezing raw nuts for 48 hours before long-term jarring eliminates microscopic insect larvae and halts moisture activity.",
+    "Emergency Transformation: Shelf-stable nuts can be ground with warm water into instant dairy-free survival milk or mashed with dried fruit into high-calorie emergency pastes."
+  ],
+  "tableOfContents": [
+    {
+      "id": "ancient-wisdom-himalayan-caravans",
+      "title": "Why Himalayan Caravans Relied on Nuts & Dried Fruit"
+    },
+    {
+      "id": "science-of-spoilage-nepal",
+      "title": "The Science of Spoilage in Nepal’s Climate"
+    },
+    {
+      "id": "4-step-storage-protocol",
+      "title": "The 4-Step Long-Term Storage Protocol"
+    },
+    {
+      "id": "top-survival-nuts-fruits",
+      "title": "Top 5 Survival Nuts and Dried Fruits"
+    },
+    {
+      "id": "emergency-deployment-recipes",
+      "title": "How to Prepare Emergency Meals Without Fire"
+    }
+  ],
+  "content": [
+    "### Why Himalayan Caravans Relied on Nuts & Dried Fruit",
+    "Centuries before canned foods or freeze-dried astronaut meals existed, Himalayan traders traversing the high salt routes between Tibet, Dolpo, Mustang, and the Kathmandu Valley relied on two primary travel provisions: roasted barley flour (tsampa) and dried fruits and nuts.",
+    "They understood empirical survival science: raw nuts provide calorie-dense fats and protein to resist extreme alpine frost, while sun-dried fruits provide vitamin C and carbohydrates that never freeze solid.",
+    "In modern Nepal, raw nuts and dehydrated fruits remain the gold standard of non-perishable emergency nutrition.",
+    "",
+    "### The Science of Spoilage in Nepal’s Climate",
+    "Storing nuts and dried fruits in Nepal presents unique environmental hurdles:",
+    "- **Lipid Oxidation (Rancidity):** Nuts are rich in delicate polyunsaturated and monounsaturated fatty acids. When exposed to warm room temperatures (above 25°C) and oxygen, these fats oxidize, producing a sharp, bitter, paint-like smell and toxic peroxides.",
+    "- **Monsoon Humidity & Aspergillums Mold:** In July and August, indoor humidity in Kathmandu often reaches 90%. Unsealed dried fruits absorb ambient moisture, creating a prime breeding ground for mold and aflatoxins.",
+    "- **Pest Infiltration:** Urban rodents and pantry moths can smell nuts through thin polyethylene bags and chew through plastic packaging within hours.",
+    "",
+    "### The 4-Step Long-Term Storage Protocol",
+    "To preserve nuts and dried fruits for up to 18–24 months at home, follow this four-step method:",
+    "1. **Pre-Freeze Disinfestation:** Place newly purchased sealed bags of [NaturesMud Raw Mountain Almonds](/products/almonds) or [Pumpkin Seeds](/products/pumpkin-seeds) in your freezer for 48 hours. This neutralizes any microscopic insect eggs or larvae.",
+    "2. **Thorough Dry-Out:** Remove and allow the package to come fully to room temperature before opening (preventing condensation from forming on the cold nuts).",
+    "3. **Hermetic Glass Jarring:** Transfer the contents into sterile, completely dry glass jars fitted with rubber silicone gaskets. Add a small food-safe oxygen absorber packet or 2 whole bay leaves.",
+    "4. **Dark, Low-Cupboard Storage:** Store the jars in the lowest, coolest cupboard in your kitchen, elevated at least 6 inches off the floor to avoid floor dampness.",
+    "",
+    "### Top 5 Survival Nuts and Dried Fruits Ranked by Durability",
+    "1. **[NaturesMud Raw Mountain Almonds](/products/almonds):** Lowest natural moisture content among all nuts; resists rancidity better than walnuts or cashews.",
+    "2. **[NaturesMud Organic Chia Seeds](/products/chia-seeds):** Outstanding shelf life of up to 2 years due to high natural polyphenol antioxidant content.",
+    "3. **[NaturesMud Dehydrated Mango](/products/dehydrated-mango):** Properly sun-dried mango contains low water activity and maintains chewable vitamin C reserves for 12 months.",
+    "4. **[NaturesMud Dried Blueberries](/products/dried-blueberries-100g):** Concentrated anthocyanins and natural sugars prevent bacterial proliferation.",
+    "5. **[NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds):** High zinc and stable protein reserves that resist mold when stored airtight.",
+    "",
+    "### How to Prepare Emergency Meals Without Fire",
+    "- **Instant Survival Almond Milk:** Crush 30g of raw almonds using a mortar and pestle (or rolling pin). Whisk vigorously with 200ml of room-temperature clean water and 1 tablespoon of [NaturesMud Dates Powder](/products/dates-powder-100g) for a nutrient-rich milk drink.",
+    "- **No-Heat Energy Paste:** Mash dried figs and dehydrated mango with a splash of water and virgin coconut oil to create a calorie-dense paste for infants, elderly relatives, or quick stamina."
+  ],
+  "faqs": [
+    {
+      "question": "How do I know if stored nuts have gone rancid and are unsafe to eat?",
+      "answer": "Rancid nuts develop a sour, chemical, varnish-like odor and a sharp, unpleasant bitter taste. If a nut tastes harsh or sour, discard the batch immediately, as oxidized lipids cause digestive inflammation."
+    },
+    {
+      "question": "Can dried fruits and nuts be safely stored during Nepal's heavy monsoon months?",
+      "answer": "Yes, provided they are kept in heavy glass jars with airtight silicone gaskets and never opened on humid rainy days. Keep them in a dark cabinet off the ground."
+    },
+    {
+      "question": "What is the best way to make nutritious milk from stored almonds in an emergency?",
+      "answer": "Soak 30g of raw almonds in clean water for 2 hours (or crush them finely dry), then blend or vigorously whisk with water and 1 tbsp dates powder to create fresh, lactose-free whole-food milk."
+    }
+  ],
+  "featuredProductSlug": "dehydrated-mango",
+  "featuredProductName": "Dehydrated Mango",
+  "featuredProductPrice": 395,
+  "featuredProductImage": "/products/dehydrated-mango.jpg"
+},
+{
+  "id": "b-emergency-10-emergency-food-checklist-nepal-easy-store",
+  "title": "Emergency Food Checklist for Nepal: Healthy Foods That Are Easy to Store",
+  "slug": "emergency-food-checklist-for-nepal-healthy-foods-easy-to-store",
+  "excerpt": "Prepare your home before disaster strikes. A comprehensive, room-by-room, whole-food emergency food checklist tailored specifically for Nepali families and urban homes.",
+  "category": "Emergency & Preparedness",
+  "date": "2026-08-30",
+  "author": "NaturesMud Disaster Relief & Community Advisory",
+  "readTime": 9,
+  "featured": true,
+  "image": "/images/combos/trio-jars-banner.jpg",
+  "tags": [
+    "emergency food checklist nepal",
+    "disaster prep checklist kathmandu",
+    "72 hour emergency kit nepal",
+    "healthy survival pantry",
+    "earthquake food supplies nepal"
+  ],
+  "keyTakeaways": [
+    "Tiered Storage Model: Structure your supplies into Tier 1 (72-Hour Zero-Cooking Grab Bag) and Tier 2 (14-Day Household Shelter-in-Place Reserve).",
+    "Prioritize Water Economy: Processed snacks with high sodium trigger severe thirst; pure whole superfoods conserve your family’s limited clean drinking water.",
+    "Caloric & Mineral Security: Maintain staples like raw chia seeds, dates powder, almonds, pumpkin seeds, and pink rock salt that provide complete macros and micronutrients.",
+    "Semi-Annual Audit Routine: Mark your calendar every 6 months to inspect jar seals and rotate emergency rations into your normal weekly meals."
+  ],
+  "tableOfContents": [
+    {
+      "id": "why-nepal-needs-custom-plan",
+      "title": "Why Nepal Needs a Customized Preparedness Plan"
+    },
+    {
+      "id": "tier-1-72-hour-go-bag",
+      "title": "Tier 1: 72-Hour Evacuation Go-Bag Checklist"
+    },
+    {
+      "id": "tier-2-14-day-pantry",
+      "title": "Tier 2: 14-Day Shelter-in-Place Pantry Checklist"
+    },
+    {
+      "id": "essential-water-electrolyte-kit",
+      "title": "Water & Electrolyte Rehydration Kit"
+    },
+    {
+      "id": "storage-container-selection",
+      "title": "Selecting the Right Storage Containers"
+    },
+    {
+      "id": "6-month-maintenance-routine",
+      "title": "The 6-Month Pantry Audit Routine"
+    }
+  ],
+  "content": [
+    "### Why Nepal Needs a Customized Preparedness Plan",
+    "Generic emergency food checklists written in Western countries frequently recommend military freeze-dried MREs, canned pork, and baked beans—items that are either completely unavailable, prohibitively expensive, or culturally inappropriate for households in Nepal.",
+    "A pragmatic Nepali emergency food plan must rely on ingredients readily accessible in local markets, suitable for vegetarian and multigenerational families, and capable of enduring our climate's high summer humidity and winter temperature swings.",
+    "Here is the definitive, whole-food emergency checklist designed specifically for homes across Nepal.",
+    "",
+    "### Tier 1: 72-Hour Evacuation Go-Bag Checklist (Per Person)",
+    "This kit stays packed in a waterproof backpack near your front door for immediate evacuation during earthquakes, flash floods, or building emergencies. All foods require **zero cooking and zero added water to prepare**:",
+    "- [ ] **250g** [NaturesMud Raw Mountain Almonds](/products/almonds) (~1,450 kcal of clean fats and protein)",
+    "- [ ] **200g** [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds) (~1,140 kcal + zinc and magnesium)",
+    "- [ ] **150g** [NaturesMud Dehydrated Mango](/products/dehydrated-mango) (~500 kcal of fast natural glucose)",
+    "- [ ] **150g** [NaturesMud Dried Figs](/products/dried-figs-200g) (~375 kcal of dietary fiber and calcium)",
+    "- [ ] **100g** [NaturesMud Natural Dates Powder](/products/dates-powder-100g) (Dissolves instantly in bottled water)",
+    "- [ ] **50g** [NaturesMud Himalayan Pink Salt](/products/pink-salt) (Critical for emergency electrolyte rehydration)",
+    "- [ ] **3 Liters** of commercial bottled water",
+    "- [ ] **1 Lightweight reusable stainless-steel cup and spoon**",
+    "",
+    "### Tier 2: 14-Day Household Shelter-in-Place Pantry (Family of 4)",
+    "For extended periods when roads are blocked, markets are closed, or cooking gas delivery is interrupted for two weeks:",
+    "",
+    "#### 1. Zero-Cooking & Calorie Essentials",
+    "- [ ] **2 Liters** [NaturesMud Extra Virgin Coconut Oil](/products/virgin-coconut-oil-500ml) (Longest shelf life, high MCT energy)",
+    "- [ ] **1.5 kg** [NaturesMud Raw Almonds](/products/almonds) & Walnuts",
+    "- [ ] **1 kg** [NaturesMud Organic Pumpkin Seeds](/products/pumpkin-seeds)",
+    "- [ ] **1 kg** [NaturesMud Organic Chia Seeds](/products/chia-seeds) (Hydration and digestion)",
+    "- [ ] **1 kg** [NaturesMud Natural Dates Powder](/products/dates-powder-100g) (Sweetener & mineral source)",
+    "",
+    "#### 2. Dried Produce & Vegetable Superfoods",
+    "- [ ] **500g** [NaturesMud Sweet Potato Powder](/products/sweet-potato-powder-100g) (Stir into porridge or soups)",
+    "- [ ] **300g** [NaturesMud Carrot Powder](/products/carrot-powder-100g) (Beta-carotene and vitamin A)",
+    "- [ ] **300g** [NaturesMud Beetroot Powder](/products/beetroot-powder-100g) (Iron and blood support)",
+    "- [ ] **800g** [NaturesMud Sun-Dried Fruits](/products/dehydrated-mango) (Mango, pineapple, blueberries)",
+    "",
+    "#### 3. Mineral & Hydration Security",
+    "- [ ] **1 kg** [NaturesMud Himalayan Pink Salt](/products/pink-salt)",
+    "- [ ] **500g** [NaturesMud Black Salt](/products/black-salt)",
+    "- [ ] **40 Liters** of stored drinking water (minimum 1 gallon per person per day)",
+    "- [ ] Water purification tablets (Chlorine/Aquatabs)",
+    "",
+    "### Selecting the Right Storage Containers",
+    "- **Glass Jars with Rubber Seals:** The best protection against rodents, humidity, and air. Ideal for nuts, seeds, and powders.",
+    "- **Heavy-Duty Food-Grade Plastic Buckets (with Gamma Lids):** Best for bulk storage of rice, lentils, and oats off the ground.",
+    "- **Never Store Directly on Concrete Floors:** Moisture wicks up through concrete; always keep storage boxes elevated at least 15cm on wooden shelves or pallets.",
+    "",
+    "### The 6-Month Pantry Audit Routine",
+    "Pick two memorable dates each year—such as the start of Dashain (autumn) and Nepali New Year (spring)—to inspect your emergency supply. Rotate older nuts into your family's daily cooking and replenish the pantry with freshly sealed packages."
+  ],
+  "faqs": [
+    {
+      "question": "How many liters of drinking water should I store per person in Nepal?",
+      "answer": "Standard disaster management guidelines recommend storing at least 3 liters of water per person per day (2 liters for drinking and 1 liter for basic sanitation). A 72-hour kit requires 9 to 10 liters per family member."
+    },
+    {
+      "question": "What is the best emergency food for babies and toddlers during a crisis in Nepal?",
+      "answer": "100% pure dates powder and sweet potato powder mixed with clean warm water or milk create instant, sterile, easily digestible baby porridge requiring zero cooking or complex blending."
+    },
+    {
+      "question": "How can I prevent rats and mice from destroying my emergency dry rations?",
+      "answer": "Never leave emergency food in plastic bags or cardboard boxes. Rodents easily gnaw through both. Store all emergency food exclusively in thick glass jars, stainless-steel drums, or heavy-duty food-grade buckets with airtight lids."
+    }
+  ],
+  "featuredProductSlug": "pink-salt",
+  "featuredProductName": "Pink Salt",
+  "featuredProductPrice": 180,
+  "featuredProductImage": "/products/pink-salt.jpg"
+},
   {
   "id": "b-fitness-trekking-snacks-nepal",
   "title": "Best Snacks for Trekking in Nepal: High-Altitude Nutrition & Trail Energy",
