@@ -49,9 +49,12 @@ import RealCustomerReviewsSection from '@/components/RealCustomerReviewsSection'
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import MobileHeroBackgroundCards, { POSTER_THEMES } from '@/components/MobileHeroBackgroundCards';
+import MobileCategorySection from '@/components/MobileCategorySection';
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
+  const [posterIdx, setPosterIdx] = useState(0);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>(staticProducts.filter((p) => p.isFeatured).slice(0, 4));
   const [trendingProducts, setTrendingProducts] = useState<Product[]>(staticProducts.slice(0, 3));
   const [latestPosts, setLatestPosts] = useState<any[]>(staticBlogPosts.slice(0, 3));
@@ -120,154 +123,240 @@ export default function HomePage() {
     <main className="w-full max-w-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full">
-        {/* Background 50% Opacity Nepal/Himalayan Visual */}
+        {/* Subtle Himalayan Atmosphere Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
             src="/images/himalayan-landscape.jpg"
             alt="Misty Himalayan mountain ridges in Nepal"
             fill
             priority
-            className="object-cover object-center opacity-50 select-none mix-blend-multiply"
+            className="object-cover object-center opacity-35 select-none mix-blend-multiply"
           />
           {/* Warm natural cream atmospheric gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/40 via-[#FAF7F2]/65 to-[#FAF7F2]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/50 via-[#FAF7F2]/75 to-[#FAF7F2]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/90 via-[#FAF7F2]/75 to-[#FAF7F2]/30" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-          <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 xl:col-span-6 space-y-5 lg:space-y-6">
-              {/* Refined Eyebrow Badge */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
+            {/* Left Content Column (Seamless luxury on Laptop, Cozy card on Mobile) */}
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 border border-[#EAE3D6]/70 lg:border-none shadow-sm lg:shadow-none bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none">
+              
+              {/* 📱 Full-Bleed 100% Opacity Animated Poster Cards (Mobile/Tablet Only) */}
+              <MobileHeroBackgroundCards
+                activeIdx={posterIdx}
+                onIndexChange={setPosterIdx}
+              />
+
+              {/* Luxury Himalayan Provenance Eyebrow Crest */}
               <motion.div
-                initial={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2 tracking-[0.25em] text-xs font-semibold text-[#7A5230] uppercase font-sans"
+                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
               >
-                <span className="w-5 h-px bg-[#7A5230]/60" />
-                <span>FROM THE HIMALAYAS</span>
-                <span className="w-5 h-px bg-[#7A5230]/60" />
+                <div
+                  className="w-2 h-2 rounded-full transition-colors duration-700 lg:!bg-emerald-500"
+                  style={{ backgroundColor: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary }}
+                />
+                <span
+                  className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] transition-colors duration-700 font-sans lg:!text-[#7A5230]"
+                  style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).secondary }}
+                >
+                  From the Himalayas
+                </span>
+                <span className="w-px h-3 bg-[#7A5230]/25" />
+                <span
+                  className="inline-flex items-center gap-1 text-[11px] font-semibold transition-colors duration-700 font-sans lg:!text-[#1A3826]"
+                  style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary }}
+                >
+                  <Leaf className="w-3 h-3" />
+                  100% Single Origin
+                </span>
               </motion.div>
 
-              {/* Hero Heading with Elegant Serif & Aesop Proportions */}
+              {/* Editorial Master Headline with Kinfolk & Aesop Typography */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-2"
+                transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 space-y-2 lg:space-y-3"
               >
-                <h1 className="text-4xl sm:text-5xl lg:text-[62px] leading-[1.08] font-normal tracking-[-0.01em] font-heading">
-                  <span className="block italic text-[#242220] font-normal">Grown in Nepal.</span>
-                  <span className="block text-[#1A3826] font-medium">Handled with care.</span>
-                  <span className="block text-[#7A5230] font-normal">Delivered to your home.</span>
+                <h1 className="text-[32px] xs:text-[36px] sm:text-5xl md:text-[50px] lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#242220]">
+                  <span className="block font-serif italic text-[#242220] font-normal">
+                    Grown in Nepal.
+                  </span>
+                  <span
+                    className="block font-sans font-medium tracking-[-0.015em] transition-colors duration-700 lg:!text-[#1A3826]"
+                    style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).headingColor }}
+                  >
+                    Handled with care.
+                  </span>
+                  <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-1">
+                    <span>Delivered to your home.</span>
+                    {/* Artistic Organic Curved Flourish Underline */}
+                    <svg
+                      className="absolute -bottom-1 left-0 w-full h-2.5 transition-colors duration-700 pointer-events-none lg:!text-[#7A5230]/35"
+                      style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary, opacity: 0.7 }}
+                      viewBox="0 0 300 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M2 9C75 3 185 2 298 7.5"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </span>
                 </h1>
 
-                {/* Refined Narrative Description */}
-                <p className="text-sm sm:text-base text-[#242220]/80 font-normal leading-relaxed max-w-lg pt-1 font-sans">
-                  Pure, unadulterated whole foods cultivated across Mustang, Jumla, Kavre, and the Terai. Direct farmer partnerships, gentle low-temperature dehydration, and 0 additives or preservatives.
-                </p>
+                {/* Botanical Origin Provenance Tag & Description */}
+                <div className="pt-1">
+                  <div className="flex flex-wrap items-center gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
+                    <span className="text-[#7A5230]/40">·</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
+                    <span className="text-[#7A5230]/40">·</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Kavre</span>
+                    <span className="text-[#7A5230]/40">·</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Terai</span>
+                  </div>
+
+                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-normal leading-relaxed max-w-lg font-sans bg-white/85 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-3.5 lg:p-0 rounded-2xl lg:rounded-none border border-white/90 lg:border-none shadow-2xs lg:shadow-none mt-1 lg:mt-2">
+                    Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-semibold text-[#1A3826]">0 additives or preservatives</span>.
+                  </p>
+                </div>
               </motion.div>
 
-              {/* High-Conversion CTAs */}
+              {/* Sculpted Luxury CTAs */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-4"
+                transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 space-y-3.5 pt-1"
               >
-                <div className="flex flex-wrap items-center gap-3.5">
+                <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3">
                   <Link
                     href="/products"
-                    className="group inline-flex items-center gap-2.5 rounded-full bg-[#1A3826] hover:bg-[#132B1D] px-7 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-[#FAF7F2] tracking-wide shadow-sm hover:shadow transition-all duration-300 cursor-pointer font-sans"
+                    className="group relative inline-flex items-center justify-center gap-3 rounded-full text-[#FAF7F2] px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide active:scale-[0.98] transition-all duration-700 cursor-pointer font-sans overflow-hidden lg:!bg-[#1A3826] lg:shadow-[0_8px_24px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 h-12 sm:h-13"
+                    style={{
+                      background: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).btnGradient,
+                      boxShadow: `0 8px 24px -4px ${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).btnShadow}`,
+                    }}
                   >
+                    {/* Subtle Sheen Highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <span>Shop All Superfoods</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </Link>
 
                   <Link
                     href="/our-story"
-                    className="group inline-flex items-center gap-2 rounded-full border border-[#7A5230]/40 hover:border-[#7A5230] bg-[#FAF7F2]/80 hover:bg-[#FAF7F2] px-6 py-3 sm:py-3.5 text-sm sm:text-base font-medium text-[#7A5230] tracking-wide transition-all duration-300 cursor-pointer font-sans"
+                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-[#7A5230]/40 hover:border-[#7A5230] bg-white/95 hover:bg-white text-[#7A5230] px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide shadow-2xs hover:shadow-xs active:scale-[0.98] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer font-sans h-12 sm:h-13"
                   >
-                    <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-12" />
+                    <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-45" />
                     <span>Farmer Provenance</span>
                   </Link>
                 </div>
 
-                {/* Social Proof Avatar Cluster + Micro-Trust Row */}
-                <div className="flex flex-wrap items-center gap-y-2 gap-x-4 pt-1">
-                  {/* Avatar Cluster */}
-                  <div className="flex items-center gap-2 pr-3 border-r border-[#242220]/10">
-                    <div className="flex -space-x-2">
-                      {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
-                        <div
-                          key={idx}
-                          className="w-7 h-7 rounded-full bg-[#F5F1EA] border-2 border-[#FAF7F2] flex items-center justify-center text-xs shadow-xs"
-                        >
-                          {emoji}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-[11px] leading-tight font-sans">
-                      <div className="flex items-center text-[#7A5230]">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-2.5 h-2.5 fill-[#7A5230] text-[#7A5230]" />
+                {/* Aesthetic Social Proof & Trust Capsule */}
+                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_4px_20px_rgba(0,0,0,0.04)] space-y-2.5 max-w-xl">
+                  {/* Avatar + Rating Row */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex -space-x-2">
+                        {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
+                          <div
+                            key={idx}
+                            className="w-7 h-7 rounded-full bg-[#FAF7F2] border-2 border-white flex items-center justify-center text-xs shadow-2xs"
+                          >
+                            {emoji}
+                          </div>
                         ))}
-                        <span className="font-semibold text-[#242220] ml-1">4.9/5</span>
                       </div>
-                      <span className="text-[#242220]/60 font-normal">25,000+ Happy Nepalis</span>
+                      <div className="text-[11px] leading-tight font-sans">
+                        <div className="flex items-center text-[#7A5230]">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
+                          ))}
+                          <span className="font-bold text-[#242220] ml-1.5">4.9 / 5</span>
+                        </div>
+                        <span className="text-[#242220]/70 font-medium">25,000+ Happy Nepalis</span>
+                      </div>
+                    </div>
+
+                    <div
+                      className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs transition-colors duration-700 lg:!bg-emerald-100/90 lg:!text-emerald-800 lg:!border-emerald-200 flex-shrink-0"
+                      style={{
+                        backgroundColor: `${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary}18`,
+                        color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).secondary,
+                        borderColor: `${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary}35`,
+                      }}
+                    >
+                      ⚡ 24h Valley Delivery
                     </div>
                   </div>
 
-                  {/* Micro-Trust Pills */}
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-[#242220]/75 font-sans">
-                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                  {/* Micro-Trust Chips Strip */}
+                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
-                      100% Sourced in Nepal
+                      100% Nepali Origin
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
                       <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
-                      Free Delivery &gt; Rs. 10,000
+                      Free Shipping &gt; Rs. 10,000
                     </span>
-                    <span className="inline-flex items-center gap-1 bg-[#F5F1EA] px-2.5 py-1 rounded-full border border-[#EAE3D6]">
+                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
                       <Sparkles className="w-3.5 h-3.5 text-[#7A5230]" />
-                      0 Additives · 0 Preservatives
+                      0 Additives
                     </span>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Modern Glassmorphic Statistics Counters */}
+              {/* Modern Glassmorphic Statistics Bento Tiles (Desktop/Laptop Only) */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 max-w-lg"
+                transition={{ duration: 0.75, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10 hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 pt-1 max-w-xl"
               >
                 {[
-                  { value: '25,000+', label: 'Happy Customers', highlight: true },
-                  { value: '100%', label: '0 Additives', highlight: false },
-                  { value: '150+', label: 'Farm Partners', highlight: false },
-                  { value: '4.9★', label: 'Customer Rating', highlight: true },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="p-2.5 sm:p-3 rounded-2xl bg-[#FAF7F2]/90 border border-[#EAE3D6] hover:border-[#1A3826]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center shadow-xs"
-                  >
-                    <div className={`text-base sm:text-lg font-heading font-normal ${stat.highlight ? 'text-[#1A3826]' : 'text-[#242220]'}`}>
-                      <AnimatedCounter value={stat.value} />
+                  { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
+                  { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
+                  { value: '180+', label: 'Farm Partners', highlight: false, icon: Sprout },
+                  { value: '4.9★', label: 'Customer Rating', highlight: true, icon: Award },
+                ].map((stat) => {
+                  const Icon = stat.icon;
+                  return (
+                    <div
+                      key={stat.label}
+                      className="group p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] hover:border-[#1A3826]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-[80px]"
+                    >
+                      <div
+                        className={`text-base sm:text-lg lg:text-xl font-heading font-extrabold transition-colors duration-700 ${stat.highlight ? 'lg:!text-[#1A3826]' : 'text-[#242220]'}`}
+                        style={{
+                          color: stat.highlight ? (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).headingColor : undefined,
+                        }}
+                      >
+                        <AnimatedCounter value={stat.value} />
+                      </div>
+                      <div className="text-[10px] sm:text-[11px] text-[#242220]/65 font-medium mt-0.5 truncate font-sans">
+                        {stat.label}
+                      </div>
                     </div>
-                    <div className="text-[10px] text-[#242220]/60 font-medium mt-0.5 truncate font-sans">{stat.label}</div>
-                  </div>
-                ))}
+                  );
+                })}
               </motion.div>
             </div>
 
-            {/* Right Content Column — Product Animation */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-2 lg:pt-0">
-              {/* Production Showcase Animation */}
+            {/* Right Content Column — Perfectly Balanced for Laptop */}
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-0 -mt-2 sm:-mt-4 lg:mt-0">
               <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="w-full flex justify-center lg:justify-end"
@@ -279,9 +368,12 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* 📱 Shop by Category (Mobile & Tablet Only) — Placed Above Pregnancy Trimesters Combos */}
+          <MobileCategorySection />
+
           {/* Side-by-Side Dual Offer & Combos Section */}
-          <div className="mt-8 lg:mt-10 pt-6 lg:pt-8 border-t border-ink/8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+          <div className="mt-4 sm:mt-6 lg:mt-10 pt-4 sm:pt-6 lg:pt-8 border-t border-ink/8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
               {/* Left Side Offer: Baby & Mother Care Combos */}
               <div className="w-full flex justify-center lg:justify-start">
                 <ErrorBoundary name="Baby & Mother Combos">
@@ -383,83 +475,93 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Categories Section */}
-      <ScrollReveal direction="up" distance={35}>
-        <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
-          <div className="container-nm">
-            <div className="flex flex-col sm:flex-row items-end justify-between gap-6 mb-12 lg:mb-16">
-              <div className="space-y-3 sm:space-y-4">
-                <span className="section-number block tracking-widest text-primary-600 text-xs font-bold uppercase mb-2 sm:mb-3">01 — Explore</span>
-                <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold text-ink mt-2 mb-3">
-                  Shop by Category
-                </h2>
-                <p className="section-subtitle text-ink/70 text-base sm:text-lg max-w-2xl mt-3 sm:mt-4 leading-relaxed">
-                  Discover our collections, from everyday essentials to premium superfoods.
-                </p>
+      {/* Categories Section (Desktop/Laptop Only to prevent duplicate on mobile/tablet) */}
+      <div className="hidden lg:block">
+        <ScrollReveal direction="up" distance={35}>
+          <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
+            <div className="container-nm">
+              <div className="flex flex-col sm:flex-row items-end justify-between gap-6 mb-12 lg:mb-16">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230]">
+                    <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
+                    <span>Curated Collections</span>
+                  </div>
+                  <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold text-ink mt-2 mb-3">
+                    Shop by Category
+                  </h2>
+                  <p className="section-subtitle text-ink/70 text-base sm:text-lg max-w-2xl mt-3 sm:mt-4 leading-relaxed">
+                    Discover our collections, from everyday essentials to premium superfoods.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                {categoriesWithImages.map((category, i) => (
+                  <Link
+                    key={category.slug}
+                    href={`/products?category=${category.slug}`}
+                    className="category-jump-card group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-300 hover:shadow-card aspect-[3/4]"
+                    style={{ '--jump-delay': i * 0.25 } as CSSProperties}
+                  >
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-3xl" />
+                    <div className="absolute bottom-0 p-5">
+                      <h3 className="font-heading text-lg font-semibold text-white">{category.name}</h3>
+                      <div className="flex items-center gap-1 text-white/80 text-sm mt-1 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                        <span>Shop now</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
+          </section>
+        </ScrollReveal>
+      </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              {categoriesWithImages.map((category, i) => (
-                <Link
-                  key={category.slug}
-                  href={`/products?category=${category.slug}`}
-                  className="category-jump-card group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-300 hover:shadow-card aspect-[3/4]"
-                  style={{ '--jump-delay': i * 0.25 } as CSSProperties}
-                >
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-3xl" />
-                  <div className="absolute bottom-0 p-5">
-                    <h3 className="font-heading text-lg font-semibold text-white">{category.name}</h3>
-                    <div className="flex items-center gap-1 text-white/80 text-sm mt-1 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                      <span>Shop now</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* 02 — Instagram-style Reels Section (Watch NatureMud In Action) */}
+      {/* Instagram-style Reels Section (Watch NatureMud In Action) */}
       <ScrollReveal direction="up" distance={30}>
         <ErrorBoundary name="Reels Section">
           <ReelsSection />
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 03 — Featured Products */}
-      <ScrollReveal direction="up" distance={35}>
-        <section className="section-padding bg-white overflow-hidden w-full max-w-full">
+      {/* Featured Products */}
+      <ScrollReveal direction="up" distance={30}>
+        <section className="py-8 sm:py-12 lg:py-16 bg-white overflow-hidden w-full max-w-full">
           <div className="container-nm">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div className="flex items-end justify-between gap-4 mb-5 sm:mb-8">
               <div>
-                <span className="section-number">03 — Bestsellers</span>
-                <h2 className="section-title mt-3">Featured Products</h2>
-                <p className="section-subtitle">
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-1">
+                  <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
+                  <span>Handpicked Harvests</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-ink tracking-tight">
+                  Featured Products
+                </h2>
+                <p className="text-xs sm:text-sm text-ink/70 max-w-xl mt-1 leading-relaxed hidden sm:block">
                   Handpicked superfoods and healthy essentials our customers love.
                 </p>
               </div>
-              <Link href="/products" className="btn-outline shrink-0">
-                View All Products
-                <ArrowRight className="w-4 h-4" />
+              <Link href="/products" className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-primary hover:underline shrink-0 py-1 pl-2">
+                <span>View All</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-6">
               {featuredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
             
-            <div className="mt-10 flex justify-center">
+            <div className="mt-6 sm:mt-10 flex justify-center hidden sm:flex">
               <Link href="/products" className="btn-outline">
                 See More Products
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -469,82 +571,89 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* 04 — Special Mega Campaigns & Combos Showcase (Gym, Morning, Total Health, Focus, Festive & Tihar) */}
-      <ScrollReveal direction="up" distance={35}>
+      {/* Special Mega Campaigns & Combos Showcase */}
+      <ScrollReveal direction="up" distance={30}>
         <ErrorBoundary name="Campaign Combos">
           <CampaignCombosShowcaseSection />
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 05 — Redesigned Interactive Our Promises Showcase */}
-      <ErrorBoundary name="Promises Section">
-        <OurPromisesSection />
-      </ErrorBoundary>
+      {/* 💻 Desktop Only: Promises & Immunity Product Highlight (Hidden on Mobile & Tablet to streamline review flow) */}
+      <div className="hidden lg:block">
+        {/* Redesigned Interactive Our Promises Showcase */}
+        <ErrorBoundary name="Promises Section">
+          <OurPromisesSection />
+        </ErrorBoundary>
 
-      {/* Product Highlight Banner */}
-      <ScrollReveal direction="up" distance={30}>
-        <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-16 sm:py-20 w-full max-w-full">
-          <div className="absolute inset-0 bg-hero-pattern opacity-40" />
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
+        {/* Product Highlight Banner */}
+        <ScrollReveal direction="up" distance={30}>
+          <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-16 sm:py-20 w-full max-w-full">
+            <div className="absolute inset-0 bg-hero-pattern opacity-40" />
+            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
 
-          <div className="relative container-nm">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="flex items-center gap-6">
-                <div className="w-40 h-40 sm:w-52 sm:h-52 relative rounded-[2rem] overflow-hidden shadow-xl shrink-0">
-                  <Image
-                    src="/products/superfood-mix.jpg"
-                    alt="Immunity Shield Superfood Mix"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="text-white space-y-2">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5">
-                    <Sparkles className="w-4 h-4" />
-                    Only clean, only pure
+            <div className="relative container-nm">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="flex items-center gap-6">
+                  <div className="w-40 h-40 sm:w-52 sm:h-52 relative rounded-[2rem] overflow-hidden shadow-xl shrink-0">
+                    <Image
+                      src="/products/superfood-mix.jpg"
+                      alt="Immunity Shield Superfood Mix"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold">Immunity Shield Superfood Mix</h3>
-                  <p className="text-white/80 text-sm">Moringa, Ashwagandha, Amla & more — your daily immunity ritual.</p>
-                  <Link href="/products/immunity-shield-superfood-mix" className="btn-gold mt-4 inline-flex items-center gap-2">
-                    Shop Now
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="text-white space-y-2">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5">
+                      <Sparkles className="w-4 h-4" />
+                      Only clean, only pure
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold">Immunity Shield Superfood Mix</h3>
+                    <p className="text-white/80 text-sm">Moringa, Ashwagandha, Amla & more — your daily immunity ritual.</p>
+                    <Link href="/products/immunity-shield-superfood-mix" className="btn-gold mt-4 inline-flex items-center gap-2">
+                      Shop Now
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
 
-              <div className="hidden lg:flex items-end justify-end gap-4">
-                <div className="w-24 h-24 rounded-full border-2 border-white/30 flex items-center justify-center animate-float-slow">
-                  <Droplets className="w-8 h-8 text-white" />
-                </div>
-                <div className="w-16 h-16 rounded-full bg-gold/30 flex items-center justify-center animate-float-slower">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center animate-float-slow">
-                  <MapPin className="w-5 h-5 text-white" />
+                <div className="hidden lg:flex items-end justify-end gap-4">
+                  <div className="w-24 h-24 rounded-full border-2 border-white/30 flex items-center justify-center animate-float-slow">
+                    <Droplets className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="w-16 h-16 rounded-full bg-gold/30 flex items-center justify-center animate-float-slower">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center animate-float-slow">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      </ScrollReveal>
+          </section>
+        </ScrollReveal>
+      </div>
 
-      {/* 06 — Modern Real Customer Reviews & Wall of Love */}
+      {/* Customer Reviews & Wall of Love */}
       <ScrollReveal direction="up" distance={30}>
         <ErrorBoundary name="Customer Reviews">
           <RealCustomerReviewsSection />
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 07 — Instagram Live Photo Gallery Section */}
-      <ScrollReveal direction="up" distance={30}>
-        <section className="section-padding bg-white overflow-hidden w-full max-w-full">
+      {/* 💻 Desktop/Laptop Only Sections (07 Instagram Gallery, Blog, Newsletter, SEO Authority & Trust Strip) — Skipped on Mobile & Tablet */}
+      <div className="hidden lg:block">
+        {/* 07 — Instagram Live Photo Gallery Section */}
+        <ScrollReveal direction="up" distance={30}>
+          <section className="section-padding bg-white overflow-hidden w-full max-w-full">
           <div className="container-nm">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="section-number">07 — Instagram Photo Gallery</span>
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230]">
+                    <Instagram className="w-3.5 h-3.5 text-rose-500" />
+                    <span>Instagram Photo Gallery</span>
+                  </div>
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 text-[10px] font-bold">
-                    <Instagram className="w-3 h-3 text-rose-500" />
                     Live Photos
                   </span>
                 </div>
@@ -621,8 +730,11 @@ export default function HomePage() {
           <div className="container-nm">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
               <div>
-                <span className="section-number">08 — Blog</span>
-                <h2 className="section-title mt-3">From Our Journal</h2>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
+                  <span>Journal & Stories</span>
+                </div>
+                <h2 className="section-title mt-1">From Our Journal</h2>
                 <p className="section-subtitle">Tips, guides, and stories from the farm.</p>
               </div>
               <Link href="/blog" className="btn-outline shrink-0">View All Posts</Link>
@@ -782,6 +894,7 @@ export default function HomePage() {
           </div>
         </section>
       </ScrollReveal>
+      </div>
     </main>
   );
 }

@@ -57,7 +57,7 @@ test.describe('Products Page', () => {
     
     const sortSelect = page.getByLabel(/Sort|Sort by/i).first();
     if (await sortSelect.isVisible({ timeout: 5000 })) {
-      await sortSelect.selectOption({ label: /Price: Low to High|Price: High to Low/i });
+      await sortSelect.selectOption({ label: 'Price: Low to High' });
       await expect(page).toHaveURL(/sort=/);
     }
   });

@@ -314,9 +314,10 @@ export default function RealCustomerReviewsSection() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div>
-            <span className="section-number block tracking-widest text-primary-600 text-xs font-bold uppercase mb-2">
-              06 — Customer Wall of Love
-            </span>
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
+              <span>Customer Wall of Love</span>
+            </div>
             <div className="flex items-center gap-3">
               <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-ink">
                 Loved by Families Across Nepal

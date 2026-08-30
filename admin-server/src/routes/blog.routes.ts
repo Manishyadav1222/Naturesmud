@@ -111,23 +111,6 @@ router.post('/', requireMinRole('CONTENT_MANAGER'), async (req, res, next) => {
     }
     next(err);
   }
-});thor, category, tags, 
-        is_published, published_at, meta_title, meta_description, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
-      [
-        title, finalSlug, excerpt, content, finalImage, author, category, JSON.stringify(tags || []),
-        isPub ? 1 : 0, finalIsFeatured, isPub ? new Date() : null, finalMetaTitle, finalMetaDesc
-      ]
-    );
-
-    const [rows] = await laravelDb.query('SELECT * FROM blog_posts WHERE id = ?', [(result as any).insertId]);
-    res.status(201).json({ data: mapBlogPost((rows as any[])[0]) });
-  } catch (err: any) {
-    if (err.message?.includes('ER_DUP_ENTRY') || err.code === 'ER_DUP_ENTRY') {
-      return res.status(400).json({ message: 'A blog post with this slug already exists' });
-    }
-    next(err);
-  }
 });
 
 // PUT /api/admin/blog/:id - Update blog post
