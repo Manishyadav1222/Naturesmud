@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { products as staticProducts, normalizeProduct } from '@/lib/data/products';
 import { categories } from '@/lib/data/categories';
-import { blogPosts as staticBlogPosts } from '@/lib/data/content';
+import { masterBlogCatalog as staticBlogPosts } from '@/lib/data/blogs-database';
 import { ProductCard } from '@/components/ProductCard';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import ReelsSection from '@/components/ReelsSection';

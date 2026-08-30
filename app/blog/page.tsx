@@ -15,7 +15,7 @@ export default async function BlogPage() {
   let posts: any[] = masterBlogCatalog;
 
   try {
-    const res = await api.get('/blogs?per_page=100');
+    const res = await api.get('/blogs?per_page=200');
     if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
       const apiPosts = res.data.data.map((p: any) => ({
         id: String(p.id),
@@ -45,11 +45,12 @@ export default async function BlogPage() {
     posts = masterBlogCatalog;
   }
 
-  // Ensure strict descending date order (newest first)
+  // Ensure strict descending date and ID order (newest first)
   posts.sort((a, b) => {
     const timeA = new Date(a.rawDate || a.date || 0).getTime();
     const timeB = new Date(b.rawDate || b.date || 0).getTime();
-    return timeB - timeA;
+    if (timeB !== timeA) return timeB - timeA;
+    return Number(b.id || 0) - Number(a.id || 0);
   });
 
   return <BlogListClient initialPosts={posts} />;

@@ -3851,7 +3851,7 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
 export const masterBlogCatalog: ExtendedBlogPost[] = [
   ...allBlogPosts,
   ...rawCatalog.filter(r => !allBlogPosts.some(a => a.slug === r.slug))
-].sort((a, b) => new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime());
+];
 
 export function getBlogPostBySlug(slug: string): ExtendedBlogPost | undefined {
   return masterBlogCatalog.find((b) => b.slug === slug || b.id === slug);

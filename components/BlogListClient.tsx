@@ -66,7 +66,8 @@ export default function BlogListClient({ initialPosts }: BlogListClientProps) {
     .sort((a, b) => {
       const timeA = new Date(a.date || 0).getTime();
       const timeB = new Date(b.date || 0).getTime();
-      return timeB - timeA;
+      if (timeB !== timeA) return timeB - timeA;
+      return Number(b.id || 0) - Number(a.id || 0);
     });
 
   const featured = filteredPosts[0];

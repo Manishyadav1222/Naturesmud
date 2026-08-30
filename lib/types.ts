@@ -76,6 +76,14 @@ export interface BlogPost {
   tagsNp?: string[];
   featured?: boolean;
   isFeatured?: boolean; // Added for admin sync
+  keyTakeaways?: string[];
+  tableOfContents?: { id: string; title: string }[];
+  faqs?: { question: string; answer: string }[];
+  featuredProductSlug?: string;
+  featuredProductName?: string;
+  featuredProductPrice?: number;
+  featuredProductImage?: string;
+  metaDescription?: string;
 }
 
 export interface Review {
