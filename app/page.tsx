@@ -122,21 +122,19 @@ export default function HomePage() {
   return (
     <main className="w-full max-w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full" style={{ marginTop: 0 }}>
-        {/* Full-Vibrancy Perfectly Fitted Himalayan Atmosphere Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <Image
-            src="/images/himalayan-landscape.jpg"
-            alt="Misty Himalayan mountain ridges in Nepal"
-            fill
-            priority
-            sizes="100vw"
-            quality={90}
-            className="object-cover object-[center_20%] sm:object-[center_25%] md:object-center select-none opacity-85"
-          />
-          {/* Balanced Warm Atmospheric Gradients for 100% Typography Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/50 via-[#FAF7F2]/75 to-[#FAF7F2] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/95 via-[#FAF7F2]/80 to-[#FAF7F2]/30 pointer-events-none" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full" style={{ marginTop: 0 }}>
+        {/* Ambient clean background - soft warm beige gradient with organic textures */}
+        <div className="absolute inset-0 bg-hero-pattern opacity-60 pointer-events-none" />
+        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(217,164,65,0.10)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-[radial-gradient(circle,rgba(122,169,92,0.10)_0%,transparent_70%)] pointer-events-none" />
+        
+        {/* Subtle decorative leaves */}
+        <div className="absolute top-24 left-[8%] w-12 h-12 text-primary/15 pointer-events-none rotate-12">
+          <Leaf className="w-full h-full" />
+        </div>
+        <div className="absolute bottom-32 right-[12%] w-16 h-16 text-gold/15 pointer-events-none -rotate-12">
+          <Leaf className="w-full h-full" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
