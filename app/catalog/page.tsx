@@ -6,7 +6,7 @@ import { categories } from '@/lib/data/categories';
 export const metadata: Metadata = {
   title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
   description:
-    "Explore the complete official 2026 product catalog and price list for NaturesMud Nepal. Download the master catalog, browse 25 certified dehydrated fruits, pure superfood powders, mountain nuts, seeds, and cold-pressed virgin oils.",
+    "Explore the complete official 2026 product catalog and price list for NaturesMud Nepal. Download the master catalog, browse certified single-origin dehydrated fruits, pure superfood powders, mountain nuts, seeds, and cold-pressed virgin oils.",
   keywords: [
     "NaturesMud catalog",
     "NaturesMud price list",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
     description:
-      "Browse 25 certified pure superfoods, dehydrated fruits, mountain nuts, and cold-pressed virgin oils from NaturesMud Nepal. Download the complete master catalog.",
+      "Browse certified single-origin pure superfoods, dehydrated fruits, mountain nuts, and cold-pressed virgin oils from NaturesMud Nepal. Download the complete master catalog.",
     url: 'https://naturesmud.shop/catalog',
     siteName: 'NaturesMud (naturesmud.shop)',
     images: [

@@ -107,49 +107,32 @@ export default function MobileHeroBackgroundCards({
     return () => clearInterval(timer);
   }, [activeIdx, onIndexChange]);
 
-  const currentPoster = POSTER_THEMES[activeIdx];
+  const currentPoster = POSTER_THEMES[activeIdx] || POSTER_THEMES[0];
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-3xl lg:hidden">
-      {/* Dynamic Animated Poster Cross-Fader at 100% Opacity */}
+      {/* Dynamic Ambient Color Aura transitioning with Poster Themes */}
       <AnimatePresence mode="sync">
         <motion.div
           key={currentPoster.id}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 w-full h-full flex items-center justify-center p-2 sm:p-4"
-        >
-          {/* Ambient blurred backdrop for rich, saturated depth */}
-          <div className="absolute inset-0 w-full h-full">
-            <Image
-              src={currentPoster.image}
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center blur-2xl opacity-90 scale-110"
-            />
-          </div>
-
-          {/* 100% Opacity Vibrant Poster Image */}
-          <div className="relative w-full h-full max-w-full max-h-full">
-            <Image
-              src={currentPoster.image}
-              alt={currentPoster.title}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain object-center opacity-100"
-            />
-          </div>
-        </motion.div>
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 0.28, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute -top-12 -right-12 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: currentPoster.accent }}
+        />
+        <motion.div
+          key={`${currentPoster.id}-secondary`}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 0.2, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute -bottom-8 -left-8 w-56 h-56 sm:w-72 sm:h-72 rounded-full blur-3xl pointer-events-none"
+          style={{ backgroundColor: currentPoster.primary }}
+        />
       </AnimatePresence>
-
-      {/* Subtle Transparent Contrast Gradients for Crystal Clear Text Legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-[#FAF7F2]/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/10 to-transparent" />
     </div>
   );
 }
+

@@ -124,26 +124,26 @@ export default function HomePage() {
     <main className="w-full max-w-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full" style={{ marginTop: 0 }}>
-        {/* Full-Vibrancy 100% Opacity Himalayan Atmosphere Background */}
+        {/* Full-Vibrancy Perfectly Fitted Himalayan Atmosphere Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
             src="/images/himalayan-landscape.jpg"
             alt="Misty Himalayan mountain ridges in Nepal"
             fill
             priority
-            className="object-cover object-center opacity-100 select-none"
+            className="object-cover object-[center_25%] select-none opacity-85"
           />
-          {/* Subtle Transparent Atmospheric Gradients for Pristine Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/20 via-transparent to-[#FAF7F2]/80 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/20 to-transparent pointer-events-none" />
+          {/* Balanced Warm Atmospheric Gradients for 100% Typography Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/50 via-[#FAF7F2]/75 to-[#FAF7F2] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/95 via-[#FAF7F2]/80 to-[#FAF7F2]/30 pointer-events-none" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
-            {/* Left Content Column (Ultra-Clean Transparent Luxury across Mobile, Tablet, and Desktop) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-2 sm:p-4 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 bg-transparent border-none shadow-none">
+            {/* Left Content Column (High Contrast Luxury across Mobile, Tablet, and Desktop) */}
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 bg-white/75 sm:bg-white/60 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border border-white/80 lg:border-none shadow-xs lg:shadow-none">
               
-              {/* 📱 Full-Bleed 100% Opacity Animated Poster Cards (Mobile/Tablet Only) */}
+              {/* 📱 Full-Bleed Animated Poster Themes (Mobile/Tablet Only) */}
               <MobileHeroBackgroundCards
                 activeIdx={posterIdx}
                 onIndexChange={setPosterIdx}
@@ -154,7 +154,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
+                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
               >
                 <div
                   className="w-2 h-2 rounded-full transition-colors duration-700 lg:!bg-emerald-500"
@@ -183,12 +183,12 @@ export default function HomePage() {
                 transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="relative z-10 space-y-2 lg:space-y-3"
               >
-                <h1 className="text-[32px] xs:text-[36px] sm:text-5xl md:text-[50px] lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#242220]">
-                  <span className="block font-serif italic text-[#242220] font-normal">
+                <h1 className="text-[30px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
+                  <span className="block font-serif italic text-[#1C2820] font-normal">
                     Grown in Nepal.
                   </span>
                   <span
-                    className="block font-sans font-medium tracking-[-0.015em] transition-colors duration-700 lg:!text-[#1A3826]"
+                    className="block font-sans font-bold tracking-[-0.015em] transition-colors duration-700 lg:!text-[#1A3826]"
                     style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).headingColor }}
                   >
                     Handled with care.
@@ -216,16 +216,16 @@ export default function HomePage() {
                 {/* Botanical Origin Provenance Tag & Animated Description */}
                 <div className="pt-1">
                   <div className="flex flex-wrap items-center gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Mustang</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Mustang</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Jumla</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Jumla</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Kavre</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Kavre</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Terai</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Terai</span>
                   </div>
 
-                  {/* ✨ Kinetic Staggered Animated Description Text with Transparent Background */}
+                  {/* ✨ Kinetic Staggered Animated Description Text */}
                   <motion.div
                     initial="hidden"
                     animate="visible"
@@ -234,12 +234,12 @@ export default function HomePage() {
                       visible: {
                         opacity: 1,
                         transition: {
-                          staggerChildren: 0.035,
+                          staggerChildren: 0.03,
                           delayChildren: 0.2,
                         },
                       },
                     }}
-                    className="text-xs xs:text-sm sm:text-base text-[#242220]/90 font-normal leading-relaxed max-w-lg font-sans bg-transparent p-0 mt-1 lg:mt-2"
+                    className="text-xs xs:text-sm sm:text-base text-[#242220] font-medium leading-relaxed max-w-lg font-sans mt-2"
                   >
                     {[
                       { text: 'Pure,', highlight: false },
@@ -265,17 +265,16 @@ export default function HomePage() {
                       <motion.span
                         key={idx}
                         variants={{
-                          hidden: { opacity: 0, y: 7, filter: 'blur(3px)' },
+                          hidden: { opacity: 0, y: 5 },
                           visible: {
                             opacity: 1,
                             y: 0,
-                            filter: 'blur(0px)',
-                            transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+                            transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
                           },
                         }}
                         className={`inline-block mr-1 ${
                           item.highlight
-                            ? 'font-bold text-[#1A3826] bg-emerald-600/10 px-1.5 py-0.2 rounded-md border border-emerald-600/20 backdrop-blur-2xs'
+                            ? 'font-bold text-[#1A3826] bg-emerald-600/10 px-1.5 py-0.5 rounded-md border border-emerald-600/25 shadow-2xs'
                             : ''
                         }`}
                       >

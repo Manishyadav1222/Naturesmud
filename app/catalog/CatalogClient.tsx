@@ -704,13 +704,13 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 <span className="text-xs font-bold text-gray-400 uppercase mr-1 shrink-0">Category:</span>
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                  className={`px-3.5 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
                     selectedCategory === 'all'
                       ? 'bg-[#1B3D2F] text-white shadow-sm'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
-                  All (25)
+                  All Superfoods
                 </button>
                 {categories.map((c) => (
                   <button
@@ -735,7 +735,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                   onChange={(e) => setSortBy(e.target.value as any)}
                   className="text-xs bg-gray-50 border border-gray-200 text-gray-700 py-1.5 px-3 rounded-xl focus:border-[#1B3D2F] outline-none"
                 >
-                  <option value="default">Default Catalog Order (SN 1–25)</option>
+                  <option value="default">Featured Master Catalog Order</option>
                   <option value="price-asc">Price: Low to High</option>
                   <option value="price-desc">Price: High to Low</option>
                   <option value="mrp">Highest MRP</option>

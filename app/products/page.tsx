@@ -70,15 +70,15 @@ export default async function ProductsPage({
                   <li className="text-[#3A6B35] font-medium">Products</li>
                 </ol>
               </nav>
-              <h1 className="font-heading font-bold text-3xl sm:text-4xl text-[#2B2B2B]">
+              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#2B2B2B] tracking-tight">
                 {category
                   ? categories.find((c) => c.slug === category)?.name || category
-                  : `All ${allProducts.length} Master Products`}
+                  : 'Pure Himalayan Superfoods'}
               </h1>
-              <p className="text-gray-600 mt-2 max-w-2xl text-sm sm:text-base">
+              <p className="text-gray-600 mt-2 max-w-2xl text-sm sm:text-base leading-relaxed">
                 {category
                   ? categories.find((c) => c.slug === category)?.description || 'Pure superfoods and whole food nutrition with 0 additives.'
-                  : 'Discover our certified dehydrated fruits, superfood powders, mountain nuts, seeds, and cold-pressed virgin oils with 0 additives and 0 preservatives.'}
+                  : 'Explore 100% natural dehydrated fruits, pure superfood powders, raw mountain nuts, seeds, and cold-pressed virgin oils cultivated across the pristine valleys of Nepal.'}
               </p>
             </div>
 
