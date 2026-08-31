@@ -86,7 +86,7 @@ export default function WhatsAppButton() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3 group"
+          className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3 group"
           aria-label="Chat with us on WhatsApp"
         >
           <span className="hidden sm:block bg-white px-4 py-2 rounded-full shadow-lg text-sm font-medium text-dark border border-gray-100 group-hover:shadow-xl transition-shadow">

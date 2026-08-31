@@ -413,7 +413,7 @@ export default function HeroProductShowcase() {
       />
 
       {/* Main Expansive Circular Stage — Centered */}
-      <div className="relative w-[290px] xs:w-[330px] sm:w-[380px] md:w-[420px] lg:w-[440px] xl:w-[470px] aspect-square flex items-center justify-center mx-auto">
+      <div className="relative w-[270px] xs:w-[310px] sm:w-[360px] md:w-[400px] lg:w-[430px] xl:w-[460px] aspect-square flex items-center justify-center mx-auto">
         
         {/* Dynamic Glowing Radial Color Portal with Smooth Color Morphing */}
         <motion.div
@@ -442,10 +442,10 @@ export default function HeroProductShowcase() {
             rotate: [-8, 12, -8],
           }}
           transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-3 -left-2 sm:-top-5 sm:left-3 z-20 pointer-events-none drop-shadow-md"
+          className="absolute -top-2 left-1 xs:-top-3 xs:left-2 sm:-top-5 sm:left-3 z-20 pointer-events-none drop-shadow-md"
         >
           <div
-            className="w-10 h-10 sm:w-13 sm:h-13 rounded-full flex items-center justify-center bg-white/95 backdrop-blur-xs p-2.5 shadow-md border border-white"
+            className="w-9 h-9 xs:w-10 xs:h-10 sm:w-13 sm:h-13 rounded-full flex items-center justify-center bg-white/95 backdrop-blur-xs p-2 sm:p-2.5 shadow-md border border-white"
             style={{ color: current.theme.leafColor }}
           >
             <Leaf className="w-full h-full fill-current" />
@@ -459,10 +459,10 @@ export default function HeroProductShowcase() {
             rotate: [15, -5, 15],
           }}
           transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-          className="absolute -bottom-3 -right-2 sm:-bottom-5 sm:right-5 z-20 pointer-events-none drop-shadow-md"
+          className="absolute -bottom-2 right-1 xs:-bottom-3 xs:right-2 sm:-bottom-5 sm:right-5 z-20 pointer-events-none drop-shadow-md"
         >
           <div
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/95 backdrop-blur-xs p-2.5 shadow-md border border-white"
+            className="w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white/95 backdrop-blur-xs p-2 sm:p-2.5 shadow-md border border-white"
             style={{ color: current.theme.primary }}
           >
             <Sparkles className="w-full h-full fill-current" />
@@ -476,9 +476,9 @@ export default function HeroProductShowcase() {
             x: [3, -3, 3],
           }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-          className="absolute top-6 right-0 sm:top-12 sm:-right-4 z-20 pointer-events-none"
+          className="absolute top-4 right-1 xs:top-5 xs:right-2 sm:top-10 sm:right-0 z-20 pointer-events-none"
         >
-          <div className="px-2.5 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-[11px] sm:text-xs font-bold">
+          <div className="px-2.5 py-1 sm:py-1.5 rounded-full bg-white/95 text-ink shadow-md sm:shadow-lg border border-ink/5 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold">
             <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500 fill-amber-500" />
             <span>0 Additives</span>
           </div>
@@ -491,9 +491,9 @@ export default function HeroProductShowcase() {
             x: [-3, 3, -3],
           }}
           transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-          className="absolute bottom-6 left-0 sm:bottom-12 sm:-left-4 z-20 pointer-events-none"
+          className="absolute bottom-4 left-1 xs:bottom-5 xs:left-2 sm:bottom-10 sm:left-0 z-20 pointer-events-none"
         >
-          <div className="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-[11px] sm:text-xs font-bold">
+          <div className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/95 text-ink shadow-md sm:shadow-lg border border-ink/5 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold">
             <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
             <span>{current.weight} {current.packing.includes('Glass') ? 'Glass Jar' : 'Pouch'}</span>
           </div>
@@ -554,7 +554,7 @@ export default function HeroProductShowcase() {
       </div>
 
       {/* Floating Dynamic Product Card Below Circle (Aligned & Overlapping) */}
-      <div className="w-full max-w-[420px] -mt-6 sm:-mt-8 z-30 relative px-2">
+      <div className="w-full max-w-[370px] xs:max-w-[400px] sm:max-w-[430px] -mt-5 sm:-mt-8 z-30 relative px-1 sm:px-2">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={`card-${current.slug}`}
@@ -562,14 +562,14 @@ export default function HeroProductShowcase() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -15, scale: 0.98 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/95 backdrop-blur-md rounded-3xl p-4 sm:p-5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-ink/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)] transition-all duration-300"
+            className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-ink/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)] transition-all duration-300"
           >
             {/* Top row: Badge + Rating */}
-            <div className="flex items-center justify-between gap-2 pb-1.5">
-              <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${current.theme.badgeBg}`}>
+            <div className="flex items-center justify-between gap-2 pb-1">
+              <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${current.theme.badgeBg}`}>
                 {current.badge}
               </span>
-              <div className="flex items-center gap-1 text-amber-500">
+              <div className="flex items-center gap-1 text-amber-500 flex-shrink-0">
                 <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                 <span className="text-xs font-bold text-ink">{current.rating}</span>
                 <span className="text-[10px] text-ink/50">({current.reviews})</span>
@@ -579,7 +579,7 @@ export default function HeroProductShowcase() {
             {/* Product Name & Subheading */}
             <div className="mt-1">
               <Link href={`/products/${current.slug}`}>
-                <h3 className="font-heading font-extrabold text-lg sm:text-xl text-ink hover:text-primary transition-colors leading-tight">
+                <h3 className="font-heading font-extrabold text-base xs:text-lg sm:text-xl text-ink hover:text-primary transition-colors leading-tight">
                   {current.name}
                 </h3>
               </Link>
@@ -589,56 +589,56 @@ export default function HeroProductShowcase() {
             </div>
 
             {/* Price & Action Buttons */}
-            <div className="flex items-center justify-between gap-3 mt-3 pt-3 border-t border-ink/8">
+            <div className="flex items-center justify-between gap-2 sm:gap-3 mt-2.5 pt-2.5 border-t border-ink/8">
               <div>
-                <div className="flex items-baseline gap-2">
+                <div className="flex items-baseline gap-1.5 sm:gap-2">
                   <span
-                    className="font-heading font-extrabold text-xl sm:text-2xl"
+                    className="font-heading font-extrabold text-lg sm:text-2xl"
                     style={{ color: current.theme.primary }}
                   >
                     {formatPrice(current.price)}
                   </span>
                   {current.compareAtPrice && current.compareAtPrice > current.price && (
-                    <span className="text-xs text-ink/40 line-through font-heading">
+                    <span className="text-[11px] sm:text-xs text-ink/40 line-through font-heading">
                       {formatPrice(current.compareAtPrice)}
                     </span>
                   )}
                 </div>
                 {discountPercent && (
-                  <span className="text-[10px] font-bold text-emerald-700">
+                  <span className="text-[10px] font-bold text-emerald-700 block">
                     Save {discountPercent}% off
                   </span>
                 )}
               </div>
 
               {/* Order / Add to Cart Actions */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
                 <button
                   type="button"
                   onClick={handleQuickView}
-                  className="p-2.5 rounded-xl bg-cream-100 hover:bg-cream-200 text-ink/75 hover:text-ink transition-colors"
+                  className="p-2 sm:p-2.5 rounded-xl bg-cream-100 hover:bg-cream-200 text-ink/75 hover:text-ink transition-colors"
                   aria-label="Quick View"
                   title="Quick View"
                 >
-                  <Eye className="w-4 h-4" />
+                  <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
 
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-white font-heading font-bold text-xs sm:text-sm shadow-md hover:shadow-lg active:scale-95 transition-all duration-300 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-white font-heading font-bold text-xs sm:text-sm shadow-md hover:shadow-lg active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap"
                   style={{
                     background: `linear-gradient(135deg, ${current.theme.primary} 0%, ${current.theme.secondary} 100%)`,
                   }}
                 >
                   {addedSuccess ? (
                     <>
-                      <Check className="w-4 h-4 animate-bounce" />
+                      <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce" />
                       <span>Added!</span>
                     </>
                   ) : (
                     <>
-                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       <span>Buy Now</span>
                     </>
                   )}

@@ -48,13 +48,11 @@ import RealCustomerReviewsSection from '@/components/RealCustomerReviewsSection'
 import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import ErrorBoundary from '@/components/ErrorBoundary';
-import MobileHeroBackgroundCards, { POSTER_THEMES } from '@/components/MobileHeroBackgroundCards';
 import MobileCategorySection from '@/components/MobileCategorySection';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
-  const [posterIdx, setPosterIdx] = useState(0);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>(staticProducts.filter((p) => p.isFeatured).slice(0, 4));
   const [trendingProducts, setTrendingProducts] = useState<Product[]>(staticProducts.slice(0, 3));
   const [latestPosts, setLatestPosts] = useState<any[]>(staticBlogPosts.slice(0, 3));
@@ -140,18 +138,12 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
             {/* Left Content Column (High Contrast Luxury across Mobile, Tablet, and Desktop) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 bg-white/75 sm:bg-white/60 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border border-white/80 lg:border-none shadow-xs lg:shadow-none">
-              
-              {/* 📱 Full-Bleed Animated Poster Themes (Mobile/Tablet Only) */}
-              <MobileHeroBackgroundCards
-                activeIdx={posterIdx}
-                onIndexChange={setPosterIdx}
-              />
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0">
 
               {/* Luxury Himalayan Provenance Eyebrow Crest */}
-              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]">
+              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
                 <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#7A5230] font-sans">
+                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
                   From the Himalayas
                 </span>
                 <span className="w-px h-3 bg-[#7A5230]/25" />
@@ -163,7 +155,7 @@ export default function HomePage() {
 
               {/* Editorial Master Headline with Kinfolk & Aesop Typography */}
               <div className="relative z-10 space-y-2 lg:space-y-3">
-                <h1 className="text-[30px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
+                <h1 className="text-[32px] xs:text-[36px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
                   <span className="block font-serif italic text-[#1C2820] font-normal">
                     Grown in Nepal.
                   </span>
@@ -189,7 +181,7 @@ export default function HomePage() {
                   </span>
                 </h1>
 
-                {/* Botanical Origin Provenance Tag & Animated Description */}
+                {/* Botanical Origin Provenance Tag & Description */}
                 <div className="pt-1">
                   <div className="flex flex-wrap items-center gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
                     <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Mustang</span>
@@ -201,63 +193,9 @@ export default function HomePage() {
                     <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Terai</span>
                   </div>
 
-                  {/* ✨ Kinetic Staggered Animated Description Text */}
-                  <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: {
-                        opacity: 1,
-                        transition: {
-                          staggerChildren: 0.03,
-                          delayChildren: 0.2,
-                        },
-                      },
-                    }}
-                    className="text-xs xs:text-sm sm:text-base text-[#242220] font-medium leading-relaxed max-w-lg font-sans mt-2"
-                  >
-                    {[
-                      { text: 'Pure,', highlight: false },
-                      { text: 'unadulterated', highlight: false },
-                      { text: 'whole', highlight: false },
-                      { text: 'foods', highlight: false },
-                      { text: 'cultivated', highlight: false },
-                      { text: 'across', highlight: false },
-                      { text: 'Himalayan', highlight: false },
-                      { text: 'valleys.', highlight: false },
-                      { text: 'Direct', highlight: false },
-                      { text: 'farmer', highlight: false },
-                      { text: 'partnerships,', highlight: false },
-                      { text: 'gentle', highlight: false },
-                      { text: 'low-temperature', highlight: false },
-                      { text: 'dehydration,', highlight: false },
-                      { text: 'and', highlight: false },
-                      { text: '0', highlight: true },
-                      { text: 'additives', highlight: true },
-                      { text: 'or', highlight: true },
-                      { text: 'preservatives.', highlight: true },
-                    ].map((item, idx) => (
-                      <motion.span
-                        key={idx}
-                        variants={{
-                          hidden: { opacity: 0, y: 5 },
-                          visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
-                          },
-                        }}
-                        className={`inline-block mr-1 ${
-                          item.highlight
-                            ? 'font-bold text-[#1A3826] bg-emerald-600/10 px-1.5 py-0.5 rounded-md border border-emerald-600/25 shadow-2xs'
-                            : ''
-                        }`}
-                      >
-                        {item.text}
-                      </motion.span>
-                    ))}
-                  </motion.div>
+                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-medium leading-relaxed max-w-lg font-sans mt-2">
+                    Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-bold text-[#1A3826]">0 additives or preservatives</span>.
+                  </p>
                 </div>
               </div>
 
@@ -271,11 +209,7 @@ export default function HomePage() {
                 <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3">
                   <Link
                     href="/products"
-                    className="group relative inline-flex items-center justify-center gap-3 rounded-full text-[#FAF7F2] px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide active:scale-[0.98] transition-all duration-700 cursor-pointer font-sans overflow-hidden lg:!bg-[#1A3826] lg:shadow-[0_8px_24px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 h-12 sm:h-13"
-                    style={{
-                      background: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).btnGradient,
-                      boxShadow: `0 8px 24px -4px ${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).btnShadow}`,
-                    }}
+                    className="group relative inline-flex items-center justify-center gap-3 rounded-full text-[#FAF7F2] px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide bg-[#1A3826] shadow-[0_8px_24px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer font-sans overflow-hidden h-12 sm:h-13"
                   >
                     {/* Subtle Sheen Highlight */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -293,7 +227,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Aesthetic Social Proof & Trust Capsule */}
-                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/85 backdrop-blur-md border border-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.04)] space-y-2.5 max-w-xl">
+                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-sm space-y-2.5 max-w-xl">
                   {/* Avatar + Rating Row */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
                     <div className="flex items-center gap-2.5">

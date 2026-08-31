@@ -105,10 +105,10 @@ export default function Header() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className={classNames(
-              'flex items-center gap-2.5 px-4 py-2 sm:py-2.5 rounded-full border transition-all duration-300 shrink-0',
+              'flex items-center gap-2 px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full border transition-all duration-300 shrink-0',
               isScrolled
                 ? 'bg-transparent border-transparent hover:bg-black/5'
-                : 'bg-white/95 border-white/80 hover:bg-white shadow-soft'
+                : 'bg-white/95 border-white/80 hover:bg-white shadow-xs'
             )}
           >
             <Logo asLink={false} />
