@@ -1,4 +1,4 @@
-import PDFDocument from 'pdfkit';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
 import path from 'path';
 
@@ -30,191 +30,417 @@ export interface InvoiceOrderInput {
 }
 
 /**
- * Generates an official NaturesMud Tax Invoice PDF as a Buffer using pdfkit
+ * Generates an official NaturesMud Tax Invoice PDF as a Buffer using pdf-lib (100% Next.js compatible)
  */
 export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
-    try {
-      const doc = new PDFDocument({
-        size: 'A4',
-        margin: 40,
-        info: {
-          Title: `Invoice ${order.orderNumber} - Nature's Mud Nepal`,
-          Author: "Nature's Mud Nepal",
-          Subject: 'Order Invoice & Bill of Supply',
-          Keywords: 'NaturesMud, Invoice, Superfoods, Nepal',
-        },
-      });
+  const doc = await PDFDocument.create();
+  doc.setTitle(`Invoice ${order.orderNumber} - Nature's Mud Nepal`);
+  doc.setAuthor("Nature's Mud Nepal");
+  doc.setSubject('Official Tax Invoice & Bill of Supply');
 
-      const buffers: Buffer[] = [];
-      doc.on('data', (chunk) => buffers.push(chunk));
-      doc.on('end', () => resolve(Buffer.concat(buffers)));
-      doc.on('error', (err) => reject(err));
+  const helvetica = await doc.embedFont(StandardFonts.Helvetica);
+  const helveticaBold = await doc.embedFont(StandardFonts.HelveticaBold);
 
-      const invoiceNum = `INV-${order.orderNumber.replace(/[^a-zA-Z0-9]/g, '')}`;
-      const orderDate = order.createdAt ? new Date(order.createdAt) : new Date();
-      const formattedDate = orderDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-      });
+  // A4 dimensions: 595.28 x 841.89 points
+  const page = doc.addPage([595.28, 841.89]);
+  const { width, height } = page.getSize();
 
-      // Palette
-      const primaryColor = '#1A3826'; // Deep Himalayan Green
-      const goldColor = '#7A5230'; // Warm Cedar
-      const charcoal = '#242220';
-      const graySub = '#666666';
-      const lightBg = '#F6F3EE';
+  // Colors
+  const primaryGreen = rgb(0.176, 0.353, 0.153); // #2D5A27
+  const darkForest = rgb(0.102, 0.220, 0.149);   // #1A3826
+  const goldAccent = rgb(0.855, 0.647, 0.125);   // #DAA520
+  const lightBg = rgb(0.980, 0.969, 0.949);      // #FAF7F2
+  const textDark = rgb(0.12, 0.12, 0.12);
+  const textMuted = rgb(0.45, 0.45, 0.45);
+  const tableBorder = rgb(0.88, 0.88, 0.88);
 
-      // 1. Header Banner
-      doc.rect(40, 40, 515, 65).fill(lightBg);
+  const margin = 40;
+  const contentWidth = width - margin * 2;
 
-      doc.fillColor(primaryColor).fontSize(20).font('Helvetica-Bold').text("NATURE'S MUD NEPAL", 55, 52);
-      doc.fillColor(goldColor).fontSize(9).font('Helvetica').text('100% Pure Himalayan Superfoods & Baby Nutrition', 55, 76);
-      doc.fillColor(graySub).fontSize(8).text('Kathmandu Valley, Nepal | www.naturesmud.shop | +977 9713888002', 55, 88);
-
-      // Tax Invoice Title on Top Right
-      doc.fillColor(primaryColor).fontSize(14).font('Helvetica-Bold').text('TAX INVOICE', 410, 52, { align: 'right' });
-      doc.fillColor(charcoal).fontSize(9).font('Helvetica-Bold').text(invoiceNum, 410, 72, { align: 'right' });
-      doc.fillColor(graySub).fontSize(8).font('Helvetica').text(formattedDate, 410, 86, { align: 'right' });
-
-      doc.moveDown(2);
-
-      // 2. Customer & Order Meta Information Box
-      const metaY = 120;
-      doc.rect(40, metaY, 515, 80).strokeColor('#E0D9CE').lineWidth(1).stroke();
-
-      // Left: Billed / Shipped To
-      doc.fillColor(primaryColor).fontSize(9).font('Helvetica-Bold').text('BILLED & DELIVERED TO:', 50, metaY + 10);
-      doc.fillColor(charcoal).fontSize(10).font('Helvetica-Bold').text(order.customerName, 50, metaY + 23);
-      doc.fillColor(graySub).fontSize(8).font('Helvetica').text(`Phone: ${order.customerPhone}`, 50, metaY + 36);
-      if (order.customerEmail) {
-        doc.text(`Email: ${order.customerEmail}`, 50, metaY + 47);
-      }
-      const destText = `${order.shippingAddress}, ${order.shippingCity} (${order.isValley ? 'Inside Valley' : 'Outside Valley'})`;
-      doc.text(`Address: ${destText}`, 50, metaY + (order.customerEmail ? 58 : 47), { width: 240 });
-
-      // Right: Order Metadata
-      doc.fillColor(primaryColor).fontSize(9).font('Helvetica-Bold').text('ORDER DETAILS:', 330, metaY + 10);
-      doc.fillColor(charcoal).fontSize(8).font('Helvetica-Bold').text('Order ID:', 330, metaY + 25);
-      doc.font('Helvetica').text(`#${order.orderNumber}`, 420, metaY + 25);
-
-      doc.font('Helvetica-Bold').text('Payment Method:', 330, metaY + 38);
-      doc.font('Helvetica').text(String(order.paymentMethod || 'COD').toUpperCase(), 420, metaY + 38);
-
-      doc.font('Helvetica-Bold').text('Payment Status:', 330, metaY + 51);
-      const payStatus = order.paymentStatus ? order.paymentStatus.toUpperCase() : 'PENDING';
-      doc.fillColor(payStatus === 'PAID' ? '#1A7A38' : '#B45309').text(payStatus, 420, metaY + 51);
-
-      if (order.paymentReference) {
-        doc.fillColor(charcoal).font('Helvetica-Bold').text('Ref / Txn ID:', 330, metaY + 64);
-        doc.font('Helvetica').text(order.paymentReference, 420, metaY + 64);
-      }
-
-      // 3. Items Table Header
-      const tableY = 215;
-      doc.rect(40, tableY, 515, 22).fill(primaryColor);
-
-      doc.fillColor('#FFFFFF').fontSize(8).font('Helvetica-Bold');
-      doc.text('SN', 48, tableY + 6);
-      doc.text('ITEM DESCRIPTION', 75, tableY + 6);
-      doc.text('QTY', 330, tableY + 6, { width: 40, align: 'center' });
-      doc.text('UNIT PRICE', 380, tableY + 6, { width: 75, align: 'right' });
-      doc.text('TOTAL (NPR)', 465, tableY + 6, { width: 80, align: 'right' });
-
-      // 4. Table Rows
-      let currentY = tableY + 22;
-      const rowHeight = 22;
-
-      order.items.forEach((it, idx) => {
-        const isEven = idx % 2 === 0;
-        if (isEven) {
-          doc.rect(40, currentY, 515, rowHeight).fill('#FAF8F5');
-        }
-
-        doc.fillColor(charcoal).fontSize(8).font('Helvetica');
-        doc.text(String(idx + 1), 48, currentY + 6);
-        doc.font('Helvetica-Bold').text(it.name, 75, currentY + 6, { width: 245, lineBreak: false });
-        doc.font('Helvetica').text(String(it.quantity), 330, currentY + 6, { width: 40, align: 'center' });
-        doc.text(`Rs. ${Number(it.price).toLocaleString()}`, 380, currentY + 6, { width: 75, align: 'right' });
-        doc.font('Helvetica-Bold').text(`Rs. ${(it.price * it.quantity).toLocaleString()}`, 465, currentY + 6, { width: 80, align: 'right' });
-
-        currentY += rowHeight;
-      });
-
-      // Bottom border for table
-      doc.rect(40, currentY, 515, 1).fill('#E0D9CE');
-      currentY += 10;
-
-      // 5. Summary Breakdown (Subtotal, Discount, Delivery, Grand Total)
-      const sumX = 330;
-      const valX = 465;
-
-      doc.fillColor(graySub).fontSize(8).font('Helvetica');
-      doc.text('Subtotal:', sumX, currentY);
-      doc.fillColor(charcoal).font('Helvetica').text(`Rs. ${Number(order.subtotal || order.total).toLocaleString()}`, valX, currentY, { width: 80, align: 'right' });
-      currentY += 14;
-
-      if (order.discount && order.discount > 0) {
-        doc.fillColor('#1A7A38').font('Helvetica');
-        doc.text('Discount Applied:', sumX, currentY);
-        doc.text(`- Rs. ${Number(order.discount).toLocaleString()}`, valX, currentY, { width: 80, align: 'right' });
-        currentY += 14;
-      }
-
-      const shipping = typeof order.shippingFee !== 'undefined' ? order.shippingFee : 0;
-      doc.fillColor(graySub).font('Helvetica');
-      doc.text('Delivery & Courier:', sumX, currentY);
-      doc.fillColor(charcoal).text(shipping === 0 ? 'FREE' : `Rs. ${shipping.toLocaleString()}`, valX, currentY, { width: 80, align: 'right' });
-      currentY += 16;
-
-      // Grand Total Box
-      doc.rect(sumX - 10, currentY - 4, 235, 26).fill(lightBg);
-      doc.rect(sumX - 10, currentY - 4, 235, 26).strokeColor(primaryColor).lineWidth(1).stroke();
-
-      doc.fillColor(primaryColor).fontSize(10).font('Helvetica-Bold').text('FINAL AMOUNT:', sumX, currentY + 3);
-      doc.fontSize(11).font('Helvetica-Bold').text(`Rs. ${Number(order.total).toLocaleString()}`, valX - 10, currentY + 3, { width: 90, align: 'right' });
-
-      // 6. Guarantee & Sign-off Footer
-      const footerY = 700;
-      doc.rect(40, footerY, 515, 60).fill('#FAF7F2');
-      doc.rect(40, footerY, 515, 60).strokeColor('#EAE3D6').lineWidth(1).stroke();
-
-      doc.fillColor(primaryColor).fontSize(8).font('Helvetica-Bold').text('HIMALAYAN PURITY PROMISE & CUSTOMER SUPPORT', 50, footerY + 10);
-      doc.fillColor(graySub).fontSize(7.5).font('Helvetica').text(
-        'Every NaturesMud product is 100% natural with zero artificial additives, tested for purity. For queries, returns, or support, WhatsApp our care desk at +977 9713888002 or email hello@naturesmud.shop.',
-        50,
-        footerY + 23,
-        { width: 495 }
-      );
-      doc.fillColor(goldColor).fontSize(7).text('Thank you for choosing authentic Himalayan wholesomeness!', 50, footerY + 45);
-
-      doc.end();
-    } catch (err) {
-      reject(err);
-    }
+  // 1. Top Decorative Bar
+  page.drawRectangle({
+    x: 0,
+    y: height - 8,
+    width: width,
+    height: 8,
+    color: primaryGreen,
   });
+
+  // 2. Header: Logo & Company Information
+  page.drawText("NATURE'S MUD NEPAL", {
+    x: margin,
+    y: height - 48,
+    size: 20,
+    font: helveticaBold,
+    color: darkForest,
+  });
+
+  page.drawText('100% Pure Himalayan Superfoods & Baby Nutrition', {
+    x: margin,
+    y: height - 63,
+    size: 9,
+    font: helvetica,
+    color: primaryGreen,
+  });
+
+  page.drawText('Krisha Agri Line Pvt. Ltd. | Kalanki, Kathmandu, Nepal', {
+    x: margin,
+    y: height - 76,
+    size: 8,
+    font: helvetica,
+    color: textMuted,
+  });
+
+  page.drawText('PAN / Reg No: 610294857 | WhatsApp: +977 9713888002 | Email: contact@naturesmud.shop', {
+    x: margin,
+    y: height - 88,
+    size: 8,
+    font: helvetica,
+    color: textMuted,
+  });
+
+  // Right Header: TAX INVOICE Tag
+  const invoiceTitle = 'TAX INVOICE';
+  const invTitleWidth = helveticaBold.widthOfTextAtSize(invoiceTitle, 16);
+  page.drawText(invoiceTitle, {
+    x: width - margin - invTitleWidth,
+    y: height - 48,
+    size: 16,
+    font: helveticaBold,
+    color: primaryGreen,
+  });
+
+  const invoiceNum = `INV-${order.orderNumber.replace(/[^a-zA-Z0-9]/g, '')}`;
+  const invNumWidth = helveticaBold.widthOfTextAtSize(invoiceNum, 10);
+  page.drawText(invoiceNum, {
+    x: width - margin - invNumWidth,
+    y: height - 63,
+    size: 10,
+    font: helveticaBold,
+    color: textDark,
+  });
+
+  const orderDate = order.createdAt ? new Date(order.createdAt) : new Date();
+  const dateStr = `Date: ${orderDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}`;
+  const dateWidth = helvetica.widthOfTextAtSize(dateStr, 8);
+  page.drawText(dateStr, {
+    x: width - margin - dateWidth,
+    y: height - 76,
+    size: 8,
+    font: helvetica,
+    color: textMuted,
+  });
+
+  // Divider line
+  page.drawLine({
+    start: { x: margin, y: height - 100 },
+    end: { x: width - margin, y: height - 100 },
+    thickness: 1,
+    color: tableBorder,
+  });
+
+  // 3. Billing & Order Meta Section (2 Columns)
+  const metaY = height - 118;
+  const colWidth = (contentWidth - 20) / 2;
+
+  // Left Box: Billed To
+  page.drawRectangle({
+    x: margin,
+    y: metaY - 78,
+    width: colWidth,
+    height: 78,
+    color: lightBg,
+    borderColor: tableBorder,
+    borderWidth: 0.5,
+  });
+
+  page.drawText('BILLED TO / CUSTOMER', {
+    x: margin + 12,
+    y: metaY - 16,
+    size: 8,
+    font: helveticaBold,
+    color: primaryGreen,
+  });
+
+  page.drawText(order.customerName || 'Valued Customer', {
+    x: margin + 12,
+    y: metaY - 30,
+    size: 10,
+    font: helveticaBold,
+    color: textDark,
+  });
+
+  page.drawText(`Phone: ${order.customerPhone || 'N/A'}`, {
+    x: margin + 12,
+    y: metaY - 44,
+    size: 8,
+    font: helvetica,
+    color: textDark,
+  });
+
+  const fullAddr = [order.shippingAddress, order.shippingCity].filter(Boolean).join(', ') || 'Kathmandu Valley';
+  const cleanAddr = fullAddr.length > 40 ? fullAddr.substring(0, 38) + '...' : fullAddr;
+  page.drawText(`Address: ${cleanAddr}`, {
+    x: margin + 12,
+    y: metaY - 56,
+    size: 8,
+    font: helvetica,
+    color: textDark,
+  });
+
+  page.drawText(order.isValley ? 'Region: Kathmandu Valley (1-2 Days)' : 'Region: Outside Valley Courier', {
+    x: margin + 12,
+    y: metaY - 68,
+    size: 7.5,
+    font: helvetica,
+    color: textMuted,
+  });
+
+  // Right Box: Order & Payment Details
+  page.drawRectangle({
+    x: margin + colWidth + 20,
+    y: metaY - 78,
+    width: colWidth,
+    height: 78,
+    color: lightBg,
+    borderColor: tableBorder,
+    borderWidth: 0.5,
+  });
+
+  page.drawText('ORDER & PAYMENT DETAILS', {
+    x: margin + colWidth + 32,
+    y: metaY - 16,
+    size: 8,
+    font: helveticaBold,
+    color: primaryGreen,
+  });
+
+  page.drawText(`Order Reference: #${order.orderNumber}`, {
+    x: margin + colWidth + 32,
+    y: metaY - 30,
+    size: 9,
+    font: helveticaBold,
+    color: textDark,
+  });
+
+  page.drawText(`Payment Method: ${String(order.paymentMethod || 'COD').toUpperCase()}`, {
+    x: margin + colWidth + 32,
+    y: metaY - 44,
+    size: 8,
+    font: helvetica,
+    color: textDark,
+  });
+
+  page.drawText(`Payment Status: ${String(order.paymentStatus || 'PENDING').toUpperCase()}`, {
+    x: margin + colWidth + 32,
+    y: metaY - 56,
+    size: 8,
+    font: helveticaBold,
+    color: order.paymentStatus === 'PAID' ? primaryGreen : goldAccent,
+  });
+
+  if (order.paymentReference) {
+    page.drawText(`Ref / Transaction ID: ${order.paymentReference}`, {
+      x: margin + colWidth + 32,
+      y: metaY - 68,
+      size: 7.5,
+      font: helvetica,
+      color: textMuted,
+    });
+  }
+
+  // 4. Line Items Table
+  const tableTopY = metaY - 100;
+  const tableHeaderHeight = 22;
+  const rowHeight = 20;
+
+  // Table Header Background
+  page.drawRectangle({
+    x: margin,
+    y: tableTopY - tableHeaderHeight,
+    width: contentWidth,
+    height: tableHeaderHeight,
+    color: primaryGreen,
+  });
+
+  // Table Header Text
+  page.drawText('#', { x: margin + 8, y: tableTopY - 15, size: 8, font: helveticaBold, color: rgb(1, 1, 1) });
+  page.drawText('ITEM DESCRIPTION', { x: margin + 30, y: tableTopY - 15, size: 8, font: helveticaBold, color: rgb(1, 1, 1) });
+  page.drawText('QTY', { x: margin + 330, y: tableTopY - 15, size: 8, font: helveticaBold, color: rgb(1, 1, 1) });
+  page.drawText('RATE (NPR)', { x: margin + 380, y: tableTopY - 15, size: 8, font: helveticaBold, color: rgb(1, 1, 1) });
+  page.drawText('AMOUNT (NPR)', { x: margin + 440, y: tableTopY - 15, size: 8, font: helveticaBold, color: rgb(1, 1, 1) });
+
+  let currentY = tableTopY - tableHeaderHeight;
+  const items = Array.isArray(order.items) && order.items.length > 0
+    ? order.items
+    : [{ name: 'Himalayan Superfood Harvest', quantity: 1, price: order.total }];
+
+  items.forEach((item, idx) => {
+    currentY -= rowHeight;
+    const isEven = idx % 2 === 0;
+
+    // Row zebra background
+    if (isEven) {
+      page.drawRectangle({
+        x: margin,
+        y: currentY,
+        width: contentWidth,
+        height: rowHeight,
+        color: lightBg,
+      });
+    }
+
+    // Row border
+    page.drawLine({
+      start: { x: margin, y: currentY },
+      end: { x: width - margin, y: currentY },
+      thickness: 0.5,
+      color: tableBorder,
+    });
+
+    const itemTotal = Number(item.price || 0) * Number(item.quantity || 1);
+    const itemName = item.name.length > 45 ? item.name.substring(0, 43) + '...' : item.name;
+
+    page.drawText(String(idx + 1), { x: margin + 8, y: currentY + 6, size: 8, font: helvetica, color: textDark });
+    page.drawText(itemName, { x: margin + 30, y: currentY + 6, size: 8, font: helveticaBold, color: textDark });
+    page.drawText(String(item.quantity || 1), { x: margin + 338, y: currentY + 6, size: 8, font: helvetica, color: textDark });
+    page.drawText(`Rs. ${Number(item.price || 0).toLocaleString()}`, { x: margin + 380, y: currentY + 6, size: 8, font: helvetica, color: textDark });
+    page.drawText(`Rs. ${itemTotal.toLocaleString()}`, { x: margin + 440, y: currentY + 6, size: 8, font: helveticaBold, color: textDark });
+  });
+
+  // 5. Summary / Totals Box (Right Aligned)
+  const summaryTopY = currentY - 20;
+  const summaryWidth = 220;
+  const summaryX = width - margin - summaryWidth;
+
+  page.drawRectangle({
+    x: summaryX,
+    y: summaryTopY - 80,
+    width: summaryWidth,
+    height: 80,
+    color: lightBg,
+    borderColor: tableBorder,
+    borderWidth: 0.5,
+  });
+
+  // Subtotal
+  page.drawText('Subtotal:', { x: summaryX + 12, y: summaryTopY - 18, size: 8.5, font: helvetica, color: textMuted });
+  page.drawText(`Rs. ${Number(order.subtotal || order.total).toLocaleString()}`, {
+    x: summaryX + summaryWidth - 80,
+    y: summaryTopY - 18,
+    size: 8.5,
+    font: helveticaBold,
+    color: textDark,
+  });
+
+  // Delivery
+  page.drawText('Delivery Charge:', { x: summaryX + 12, y: summaryTopY - 32, size: 8.5, font: helvetica, color: textMuted });
+  page.drawText(!order.shippingFee || order.shippingFee === 0 ? 'FREE' : `Rs. ${Number(order.shippingFee).toLocaleString()}`, {
+    x: summaryX + summaryWidth - 80,
+    y: summaryTopY - 32,
+    size: 8.5,
+    font: helveticaBold,
+    color: textDark,
+  });
+
+  // Discount
+  if (order.discount && order.discount > 0) {
+    page.drawText('Discount:', { x: summaryX + 12, y: summaryTopY - 46, size: 8.5, font: helvetica, color: primaryGreen });
+    page.drawText(`- Rs. ${Number(order.discount).toLocaleString()}`, {
+      x: summaryX + summaryWidth - 80,
+      y: summaryTopY - 46,
+      size: 8.5,
+      font: helveticaBold,
+      color: primaryGreen,
+    });
+  }
+
+  // Grand Total Line
+  page.drawRectangle({
+    x: summaryX,
+    y: summaryTopY - 78,
+    width: summaryWidth,
+    height: 24,
+    color: primaryGreen,
+  });
+
+  page.drawText('GRAND TOTAL:', { x: summaryX + 12, y: summaryTopY - 68, size: 9, font: helveticaBold, color: rgb(1, 1, 1) });
+  page.drawText(`Rs. ${Number(order.total).toLocaleString()}`, {
+    x: summaryX + summaryWidth - 80,
+    y: summaryTopY - 68,
+    size: 10,
+    font: helveticaBold,
+    color: rgb(1, 1, 1),
+  });
+
+  // 6. Himalayan Purity Stamp & Footer
+  page.drawRectangle({
+    x: margin,
+    y: 50,
+    width: contentWidth,
+    height: 48,
+    color: lightBg,
+    borderColor: tableBorder,
+    borderWidth: 0.5,
+  });
+
+  page.drawText('100% PURE HIMALAYAN ORIGIN GUARANTEE', {
+    x: margin + 14,
+    y: 82,
+    size: 8.5,
+    font: helveticaBold,
+    color: primaryGreen,
+  });
+
+  page.drawText('Thank you for supporting regenerative Himalayan farmers & rural cooperatives across Nepal.', {
+    x: margin + 14,
+    y: 70,
+    size: 7.5,
+    font: helvetica,
+    color: textDark,
+  });
+
+  page.drawText('For assistance, inquiries, or return requests: contact@naturesmud.shop | WhatsApp: +977 9713888002', {
+    x: margin + 14,
+    y: 58,
+    size: 7,
+    font: helvetica,
+    color: textMuted,
+  });
+
+  // Bottom green bar
+  page.drawRectangle({
+    x: 0,
+    y: 0,
+    width: width,
+    height: 8,
+    color: primaryGreen,
+  });
+
+  const pdfBytes = await doc.save();
+  return Buffer.from(pdfBytes);
 }
 
 /**
- * Generates and saves the PDF file permanently to public/uploads/invoices
+ * Generates and saves the PDF Invoice to disk under /public/uploads/invoices/
  */
-export async function saveInvoicePdfFile(
-  order: InvoiceOrderInput
-): Promise<{ filePath: string; fileUrl: string; fileName: string; buffer: Buffer }> {
+export async function saveInvoicePdfFile(order: InvoiceOrderInput): Promise<{ filePath: string; fileUrl: string; buffer: Buffer }> {
   const buffer = await generateInvoicePdfBuffer(order);
-  const fileName = `INV-${order.orderNumber.replace(/[^a-zA-Z0-9]/g, '')}.pdf`;
+  const invoiceDir = path.join(process.cwd(), 'public', 'uploads', 'invoices');
 
-  const invoicesDir = path.join(process.cwd(), 'public', 'uploads', 'invoices');
-  if (!fs.existsSync(invoicesDir)) {
-    fs.mkdirSync(invoicesDir, { recursive: true });
+  if (!fs.existsSync(invoiceDir)) {
+    fs.mkdirSync(invoiceDir, { recursive: true });
   }
 
-  const filePath = path.join(invoicesDir, fileName);
+  const cleanOrderNum = order.orderNumber.replace(/[^a-zA-Z0-9]/g, '');
+  const fileName = `INV-${cleanOrderNum}.pdf`;
+  const filePath = path.join(invoiceDir, fileName);
+
   fs.writeFileSync(filePath, buffer);
 
-  const fileUrl = `/uploads/invoices/${fileName}`;
-  return { filePath, fileUrl, fileName, buffer };
+  return {
+    filePath,
+    fileUrl: `/uploads/invoices/${fileName}`,
+    buffer,
+  };
 }
