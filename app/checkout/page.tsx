@@ -355,6 +355,15 @@ export default function CheckoutPage() {
       const directWaUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(waInvoiceText)}`;
       setWhatsappLink(directWaUrl);
 
+      // Instantly open WhatsApp in real-time
+      if (typeof window !== 'undefined') {
+        try {
+          window.open(directWaUrl, '_blank');
+        } catch {
+          // Handled via confirmation screen button
+        }
+      }
+
       // Trigger internal server notification webhook
       try {
         const notifyRes = await fetch('/api/orders/notify', {
@@ -486,10 +495,10 @@ export default function CheckoutPage() {
                   href={effectiveWhatsAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02]"
+                  className="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02] animate-pulse"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  <span>Send Order to WhatsApp (+977 9713888002)</span>
+                  <span>Send Order & Invoice to WhatsApp (+977 9819844486)</span>
                 </a>
 
                 <button

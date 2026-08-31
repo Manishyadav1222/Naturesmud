@@ -68,6 +68,9 @@ export async function POST(req: NextRequest) {
       paymentReference ? `🔢 *Reference ID:* ${paymentReference}` : null,
       `💰 *Total Amount:* Rs. ${Number(total).toLocaleString()}`,
       `━━━━━━━━━━━━━━━━━━━━`,
+      `📄 *Official Tax Invoice:* https://naturesmud.shop/uploads/invoices/INV-${orderNumber.replace(/[^a-zA-Z0-9]/g, '')}.pdf`,
+      `🚚 *Track Order Live:* https://naturesmud.shop/track-order?number=${orderNumber}`,
+      `━━━━━━━━━━━━━━━━━━━━`,
       `Please confirm my order and share the dispatch tracking details. Dhanyabad! 🙏`,
     ]
       .filter(Boolean)
