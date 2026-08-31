@@ -111,17 +111,17 @@ export default function MobileHeroBackgroundCards({
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-3xl lg:hidden">
-      {/* Dynamic Animated Poster Cross-Fader at 75% Opacity */}
+      {/* Dynamic Animated Poster Cross-Fader at 100% Opacity */}
       <AnimatePresence mode="sync">
         <motion.div
           key={currentPoster.id}
           initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 0.75, scale: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
           transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0 w-full h-full flex items-center justify-center p-2 sm:p-4"
         >
-          {/* Ambient blurred backdrop so the background extends with vibrant color */}
+          {/* Ambient blurred backdrop for rich, saturated depth */}
           <div className="absolute inset-0 w-full h-full">
             <Image
               src={currentPoster.image}
@@ -129,11 +129,11 @@ export default function MobileHeroBackgroundCards({
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-center blur-2xl opacity-80 scale-110"
+              className="object-cover object-center blur-2xl opacity-90 scale-110"
             />
           </div>
 
-          {/* 75% Opacity Uncropped Poster Image */}
+          {/* 100% Opacity Vibrant Poster Image */}
           <div className="relative w-full h-full max-w-full max-h-full">
             <Image
               src={currentPoster.image}
@@ -141,15 +141,15 @@ export default function MobileHeroBackgroundCards({
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain object-center"
+              className="object-contain object-center opacity-100"
             />
           </div>
         </motion.div>
       </AnimatePresence>
 
-      {/* Atmospheric Translucent Gradient Overlay for optimal text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/60 via-[#FAF7F2]/40 to-[#FAF7F2]/75" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/70 via-[#FAF7F2]/35 to-transparent" />
+      {/* Subtle Transparent Contrast Gradients for Crystal Clear Text Legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-[#FAF7F2]/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/10 to-transparent" />
     </div>
   );
 }

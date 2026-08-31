@@ -124,24 +124,24 @@ export default function HomePage() {
     <main className="w-full max-w-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full" style={{ marginTop: 0 }}>
-        {/* Subtle Himalayan Atmosphere Background */}
+        {/* Full-Vibrancy 100% Opacity Himalayan Atmosphere Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
             src="/images/himalayan-landscape.jpg"
             alt="Misty Himalayan mountain ridges in Nepal"
             fill
             priority
-            className="object-cover object-center opacity-35 select-none mix-blend-multiply"
+            className="object-cover object-center opacity-100 select-none"
           />
-          {/* Warm natural cream atmospheric gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/50 via-[#FAF7F2]/75 to-[#FAF7F2]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/90 via-[#FAF7F2]/75 to-[#FAF7F2]/30" />
+          {/* Subtle Transparent Atmospheric Gradients for Pristine Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/20 via-transparent to-[#FAF7F2]/80 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/20 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
-            {/* Left Content Column (Seamless luxury on Laptop, Cozy card on Mobile) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 border border-[#EAE3D6]/70 lg:border-none shadow-sm lg:shadow-none bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none">
+            {/* Left Content Column (Ultra-Clean Transparent Luxury across Mobile, Tablet, and Desktop) */}
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-2 sm:p-4 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 bg-transparent border-none shadow-none">
               
               {/* 📱 Full-Bleed 100% Opacity Animated Poster Cards (Mobile/Tablet Only) */}
               <MobileHeroBackgroundCards
@@ -154,7 +154,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
+                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
               >
                 <div
                   className="w-2 h-2 rounded-full transition-colors duration-700 lg:!bg-emerald-500"
@@ -213,21 +213,76 @@ export default function HomePage() {
                   </span>
                 </h1>
 
-                {/* Botanical Origin Provenance Tag & Description */}
+                {/* Botanical Origin Provenance Tag & Animated Description */}
                 <div className="pt-1">
                   <div className="flex flex-wrap items-center gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Mustang</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Jumla</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Kavre</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Kavre</span>
                     <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Terai</span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm border border-white/70 shadow-2xs">Terai</span>
                   </div>
 
-                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-normal leading-relaxed max-w-lg font-sans bg-white/85 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none p-3.5 lg:p-0 rounded-2xl lg:rounded-none border border-white/90 lg:border-none shadow-2xs lg:shadow-none mt-1 lg:mt-2">
-                    Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-semibold text-[#1A3826]">0 additives or preservatives</span>.
-                  </p>
+                  {/* ✨ Kinetic Staggered Animated Description Text with Transparent Background */}
+                  <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: {
+                        opacity: 1,
+                        transition: {
+                          staggerChildren: 0.035,
+                          delayChildren: 0.2,
+                        },
+                      },
+                    }}
+                    className="text-xs xs:text-sm sm:text-base text-[#242220]/90 font-normal leading-relaxed max-w-lg font-sans bg-transparent p-0 mt-1 lg:mt-2"
+                  >
+                    {[
+                      { text: 'Pure,', highlight: false },
+                      { text: 'unadulterated', highlight: false },
+                      { text: 'whole', highlight: false },
+                      { text: 'foods', highlight: false },
+                      { text: 'cultivated', highlight: false },
+                      { text: 'across', highlight: false },
+                      { text: 'Himalayan', highlight: false },
+                      { text: 'valleys.', highlight: false },
+                      { text: 'Direct', highlight: false },
+                      { text: 'farmer', highlight: false },
+                      { text: 'partnerships,', highlight: false },
+                      { text: 'gentle', highlight: false },
+                      { text: 'low-temperature', highlight: false },
+                      { text: 'dehydration,', highlight: false },
+                      { text: 'and', highlight: false },
+                      { text: '0', highlight: true },
+                      { text: 'additives', highlight: true },
+                      { text: 'or', highlight: true },
+                      { text: 'preservatives.', highlight: true },
+                    ].map((item, idx) => (
+                      <motion.span
+                        key={idx}
+                        variants={{
+                          hidden: { opacity: 0, y: 7, filter: 'blur(3px)' },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            filter: 'blur(0px)',
+                            transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+                          },
+                        }}
+                        className={`inline-block mr-1 ${
+                          item.highlight
+                            ? 'font-bold text-[#1A3826] bg-emerald-600/10 px-1.5 py-0.2 rounded-md border border-emerald-600/20 backdrop-blur-2xs'
+                            : ''
+                        }`}
+                      >
+                        {item.text}
+                      </motion.span>
+                    ))}
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -263,7 +318,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Aesthetic Social Proof & Trust Capsule */}
-                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_4px_20px_rgba(0,0,0,0.04)] space-y-2.5 max-w-xl">
+                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/85 backdrop-blur-md border border-white/70 shadow-[0_4px_20px_rgba(0,0,0,0.04)] space-y-2.5 max-w-xl">
                   {/* Avatar + Rating Row */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
                     <div className="flex items-center gap-2.5">
@@ -317,6 +372,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </motion.div>
+
 
               {/* Modern Glassmorphic Statistics Bento Tiles (Desktop/Laptop Only) */}
               <motion.div
