@@ -131,7 +131,9 @@ export default function HomePage() {
             alt="Misty Himalayan mountain ridges in Nepal"
             fill
             priority
-            className="object-cover object-[center_25%] select-none opacity-85"
+            sizes="100vw"
+            quality={90}
+            className="object-cover object-[center_20%] sm:object-[center_25%] md:object-center select-none opacity-85"
           />
           {/* Balanced Warm Atmospheric Gradients for 100% Typography Contrast */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/50 via-[#FAF7F2]/75 to-[#FAF7F2] pointer-events-none" />

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { categories } from '@/lib/data/categories';
 import { products as localProducts, normalizeProduct } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
@@ -58,9 +59,22 @@ export default async function ProductsPage({
 
   return (
     <>
-      {/* Header */}
-      <section className="bg-[#F8F4EC] border-b border-gray-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      {/* Header with Fitted Himalayan Background */}
+      <section className="relative overflow-hidden bg-[#FAF7F2] border-b border-[#EAE3D6]">
+        {/* Subtle Himalayan Landscape Atmosphere */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-35">
+          <Image
+            src="/images/himalayan-landscape.jpg"
+            alt="Misty Himalayan mountains in Nepal"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_35%] select-none"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2] via-[#FAF7F2]/85 to-[#FAF7F2]/60" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <nav className="text-sm text-gray-500 mb-2" aria-label="Breadcrumb">
