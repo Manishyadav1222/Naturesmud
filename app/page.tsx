@@ -123,7 +123,7 @@ export default function HomePage() {
   return (
     <main className="w-full max-w-full">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full">
+      <section className="relative overflow-hidden bg-[#FAF7F2] w-full max-w-full" style={{ marginTop: 0 }}>
         {/* Subtle Himalayan Atmosphere Background */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
@@ -138,7 +138,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/90 via-[#FAF7F2]/75 to-[#FAF7F2]/30" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
             {/* Left Content Column (Seamless luxury on Laptop, Cozy card on Mobile) */}
             <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none overflow-hidden lg:overflow-visible max-w-xl lg:max-w-none mx-auto lg:mx-0 border border-[#EAE3D6]/70 lg:border-none shadow-sm lg:shadow-none bg-white/40 lg:bg-transparent backdrop-blur-xs lg:backdrop-blur-none">
@@ -355,7 +355,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Content Column — Perfectly Balanced for Laptop */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-0 -mt-2 sm:-mt-4 lg:mt-0">
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-0 mt-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -572,8 +572,8 @@ export default function HomePage() {
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
-            
-            <div className="mt-6 sm:mt-10 flex justify-center hidden sm:flex">
+
+            <div className="mt-6 sm:mt-10 flex justify-center">
               <Link href="/products" className="btn-outline">
                 See More Products
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -590,60 +590,57 @@ export default function HomePage() {
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 💻 Desktop Only: Promises & Immunity Product Highlight (Hidden on Mobile & Tablet to streamline review flow) */}
-      <div className="hidden lg:block">
-        {/* Redesigned Interactive Our Promises Showcase */}
-        <ErrorBoundary name="Promises Section">
-          <OurPromisesSection />
-        </ErrorBoundary>
+      {/* Our Promises Showcase — visible on all breakpoints */}
+      <ErrorBoundary name="Promises Section">
+        <OurPromisesSection />
+      </ErrorBoundary>
 
-        {/* Product Highlight Banner */}
-        <ScrollReveal direction="up" distance={30}>
-          <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-16 sm:py-20 w-full max-w-full">
-            <div className="absolute inset-0 bg-hero-pattern opacity-40" />
-            <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
+      {/* Immunity Product Highlight Banner */}
+      <ScrollReveal direction="up" distance={30}>
+        <section className="relative overflow-hidden bg-gradient-to-r from-primary-600 to-primary-700 py-10 sm:py-16 lg:py-20 w-full max-w-full">
+          <div className="absolute inset-0 bg-hero-pattern opacity-40" />
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
 
-            <div className="relative container-nm">
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="flex items-center gap-6">
-                  <div className="w-40 h-40 sm:w-52 sm:h-52 relative rounded-[2rem] overflow-hidden shadow-xl shrink-0">
-                    <Image
-                      src="/products/superfood-mix.jpg"
-                      alt="Immunity Shield Superfood Mix"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="text-white space-y-2">
-                    <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5">
-                      <Sparkles className="w-4 h-4" />
-                      Only clean, only pure
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold">Immunity Shield Superfood Mix</h3>
-                    <p className="text-white/80 text-sm">Moringa, Ashwagandha, Amla & more — your daily immunity ritual.</p>
-                    <Link href="/products/immunity-shield-superfood-mix" className="btn-gold mt-4 inline-flex items-center gap-2">
-                      Shop Now
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
+          <div className="relative container-nm">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+              <div className="flex items-center gap-4 sm:gap-6">
+                <div className="w-28 h-28 sm:w-40 sm:h-40 lg:w-52 lg:h-52 relative rounded-[2rem] overflow-hidden shadow-xl shrink-0">
+                  <Image
+                    src="/products/superfood-mix.jpg"
+                    alt="Immunity Shield Superfood Mix"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
+                <div className="text-white space-y-2">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 sm:px-4 py-1.5 text-sm">
+                    <Sparkles className="w-4 h-4" />
+                    Only clean, only pure
+                  </div>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Immunity Shield Superfood Mix</h3>
+                  <p className="text-white/80 text-xs sm:text-sm">Moringa, Ashwagandha, Amla & more — your daily immunity ritual.</p>
+                  <Link href="/products/immunity-shield-superfood-mix" className="btn-gold mt-2 sm:mt-4 inline-flex items-center gap-2 text-sm">
+                    Shop Now
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
 
-                <div className="hidden lg:flex items-end justify-end gap-4">
-                  <div className="w-24 h-24 rounded-full border-2 border-white/30 flex items-center justify-center animate-float-slow">
-                    <Droplets className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="w-16 h-16 rounded-full bg-gold/30 flex items-center justify-center animate-float-slower">
-                    <Zap className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center animate-float-slow">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
+              <div className="hidden lg:flex items-end justify-end gap-4">
+                <div className="w-24 h-24 rounded-full border-2 border-white/30 flex items-center justify-center animate-float-slow">
+                  <Droplets className="w-8 h-8 text-white" />
+                </div>
+                <div className="w-16 h-16 rounded-full bg-gold/30 flex items-center justify-center animate-float-slower">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center animate-float-slow">
+                  <MapPin className="w-5 h-5 text-white" />
                 </div>
               </div>
             </div>
-          </section>
-        </ScrollReveal>
-      </div>
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* Customer Reviews & Wall of Love */}
       <ScrollReveal direction="up" distance={30}>
@@ -652,13 +649,11 @@ export default function HomePage() {
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 💻 Desktop/Laptop Only Sections (07 Instagram Gallery, Blog, Newsletter, SEO Authority & Trust Strip) — Skipped on Mobile & Tablet */}
-      <div className="hidden lg:block">
-        {/* 07 — Instagram Live Photo Gallery Section */}
-        <ScrollReveal direction="up" distance={30}>
-          <section className="section-padding bg-white overflow-hidden w-full max-w-full">
+      {/* 07 — Instagram Live Photo Gallery Section */}
+      <ScrollReveal direction="up" distance={30}>
+        <section className="section-padding bg-white overflow-hidden w-full max-w-full">
           <div className="container-nm">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 sm:mb-10">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230]">
@@ -670,27 +665,28 @@ export default function HomePage() {
                   </span>
                 </div>
                 <h2 className="section-title mt-1">From Our Instagram</h2>
-                <p className="section-subtitle">
+                <p className="section-subtitle hidden sm:block">
                   Farm harvests, recipe creations, and mountain lifestyle directly from @naturesmud_official.
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <Link href="/gallery" className="btn-primary text-xs shrink-0 inline-flex items-center gap-2">
-                  <span>View All Photos</span>
+                  <span>View All</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/naturesmud_official/"
-                  className="btn-outline shrink-0 inline-flex items-center gap-1.5"
+                  className="btn-outline shrink-0 inline-flex items-center gap-1.5 text-xs"
                   target="_blank"
                 >
                   <Instagram className="w-4 h-4 text-rose-500" />
-                  <span>@naturesmud_official</span>
+                  <span className="hidden sm:inline">@naturesmud_official</span>
+                  <span className="sm:hidden">Follow</span>
                 </Link>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {[
                 { src: '/products/dates-powder.jpg', label: 'Dates Powder Fuel', likes: 342, tag: 'Dates Powder' },
                 { src: '/products/coconut-oil.jpg', label: 'Virgin Cold-Pressed', likes: 512, tag: 'Coconut Oil' },
@@ -700,7 +696,7 @@ export default function HomePage() {
                 <Link
                   key={i}
                   href="/gallery"
-                  className="group relative overflow-hidden rounded-3xl aspect-square shadow-soft hover:shadow-card transition-all duration-500 bg-dark"
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-3xl aspect-square shadow-soft hover:shadow-card transition-all duration-500 bg-dark"
                 >
                   <Image
                     src={item.src}
@@ -708,22 +704,22 @@ export default function HomePage() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
                     <div className="flex justify-end">
-                      <span className="p-2 rounded-full bg-black/60 text-white">
-                        <Instagram className="w-3.5 h-3.5 text-rose-400" />
+                      <span className="p-1.5 sm:p-2 rounded-full bg-black/60 text-white">
+                        <Instagram className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-rose-400" />
                       </span>
                     </div>
                     <div>
-                      <span className="text-white text-xs font-bold font-heading line-clamp-1">
+                      <span className="text-white text-[10px] sm:text-xs font-bold font-heading line-clamp-1">
                         {item.label}
                       </span>
-                      <div className="flex items-center justify-between text-[11px] text-white/80 mt-1">
+                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/80 mt-1">
                         <span className="flex items-center gap-1 text-rose-300 font-bold">
                           <Heart className="w-3 h-3 fill-current" />
                           <span>{item.likes}</span>
                         </span>
-                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-medium">
+                        <span className="text-[9px] sm:text-[10px] bg-white/20 px-1.5 sm:px-2 py-0.5 rounded-full font-medium">
                           {item.tag}
                         </span>
                       </div>
@@ -740,27 +736,27 @@ export default function HomePage() {
       <ScrollReveal direction="up" distance={30}>
         <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
           <div className="container-nm">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
               <div>
                 <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-2">
                   <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
                   <span>Journal & Stories</span>
                 </div>
                 <h2 className="section-title mt-1">From Our Journal</h2>
-                <p className="section-subtitle">Tips, guides, and stories from the farm.</p>
+                <p className="section-subtitle hidden sm:block">Tips, guides, and stories from the farm.</p>
               </div>
-              <Link href="/blog" className="btn-outline shrink-0">View All Posts</Link>
+              <Link href="/blog" className="btn-outline shrink-0 text-sm">View All Posts</Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {latestPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                  <div className="overflow-hidden rounded-2xl aspect-[4/3] mb-4 relative bg-cream-100">
+                  <div className="overflow-hidden rounded-2xl aspect-[4/3] mb-3 sm:mb-4 relative bg-cream-100">
                     <Image
                       src={post.image || '/products/naturesmud-all-products-100g.jpg'}
                       alt={post.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -771,7 +767,7 @@ export default function HomePage() {
                     <span>•</span>
                     <span>{post.readTime} min read</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-lg text-ink leading-snug group-hover:text-primary transition-colors">
+                  <h3 className="font-heading font-semibold text-base sm:text-lg text-ink leading-snug group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
                   <p className="mt-2 text-ink/50 text-sm line-clamp-2">{post.excerpt}</p>
@@ -784,17 +780,17 @@ export default function HomePage() {
 
       {/* Newsletter */}
       <ScrollReveal direction="scale" distance={20}>
-        <section className="relative overflow-hidden bg-primary-600 py-16 sm:py-20 w-full max-w-full">
+        <section className="relative overflow-hidden bg-primary-600 py-12 sm:py-16 lg:py-20 w-full max-w-full">
           <div className="absolute inset-0 bg-hero-pattern opacity-30" />
           <div className="relative container-nm text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-white text-sm mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-white text-sm mb-5 sm:mb-6">
               <Gem className="w-4 h-4 text-gold-300" />
               Join our inner circle
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               Get 5% Off Your First Order
             </h2>
-            <p className="text-white/80 max-w-xl mx-auto mb-8">
+            <p className="text-white/80 max-w-xl mx-auto mb-6 sm:mb-8 text-sm sm:text-base">
               Subscribe and get exclusive offers, health tips, and recipes delivered straight.
             </p>
             <div className="max-w-md mx-auto">
@@ -805,77 +801,73 @@ export default function HomePage() {
       </ScrollReveal>
 
       {/* SEO Authority & Regional Knowledge Section for Nepal Search Dominance */}
-      <section className="py-16 bg-[#F8F5EE] border-t border-ink/10 text-ink">
+      <section className="py-10 sm:py-14 lg:py-16 bg-[#F8F5EE] border-t border-ink/10 text-ink">
         <div className="container-nm">
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
             <div className="text-center space-y-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-2xs">
                 About NaturesMud Nepal (naturesmud.com)
               </span>
-              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-ink">
+              <h2 className="font-heading font-extrabold text-xl sm:text-2xl lg:text-4xl text-ink">
                 Nepal&apos;s Trusted Superfoods & Himalayan Nutrition Brand
               </h2>
               <p className="text-sm sm:text-base text-ink/75 leading-relaxed">
-                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition brand. We produce 100% natural, chemical-free dehydrated fruit and vegetable powders, wild-harvested honey, high-altitude shilajit, and raw mountain nuts.
+                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition brand.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-ink/80 leading-relaxed">
-              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-sm text-ink/80 leading-relaxed">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-gold-600" />
                   100% Natural Dehydrated Powders in 100g Glass Jars
                 </h3>
-                <p>
-                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link> (सखरखण्डको धुलो), <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder Natural Sweetener</Link> (खजुरको धुलो), <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link> (चुकन्दरको धुलो), and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is gently dehydrated below 42°C to preserve natural vitamins, live enzymes, and minerals with <strong>0 additives and 0 preservatives</strong>.
+                <p className="text-xs sm:text-sm">
+                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link>, <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder</Link>, <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link>, and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is gently dehydrated below 42°C with <strong>0 additives and 0 preservatives</strong>.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
                   <Sprout className="w-4 h-4 text-primary" />
                   Direct Fair-Trade Partnership with 180+ Nepali Farms
                 </h3>
-                <p>
-                  NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts: the fertile Terai plains (Chitwan, Nawalpur), midland hills (Kavre, Sindhupalchok, Palpa), and high Himalayan peaks (Mustang, Jumla). By eliminating middlemen, our farmers receive +35% above-market compensation.
+                <p className="text-xs sm:text-sm">
+                  NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts. By eliminating middlemen, our farmers receive +35% above-market compensation.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
                   <Baby className="w-4 h-4 text-rose-500" />
                   Safe Baby Weaning & Pediatric Nutrition
                 </h3>
-                <p>
-                  Trusted by thousands of Nepali mothers and pediatricians, our unrefined single-ingredient powders are ideal for infant porridge (लुटो), smoothies, and children&apos;s milk. 100% lab-verified with zero chemical additives or artificial colors.
+                <p className="text-xs sm:text-sm">
+                  Trusted by thousands of Nepali mothers and pediatricians. 100% lab-verified with zero chemical additives or artificial colors.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-base text-ink flex items-center gap-2">
+              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
+                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
                   <Truck className="w-4 h-4 text-primary" />
                   Express Delivery Across All 7 Provinces of Nepal
                 </h3>
-                <p>
-                  We deliver right to your doorstep across Kathmandu Valley (Kathmandu, Lalitpur, Bhaktapur) within 24 hours, and nationwide courier delivery to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Itahari, Hetauda, Nepalgunj, and beyond. Free shipping on orders over Rs. 10,000.
+                <p className="text-xs sm:text-sm">
+                  Kathmandu Valley delivery within 24 hours. Nationwide courier to Pokhara, Chitwan, Butwal, Biratnagar, and beyond. Free shipping on orders over Rs. 10,000.
                 </p>
               </div>
             </div>
 
             <div className="text-center pt-2">
-              <div className="inline-flex flex-wrap items-center justify-center gap-3 text-xs font-semibold text-ink/70">
+              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-ink/70">
                 <span className="font-bold text-ink">Popular Searches:</span>
                 <Link href="/products?category=powders" className="hover:text-primary underline">Sweet Potato Powder Nepal</Link>
                 <span>•</span>
-                <Link href="/products/dates-powder" className="hover:text-primary underline">Dates Powder Sweetener</Link>
+                <Link href="/products/dates-powder" className="hover:text-primary underline">Dates Powder</Link>
                 <span>•</span>
-                <Link href="/products/beetroot-powder" className="hover:text-primary underline">Beetroot Powder Kathmandu</Link>
+                <Link href="/products/beetroot-powder" className="hover:text-primary underline">Beetroot Powder</Link>
                 <span>•</span>
-                <Link href="/products/dehydrated-mango" className="hover:text-primary underline">Sun-Dried Mango Slices</Link>
-                <span>•</span>
-                <Link href="/products/chia-seeds" className="hover:text-primary underline">Chia Seeds Nepal</Link>
-                <span>•</span>
-                <Link href="/catalog" className="hover:text-primary underline font-bold text-primary">View Product Catalog</Link>
+                <Link href="/catalog" className="hover:text-primary underline font-bold text-primary">View Catalog</Link>
               </div>
             </div>
           </div>
@@ -884,12 +876,12 @@ export default function HomePage() {
 
       {/* Trust section — 100% Natural hanging like pendulum */}
       <ScrollReveal direction="up" distance={20}>
-        <section className="bg-white py-10 overflow-hidden w-full max-w-full">
-          <div className="container-nm flex flex-wrap items-center justify-center gap-8">
+        <section className="bg-white py-8 sm:py-10 overflow-hidden w-full max-w-full">
+          <div className="container-nm flex flex-wrap items-center justify-center gap-4 sm:gap-8">
             {['0 Additives · 0 Preservatives', 'From Local Farms', '100% Natural', 'Pure Himalayan', 'Fair Trade'].map((trust) => (
               <span
                 key={trust}
-                className={`flex items-center gap-2 text-ink/50 font-heading text-sm ${
+                className={`flex items-center gap-2 text-ink/50 font-heading text-xs sm:text-sm ${
                   trust === '100% Natural' ? 'pendulum-hang text-primary font-semibold' : ''
                 }`}
                 style={trust === '100% Natural' ? { marginTop: '26px' } : undefined}
@@ -906,7 +898,6 @@ export default function HomePage() {
           </div>
         </section>
       </ScrollReveal>
-      </div>
     </main>
   );
 }

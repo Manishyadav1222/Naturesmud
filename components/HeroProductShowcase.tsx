@@ -358,7 +358,7 @@ export default function HeroProductShowcase() {
 
   return (
     <div
-      className="relative w-full max-w-[500px] lg:max-w-[520px] xl:max-w-[540px] flex flex-col items-center justify-center mx-auto select-none"
+      className="relative w-full max-w-[500px] lg:max-w-[520px] xl:max-w-[540px] flex flex-col items-center justify-center mx-auto select-none overflow-visible"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
     >
@@ -438,10 +438,10 @@ export default function HeroProductShowcase() {
             x: [3, -3, 3],
           }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-          className="absolute top-8 -right-3 sm:top-12 sm:-right-5 z-20 pointer-events-none"
+          className="absolute top-6 right-0 sm:top-12 sm:-right-4 z-20 pointer-events-none"
         >
-          <div className="px-3 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-xs font-bold">
-            <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+          <div className="px-2.5 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-[11px] sm:text-xs font-bold">
+            <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-500 fill-amber-500" />
             <span>0 Additives</span>
           </div>
         </motion.div>
@@ -453,10 +453,10 @@ export default function HeroProductShowcase() {
             x: [-3, 3, -3],
           }}
           transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-          className="absolute bottom-8 -left-3 sm:bottom-12 sm:-left-5 z-20 pointer-events-none"
+          className="absolute bottom-6 left-0 sm:bottom-12 sm:-left-4 z-20 pointer-events-none"
         >
-          <div className="px-3.5 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-xs font-bold">
-            <Award className="w-4 h-4 text-emerald-600" />
+          <div className="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/95 text-ink shadow-lg border border-ink/5 flex items-center gap-1.5 text-[11px] sm:text-xs font-bold">
+            <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
             <span>{current.weight} {current.packing.includes('Glass') ? 'Glass Jar' : 'Pouch'}</span>
           </div>
         </motion.div>
@@ -701,6 +701,20 @@ export default function HeroProductShowcase() {
             />
           ))}
         </div>
+
+        {/* Auto-rotation progress bar */}
+        {isPlaying && (
+          <div className="w-full mt-2.5 h-0.5 rounded-full bg-ink/10 overflow-hidden">
+            <motion.div
+              key={`progress-${currentIndex}`}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 5, ease: 'linear' }}
+              className="h-full rounded-full"
+              style={{ backgroundColor: current.theme.primary }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

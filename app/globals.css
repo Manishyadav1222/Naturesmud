@@ -23,6 +23,7 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: #faf7f2;
     text-rendering: optimizeSpeed;
+    overflow-x: hidden;
   }
 
   /* Lenis smooth scrolling rules */
@@ -55,6 +56,7 @@
     @apply bg-cream font-body text-ink;
     background-color: #faf7f2;
     -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
 
   header,

@@ -90,7 +90,7 @@ export default function Header() {
           'sticky top-0 z-50 w-full max-w-full transition-all duration-300',
           isScrolled
             ? 'bg-white/95 backdrop-blur-md border-b border-ink/8 shadow-sm py-2 sm:py-2.5'
-            : 'bg-transparent pt-3 sm:pt-4 pb-1 pointer-events-none'
+            : 'bg-transparent py-2 sm:py-2.5 pointer-events-none'
         )}
       >
         <div
