@@ -197,20 +197,20 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9982A]/20 border border-[#C9982A]/40 text-[#F4E8C1] text-xs font-semibold uppercase tracking-wider mb-3">
-                <Leaf className="w-3.5 h-3.5 text-[#C9982A]" /> Official Master Catalog • 25 Certified Products
+                <Leaf className="w-3.5 h-3.5 text-[#C9982A]" /> Official Master Catalog • Pure Himalayan Collection
               </div>
               <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
                 NaturesMud Product Catalog
               </h1>
               <p className="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
-                Official price list and specifications matching our master catalog edition. Explore all 25
+                Official price list and specifications matching our master catalog edition. Explore our
                 naturally dehydrated fruits, whole-food powders, organic salts, raw nuts, and cold-pressed virgin oils.
               </p>
 
               {/* Quick stats pills */}
               <div className="mt-5 flex flex-wrap gap-2 text-xs">
                 <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg text-white border border-white/10">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C9982A]" /> 25 Certified Items
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C9982A]" /> Certified Single Origin
                 </span>
                 <span className="flex items-center gap-1.5 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg text-white border border-white/10">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#C9982A]" /> 100% Chemical-Free

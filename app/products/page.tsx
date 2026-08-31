@@ -134,10 +134,7 @@ export default async function ProductsPage({
       {/* Products grid */}
       <section className="py-8 sm:py-12 bg-white">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-6 sm:mb-8">
-            <p className="text-xs sm:text-sm text-gray-600">
-              Showing <span className="font-semibold text-[#2B2B2B]">{filtered.length}</span> products
-            </p>
+          <div className="flex items-center justify-end mb-6 sm:mb-8">
             <div className="flex items-center gap-2">
               <label htmlFor="sort" className="text-xs sm:text-sm text-gray-600">Sort by:</label>
               <ProductSortSelect defaultValue={sort} />
