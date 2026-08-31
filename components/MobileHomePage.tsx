@@ -499,7 +499,7 @@ export default function MobileHomePage() {
             </p>
           </div>
           <Link
-            href="https://wa.me/9779713888002?text=Hello%20Nature%27s%20Mud!%20I%20would%20like%20to%20order%20superfoods."
+            href="https://wa.me/9779819844486?text=Hello%20Nature%27s%20Mud!%20I%20would%20like%20to%20order%20superfoods."
             target="_blank"
             className="flex-shrink-0 bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-2xl shadow-lg active:scale-95 transition-all"
           >

@@ -255,7 +255,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 </button>
 
                 <a
-                  href={`https://wa.me/9779713888002?text=${whatsappMessage}`}
+                  href={`https://wa.me/9779819844486?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#25D366] border border-[#25D366]/40 font-semibold text-xs transition-colors"
@@ -849,12 +849,12 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
               </a>
 
               <a
-                href={`https://wa.me/9779713888002?text=${whatsappMessage}`}
+                href={`https://wa.me/9779819844486?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-sm transition-colors"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" /> Chat on WhatsApp (+977 9713888002)
+                <MessageCircle className="w-4 h-4 text-[#25D366]" /> Chat on WhatsApp (+977 9819844486)
               </a>
 
               <Link

@@ -161,7 +161,7 @@ export default function ContactPage() {
                         .join('\n');
                     }
                     window.open(
-                      `https://wa.me/9779713888002?text=${encodeURIComponent(text)}`,
+                      `https://wa.me/9779819844486?text=${encodeURIComponent(text)}`,
                       '_blank',
                       'noopener,noreferrer'
                     );

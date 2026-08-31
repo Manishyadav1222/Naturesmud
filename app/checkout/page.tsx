@@ -352,7 +352,7 @@ export default function CheckoutPage() {
         .filter(Boolean)
         .join('\n');
 
-      const directWaUrl = `https://wa.me/9779713888002?text=${encodeURIComponent(waInvoiceText)}`;
+      const directWaUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(waInvoiceText)}`;
       setWhatsappLink(directWaUrl);
 
       // Trigger internal server notification webhook
@@ -425,7 +425,7 @@ export default function CheckoutPage() {
       .join('\n');
 
     const effectiveWhatsAppLink =
-      whatsappLink || `https://wa.me/9779713888002?text=${encodeURIComponent(directWaLines)}`;
+      whatsappLink || `https://wa.me/9779819844486?text=${encodeURIComponent(directWaLines)}`;
 
     return (
       <>

@@ -144,7 +144,7 @@ export async function triggerNotification(payload: NotificationPayload): Promise
   console.log(`📧 Email Subject: ${email.subject}`);
   console.log(`💬 WhatsApp: ${whatsappText}`);
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779713888002';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779819844486';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`;
 
   return {

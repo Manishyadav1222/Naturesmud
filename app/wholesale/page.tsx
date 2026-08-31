@@ -103,7 +103,7 @@ export default function WholesalePage() {
               <div className="bg-[#3A6B35] text-white rounded-2xl p-6">
                 <h3 className="font-heading font-semibold text-lg mb-2">Ready to start?</h3>
                 <p className="text-sm text-white/90 mb-4">Our wholesale team will get back to you within 24 hours.</p>
-                <a href="https://wa.me/9779713888002?text=Hello%20NaturesMud!%20I%27m%20interested%20in%20wholesale%20partnership." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#3A6B35] rounded-full font-semibold hover:bg-[#F8F4EC] transition-colors">
+                <a href="https://wa.me/9779819844486?text=Hello%20NaturesMud!%20I%27m%20interested%20in%20wholesale%20partnership." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#3A6B35] rounded-full font-semibold hover:bg-[#F8F4EC] transition-colors">
                   Chat on WhatsApp
                 </a>
               </div>

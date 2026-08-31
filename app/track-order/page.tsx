@@ -93,7 +93,7 @@ function TrackOrderContent() {
     { title: 'Delivered', desc: 'Delivered safely to your hands' },
   ];
 
-  const waInquiryLink = `https://wa.me/9779713888002?text=${encodeURIComponent(
+  const waInquiryLink = `https://wa.me/9779819844486?text=${encodeURIComponent(
     `Hello NaturesMud! I'd like to check the delivery update for my order #${orderId || ''}.`
   )}`;
 

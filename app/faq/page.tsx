@@ -180,7 +180,7 @@ export default function FAQPage() {
                 </span>
                 <p className="font-semibold text-dark text-sm">WhatsApp Chat</p>
                 <p className="text-xs text-gray-500 mt-0.5">Instant Advice</p>
-                <a href="https://wa.me/9779713888002" target="_blank" rel="noopener noreferrer" className="text-primary text-xs font-bold mt-2 hover:underline">
+                <a href="https://wa.me/9779819844486" target="_blank" rel="noopener noreferrer" className="text-primary text-xs font-bold mt-2 hover:underline">
                   Chat on WhatsApp →
                 </a>
               </div>

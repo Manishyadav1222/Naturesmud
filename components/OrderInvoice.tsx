@@ -106,7 +106,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
       .filter(Boolean)
       .join('\n');
 
-    return `https://wa.me/9779713888002?text=${encodeURIComponent(lines)}`;
+    return `https://wa.me/9779819844486?text=${encodeURIComponent(lines)}`;
   };
 
   const content = (

@@ -62,11 +62,23 @@ function callHttps(hostHeader, reqPath) {
 
 async function main() {
   const phpCode = `<?php
-$zipFile = '${config.homeDir}/naturesmud.shop/frontend-optimized-dist.zip';
+$possibleZips = [
+    '${config.homeDir}/naturesmud.shop/frontend-clean-dist.zip',
+    '${config.homeDir}/naturesmud.shop/frontend-optimized-dist.zip'
+];
+
+$zipFile = null;
+foreach ($possibleZips as $z) {
+    if (file_exists($z)) {
+        $zipFile = $z;
+        break;
+    }
+}
+
 $destDir = '${config.homeDir}/naturesmud.shop';
 
-if (!file_exists($zipFile)) {
-    die("Zip not found: " . $zipFile);
+if (!$zipFile) {
+    die("Zip not found in any expected location");
 }
 
 $zip = new ZipArchive;
@@ -74,9 +86,9 @@ if ($zip->open($zipFile) === TRUE) {
     $zip->extractTo($destDir);
     $zip->close();
     @unlink($zipFile);
-    echo "SUCCESS: Extracted and cleaned up!";
+    echo "SUCCESS: Extracted " . basename($zipFile) . " and cleaned up!";
 } else {
-    echo "ERROR: Failed to open zip";
+    echo "ERROR: Failed to open zip: " . $zipFile;
 }
 `;
 

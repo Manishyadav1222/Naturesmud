@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join('\n');
 
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779713888002';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779819844486';
     const waText = encodeURIComponent(waLines);
     const waLink = `https://wa.me/${whatsappNumber}?text=${waText}`;
 

@@ -24,7 +24,7 @@ export function getWhatsAppConfig(): WhatsAppConfig {
     notificationNumber: (
       process.env.WHATSAPP_NOTIFICATION_NUMBER ||
       process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
-      '9779713888002'
+      '9779819844486'
     ).replace(/[^0-9]/g, ''),
     appBaseUrl: process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL || 'https://naturesmud.shop',
   };

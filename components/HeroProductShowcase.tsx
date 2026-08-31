@@ -290,6 +290,19 @@ export default function HeroProductShowcase() {
   const current = HERO_SHOWCASE_PRODUCTS[currentIndex];
   const catalogProduct = products.find((p) => p.slug === current.slug);
 
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Helper to pause temporarily and auto-resume loop after 4 seconds
+  const pauseTemporarily = useCallback(() => {
+    setIsPlaying(false);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      setIsPlaying(true);
+    }, 4000);
+  }, []);
+
   // Unlimited infinite loop: auto-rotate every 5 seconds
   const nextSlide = useCallback(() => {
     setDirection(1);
@@ -305,6 +318,7 @@ export default function HeroProductShowcase() {
     if (idx === currentIndex) return;
     setDirection(idx > currentIndex ? 1 : -1);
     setCurrentIndex(idx);
+    pauseTemporarily();
   };
 
   useEffect(() => {
@@ -312,6 +326,28 @@ export default function HeroProductShowcase() {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
   }, [isPlaying, nextSlide]);
+
+  // Touch gesture handling for Mobile & Tablet
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+      if (deltaX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+    pauseTemporarily();
+  };
 
   // Keep active thumbnail in view
   useEffect(() => {
@@ -358,9 +394,11 @@ export default function HeroProductShowcase() {
 
   return (
     <div
-      className="relative w-full max-w-[500px] lg:max-w-[520px] xl:max-w-[540px] flex flex-col items-center justify-center mx-auto select-none overflow-visible"
+      className="relative w-full max-w-[500px] lg:max-w-[520px] xl:max-w-[540px] flex flex-col items-center justify-center mx-auto select-none overflow-visible touch-pan-y"
       onMouseEnter={() => setIsPlaying(false)}
       onMouseLeave={() => setIsPlaying(true)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Ambient Dynamic Background Glow */}
       <motion.div
