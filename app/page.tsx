@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
 import { products as staticProducts, normalizeProduct } from '@/lib/data/products';
 import { categories } from '@/lib/data/categories';
 import { masterBlogCatalog as staticBlogPosts } from '@/lib/data/blogs-database';
@@ -152,55 +151,32 @@ export default function HomePage() {
               />
 
               {/* Luxury Himalayan Provenance Eyebrow Crest */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]"
-              >
-                <div
-                  className="w-2 h-2 rounded-full transition-colors duration-700 lg:!bg-emerald-500"
-                  style={{ backgroundColor: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary }}
-                />
-                <span
-                  className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] transition-colors duration-700 font-sans lg:!text-[#7A5230]"
-                  style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).secondary }}
-                >
+              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-[0_2px_12px_rgba(122,82,48,0.08)]">
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-[#7A5230] font-sans">
                   From the Himalayas
                 </span>
                 <span className="w-px h-3 bg-[#7A5230]/25" />
-                <span
-                  className="inline-flex items-center gap-1 text-[11px] font-semibold transition-colors duration-700 font-sans lg:!text-[#1A3826]"
-                  style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary }}
-                >
-                  <Leaf className="w-3 h-3" />
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1A3826] font-sans">
+                  <Leaf className="w-3 h-3 text-emerald-600" />
                   100% Single Origin
                 </span>
-              </motion.div>
+              </div>
 
               {/* Editorial Master Headline with Kinfolk & Aesop Typography */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 space-y-2 lg:space-y-3"
-              >
+              <div className="relative z-10 space-y-2 lg:space-y-3">
                 <h1 className="text-[30px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
                   <span className="block font-serif italic text-[#1C2820] font-normal">
                     Grown in Nepal.
                   </span>
-                  <span
-                    className="block font-sans font-bold tracking-[-0.015em] transition-colors duration-700 lg:!text-[#1A3826]"
-                    style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).headingColor }}
-                  >
+                  <span className="block font-sans font-bold tracking-[-0.015em] text-[#1A3826]">
                     Handled with care.
                   </span>
                   <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-1">
                     <span>Delivered to your home.</span>
                     {/* Artistic Organic Curved Flourish Underline */}
                     <svg
-                      className="absolute -bottom-1 left-0 w-full h-2.5 transition-colors duration-700 pointer-events-none lg:!text-[#7A5230]/35"
-                      style={{ color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary, opacity: 0.7 }}
+                      className="absolute -bottom-1 left-0 w-full h-2.5 text-[#7A5230]/35 pointer-events-none"
                       viewBox="0 0 300 12"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -285,7 +261,7 @@ export default function HomePage() {
                     ))}
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Sculpted Luxury CTAs */}
               <motion.div
@@ -344,14 +320,7 @@ export default function HomePage() {
                       </div>
                     </div>
 
-                    <div
-                      className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs transition-colors duration-700 lg:!bg-emerald-100/90 lg:!text-emerald-800 lg:!border-emerald-200 flex-shrink-0"
-                      style={{
-                        backgroundColor: `${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary}18`,
-                        color: (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).secondary,
-                        borderColor: `${(POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).primary}35`,
-                      }}
-                    >
+                    <div className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs bg-emerald-50 text-emerald-800 border-emerald-200/80 flex-shrink-0">
                       ⚡ 24h Valley Delivery
                     </div>
                   </div>
@@ -376,12 +345,7 @@ export default function HomePage() {
 
 
               {/* Modern Glassmorphic Statistics Bento Tiles (Desktop/Laptop Only) */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 pt-1 max-w-xl"
-              >
+              <div className="relative z-10 hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 pt-1 max-w-xl">
                 {[
                   { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
                   { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
@@ -394,12 +358,7 @@ export default function HomePage() {
                       key={stat.label}
                       className="group p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] hover:border-[#1A3826]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-[80px]"
                     >
-                      <div
-                        className={`text-base sm:text-lg lg:text-xl font-heading font-extrabold transition-colors duration-700 ${stat.highlight ? 'lg:!text-[#1A3826]' : 'text-[#242220]'}`}
-                        style={{
-                          color: stat.highlight ? (POSTER_THEMES[posterIdx] || POSTER_THEMES[0]).headingColor : undefined,
-                        }}
-                      >
+                      <div className={`text-base sm:text-lg lg:text-xl font-heading font-extrabold ${stat.highlight ? 'text-[#1A3826]' : 'text-[#242220]'}`}>
                         <AnimatedCounter value={stat.value} />
                       </div>
                       <div className="text-[10px] sm:text-[11px] text-[#242220]/65 font-medium mt-0.5 truncate font-sans">
@@ -408,21 +367,16 @@ export default function HomePage() {
                     </div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
 
             {/* Right Content Column — Perfectly Balanced for Laptop */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-0 mt-0">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full flex justify-center lg:justify-end"
-              >
+            <div className="hidden lg:flex lg:col-span-6 xl:col-span-6 flex-col items-center lg:items-end justify-center pt-0 mt-0">
+              <div className="w-full flex justify-center lg:justify-end">
                 <ErrorBoundary name="Product Showcase">
                   <HeroProductShowcase />
                 </ErrorBoundary>
-              </motion.div>
+              </div>
             </div>
           </div>
 

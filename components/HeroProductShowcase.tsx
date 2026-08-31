@@ -365,7 +365,7 @@ export default function HeroProductShowcase() {
       {/* Ambient Dynamic Background Glow */}
       <motion.div
         key={`glow-${current.slug}`}
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 0.7 }}
         transition={{ duration: 0.8 }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[440px] lg:w-[500px] h-[340px] sm:h-[440px] lg:h-[500px] rounded-full blur-[80px] pointer-events-none -z-10"
@@ -380,7 +380,7 @@ export default function HeroProductShowcase() {
         {/* Dynamic Glowing Radial Color Portal with Smooth Color Morphing */}
         <motion.div
           key={`portal-${current.slug}`}
-          initial={{ scale: 0.92, opacity: 0.4 }}
+          initial={false}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 rounded-full shadow-2xl transition-all duration-700 transform-gpu"
@@ -462,14 +462,13 @@ export default function HeroProductShowcase() {
         </motion.div>
 
         {/* Giant 3D Hero Product Image (Popping Out with Silky Motion) */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={`product-hero-${current.slug}`}
             initial={{
               opacity: 0,
-              scale: 0.82,
-              y: direction === 1 ? 40 : -40,
-              rotate: direction === 1 ? -6 : 6,
+              scale: 0.85,
+              y: direction === 1 ? 30 : -30,
             }}
             animate={{
               opacity: 1,
@@ -480,11 +479,10 @@ export default function HeroProductShowcase() {
             exit={{
               opacity: 0,
               scale: 0.85,
-              y: direction === 1 ? -40 : 40,
-              rotate: direction === 1 ? 6 : -6,
+              y: direction === 1 ? -30 : 30,
             }}
             transition={{
-              duration: 0.55,
+              duration: 0.45,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="absolute inset-2 sm:inset-3 z-10 flex items-center justify-center cursor-pointer transform-gpu will-change-transform"
@@ -519,13 +517,13 @@ export default function HeroProductShowcase() {
 
       {/* Floating Dynamic Product Card Below Circle (Aligned & Overlapping) */}
       <div className="w-full max-w-[420px] -mt-6 sm:-mt-8 z-30 relative px-2">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={`card-${current.slug}`}
-            initial={{ opacity: 0, y: 25, scale: 0.95 }}
+            initial={{ opacity: 0, y: 15, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: -15, scale: 0.98 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white/95 backdrop-blur-md rounded-3xl p-4 sm:p-5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-ink/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)] transition-all duration-300"
           >
             {/* Top row: Badge + Rating */}

@@ -96,6 +96,10 @@ export default function MobileHeroBackgroundCards({
   const activeIdx = controlledIdx !== undefined ? controlledIdx : internalIdx;
 
   useEffect(() => {
+    // Only run on mobile/tablet viewports to avoid unnecessary re-renders and color shifts on desktop
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
+      return;
+    }
     const timer = setInterval(() => {
       const nextIdx = (activeIdx + 1) % POSTER_THEMES.length;
       if (onIndexChange) {
