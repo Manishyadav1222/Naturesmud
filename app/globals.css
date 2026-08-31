@@ -823,4 +823,36 @@ button, a, input, select, textarea {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ===== Infinite Review Marquee (Mobile/Tablet) ===== */
+@keyframes marquee-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.review-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-left 28s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.review-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll-right 32s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.review-marquee-left:hover,
+.review-marquee-right:hover {
+  animation-play-state: paused;
+}
 

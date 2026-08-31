@@ -373,8 +373,8 @@ export default function HomePage() {
           <MobileCategorySection />
 
           {/* Side-by-Side Dual Offer & Combos Section */}
-          <div className="mt-4 sm:mt-6 lg:mt-10 pt-4 sm:pt-6 lg:pt-8 border-t border-ink/8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
+          <div className="mt-2 sm:mt-4 lg:mt-10 pt-2 sm:pt-4 lg:pt-8 border-t border-ink/8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 lg:gap-8 items-start">
               {/* Left Side Offer: Baby & Mother Care Combos */}
               <div className="w-full flex justify-center lg:justify-start">
                 <ErrorBoundary name="Baby & Mother Combos">
@@ -407,8 +407,8 @@ export default function HomePage() {
       {/* Features Strip — Truck hits Free Shipping card */}
       <ScrollReveal direction="up" distance={25}>
         <section className="bg-white border-y border-ink/5 overflow-hidden w-full max-w-full">
-          <div className="container-nm py-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="container-nm py-5 lg:py-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {features.map((feature, i) => (
                 <div
                   key={feature.title}
@@ -533,16 +533,18 @@ export default function HomePage() {
         </ErrorBoundary>
       </ScrollReveal>
 
-      {/* 🎯 Interactive Superfood Recommendation Quiz */}
-      <ScrollReveal direction="up" distance={30}>
-        <section className="py-6 sm:py-10 bg-[#FAF7F2] border-y border-ink/5">
-          <div className="container-nm">
-            <ErrorBoundary name="Product Recommendation Quiz">
-              <ProductRecommendationQuiz />
-            </ErrorBoundary>
-          </div>
-        </section>
-      </ScrollReveal>
+      {/* 🎯 Interactive Superfood Recommendation Quiz — Desktop only */}
+      <div className="hidden lg:block">
+        <ScrollReveal direction="up" distance={30}>
+          <section className="py-10 bg-[#FAF7F2] border-y border-ink/5">
+            <div className="container-nm">
+              <ErrorBoundary name="Product Recommendation Quiz">
+                <ProductRecommendationQuiz />
+              </ErrorBoundary>
+            </div>
+          </section>
+        </ScrollReveal>
+      </div>
 
       {/* Featured Products */}
       <ScrollReveal direction="up" distance={30}>
