@@ -141,8 +141,8 @@ export default function HomePage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-[1%] sm:px-[2%] lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
-            {/* Left Content Column (High Contrast Luxury across Mobile, Tablet, and Desktop) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none bg-white/85 sm:bg-white/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border border-white/60 lg:border-transparent shadow-xl lg:shadow-none flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Left Content Column (High Contrast Luxury Glassmorphism across Mobile, Tablet, and Desktop) */}
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 lg:p-7 rounded-3xl bg-white/80 sm:bg-white/85 lg:bg-white/85 backdrop-blur-xl border border-white/60 shadow-2xl flex flex-col items-center lg:items-start text-center lg:text-left">
 
               {/* Luxury Himalayan Provenance Eyebrow Crest */}
               <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs mx-auto lg:mx-0">
