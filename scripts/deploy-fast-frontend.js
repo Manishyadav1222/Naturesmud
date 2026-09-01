@@ -5,6 +5,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const querystring = require('querystring');
 const ftp = require('basic-ftp');
+const { ZipArchive } = require('archiver');
 
 const config = {
   host: '167.235.9.123',
@@ -85,7 +86,7 @@ async function callApi(apiPath, method = 'GET') {
 
 async function uploadFile(localPath, remoteDir, remoteFileName) {
   const client = new ftp.Client();
-  client.timeout = 300000;
+  client.timeout = 120000;
   try {
     await client.access({
       host: config.host,
@@ -174,27 +175,21 @@ echo json_encode([
 
 async function main() {
   console.log('====================================================');
-  console.log('⚡ FAST NEXT.JS FRONTEND LIVE DEPLOYMENT');
-  console.log('====================================================');
+  console.log('⚡ ULTRA-FAST SLIM NEXT.JS FRONTEND LIVE DEPLOYMENT');
+  console.log('====================================================\n');
 
   // 1. Build Next.js
-  console.log('\n[1/4] 🏗️ Compiling Next.js production build...');
+  console.log('[1/4] 🏗️ Compiling Next.js production build...');
   execSync('npm run build', { stdio: 'inherit' });
   const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
   console.log('✅ Build successful! BUILD_ID:', localBuildId);
 
-  // 2. Package .next
-  console.log('\n[2/4] 📦 Packaging .next build with ZipArchive...');
-  const cacheDir = path.join(config.rootDir, '.next', 'cache');
-  if (fs.existsSync(cacheDir)) {
-    fs.rmSync(cacheDir, { recursive: true, force: true });
-  }
-
-  const outZip = path.join(config.rootDir, 'frontend-optimized-dist.zip');
+  // 2. Package .next (excluding standalone, cache, trace)
+  console.log('\n[2/4] 📦 Packaging slim .next build (~5MB)...');
+  const outZip = path.join(config.rootDir, 'frontend-slim-dist.zip');
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
   await new Promise((resolve, reject) => {
-    const { ZipArchive } = require('archiver');
     const output = fs.createWriteStream(outZip);
     const archive = new ZipArchive({ zlib: { level: 9 } });
 
@@ -206,6 +201,16 @@ async function main() {
       path.join(config.rootDir, '.next'),
       '.next',
       (entry) => {
+        const norm = entry.name.replace(/\\/g, '/');
+        // Exclude huge standalone, cache and trace dirs
+        if (
+          norm.startsWith('.next/standalone') ||
+          norm.startsWith('.next/cache') ||
+          norm.startsWith('.next/trace')
+        ) {
+          return false;
+        }
+
         if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
           entry.mode = 0o755;
         } else {
@@ -219,14 +224,13 @@ async function main() {
   });
 
   const stats = fs.statSync(outZip);
-  console.log(`✅ Build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`✅ Slim build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
   // 3. Upload & Extract
-  console.log('\n[3/4] 🌐 Uploading & extracting .next to cPanel...');
-  await unlinkRemote(`${config.homeDir}/naturesmud.shop/.next`);
-  await uploadFile(outZip, `${config.homeDir}/naturesmud.shop`, 'frontend-optimized-dist.zip');
+  console.log('\n[3/4] 🌐 Uploading & extracting slim .next to cPanel...');
+  await uploadFile(outZip, `${config.homeDir}/naturesmud.shop`, 'frontend-slim-dist.zip');
   console.log('  -> Extracting .next archive on remote server...');
-  const extractRes = await extractArchive(`${config.homeDir}/naturesmud.shop/frontend-optimized-dist.zip`, `${config.homeDir}/naturesmud.shop`);
+  const extractRes = await extractArchive(`${config.homeDir}/naturesmud.shop/frontend-slim-dist.zip`, `${config.homeDir}/naturesmud.shop`);
   console.log('  -> Extraction response:', typeof extractRes === 'object' ? JSON.stringify(extractRes) : extractRes);
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
@@ -241,7 +245,7 @@ async function main() {
 
   // 5. Verification
   console.log('\n🩺 Verifying Live Production Status on naturesmud.shop...');
-  await new Promise(r => setTimeout(r, 3000));
+  await new Promise(r => setTimeout(r, 2000));
   
   const testEndpoints = [
     'https://naturesmud.shop/',
@@ -266,7 +270,7 @@ async function main() {
   }
 
   console.log('\n====================================================');
-  console.log('🎉 FRONTEND UPDATE SUCCESSFULLY DEPLOYED TO NATURESMUD.SHOP!');
+  console.log('🎉 SLIM FRONTEND UPDATE SUCCESSFULLY DEPLOYED TO NATURESMUD.SHOP!');
   console.log('====================================================\n');
 }
 

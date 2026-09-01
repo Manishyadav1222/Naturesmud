@@ -1,9 +1,11 @@
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const FormData = require('form-data');
 const querystring = require('querystring');
+const { ZipArchive } = require('archiver');
 
 const config = {
   host: '167.235.9.123',
@@ -121,31 +123,74 @@ async function restartFrontend() {
 }
 
 async function main() {
+  console.log('====================================================');
+  console.log('🚀 NATURE\'S MUD RELIABLE REST API DEPLOYMENT PIPELINE');
+  console.log('====================================================\n');
+
+  // 1. Build Next.js
+  console.log('[1/5] 🏗️ Compiling Next.js production build...');
+  execSync('npm run build', { stdio: 'inherit' });
+  const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
+  console.log('✅ Build successful! BUILD_ID:', localBuildId);
+
+  // 2. Clean cache & package
+  console.log('\n[2/5] 📦 Packaging .next (stripping cache)...');
+  const cacheDir = path.join(config.rootDir, '.next', 'cache');
+  if (fs.existsSync(cacheDir)) {
+    fs.rmSync(cacheDir, { recursive: true, force: true });
+  }
+
   const outZip = path.join(config.rootDir, 'deploy_frontend_update.zip');
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
-  console.log('1. Zipping .next and server files with PowerShell...');
-  const psCmd = `powershell -Command "Compress-Archive -Path '${config.rootDir}\\.next', '${config.rootDir}\\server.js', '${config.rootDir}\\package.json', '${config.rootDir}\\public' -DestinationPath '${outZip}' -Force"`;
-  execSync(psCmd, { stdio: 'inherit' });
+  await new Promise((resolve, reject) => {
+    const output = fs.createWriteStream(outZip);
+    const archive = new ZipArchive({ zlib: { level: 9 } });
+
+    output.on('close', resolve);
+    archive.on('error', reject);
+    archive.pipe(output);
+
+    archive.directory(
+      path.join(config.rootDir, '.next'),
+      '.next',
+      (entry) => {
+        if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
+          entry.mode = 0o755;
+        } else {
+          entry.mode = 0o644;
+        }
+        return entry;
+      }
+    );
+
+    archive.finalize();
+  });
 
   const stats = fs.statSync(outZip);
-  console.log(`Package created: ${(stats.size / 1024 / 1024).toFixed(2)} MB`);
+  console.log(`✅ Build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
-  console.log('2. Uploading update to Nest Nepal /naturesmud.shop...');
+  // 3. Upload via HTTPS cPanel API
+  console.log('\n[3/5] 🌐 Uploading update to Nest Nepal /naturesmud.shop via HTTPS API...');
   const upRes = await uploadFile(`${config.homeDir}/naturesmud.shop`, outZip);
-  console.log('Upload status:', upRes.status === 1 ? '✅ Uploaded' : JSON.stringify(upRes));
+  console.log('  -> Upload response:', upRes.status === 1 ? '✅ Uploaded' : JSON.stringify(upRes));
 
-  console.log('3. Extracting archive on server...');
+  // 4. Extract archive
+  console.log('\n[4/5] 📦 Extracting archive on server...');
   const extRes = await extractRemoteZip(`${config.homeDir}/naturesmud.shop`, 'deploy_frontend_update.zip');
-  console.log('Extraction status:', extRes.status === 1 ? '✅ Extracted' : JSON.stringify(extRes));
+  console.log('  -> Extraction response:', extRes.status === 1 ? '✅ Extracted' : JSON.stringify(extRes));
 
-  console.log('4. Restarting Phusion Passenger Next.js App...');
+  // 5. Restart Passenger
+  console.log('\n[5/5] 🔄 Restarting Phusion Passenger Node.js App...');
   const rstRes = await restartFrontend();
-  console.log('Restart trigger:', rstRes.status === 1 ? '✅ Restarted' : JSON.stringify(rstRes));
+  console.log('  -> Restart trigger:', rstRes.status === 1 ? '✅ Restarted' : JSON.stringify(rstRes));
 
   // Clean local temp zip
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
-  console.log('🎉 Frontend successfully updated with live API endpoints on Nest Nepal!');
+
+  console.log('\n====================================================');
+  console.log('🎉 FRONTEND UPDATE SUCCESSFULLY DEPLOYED TO NATURESMUD.SHOP!');
+  console.log('====================================================\n');
 }
 
 main().catch(console.error);
