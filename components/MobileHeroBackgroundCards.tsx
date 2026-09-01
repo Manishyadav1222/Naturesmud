@@ -37,8 +37,8 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-orange-900',
     badgeBorder: 'border-orange-300/60',
     pillBg: 'bg-orange-500/10 text-orange-900 border-orange-500/20',
-    overlayFrom: 'rgba(234,88,12,0.42)',
-    overlayTo: 'rgba(80,15,0,0.78)',
+    overlayFrom: 'rgba(234,88,12,0.45)',
+    overlayTo: 'rgba(80,15,0,0.82)',
   },
   {
     id: 'chia-power',
@@ -54,8 +54,8 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-teal-900',
     badgeBorder: 'border-teal-300/60',
     pillBg: 'bg-teal-500/10 text-teal-900 border-teal-500/20',
-    overlayFrom: 'rgba(13,148,136,0.44)',
-    overlayTo: 'rgba(2,44,34,0.80)',
+    overlayFrom: 'rgba(13,148,136,0.48)',
+    overlayTo: 'rgba(2,44,34,0.84)',
   },
   {
     id: 'blueberry-bite',
@@ -71,8 +71,8 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-purple-900',
     badgeBorder: 'border-purple-300/60',
     pillBg: 'bg-purple-500/10 text-purple-900 border-purple-500/20',
-    overlayFrom: 'rgba(109,40,217,0.44)',
-    overlayTo: 'rgba(20,5,50,0.80)',
+    overlayFrom: 'rgba(109,40,217,0.48)',
+    overlayTo: 'rgba(20,5,50,0.84)',
   },
   {
     id: 'sweet-vibes',
@@ -88,8 +88,8 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-pink-900',
     badgeBorder: 'border-pink-300/60',
     pillBg: 'bg-pink-500/10 text-pink-900 border-pink-500/20',
-    overlayFrom: 'rgba(190,24,93,0.42)',
-    overlayTo: 'rgba(60,0,30,0.78)',
+    overlayFrom: 'rgba(190,24,93,0.45)',
+    overlayTo: 'rgba(60,0,30,0.82)',
   },
   {
     id: 'tropical-crunch',
@@ -105,8 +105,8 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-amber-900',
     badgeBorder: 'border-amber-300/60',
     pillBg: 'bg-amber-500/10 text-amber-900 border-amber-500/20',
-    overlayFrom: 'rgba(217,119,6,0.42)',
-    overlayTo: 'rgba(60,20,0,0.78)',
+    overlayFrom: 'rgba(217,119,6,0.45)',
+    overlayTo: 'rgba(60,20,0,0.82)',
   },
 ];
 
@@ -123,6 +123,9 @@ export default function MobileHeroBackgroundCards({
   const activeIdx = controlledIdx !== undefined ? controlledIdx : internalIdx;
 
   useEffect(() => {
+    // Only run poster cycling on mobile & tablet
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) return;
+
     const timer = setInterval(() => {
       const nextIdx = (activeIdx + 1) % POSTER_THEMES.length;
       if (onIndexChange) {
@@ -137,8 +140,8 @@ export default function MobileHeroBackgroundCards({
   const currentPoster = POSTER_THEMES[activeIdx] || POSTER_THEMES[0];
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-[inherit]">
-      {/* Full-bleed animated poster image background with 3-second cycle on all devices */}
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none lg:hidden rounded-[inherit]">
+      {/* Full-bleed animated poster image background with 3-second cycle — ONLY on Mobile and Tablet */}
       <AnimatePresence mode="sync">
         <motion.div
           key={`bg-img-${currentPoster.id}`}
@@ -153,11 +156,11 @@ export default function MobileHeroBackgroundCards({
             alt={currentPoster.title}
             fill
             priority
-            sizes="100vw"
-            className="object-cover object-center opacity-90 lg:opacity-85"
-            style={{ filter: 'saturate(1.25) brightness(0.88)' }}
+            sizes="(max-width: 1023px) 100vw, 0px"
+            className="object-cover object-center opacity-90"
+            style={{ filter: 'saturate(1.25) brightness(0.85)' }}
           />
-          {/* Gradient overlay to keep text readable while showing the beautiful image */}
+          {/* Gradient overlay to keep text readable while showing the poster colors */}
           <div
             className="absolute inset-0 transition-all duration-700"
             style={{
