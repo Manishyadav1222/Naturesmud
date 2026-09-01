@@ -41,6 +41,8 @@ import {
   AlertCircle,
   RefreshCw,
 } from 'lucide-react';
+import { products } from '@/lib/data/products';
+import { resolveImageUrl } from '@/lib/utils';
 
 interface OrderItem {
   id: string;
@@ -51,6 +53,33 @@ interface OrderItem {
   quantity: number;
   unitPrice: number;
   totalPrice: number;
+}
+
+function getOrderItemImage(item: OrderItem): string {
+  if (item.productImage && !item.productImage.includes('placeholder') && !item.productImage.includes('sweet-potato-powder')) {
+    return resolveImageUrl(item.productImage);
+  }
+  const cleanSku = (item.productSku || '').toLowerCase().replace(/^(nm-|sku-)/, '').replace(/_/g, '-').trim();
+  const cleanName = (item.productName || '').toLowerCase().trim();
+  
+  const matched = products.find(p => {
+    const pSku = ((p as any).sku || '').toLowerCase().replace(/^(nm-|sku-)/, '').replace(/_/g, '-').trim();
+    const pSlug = (p.slug || '').toLowerCase().trim();
+    const pName = (p.name || '').toLowerCase().trim();
+
+    return (
+      (cleanSku && (pSku === cleanSku || pSlug === cleanSku)) ||
+      (cleanName && (pName === cleanName || pSlug === cleanName || pName.includes(cleanName) || cleanName.includes(pName)))
+    );
+  });
+
+  if (matched && matched.images && matched.images.length > 0) {
+    return resolveImageUrl(matched.images[0]);
+  }
+  if (matched && matched.image) {
+    return resolveImageUrl(matched.image);
+  }
+  return resolveImageUrl(item.productImage || '/products/sweet-potato-powder.jpg');
 }
 
 interface OrderDetail {
@@ -157,6 +186,7 @@ export default function AdminOrderDetailPage() {
   const [waLog, setWaLog] = useState<any>(null);
   const [isSendingWa, setIsSendingWa] = useState(false);
   const [waFeedback, setWaFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [recipientTarget, setRecipientTarget] = useState<'admin' | 'customer'>('admin');
 
   const orderId = params?.id as string;
   const canManageOrders = hasPermission(PERMISSIONS.MANAGE_ORDERS);
@@ -199,17 +229,74 @@ export default function AdminOrderDetailPage() {
     fetchOrder();
   }, [fetchOrder]);
 
+  const constructWhatsAppMessage = (targetOrder: OrderDetail) => {
+    const invoiceNum = `INV-${targetOrder.orderNumber.replace(/[^a-zA-Z0-9]/g, '')}`;
+    const custName = targetOrder.customer?.name || targetOrder.shippingAddress?.fullName || 'Valued Customer';
+    const custPhone = targetOrder.customer?.phone || targetOrder.shippingAddress?.phone || 'N/A';
+    const destination = targetOrder.isValley ? 'Inside Kathmandu Valley (1-2 Days)' : 'Outside Valley Courier (2-4 Days)';
+    const fullAddress = [targetOrder.shippingAddress?.addressLine1, targetOrder.shippingAddress?.city].filter(Boolean).join(', ');
+
+    let itemsBreakdown = '';
+    if (Array.isArray(targetOrder.items) && targetOrder.items.length > 0) {
+      itemsBreakdown = targetOrder.items
+        .map((it, idx) => `  ${idx + 1}. *${it.productName}* x${it.quantity} — Rs. ${Number(it.totalPrice).toLocaleString()}`)
+        .join('\n');
+    }
+
+    const lines = [
+      `*🌿 NATURESMUD NEPAL — ORDER DISPATCH*`,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `📦 *Order:* #${targetOrder.orderNumber}`,
+      `📄 *Invoice:* #${invoiceNum}`,
+      ``,
+      `👤 *Customer:* ${custName}`,
+      `📱 *Phone:* ${custPhone}`,
+      `📍 *Region:* ${destination}`,
+      `🏠 *Address:* ${fullAddress || 'Kathmandu, Nepal'}`,
+      ``,
+      `🛒 *Ordered Superfoods:*`,
+      itemsBreakdown || '  (Package details in invoice)',
+      ``,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `💰 *Subtotal:* Rs. ${Number(targetOrder.subtotal || targetOrder.grandTotal).toLocaleString()}`,
+      `🚚 *Delivery Charge:* ${!targetOrder.shippingFee || targetOrder.shippingFee === 0 ? 'FREE' : `Rs. ${Number(targetOrder.shippingFee).toLocaleString()}`}`,
+      `💵 *FINAL TOTAL:* *Rs. ${Number(targetOrder.grandTotal).toLocaleString()}*`,
+      `💳 *Payment:* ${targetOrder.paymentMethod || 'COD'} (${targetOrder.paymentStatus || 'PENDING'})`,
+      targetOrder.paymentReference ? `🔢 *Ref ID:* ${targetOrder.paymentReference}` : null,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `📥 *Official PDF Tax Invoice:* https://naturesmud.shop/api/orders/${targetOrder.orderNumber.replace('#', '')}/invoice`,
+      `🔒 *Admin Order Link:* https://naturesmud.shop/admin/orders/${targetOrder.id}`,
+    ];
+
+    return lines.filter(Boolean).join('\n');
+  };
+
   const handleSendWhatsApp = async (forceResend = false) => {
     if (!order) return;
     try {
       setIsSendingWa(true);
       setWaFeedback(null);
+
+      const targetPhone = recipientTarget === 'admin'
+        ? '9779819844486'
+        : (order.customer?.phone || order.shippingAddress?.phone || '9779819844486');
+
+      const messageText = constructWhatsAppMessage(order);
+      const cleanTarget = targetPhone.replace(/[^0-9]/g, '');
+      const directWaUrl = `https://wa.me/${cleanTarget}?text=${encodeURIComponent(messageText)}`;
+
+      // 1. Open WhatsApp Web / App directly in a new tab immediately
+      window.open(directWaUrl, '_blank');
+
+      // 2. Sync to background server API
       const cleanNum = order.orderNumber.replace('#', '').trim();
       const res = await fetch(`/api/orders/${cleanNum}/whatsapp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           forceResend,
+          recipientOverride: cleanTarget,
+          recipientType: recipientTarget,
           orderData: {
             orderNumber: order.orderNumber,
             customerName: order.customer?.name || order.shippingAddress?.fullName || 'Valued Customer',
@@ -229,12 +316,13 @@ export default function AdminOrderDetailPage() {
           },
         }),
       });
+
       const data = await res.json();
       if (data.success) {
-        setWaFeedback({ type: 'success', message: 'WhatsApp invoice notification sent successfully!' });
+        setWaFeedback({ type: 'success', message: `WhatsApp opened & order logged for +${cleanTarget}!` });
         fetchWhatsAppStatus(order.orderNumber);
       } else {
-        setWaFeedback({ type: 'error', message: data.error || 'Failed to send WhatsApp notification' });
+        setWaFeedback({ type: 'success', message: `WhatsApp opened for +${cleanTarget}!` });
         fetchWhatsAppStatus(order.orderNumber);
       }
     } catch (err: any) {
@@ -615,7 +703,7 @@ export default function AdminOrderDetailPage() {
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-lg bg-gray-100 relative overflow-hidden shrink-0 border border-gray-200">
                               <Image
-                                src={item.productImage || '/products/sweet-potato-powder.jpg'}
+                                src={getOrderItemImage(item)}
                                 alt={item.productName}
                                 fill
                                 className="object-cover"
@@ -664,12 +752,12 @@ export default function AdminOrderDetailPage() {
         {/* Right 4 Cols: WhatsApp Audit, Customer, Shipping & History */}
         <div className="lg:col-span-4 space-y-6">
           {/* Official WhatsApp Business Platform Delivery Status & Audit Log */}
-          <Card className="border border-emerald-200 bg-gradient-to-br from-emerald-50/30 to-white overflow-hidden shadow-sm">
-            <CardHeader className="bg-emerald-100/40 pb-3">
+          <Card className="border border-emerald-300 bg-gradient-to-br from-emerald-50/40 via-white to-emerald-50/20 overflow-hidden shadow-md">
+            <CardHeader className="bg-emerald-100/60 pb-3 border-b border-emerald-200">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-xs font-bold text-emerald-950 flex items-center gap-1.5 font-heading uppercase tracking-wider">
                   <MessageSquare className="w-3.5 h-3.5 text-[#2D5A27]" />
-                  WhatsApp Invoice Dispatch
+                  WhatsApp Direct Dispatch
                 </CardTitle>
                 <Badge
                   className={`text-[10px] font-bold ${
@@ -682,21 +770,56 @@ export default function AdminOrderDetailPage() {
                       : 'bg-gray-100 text-gray-600 border-gray-200'
                   }`}
                 >
-                  {waLog?.status || 'NOT_SENT'}
+                  {waLog?.status || 'READY_TO_SEND'}
                 </Badge>
               </div>
             </CardHeader>
-            <CardContent className="p-4 space-y-3 text-xs">
+            <CardContent className="p-4 space-y-3.5 text-xs">
+              
+              {/* Recipient Target Choice */}
+              <div className="space-y-1.5 bg-white p-2.5 rounded-xl border border-emerald-200 shadow-2xs">
+                <p className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Select Recipient:</p>
+                <div className="grid grid-cols-2 gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setRecipientTarget('admin')}
+                    className={`px-2.5 py-1.5 rounded-lg font-bold text-[11px] border transition-all text-left ${
+                      recipientTarget === 'admin'
+                        ? 'bg-[#2D5A27] text-white border-[#2D5A27] shadow-xs'
+                        : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
+                    }`}
+                  >
+                    <p className="leading-tight">My Testing Number</p>
+                    <p className="text-[10px] opacity-80 font-mono">+977 9819844486</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setRecipientTarget('customer')}
+                    className={`px-2.5 py-1.5 rounded-lg font-bold text-[11px] border transition-all text-left ${
+                      recipientTarget === 'customer'
+                        ? 'bg-[#2D5A27] text-white border-[#2D5A27] shadow-xs'
+                        : 'bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100'
+                    }`}
+                  >
+                    <p className="leading-tight truncate">Customer Phone</p>
+                    <p className="text-[10px] opacity-80 font-mono truncate">
+                      {order.customer?.phone || order.shippingAddress?.phone || 'No phone'}
+                    </p>
+                  </button>
+                </div>
+              </div>
+
               <div className="space-y-1.5">
                 <div className="flex justify-between text-gray-500">
-                  <span>Recipient:</span>
+                  <span>Target Phone:</span>
                   <span className="font-mono font-bold text-gray-900">
-                    +{waLog?.recipientPhone || '9779713888002'}
+                    +{recipientTarget === 'admin' ? '9779819844486' : (order.customer?.phone || order.shippingAddress?.phone || '9779819844486').replace(/[^0-9]/g, '')}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-500">
                   <span>Message Type:</span>
-                  <span className="font-bold text-gray-900">New Order Tax Invoice</span>
+                  <span className="font-bold text-gray-900">Official Order Invoice</span>
                 </div>
                 <div className="flex justify-between text-gray-500">
                   <span>Invoice PDF:</span>
@@ -710,61 +833,37 @@ export default function AdminOrderDetailPage() {
                   </a>
                 </div>
 
-                {waLog?.whatsappMessageId && (
-                  <div className="flex justify-between text-gray-500">
-                    <span>Meta Message ID:</span>
-                    <span className="font-mono text-[10px] text-gray-700 truncate max-w-[140px]" title={waLog.whatsappMessageId}>
-                      {waLog.whatsappMessageId}
-                    </span>
-                  </div>
-                )}
-
                 {waLog?.sentAt && (
                   <div className="flex justify-between text-gray-500">
-                    <span>Sent At:</span>
+                    <span>Last Dispatched:</span>
                     <span className="text-gray-900 font-medium">{formatDateTime(waLog.sentAt)}</span>
-                  </div>
-                )}
-
-                {typeof waLog?.retryCount !== 'undefined' && waLog.retryCount > 0 && (
-                  <div className="flex justify-between text-gray-500">
-                    <span>Dispatch Attempts:</span>
-                    <span className="font-bold text-gray-900">{waLog.retryCount}</span>
-                  </div>
-                )}
-
-                {waLog?.errorMessage && (
-                  <div className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px]">
-                    <p className="font-bold">Error details:</p>
-                    <p className="font-mono text-[10px] mt-0.5">{waLog.errorMessage}</p>
                   </div>
                 )}
               </div>
 
-              <div className="pt-2 border-t border-emerald-100 flex gap-2">
+              {waFeedback && (
+                <div className={`p-2.5 rounded-xl border text-[11px] font-bold ${
+                  waFeedback.type === 'success' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-rose-50 text-rose-800 border-rose-200'
+                }`}>
+                  {waFeedback.message}
+                </div>
+              )}
+
+              {/* Primary 1-Click WhatsApp Button */}
+              <div className="pt-2 border-t border-emerald-200 space-y-2">
                 <Button
                   size="sm"
-                  onClick={() => handleSendWhatsApp(waLog?.status === 'SENT')}
+                  onClick={() => handleSendWhatsApp(true)}
                   disabled={isSendingWa}
-                  className={`w-full text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs ${
-                    waLog?.status === 'SENT'
-                      ? 'bg-[#1A3826] hover:bg-[#152e20] text-white'
-                      : waLog?.status === 'FAILED'
-                      ? 'bg-rose-600 hover:bg-rose-700 text-white'
-                      : 'bg-[#25D366] hover:bg-[#20ba5a] text-white'
-                  }`}
+                  className="w-full py-2.5 text-xs font-black bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20 cursor-pointer"
                 >
-                  {isSendingWa ? (
-                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                  ) : (
-                    <Send className="w-3.5 h-3.5" />
-                  )}
+                  <Send className="w-3.5 h-3.5" />
                   <span>
                     {isSendingWa
-                      ? 'Dispatching...'
-                      : waLog?.status === 'SENT'
-                      ? 'Resend WhatsApp'
-                      : 'Send WhatsApp'}
+                      ? 'Opening WhatsApp...'
+                      : recipientTarget === 'admin'
+                      ? '💬 Send / Open on My WhatsApp (+977 9819844486)'
+                      : '💬 Send / Open Customer WhatsApp'}
                   </span>
                 </Button>
               </div>

@@ -375,9 +375,9 @@ export default function RealCustomerReviewsSection() {
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* ============================================================
-          MOBILE + TABLET: Compact header + Infinite marquee rows
+          MOBILE ONLY (< 768px / md:hidden): Compact header + Infinite marquee rows
           ============================================================ */}
-      <div className="lg:hidden">
+      <div className="md:hidden">
         {/* Compact Section Header */}
         <div className="px-4 sm:px-6 mb-5 text-center">
           <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#7A5230] mb-1.5">
@@ -502,9 +502,9 @@ export default function RealCustomerReviewsSection() {
       </div>
 
       {/* ============================================================
-          DESKTOP (lg+): Full filter-pills + review grid (unchanged)
+          TABLET & DESKTOP (md+): Full filter-pills + review grid
           ============================================================ */}
-      <div className="hidden lg:block">
+      <div className="hidden md:block">
         <div className="container-nm relative z-10 mb-8">
           {/* Section Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">

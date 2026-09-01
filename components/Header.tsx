@@ -19,6 +19,7 @@ import {
   User,
   ArrowRight,
   Flame,
+  Truck,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '@/lib/store/cart-store';
@@ -261,8 +262,8 @@ export default function Header() {
                 <Search className="w-4 h-4" />
               </motion.button>
 
-              {/* Orders Status Widget — desktop only, between Search and Wishlist */}
-              <div className="hidden lg:flex items-center">
+              {/* Orders Status Widget — visible on tablet & desktop */}
+              <div className="hidden sm:flex items-center">
                 <OrdersHeaderWidget />
               </div>
 
@@ -337,24 +338,24 @@ export default function Header() {
               aria-label="Mobile navigation"
             >
               <div className="px-4 py-4 space-y-1.5">
-                {/* Mobile Live Track Order & Status Card */}
+                {/* Mobile My Orders & Live Status Card */}
                 <div className="pb-2">
                   <Link
                     href="/track-order"
                     onClick={closeMobileMenu}
-                    className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-primary/10 via-amber-500/5 to-gold/10 border border-primary/20 text-primary font-bold text-sm shadow-xs hover:shadow-md transition-all group"
+                    className="flex items-center justify-between p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50/40 to-amber-50/40 border border-emerald-200/80 text-[#2D5A27] font-bold text-sm shadow-xs hover:shadow-md transition-all group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center shadow-xs">
-                        <Sparkles className="w-4 h-4 text-gold-300" />
+                      <div className="w-9 h-9 rounded-xl bg-[#2D5A27] text-white flex items-center justify-center shadow-xs">
+                        <Truck className="w-4 h-4 text-gold-300" />
                       </div>
                       <div>
-                        <p className="font-heading text-sm text-gray-900 leading-tight">Live Order Tracking</p>
-                        <p className="text-[11px] text-gray-500 font-normal">Check delivery progress & invoice</p>
+                        <p className="font-heading text-sm text-gray-900 leading-tight font-black">My Orders &amp; Status</p>
+                        <p className="text-[11px] text-gray-500 font-normal">Check preparation, delivery &amp; tax invoice</p>
                       </div>
                     </div>
-                    <span className="flex items-center text-xs text-primary font-bold group-hover:translate-x-1 transition-transform">
-                      Track <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                    <span className="flex items-center text-xs text-[#2D5A27] font-bold group-hover:translate-x-1 transition-transform">
+                      My Orders <ArrowRight className="w-3.5 h-3.5 ml-1" />
                     </span>
                   </Link>
                 </div>

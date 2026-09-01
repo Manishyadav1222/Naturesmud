@@ -56,7 +56,7 @@ NEXT_PUBLIC_ADMIN_API_URL=https://admin-api.naturesmud.shop/api/admin
 NEXT_PUBLIC_SITE_URL=https://naturesmud.shop
 
 # WhatsApp
-NEXT_PUBLIC_WHATSAPP_NUMBER=9779819844486
+NEXT_PUBLIC_WHATSAPP_NUMBER=9779713888002
 NEXT_PUBLIC_WHATSAPP_MESSAGE=Hello Nature's Mud! I would like to know more about your products.
 
 # Server rewrites for Next.js Node.js server

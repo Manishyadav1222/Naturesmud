@@ -127,7 +127,7 @@ export default function HeroOfferSection() {
 
   return (
     <div
-      className="w-full max-w-[580px] relative group mt-0"
+      className="w-full max-w-[580px] md:max-w-none relative group mt-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}

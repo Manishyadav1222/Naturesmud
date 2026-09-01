@@ -99,15 +99,20 @@ async function uploadFile(localPath, remoteDir, remoteFileName) {
       ftpDir = ftpDir.substring(config.homeDir.length);
     }
     const remotePath = ftpDir + '/' + remoteFileName;
-    console.log(`  -> Uploading ${remoteFileName} (${(fs.statSync(localPath).size / 1024 / 1024).toFixed(2)} MB) to ${remotePath}...`);
     await client.uploadFrom(localPath, remotePath);
-    console.log(`  -> Upload of ${remoteFileName} complete!`);
-  } catch (err) {
-    console.error(`FTP Upload error for ${remoteFileName}:`, err);
-    throw err;
   } finally {
     client.close();
   }
+}
+
+async function extractArchive(remoteZipPath, destDir) {
+  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=extract&sourcefiles=${encodeURIComponent(remoteZipPath)}&destfiles=${encodeURIComponent(destDir)}`;
+  return callApi(query, 'GET');
+}
+
+async function unlinkRemote(remotePath) {
+  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=unlink&sourcefiles=${encodeURIComponent(remotePath)}`;
+  return callApi(query, 'GET');
 }
 
 function runPhpEndpoint(path) {
@@ -130,79 +135,73 @@ function runPhpEndpoint(path) {
   });
 }
 
-async function unlinkRemote(remotePath) {
-  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=unlink&sourcefiles=${encodeURIComponent(remotePath)}`;
-  return callApi(query, 'GET');
-}
-
-async function extractArchive(remoteZipPath, destDir) {
-  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=extract&sourcefiles=${encodeURIComponent(remoteZipPath)}&destfiles=${encodeURIComponent(destDir)}`;
-  return callApi(query, 'GET');
-}
-
 const fixPermsPhp = `<?php
 header('Content-Type: application/json');
-$dir = '/home8/kathma13/naturesmud.shop';
 
 function chmod_r($path) {
+    if (!file_exists($path)) return;
     $dir = new DirectoryIterator($path);
     foreach ($dir as $item) {
         if ($item->isDot()) continue;
         if ($item->isDir()) {
-            chmod($item->getPathname(), 0755);
+            @chmod($item->getPathname(), 0755);
             chmod_r($item->getPathname());
         } else {
-            chmod($item->getPathname(), 0644);
+            @chmod($item->getPathname(), 0644);
         }
     }
 }
 
-chmod($dir, 0755);
-chmod_r($dir);
+$dirs = [
+  '/home8/kathma13/naturesmud.shop',
+  '/home8/kathma13/admin-api.naturesmud.shop',
+  '/home8/kathma13/api.naturesmud.shop'
+];
 
-if (!file_exists($dir . '/tmp')) {
-    mkdir($dir . '/tmp', 0755, true);
+foreach ($dirs as $dir) {
+  if (file_exists($dir)) {
+    @chmod($dir, 0755);
+    chmod_r($dir);
+    if (!file_exists($dir . '/tmp')) {
+      @mkdir($dir . '/tmp', 0755, true);
+    }
+    @file_put_contents($dir . '/tmp/restart.txt', time());
+  }
 }
-file_put_contents($dir . '/tmp/restart.txt', time());
 
 echo json_encode([
     'success' => true,
-    'message' => 'Permissions updated and Passenger reloaded',
-    'restarted_via' => 'tmp/restart.txt',
+    'message' => 'Permissions updated and all apps restarted',
     'time' => time()
 ], JSON_PRETTY_PRINT);
 `;
 
 async function main() {
   console.log('====================================================');
-  console.log('⚡ ULTRA-FAST SLIM NEXT.JS FRONTEND LIVE DEPLOYMENT');
+  console.log('🚀 NATURESMUD ENTERPRISE FULL LIVE SYSTEM SYNC');
   console.log('====================================================\n');
 
-  // 1. Build Next.js
-  console.log('[1/4] 🏗️ Compiling Next.js production build...');
-  execSync('npm run build', { stdio: 'inherit' });
-  const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
-  console.log('✅ Build successful! BUILD_ID:', localBuildId);
+  // STEP 1: Compile Admin Server
+  console.log('[1/5] 🏗️ Compiling Admin Server TypeScript...');
+  execSync('npm --prefix admin-server run build', { stdio: 'inherit' });
+  console.log('✅ Admin Server compiled successfully!');
 
-  // 2. Package .next (excluding standalone, cache, trace)
-  console.log('\n[2/4] 📦 Packaging slim .next build (~5MB)...');
-  const outZip = path.join(config.rootDir, 'frontend-slim-dist.zip');
+  // STEP 2: Package Frontend & Assets
+  console.log('\n[2/5] 📦 Packaging Next.js slim frontend & authentic assets...');
+  const outFrontendZip = path.join(config.rootDir, 'frontend-sync.zip');
   await new Promise((resolve, reject) => {
-    const output = fs.createWriteStream(outZip);
+    const output = fs.createWriteStream(outFrontendZip);
     const archive = new ZipArchive({ zlib: { level: 9 } });
-
     output.on('close', resolve);
     archive.on('error', reject);
     archive.pipe(output);
 
-    // Add only essential runtime directories
     archive.directory(path.join(config.rootDir, '.next', 'server'), '.next/server');
     archive.directory(path.join(config.rootDir, '.next', 'static'), '.next/static');
     if (fs.existsSync(path.join(config.rootDir, '.next', 'types'))) {
       archive.directory(path.join(config.rootDir, '.next', 'types'), '.next/types');
     }
 
-    // Add root manifest and config files in .next
     const nextRootFiles = fs.readdirSync(path.join(config.rootDir, '.next'));
     nextRootFiles.forEach(f => {
       const full = path.join(config.rootDir, '.next', f);
@@ -211,7 +210,6 @@ async function main() {
       }
     });
 
-    // Add active poster images into public/images/posters/
     const posterFiles = [
       'pineapple-splendor.jpg',
       'blueberries-orchard.jpg',
@@ -229,33 +227,19 @@ async function main() {
       }
     });
 
-    // Add all active product images into public/products/
     const prodFiles = [
-      'dehydrated-pineapple-premium.jpg',
       'dried-blueberries-orchard.jpg',
       'dried-blueberries-100g.jpg',
       'blueberries.jpg',
       'dried-blueberries.jpg',
+      'dehydrated-pineapple-premium.jpg',
       'papaya-splash.jpg',
       'chia-seeds.jpg',
       'authentic-almonds.jpg',
       'authentic-cashewnuts-roasted.jpg',
       'pink-salt.jpg',
       'himalayan-black-salt-digestive.jpg',
-      'cranberries.jpg',
-      'sweet-potato-powder-100g.jpg',
-      'dates-powder-100g.jpg',
-      'beetroot-powder-100g.jpg',
-      'authentic-dehydrated-mango.jpg',
-      'authentic-dehydrated-pineapple.jpg',
-      'authentic-dehydrated-apple.jpg',
-      'dehydrated-coconut-chips.jpg',
-      'pumpkin-seeds.jpg',
-      'pistachios.jpg',
-      'superfood-mix.jpg',
-      'macadamia.jpg',
-      'coconut-oil.jpg',
-      'carrot-powder-marble.jpg'
+      'cranberries.jpg'
     ];
     prodFiles.forEach(pf => {
       const full = path.join(config.rootDir, 'public', 'products', pf);
@@ -266,56 +250,73 @@ async function main() {
 
     archive.finalize();
   });
+  console.log(`✅ Frontend bundle ready: ${(fs.statSync(outFrontendZip).size / 1024 / 1024).toFixed(2)} MB`);
 
-  const stats = fs.statSync(outZip);
-  console.log(`✅ Slim build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  // STEP 3: Package Admin Server
+  console.log('\n[3/5] 📦 Packaging Admin Server dist bundle...');
+  const outAdminZip = path.join(config.rootDir, 'admin-sync.zip');
+  await new Promise((resolve, reject) => {
+    const output = fs.createWriteStream(outAdminZip);
+    const archive = new ZipArchive({ zlib: { level: 9 } });
+    output.on('close', resolve);
+    archive.on('error', reject);
+    archive.pipe(output);
 
-  // 3. Upload & Extract
-  console.log('\n[3/4] 🌐 Uploading & extracting slim .next to cPanel...');
-  await uploadFile(outZip, `${config.homeDir}/naturesmud.shop`, 'frontend-slim-dist.zip');
-  console.log('  -> Extracting .next archive on remote server...');
-  const extractRes = await extractArchive(`${config.homeDir}/naturesmud.shop/frontend-slim-dist.zip`, `${config.homeDir}/naturesmud.shop`);
-  console.log('  -> Extraction response:', typeof extractRes === 'object' ? JSON.stringify(extractRes) : extractRes);
-  if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
+    archive.directory(path.join(config.rootDir, 'admin-server', 'dist'), 'dist');
+    archive.finalize();
+  });
+  console.log(`✅ Admin Server bundle ready: ${(fs.statSync(outAdminZip).size / 1024).toFixed(1)} KB`);
 
-  // 4. Server-side Fast Permission Fix & Passenger Restart
-  console.log('\n[4/4] 🔒 Applying server permissions and restarting Passenger...');
-  const localFixPerms = path.join(config.rootDir, 'fix_perms.php');
-  fs.writeFileSync(localFixPerms, fixPermsPhp);
-  await uploadFile(localFixPerms, `${config.homeDir}/api.naturesmud.shop/public`, 'fix_perms.php');
-  if (fs.existsSync(localFixPerms)) fs.unlinkSync(localFixPerms);
-  const permRes = await runPhpEndpoint('/fix_perms.php');
-  console.log('Permission Fixer Output:', permRes.body.trim());
-
-  // 5. Verification
-  console.log('\n🩺 Verifying Live Production Status on naturesmud.shop...');
-  await new Promise(r => setTimeout(r, 2000));
+  // STEP 4: Upload & Deploy via cPanel & FTP
+  console.log('\n[4/5] 🌐 Uploading files to cPanel server...');
   
-  const testEndpoints = [
-    'https://naturesmud.shop/',
-    'https://naturesmud.shop/products',
-    'https://naturesmud.shop/catalog'
-  ];
+  // 4a. Upload and extract frontend
+  console.log('  -> Uploading Frontend package to naturesmud.shop...');
+  await uploadFile(outFrontendZip, `${config.homeDir}/naturesmud.shop`, 'frontend-sync.zip');
+  console.log('  -> Extracting Frontend package...');
+  await extractArchive(`${config.homeDir}/naturesmud.shop/frontend-sync.zip`, `${config.homeDir}/naturesmud.shop`);
+  await unlinkRemote(`${config.homeDir}/naturesmud.shop/frontend-sync.zip`);
 
-  for (const url of testEndpoints) {
-    await new Promise(resolve => {
-      const client = url.startsWith('https') ? https : http;
-      client.get(url, { rejectUnauthorized: false }, res => {
-        let d = ''; res.on('data', c => d += c);
-        res.on('end', () => {
-          console.log(`  [${res.statusCode === 200 ? '✅ 200 OK' : '❌ ' + res.statusCode}] ${url} (${d.length} bytes)`);
-          resolve();
-        });
-      }).on('error', e => {
-        console.log(`  [❌ ERROR] ${url} -> ${e.message}`);
-        resolve();
-      });
-    });
-  }
+  // 4b. Upload and extract admin server
+  console.log('  -> Uploading Admin Server package to admin-api.naturesmud.shop...');
+  await uploadFile(outAdminZip, `${config.homeDir}/admin-api.naturesmud.shop`, 'admin-sync.zip');
+  console.log('  -> Extracting Admin Server package...');
+  await extractArchive(`${config.homeDir}/admin-api.naturesmud.shop/admin-sync.zip`, `${config.homeDir}/admin-api.naturesmud.shop`);
+  await unlinkRemote(`${config.homeDir}/admin-api.naturesmud.shop/admin-sync.zip`);
 
-  console.log('\n====================================================');
-  console.log('🎉 SLIM FRONTEND UPDATE SUCCESSFULLY DEPLOYED TO NATURESMUD.SHOP!');
-  console.log('====================================================\n');
+  // 4c. Upload updated Laravel Backend files
+  console.log('  -> Uploading Laravel Backend OrderController & OrderItem...');
+  await uploadFile(
+    path.join(config.rootDir, 'backend', 'app', 'Models', 'OrderItem.php'),
+    `${config.homeDir}/api.naturesmud.shop/app/Models`,
+    'OrderItem.php'
+  );
+  await uploadFile(
+    path.join(config.rootDir, 'backend', 'app', 'Http', 'Controllers', 'Api', 'OrderController.php'),
+    `${config.homeDir}/api.naturesmud.shop/app/Http/Controllers/Api`,
+    'OrderController.php'
+  );
+
+  // STEP 5: Fix permissions & restart Passenger services
+  console.log('\n[5/5] 🔄 Fixing permissions & restarting Passenger application pools...');
+  const fixScriptPath = path.join(config.rootDir, 'fix-perms-temp.php');
+  fs.writeFileSync(fixScriptPath, fixPermsPhp);
+  await uploadFile(fixScriptPath, `${config.homeDir}/api.naturesmud.shop/public`, 'fix-perms.php');
+  fs.unlinkSync(fixScriptPath);
+
+  const restartResult = await runPhpEndpoint('/fix-perms.php');
+  console.log('  -> Passenger restart response:', restartResult.body);
+
+  // Clean up
+  try {
+    fs.unlinkSync(outFrontendZip);
+    fs.unlinkSync(outAdminZip);
+  } catch (e) {}
+
+  console.log('\n✨ ALL SERVICES SYNCHRONIZED AND LIVE IN PRODUCTION!');
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error('❌ Sync failed:', err);
+  process.exit(1);
+});

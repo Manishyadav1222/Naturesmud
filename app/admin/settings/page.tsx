@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAdminAuth, PERMISSIONS } from '@/lib/admin/auth';
 import { Card, CardContent } from '@/components/admin/Card';
 import { Button } from '@/components/admin/Button';
@@ -8,19 +8,20 @@ import { Input } from '@/components/admin/Input';
 import { Textarea } from '@/components/admin/Textarea';
 import { Select } from '@/components/admin/Select';
 import { EmptyState } from '@/components/admin/EmptyState';
-import { CircleAlert, Save, Store, Globe, Truck, Settings as SettingsIcon, Shield, CheckCircle } from 'lucide-react';
+import { CircleAlert, Save, Store, Globe, Truck, Settings as SettingsIcon, Shield, CheckCircle, Zap, MessageSquare } from 'lucide-react';
 
 export default function AdminSettingsPage() {
   const { hasPermission } = useAdminAuth();
-  const [activeTab, setActiveTab] = useState('general');
+  const [activeTab, setActiveTab] = useState('automation');
   const [saved, setSaved] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [settings, setSettings] = useState({
     storeName: 'NaturesMud',
     tagline: 'Pure Food · Real Nature · 0 Additives · 0 Preservatives',
     supportEmail: 'support@naturesmud.com',
     supportPhone: '+977-1-5550123',
     address: 'Kathmandu, Nepal',
-    whatsapp: '+977-9713888002',
+    whatsapp: '+977-9819844486',
     facebook: 'https://facebook.com/naturesmud',
     instagram: 'https://instagram.com/naturesmud',
     tiktok: 'https://tiktok.com/@naturesmud',
@@ -35,7 +36,24 @@ export default function AdminSettingsPage() {
     seoTitle: 'NaturesMud — Pure Himalayan Superfoods & Whole Food Nutrition Nepal',
     seoDescription: 'Authentic pure Himalayan superfoods, whole food powders, and dehydrated fruits with 0 additives and 0 preservatives.',
     announcement: 'Free shipping on orders over Rs. 10,000!',
+    callmebotApiKey: '',
+    metaAccessToken: '',
+    metaPhoneNumberId: '',
+    telegramBotToken: '',
+    telegramChatId: '',
+    customGatewayUrl: '',
   });
+
+  useEffect(() => {
+    fetch('/api/admin/settings')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          setSettings((prev) => ({ ...prev, ...data.data }));
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const canManage = hasPermission(PERMISSIONS.MANAGE_SETTINGS);
 
@@ -49,9 +67,24 @@ export default function AdminSettingsPage() {
     );
   }
 
-  const handleSave = () => {
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+      const res = await fetch('/api/admin/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSaved(true);
+        setTimeout(() => setSaved(false), 3000);
+      }
+    } catch {
+      // Non-blocking
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const updateField = (key: string, value: string) => {
@@ -59,6 +92,7 @@ export default function AdminSettingsPage() {
   };
 
   const tabsList = [
+    { id: 'automation', label: 'WhatsApp & Automation', icon: Zap },
     { id: 'general', label: 'General', icon: SettingsIcon },
     { id: 'store', label: 'Store', icon: Save },
     { id: 'shipping', label: 'Shipping', icon: Truck },
@@ -105,6 +139,108 @@ export default function AdminSettingsPage() {
 
       <Card>
         <CardContent className="pt-6">
+          {activeTab === 'automation' && (
+            <div className="space-y-6">
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 text-xs">
+                <h3 className="text-sm font-bold text-emerald-950 flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-[#2D5A27]" />
+                  Automated Background WhatsApp & Push Notifications
+                </h3>
+                <p className="text-gray-600 mt-1 leading-relaxed">
+                  Configure how Nature's Mud Nepal automatically dispatches order invoices, customer notifications, and mobile alert pings whenever a new order is received.
+                </p>
+              </div>
+
+              {/* Business WhatsApp Number */}
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">Business WhatsApp Alert Number</label>
+                  <Input
+                    placeholder="+977-9819844486"
+                    value={settings.whatsapp}
+                    onChange={(e) => updateField('whatsapp', e.target.value)}
+                  />
+                  <p className="mt-1 text-[11px] text-gray-500">The destination phone number where automatic order notifications are sent.</p>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">
+                    CallMeBot WhatsApp API Key <span className="text-emerald-600 font-bold">(100% Free Auto-Send)</span>
+                  </label>
+                  <Input
+                    placeholder="e.g. 849201"
+                    value={settings.callmebotApiKey || ''}
+                    onChange={(e) => updateField('callmebotApiKey', e.target.value)}
+                  />
+                  <p className="mt-1 text-[11px] text-gray-500">
+                    Get instant background WhatsApp messages on every order without Meta verification!
+                  </p>
+                </div>
+              </div>
+
+              {/* CallMeBot 30-Second Guide Card */}
+              <div className="p-3.5 bg-amber-50/70 border border-amber-200 rounded-xl text-xs space-y-1.5 text-amber-900">
+                <p className="font-bold text-amber-950 flex items-center gap-1.5">
+                  <span>📱</span> How to activate 100% Free Automatic WhatsApp in 30 seconds:
+                </p>
+                <ol className="list-decimal list-inside space-y-1 text-amber-800 text-[11px]">
+                  <li>Open your WhatsApp on phone (<span className="font-mono font-bold">+977 9819844486</span>).</li>
+                  <li>Send this exact message to CallMeBot: <span className="font-mono bg-white px-1.5 py-0.5 rounded border font-bold">I allow callmebot to send me messages</span> to number: <span className="font-mono font-bold">+34 644 44 20 48</span> or <span className="font-mono font-bold">+34 644 97 54 81</span>.</li>
+                  <li>CallMeBot will immediately reply to you on WhatsApp with your personal <strong>apikey</strong>.</li>
+                  <li>Paste that API Key in the field above and click <strong>Save Changes</strong>. That's it! Every new order will instantly ding your WhatsApp automatically!</li>
+                </ol>
+              </div>
+
+              {/* Meta Cloud API Configuration */}
+              <div className="pt-4 border-t border-gray-100 space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700">Meta WhatsApp Cloud API (Optional Enterprise)</h4>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-gray-700">Meta Access Token</label>
+                    <Input
+                      type="password"
+                      placeholder="EAAG..."
+                      value={settings.metaAccessToken || ''}
+                      onChange={(e) => updateField('metaAccessToken', e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-gray-700">Meta Phone Number ID</label>
+                    <Input
+                      placeholder="1092837465..."
+                      value={settings.metaPhoneNumberId || ''}
+                      onChange={(e) => updateField('metaPhoneNumberId', e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Telegram Instant Mobile Alerts (Free) */}
+              <div className="pt-4 border-t border-gray-100 space-y-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700">Telegram Instant Order Alerts (Free Push Alerts with Sound)</h4>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-gray-700">Telegram Bot Token</label>
+                    <Input
+                      type="password"
+                      placeholder="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+                      value={settings.telegramBotToken || ''}
+                      onChange={(e) => updateField('telegramBotToken', e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-gray-700">Telegram Chat ID</label>
+                    <Input
+                      placeholder="987654321"
+                      value={settings.telegramChatId || ''}
+                      onChange={(e) => updateField('telegramChatId', e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {activeTab === 'general' && (
             <div className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">

@@ -215,9 +215,9 @@ export default function CampaignCombosShowcaseSection() {
               transition={{ duration: 0.2 }}
               className="relative z-10 w-full"
             >
-              <div className="grid lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+              <div className="grid md:grid-cols-12 gap-5 md:gap-6 lg:gap-8 items-center">
                 {/* Left Column: Offer Details & Benefits */}
-                <div className="lg:col-span-7 space-y-3 sm:space-y-4">
+                <div className="md:col-span-7 space-y-3 sm:space-y-4">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="px-2.5 py-0.5 rounded-full bg-gold/20 text-gold-900 text-[10px] sm:text-xs font-extrabold uppercase tracking-wide border border-gold/40">
                       {currentOffer.badge}
@@ -293,7 +293,7 @@ export default function CampaignCombosShowcaseSection() {
                 </div>
 
                 {/* Right Column: 3-Product Stack */}
-                <div className="lg:col-span-5 bg-gradient-to-br from-cream-50 via-white to-cream-100/80 rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-ink/8 shadow-inner">
+                <div className="md:col-span-5 bg-gradient-to-br from-cream-50 via-white to-cream-100/80 rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-ink/8 shadow-inner">
                   <p className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-ink/50 mb-2 flex items-center justify-between">
                     <span>Included in Bundle ({currentOffer.items.length} Full Packs):</span>
                     <span className="text-primary font-bold">100% Himalayan</span>

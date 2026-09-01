@@ -94,7 +94,7 @@ function TrackOrderContent() {
   ];
 
   const waInquiryLink = `https://wa.me/9779819844486?text=${encodeURIComponent(
-    `Hello NaturesMud! I'd like to check the delivery update for my order #${orderId || ''}.`
+    `*Namaste NaturesMud Nepal!* 🙏\nI would like to inquire about the live delivery status of my order:\n\n📦 *Order Number:* ${orderId || 'NM-'}\n\nPlease update me on the courier dispatch. Thank you!`
   )}`;
 
   return (

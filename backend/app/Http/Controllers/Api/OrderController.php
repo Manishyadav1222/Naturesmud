@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         return response()->json(
-            $request->user()->orders()->with('items', 'statusHistories')->latest()->paginate(10)
+            $request->user()->orders()->with('items.product', 'statusHistories')->latest()->paginate(10)
         );
     }
 
@@ -175,7 +175,7 @@ class OrderController extends Controller
 
             return response()->json([
                 'message' => $isPaidOnline ? 'Order placed and payment received! Your order is ready to process.' : 'Order placed successfully.',
-                'order' => $order->load('items', 'statusHistories'),
+                'order' => $order->load('items.product', 'statusHistories'),
             ], 201);
         });
     }
@@ -196,7 +196,7 @@ class OrderController extends Controller
     public function lookup(string $orderNumber)
     {
         $order = Order::where('order_number', $orderNumber)
-            ->with('items', 'statusHistories')
+            ->with('items.product', 'statusHistories')
             ->first();
 
         if (!$order) {
@@ -209,7 +209,7 @@ class OrderController extends Controller
     public function show(Request $request, string $orderNumber)
     {
         $order = Order::where('order_number', $orderNumber)
-            ->with('items', 'statusHistories')
+            ->with('items.product', 'statusHistories')
             ->firstOrFail();
 
         abort_unless($request->user() && (
@@ -228,7 +228,7 @@ class OrderController extends Controller
 
         $order = Order::where('order_number', $validated['order_number'])
             ->where('shipping_phone', $validated['phone'])
-            ->with('items', 'statusHistories')
+            ->with('items.product', 'statusHistories')
             ->first();
 
         if (!$order) {

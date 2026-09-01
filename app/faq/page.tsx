@@ -169,8 +169,8 @@ export default function FAQPage() {
                 </span>
                 <p className="font-semibold text-dark text-sm">Call Us</p>
                 <p className="text-xs text-gray-500 mt-0.5">Sun–Fri, 9am–6pm</p>
-                <a href="tel:+9779713888002" className="text-primary text-xs font-bold mt-2 hover:underline">
-                  +977 9713888002
+                <a href="tel:+9779819844486" className="text-primary text-xs font-bold mt-2 hover:underline">
+                  +977 9819844486
                 </a>
               </div>
 

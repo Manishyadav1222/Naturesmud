@@ -47,9 +47,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       };
     }
   } catch (err: any) {
-    if (err.response?.status === 404) {
-      return {};
-    }
+    post = getBlogPostBySlug(slug);
+  }
+
+  if (!post) {
     post = getBlogPostBySlug(slug);
   }
 
@@ -116,9 +117,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       };
     }
   } catch (err: any) {
-    if (err.response?.status === 404) {
-      notFound();
-    }
+    post = getBlogPostBySlug(slug);
+  }
+
+  if (!post) {
     post = getBlogPostBySlug(slug);
   }
 

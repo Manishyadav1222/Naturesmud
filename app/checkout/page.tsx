@@ -24,6 +24,12 @@ import {
   Gift,
   Printer,
   User,
+  Activity,
+  Send,
+  Radio,
+  Clock,
+  ExternalLink,
+  Package,
 } from 'lucide-react';
 import { useCartStore, resolveCartProduct } from '@/lib/store/cart-store';
 import { useOrderStore } from '@/lib/store/order-store';
@@ -102,6 +108,7 @@ export default function CheckoutPage() {
   const [whatsappLink, setWhatsappLink] = useState<string | null>(null);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
+  const [savedOrderedItems, setSavedOrderedItems] = useState<any[]>([]);
 
   // Auto-fill registered user credentials & delivery details on mount
   useEffect(() => {
@@ -304,8 +311,12 @@ export default function CheckoutPage() {
           name: cartProduct.name || String(it.productId),
           quantity: it.quantity,
           price: cartProduct.price,
+          image: cartProduct.image || '/products/sweet-potato-powder.jpg',
+          weight: cartProduct.weight || '100g',
         };
       });
+
+      setSavedOrderedItems(orderItems);
 
       useOrderStore.getState().addOrder({
         orderNumber: order.order_number,
@@ -354,15 +365,6 @@ export default function CheckoutPage() {
 
       const directWaUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(waInvoiceText)}`;
       setWhatsappLink(directWaUrl);
-
-      // Instantly open WhatsApp in real-time
-      if (typeof window !== 'undefined') {
-        try {
-          window.open(directWaUrl, '_blank');
-        } catch {
-          // Handled via confirmation screen button
-        }
-      }
 
       // Trigger internal server notification webhook
       try {
@@ -414,7 +416,7 @@ export default function CheckoutPage() {
     const directWaLines = [
       `*🌿 Namaste NaturesMud Nepal!*`,
       ``,
-      `I have just placed an order on your website:`,
+      `I have placed an order on your website:`,
       `━━━━━━━━━━━━━━━━━━━━`,
       `📦 *Order:* #${placedOrder.order_number}`,
       `👤 *Customer:* ${form.name}`,
@@ -438,96 +440,249 @@ export default function CheckoutPage() {
 
     return (
       <>
-        <div className="py-16 bg-[#FAF7F2] min-h-[85vh] flex items-center justify-center">
-          <div className="mx-auto max-w-2xl px-4 w-full">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-gray-200 shadow-xl text-center space-y-6">
-              <div className="relative w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto shadow-inner">
-                <span className="absolute inset-0 rounded-full bg-emerald-400/20 animate-ping" />
-                <CheckCircle2 className="w-10 h-10 text-[#2D5A27] relative z-10" />
-              </div>
+        {/* Festive Firecrackers & Celebration Styles */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes firecracker-sparkle {
+            0% { transform: scale(0.6) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 12px rgba(234,179,8,0.8)); }
+            100% { transform: scale(0.8) rotate(360deg); opacity: 0; }
+          }
+          @keyframes confetti-flutter {
+            0% { transform: translateY(-20px) rotate(0deg) scale(0.8); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 0.9; }
+            100% { transform: translateY(120px) rotate(720deg) scale(1.1); opacity: 0; }
+          }
+          @keyframes celebratory-glow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(45,90,39,0.3)); }
+            50% { transform: scale(1.04); filter: drop-shadow(0 0 30px rgba(45,90,39,0.6)); }
+          }
+          .animate-sparkle-1 { animation: firecracker-sparkle 2.5s infinite ease-in-out; }
+          .animate-sparkle-2 { animation: firecracker-sparkle 3s infinite 0.7s ease-in-out; }
+          .animate-sparkle-3 { animation: firecracker-sparkle 2.8s infinite 1.4s ease-in-out; }
+          .animate-confetti-1 { animation: confetti-flutter 4s infinite linear; }
+          .animate-confetti-2 { animation: confetti-flutter 4.5s infinite 1.2s linear; }
+          .animate-confetti-3 { animation: confetti-flutter 3.8s infinite 2.1s linear; }
+          .animate-celebration-hero { animation: celebratory-glow 3s infinite ease-in-out; }
+        `}} />
 
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200 mb-3">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  {isOrderReady ? 'Payment Received · Order Ready to Process' : 'Order Placed · Cash on Delivery'}
+        <div className="py-12 sm:py-16 bg-[#FAF7F2] min-h-[90vh] flex items-center justify-center relative overflow-hidden">
+          
+          {/* Floating Celebratory Firecracker Particles & Confetti Ribbons */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            {/* Top Left Bursts */}
+            <div className="absolute top-12 left-10 text-2xl animate-sparkle-1">✨</div>
+            <div className="absolute top-28 left-24 text-3xl animate-sparkle-2">🎆</div>
+            <div className="absolute top-20 left-[15%] w-3 h-3 rounded-full bg-amber-400 animate-confetti-1" />
+            <div className="absolute top-16 left-[22%] w-2.5 h-6 rounded-md bg-emerald-500 rotate-45 animate-confetti-2" />
+            <div className="absolute top-36 left-[8%] text-xl animate-sparkle-3">🎉</div>
+
+            {/* Top Right Bursts */}
+            <div className="absolute top-10 right-12 text-3xl animate-sparkle-2">🎆</div>
+            <div className="absolute top-24 right-20 text-2xl animate-sparkle-1">✨</div>
+            <div className="absolute top-16 right-[18%] w-3 h-3 rounded-full bg-rose-500 animate-confetti-3" />
+            <div className="absolute top-28 right-[25%] w-2.5 h-6 rounded-md bg-amber-500 -rotate-12 animate-confetti-1" />
+            <div className="absolute top-40 right-[10%] text-xl animate-sparkle-3">🎊</div>
+          </div>
+
+          <div className="mx-auto max-w-3xl px-4 w-full relative z-10">
+            <div className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-200 shadow-2xl space-y-8 text-center">
+              
+              {/* Warm Greeting & Celebratory Hero */}
+              <div className="space-y-4">
+                <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-tr from-[#2D5A27] via-emerald-600 to-teal-500 flex items-center justify-center mx-auto shadow-2xl shadow-emerald-700/30 animate-celebration-hero">
+                  <span className="absolute -top-3 -right-3 text-2xl animate-bounce">🎉</span>
+                  <span className="absolute -bottom-2 -left-2 text-xl animate-pulse">✨</span>
+                  <CheckCircle2 className="w-12 h-12 text-white" />
                 </div>
 
-                <h1 className="font-heading font-black text-2xl sm:text-4xl text-gray-900">
-                  {isOrderReady ? 'Your Order is Confirmed & Ready!' : 'Order Placed Successfully!'}
-                </h1>
-
-                <p className="text-gray-600 text-sm sm:text-base mt-2 max-w-md mx-auto">
-                  Thank you for choosing NaturesMud Nepal. Your order has been registered in our central Kathmandu hub.
-                </p>
-              </div>
-
-              {/* Order Details Card */}
-              <div className="bg-[#FAF7F2] rounded-2xl p-5 border border-gray-200 text-left space-y-3 text-sm">
-                <div className="flex justify-between items-center pb-2 border-b border-gray-200">
-                  <span className="text-gray-500 font-medium">Order Number</span>
-                  <span className="font-mono font-bold text-base text-[#2D5A27]">{placedOrder.order_number}</span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-[#2D5A27] text-xs font-black border border-emerald-200 shadow-xs">
+                  <Sparkles className="w-4 h-4 text-emerald-600 animate-spin" style={{ animationDuration: '4s' }} />
+                  <span>{isOrderReady ? 'Payment Received · Order Ready for Packaging' : 'Order Placed Successfully · Cash on Delivery'}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-500 font-medium">Customer Name</span>
-                  <span className="font-bold text-gray-900">{form.name}</span>
+
+                <div>
+                  <h1 className="font-heading font-black text-2xl sm:text-4xl text-gray-900 tracking-tight">
+                    Dhanyabad, {form.name}! 🙏
+                  </h1>
+                  <p className="text-gray-600 text-sm sm:text-base max-w-lg mx-auto mt-2">
+                    Your Himalayan organic wellness package has been registered and is being freshly prepared with 0 additives & 0 preservatives.
+                  </p>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-500 font-medium">Delivery Destination</span>
-                  <span className="font-bold text-gray-900">
-                    {form.city} ({isValley ? 'Inside Kathmandu Valley' : 'Outside Valley Courier'})
+
+                {/* Order ID & Live Status Bar */}
+                <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-gray-100 border border-gray-200 text-xs font-mono font-bold text-gray-800 shadow-2xs">
+                    <span>Order No:</span>
+                    <span className="text-[#2D5A27] font-black">{placedOrder.order_number}</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigator.clipboard.writeText(placedOrder.order_number);
+                        setCopiedField('order_id');
+                        setTimeout(() => setCopiedField(null), 2000);
+                      }}
+                      className="p-1 hover:text-[#2D5A27] transition-colors cursor-pointer"
+                      title="Copy Order ID"
+                    >
+                      {copiedField === 'order_id' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-100/70 border border-emerald-200 text-emerald-900 text-xs font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
+                    {isValley ? '⚡ Inside Valley: 24–48 Hours Delivery' : '🚚 Outside Valley: 2–4 Days Courier'}
                   </span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-500 font-medium">Payment Method</span>
-                  <span className="font-bold text-gray-900 uppercase">
-                    {paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash on Delivery (COD)'}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center pt-2 border-t border-gray-200 text-base font-black">
-                  <span>Total Amount</span>
-                  <span className="text-[#2D5A27]">{formatPrice(finalAmount)}</span>
+
+                {/* 📦 Live Order Status Step Timeline (Mobile & Tab Optimized) */}
+                <div className="bg-[#FAF7F2] rounded-2xl p-4 border border-emerald-200/80 text-left space-y-2 mt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-gray-500 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-[#2D5A27]" /> Live Order Status
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#2D5A27] text-[11px] font-black border border-emerald-300">
+                      🟢 In Preparation
+                    </span>
+                  </div>
+
+                  {/* 4-Step Visual Progress Bar */}
+                  <div className="pt-1">
+                    <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-[#2D5A27] to-emerald-500 rounded-full w-[45%]" />
+                    </div>
+                    <div className="grid grid-cols-4 text-[10px] text-gray-500 mt-1.5 font-bold text-center">
+                      <span className="text-[#2D5A27]">1. Placed ✓</span>
+                      <span className="text-emerald-700 font-black">2. In Prep ⏳</span>
+                      <span>3. Packaging</span>
+                      <span>4. Dispatched</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Primary Actions: WhatsApp & Invoice */}
+              {/* Ordered Items Summary */}
+              <div className="bg-[#FAF7F2] rounded-3xl p-5 sm:p-7 border border-gray-200 text-left space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-200">
+                  <div className="flex items-center gap-2">
+                    <Package className="w-4 h-4 text-[#2D5A27]" />
+                    <h3 className="font-heading font-black text-sm text-gray-900">
+                      Ordered Himalayan Superfoods
+                    </h3>
+                  </div>
+                  <span className="text-xs font-bold text-gray-500">
+                    {savedOrderedItems.length > 0 ? `${savedOrderedItems.length} Item(s)` : 'Order Items'}
+                  </span>
+                </div>
+
+                <div className="divide-y divide-gray-200/70 space-y-2">
+                  {(savedOrderedItems.length > 0 ? savedOrderedItems : [
+                    { name: 'NaturesMud Himalayan Superfoods Package', quantity: 1, price: total, image: '/products/sweet-potato-powder.jpg' }
+                  ]).map((item, idx) => (
+                    <div key={idx} className="flex items-center justify-between gap-4 pt-2.5 first:pt-0">
+                      <div className="flex items-center gap-3">
+                        <div className="relative w-12 h-12 rounded-xl bg-white border border-gray-200 overflow-hidden shrink-0 shadow-xs">
+                          <Image
+                            src={item.image || '/products/sweet-potato-powder.jpg'}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                            sizes="48px"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-bold text-xs sm:text-sm text-gray-900">{item.name}</p>
+                          <p className="text-[11px] text-gray-500 font-medium">Quantity: <strong className="text-gray-800">{item.quantity}</strong></p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-black text-xs sm:text-sm text-[#2D5A27]">
+                          Rs. {(Number(item.price) * item.quantity).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Delivery & Payment Summary Breakdown */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                {/* Delivery Destination */}
+                <div className="bg-[#FAF7F2] rounded-3xl p-5 border border-gray-200 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-gray-500 pb-1 border-b border-gray-200">
+                    <Truck className="w-3.5 h-3.5 text-[#2D5A27]" />
+                    <span>Delivery Address</span>
+                  </div>
+                  <p className="font-bold text-sm text-gray-900">{form.name}</p>
+                  <p className="text-xs text-gray-600">{form.address}, {form.city}, {form.province}</p>
+                  <p className="text-xs font-mono font-bold text-gray-700 pt-1">Phone: {form.phone}</p>
+                </div>
+
+                {/* Payment Breakdown */}
+                <div className="bg-[#FAF7F2] rounded-3xl p-5 border border-gray-200 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-gray-500 pb-1 border-b border-gray-200">
+                    <CreditCard className="w-3.5 h-3.5 text-[#2D5A27]" />
+                    <span>Payment Summary</span>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-600">
+                    <span>Payment Mode:</span>
+                    <span className="font-bold text-gray-900 uppercase">
+                      {paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash on Delivery (COD)'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-xs text-gray-600">
+                    <span>Delivery Charge:</span>
+                    <span className="font-bold text-emerald-700">{shipping === 0 ? 'FREE' : `Rs. ${shipping}`}</span>
+                  </div>
+                  <div className="flex justify-between text-sm font-black pt-2 border-t border-gray-200">
+                    <span className="text-gray-900">Total Payable:</span>
+                    <span className="text-[#2D5A27] text-base">{formatPrice(finalAmount)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons: WhatsApp Support, Invoice & My Orders */}
               <div className="space-y-3 pt-2">
                 <a
                   href={effectiveWhatsAppLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg transition-transform hover:scale-[1.02] animate-pulse"
+                  className="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Send Order & Invoice to WhatsApp (+977 9819844486)</span>
+                  <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
+                  <span>Chat on WhatsApp (+977 9819844486)</span>
                 </a>
 
-                <button
-                  type="button"
-                  onClick={() => setShowInvoiceModal(true)}
-                  className="w-full py-3.5 px-6 rounded-2xl bg-white border-2 border-[#2D5A27] text-[#2D5A27] hover:bg-emerald-50 font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
-                >
-                  <Printer className="w-5 h-5" />
-                  <span>View & Print Official Invoice</span>
-                </button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowInvoiceModal(true)}
+                    className="flex-1 py-3.5 px-5 rounded-2xl bg-white border-2 border-[#2D5A27] text-[#2D5A27] hover:bg-emerald-50 font-black text-sm flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
+                  >
+                    <Printer className="w-4 h-4" />
+                    <span>View & Print Official Invoice</span>
+                  </button>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-1">
                   <Link
                     href={`/track-order?number=${placedOrder.order_number}`}
-                    className="flex-1 py-3.5 px-4 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
+                    className="flex-1 py-3.5 px-5 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
                   >
                     <Truck className="w-4 h-4" />
-                    <span>Track Live Order</span>
+                    <span>My Orders &amp; Status</span>
                   </Link>
+                </div>
 
+                <div className="pt-2">
                   <Link
                     href="/products"
-                    className="flex-1 py-3.5 px-4 rounded-2xl bg-white border border-gray-200 text-gray-800 font-bold text-sm flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-[#2D5A27] transition-colors"
                   >
-                    <span>Continue Shopping</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>Continue Exploring NaturesMud Organic Superfoods</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

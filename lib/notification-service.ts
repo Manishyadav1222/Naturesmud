@@ -16,7 +16,10 @@ export class NotificationService {
     /**
      * Sends new order notification with attached PDF invoice to business WhatsApp
      */
-    async sendNewOrder(order: InvoiceOrderInput, options?: { forceResend?: boolean }): Promise<SendWhatsAppResult> {
+    async sendNewOrder(
+      order: InvoiceOrderInput,
+      options?: { forceResend?: boolean; recipientOverride?: string }
+    ): Promise<SendWhatsAppResult> {
       return sendOrderInvoiceWhatsAppNotification(order, options);
     },
 

@@ -23,6 +23,19 @@ class OrderItem extends Model
         ];
     }
 
+    protected $appends = ['product_image'];
+
+    public function getProductImageAttribute(): ?string
+    {
+        if ($this->product && !empty($this->product->images)) {
+            $imgs = is_array($this->product->images) ? $this->product->images : json_decode($this->product->images, true);
+            if (!empty($imgs) && is_array($imgs)) {
+                return $imgs[0];
+            }
+        }
+        return $this->product?->image ?? '/products/sweet-potato-powder.jpg';
+    }
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);

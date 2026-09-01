@@ -176,11 +176,11 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
             </p>
             <p className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />
-              +977 9713888002 (Customer Care / WhatsApp)
+              +977 9819844486 (Customer Care / WhatsApp)
             </p>
             <p className="flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />
-              info@naturesmud.com · www.naturesmud.com
+              info@naturesmud.shop · www.naturesmud.shop
             </p>
           </div>
         </div>

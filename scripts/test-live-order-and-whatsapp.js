@@ -94,8 +94,8 @@ async function runLiveOrderTest() {
 
       if (notifyRes.status === 200 && notifyRes.data?.whatsappLink) {
         console.log(`  ✅ Generated WhatsApp link: ${notifyRes.data.whatsappLink}`);
-        const hasCorrectNumber = notifyRes.data.whatsappLink.includes('9819844486');
-        console.log(`  ✅ Targets New Testing WhatsApp Number (+9779819844486): ${hasCorrectNumber}`);
+        const hasCorrectNumber = notifyRes.data.whatsappLink.includes('9779713888002');
+        console.log(`  ✅ Targets Official WhatsApp Number (+977 971-3888002): ${hasCorrectNumber}`);
       }
 
       // Test 3: Test direct invoice endpoint

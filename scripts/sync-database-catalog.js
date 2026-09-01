@@ -95,6 +95,7 @@ $cats = [
     'dried-fruits' => 'Dried Fruits',
     'nuts' => 'Nuts',
     'oils' => 'Oils',
+    'salts-spices' => 'Salts & Spices',
     'combos' => 'Combos'
 ];
 
@@ -117,9 +118,15 @@ ${productsPayloadJson}
 JSONDATA;
 
 $productsList = json_decode($rawJson, true);
+$activeSlugs = [];
 $upsertCount = 0;
 
+// Remove dried-figs or old mismatched records
+$pdo->exec("DELETE FROM products WHERE slug = 'dried-figs' OR id = 160");
+
 foreach ($productsList as $p) {
+    $slug = $p['slug'];
+    $activeSlugs[] = $slug;
     $catSlug = $p['categorySlug'] ?? 'superfoods';
     $catId = $catMap[$catSlug] ?? 1;
 
@@ -131,45 +138,74 @@ foreach ($productsList as $p) {
     $weightNum = isset($matches[1]) ? (float)$matches[1] : 100.00;
     $unit = stripos($weightStr, 'ml') !== false ? 'ml' : 'g';
 
-    $stmt = $pdo->prepare("INSERT INTO products 
-        (id, name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 
-        VALUES 
-        (:id, :name, :slug, :category_id, :sku, :price, :compare_at_price, :cost_price, :stock_quantity, :weight, :unit, :images, :short_description, :description, 1, 1, 1, 4.9, 50, NOW(), NOW())
-        ON DUPLICATE KEY UPDATE 
-        name = VALUES(name),
-        category_id = VALUES(category_id),
-        price = VALUES(price),
-        compare_at_price = VALUES(compare_at_price),
-        weight = VALUES(weight),
-        unit = VALUES(unit),
-        images = VALUES(images),
-        short_description = VALUES(short_description),
-        description = VALUES(description),
-        is_active = 1,
-        updated_at = NOW()");
+    // Check if product exists by slug
+    $existing = $pdo->prepare("SELECT id FROM products WHERE slug = :slug LIMIT 1");
+    $existing->execute(['slug' => $slug]);
+    $row = $existing->fetch();
 
-    $stmt->execute([
-        'id' => (int)($p['dbId'] ?? $p['id']),
-        'name' => $p['name'],
-        'slug' => $p['slug'],
-        'category_id' => $catId,
-        'sku' => 'NM-' . strtoupper(str_replace('-', '_', $p['slug'])),
-        'price' => $price,
-        'compare_at_price' => $mrp,
-        'cost_price' => round($price * 0.6, 2),
-        'stock_quantity' => (int)($p['stock'] ?? 100),
-        'weight' => $weightNum,
-        'unit' => $unit,
-        'images' => $imagesJson,
-        'short_description' => $p['shortDescription'] ?? $p['description'],
-        'description' => $p['description']
-    ]);
+    if ($row) {
+        $stmt = $pdo->prepare("UPDATE products SET 
+            name = :name,
+            category_id = :category_id,
+            price = :price,
+            compare_at_price = :compare_at_price,
+            stock_quantity = :stock_quantity,
+            weight = :weight,
+            unit = :unit,
+            images = :images,
+            short_description = :short_description,
+            description = :description,
+            is_active = 1,
+            is_featured = 1,
+            updated_at = NOW()
+            WHERE slug = :slug");
+        $stmt->execute([
+            'slug' => $slug,
+            'name' => $p['name'],
+            'category_id' => $catId,
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'stock_quantity' => (int)($p['stock'] ?? 100),
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'images' => $imagesJson,
+            'short_description' => $p['shortDescription'] ?? $p['description'],
+            'description' => $p['description']
+        ]);
+    } else {
+        $stmt = $pdo->prepare("INSERT INTO products 
+            (name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 
+            VALUES 
+            (:name, :slug, :category_id, :sku, :price, :compare_at_price, :cost_price, :stock_quantity, :weight, :unit, :images, :short_description, :description, 1, 1, 1, 4.9, 50, NOW(), NOW())");
+        $stmt->execute([
+            'name' => $p['name'],
+            'slug' => $slug,
+            'category_id' => $catId,
+            'sku' => 'NM-' . strtoupper(str_replace('-', '_', $slug)),
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'cost_price' => round($price * 0.6, 2),
+            'stock_quantity' => (int)($p['stock'] ?? 100),
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'images' => $imagesJson,
+            'short_description' => $p['shortDescription'] ?? $p['description'],
+            'description' => $p['description']
+        ]);
+    }
     $upsertCount++;
+}
+
+// Ensure any non-active slugs are deactivated
+if (!empty($activeSlugs)) {
+    $placeholders = implode(',', array_fill(0, count($activeSlugs), '?'));
+    $deactStmt = $pdo->prepare("UPDATE products SET is_active = 0 WHERE slug NOT IN ($placeholders)");
+    $deactStmt->execute($activeSlugs);
 }
 
 echo json_encode([
     'success' => true,
-    'message' => "Successfully synchronized {$upsertCount} products from master catalog into MySQL database!",
+    'message' => "Successfully synchronized {$upsertCount} products from master catalog into MySQL database matching exact slugs!",
     'timestamp' => date('Y-m-d H:i:s')
 ]);
 `;
@@ -179,19 +215,22 @@ async function main() {
   fs.mkdirSync(path.dirname(localPhpPath), { recursive: true });
   fs.writeFileSync(localPhpPath, phpScript, 'utf8');
 
-  console.log('1. Uploading master database sync script to api.naturesmud.shop/public via FTP...');
-  const remotePath = '/api.naturesmud.shop/public/sync_db_catalog.php';
-  await uploadFileFtp(localPhpPath, remotePath);
-  if (fs.existsSync(localPhpPath)) fs.unlinkSync(localPhpPath);
+  console.log('1. Uploading sync_db_catalog.php to API backend...');
+  const remotePhpPath = '/api.naturesmud.shop/public/sync_db_catalog.php';
+  await uploadFileFtp(localPhpPath, remotePhpPath);
+  console.log('   Uploaded successfully.');
 
-  console.log('2. Running sync_db_catalog.php via HTTPS...');
+  console.log('2. Triggering database sync via HTTPS...');
   const res = await callHttps('api.naturesmud.shop', '/sync_db_catalog.php');
-  console.log('Response:', res.data);
+  console.log('   Response status:', res.status);
+  console.log('   Response data:', JSON.stringify(res.data, null, 2));
 
-  console.log('3. Cleaning up temporary sync script via FTP...');
-  await removeFileFtp(remotePath);
-
-  console.log('🎉 Database Catalog 100% Synced from authoritative master products.ts!');
+  console.log('3. Cleaning up temporary remote script...');
+  await removeFileFtp(remotePhpPath);
+  console.log('   Cleaned up successfully.');
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error('Fatal sync error:', err);
+  process.exit(1);
+});

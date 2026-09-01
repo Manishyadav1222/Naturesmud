@@ -148,12 +148,12 @@ export function OrdersHeaderWidget() {
           )}
         </motion.div>
 
-        {/* Label: Orders count or Track Order */}
-        <span className="font-semibold tracking-wide whitespace-nowrap">
+        {/* Label: My Orders with count */}
+        <span className="font-semibold tracking-wide whitespace-nowrap text-xs">
           {safeOrders.length > 0 ? (
-            <span>Orders ({safeOrders.length})</span>
+            <span>My Orders ({safeOrders.length})</span>
           ) : (
-            <span>Track Order</span>
+            <span>My Orders</span>
           )}
         </span>
       </motion.button>
@@ -166,21 +166,21 @@ export function OrdersHeaderWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 top-full mt-3 w-80 sm:w-96 z-50 rounded-2xl bg-white shadow-2xl border border-gray-100 p-5 overflow-hidden"
+            className="fixed inset-x-3 top-20 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-3 w-auto sm:w-96 max-w-[calc(100vw-24px)] z-50 rounded-3xl bg-white shadow-2xl border border-gray-200 p-5 overflow-hidden"
           >
             {/* Popover Header */}
             <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-2xl bg-emerald-100 text-[#2D5A27] flex items-center justify-center shadow-xs">
                   <Truck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-sm text-gray-900">Your Orders</h3>
-                  <p className="text-[11px] text-gray-500">Live approval & delivery status</p>
+                  <h3 className="font-heading font-black text-sm text-gray-900">My Orders & Status</h3>
+                  <p className="text-[11px] text-gray-500 font-medium">Live preparation & delivery progress</p>
                 </div>
               </div>
               {safeOrders.length > 0 && (
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span className="text-xs font-black px-2.5 py-1 rounded-full bg-emerald-100 text-[#2D5A27] border border-emerald-200">
                   {safeOrders.length} Active
                 </span>
               )}
@@ -189,47 +189,47 @@ export function OrdersHeaderWidget() {
             {/* Orders Content */}
             {safeOrders.length === 0 ? (
               <div className="text-center py-6">
-                <div className="w-12 h-12 rounded-full bg-cream-100 flex items-center justify-center mx-auto mb-3 text-[#3A6B35]">
+                <div className="w-12 h-12 rounded-2xl bg-cream-100 flex items-center justify-center mx-auto mb-3 text-[#2D5A27]">
                   <PackageCheck className="w-6 h-6" />
                 </div>
-                <p className="font-semibold text-sm text-gray-800">No recent orders</p>
-                <p className="text-xs text-gray-500 mt-1 max-w-[220px] mx-auto">
-                  When you place an order, live status tracking will appear here.
+                <p className="font-bold text-sm text-gray-800">No Recent Orders</p>
+                <p className="text-xs text-gray-500 mt-1 max-w-[240px] mx-auto">
+                  When you place an order, live status tracking and tax invoices will appear here.
                 </p>
                 <Link
                   href="/track-order"
                   onClick={() => setIsOpen(false)}
-                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-[#3A6B35] hover:text-[#2d5429]"
+                  className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-50 text-xs font-bold text-[#2D5A27] hover:bg-emerald-100 transition-colors border border-emerald-200"
                 >
-                  Track an order <ChevronRight className="w-3.5 h-3.5" />
+                  Find Order by ID <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             ) : (
-              <div className="space-y-4 max-h-[380px] overflow-y-auto pr-1">
+              <div className="space-y-3.5 max-h-[380px] overflow-y-auto pr-1">
                 {safeOrders.map((order) => {
                   const statusInfo = getStatusBadge(order.status);
                   return (
                     <div
                       key={order.orderNumber}
-                      className="rounded-xl border border-gray-100 bg-cream-50/50 p-4 transition-all hover:bg-cream-100/60"
+                      className="rounded-2xl border border-gray-200 bg-[#FAF7F2] p-4 transition-all hover:border-[#2D5A27]/40 shadow-xs"
                     >
                       {/* Order Info Bar */}
                       <div className="flex items-center justify-between mb-2">
                         <div>
-                          <span className="text-[11px] uppercase tracking-wider text-gray-400 font-bold">
+                          <span className="text-[10px] uppercase tracking-wider text-gray-500 font-black">
                             Order Number
                           </span>
-                          <p className="text-sm font-bold text-gray-900">{order.orderNumber}</p>
+                          <p className="text-sm font-black text-gray-900 font-mono">{order.orderNumber}</p>
                         </div>
-                        <span className="text-xs font-bold text-[#3A6B35] bg-white px-2.5 py-1 rounded-lg border border-gray-200 shadow-sm">
+                        <span className="text-xs font-black text-[#2D5A27] bg-white px-2.5 py-1 rounded-xl border border-gray-200 shadow-xs">
                           {formatPrice(order.total)}
                         </span>
                       </div>
 
                       {/* Status Tag */}
                       <div className="flex items-center justify-between text-xs mb-3">
-                        <span className="text-gray-500 flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-gold-500" />
+                        <span className="text-gray-500 flex items-center gap-1 text-[11px] font-medium">
+                          <Clock className="w-3 h-3 text-amber-500" />
                           {new Date(order.createdAt).toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
@@ -237,37 +237,37 @@ export function OrdersHeaderWidget() {
                             minute: '2-digit',
                           })}
                         </span>
-                        <span className={`font-semibold px-2.5 py-1 rounded-full border text-[11px] ${statusInfo.color}`}>
+                        <span className={`font-bold px-2.5 py-0.5 rounded-full border text-[11px] ${statusInfo.color}`}>
                           {statusInfo.label}
                         </span>
                       </div>
 
                       {/* Animated Progress Bar */}
-                      <div className="mb-4">
+                      <div className="mb-3.5">
                         <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
-                            animate={{ width: `${(statusInfo.step / 5) * 100}%` }}
+                            animate={{ width: `${Math.max(15, (statusInfo.step / 5) * 100)}%` }}
                             transition={{ duration: 0.8, ease: 'easeOut' }}
-                            className="h-full bg-gradient-to-r from-[#3A6B35] to-[#7AA95C] rounded-full"
+                            className="h-full bg-gradient-to-r from-[#2D5A27] to-emerald-500 rounded-full"
                           />
                         </div>
-                        <div className="flex justify-between text-[10px] text-gray-400 mt-1.5 font-medium">
-                          <span className={statusInfo.step >= 1 ? 'text-[#3A6B35] font-bold' : ''}>Placed</span>
-                          <span className={statusInfo.step >= 2 ? 'text-emerald-700 font-bold' : ''}>Admin Approved</span>
-                          <span className={statusInfo.step >= 4 ? 'text-[#3A6B35] font-bold' : ''}>Shipped</span>
-                          <span className={statusInfo.step >= 5 ? 'text-[#3A6B35] font-bold' : ''}>Delivered</span>
+                        <div className="flex justify-between text-[10px] text-gray-500 mt-1.5 font-bold">
+                          <span className={statusInfo.step >= 1 ? 'text-[#2D5A27]' : ''}>Placed</span>
+                          <span className={statusInfo.step >= 2 ? 'text-emerald-700' : ''}>Confirmed</span>
+                          <span className={statusInfo.step >= 4 ? 'text-[#2D5A27]' : ''}>Shipped</span>
+                          <span className={statusInfo.step >= 5 ? 'text-[#2D5A27]' : ''}>Delivered</span>
                         </div>
                       </div>
 
-                      {/* Action Link: Track Order */}
-                      <div className="pt-2 border-t border-gray-200/60">
+                      {/* Action Link: My Order Details */}
+                      <div className="pt-2 border-t border-gray-200">
                         <Link
                           href={`/track-order?number=${order.orderNumber}`}
                           onClick={() => setIsOpen(false)}
-                          className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-[#3A6B35] text-white rounded-lg text-xs font-semibold hover:bg-[#2d5429] transition-colors"
+                          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#2D5A27] text-white rounded-xl text-xs font-bold hover:bg-[#23471e] transition-colors shadow-xs"
                         >
-                          <Truck className="w-3.5 h-3.5" /> View Order Status Details
+                          <Truck className="w-3.5 h-3.5" /> View My Order & Status
                         </Link>
                       </div>
                     </div>

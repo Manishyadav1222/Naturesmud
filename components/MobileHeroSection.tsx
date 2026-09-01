@@ -16,7 +16,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Flame,
-  Award
+  Award,
+  HeartHandshake,
+  SunMedium,
+  Mountain,
+  Zap,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useUIStore } from '@/lib/store/ui-store';
@@ -43,21 +47,56 @@ export interface MobileHeroPoster {
 
 export const MOBILE_POSTERS: MobileHeroPoster[] = [
   {
-    id: 'papaya-pop',
-    name: 'Papaya Pop',
-    subname: 'Sun-Ripened Himalayan Dehydrated Papaya',
+    id: 'pineapple-splendor',
+    name: 'Pineapple Splendor',
+    subname: 'Naturally Sweet Sun-Dried Himalayan Pineapple',
+    slug: 'dehydrated-pineapple',
+    image: '/images/posters/pineapple-splendor.jpg',
+    price: 480,
+    originalPrice: 560,
+    weight: '100g',
+    badge: '100% Natural',
+    primary: '#D97706',
+    secondary: '#B45309',
+    accent: '#F59E0B',
+    bgTint: 'rgba(217, 119, 6, 0.08)',
+    overlayFrom: 'rgba(217,119,6,0.30)',
+    overlayTo: 'rgba(45,20,0,0.80)',
+  },
+  {
+    id: 'blueberry-orchard',
+    name: 'Blueberry Orchard',
+    subname: 'Antioxidant-Rich Wild Himalayan Blueberries',
+    slug: 'dried-blueberries',
+    image: '/images/posters/blueberries-orchard.jpg',
+    price: 650,
+    originalPrice: 750,
+    weight: '100g',
+    badge: 'Antioxidant Rich',
+    primary: '#6366F1',
+    secondary: '#4338CA',
+    accent: '#818CF8',
+    bgTint: 'rgba(99, 102, 241, 0.08)',
+    overlayFrom: 'rgba(67,56,202,0.30)',
+    overlayTo: 'rgba(15,10,50,0.80)',
+  },
+
+  {
+    id: 'papaya-splash',
+    name: 'Papaya Splash',
+    subname: 'Hand-Cut Pure Naturally Delicious Papaya',
     slug: 'dehydrated-papaya',
-    image: '/images/posters/papaya-pop.jpg',
+    image: '/images/posters/papaya-splash-delight.jpg',
     price: 380,
     originalPrice: 450,
     weight: '100g',
-    badge: '100% Sun Dried',
+    badge: 'Sun-Ripened',
     primary: '#EA580C',
     secondary: '#C2410C',
     accent: '#FB923C',
     bgTint: 'rgba(234, 88, 12, 0.08)',
-    overlayFrom: 'rgba(234,88,12,0.35)',
-    overlayTo: 'rgba(80,15,0,0.75)',
+    overlayFrom: 'rgba(234,88,12,0.30)',
+    overlayTo: 'rgba(60,15,0,0.80)',
   },
   {
     id: 'chia-power',
@@ -73,25 +112,8 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     secondary: '#0F766E',
     accent: '#14B8A6',
     bgTint: 'rgba(13, 148, 136, 0.08)',
-    overlayFrom: 'rgba(13,148,136,0.35)',
-    overlayTo: 'rgba(2,44,34,0.75)',
-  },
-  {
-    id: 'blueberry-bite',
-    name: 'Blueberry Bite',
-    subname: 'Premium Wild Himalayan Dried Blueberries',
-    slug: 'dried-blueberries',
-    image: '/images/posters/blueberry-bite.jpg',
-    price: 650,
-    originalPrice: 750,
-    weight: '100g',
-    badge: 'Antioxidant Rich',
-    primary: '#7C3AED',
-    secondary: '#6D28D9',
-    accent: '#8B5CF6',
-    bgTint: 'rgba(124, 58, 237, 0.08)',
-    overlayFrom: 'rgba(109,40,217,0.35)',
-    overlayTo: 'rgba(20,5,50,0.75)',
+    overlayFrom: 'rgba(13,148,136,0.30)',
+    overlayTo: 'rgba(2,44,34,0.80)',
   },
   {
     id: 'sweet-vibes',
@@ -107,8 +129,8 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     secondary: '#9D174D',
     accent: '#EC4899',
     bgTint: 'rgba(190, 24, 93, 0.08)',
-    overlayFrom: 'rgba(190,24,93,0.35)',
-    overlayTo: 'rgba(60,0,30,0.75)',
+    overlayFrom: 'rgba(190,24,93,0.30)',
+    overlayTo: 'rgba(60,0,30,0.80)',
   },
   {
     id: 'tropical-crunch',
@@ -124,13 +146,60 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     secondary: '#B45309',
     accent: '#F59E0B',
     bgTint: 'rgba(217, 119, 6, 0.08)',
-    overlayFrom: 'rgba(217,119,6,0.35)',
-    overlayTo: 'rgba(60,20,0,0.75)',
+    overlayFrom: 'rgba(217,119,6,0.30)',
+    overlayTo: 'rgba(60,20,0,0.80)',
   },
+];
+
+// Looping dynamic animated typography statements
+const ANIMATED_STATEMENTS = [
+  {
+    icon: Mountain,
+    badge: '100% Single Origin',
+    color: 'from-emerald-600 via-teal-500 to-emerald-700',
+    title: 'Pure, Unadulterated Whole Foods',
+    highlight: 'cultivated across Himalayan valleys.',
+    sub: 'Direct farmer partnerships across Mustang, Jumla, Kavre & Terai.',
+  },
+  {
+    icon: SunMedium,
+    badge: 'Low-Temp Dehydration',
+    color: 'from-amber-500 via-orange-500 to-amber-600',
+    title: 'Gentle Low-Temperature Solar Dehydration',
+    highlight: 'locking in 98% raw live enzymes.',
+    sub: 'Preserving pure natural taste, vibrant vitamins & cellular antioxidants.',
+  },
+  {
+    icon: HeartHandshake,
+    badge: 'Direct Mountain Sourcing',
+    color: 'from-blue-600 via-indigo-500 to-sky-600',
+    title: 'Direct Farmer Partnerships & Fair Trade',
+    highlight: 'with 180+ Nepali mountain families.',
+    sub: 'Sustainably hand-harvested without middlemen or artificial ripening.',
+  },
+  {
+    icon: ShieldCheck,
+    badge: 'Zero Chemical Guarantee',
+    color: 'from-rose-600 via-pink-500 to-rose-700',
+    title: '0 Additives · 0 Preservatives · 0 Added Sugar',
+    highlight: '100% unadulterated botanical purity.',
+    sub: 'Safe for babies, diabetics, fitness athletes & health-conscious homes.',
+  },
+];
+
+const MARQUEE_ITEMS = [
+  { text: '100% Himalayan Origin', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200', icon: '🏔️' },
+  { text: '0 Preservatives', bg: 'bg-amber-50 text-amber-800 border-amber-200', icon: '✨' },
+  { text: 'Gentle Low-Temp Dehydration', bg: 'bg-orange-50 text-orange-800 border-orange-200', icon: '☀️' },
+  { text: 'Direct Farmer Sourcing', bg: 'bg-teal-50 text-teal-800 border-teal-200', icon: '🤝' },
+  { text: 'No Added Sugar', bg: 'bg-pink-50 text-pink-800 border-pink-200', icon: '🍯' },
+  { text: '24h Valley Delivery', bg: 'bg-blue-50 text-blue-800 border-blue-200', icon: '⚡' },
+  { text: 'Baby-Safe Weaning', bg: 'bg-purple-50 text-purple-800 border-purple-200', icon: '👶' },
 ];
 
 export default function MobileHeroSection() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [statementIdx, setStatementIdx] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [addedItem, setAddedItem] = useState<string | null>(null);
@@ -138,15 +207,24 @@ export default function MobileHeroSection() {
   const { addItem, openDrawer } = useCartStore();
   const { openQuickView } = useUIStore();
 
-  // Auto-cycle 3-second loop
+  // Auto-cycle poster cards every 3.2s smoothly
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
-    }, 3000);
+    }, 3200);
     return () => clearInterval(timer);
   }, []);
 
+  // Auto-cycle kinetic typography statement loop every 3.8s
+  useEffect(() => {
+    const statementTimer = setInterval(() => {
+      setStatementIdx((prev) => (prev + 1) % ANIMATED_STATEMENTS.length);
+    }, 3800);
+    return () => clearInterval(statementTimer);
+  }, []);
+
   const currentPoster = MOBILE_POSTERS[activeIdx];
+  const currentStatement = ANIMATED_STATEMENTS[statementIdx];
   const matchedCatalogProduct = products.find((p) => p.slug === currentPoster.slug);
 
   const handleNext = () => {
@@ -193,31 +271,332 @@ export default function MobileHeroSection() {
 
   return (
     <div
-      className="lg:hidden relative w-full overflow-hidden transition-colors duration-1000 px-[1%] py-2"
+      className="lg:hidden relative w-full overflow-hidden transition-colors duration-1000 px-3 sm:px-4 md:px-8 py-3 md:py-8"
       style={{
         backgroundColor: currentPoster.bgTint,
       }}
     >
       {/* Background Ambient Glow Orbs */}
-      <motion.div
-        key={`glow-top-${currentPoster.id}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.35 }}
-        transition={{ duration: 1.0 }}
-        className="absolute -top-12 -right-12 w-64 h-64 rounded-full blur-3xl pointer-events-none"
+      <div
+        className="absolute -top-12 -right-12 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-30"
         style={{ backgroundColor: currentPoster.accent }}
       />
-      <motion.div
-        key={`glow-bottom-${currentPoster.id}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.25 }}
-        transition={{ duration: 1.0, delay: 0.1 }}
-        className="absolute -bottom-10 -left-10 w-60 h-60 rounded-full blur-3xl pointer-events-none"
+      <div
+        className="absolute -bottom-10 -left-10 w-60 md:w-96 h-60 md:h-96 rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-25"
         style={{ backgroundColor: currentPoster.primary }}
       />
 
-      <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-        
+      {/* ══════════════════════════════════════════════════════════════════════
+          A. DEDICATED TABLET LAYOUT (768px – 1023px / md: to lg:)
+             - 2-Column Wide Screen Layout
+             - Left: Crest, Master Headline, Kinetic Ticker, Action CTAs & Trust Chips
+             - Right: Full-Height Immersive Poster Card with Quick Add & Thumbnail Strip
+          ══════════════════════════════════════════════════════════════════════ */}
+      <div className="hidden md:grid md:grid-cols-12 md:gap-8 md:items-center max-w-5xl mx-auto relative z-10">
+        {/* Left Column: Headlines, Kinetic Statement & Action Buttons */}
+        <div className="md:col-span-7 flex flex-col items-start text-left space-y-4 lg:space-y-5">
+          {/* 1. Crest Eyebrow Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
+            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
+              From the Himalayas
+            </span>
+            <span className="w-px h-3 bg-[#7A5230]/25" />
+            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1A3826] font-sans">
+              <Leaf className="w-3.5 h-3.5 text-emerald-600" />
+              100% Single Origin
+            </span>
+          </div>
+
+          {/* 2. Editorial Master Headline */}
+          <div className="space-y-1 w-full">
+            <h1 className="text-[34px] lg:text-[40px] leading-[1.14] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
+              <span className="block font-serif italic text-[#1C2820] font-normal">
+                Grown in Nepal.
+              </span>
+              <span className="block font-sans font-extrabold tracking-[-0.015em] text-[#1A3826]">
+                Handled with care.
+              </span>
+              <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-0.5">
+                <span>Delivered to your home.</span>
+                <svg
+                  className="absolute -bottom-1 left-0 w-full h-2 text-[#7A5230]/35 pointer-events-none"
+                  viewBox="0 0 300 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 9C75 3 185 2 298 7.5"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h1>
+
+            {/* Provenance Tags */}
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
+              <span className="text-[#7A5230]/40">·</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
+              <span className="text-[#7A5230]/40">·</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Kavre</span>
+              <span className="text-[#7A5230]/40">·</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Terai</span>
+            </div>
+          </div>
+
+          {/* 3. Kinetic Animated Typography Showcase */}
+          <div className="w-full relative overflow-hidden p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-sm text-left">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 via-amber-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#EAE3D6] text-[10px] font-bold uppercase tracking-wider text-[#7A5230] shadow-2xs">
+                {React.createElement(currentStatement.icon, { className: 'w-3 h-3 text-emerald-600' })}
+                <span className="font-sans">{currentStatement.badge}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                {ANIMATED_STATEMENTS.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setStatementIdx(idx)}
+                    className={`h-1 rounded-full transition-all duration-400 ${
+                      statementIdx === idx ? 'w-4 bg-emerald-600' : 'w-1 bg-stone-300'
+                    }`}
+                    aria-label={`Statement ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="relative min-h-[76px] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`statement-tab-${statementIdx}`}
+                  initial={{ opacity: 0, y: 10, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -10, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="space-y-1 w-full"
+                >
+                  <p className="text-sm font-bold leading-snug font-sans text-stone-900">
+                    <span className="bg-gradient-to-r from-[#1A3826] via-emerald-700 to-teal-800 bg-clip-text text-transparent font-extrabold text-base">
+                      {currentStatement.title}
+                    </span>{' '}
+                    <span className={`bg-gradient-to-r ${currentStatement.color} bg-clip-text text-transparent font-extrabold`}>
+                      {currentStatement.highlight}
+                    </span>
+                  </p>
+                  <p className="text-xs text-stone-600 font-medium leading-normal font-sans">
+                    {currentStatement.sub}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* 4. Action Buttons */}
+          <div className="flex items-center gap-3 w-full pt-1">
+            <Link
+              href="/products"
+              className="group relative inline-flex items-center justify-center gap-2 rounded-full text-[#FAF7F2] px-6 py-3 text-sm font-semibold tracking-wide bg-[#1A3826] hover:bg-[#234832] shadow-[0_8px_20px_-4px_rgba(26,56,38,0.45)] active:scale-[0.98] transition-all font-sans overflow-hidden"
+            >
+              <span>Shop All Superfoods</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            <Link
+              href="/our-story"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#7A5230]/40 bg-white/95 hover:bg-white text-[#7A5230] px-5 py-3 text-sm font-semibold tracking-wide shadow-2xs active:scale-[0.98] transition-all font-sans"
+            >
+              <Leaf className="w-4 h-4 text-[#7A5230]" />
+              <span>Farmer Provenance</span>
+            </Link>
+          </div>
+
+          {/* 5. Trust & Social Proof Row */}
+          <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">
+              <div className="flex items-center text-[#7A5230]">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
+                ))}
+              </div>
+              <span className="text-xs font-bold text-[#242220]">4.9 / 5</span>
+              <span className="text-[11px] text-[#242220]/70 font-medium">· 25,000+ Happy Nepalis</span>
+            </div>
+
+            <span className="inline-flex items-center gap-1.5 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 text-xs font-bold text-emerald-800 shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+              100% Nepali Origin
+            </span>
+
+            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-full border border-[#EAE3D6] text-xs font-semibold text-[#242220] shadow-2xs">
+              <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
+              24h Valley Delivery
+            </span>
+          </div>
+        </div>
+
+        {/* Right Column: Full-Height Immersive Poster Card */}
+        <div className="md:col-span-5 flex flex-col items-center justify-center">
+          <div
+            className="relative w-full max-w-[390px] mx-auto"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {/* Card Showcase Frame */}
+            <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/90 bg-stone-900 group">
+              {MOBILE_POSTERS.map((poster, idx) => {
+                const isCurrent = activeIdx === idx;
+                return (
+                  <div
+                    key={poster.id}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer ${
+                      isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+                    }`}
+                    onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
+                  >
+                    <Image
+                      src={poster.image}
+                      alt={poster.name}
+                      fill
+                      priority={idx < 2}
+                      sizes="(max-width: 1024px) 50vw, 420px"
+                      className="object-cover object-center transition-transform duration-1000 ease-out"
+                      style={{ filter: 'saturate(1.18)' }}
+                    />
+
+                    {/* Gradient Overlay */}
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 45%, ${poster.overlayFrom} 100%)`,
+                      }}
+                    />
+
+                    {/* Top Badge Strip */}
+                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/95 backdrop-blur-md text-stone-900 shadow-sm border border-white/40 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                        {poster.badge}
+                      </span>
+                      <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
+                        <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                        <span>0 Additives</span>
+                      </div>
+                    </div>
+
+                    {/* Bottom Info Glass Capsule */}
+                    <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-2xl bg-black/70 backdrop-blur-md border border-white/20 text-left z-10 space-y-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="text-lg font-heading font-extrabold text-white leading-tight">
+                            {poster.name}
+                          </h3>
+                          <p className="text-[11px] text-white/80 line-clamp-1 font-medium font-sans">
+                            {poster.subname} · {poster.weight}
+                          </p>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <div className="text-lg font-heading font-extrabold text-white">
+                            {formatPrice(poster.price)}
+                          </div>
+                          {poster.originalPrice && (
+                            <div className="text-[10px] text-white/60 line-through">
+                              {formatPrice(poster.originalPrice)}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Action Row */}
+                      <div className="flex items-center gap-2 pt-0.5">
+                        <button
+                          type="button"
+                          onClick={handleQuickAdd}
+                          className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                          style={{
+                            background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
+                          }}
+                        >
+                          {addedItem === poster.id ? (
+                            <>
+                              <Check className="w-4 h-4 animate-bounce" />
+                              <span>Added to Cart!</span>
+                            </>
+                          ) : (
+                            <>
+                              <ShoppingBag className="w-3.5 h-3.5" />
+                              <span>Quick Add · {formatPrice(poster.price)}</span>
+                            </>
+                          )}
+                        </button>
+
+                        <Link
+                          href={`/products/${poster.slug}`}
+                          className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
+                          aria-label="View Details"
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Prev / Next Arrows */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrev();
+                }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/75 hover:bg-white text-stone-900 shadow-md backdrop-blur-md flex items-center justify-center z-20 active:scale-90 transition-transform cursor-pointer"
+                aria-label="Previous Poster"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNext();
+                }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/75 hover:bg-white text-stone-900 shadow-md backdrop-blur-md flex items-center justify-center z-20 active:scale-90 transition-transform cursor-pointer"
+                aria-label="Next Poster"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Smooth Indicator Pills */}
+            <div className="flex items-center justify-center gap-1.5 pt-3">
+              {MOBILE_POSTERS.map((poster, idx) => (
+                <button
+                  key={poster.id}
+                  type="button"
+                  onClick={() => setActiveIdx(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
+                    activeIdx === idx ? 'w-7 bg-[#1A3826]' : 'w-2 bg-[#1A3826]/25'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          B. MOBILE PHONE LAYOUT (< 768px / md:hidden)
+             - Vertical Stack Layout
+          ══════════════════════════════════════════════════════════════════════ */}
+      <div className="md:hidden relative z-10 flex flex-col items-center text-center space-y-4">
         {/* 1. Crest Eyebrow Badge */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -268,133 +647,111 @@ export default function MobileHeroSection() {
             <span className="text-[#7A5230]/40">·</span>
             <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Terai</span>
           </div>
-
-          <p className="text-xs sm:text-sm text-[#242220]/85 font-medium leading-relaxed max-w-md font-sans pt-1 mx-auto">
-            Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-bold text-[#1A3826]">0 additives or preservatives</span>.
-          </p>
         </div>
 
-        {/* ══════════════════════════════════════════════════════════════════════
-            3. HERO 3-SECOND LOOPING PRODUCT POSTER CARD
-               - Animated Card Transition
-               - Touch Swipeable
-               - Quick Add & Price Tag
-           ══════════════════════════════════════════════════════════════════════ */}
+        {/* 3. Mobile Product Poster Showcase */}
         <div
-          className="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto pt-1 pb-2"
+          className="relative w-full max-w-[340px] sm:max-w-[380px] mx-auto pt-1 pb-1"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Card Carousel Box */}
           <div className="relative w-full aspect-[4/5] xs:aspect-[1/1.18] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-stone-900 group">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`mobile-poster-${currentPoster.id}`}
-                initial={{ opacity: 0, scale: 0.94, x: 20 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.94, x: -20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 cursor-pointer"
-                onClick={() => openQuickView(matchedCatalogProduct?.id || currentPoster.slug)}
-              >
-                {/* Poster Artwork */}
-                <Image
-                  src={currentPoster.image}
-                  alt={currentPoster.name}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 90vw, 380px"
-                  className="object-cover object-center"
-                  style={{ filter: 'saturate(1.2)' }}
-                />
-
-                {/* Subtle Dynamic Overlay Gradient */}
+            {MOBILE_POSTERS.map((poster, idx) => {
+              const isCurrent = activeIdx === idx;
+              return (
                 <div
-                  className="absolute inset-0 transition-opacity duration-700"
-                  style={{
-                    background: `linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, ${currentPoster.overlayFrom} 100%)`,
-                  }}
-                />
+                  key={poster.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer ${
+                    isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
+                  onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
+                >
+                  <Image
+                    src={poster.image}
+                    alt={poster.name}
+                    fill
+                    priority={idx < 2}
+                    sizes="(max-width: 768px) 90vw, 380px"
+                    className="object-cover object-center transition-transform duration-1000 ease-out"
+                    style={{ filter: 'saturate(1.18)' }}
+                  />
 
-                {/* Top Badge Strip */}
-                <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/90 backdrop-blur-md text-stone-900 shadow-sm border border-white/40 flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-500" />
-                    {currentPoster.badge}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/40 backdrop-blur-md text-white border border-white/20">
-                    {activeIdx + 1} / {MOBILE_POSTERS.length}
-                  </span>
-                </div>
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 45%, ${poster.overlayFrom} 100%)`,
+                    }}
+                  />
 
-                {/* Floating Additives Badge */}
-                <div className="absolute top-12 left-3.5 z-10">
-                  <div className="px-2.5 py-0.5 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs">
-                    <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
-                    <span>0 Preservatives</span>
-                  </div>
-                </div>
-
-                {/* Bottom Product Info Glass Capsule */}
-                <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-left z-10 space-y-2">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <h3 className="text-lg font-heading font-extrabold text-white leading-tight">
-                        {currentPoster.name}
-                      </h3>
-                      <p className="text-[11px] text-white/80 line-clamp-1 font-medium font-sans">
-                        {currentPoster.subname} · {currentPoster.weight}
-                      </p>
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/95 backdrop-blur-md text-stone-900 shadow-sm border border-white/40 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                      {poster.badge}
+                    </span>
+                    <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
+                      <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                      <span>0 Additives</span>
                     </div>
-                    <div className="text-right flex-shrink-0">
-                      <div className="text-lg font-heading font-extrabold text-white">
-                        {formatPrice(currentPoster.price)}
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-2xl bg-black/65 backdrop-blur-md border border-white/20 text-left z-10 space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h3 className="text-lg font-heading font-extrabold text-white leading-tight">
+                          {poster.name}
+                        </h3>
+                        <p className="text-[11px] text-white/80 line-clamp-1 font-medium font-sans">
+                          {poster.subname} · {poster.weight}
+                        </p>
                       </div>
-                      {currentPoster.originalPrice && (
-                        <div className="text-[10px] text-white/60 line-through">
-                          {formatPrice(currentPoster.originalPrice)}
+                      <div className="text-right flex-shrink-0">
+                        <div className="text-lg font-heading font-extrabold text-white">
+                          {formatPrice(poster.price)}
                         </div>
-                      )}
+                        {poster.originalPrice && (
+                          <div className="text-[10px] text-white/60 line-through">
+                            {formatPrice(poster.originalPrice)}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-0.5">
+                      <button
+                        type="button"
+                        onClick={handleQuickAdd}
+                        className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5"
+                        style={{
+                          background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
+                        }}
+                      >
+                        {addedItem === poster.id ? (
+                          <>
+                            <Check className="w-4 h-4 animate-bounce" />
+                            <span>Added to Cart!</span>
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingBag className="w-3.5 h-3.5" />
+                            <span>Quick Add · {formatPrice(poster.price)}</span>
+                          </>
+                        )}
+                      </button>
+
+                      <Link
+                        href={`/products/${poster.slug}`}
+                        className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
+                        aria-label="View Details"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
-
-                  {/* Action Row */}
-                  <div className="flex items-center gap-2 pt-0.5">
-                    <button
-                      type="button"
-                      onClick={handleQuickAdd}
-                      className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5"
-                      style={{
-                        background: `linear-gradient(135deg, ${currentPoster.primary} 0%, ${currentPoster.secondary} 100%)`,
-                      }}
-                    >
-                      {addedItem === currentPoster.id ? (
-                        <>
-                          <Check className="w-4 h-4 animate-bounce" />
-                          <span>Added to Cart!</span>
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingBag className="w-3.5 h-3.5" />
-                          <span>Quick Add · {formatPrice(currentPoster.price)}</span>
-                        </>
-                      )}
-                    </button>
-
-                    <Link
-                      href={`/products/${currentPoster.slug}`}
-                      className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
-                      aria-label="View Details"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              );
+            })}
 
-            {/* Left / Right Nav Arrows */}
             <button
               type="button"
               onClick={(e) => {
@@ -419,14 +776,13 @@ export default function MobileHeroSection() {
             </button>
           </div>
 
-          {/* 3-Second Loop Dot Indicators */}
-          <div className="flex items-center justify-center gap-1.5 pt-3">
+          <div className="flex items-center justify-center gap-1.5 pt-2.5">
             {MOBILE_POSTERS.map((poster, idx) => (
               <button
                 key={poster.id}
                 type="button"
                 onClick={() => setActiveIdx(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1.5 rounded-full transition-all duration-500 ${
                   activeIdx === idx ? 'w-6 bg-[#1A3826]' : 'w-1.5 bg-[#1A3826]/25'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
@@ -435,7 +791,73 @@ export default function MobileHeroSection() {
           </div>
         </div>
 
-        {/* 4. Action Buttons */}
+        {/* 4. Mobile Kinetic Typography Hero Card */}
+        <div className="w-full max-w-md mx-auto px-1 space-y-3">
+          <div className="relative overflow-hidden p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-sm text-center">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 via-amber-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#EAE3D6] text-[10px] font-bold uppercase tracking-wider text-[#7A5230] mb-2 shadow-2xs">
+              {React.createElement(currentStatement.icon, { className: 'w-3.5 h-3.5 text-emerald-600' })}
+              <span className="font-sans">{currentStatement.badge}</span>
+            </div>
+
+            <div className="relative min-h-[108px] flex flex-col items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`statement-${statementIdx}`}
+                  initial={{ opacity: 0, y: 12, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="space-y-1.5 w-full"
+                >
+                  <p className="text-xs sm:text-sm font-bold leading-relaxed font-sans text-stone-900">
+                    <span className="bg-gradient-to-r from-[#1A3826] via-emerald-700 to-teal-800 bg-clip-text text-transparent font-extrabold text-sm sm:text-base">
+                      {currentStatement.title}
+                    </span>{' '}
+                    <span className={`bg-gradient-to-r ${currentStatement.color} bg-clip-text text-transparent font-extrabold`}>
+                      {currentStatement.highlight}
+                    </span>
+                  </p>
+                  
+                  <p className="text-[11px] sm:text-xs text-stone-600 font-medium leading-normal font-sans pt-0.5">
+                    {currentStatement.sub}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="flex items-center justify-center gap-1 pt-2">
+              {ANIMATED_STATEMENTS.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setStatementIdx(idx)}
+                  className={`h-1 rounded-full transition-all duration-400 ${
+                    statementIdx === idx ? 'w-5 bg-emerald-600' : 'w-1.5 bg-stone-300'
+                  }`}
+                  aria-label={`Statement ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden py-1.5 bg-white/70 backdrop-blur-xs rounded-xl border border-[#EAE3D6]/70 shadow-2xs">
+            <div className="flex w-max animate-marquee space-x-2">
+              {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+                <div
+                  key={i}
+                  className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold border shadow-2xs whitespace-nowrap ${item.bg}`}
+                >
+                  <span>{item.icon}</span>
+                  <span>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 5. Mobile Action Buttons */}
         <div className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-2.5 w-full max-w-md px-2 pt-1">
           <Link
             href="/products"
@@ -454,9 +876,8 @@ export default function MobileHeroSection() {
           </Link>
         </div>
 
-        {/* 5. Social Proof & Trust Capsule */}
+        {/* 6. Mobile Social Proof & Trust Capsule */}
         <div className="p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-sm space-y-2.5 w-full max-w-md mx-auto">
-          {/* Avatar + Rating Row */}
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
             <div className="flex items-center gap-2.5">
               <div className="flex -space-x-2">
@@ -485,7 +906,6 @@ export default function MobileHeroSection() {
             </div>
           </div>
 
-          {/* Micro-Trust Chips Strip */}
           <div className="flex items-center justify-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
             <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
               <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
@@ -501,7 +921,6 @@ export default function MobileHeroSection() {
             </span>
           </div>
         </div>
-
       </div>
     </div>
   );

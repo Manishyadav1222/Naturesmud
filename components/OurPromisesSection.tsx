@@ -137,7 +137,7 @@ export default function OurPromisesSection() {
         </ScrollReveal>
 
         {/* 3 Interactive Master Promise Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 lg:gap-8">
           {promises.map((promise, index) => {
             const Icon = promise.icon;
             return (
@@ -149,7 +149,7 @@ export default function OurPromisesSection() {
                 className="h-full"
               >
                 <div
-                  className={`group relative h-full rounded-[2.2rem] bg-white border border-ink/8 p-6 sm:p-7 shadow-[0_15px_45px_rgba(43,43,43,0.06)] hover:shadow-[0_25px_65px_rgba(58,107,53,0.14)] transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-default ${promise.borderColor}`}
+                  className={`group relative h-full rounded-3xl lg:rounded-[2.2rem] bg-white border border-ink/8 p-5 sm:p-6 md:p-5 lg:p-7 shadow-[0_15px_45px_rgba(43,43,43,0.06)] hover:shadow-[0_25px_65px_rgba(58,107,53,0.14)] transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-default ${promise.borderColor}`}
                 >
                   {/* Subtle Top Glow on Hover */}
                   <div

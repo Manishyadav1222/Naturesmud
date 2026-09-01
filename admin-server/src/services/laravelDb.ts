@@ -141,8 +141,14 @@ class LaravelDbService {
     if (orderIds.length > 0) {
       const [items] = await pool.query(
         `SELECT oi.*, 
-          '/images/products/placeholder.jpg' as product_image
+          COALESCE(
+            NULLIF(JSON_UNQUOTE(JSON_EXTRACT(p.images, '$[0]')), 'null'),
+            '/products/sweet-potato-powder.jpg'
+          ) as product_image,
+          p.name as actual_product_name,
+          p.slug as product_slug
         FROM order_items oi 
+        LEFT JOIN products p ON (p.id = oi.product_id OR p.sku = oi.product_sku OR p.name = oi.product_name)
         WHERE oi.order_id IN (${orderIds.map(() => '?').join(',')})`,
         orderIds
       );
@@ -181,8 +187,14 @@ class LaravelDbService {
 
     const [items] = await pool.query(
       `SELECT oi.*, 
-        '/images/products/placeholder.jpg' as product_image
+        COALESCE(
+          NULLIF(JSON_UNQUOTE(JSON_EXTRACT(p.images, '$[0]')), 'null'),
+          '/products/sweet-potato-powder.jpg'
+        ) as product_image,
+        p.name as actual_product_name,
+        p.slug as product_slug
       FROM order_items oi 
+      LEFT JOIN products p ON (p.id = oi.product_id OR p.sku = oi.product_sku OR p.name = oi.product_name)
       WHERE oi.order_id = ?`,
       [order.id]
     );

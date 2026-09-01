@@ -12,7 +12,7 @@ export const siteConfig = {
   secondaryPhone: '+977 9819844486',
   whatsappNumber: '9779819844486',
   whatsappMessage: 'Hello NaturesMud Nepal! I would like to order organic superfoods & naturally dehydrated fruits.',
-  email: 'info@naturesmud.com',
+  email: 'info@naturesmud.shop',
   secondaryEmail: 'info@naturesmud.shop',
   address: 'Kathmandu, Nepal',
   locationDetails: {

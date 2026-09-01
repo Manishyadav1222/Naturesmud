@@ -125,7 +125,7 @@ router.get('/:id', requireMinRole('VIEWER'), async (req, res, next) => {
           productId: item.product_id ? String(item.product_id) : null,
           productSku: item.product_sku || null,
           productName: item.product_name,
-          productImage: item.product_image || '/images/products/placeholder.jpg',
+          productImage: item.product_image || '/products/sweet-potato-powder.jpg',
           quantity: Number(item.quantity),
           unitPrice: Number(item.unit_price || 0),
           totalPrice: Number(item.line_total || 0),

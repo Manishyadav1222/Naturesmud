@@ -26,7 +26,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
   try {
     const { id } = await params;
     const body = await req.json().catch(() => ({}));
-    const { forceResend = true, orderData } = body;
+    const { forceResend = true, orderData, recipientOverride, recipientType } = body;
 
     // Use passed order details or construct minimal order
     const orderInput: InvoiceOrderInput = {
@@ -53,11 +53,17 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         : [{ name: 'Himalayan Superfood Harvest', quantity: 1, price: 1500 }],
     };
 
-    const result = await NotificationService.WhatsApp.sendNewOrder(orderInput, { forceResend });
+    const targetRecipient = recipientOverride || (recipientType === 'customer' ? orderInput.customerPhone : '9779819844486');
+
+    const result = await NotificationService.WhatsApp.sendNewOrder(orderInput, {
+      forceResend,
+      recipientOverride: targetRecipient,
+    } as any);
 
     return NextResponse.json({
       success: result.success,
       data: result,
+      whatsappUrl: result.whatsappUrl,
     });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });

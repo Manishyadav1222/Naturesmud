@@ -76,7 +76,14 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join('\n');
 
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779819844486';
+    let rawNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779819844486').replace(/[^0-9]/g, '');
+    if (rawNumber.startsWith('977977')) {
+      rawNumber = rawNumber.substring(3);
+    }
+    if (rawNumber.length === 10 && (rawNumber.startsWith('98') || rawNumber.startsWith('97'))) {
+      rawNumber = '977' + rawNumber;
+    }
+    const whatsappNumber = rawNumber;
     const waText = encodeURIComponent(waLines);
     const waLink = `https://wa.me/${whatsappNumber}?text=${waText}`;
 

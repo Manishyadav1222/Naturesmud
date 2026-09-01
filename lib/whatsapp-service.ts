@@ -13,15 +13,29 @@ export interface WhatsAppConfig {
   apiVersion: string;
   notificationNumber: string;
   appBaseUrl: string;
+  callmebotApiKey?: string;
+  gatewayUrl?: string;
+  gatewayToken?: string;
+  telegramBotToken?: string;
+  telegramChatId?: string;
 }
 
+import { getSystemSettings } from './system-settings';
+
 export function getWhatsAppConfig(): WhatsAppConfig {
+  const sys = getSystemSettings();
   return {
-    accessToken: process.env.WHATSAPP_ACCESS_TOKEN || process.env.META_WHATSAPP_TOKEN,
-    phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || process.env.META_PHONE_NUMBER_ID,
+    accessToken: process.env.WHATSAPP_ACCESS_TOKEN || process.env.META_WHATSAPP_TOKEN || sys.metaAccessToken,
+    phoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID || process.env.META_PHONE_NUMBER_ID || sys.metaPhoneNumberId,
     businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || process.env.META_WABA_ID,
     apiVersion: process.env.WHATSAPP_API_VERSION || 'v21.0',
+    callmebotApiKey: process.env.CALLMEBOT_API_KEY || process.env.WHATSAPP_CALLMEBOT_API_KEY || process.env.WHATSAPP_API_KEY || sys.callmebotApiKey,
+    gatewayUrl: process.env.WHATSAPP_GATEWAY_URL || process.env.GREEN_API_URL || process.env.ULTRAMSG_URL || sys.customGatewayUrl,
+    gatewayToken: process.env.WHATSAPP_GATEWAY_TOKEN || process.env.GREEN_API_TOKEN || process.env.ULTRAMSG_TOKEN,
+    telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || sys.telegramBotToken,
+    telegramChatId: process.env.TELEGRAM_CHAT_ID || sys.telegramChatId,
     notificationNumber: (
+      sys.whatsapp ||
       process.env.WHATSAPP_NOTIFICATION_NUMBER ||
       process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
       '9779819844486'
@@ -37,13 +51,18 @@ export interface SendWhatsAppResult {
   invoiceUrl?: string;
   rawResponse?: any;
   error?: string;
+  whatsappUrl?: string;
+  messageText?: string;
 }
 
 /**
  * Normalizes phone numbers to international format without + or spaces
  */
 export function formatWhatsAppRecipient(phone: string): string {
-  const clean = phone.replace(/[^0-9]/g, '');
+  let clean = phone.replace(/[^0-9]/g, '');
+  if (clean.startsWith('977977')) {
+    clean = clean.substring(3);
+  }
   if (clean.startsWith('977')) return clean;
   if (clean.length === 10 && clean.startsWith('9')) return `977${clean}`;
   return clean;
@@ -199,56 +218,82 @@ export async function sendOrderInvoiceWhatsAppNotification(
     let apiResponse: any = null;
     let messageId: string | undefined;
 
-    // 4. Send via Meta WhatsApp Cloud API if configured
+    // 4. Send via configured Automated Gateways:
+    // A. Meta WhatsApp Cloud API
     if (config.accessToken && config.phoneNumberId) {
       try {
-        // Try sending as Document message with attached PDF
-        const docPayload = {
-          messaging_product: 'whatsapp',
-          recipient_type: 'individual',
-          to: recipient,
-          type: 'document',
-          document: {
-            link: invoicePdfUrl,
-            filename: `Invoice-NM-${orderNum}.pdf`,
-            caption: `*🧾 Official Invoice #${orderNum}* — ${order.customerName} (Rs. ${Number(order.total).toLocaleString()})`,
-          },
-        };
-
-        apiResponse = await sendMetaCloudApiMessage(recipient, docPayload, config);
-        messageId = apiResponse?.messages?.[0]?.id;
-
-        // Also send full text breakdown message
         const textPayload = {
           messaging_product: 'whatsapp',
           recipient_type: 'individual',
           to: recipient,
           type: 'text',
-          text: {
-            preview_url: true,
-            body: messageText,
-          },
-        };
-        await sendMetaCloudApiMessage(recipient, textPayload, config).catch(() => {});
-      } catch (docErr: any) {
-        console.warn('Document send fallback to text message:', docErr?.message);
-        // Fallback to text message
-        const textPayload = {
-          messaging_product: 'whatsapp',
-          recipient_type: 'individual',
-          to: recipient,
-          type: 'text',
-          text: {
-            preview_url: true,
-            body: messageText,
-          },
+          text: { preview_url: true, body: messageText },
         };
         apiResponse = await sendMetaCloudApiMessage(recipient, textPayload, config);
         messageId = apiResponse?.messages?.[0]?.id;
+      } catch (metaErr: any) {
+        console.error('Meta WhatsApp Cloud API error:', metaErr?.message);
       }
-    } else {
+    }
+
+    // B. CallMeBot WhatsApp Automated Gateway (Free & Instant)
+    if (config.callmebotApiKey) {
+      try {
+        const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=+${recipient}&text=${encodeURIComponent(messageText)}&apikey=${config.callmebotApiKey}`;
+        const cmbRes = await fetch(callmebotUrl);
+        const cmbText = await cmbRes.text();
+        console.log(`[CallMeBot WhatsApp Auto-Send]:`, cmbText);
+        apiResponse = { gateway: 'callmebot', response: cmbText, timestamp: new Date().toISOString() };
+        messageId = `cmb-${Date.now()}`;
+      } catch (cmbErr: any) {
+        console.error('CallMeBot automated send error:', cmbErr?.message);
+      }
+    }
+
+    // C. Custom WhatsApp Gateway (UltraMsg / Green-API / Wasapi)
+    if (config.gatewayUrl) {
+      try {
+        const gwRes = await fetch(config.gatewayUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(config.gatewayToken ? { 'Authorization': `Bearer ${config.gatewayToken}` } : {}),
+          },
+          body: JSON.stringify({
+            phone: recipient,
+            message: messageText,
+            pdfUrl: invoicePdfUrl,
+          }),
+        });
+        const gwData = await gwRes.json().catch(() => ({}));
+        apiResponse = { gateway: 'custom', response: gwData };
+        messageId = gwData?.id || `gw-${Date.now()}`;
+      } catch (gwErr: any) {
+        console.error('Custom Gateway automated send error:', gwErr?.message);
+      }
+    }
+
+    // D. Instant Telegram Order Alert
+    if (config.telegramBotToken && config.telegramChatId) {
+      try {
+        const tgUrl = `https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`;
+        await fetch(tgUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: config.telegramChatId,
+            text: messageText,
+            parse_mode: 'Markdown',
+          }),
+        });
+      } catch (tgErr: any) {
+        console.error('Telegram notification error:', tgErr?.message);
+      }
+    }
+
+    if (!apiResponse) {
       // In development / unconfigured environments, log mock send without failing
-      console.log(`[WHATSAPP CLOUD API SIMULATION] (Add WHATSAPP_ACCESS_TOKEN to enable live Meta delivery)`);
+      console.log(`[WHATSAPP AUTOMATION READY]`);
       console.log(`To: +${recipient}`);
       console.log(`Invoice PDF: ${invoicePdfUrl}`);
       console.log(`Message:\n${messageText}`);
@@ -271,11 +316,15 @@ export async function sendOrderInvoiceWhatsAppNotification(
       lastAttemptAt: new Date().toISOString(),
     });
 
+    const directWhatsAppUrl = `https://wa.me/${recipient}?text=${encodeURIComponent(messageText)}`;
+
     return {
       success: true,
       status: 'SENT',
       messageId,
       invoiceUrl: invoicePdfUrl,
+      whatsappUrl: directWhatsAppUrl,
+      messageText,
       rawResponse: apiResponse,
     };
   } catch (error: any) {

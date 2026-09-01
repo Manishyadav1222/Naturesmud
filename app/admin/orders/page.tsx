@@ -32,6 +32,7 @@ import {
   RefreshCw,
   Radio,
   Sparkles,
+  MessageCircle,
 } from 'lucide-react';
 
 interface Order {
@@ -227,6 +228,52 @@ export default function AdminOrdersPage() {
         toast.error(err.message);
       }
     }
+  };
+
+  const handleQuickSendWhatsApp = (order: Order) => {
+    const custName = order.customer?.name || 'Valued Customer';
+    const custEmail = order.customer?.email || '';
+    const invoiceNum = `INV-${order.orderNumber.replace(/[^a-zA-Z0-9]/g, '')}`;
+
+    const lines = [
+      `*🌿 NATURESMUD NEPAL — ORDER DISPATCH*`,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `📦 *Order:* #${order.orderNumber}`,
+      `📄 *Invoice:* #${invoiceNum}`,
+      `👤 *Customer:* ${custName}`,
+      custEmail ? `📧 *Email:* ${custEmail}` : null,
+      ``,
+      `💰 *Grand Total:* *Rs. ${Number(order.grandTotal).toLocaleString()}*`,
+      `💳 *Payment Method:* ${order.paymentMethod || 'COD'} (${order.paymentStatus || 'PENDING'})`,
+      `📊 *Order Status:* ${order.status}`,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `📥 *Official PDF Tax Invoice:* https://naturesmud.shop/api/orders/${order.orderNumber.replace('#', '')}/invoice`,
+      `🔒 *Admin Order Link:* https://naturesmud.shop/admin/orders/${order.id}`,
+    ].filter(Boolean).join('\n');
+
+    const directUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(lines)}`;
+    window.open(directUrl, '_blank');
+
+    // Trigger server logging silently
+    const cleanNum = order.orderNumber.replace('#', '').trim();
+    fetch(`/api/orders/${cleanNum}/whatsapp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        forceResend: true,
+        recipientOverride: '9779819844486',
+        orderData: {
+          orderNumber: order.orderNumber,
+          customerName: custName,
+          customerEmail: custEmail,
+          total: order.grandTotal,
+          paymentMethod: order.paymentMethod,
+          paymentStatus: order.paymentStatus,
+        },
+      }),
+    }).catch(() => {});
+
+    toast.success(`Opening WhatsApp for Order #${order.orderNumber}`);
   };
 
   if (!canViewOrders) {
@@ -444,14 +491,29 @@ export default function AdminOrdersPage() {
                         <p className="mt-1 text-xs text-gray-400">{order.paymentMethod}</p>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => router.push(`/admin/orders/${order.id}`)}
-                        >
-                          <Eye className="h-4 w-4" />
-                          View
-                        </Button>
+                        <div className="flex items-center justify-end gap-1.5">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-8 px-2.5 text-[#25D366] hover:text-white hover:bg-[#25D366] border-emerald-300 shadow-2xs font-bold text-xs flex items-center gap-1 cursor-pointer"
+                            title="Send / Open in WhatsApp (+977 9819844486)"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleQuickSendWhatsApp(order);
+                            }}
+                          >
+                            <MessageCircle className="h-3.5 w-3.5" />
+                            <span>WhatsApp</span>
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => router.push(`/admin/orders/${order.id}`)}
+                          >
+                            <Eye className="h-4 w-4" />
+                            View
+                          </Button>
+                        </div>
                       </td>
                     </tr>
                   ))}
