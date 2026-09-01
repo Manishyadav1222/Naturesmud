@@ -49,7 +49,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import MobileCategorySection from '@/components/MobileCategorySection';
-import MobileHeroBackgroundCards from '@/components/MobileHeroBackgroundCards';
+import MobileHeroSection from '@/components/MobileHeroSection';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 export default function HomePage() {
@@ -120,11 +120,11 @@ export default function HomePage() {
 
   return (
     <main className="w-full max-w-full">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full" style={{ marginTop: 0 }}>
-        {/* Mobile & Tablet Full-Bleed 3-Second Looping Background Posters with Color Shift */}
-        <MobileHeroBackgroundCards />
+      {/* 📱 Mobile & Tablet Hero Section (with Visible 3-Second Product Poster Cards & Dynamic Color Shifts) */}
+      <MobileHeroSection />
 
+      {/* 💻 Laptop & Desktop Hero Section (Clean 2-Column Luxury Layout) */}
+      <section className="hidden lg:block relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full" style={{ marginTop: 0 }}>
         {/* Ambient clean background - soft warm beige gradient with organic textures */}
         <div className="absolute inset-0 bg-hero-pattern opacity-60 pointer-events-none" />
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
@@ -139,10 +139,10 @@ export default function HomePage() {
           <Leaf className="w-full h-full" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-[1%] sm:px-[2%] lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
-            {/* Left Content Column (Glassmorphic card on Mobile/Tablet; Clean transparent on Laptop/Desktop) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none bg-white/80 sm:bg-white/85 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none border border-white/60 lg:border-transparent shadow-2xl lg:shadow-none flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="relative z-10 mx-auto max-w-7xl px-8 pt-8 pb-12">
+          <div className="grid lg:grid-cols-12 gap-8 xl:gap-12 2xl:gap-16 items-center">
+            {/* Left Content Column */}
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-6 max-w-none mx-0 p-0 flex flex-col items-start text-left">
 
               {/* Luxury Himalayan Provenance Eyebrow Crest */}
               <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs mx-auto lg:mx-0">
@@ -307,36 +307,37 @@ export default function HomePage() {
 
             {/* Right Content Column — Animated Flagship Product Showcase (Desktop visible only in page.tsx; Mobile handled by MobileHomePage.tsx) */}
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-2 sm:pt-4 lg:pt-0 mt-2 sm:mt-4 lg:mt-0 w-full">
-              <div className="w-full flex justify-center">
-                <ErrorBoundary name="Product Showcase">
-                  <HeroProductShowcase />
-                </ErrorBoundary>
+                <div className="w-full flex justify-center">
+                  <ErrorBoundary name="Product Showcase">
+                    <HeroProductShowcase />
+                  </ErrorBoundary>
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* 📱 Shop by Category (Mobile & Tablet Only) — Placed Above Pregnancy Trimesters Combos */}
-          <MobileCategorySection />
+        {/* 📱 Shop by Category (Mobile & Tablet Only) — Placed Above Pregnancy Trimesters Combos */}
+        <MobileCategorySection />
 
-          {/* Side-by-Side Dual Offer & Combos Section */}
-          <div className="mt-2 sm:mt-4 lg:mt-10 pt-2 sm:pt-4 lg:pt-8 border-t border-ink/8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 lg:gap-8 items-start">
-              {/* Left Side Offer: Baby & Mother Care Combos */}
-              <div className="w-full flex justify-center lg:justify-start">
-                <ErrorBoundary name="Baby & Mother Combos">
-                  <BabyMotherCombosSection />
-                </ErrorBoundary>
-              </div>
+        {/* Side-by-Side Dual Offer & Combos Section */}
+        <section className="mx-auto max-w-7xl px-[1%] sm:px-[2%] lg:px-8 py-4 sm:py-6 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 lg:gap-8 items-start">
+            {/* Left Side Offer: Baby & Mother Care Combos */}
+            <div className="w-full flex justify-center lg:justify-start">
+              <ErrorBoundary name="Baby & Mother Combos">
+                <BabyMotherCombosSection />
+              </ErrorBoundary>
+            </div>
 
-              {/* Right Side Offer: Festival & Lifestyle Combos */}
-              <div className="w-full flex justify-center lg:justify-end">
-                <ErrorBoundary name="Festival Offers">
-                  <HeroOfferSection />
-                </ErrorBoundary>
-              </div>
+            {/* Right Side Offer: Festival & Lifestyle Combos */}
+            <div className="w-full flex justify-center lg:justify-end">
+              <ErrorBoundary name="Festival Offers">
+                <HeroOfferSection />
+              </ErrorBoundary>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Scroll indicator */}
         <motion.div
@@ -348,7 +349,6 @@ export default function HomePage() {
           <span className="text-xs tracking-widest uppercase">Scroll</span>
           <ChevronDown className="w-4 h-4" />
         </motion.div>
-      </section>
 
       {/* Features Strip — Truck hits Free Shipping card */}
       <ScrollReveal direction="up" distance={25}>
