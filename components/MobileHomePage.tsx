@@ -47,38 +47,82 @@ const STORY_CATEGORIES = [
   { name: 'Offers', label: 'Combos & Packs', slug: 'offers', icon: '🎁', img: '/products/superfood-mix.jpg' },
 ];
 
-// Product poster images that serve as animated full-section backgrounds
+// Product poster images — 5 cards matching the user's provided poster images
+// Background color transitions match each poster's dominant brand color
 const HERO_BG_IMAGES = [
-  { img: '/images/posters/papaya-pop.jpg', overlayFrom: 'rgba(234,88,12,0.42)', overlayTo: 'rgba(80,15,0,0.78)', accent: '#FB923C', primary: '#EA580C' },
-  { img: '/images/posters/tropical-crunch.jpg', overlayFrom: 'rgba(202,138,4,0.42)', overlayTo: 'rgba(60,20,0,0.78)', accent: '#EAB308', primary: '#CA8A04' },
-  { img: '/images/posters/chia-power.jpg', overlayFrom: 'rgba(13,148,136,0.45)', overlayTo: 'rgba(2,44,34,0.80)', accent: '#14B8A6', primary: '#0D9488' },
-  { img: '/images/posters/blueberry-bite.jpg', overlayFrom: 'rgba(109,40,217,0.45)', overlayTo: 'rgba(20,5,50,0.80)', accent: '#8B5CF6', primary: '#7C3AED' },
-  { img: '/images/posters/sweet-vibes.jpg', overlayFrom: 'rgba(190,24,93,0.44)', overlayTo: 'rgba(60,0,30,0.78)', accent: '#EC4899', primary: '#BE185D' },
-  { img: '/images/posters/chia-power.jpg', overlayFrom: 'rgba(13,148,136,0.42)', overlayTo: 'rgba(2,44,34,0.78)', accent: '#14B8A6', primary: '#0D9488' },
-  { img: '/images/posters/papaya-pop.jpg', overlayFrom: 'rgba(225,29,72,0.42)', overlayTo: 'rgba(80,0,30,0.78)', accent: '#FB7185', primary: '#E11D48' },
-  { img: '/images/posters/tropical-crunch.jpg', overlayFrom: 'rgba(100,116,139,0.42)', overlayTo: 'rgba(15,23,42,0.78)', accent: '#94A3B8', primary: '#475569' },
-  { img: '/images/posters/sweet-vibes.jpg', overlayFrom: 'rgba(5,150,105,0.42)', overlayTo: 'rgba(2,44,34,0.78)', accent: '#34D399', primary: '#059669' },
-  { img: '/images/posters/blueberry-bite.jpg', overlayFrom: 'rgba(217,119,6,0.42)', overlayTo: 'rgba(60,20,0,0.78)', accent: '#F59E0B', primary: '#D97706' },
+  {
+    img: '/images/posters/papaya-pop.jpg',
+    overlayFrom: 'rgba(234,88,12,0.38)',
+    overlayTo: 'rgba(80,15,0,0.72)',
+    accent: '#FB923C',
+    primary: '#EA580C',
+    bgColor: '#FF6B1A',          // dominant orange for page BG tint
+    name: 'Papaya Pop',
+  },
+  {
+    img: '/images/posters/chia-power.jpg',
+    overlayFrom: 'rgba(13,148,136,0.38)',
+    overlayTo: 'rgba(2,44,34,0.75)',
+    accent: '#14B8A6',
+    primary: '#0D9488',
+    bgColor: '#0D9488',          // teal
+    name: 'Chia Power',
+  },
+  {
+    img: '/images/posters/blueberry-bite.jpg',
+    overlayFrom: 'rgba(109,40,217,0.38)',
+    overlayTo: 'rgba(20,5,50,0.75)',
+    accent: '#8B5CF6',
+    primary: '#7C3AED',
+    bgColor: '#6D28D9',          // deep purple
+    name: 'Blueberry Bite',
+  },
+  {
+    img: '/images/posters/sweet-vibes.jpg',
+    overlayFrom: 'rgba(190,24,93,0.38)',
+    overlayTo: 'rgba(60,0,30,0.75)',
+    accent: '#EC4899',
+    primary: '#BE185D',
+    bgColor: '#BE185D',          // hot pink
+    name: 'Sweet Vibes',
+  },
+  {
+    img: '/images/posters/tropical-crunch.jpg',
+    overlayFrom: 'rgba(202,138,4,0.38)',
+    overlayTo: 'rgba(60,20,0,0.75)',
+    accent: '#EAB308',
+    primary: '#CA8A04',
+    bgColor: '#D97706',          // golden amber
+    name: 'Tropical Crunch',
+  },
 ];
+
+// Map hero showcase index → poster index for background sync
+const BG_MAP = [0, 4, 3, 1, 2, 0, 3, 4, 1, 2];
 
 export default function MobileHomePage() {
   const { openSearch, openQuickView } = useUIStore();
   const { addItem, openDrawer } = useCartStore();
 
   const [heroIdx, setHeroIdx] = useState(0);
+  const [bgIdx, setBgIdx] = useState(0);   // independent background poster cycle
   const [addedItem, setAddedItem] = useState<string | null>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const currentHero = HERO_SHOWCASE_PRODUCTS[heroIdx];
   const catalogProduct = products.find((p) => p.slug === currentHero.slug);
-  const currentBg = HERO_BG_IMAGES[heroIdx] || HERO_BG_IMAGES[0];
+  // Background syncs with hero product when user navigates, otherwise cycles independently
+  const currentBg = HERO_BG_IMAGES[BG_MAP[heroIdx] ?? bgIdx % HERO_BG_IMAGES.length];
 
-  // Auto-cycle mobile hero every 5s
+  // Auto-cycle mobile hero every 3s (product showcase)
   useEffect(() => {
     const timer = setInterval(() => {
-      setHeroIdx((prev) => (prev + 1) % HERO_SHOWCASE_PRODUCTS.length);
-    }, 5000);
+      setHeroIdx((prev) => {
+        const next = (prev + 1) % HERO_SHOWCASE_PRODUCTS.length;
+        return next;
+      });
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
@@ -117,9 +161,19 @@ export default function MobileHomePage() {
   const discountPercent = calculateDiscount(currentHero.price, currentHero.compareAtPrice);
 
   return (
-    <div className="lg:hidden w-full bg-[#FAF7F2] min-h-screen pb-24 overflow-x-hidden" style={{ padding: '0 1%' }}>
+    <div
+      className="lg:hidden w-full min-h-screen pb-24 overflow-x-hidden"
+      style={{
+        padding: '0 1%',
+        backgroundColor: '#FAF7F2',
+        // Subtle page-level tint that transitions with product
+        transition: 'background-color 1.2s ease',
+      }}
+    >
 
-      {/* 1. Mobile App Top Sticky Header Bar */}
+      {/* ══════════════════════════════════════════════════
+          1. Mobile App Top Sticky Header Bar
+         ══════════════════════════════════════════════════ */}
       <div className="sticky top-0 z-30 bg-[#FAF7F2]/95 backdrop-blur-md px-[2%] pt-3 pb-2.5 border-b border-ink/8 mx-[-1%]">
         {/* Express Delivery Pill */}
         <div className="flex items-center justify-between text-[11px] font-semibold text-ink/75 mb-2">
@@ -148,7 +202,9 @@ export default function MobileHomePage() {
         </button>
       </div>
 
-      {/* 2. Instagram-Style Story Categories Bar */}
+      {/* ══════════════════════════════════════════════════
+          2. Instagram-Style Story Categories Bar
+         ══════════════════════════════════════════════════ */}
       <div className="py-3 px-[1%] overflow-x-auto no-scrollbar flex items-center gap-3 bg-white border-b border-ink/5 mx-[-1%]">
         {STORY_CATEGORIES.map((cat) => (
           <Link
@@ -179,120 +235,127 @@ export default function MobileHomePage() {
 
       {/* ══════════════════════════════════════════════════════════════════════
           3. HERO SHOWCASE — Full animated product poster background
+             - Background image changes every 3 seconds with smooth crossfade
+             - Page accent color transitions with each product card
+             - Product info centered on screen (not right-aligned)
          ══════════════════════════════════════════════════════════════════════ */}
       <section
         className="relative mx-[-1%] overflow-hidden"
-        style={{ minHeight: '88vw', maxHeight: '520px' }}
+        style={{ minHeight: '92vw', maxHeight: '560px' }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* ── Animated Full-Bleed Poster Background ── */}
+        {/* ── Animated Full-Bleed Poster Background — 3-second loop ── */}
         <AnimatePresence mode="sync">
           <motion.div
             key={`hero-bg-${heroIdx}`}
-            initial={{ opacity: 0, scale: 1.06 }}
+            initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.97 }}
+            exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 z-0"
           >
             <Image
               src={currentBg.img}
-              alt={currentHero.name}
+              alt={currentBg.name}
               fill
               priority
               sizes="100vw"
               className="object-cover object-center"
-              style={{ filter: 'saturate(1.2) brightness(0.82)' }}
+              style={{ filter: 'saturate(1.25) brightness(0.80)' }}
             />
-            {/* Color-matched gradient overlay */}
-            <div
+            {/* Color-matched gradient overlay that shifts with each product */}
+            <motion.div
+              key={`overlay-${heroIdx}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.0 }}
               className="absolute inset-0"
               style={{
                 background: `linear-gradient(160deg, ${currentBg.overlayFrom} 0%, ${currentBg.overlayTo} 100%)`,
               }}
             />
-            {/* Bottom fade-to-cream for smooth merge with cards below */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/60 to-transparent" />
+            {/* Bottom fade-to-page-bg for smooth merge with content below */}
+            <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/55 to-transparent" />
           </motion.div>
         </AnimatePresence>
 
-        {/* Ambient glow orbs */}
+        {/* Ambient glow orbs — color-matched to current poster */}
         <AnimatePresence mode="sync">
           <motion.div
             key={`orb1-${heroIdx}`}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
+            animate={{ opacity: 0.45 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
-            className="absolute -top-8 -right-8 w-56 h-56 rounded-full blur-3xl pointer-events-none z-0"
+            transition={{ duration: 1.0 }}
+            className="absolute -top-8 -right-8 w-64 h-64 rounded-full blur-3xl pointer-events-none z-0"
             style={{ backgroundColor: currentBg.accent }}
           />
           <motion.div
             key={`orb2-${heroIdx}`}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.3 }}
+            animate={{ opacity: 0.30 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, delay: 0.15 }}
-            className="absolute -bottom-4 -left-4 w-44 h-44 rounded-full blur-3xl pointer-events-none z-0"
+            transition={{ duration: 1.0, delay: 0.12 }}
+            className="absolute -bottom-4 -left-4 w-52 h-52 rounded-full blur-3xl pointer-events-none z-0"
             style={{ backgroundColor: currentBg.primary }}
           />
         </AnimatePresence>
 
-        {/* ── Hero Content — centered on mobile/tablet ── */}
-        <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-5 pb-10 text-center">
+        {/* ── Hero Content — FULLY CENTERED on mobile/tablet ── */}
+        <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 pt-6 pb-12 text-center">
 
           {/* Eyebrow badge + counter */}
           <div className="flex items-center justify-center gap-3 mb-3">
             <span
-              className={`text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm backdrop-blur-sm bg-white/20 text-white border-white/30`}
+              className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm backdrop-blur-sm bg-white/20 text-white border-white/30"
             >
               {currentHero.badge}
             </span>
             <div className="flex items-center gap-1 text-[11px] font-bold text-white/80 backdrop-blur-xs bg-black/20 px-2 py-0.5 rounded-full">
               <span>{heroIdx + 1}</span>
               <span>/</span>
-              <span>10 Flagships</span>
+              <span>{HERO_SHOWCASE_PRODUCTS.length} Flagships</span>
             </div>
           </div>
 
-          {/* Product Title */}
+          {/* Product Title — animated crossfade */}
           <AnimatePresence mode="wait">
             <motion.h2
               key={`title-${currentHero.slug}`}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight drop-shadow-lg mb-1"
+              transition={{ duration: 0.38 }}
+              className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight drop-shadow-lg mb-1 text-center"
             >
               {currentHero.name}
             </motion.h2>
           </AnimatePresence>
-          <p className="text-xs text-white/75 font-medium mb-4">
+          <p className="text-xs text-white/75 font-medium mb-5 text-center">
             {currentHero.subheading} · {currentHero.weight}
           </p>
 
-          {/* Central 3D Product Image Circle — CENTERED */}
-          <div className="relative w-[56vw] max-w-[260px] aspect-square mx-auto flex items-center justify-center mb-4">
+          {/* Central 3D Product Image Circle — FULLY CENTERED */}
+          <div className="relative w-[60vw] max-w-[280px] aspect-square mx-auto flex items-center justify-center mb-5">
             {/* Glowing Radial Portal */}
             <motion.div
               key={`portal-${currentHero.slug}`}
               initial={{ scale: 0.88, opacity: 0.4 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.55 }}
               className="absolute inset-0 rounded-full"
               style={{
                 background: currentHero.theme.portalBg,
-                boxShadow: `0 20px 50px -10px ${currentHero.theme.glow}`,
+                boxShadow: `0 22px 55px -10px ${currentHero.theme.glow}`,
               }}
             />
             {/* Concentric rings */}
             <div className="absolute inset-3 rounded-full border border-white/40 pointer-events-none" />
             <div className="absolute inset-6 rounded-full border border-dashed border-white/30 pointer-events-none animate-spin-slow" />
 
-            {/* Floating accents */}
+            {/* Floating accent badges */}
             <div className="absolute -top-1 -left-1 z-20">
               <div
                 className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center p-1.5 border border-white"
@@ -308,14 +371,14 @@ export default function MobileHomePage() {
               </div>
             </div>
 
-            {/* Main Product Image */}
+            {/* Main Product Image — animated slide */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-hero-img-${currentHero.slug}`}
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                initial={{ opacity: 0, scale: 0.78, y: 22 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, scale: 0.78, y: -22 }}
+                transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
                 className="relative w-full h-full rounded-full overflow-hidden p-2 z-10"
                 onClick={() => openQuickView(catalogProduct?.id || currentHero.slug)}
               >
@@ -335,8 +398,8 @@ export default function MobileHomePage() {
             </AnimatePresence>
           </div>
 
-          {/* Description */}
-          <p className="text-xs text-white/85 font-medium text-center line-clamp-2 px-4 mb-4 max-w-xs drop-shadow">
+          {/* Description — centered */}
+          <p className="text-xs text-white/85 font-medium text-center line-clamp-2 px-4 mb-5 max-w-xs drop-shadow mx-auto">
             {currentHero.description}
           </p>
 
@@ -394,8 +457,8 @@ export default function MobileHomePage() {
             </div>
           </div>
 
-          {/* 10-Dot Progress Indicator — centered */}
-          <div className="flex items-center justify-center gap-1.5 mt-4">
+          {/* Progress dot indicators — centered */}
+          <div className="flex items-center justify-center gap-1.5 mt-5">
             {HERO_SHOWCASE_PRODUCTS.map((p, i) => (
               <button
                 key={p.slug}
@@ -432,9 +495,11 @@ export default function MobileHomePage() {
         </button>
       </section>
 
-      {/* 4. Quick Value Proposition Chips (Horizontal Snap) */}
-      <div className="py-2.5">
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+      {/* ══════════════════════════════════════════════════
+          4. Quick Value Proposition Chips (Horizontal Snap)
+         ══════════════════════════════════════════════════ */}
+      <div className="py-2.5 w-full">
+        <div className="flex items-center justify-start gap-2 overflow-x-auto no-scrollbar pb-1 w-full">
           {[
             { icon: ShieldCheck, text: '100% Nepali Origin', color: 'text-primary' },
             { icon: Truck, text: 'Free Delivery > Rs. 10,000', color: 'text-primary' },
@@ -455,9 +520,11 @@ export default function MobileHomePage() {
         </div>
       </div>
 
-      {/* 5. Baby & Mother Combos — full width centered */}
-      <section className="py-3">
-        <div className="bg-gradient-to-br from-rose-50 via-amber-50 to-orange-50 border border-rose-200/60 rounded-3xl p-4 shadow-sm">
+      {/* ══════════════════════════════════════════════════
+          5. Baby & Mother Combos — full width centered
+         ══════════════════════════════════════════════════ */}
+      <section className="py-3 w-full">
+        <div className="bg-gradient-to-br from-rose-50 via-amber-50 to-orange-50 border border-rose-200/60 rounded-3xl p-4 shadow-sm w-full">
           <div className="flex items-center justify-between pb-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold">
               <Baby className="w-3 h-3" />
@@ -476,7 +543,7 @@ export default function MobileHomePage() {
             Sweet Potato, Dates & Beetroot Powders for infant porridge (लुटो) & toddlers. 0% refined sugar.
           </p>
 
-          <div className="grid grid-cols-2 gap-2 mt-3">
+          <div className="grid grid-cols-2 gap-2 mt-3 w-full">
             {[
               { name: 'Sweet Potato Powder', slug: 'sweet-potato-powder', price: 420, img: '/products/sweet-potato-powder-100g.jpg' },
               { name: 'Dates Powder Sweetener', slug: 'dates-powder', price: 350, img: '/products/dates-powder-100g.jpg' },
@@ -499,9 +566,11 @@ export default function MobileHomePage() {
         </div>
       </section>
 
-      {/* 6. Top Flagship Bestsellers Grid (2-Column, full width, centered) */}
-      <section className="py-3">
-        <div className="flex items-center justify-between mb-3 px-1">
+      {/* ══════════════════════════════════════════════════
+          6. Top Flagship Bestsellers Grid (2-Column, full width centered)
+         ══════════════════════════════════════════════════ */}
+      <section className="py-3 w-full">
+        <div className="flex items-center justify-between mb-3 px-1 w-full">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
               Handpicked Harvests
@@ -516,11 +585,11 @@ export default function MobileHomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-2 gap-2.5 w-full">
           {products.slice(0, 6).map((prod) => (
             <div
               key={prod.id}
-              className="bg-white rounded-2xl p-2.5 border border-ink/8 shadow-2xs flex flex-col justify-between"
+              className="bg-white rounded-2xl p-2.5 border border-ink/8 shadow-2xs flex flex-col justify-between w-full"
             >
               <Link href={`/products/${prod.slug}`} className="block">
                 <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-cream-100 mb-2">
@@ -563,21 +632,27 @@ export default function MobileHomePage() {
         </div>
       </section>
 
-      {/* 7. Reels Section */}
-      <div className="py-2 mx-[-1%]">
+      {/* ══════════════════════════════════════════════════
+          7. Reels Section — full width
+         ══════════════════════════════════════════════════ */}
+      <div className="py-2 mx-[-1%] w-[102%]">
         <ReelsSection />
       </div>
 
-      {/* 8. Customer Reviews */}
-      <div className="py-2 mx-[-1%]">
+      {/* ══════════════════════════════════════════════════
+          8. Customer Reviews — full width
+         ══════════════════════════════════════════════════ */}
+      <div className="py-2 mx-[-1%] w-[102%]">
         <RealCustomerReviewsSection />
       </div>
 
-      {/* 9. WhatsApp Fast-Order Banner */}
-      <section className="py-3">
-        <div className="bg-[#1A3826] text-white rounded-3xl p-4 shadow-md flex items-center justify-between gap-3">
+      {/* ══════════════════════════════════════════════════
+          9. WhatsApp Fast-Order Banner
+         ══════════════════════════════════════════════════ */}
+      <section className="py-3 w-full">
+        <div className="bg-[#1A3826] text-white rounded-3xl p-4 shadow-md flex items-center justify-between gap-3 w-full">
           <div className="space-y-1">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-gold-300">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300">
               Need Help or Custom Pack?
             </span>
             <h4 className="font-heading font-bold text-sm leading-tight">

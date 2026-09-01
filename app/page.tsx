@@ -49,6 +49,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import MobileCategorySection from '@/components/MobileCategorySection';
+import MobileHeroBackgroundCards from '@/components/MobileHeroBackgroundCards';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 export default function HomePage() {
@@ -121,6 +122,9 @@ export default function HomePage() {
     <main className="w-full max-w-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full" style={{ marginTop: 0 }}>
+        {/* Mobile & Tablet Full-Bleed 3-Second Looping Background Posters with Color Shift */}
+        <MobileHeroBackgroundCards />
+
         {/* Ambient clean background - soft warm beige gradient with organic textures */}
         <div className="absolute inset-0 bg-hero-pattern opacity-60 pointer-events-none" />
         <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
@@ -135,13 +139,13 @@ export default function HomePage() {
           <Leaf className="w-full h-full" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
+        <div className="relative z-10 mx-auto max-w-7xl px-[1%] sm:px-[2%] lg:px-8 pt-3 pb-6 sm:pt-4 sm:pb-8 lg:pt-8 lg:pb-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 2xl:gap-16 items-center">
             {/* Left Content Column (High Contrast Luxury across Mobile, Tablet, and Desktop) */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0">
+            <div className="relative lg:col-span-6 xl:col-span-6 space-y-4 sm:space-y-5 lg:space-y-6 max-w-xl lg:max-w-none mx-auto lg:mx-0 p-4 sm:p-6 lg:p-0 rounded-3xl lg:rounded-none bg-white/85 sm:bg-white/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border border-white/60 lg:border-transparent shadow-xl lg:shadow-none flex flex-col items-center lg:items-start text-center lg:text-left">
 
               {/* Luxury Himalayan Provenance Eyebrow Crest */}
-              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
+              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs mx-auto lg:mx-0">
                 <div className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
                   From the Himalayas
@@ -154,8 +158,8 @@ export default function HomePage() {
               </div>
 
               {/* Editorial Master Headline with Kinfolk & Aesop Typography */}
-              <div className="relative z-10 space-y-2 lg:space-y-3">
-                <h1 className="text-[32px] xs:text-[36px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
+              <div className="relative z-10 space-y-2 lg:space-y-3 w-full">
+                <h1 className="text-[30px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
                   <span className="block font-serif italic text-[#1C2820] font-normal">
                     Grown in Nepal.
                   </span>
@@ -183,7 +187,7 @@ export default function HomePage() {
 
                 {/* Botanical Origin Provenance Tag & Description */}
                 <div className="pt-1">
-                  <div className="flex flex-wrap items-center gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
                     <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Mustang</span>
                     <span className="text-[#7A5230]/40">·</span>
                     <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Jumla</span>
@@ -193,7 +197,7 @@ export default function HomePage() {
                     <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Terai</span>
                   </div>
 
-                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-medium leading-relaxed max-w-lg font-sans mt-2">
+                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-medium leading-relaxed max-w-lg font-sans mt-2 mx-auto lg:mx-0">
                     Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-bold text-[#1A3826]">0 additives or preservatives</span>.
                   </p>
                 </div>
@@ -204,9 +208,9 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 space-y-3.5 pt-1"
+                className="relative z-10 space-y-3.5 pt-1 w-full"
               >
-                <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3">
+                <div className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center lg:justify-start gap-3">
                   <Link
                     href="/products"
                     className="group relative inline-flex items-center justify-center gap-3 rounded-full text-[#FAF7F2] px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide bg-[#1A3826] shadow-[0_8px_24px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer font-sans overflow-hidden h-12 sm:h-13"
@@ -227,7 +231,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Aesthetic Social Proof & Trust Capsule */}
-                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-sm space-y-2.5 max-w-xl">
+                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-sm space-y-2.5 max-w-xl mx-auto lg:mx-0">
                   {/* Avatar + Rating Row */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
                     <div className="flex items-center gap-2.5">
@@ -241,7 +245,7 @@ export default function HomePage() {
                           </div>
                         ))}
                       </div>
-                      <div className="text-[11px] leading-tight font-sans">
+                      <div className="text-[11px] leading-tight font-sans text-left">
                         <div className="flex items-center text-[#7A5230]">
                           {[...Array(5)].map((_, i) => (
                             <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
@@ -258,7 +262,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Micro-Trust Chips Strip */}
-                  <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                  <div className="flex items-center justify-center lg:justify-start gap-1.5 overflow-x-auto no-scrollbar py-0.5">
                     <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
                       100% Nepali Origin
@@ -274,7 +278,6 @@ export default function HomePage() {
                   </div>
                 </div>
               </motion.div>
-
 
               {/* Modern Glassmorphic Statistics Bento Tiles (Desktop/Laptop Only) */}
               <div className="relative z-10 hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 pt-1 max-w-xl">
@@ -304,7 +307,7 @@ export default function HomePage() {
 
             {/* Right Content Column — Animated Flagship Product Showcase (Desktop visible only in page.tsx; Mobile handled by MobileHomePage.tsx) */}
             <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-2 sm:pt-4 lg:pt-0 mt-2 sm:mt-4 lg:mt-0 w-full">
-              <div className="w-full flex justify-center lg:justify-end">
+              <div className="w-full flex justify-center">
                 <ErrorBoundary name="Product Showcase">
                   <HeroProductShowcase />
                 </ErrorBoundary>

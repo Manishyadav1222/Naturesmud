@@ -24,6 +24,23 @@ export interface PosterTheme {
 
 export const POSTER_THEMES: PosterTheme[] = [
   {
+    id: 'papaya-pop',
+    title: 'Papaya Pop',
+    image: '/images/posters/papaya-pop.jpg',
+    primary: '#EA580C',
+    secondary: '#C2410C',
+    accent: '#FB923C',
+    headingColor: '#C2410C',
+    btnGradient: 'linear-gradient(135deg, #EA580C 0%, #9A3412 100%)',
+    btnShadow: 'rgba(234, 88, 12, 0.45)',
+    badgeBg: 'bg-orange-50',
+    badgeText: 'text-orange-900',
+    badgeBorder: 'border-orange-300/60',
+    pillBg: 'bg-orange-500/10 text-orange-900 border-orange-500/20',
+    overlayFrom: 'rgba(234,88,12,0.48)',
+    overlayTo: 'rgba(80,15,0,0.82)',
+  },
+  {
     id: 'chia-power',
     title: 'Chia Power',
     image: '/images/posters/chia-power.jpg',
@@ -37,8 +54,42 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-teal-900',
     badgeBorder: 'border-teal-300/60',
     pillBg: 'bg-teal-500/10 text-teal-900 border-teal-500/20',
-    overlayFrom: 'rgba(13,148,136,0.55)',
-    overlayTo: 'rgba(2,44,34,0.82)',
+    overlayFrom: 'rgba(13,148,136,0.50)',
+    overlayTo: 'rgba(2,44,34,0.84)',
+  },
+  {
+    id: 'blueberry-bite',
+    title: 'Blueberry Bite',
+    image: '/images/posters/blueberry-bite.jpg',
+    primary: '#7C3AED',
+    secondary: '#6D28D9',
+    accent: '#8B5CF6',
+    headingColor: '#6D28D9',
+    btnGradient: 'linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%)',
+    btnShadow: 'rgba(109, 40, 217, 0.45)',
+    badgeBg: 'bg-purple-50',
+    badgeText: 'text-purple-900',
+    badgeBorder: 'border-purple-300/60',
+    pillBg: 'bg-purple-500/10 text-purple-900 border-purple-500/20',
+    overlayFrom: 'rgba(109,40,217,0.50)',
+    overlayTo: 'rgba(20,5,50,0.84)',
+  },
+  {
+    id: 'sweet-vibes',
+    title: 'Sweet Vibes',
+    image: '/images/posters/sweet-vibes.jpg',
+    primary: '#BE185D',
+    secondary: '#9D174D',
+    accent: '#EC4899',
+    headingColor: '#9D174D',
+    btnGradient: 'linear-gradient(135deg, #BE185D 0%, #831843 100%)',
+    btnShadow: 'rgba(190, 24, 93, 0.45)',
+    badgeBg: 'bg-pink-50',
+    badgeText: 'text-pink-900',
+    badgeBorder: 'border-pink-300/60',
+    pillBg: 'bg-pink-500/10 text-pink-900 border-pink-500/20',
+    overlayFrom: 'rgba(190,24,93,0.48)',
+    overlayTo: 'rgba(60,0,30,0.82)',
   },
   {
     id: 'tropical-crunch',
@@ -55,58 +106,7 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeBorder: 'border-amber-300/60',
     pillBg: 'bg-amber-500/10 text-amber-900 border-amber-500/20',
     overlayFrom: 'rgba(217,119,6,0.48)',
-    overlayTo: 'rgba(60,20,0,0.80)',
-  },
-  {
-    id: 'blueberry-bite',
-    title: 'Blueberry Bite',
-    image: '/images/posters/blueberry-bite.jpg',
-    primary: '#7C3AED',
-    secondary: '#6D28D9',
-    accent: '#8B5CF6',
-    headingColor: '#6D28D9',
-    btnGradient: 'linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%)',
-    btnShadow: 'rgba(109, 40, 217, 0.45)',
-    badgeBg: 'bg-purple-50',
-    badgeText: 'text-purple-900',
-    badgeBorder: 'border-purple-300/60',
-    pillBg: 'bg-purple-500/10 text-purple-900 border-purple-500/20',
-    overlayFrom: 'rgba(109,40,217,0.52)',
-    overlayTo: 'rgba(20,5,50,0.82)',
-  },
-  {
-    id: 'papaya-pop',
-    title: 'Papaya Pop',
-    image: '/images/posters/papaya-pop.jpg',
-    primary: '#EA580C',
-    secondary: '#C2410C',
-    accent: '#FB923C',
-    headingColor: '#C2410C',
-    btnGradient: 'linear-gradient(135deg, #EA580C 0%, #9A3412 100%)',
-    btnShadow: 'rgba(234, 88, 12, 0.45)',
-    badgeBg: 'bg-orange-50',
-    badgeText: 'text-orange-900',
-    badgeBorder: 'border-orange-300/60',
-    pillBg: 'bg-orange-500/10 text-orange-900 border-orange-500/20',
-    overlayFrom: 'rgba(234,88,12,0.50)',
-    overlayTo: 'rgba(80,15,0,0.80)',
-  },
-  {
-    id: 'sweet-vibes',
-    title: 'Sweet Vibes',
-    image: '/images/posters/sweet-vibes.jpg',
-    primary: '#BE185D',
-    secondary: '#9D174D',
-    accent: '#EC4899',
-    headingColor: '#9D174D',
-    btnGradient: 'linear-gradient(135deg, #BE185D 0%, #831843 100%)',
-    btnShadow: 'rgba(190, 24, 93, 0.45)',
-    badgeBg: 'bg-pink-50',
-    badgeText: 'text-pink-900',
-    badgeBorder: 'border-pink-300/60',
-    pillBg: 'bg-pink-500/10 text-pink-900 border-pink-500/20',
-    overlayFrom: 'rgba(190,24,93,0.50)',
-    overlayTo: 'rgba(60,0,30,0.80)',
+    overlayTo: 'rgba(60,20,0,0.82)',
   },
 ];
 
@@ -131,7 +131,7 @@ export default function MobileHeroBackgroundCards({
       } else {
         setInternalIdx(nextIdx);
       }
-    }, 4500);
+    }, 3000);
     return () => clearInterval(timer);
   }, [activeIdx, onIndexChange]);
 
@@ -139,14 +139,14 @@ export default function MobileHeroBackgroundCards({
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none lg:hidden rounded-[inherit]">
-      {/* Full-bleed animated poster image background */}
+      {/* Full-bleed animated poster image background with 3-second cycle */}
       <AnimatePresence mode="sync">
         <motion.div
           key={`bg-img-${currentPoster.id}`}
           initial={{ opacity: 0, scale: 1.06 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.97 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >
           <Image
@@ -156,37 +156,37 @@ export default function MobileHeroBackgroundCards({
             priority
             sizes="(max-width: 1023px) 100vw, 0px"
             className="object-cover object-center"
-            style={{ filter: 'saturate(1.15) brightness(0.88)' }}
+            style={{ filter: 'saturate(1.2) brightness(0.85)' }}
           />
           {/* Gradient overlay to keep text readable while showing the beautiful image */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 transition-all duration-700"
             style={{
-              background: `linear-gradient(170deg, ${currentPoster.overlayFrom} 0%, ${currentPoster.overlayTo} 100%)`,
+              background: `linear-gradient(165deg, ${currentPoster.overlayFrom} 0%, ${currentPoster.overlayTo} 100%)`,
             }}
           />
-          {/* Bottom fade to white for seamless card merge */}
-          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-white/95 via-white/40 to-transparent" />
+          {/* Bottom fade to cream page background */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/60 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating ambient aura dots matching theme */}
+      {/* Floating ambient aura dots matching theme color */}
       <AnimatePresence mode="sync">
         <motion.div
           key={`aura-${currentPoster.id}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.35 }}
+          animate={{ opacity: 0.4 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.4 }}
+          transition={{ duration: 1.0 }}
           className="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl"
           style={{ backgroundColor: currentPoster.accent }}
         />
         <motion.div
           key={`aura2-${currentPoster.id}`}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.25 }}
+          animate={{ opacity: 0.3 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.4, delay: 0.2 }}
+          transition={{ duration: 1.0, delay: 0.15 }}
           className="absolute -bottom-6 -left-6 w-60 h-60 rounded-full blur-3xl"
           style={{ backgroundColor: currentPoster.primary }}
         />

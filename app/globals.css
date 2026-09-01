@@ -97,6 +97,34 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
+  /* ── Mobile/Tablet Global Edge Spacing ──
+     Ensures every page section has at least 1% breathing room
+     on all 4 sides on mobile and tablet screens               */
+  @media (max-width: 1023px) {
+    main > section,
+    main > div:not([class*="fixed"]):not([class*="absolute"]):not([class*="sticky"]) {
+      max-width: 100%;
+    }
+
+    /* Full-bleed hero sections should still reach screen edges */
+    .hero-full-bleed {
+      margin-left: -1%;
+      margin-right: -1%;
+      width: 102%;
+    }
+  }
+
+  /* Centered layout utility for mobile */
+  .mobile-centered {
+    @apply flex flex-col items-center text-center;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-centered {
+      @apply items-start text-left;
+    }
+  }
+
   .sticky-header,
   .sticky-top {
     position: sticky;
