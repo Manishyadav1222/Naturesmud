@@ -202,10 +202,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "158",
+    "id": "156",
     "slug": "dehydrated-coconut-chips",
-    "dbId": 158,
-    "name": "Dehydrated Coconut Chip",
+    "dbId": 156,
+    "name": "Dehydrated Coconut Chips",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 495,
@@ -398,10 +398,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "7",
+    "id": "155",
     "slug": "dried-cranberries",
-    "dbId": 7,
-    "name": "Dried Cranberry",
+    "dbId": 155,
+    "name": "Dried Cranberries",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 415,
@@ -607,10 +607,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "10",
+    "id": "14",
     "slug": "himalayan-pink-salt",
-    "dbId": 10,
-    "name": "Pink Salt",
+    "dbId": 14,
+    "name": "Himalayan Pink Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 180,
@@ -673,10 +673,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "159",
+    "id": "15",
     "slug": "pure-himalayan-black-salt-bire-noon",
-    "dbId": 159,
-    "name": "Black Salt",
+    "dbId": 15,
+    "name": "Himalayan Black Salt (Bire Noon)",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 150,
@@ -735,10 +735,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "11",
+    "id": "7",
     "slug": "chia-seeds",
-    "dbId": 11,
-    "name": "Chia Seeds",
+    "dbId": 7,
+    "name": "Organic Chia Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
     "price": 495,
@@ -805,10 +805,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "160",
+    "id": "8",
     "slug": "pumpkin-seeds",
-    "dbId": 160,
-    "name": "Pumpkin Seeds",
+    "dbId": 8,
+    "name": "Raw Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
     "price": 650,
@@ -876,10 +876,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "14",
+    "id": "161",
     "slug": "premium-cashewnuts",
-    "dbId": 14,
-    "name": "Premium Cashewnut",
+    "dbId": 161,
+    "name": "Premium Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
@@ -945,10 +945,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "161",
+    "id": "11",
     "slug": "roasted-cashewnuts",
-    "dbId": 161,
-    "name": "Roasted Cashewnut",
+    "dbId": 11,
+    "name": "Roasted Himalayan Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
@@ -1010,10 +1010,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "16",
+    "id": "160",
     "slug": "dried-figs",
-    "dbId": 16,
-    "name": "Dried Figs",
+    "dbId": 160,
+    "name": "Dried Figs (Anjeer)",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 690,
@@ -1081,10 +1081,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "17",
+    "id": "9",
     "slug": "roasted-almonds",
-    "dbId": 17,
-    "name": "Roasted Almond",
+    "dbId": 9,
+    "name": "Roasted Himalayan Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
@@ -1150,10 +1150,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "2",
+    "id": "10",
     "slug": "raw-himalayan-almonds",
-    "dbId": 2,
-    "name": "Almond",
+    "dbId": 10,
+    "name": "Raw Himalayan Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
@@ -1221,10 +1221,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "19",
+    "id": "162",
     "slug": "premium-pistachios",
-    "dbId": 19,
-    "name": "Pistachio",
+    "dbId": 162,
+    "name": "Premium Roasted Pistachios",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 895,
@@ -1290,10 +1290,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "20",
+    "id": "12",
     "slug": "superfood-trail-mix",
-    "dbId": 20,
-    "name": "Mix dry Nuts",
+    "dbId": 12,
+    "name": "Superfood Trail Mix (Nuts & Seeds)",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 690,
@@ -1365,10 +1365,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "21",
+    "id": "159",
     "slug": "macadamia-nuts",
-    "dbId": 21,
-    "name": "Macademia Nuts",
+    "dbId": 159,
+    "name": "Macadamia Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 850,
@@ -1435,10 +1435,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "162",
+    "id": "154",
     "slug": "virgin-coconut-oil-500ml",
-    "dbId": 162,
-    "name": "Coconut oil",
+    "dbId": 154,
+    "name": "Cold-Pressed Extra Virgin Coconut Oil (500ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 1750,
@@ -1507,10 +1507,10 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "164",
+    "id": "153",
     "slug": "virgin-coconut-oil-180ml",
-    "dbId": 164,
-    "name": "Coconut oil",
+    "dbId": 153,
+    "name": "Cold-Pressed Extra Virgin Coconut Oil (180ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 650,

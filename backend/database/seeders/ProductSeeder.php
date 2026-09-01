@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Dehydrated Coconut Chip",
+                'name' => "Dehydrated Coconut Chips",
                 'slug' => "dehydrated-coconut-chips",
                 'category' => "dried-fruits",
                 'price' => 495,
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Dried Cranberry",
+                'name' => "Dried Cranberries",
                 'slug' => "dried-cranberries",
                 'category' => "dried-fruits",
                 'price' => 415,
@@ -101,7 +101,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Dried Figs",
+                'name' => "Dried Figs (Anjeer)",
                 'slug' => "dried-figs",
                 'category' => "dried-fruits",
                 'price' => 690,
@@ -141,8 +141,8 @@ class ProductSeeder extends Seeder
                 'name' => "Carrot Powder",
                 'slug' => "carrot-powder",
                 'category' => "powders",
-                'price' => 490,
-                'compare_at_price' => 490,
+                'price' => 440,
+                'compare_at_price' => 440,
                 'short_description' => "Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 100g Glass Jar.",
                 'stock_quantity' => 85,
                 'is_featured' => false,
@@ -153,8 +153,8 @@ class ProductSeeder extends Seeder
                 'name' => "Sweet Potato Powder",
                 'slug' => "sweet-potato-powder",
                 'category' => "powders",
-                'price' => 510,
-                'compare_at_price' => 510,
+                'price' => 420,
+                'compare_at_price' => 420,
                 'short_description' => "100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar.",
                 'stock_quantity' => 160,
                 'is_featured' => true,
@@ -162,7 +162,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Pink Salt",
+                'name' => "Himalayan Pink Salt",
                 'slug' => "himalayan-pink-salt",
                 'category' => "salts-spices",
                 'price' => 180,
@@ -174,7 +174,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Black Salt",
+                'name' => "Himalayan Black Salt (Bire Noon)",
                 'slug' => "pure-himalayan-black-salt-bire-noon",
                 'category' => "salts-spices",
                 'price' => 150,
@@ -187,7 +187,7 @@ class ProductSeeder extends Seeder
             ],
             // --- 4. Premium Nuts & Mixes ---
             [
-                'name' => "Almond",
+                'name' => "Raw Himalayan Almonds",
                 'slug' => "raw-himalayan-almonds",
                 'category' => "nuts",
                 'price' => 750,
@@ -199,7 +199,7 @@ class ProductSeeder extends Seeder
                 'weight' => 200,
             ],
             [
-                'name' => "Roasted Almond",
+                'name' => "Roasted Himalayan Almonds",
                 'slug' => "roasted-almonds",
                 'category' => "nuts",
                 'price' => 750,
@@ -211,7 +211,7 @@ class ProductSeeder extends Seeder
                 'weight' => 100,
             ],
             [
-                'name' => "Premium Cashewnut",
+                'name' => "Premium Cashew Nuts",
                 'slug' => "premium-cashewnuts",
                 'category' => "nuts",
                 'price' => 750,
@@ -223,7 +223,7 @@ class ProductSeeder extends Seeder
                 'weight' => 200,
             ],
             [
-                'name' => "Roasted Cashewnut",
+                'name' => "Roasted Himalayan Cashew Nuts",
                 'slug' => "roasted-cashewnuts",
                 'category' => "nuts",
                 'price' => 750,
@@ -235,7 +235,7 @@ class ProductSeeder extends Seeder
                 'weight' => 150,
             ],
             [
-                'name' => "Pistachio",
+                'name' => "Premium Roasted Pistachios",
                 'slug' => "premium-pistachios",
                 'category' => "nuts",
                 'price' => 895,
@@ -247,7 +247,7 @@ class ProductSeeder extends Seeder
                 'weight' => 150,
             ],
             [
-                'name' => "Mix dry Nuts",
+                'name' => "Superfood Trail Mix (Nuts & Seeds)",
                 'slug' => "superfood-trail-mix",
                 'category' => "nuts",
                 'price' => 690,
@@ -259,7 +259,7 @@ class ProductSeeder extends Seeder
                 'weight' => 300,
             ],
             [
-                'name' => "Macademia Nuts",
+                'name' => "Macadamia Nuts",
                 'slug' => "macadamia-nuts",
                 'category' => "nuts",
                 'price' => 850,
@@ -272,7 +272,7 @@ class ProductSeeder extends Seeder
             ],
             // --- 5. Organic Seeds & Premier Oils ---
             [
-                'name' => "Chia Seeds",
+                'name' => "Organic Chia Seeds",
                 'slug' => "chia-seeds",
                 'category' => "seeds",
                 'price' => 495,
@@ -284,7 +284,7 @@ class ProductSeeder extends Seeder
                 'weight' => 300,
             ],
             [
-                'name' => "Pumpkin Seeds",
+                'name' => "Raw Pumpkin Seeds",
                 'slug' => "pumpkin-seeds",
                 'category' => "seeds",
                 'price' => 650,
@@ -296,7 +296,7 @@ class ProductSeeder extends Seeder
                 'weight' => 300,
             ],
             [
-                'name' => "Coconut oil",
+                'name' => "Cold-Pressed Extra Virgin Coconut Oil (500ml)",
                 'slug' => "virgin-coconut-oil-500ml",
                 'category' => "oils",
                 'price' => 1750,
@@ -308,7 +308,7 @@ class ProductSeeder extends Seeder
                 'weight' => 500,
             ],
             [
-                'name' => "Coconut oil",
+                'name' => "Cold-Pressed Extra Virgin Coconut Oil (180ml)",
                 'slug' => "virgin-coconut-oil-180ml",
                 'category' => "oils",
                 'price' => 650,
