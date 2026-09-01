@@ -302,8 +302,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Content Column — Animated Flagship Product Showcase (Mobile, Tablet & Desktop) */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center lg:items-end justify-center pt-2 sm:pt-4 lg:pt-0 mt-2 sm:mt-4 lg:mt-0 w-full">
+            {/* Right Content Column — Animated Flagship Product Showcase (Desktop visible only in page.tsx; Mobile handled by MobileHomePage.tsx) */}
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-2 sm:pt-4 lg:pt-0 mt-2 sm:mt-4 lg:mt-0 w-full">
               <div className="w-full flex justify-center lg:justify-end">
                 <ErrorBoundary name="Product Showcase">
                   <HeroProductShowcase />

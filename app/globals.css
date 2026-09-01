@@ -855,4 +855,112 @@ button, a, input, select, textarea {
 .review-marquee-right:hover {
   animation-play-state: paused;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE & TABLET — Global 1% Breathing Room & Hero Enhancements
+   (max-width: 1023px — does NOT affect desktop)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  /* 1% global breathing room from all four edges */
+  main,
+  .page-wrapper,
+  [class*="lg:hidden"] {
+    padding-left: 1%;
+    padding-right: 1%;
+  }
+
+  /* Reset sticky header to full bleed (it has its own padding) */
+  [class*="sticky"] {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  /* Ensure sections inside mobile page don't double-pad */
+  [class*="lg:hidden"] section,
+  [class*="lg:hidden"] > div:not([class*="sticky"]):not([class*="mx-[-"]) {
+    max-width: 100%;
+  }
+
+  /* Hero section full-bleed override (negative margin trick) */
+  .mobile-hero-full {
+    margin-left: -1%;
+    margin-right: -1%;
+    width: calc(100% + 2%);
+  }
+
+  /* Smooth background color transition on the body for hero ambient effect */
+  body {
+    transition: background-color 0.8s ease;
+  }
+
+  /* Product card hover/active states — touch-friendly */
+  .product-card-mobile {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .product-card-mobile:active {
+    transform: scale(0.97);
+  }
+
+  /* Hero text readable against poster backgrounds */
+  .hero-text-shadow {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45), 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Poster background image transition animation */
+  @keyframes poster-fade-in {
+    from { opacity: 0; transform: scale(1.06); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .poster-bg-enter {
+    animation: poster-fade-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Centered hero product circle on mobile */
+  .mobile-hero-circle {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure no horizontal overflow from absolute positioned poster blobs */
+  .mobile-hero-section {
+    overflow: hidden;
+  }
+
+  /* Fix story category bar to always go edge-to-edge */
+  .story-bar {
+    margin-left: -2%;
+    margin-right: -2%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  /* Smooth color dot transitions for product indicators */
+  .product-dot {
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Bottom padding ensuring content not hidden behind mobile nav */
+  .mobile-page-content {
+    padding-bottom: 90px;
+  }
+}
+
+/* Tablet-specific (768px–1023px) adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Slightly more breathing room on tablets */
+  [class*="lg:hidden"] {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  /* Tablet hero circle — larger */
+  .mobile-hero-circle {
+    width: 44vw;
+    max-width: 320px;
+  }
+}
 

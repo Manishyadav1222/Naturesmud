@@ -47,6 +47,20 @@ const STORY_CATEGORIES = [
   { name: 'Offers', label: 'Combos & Packs', slug: 'offers', icon: '🎁', img: '/products/superfood-mix.jpg' },
 ];
 
+// Product poster images that serve as animated full-section backgrounds
+const HERO_BG_IMAGES = [
+  { img: '/images/posters/papaya-pop.jpg', overlayFrom: 'rgba(234,88,12,0.42)', overlayTo: 'rgba(80,15,0,0.78)', accent: '#FB923C', primary: '#EA580C' },
+  { img: '/images/posters/tropical-crunch.jpg', overlayFrom: 'rgba(202,138,4,0.42)', overlayTo: 'rgba(60,20,0,0.78)', accent: '#EAB308', primary: '#CA8A04' },
+  { img: '/images/posters/chia-power.jpg', overlayFrom: 'rgba(13,148,136,0.45)', overlayTo: 'rgba(2,44,34,0.80)', accent: '#14B8A6', primary: '#0D9488' },
+  { img: '/images/posters/blueberry-bite.jpg', overlayFrom: 'rgba(109,40,217,0.45)', overlayTo: 'rgba(20,5,50,0.80)', accent: '#8B5CF6', primary: '#7C3AED' },
+  { img: '/images/posters/sweet-vibes.jpg', overlayFrom: 'rgba(190,24,93,0.44)', overlayTo: 'rgba(60,0,30,0.78)', accent: '#EC4899', primary: '#BE185D' },
+  { img: '/images/posters/chia-power.jpg', overlayFrom: 'rgba(13,148,136,0.42)', overlayTo: 'rgba(2,44,34,0.78)', accent: '#14B8A6', primary: '#0D9488' },
+  { img: '/images/posters/papaya-pop.jpg', overlayFrom: 'rgba(225,29,72,0.42)', overlayTo: 'rgba(80,0,30,0.78)', accent: '#FB7185', primary: '#E11D48' },
+  { img: '/images/posters/tropical-crunch.jpg', overlayFrom: 'rgba(100,116,139,0.42)', overlayTo: 'rgba(15,23,42,0.78)', accent: '#94A3B8', primary: '#475569' },
+  { img: '/images/posters/sweet-vibes.jpg', overlayFrom: 'rgba(5,150,105,0.42)', overlayTo: 'rgba(2,44,34,0.78)', accent: '#34D399', primary: '#059669' },
+  { img: '/images/posters/blueberry-bite.jpg', overlayFrom: 'rgba(217,119,6,0.42)', overlayTo: 'rgba(60,20,0,0.78)', accent: '#F59E0B', primary: '#D97706' },
+];
+
 export default function MobileHomePage() {
   const { openSearch, openQuickView } = useUIStore();
   const { addItem, openDrawer } = useCartStore();
@@ -58,6 +72,7 @@ export default function MobileHomePage() {
 
   const currentHero = HERO_SHOWCASE_PRODUCTS[heroIdx];
   const catalogProduct = products.find((p) => p.slug === currentHero.slug);
+  const currentBg = HERO_BG_IMAGES[heroIdx] || HERO_BG_IMAGES[0];
 
   // Auto-cycle mobile hero every 5s
   useEffect(() => {
@@ -102,10 +117,10 @@ export default function MobileHomePage() {
   const discountPercent = calculateDiscount(currentHero.price, currentHero.compareAtPrice);
 
   return (
-    <div className="lg:hidden w-full bg-[#FAF7F2] min-h-screen pb-24 overflow-x-hidden">
-      
+    <div className="lg:hidden w-full bg-[#FAF7F2] min-h-screen pb-24 overflow-x-hidden" style={{ padding: '0 1%' }}>
+
       {/* 1. Mobile App Top Sticky Header Bar */}
-      <div className="sticky top-0 z-30 bg-[#FAF7F2]/95 backdrop-blur-md px-4 pt-3 pb-2.5 border-b border-ink/8">
+      <div className="sticky top-0 z-30 bg-[#FAF7F2]/95 backdrop-blur-md px-[2%] pt-3 pb-2.5 border-b border-ink/8 mx-[-1%]">
         {/* Express Delivery Pill */}
         <div className="flex items-center justify-between text-[11px] font-semibold text-ink/75 mb-2">
           <div className="flex items-center gap-1 text-[#7A5230]">
@@ -117,7 +132,7 @@ export default function MobileHomePage() {
           </span>
         </div>
 
-        {/* Mobile Search Bar (Interactive Trigger) */}
+        {/* Mobile Search Bar */}
         <button
           type="button"
           onClick={() => openSearch()}
@@ -134,7 +149,7 @@ export default function MobileHomePage() {
       </div>
 
       {/* 2. Instagram-Style Story Categories Bar */}
-      <div className="py-3 px-3 overflow-x-auto no-scrollbar flex items-center gap-3 bg-white border-b border-ink/5">
+      <div className="py-3 px-[1%] overflow-x-auto no-scrollbar flex items-center gap-3 bg-white border-b border-ink/5 mx-[-1%]">
         {STORY_CATEGORIES.map((cat) => (
           <Link
             key={cat.slug}
@@ -162,47 +177,108 @@ export default function MobileHomePage() {
         ))}
       </div>
 
-      {/* 3. Dedicated Mobile Hero Showcase with 10-Product Swipe & Color Portal */}
+      {/* ══════════════════════════════════════════════════════════════════════
+          3. HERO SHOWCASE — Full animated product poster background
+         ══════════════════════════════════════════════════════════════════════ */}
       <section
-        className="px-3 pt-3 pb-4"
+        className="relative mx-[-1%] overflow-hidden"
+        style={{ minHeight: '88vw', maxHeight: '520px' }}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div
-          className="relative rounded-3xl p-4 sm:p-5 overflow-hidden shadow-lg border border-white/40 transition-colors duration-700"
-          style={{
-            background: `linear-gradient(145deg, #FFFFFF 0%, ${currentHero.theme.portalBg.includes('#') ? '#FAF7F2' : '#FFFDF9'} 100%)`,
-            boxShadow: `0 12px 30px -10px ${currentHero.theme.glow}`,
-          }}
-        >
-          {/* Eyebrow & Badge */}
-          <div className="flex items-center justify-between gap-2 pb-2">
-            <span className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border shadow-2xs ${currentHero.theme.badgeBg}`}>
+        {/* ── Animated Full-Bleed Poster Background ── */}
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={`hero-bg-${heroIdx}`}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 z-0"
+          >
+            <Image
+              src={currentBg.img}
+              alt={currentHero.name}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+              style={{ filter: 'saturate(1.2) brightness(0.82)' }}
+            />
+            {/* Color-matched gradient overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `linear-gradient(160deg, ${currentBg.overlayFrom} 0%, ${currentBg.overlayTo} 100%)`,
+              }}
+            />
+            {/* Bottom fade-to-cream for smooth merge with cards below */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/60 to-transparent" />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Ambient glow orbs */}
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={`orb1-${heroIdx}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+            className="absolute -top-8 -right-8 w-56 h-56 rounded-full blur-3xl pointer-events-none z-0"
+            style={{ backgroundColor: currentBg.accent }}
+          />
+          <motion.div
+            key={`orb2-${heroIdx}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.3 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, delay: 0.15 }}
+            className="absolute -bottom-4 -left-4 w-44 h-44 rounded-full blur-3xl pointer-events-none z-0"
+            style={{ backgroundColor: currentBg.primary }}
+          />
+        </AnimatePresence>
+
+        {/* ── Hero Content — centered on mobile/tablet ── */}
+        <div className="relative z-10 flex flex-col items-center justify-center px-4 pt-5 pb-10 text-center">
+
+          {/* Eyebrow badge + counter */}
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span
+              className={`text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm backdrop-blur-sm bg-white/20 text-white border-white/30`}
+            >
               {currentHero.badge}
             </span>
-            <div className="flex items-center gap-1 text-[11px] font-bold text-ink/60">
+            <div className="flex items-center gap-1 text-[11px] font-bold text-white/80 backdrop-blur-xs bg-black/20 px-2 py-0.5 rounded-full">
               <span>{heroIdx + 1}</span>
               <span>/</span>
               <span>10 Flagships</span>
             </div>
           </div>
 
-          {/* Product Title & Subtitle */}
-          <div className="pt-1">
-            <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-ink leading-tight">
+          {/* Product Title */}
+          <AnimatePresence mode="wait">
+            <motion.h2
+              key={`title-${currentHero.slug}`}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight drop-shadow-lg mb-1"
+            >
               {currentHero.name}
-            </h2>
-            <p className="text-xs text-ink/65 font-medium mt-0.5">
-              {currentHero.subheading} · {currentHero.weight}
-            </p>
-          </div>
+            </motion.h2>
+          </AnimatePresence>
+          <p className="text-xs text-white/75 font-medium mb-4">
+            {currentHero.subheading} · {currentHero.weight}
+          </p>
 
-          {/* Central 3D Visual Stage with Dynamic Portal */}
-          <div className="relative my-4 w-full aspect-square max-w-[280px] mx-auto flex items-center justify-center">
-            {/* Glowing Radial Color Portal */}
+          {/* Central 3D Product Image Circle — CENTERED */}
+          <div className="relative w-[56vw] max-w-[260px] aspect-square mx-auto flex items-center justify-center mb-4">
+            {/* Glowing Radial Portal */}
             <motion.div
-              key={`mobile-portal-${currentHero.slug}`}
+              key={`portal-${currentHero.slug}`}
               initial={{ scale: 0.88, opacity: 0.4 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6 }}
@@ -212,12 +288,11 @@ export default function MobileHomePage() {
                 boxShadow: `0 20px 50px -10px ${currentHero.theme.glow}`,
               }}
             />
-
-            {/* Concentric subtle rings */}
+            {/* Concentric rings */}
             <div className="absolute inset-3 rounded-full border border-white/40 pointer-events-none" />
             <div className="absolute inset-6 rounded-full border border-dashed border-white/30 pointer-events-none animate-spin-slow" />
 
-            {/* Floating Organic Accents */}
+            {/* Floating accents */}
             <div className="absolute -top-1 -left-1 z-20">
               <div
                 className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center p-1.5 border border-white"
@@ -226,7 +301,6 @@ export default function MobileHomePage() {
                 <Leaf className="w-full h-full fill-current" />
               </div>
             </div>
-
             <div className="absolute -bottom-1 -right-1 z-20">
               <div className="px-2.5 py-1 rounded-full bg-white shadow-md border border-ink/5 flex items-center gap-1 text-[10px] font-bold">
                 <Flame className="w-3 h-3 text-amber-500 fill-amber-500" />
@@ -234,13 +308,13 @@ export default function MobileHomePage() {
               </div>
             </div>
 
-            {/* Main Product Image (Click to view) */}
+            {/* Main Product Image */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-hero-img-${currentHero.slug}`}
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -30 }}
+                exit={{ opacity: 0, scale: 0.8, y: -20 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="relative w-full h-full rounded-full overflow-hidden p-2 z-10"
                 onClick={() => openQuickView(catalogProduct?.id || currentHero.slug)}
@@ -261,40 +335,36 @@ export default function MobileHomePage() {
             </AnimatePresence>
           </div>
 
-          {/* Description snippet */}
-          <p className="text-xs text-ink/75 font-sans text-center line-clamp-2 px-1">
+          {/* Description */}
+          <p className="text-xs text-white/85 font-medium text-center line-clamp-2 px-4 mb-4 max-w-xs drop-shadow">
             {currentHero.description}
           </p>
 
-          {/* Price + Buy Now Row */}
-          <div className="flex items-center justify-between gap-3 mt-3 pt-3 border-t border-ink/8">
-            <div>
+          {/* Price + CTA — centered row */}
+          <div className="flex items-center justify-center gap-4 w-full max-w-xs mx-auto">
+            <div className="text-left">
               <div className="flex items-baseline gap-1.5">
-                <span
-                  className="font-heading font-extrabold text-2xl"
-                  style={{ color: currentHero.theme.primary }}
-                >
+                <span className="font-heading font-extrabold text-2xl text-white drop-shadow">
                   {formatPrice(currentHero.price)}
                 </span>
                 {currentHero.compareAtPrice && currentHero.compareAtPrice > currentHero.price && (
-                  <span className="text-xs text-ink/40 line-through font-heading">
+                  <span className="text-xs text-white/50 line-through font-heading">
                     {formatPrice(currentHero.compareAtPrice)}
                   </span>
                 )}
               </div>
               {discountPercent && (
-                <span className="text-[10px] font-bold text-emerald-700">
+                <span className="text-[10px] font-bold text-emerald-300">
                   Save {discountPercent}% off
                 </span>
               )}
             </div>
 
-            {/* Action Buttons */}
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => openQuickView(catalogProduct?.id || currentHero.slug)}
-                className="p-2.5 rounded-xl bg-cream-100 text-ink/75 active:scale-95 transition-all"
+                className="p-2.5 rounded-xl bg-white/20 backdrop-blur-sm text-white border border-white/30 active:scale-95 transition-all"
                 aria-label="Quick View"
               >
                 <Eye className="w-4 h-4" />
@@ -303,9 +373,10 @@ export default function MobileHomePage() {
               <button
                 type="button"
                 onClick={(e) => handleQuickAdd(catalogProduct || currentHero, e)}
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-white font-heading font-bold text-xs shadow-md active:scale-95 transition-all"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-white font-heading font-bold text-xs shadow-lg active:scale-95 transition-all"
                 style={{
                   background: `linear-gradient(135deg, ${currentHero.theme.primary} 0%, ${currentHero.theme.secondary} 100%)`,
+                  boxShadow: `0 4px 20px -4px ${currentHero.theme.glow}`,
                 }}
               >
                 {addedItem === currentHero.slug ? (
@@ -323,28 +394,46 @@ export default function MobileHomePage() {
             </div>
           </div>
 
-          {/* 10-Dot Progress Indicator */}
-          <div className="flex items-center justify-center gap-1.5 mt-3 pt-1">
+          {/* 10-Dot Progress Indicator — centered */}
+          <div className="flex items-center justify-center gap-1.5 mt-4">
             {HERO_SHOWCASE_PRODUCTS.map((p, i) => (
               <button
                 key={p.slug}
                 type="button"
                 onClick={() => setHeroIdx(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === heroIdx ? 'w-5' : 'w-1.5 bg-ink/20'
+                  i === heroIdx ? 'w-5' : 'w-1.5 bg-white/40'
                 }`}
                 style={{
-                  backgroundColor: i === heroIdx ? p.theme.primary : undefined,
+                  backgroundColor: i === heroIdx ? '#ffffff' : undefined,
                 }}
                 aria-label={`Go to ${p.name}`}
               />
             ))}
           </div>
         </div>
+
+        {/* Prev/Next nav arrows */}
+        <button
+          type="button"
+          onClick={() => setHeroIdx((prev) => (prev - 1 + HERO_SHOWCASE_PRODUCTS.length) % HERO_SHOWCASE_PRODUCTS.length)}
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:scale-90 transition-all"
+          aria-label="Previous product"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          type="button"
+          onClick={() => setHeroIdx((prev) => (prev + 1) % HERO_SHOWCASE_PRODUCTS.length)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white active:scale-90 transition-all"
+          aria-label="Next product"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
       </section>
 
-      {/* 4. Mobile Quick Value Proposition Chips (Horizontal Snap) */}
-      <div className="px-3 py-2">
+      {/* 4. Quick Value Proposition Chips (Horizontal Snap) */}
+      <div className="py-2.5">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
           {[
             { icon: ShieldCheck, text: '100% Nepali Origin', color: 'text-primary' },
@@ -366,8 +455,8 @@ export default function MobileHomePage() {
         </div>
       </div>
 
-      {/* 5. Baby & Mother Combos (Special Mobile Spotlight) */}
-      <section className="px-3 py-3">
+      {/* 5. Baby & Mother Combos — full width centered */}
+      <section className="py-3">
         <div className="bg-gradient-to-br from-rose-50 via-amber-50 to-orange-50 border border-rose-200/60 rounded-3xl p-4 shadow-sm">
           <div className="flex items-center justify-between pb-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold">
@@ -410,8 +499,8 @@ export default function MobileHomePage() {
         </div>
       </section>
 
-      {/* 6. Top Flagship Bestsellers Grid (2-Column Mobile Feed) */}
-      <section className="px-3 py-3">
+      {/* 6. Top Flagship Bestsellers Grid (2-Column, full width, centered) */}
+      <section className="py-3">
         <div className="flex items-center justify-between mb-3 px-1">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-primary">
@@ -474,18 +563,18 @@ export default function MobileHomePage() {
         </div>
       </section>
 
-      {/* 7. Reels Section in Mobile */}
-      <div className="py-2">
+      {/* 7. Reels Section */}
+      <div className="py-2 mx-[-1%]">
         <ReelsSection />
       </div>
 
-      {/* 8. Customer Reviews & Wall of Love */}
-      <div className="py-2">
+      {/* 8. Customer Reviews */}
+      <div className="py-2 mx-[-1%]">
         <RealCustomerReviewsSection />
       </div>
 
-      {/* 9. Direct WhatsApp Fast-Order Banner */}
-      <section className="px-3 py-3">
+      {/* 9. WhatsApp Fast-Order Banner */}
+      <section className="py-3">
         <div className="bg-[#1A3826] text-white rounded-3xl p-4 shadow-md flex items-center justify-between gap-3">
           <div className="space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-gold-300">

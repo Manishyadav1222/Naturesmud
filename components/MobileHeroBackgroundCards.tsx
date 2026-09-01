@@ -18,6 +18,8 @@ export interface PosterTheme {
   badgeText: string;
   badgeBorder: string;
   pillBg: string;
+  overlayFrom: string;
+  overlayTo: string;
 }
 
 export const POSTER_THEMES: PosterTheme[] = [
@@ -25,7 +27,7 @@ export const POSTER_THEMES: PosterTheme[] = [
     id: 'chia-power',
     title: 'Chia Power',
     image: '/images/posters/chia-power.jpg',
-    primary: '#0D9488', // Emerald Teal
+    primary: '#0D9488',
     secondary: '#0F766E',
     accent: '#14B8A6',
     headingColor: '#0F766E',
@@ -35,12 +37,14 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-teal-900',
     badgeBorder: 'border-teal-300/60',
     pillBg: 'bg-teal-500/10 text-teal-900 border-teal-500/20',
+    overlayFrom: 'rgba(13,148,136,0.55)',
+    overlayTo: 'rgba(2,44,34,0.82)',
   },
   {
     id: 'tropical-crunch',
     title: 'Tropical Crunch',
     image: '/images/posters/tropical-crunch.jpg',
-    primary: '#D97706', // Golden Amber
+    primary: '#D97706',
     secondary: '#B45309',
     accent: '#F59E0B',
     headingColor: '#B45309',
@@ -50,12 +54,14 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-amber-900',
     badgeBorder: 'border-amber-300/60',
     pillBg: 'bg-amber-500/10 text-amber-900 border-amber-500/20',
+    overlayFrom: 'rgba(217,119,6,0.48)',
+    overlayTo: 'rgba(60,20,0,0.80)',
   },
   {
     id: 'blueberry-bite',
     title: 'Blueberry Bite',
     image: '/images/posters/blueberry-bite.jpg',
-    primary: '#7C3AED', // Deep Royal Berry
+    primary: '#7C3AED',
     secondary: '#6D28D9',
     accent: '#8B5CF6',
     headingColor: '#6D28D9',
@@ -65,12 +71,14 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-purple-900',
     badgeBorder: 'border-purple-300/60',
     pillBg: 'bg-purple-500/10 text-purple-900 border-purple-500/20',
+    overlayFrom: 'rgba(109,40,217,0.52)',
+    overlayTo: 'rgba(20,5,50,0.82)',
   },
   {
     id: 'papaya-pop',
     title: 'Papaya Pop',
     image: '/images/posters/papaya-pop.jpg',
-    primary: '#EA580C', // Vibrant Papaya Orange
+    primary: '#EA580C',
     secondary: '#C2410C',
     accent: '#FB923C',
     headingColor: '#C2410C',
@@ -80,6 +88,25 @@ export const POSTER_THEMES: PosterTheme[] = [
     badgeText: 'text-orange-900',
     badgeBorder: 'border-orange-300/60',
     pillBg: 'bg-orange-500/10 text-orange-900 border-orange-500/20',
+    overlayFrom: 'rgba(234,88,12,0.50)',
+    overlayTo: 'rgba(80,15,0,0.80)',
+  },
+  {
+    id: 'sweet-vibes',
+    title: 'Sweet Vibes',
+    image: '/images/posters/sweet-vibes.jpg',
+    primary: '#BE185D',
+    secondary: '#9D174D',
+    accent: '#EC4899',
+    headingColor: '#9D174D',
+    btnGradient: 'linear-gradient(135deg, #BE185D 0%, #831843 100%)',
+    btnShadow: 'rgba(190, 24, 93, 0.45)',
+    badgeBg: 'bg-pink-50',
+    badgeText: 'text-pink-900',
+    badgeBorder: 'border-pink-300/60',
+    pillBg: 'bg-pink-500/10 text-pink-900 border-pink-500/20',
+    overlayFrom: 'rgba(190,24,93,0.50)',
+    overlayTo: 'rgba(60,0,30,0.80)',
   },
 ];
 
@@ -96,10 +123,7 @@ export default function MobileHeroBackgroundCards({
   const activeIdx = controlledIdx !== undefined ? controlledIdx : internalIdx;
 
   useEffect(() => {
-    // Only run on mobile/tablet viewports to avoid unnecessary re-renders and color shifts on desktop
-    if (typeof window !== 'undefined' && window.innerWidth >= 1024) {
-      return;
-    }
+    if (typeof window !== 'undefined' && window.innerWidth >= 1024) return;
     const timer = setInterval(() => {
       const nextIdx = (activeIdx + 1) % POSTER_THEMES.length;
       if (onIndexChange) {
@@ -107,36 +131,66 @@ export default function MobileHeroBackgroundCards({
       } else {
         setInternalIdx(nextIdx);
       }
-    }, 4500); // Transitions every 4.5 seconds
+    }, 4500);
     return () => clearInterval(timer);
   }, [activeIdx, onIndexChange]);
 
   const currentPoster = POSTER_THEMES[activeIdx] || POSTER_THEMES[0];
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none rounded-3xl lg:hidden">
-      {/* Dynamic Ambient Color Aura transitioning with Poster Themes */}
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none lg:hidden rounded-[inherit]">
+      {/* Full-bleed animated poster image background */}
       <AnimatePresence mode="sync">
         <motion.div
-          key={currentPoster.id}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 0.28, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -top-12 -right-12 w-64 h-64 sm:w-80 sm:h-80 rounded-full blur-3xl pointer-events-none"
+          key={`bg-img-${currentPoster.id}`}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.97 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={currentPoster.image}
+            alt={currentPoster.title}
+            fill
+            priority
+            sizes="(max-width: 1023px) 100vw, 0px"
+            className="object-cover object-center"
+            style={{ filter: 'saturate(1.15) brightness(0.88)' }}
+          />
+          {/* Gradient overlay to keep text readable while showing the beautiful image */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(170deg, ${currentPoster.overlayFrom} 0%, ${currentPoster.overlayTo} 100%)`,
+            }}
+          />
+          {/* Bottom fade to white for seamless card merge */}
+          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-white/95 via-white/40 to-transparent" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Floating ambient aura dots matching theme */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={`aura-${currentPoster.id}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.35 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.4 }}
+          className="absolute -top-10 -right-10 w-72 h-72 rounded-full blur-3xl"
           style={{ backgroundColor: currentPoster.accent }}
         />
         <motion.div
-          key={`${currentPoster.id}-secondary`}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 0.2, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute -bottom-8 -left-8 w-56 h-56 sm:w-72 sm:h-72 rounded-full blur-3xl pointer-events-none"
+          key={`aura2-${currentPoster.id}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.25 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.4, delay: 0.2 }}
+          className="absolute -bottom-6 -left-6 w-60 h-60 rounded-full blur-3xl"
           style={{ backgroundColor: currentPoster.primary }}
         />
       </AnimatePresence>
     </div>
   );
 }
-
