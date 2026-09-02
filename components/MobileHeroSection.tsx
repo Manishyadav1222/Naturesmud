@@ -506,15 +506,15 @@ export default function MobileHeroSection() {
           </div>
         </div>
 
-        <div className="md:col-span-5 lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center">
+        <div className="md:col-span-5 lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center my-auto">
           <div
-            className="relative w-full max-w-[390px] lg:max-w-[430px] xl:max-w-[450px] mx-auto"
+            className="relative w-full max-w-[390px] md:max-w-[450px] lg:max-w-[430px] xl:max-w-[460px] mx-auto"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {/* Card Showcase Frame */}
-            <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/90 bg-stone-900 group">
+            <div className="relative w-full aspect-[4/5] md:aspect-[3/4.2] md:min-h-[530px] lg:min-h-0 lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/90 bg-stone-900 group">
               {MOBILE_POSTERS.map((poster, idx) => {
                 const isCurrent = activeIdx === idx;
                 return (
@@ -530,7 +530,7 @@ export default function MobileHeroSection() {
                       alt={poster.name}
                       fill
                       priority={idx < 2}
-                      sizes="(max-width: 1024px) 50vw, 420px"
+                      sizes="(max-width: 1024px) 50vw, 450px"
                       className="object-cover object-center transition-transform duration-700 ease-out"
                       style={{ filter: 'saturate(1.18)' }}
                     />
