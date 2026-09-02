@@ -87,13 +87,13 @@ const HERO_BG_IMAGES = [
     name: 'Sweet Vibes',
   },
   {
-    img: '/images/posters/tropical-crunch.jpg',
-    overlayFrom: 'rgba(202,138,4,0.38)',
-    overlayTo: 'rgba(60,20,0,0.75)',
-    accent: '#EAB308',
-    primary: '#CA8A04',
-    bgColor: '#D97706',          // golden amber
-    name: 'Tropical Crunch',
+    img: '/images/posters/earth-ritual-beetroot.jpg',
+    overlayFrom: 'rgba(159,18,57,0.38)',
+    overlayTo: 'rgba(50,5,20,0.75)',
+    accent: '#E11D48',
+    primary: '#9F1239',
+    bgColor: '#881337',          // deep beetroot crimson
+    name: 'Beetroot Powder',
   },
 ];
 

@@ -210,43 +210,27 @@ async function main() {
       }
     });
 
-    const posterFiles = [
-      'pineapple-splendor.jpg',
-      'blueberries-orchard.jpg',
-      'papaya-splash-delight.jpg',
-      'chia-power.jpg',
-      'sweet-vibes.jpg',
-      'tropical-crunch.jpg',
-      'papaya-pop.jpg',
-      'blueberry-bite.jpg'
-    ];
-    posterFiles.forEach(pf => {
-      const full = path.join(config.rootDir, 'public', 'images', 'posters', pf);
-      if (fs.existsSync(full)) {
-        archive.file(full, { name: 'public/images/posters/' + pf });
-      }
-    });
+    const postersDir = path.join(config.rootDir, 'public', 'images', 'posters');
+    if (fs.existsSync(postersDir)) {
+      const posterFiles = fs.readdirSync(postersDir);
+      posterFiles.forEach(pf => {
+        const full = path.join(postersDir, pf);
+        if (fs.statSync(full).isFile() && fs.statSync(full).size < 1000000) {
+          archive.file(full, { name: 'public/images/posters/' + pf });
+        }
+      });
+    }
 
-    const prodFiles = [
-      'dried-blueberries-orchard.jpg',
-      'dried-blueberries-100g.jpg',
-      'blueberries.jpg',
-      'dried-blueberries.jpg',
-      'dehydrated-pineapple-premium.jpg',
-      'papaya-splash.jpg',
-      'chia-seeds.jpg',
-      'authentic-almonds.jpg',
-      'authentic-cashewnuts-roasted.jpg',
-      'pink-salt.jpg',
-      'himalayan-black-salt-digestive.jpg',
-      'cranberries.jpg'
-    ];
-    prodFiles.forEach(pf => {
-      const full = path.join(config.rootDir, 'public', 'products', pf);
-      if (fs.existsSync(full)) {
-        archive.file(full, { name: 'public/products/' + pf });
-      }
-    });
+    const prodsDir = path.join(config.rootDir, 'public', 'products');
+    if (fs.existsSync(prodsDir)) {
+      const prodFiles = fs.readdirSync(prodsDir);
+      prodFiles.forEach(pf => {
+        const full = path.join(prodsDir, pf);
+        if (fs.statSync(full).isFile() && fs.statSync(full).size < 1000000) {
+          archive.file(full, { name: 'public/products/' + pf });
+        }
+      });
+    }
 
     archive.finalize();
   });
