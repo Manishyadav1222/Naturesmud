@@ -15,7 +15,7 @@ describe('Logo Component', () => {
   it('renders correctly as link with default size', () => {
     render(<Logo />);
     
-    const linkElement = screen.getByRole('link', { name: /Nature's Mud/i });
+    const linkElement = screen.getByRole('link', { name: /NaturesMud/i });
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute('href', '/');
   });
@@ -23,7 +23,7 @@ describe('Logo Component', () => {
   it('renders correctly without link when asLink is false', () => {
     render(<Logo asLink={false} />);
     
-    const linkElement = screen.queryByRole('link', { name: /Nature's Mud/i });
+    const linkElement = screen.queryByRole('link', { name: /NaturesMud/i });
     expect(linkElement).toBeNull();
 
     const imgElement = screen.getByAltText(/Naturesmud/i);

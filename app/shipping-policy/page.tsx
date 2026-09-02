@@ -6,9 +6,9 @@ export const metadata = {
 };
 
 const zones = [
-  { zone: 'Kathmandu Valley', time: '1-2 business days', cost: 'Rs. 100 (Free over Rs. 10,000)' },
-  { zone: 'Major Cities (Pokhara, Chitwan, Butwal, etc.)', time: '2-4 business days', cost: 'Rs. 150 (Free over Rs. 10,000)' },
-  { zone: 'Other Regions', time: '3-7 business days', cost: 'Rs. 200 (Free over Rs. 10,000)' },
+  { zone: 'Kathmandu Valley', time: '1-2 business days', cost: 'Rs. 100 (Free over Rs. 3,000)' },
+  { zone: 'Major Cities (Pokhara, Chitwan, Butwal, etc.)', time: '2-4 business days', cost: 'Rs. 150 (Free over Rs. 3,000)' },
+  { zone: 'Other Regions', time: '3-7 business days', cost: 'Rs. 200 (Free over Rs. 3,000)' },
   { zone: 'Remote / Hilly Areas', time: '5-10 business days', cost: 'Calculated at checkout' },
 ];
 
@@ -32,9 +32,9 @@ export default function ShippingPolicyPage() {
       <section className="py-12 bg-white">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="bg-[#F8F4EC] rounded-3xl p-6 sm:p-8 mb-8">
-            <h2 className="font-heading font-bold text-xl mb-4">🚚 Free Shipping Over Rs. 10,000</h2>
+            <h2 className="font-heading font-bold text-xl mb-4">🚚 Free Shipping Over Rs. 3,000</h2>
             <p className="text-gray-600 leading-relaxed">
-              Enjoy free delivery on all orders above Rs. 10,000 anywhere in Nepal. Orders below this amount are charged a flat shipping fee based on your location.
+              Enjoy free delivery on all orders above Rs. 3,000 anywhere in Nepal. Orders below this amount are charged a flat shipping fee based on your location.
             </p>
           </div>
 

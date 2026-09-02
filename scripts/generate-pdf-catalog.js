@@ -600,7 +600,7 @@ function generatePDF() {
     doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text('4. Payment Options:', margin + 16, orderBoxY + 90);
     doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text('FonePay QR, eSewa, Khalti, Direct Bank Transfer & Cash On Delivery (COD)', margin + 130, orderBoxY + 90);
 
-    doc.fillColor(C_WHITE).font('Helvetica-Oblique').fontSize(8).text('Free express shipping across Nepal on all orders over Rs. 10,000.', margin + 16, orderBoxY + 108);
+    doc.fillColor(C_WHITE).font('Helvetica-Oblique').fontSize(8).text('Free express shipping across Nepal on all orders over Rs. 3,000.', margin + 16, orderBoxY + 108);
 
     const outletY = orderBoxY + 135;
     doc.rect(margin, outletY, contentWidth, 20).fill(C_BG);

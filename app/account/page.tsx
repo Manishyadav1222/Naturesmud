@@ -691,7 +691,7 @@ export default function AccountPage() {
               </div>
               <div className="space-y-4">
                 {[
-                  { icon: Truck, label: 'Free shipping over Rs. 10,000' },
+                  { icon: Truck, label: 'Free shipping over Rs. 3,000' },
                   { icon: ShieldCheck, label: '100% natural, no additives' },
                   { icon: Leaf, label: 'Sourced from Nepali farmers' },
                 ].map(({ icon: Icon, label }) => (

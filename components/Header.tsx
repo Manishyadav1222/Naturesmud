@@ -211,7 +211,7 @@ export default function Header() {
                                 <Award className="w-3.5 h-3.5 text-gold-600" /> Nepal Origin
                               </span>
                               <span className="flex items-center gap-1">
-                                <TrendingUp className="w-3.5 h-3.5 text-emerald-600" /> Free Shipping &gt; Rs. 10,000
+                                <TrendingUp className="w-3.5 h-3.5 text-emerald-600" /> Free Shipping &gt; Rs. 3,000
                               </span>
                             </div>
                           </motion.div>

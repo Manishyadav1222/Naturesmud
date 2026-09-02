@@ -89,7 +89,7 @@ export default function HomePage() {
   ];
 
   const features = [
-    { icon: Truck, title: 'Free Shipping Over Rs. 10,000', desc: 'On all orders across Nepal', color: 'bg-primary-100 text-primary' },
+    { icon: Truck, title: 'Free Shipping Over Rs. 3,000', desc: 'On all orders across Nepal', color: 'bg-primary-100 text-primary' },
     { icon: ShieldCheck, title: '0 Additives · 0 Preservatives', desc: '100% Pure Himalayan Wholesomeness', color: 'bg-emerald-100 text-emerald-600' },
     { icon: Recycle, title: 'Earth-Friendly Packaging', desc: 'Recyclable glass & biodegradable', color: 'bg-lime-100 text-lime-600' },
     { icon: Sparkles, title: 'Farm Fresh Daily', desc: 'Direct sourcing, no middlemen', color: 'bg-gold/20 text-gold-700' },
@@ -556,7 +556,7 @@ export default function HomePage() {
                   Express Delivery Across All 7 Provinces of Nepal
                 </h3>
                 <p className="text-xs sm:text-sm">
-                  Kathmandu Valley delivery within 24 hours. Nationwide courier to Pokhara, Chitwan, Butwal, Biratnagar, and beyond. Free shipping on orders over Rs. 10,000.
+                  Kathmandu Valley delivery within 24 hours. Nationwide courier to Pokhara, Chitwan, Butwal, Biratnagar, and beyond. Free shipping on orders over Rs. 3,000.
                 </p>
               </div>
             </div>

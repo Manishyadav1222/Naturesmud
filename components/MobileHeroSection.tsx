@@ -994,7 +994,7 @@ export default function MobileHeroSection() {
             </span>
             <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
               <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
-              Free Shipping &gt; Rs. 10,000
+              Free Shipping &gt; Rs. 3,000
             </span>
             <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
               <Sparkles className="w-3.5 h-3.5 text-[#7A5230]" />

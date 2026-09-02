@@ -102,7 +102,7 @@ class OrderController extends Controller
                 $coupon->increment('used_count');
             }
 
-            $freeShippingMin = $isValley ? 2000 : 3000;
+            $freeShippingMin = 3000;
             $standardShippingFee = $isValley ? 100 : 200;
             $shippingFee = ($subtotal >= $freeShippingMin || $subtotal == 0) ? 0 : $standardShippingFee;
             $total = max(0, $subtotal - $couponDiscount + $shippingFee);

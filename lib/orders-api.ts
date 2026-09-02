@@ -242,7 +242,7 @@ export const ordersApi = {
           const product = findLocalProductById(item.product_id);
           return sum + (product?.price ?? 0) * item.quantity;
         }, 0);
-        const shippingFee = subtotal >= 10000 ? 0 : 80;
+        const shippingFee = subtotal >= 3000 ? 0 : 80;
         const total = subtotal + shippingFee;
         const now = new Date().toISOString();
         const order: Order = {

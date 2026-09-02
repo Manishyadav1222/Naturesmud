@@ -2,7 +2,7 @@
 
 A modern, premium, fully responsive eCommerce platform for **Nature's Mud**, a Nepal-based organic and healthy food brand.
 
-> 🚚 Free Shipping Over Rs. 10,000 · 🌿 100% Natural · 🇳🇵 Proudly Made in Nepal
+> 🚚 Free Shipping Over Rs. 3,000 · 🌿 100% Natural · 🇳🇵 Proudly Made in Nepal
 
 ---
 

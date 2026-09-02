@@ -32,7 +32,7 @@ export const siteConfig = {
     tiktok: 'https://www.tiktok.com/@naturesmud',
     youtube: 'https://youtube.com/@naturesmud',
   },
-  freeShippingThreshold: 10000,
+  freeShippingThreshold: 3000,
   currency: 'Rs.',
 };
 

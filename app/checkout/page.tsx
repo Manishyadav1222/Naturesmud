@@ -151,8 +151,8 @@ export default function CheckoutPage() {
     return Math.min(appliedCoupon.value, subtotal);
   }, [appliedCoupon, subtotal]);
 
-  // Delivery rules: Inside Valley Rs. 100, Outside Valley Rs. 200 (Free over Rs. 10,000)
-  const freeShippingThreshold = 10000;
+  // Delivery rules: Inside Valley Rs. 100, Outside Valley Rs. 200 (Free over Rs. 3,000)
+  const freeShippingThreshold = 3000;
   const standardShippingFee = isValley ? 100 : 200;
   const shipping = subtotal === 0 || subtotal >= freeShippingThreshold ? 0 : standardShippingFee;
 
@@ -800,7 +800,7 @@ export default function CheckoutPage() {
                   <p className="text-xs text-gray-500">Kathmandu, Lalitpur, Bhaktapur</p>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md inline-block">
-                      Delivery: Rs. 100 (Free over Rs. 10,000)
+                      Delivery: Rs. 100 (Free over Rs. 3,000)
                     </span>
                   </div>
                 </label>
@@ -824,7 +824,7 @@ export default function CheckoutPage() {
                   <p className="text-xs text-gray-500">Pokhara, Chitwan, Butwal, Biratnagar, etc.</p>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md inline-block">
-                      Courier: Rs. 200 (Free over Rs. 10,000 · Advance FonePay)
+                      Courier: Rs. 200 (Free over Rs. 3,000 · Advance FonePay)
                     </span>
                   </div>
                 </label>
