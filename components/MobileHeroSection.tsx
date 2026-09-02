@@ -307,16 +307,16 @@ export default function MobileHeroSection() {
             </span>
           </div>
 
-          {/* 2. Editorial Master Headline with elegant line-by-line breathing space */}
-          <div className="space-y-2 w-full">
-            <h1 className="text-[34px] sm:text-4xl md:text-[38px] lg:text-[46px] xl:text-[52px] 2xl:text-[56px] leading-[1.24] lg:leading-[1.32] font-normal tracking-[-0.02em] font-heading text-[#1C2820] space-y-2 lg:space-y-3.5">
-              <span className="block font-serif italic text-[#1C2820] font-normal pb-0.5">
+          {/* 2. Editorial Master Headline - Perfectly fitted Kinfolk luxury typography */}
+          <div className="w-full">
+            <h1 className="text-[34px] md:text-[38px] lg:text-[44px] xl:text-[50px] 2xl:text-[54px] leading-[1.05] lg:leading-[1.04] xl:leading-[1.02] font-normal tracking-[-0.03em] font-heading text-[#1C2820]">
+              <span className="block font-serif italic text-[#1C2820] font-normal">
                 Grown in Nepal.
               </span>
-              <span className="block font-sans font-extrabold tracking-[-0.015em] text-[#1A3826] pb-0.5">
+              <span className="block font-sans font-extrabold tracking-[-0.025em] text-[#1A3826]">
                 Handled with care.
               </span>
-              <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-1">
+              <span className="relative inline-block font-serif text-[#7A5230] font-normal">
                 <span>Delivered to your home.</span>
                 <svg
                   className="absolute -bottom-1 left-0 w-full h-2 text-[#7A5230]/35 pointer-events-none"
@@ -334,7 +334,7 @@ export default function MobileHeroSection() {
               </span>
             </h1>
 
-            <div className="flex flex-wrap items-center gap-1.5 pt-1.5 text-[11px] lg:text-xs font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] lg:text-xs font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
               <span className="text-[#7A5230]/40">·</span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
