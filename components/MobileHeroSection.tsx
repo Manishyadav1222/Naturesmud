@@ -221,7 +221,7 @@ export default function MobileHeroSection() {
     if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
-    }, 3500);
+    }, 2000);
     return () => clearInterval(interval);
   }, [isPaused]);
 
@@ -470,7 +470,7 @@ export default function MobileHeroSection() {
                 return (
                   <div
                     key={poster.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer ${
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer ${
                       isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                     }`}
                     onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
@@ -481,7 +481,7 @@ export default function MobileHeroSection() {
                       fill
                       priority={idx < 2}
                       sizes="(max-width: 1024px) 50vw, 420px"
-                      className="object-cover object-center transition-transform duration-1000 ease-out"
+                      className="object-cover object-center transition-transform duration-700 ease-out"
                       style={{ filter: 'saturate(1.18)' }}
                     />
 
@@ -677,7 +677,7 @@ export default function MobileHeroSection() {
               return (
                 <div
                   key={poster.id}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out cursor-pointer ${
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer ${
                     isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                   }`}
                   onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
@@ -688,7 +688,7 @@ export default function MobileHeroSection() {
                     fill
                     priority={idx < 2}
                     sizes="(max-width: 768px) 90vw, 380px"
-                    className="object-cover object-center transition-transform duration-1000 ease-out"
+                    className="object-cover object-center transition-transform duration-700 ease-out"
                     style={{ filter: 'saturate(1.18)' }}
                   />
 

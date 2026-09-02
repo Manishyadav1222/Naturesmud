@@ -323,7 +323,7 @@ export default function HeroProductShowcase() {
 
   useEffect(() => {
     if (!isPlaying) return;
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(nextSlide, 2000);
     return () => clearInterval(timer);
   }, [isPlaying, nextSlide]);
 

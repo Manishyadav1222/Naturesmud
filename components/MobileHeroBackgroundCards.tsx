@@ -133,7 +133,7 @@ export default function MobileHeroBackgroundCards({
       } else {
         setInternalIdx(nextIdx);
       }
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, [activeIdx, onIndexChange]);
 

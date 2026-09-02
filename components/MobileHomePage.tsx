@@ -122,7 +122,7 @@ export default function MobileHomePage() {
         const next = (prev + 1) % HERO_SHOWCASE_PRODUCTS.length;
         return next;
       });
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 
