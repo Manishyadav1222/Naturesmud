@@ -39,7 +39,6 @@ import {
   Instagram,
 } from 'lucide-react';
 
-import HeroProductShowcase from '@/components/HeroProductShowcase';
 import HeroOfferSection from '@/components/HeroOfferSection';
 import BabyMotherCombosSection from '@/components/BabyMotherCombosSection';
 import CampaignCombosShowcaseSection from '@/components/CampaignCombosShowcaseSection';
@@ -120,235 +119,41 @@ export default function HomePage() {
 
   return (
     <main className="w-full max-w-full">
-      {/* 📱 Mobile & Tablet Hero Section (with Visible 3-Second Product Poster Cards & Dynamic Color Shifts) */}
+      {/* 🏔️ Unified Responsive Hero Section (Mobile, Tablet & Laptop with 3-Second Interactive Product Poster Cards, Dynamic Color Shifts & Kinetic Statements) */}
       <MobileHeroSection />
 
-      {/* 💻 Laptop & Desktop Hero Section (Clean 2-Column Luxury Layout) */}
-      <section className="hidden lg:block relative overflow-hidden bg-gradient-to-br from-[#fafaf5] via-cream-50 to-[#f3f5ee] w-full max-w-full" style={{ marginTop: 0 }}>
-        {/* Ambient clean background - soft warm beige gradient with organic textures */}
-        <div className="absolute inset-0 bg-hero-pattern opacity-60 pointer-events-none" />
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(58,107,53,0.12)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 -left-24 w-[420px] h-[420px] bg-[radial-gradient(circle,rgba(217,164,65,0.10)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-[radial-gradient(circle,rgba(122,169,92,0.10)_0%,transparent_70%)] pointer-events-none" />
-        
-        {/* Subtle decorative leaves */}
-        <div className="absolute top-24 left-[8%] w-12 h-12 text-primary/15 pointer-events-none rotate-12">
-          <Leaf className="w-full h-full" />
-        </div>
-        <div className="absolute bottom-32 right-[12%] w-16 h-16 text-gold/15 pointer-events-none -rotate-12">
-          <Leaf className="w-full h-full" />
-        </div>
+      {/* 🌿 Shop by Category (Interactive 6-Category Bento Grid across Mobile, Tablet & Laptop) */}
+      <MobileCategorySection />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-8 pt-8 pb-12">
-          <div className="grid lg:grid-cols-12 gap-8 xl:gap-12 2xl:gap-16 items-center">
-            {/* Left Content Column */}
-            <div className="relative lg:col-span-6 xl:col-span-6 space-y-6 max-w-none mx-0 p-0 flex flex-col items-start text-left">
-
-              {/* Luxury Himalayan Provenance Eyebrow Crest */}
-              <div className="relative z-10 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-2xs mx-auto lg:mx-0">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
-                  From the Himalayas
-                </span>
-                <span className="w-px h-3 bg-[#7A5230]/25" />
-                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1A3826] font-sans">
-                  <Leaf className="w-3 h-3 text-emerald-600" />
-                  100% Single Origin
-                </span>
-              </div>
-
-              {/* Editorial Master Headline with Kinfolk & Aesop Typography */}
-              <div className="relative z-10 space-y-2 lg:space-y-3 w-full">
-                <h1 className="text-[30px] xs:text-[34px] sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[54px] 2xl:text-[60px] leading-[1.12] sm:leading-[1.10] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
-                  <span className="block font-serif italic text-[#1C2820] font-normal">
-                    Grown in Nepal.
-                  </span>
-                  <span className="block font-sans font-bold tracking-[-0.015em] text-[#1A3826]">
-                    Handled with care.
-                  </span>
-                  <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-1">
-                    <span>Delivered to your home.</span>
-                    {/* Artistic Organic Curved Flourish Underline */}
-                    <svg
-                      className="absolute -bottom-1 left-0 w-full h-2.5 text-[#7A5230]/35 pointer-events-none"
-                      viewBox="0 0 300 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 9C75 3 185 2 298 7.5"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                </h1>
-
-                {/* Botanical Origin Provenance Tag & Description */}
-                <div className="pt-1">
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 pb-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Mustang</span>
-                    <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Jumla</span>
-                    <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Kavre</span>
-                    <span className="text-[#7A5230]/40">·</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/90 border border-[#EAE3D6] shadow-2xs">Terai</span>
-                  </div>
-
-                  <p className="text-xs xs:text-sm sm:text-base text-[#242220]/85 font-medium leading-relaxed max-w-lg font-sans mt-2 mx-auto lg:mx-0">
-                    Pure, unadulterated whole foods cultivated across Himalayan valleys. Direct farmer partnerships, gentle low-temperature dehydration, and <span className="font-bold text-[#1A3826]">0 additives or preservatives</span>.
-                  </p>
-                </div>
-              </div>
-
-              {/* Sculpted Luxury CTAs */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 space-y-3.5 pt-1 w-full"
-              >
-                <div className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center lg:justify-start gap-3">
-                  <Link
-                    href="/products"
-                    className="group relative inline-flex items-center justify-center gap-3 rounded-full text-[#FAF7F2] px-7 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide bg-[#1A3826] shadow-[0_8px_24px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300 cursor-pointer font-sans overflow-hidden h-12 sm:h-13"
-                  >
-                    {/* Subtle Sheen Highlight */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    <span>Shop All Superfoods</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
-                  </Link>
-
-                  <Link
-                    href="/our-story"
-                    className="group inline-flex items-center justify-center gap-2.5 rounded-full border border-[#7A5230]/40 hover:border-[#7A5230] bg-white/95 hover:bg-white text-[#7A5230] px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold tracking-wide shadow-2xs hover:shadow-xs active:scale-[0.98] transition-all duration-300 hover:-translate-y-0.5 cursor-pointer font-sans h-12 sm:h-13"
-                  >
-                    <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-45" />
-                    <span>Farmer Provenance</span>
-                  </Link>
-                </div>
-
-                {/* Aesthetic Social Proof & Trust Capsule */}
-                <div className="p-3 sm:p-3.5 rounded-2xl lg:rounded-3xl bg-white/90 backdrop-blur-md border border-[#EAE3D6] shadow-sm space-y-2.5 max-w-xl mx-auto lg:mx-0">
-                  {/* Avatar + Rating Row */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#242220]/8">
-                    <div className="flex items-center gap-2.5">
-                      <div className="flex -space-x-2">
-                        {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
-                          <div
-                            key={idx}
-                            className="w-7 h-7 rounded-full bg-[#FAF7F2] border-2 border-white flex items-center justify-center text-xs shadow-2xs"
-                          >
-                            {emoji}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="text-[11px] leading-tight font-sans text-left">
-                        <div className="flex items-center text-[#7A5230]">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
-                          ))}
-                          <span className="font-bold text-[#242220] ml-1.5">4.9 / 5</span>
-                        </div>
-                        <span className="text-[#242220]/70 font-medium">25,000+ Happy Nepalis</span>
-                      </div>
-                    </div>
-
-                    <div className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs bg-emerald-50 text-emerald-800 border-emerald-200/80 flex-shrink-0">
-                      ⚡ 24h Valley Delivery
-                    </div>
-                  </div>
-
-                  {/* Micro-Trust Chips Strip */}
-                  <div className="flex items-center justify-center lg:justify-start gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
-                      100% Nepali Origin
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
-                      <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
-                      Free Shipping &gt; Rs. 10,000
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] sm:text-[11px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
-                      <Sparkles className="w-3.5 h-3.5 text-[#7A5230]" />
-                      0 Additives
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Modern Glassmorphic Statistics Bento Tiles (Desktop/Laptop Only) */}
-              <div className="relative z-10 hidden lg:grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 pt-1 max-w-xl">
-                {[
-                  { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
-                  { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
-                  { value: '180+', label: 'Farm Partners', highlight: false, icon: Sprout },
-                  { value: '4.9★', label: 'Customer Rating', highlight: true, icon: Award },
-                ].map((stat) => {
-                  const Icon = stat.icon;
-                  return (
-                    <div
-                      key={stat.label}
-                      className="group p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] hover:border-[#1A3826]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-300 text-center shadow-2xs flex flex-col justify-center min-h-[72px] sm:min-h-[80px]"
-                    >
-                      <div className={`text-base sm:text-lg lg:text-xl font-heading font-extrabold ${stat.highlight ? 'text-[#1A3826]' : 'text-[#242220]'}`}>
-                        <AnimatedCounter value={stat.value} />
-                      </div>
-                      <div className="text-[10px] sm:text-[11px] text-[#242220]/65 font-medium mt-0.5 truncate font-sans">
-                        {stat.label}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Content Column — Animated Flagship Product Showcase (Desktop visible only in page.tsx; Mobile handled by MobileHomePage.tsx) */}
-            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-center justify-center pt-2 sm:pt-4 lg:pt-0 mt-2 sm:mt-4 lg:mt-0 w-full">
-                <div className="w-full flex justify-center">
-                  <ErrorBoundary name="Product Showcase">
-                    <HeroProductShowcase />
-                  </ErrorBoundary>
-                </div>
-              </div>
-            </div>
+      {/* 🎁 Side-by-Side Dual Offer & Combos Section (Baby Superfoods + Himalayan Festival Box) */}
+      <section className="mx-auto max-w-7xl w-full px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-8 items-stretch">
+          {/* Left Side Offer: Baby & Mother Care Combos */}
+          <div className="w-full flex justify-center md:justify-start">
+            <ErrorBoundary name="Baby & Mother Combos">
+              <BabyMotherCombosSection />
+            </ErrorBoundary>
           </div>
-        </section>
 
-        {/* 📱 Shop by Category (Mobile & Tablet Only) — Placed Above Pregnancy Trimesters Combos */}
-        <MobileCategorySection />
-
-        {/* Side-by-Side Dual Offer & Combos Section */}
-        <section className="mx-auto max-w-7xl w-full px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-8 items-stretch">
-            {/* Left Side Offer: Baby & Mother Care Combos */}
-            <div className="w-full flex justify-center md:justify-start">
-              <ErrorBoundary name="Baby & Mother Combos">
-                <BabyMotherCombosSection />
-              </ErrorBoundary>
-            </div>
-
-            {/* Right Side Offer: Festival & Lifestyle Combos */}
-            <div className="w-full flex justify-center md:justify-end">
-              <ErrorBoundary name="Festival Offers">
-                <HeroOfferSection />
-              </ErrorBoundary>
-            </div>
+          {/* Right Side Offer: Festival & Lifestyle Combos */}
+          <div className="w-full flex justify-center md:justify-end">
+            <ErrorBoundary name="Festival Offers">
+              <HeroOfferSection />
+            </ErrorBoundary>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-down hidden md:flex"
-        >
-          <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <ChevronDown className="w-4 h-4" />
-        </motion.div>
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-down hidden md:flex"
+      >
+        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <ChevronDown className="w-4 h-4" />
+      </motion.div>
 
       {/* Features Strip — Truck hits Free Shipping card */}
       <ScrollReveal direction="up" distance={25}>
@@ -420,56 +225,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Categories Section (Desktop/Laptop Only to prevent duplicate on mobile/tablet) */}
-      <div className="hidden lg:block">
-        <ScrollReveal direction="up" distance={35}>
-          <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
-            <div className="container-nm">
-              <div className="flex flex-col sm:flex-row items-end justify-between gap-6 mb-12 lg:mb-16">
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230]">
-                    <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
-                    <span>Curated Collections</span>
-                  </div>
-                  <h2 className="section-title text-3xl sm:text-4xl lg:text-5xl font-heading font-semibold text-ink mt-2 mb-3">
-                    Shop by Category
-                  </h2>
-                  <p className="section-subtitle text-ink/70 text-base sm:text-lg max-w-2xl mt-3 sm:mt-4 leading-relaxed">
-                    Discover our collections, from everyday essentials to premium superfoods.
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {categoriesWithImages.map((category, i) => (
-                  <Link
-                    key={category.slug}
-                    href={`/products?category=${category.slug}`}
-                    className="category-jump-card group relative overflow-hidden rounded-3xl shadow-soft transition-all duration-300 hover:shadow-card aspect-[3/4]"
-                    style={{ '--jump-delay': i * 0.25 } as CSSProperties}
-                  >
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-3xl" />
-                    <div className="absolute bottom-0 p-5">
-                      <h3 className="font-heading text-lg font-semibold text-white">{category.name}</h3>
-                      <div className="flex items-center gap-1 text-white/80 text-sm mt-1 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                        <span>Shop now</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        </ScrollReveal>
       </div>
 
       {/* Instagram-style Reels Section (Watch NatureMud In Action) */}

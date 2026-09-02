@@ -21,6 +21,8 @@ import {
   SunMedium,
   Mountain,
   Zap,
+  Users,
+  Sprout,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useUIStore } from '@/lib/store/ui-store';
@@ -151,43 +153,42 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
   },
 ];
 
-// Looping dynamic animated typography statements
-const ANIMATED_STATEMENTS = [
+export const ANIMATED_STATEMENTS = [
   {
-    icon: Mountain,
-    badge: '100% Single Origin',
-    color: 'from-emerald-600 via-teal-500 to-emerald-700',
-    title: 'Pure, Unadulterated Whole Foods',
-    highlight: 'cultivated across Himalayan valleys.',
-    sub: 'Direct farmer partnerships across Mustang, Jumla, Kavre & Terai.',
-  },
-  {
+    badge: 'PURE COLD DEHYDRATION',
+    title: '40°C Low-Temperature Dried',
+    highlight: 'Locks 98% Natural Vitamins',
+    sub: 'Solar dehydrated whole fruits with crisp natural texture, zero additives, and maximum antioxidant retention.',
+    color: 'from-amber-600 via-orange-600 to-amber-700',
     icon: SunMedium,
-    badge: 'Low-Temp Dehydration',
-    color: 'from-amber-500 via-orange-500 to-amber-600',
-    title: 'Gentle Low-Temperature Solar Dehydration',
-    highlight: 'locking in 98% raw live enzymes.',
-    sub: 'Preserving pure natural taste, vibrant vitamins & cellular antioxidants.',
   },
   {
-    icon: HeartHandshake,
-    badge: 'Direct Mountain Sourcing',
-    color: 'from-blue-600 via-indigo-500 to-sky-600',
-    title: 'Direct Farmer Partnerships & Fair Trade',
-    highlight: 'with 180+ Nepali mountain families.',
-    sub: 'Sustainably hand-harvested without middlemen or artificial ripening.',
+    badge: 'SINGLE ORIGIN BOTANICALS',
+    title: 'High-Altitude Himalayan Sourcing',
+    highlight: 'Direct Partner Farms',
+    sub: 'Directly sourced from Mustang, Jumla, Kavre, and Terai smallholder co-operatives with fair farmer wages.',
+    color: 'from-emerald-700 via-teal-700 to-green-800',
+    icon: Mountain,
   },
   {
-    icon: ShieldCheck,
-    badge: 'Zero Chemical Guarantee',
-    color: 'from-rose-600 via-pink-500 to-rose-700',
-    title: '0 Additives · 0 Preservatives · 0 Added Sugar',
-    highlight: '100% unadulterated botanical purity.',
-    sub: 'Safe for babies, diabetics, fitness athletes & health-conscious homes.',
+    badge: 'ZERO REFINED SUGAR',
+    title: '100% Whole Food Ingredients',
+    highlight: 'Naturally Delicious Sweetness',
+    sub: 'Sweetened only by whole dates and sun-ripened fruit — 0 cane sugar, 0 preservatives, 0 artificial flavors.',
+    color: 'from-rose-600 via-pink-600 to-purple-700',
+    icon: Zap,
+  },
+  {
+    badge: 'DOCTOR & PEDIATRIC APPROVED',
+    title: 'Gentle Whole Foods for Family',
+    highlight: 'From 6m Babies to Athletes',
+    sub: 'Clean nutrition tailored for baby first solids, maternal nourishment, student focus, and workout recovery.',
+    color: 'from-purple-700 via-indigo-700 to-blue-800',
+    icon: Award,
   },
 ];
 
-const MARQUEE_ITEMS = [
+export const MARQUEE_ITEMS = [
   { text: '100% Himalayan Origin', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200', icon: '🏔️' },
   { text: '0 Preservatives', bg: 'bg-amber-50 text-amber-800 border-amber-200', icon: '✨' },
   { text: 'Gentle Low-Temp Dehydration', bg: 'bg-orange-50 text-orange-800 border-orange-200', icon: '☀️' },
@@ -203,29 +204,33 @@ export default function MobileHeroSection() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [addedItem, setAddedItem] = useState<string | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const { addItem, openDrawer } = useCartStore();
-  const { openQuickView } = useUIStore();
-
-  // Auto-cycle poster cards every 3.2s smoothly
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
-    }, 3200);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Auto-cycle kinetic typography statement loop every 3.8s
-  useEffect(() => {
-    const statementTimer = setInterval(() => {
-      setStatementIdx((prev) => (prev + 1) % ANIMATED_STATEMENTS.length);
-    }, 3800);
-    return () => clearInterval(statementTimer);
-  }, []);
+  const addItem = useCartStore((s) => s.addItem);
+  const openDrawer = useCartStore((s) => s.openDrawer);
+  const openQuickView = useUIStore((s) => s.openQuickView);
 
   const currentPoster = MOBILE_POSTERS[activeIdx];
   const currentStatement = ANIMATED_STATEMENTS[statementIdx];
-  const matchedCatalogProduct = products.find((p) => p.slug === currentPoster.slug);
+
+  const matchedCatalogProduct = products.find(
+    (p) => p.slug === currentPoster.slug || p.id === currentPoster.id
+  );
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStatementIdx((prev) => (prev + 1) % ANIMATED_STATEMENTS.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleNext = () => {
     setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
@@ -271,31 +276,24 @@ export default function MobileHeroSection() {
 
   return (
     <div
-      className="lg:hidden relative w-full overflow-hidden transition-colors duration-1000 px-3 sm:px-4 md:px-8 py-3 md:py-8"
+      className="relative w-full overflow-hidden transition-colors duration-1000 px-3 sm:px-4 md:px-8 lg:px-12 py-4 md:py-8 lg:py-12"
       style={{
         backgroundColor: currentPoster.bgTint,
       }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Ambient Glow Orbs */}
       <div
-        className="absolute -top-12 -right-12 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-30"
+        className="absolute -top-12 -right-12 w-64 md:w-96 lg:w-[500px] h-64 md:h-96 lg:h-[500px] rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-30"
         style={{ backgroundColor: currentPoster.accent }}
       />
       <div
-        className="absolute -bottom-10 -left-10 w-60 md:w-96 h-60 md:h-96 rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-25"
+        className="absolute -bottom-10 -left-10 w-60 md:w-96 lg:w-[460px] h-60 md:h-96 lg:h-[460px] rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-25"
         style={{ backgroundColor: currentPoster.primary }}
       />
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          A. DEDICATED TABLET LAYOUT (768px – 1023px / md: to lg:)
-             - 2-Column Wide Screen Layout
-             - Left: Crest, Master Headline, Kinetic Ticker, Action CTAs & Trust Chips
-             - Right: Full-Height Immersive Poster Card with Quick Add & Thumbnail Strip
-          ══════════════════════════════════════════════════════════════════════ */}
-      <div className="hidden md:grid md:grid-cols-12 md:gap-8 md:items-center max-w-5xl mx-auto relative z-10">
-        {/* Left Column: Headlines, Kinetic Statement & Action Buttons */}
-        <div className="md:col-span-7 flex flex-col items-start text-left space-y-4 lg:space-y-5">
-          {/* 1. Crest Eyebrow Badge */}
+      <div className="hidden md:grid md:grid-cols-12 md:gap-8 lg:gap-12 xl:gap-16 md:items-center max-w-7xl mx-auto relative z-10">
+        <div className="md:col-span-7 lg:col-span-7 xl:col-span-7 flex flex-col items-start text-left space-y-4 lg:space-y-5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
@@ -308,9 +306,8 @@ export default function MobileHeroSection() {
             </span>
           </div>
 
-          {/* 2. Editorial Master Headline */}
-          <div className="space-y-1 w-full">
-            <h1 className="text-[34px] lg:text-[40px] leading-[1.14] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
+          <div className="space-y-1.5 w-full">
+            <h1 className="text-[34px] sm:text-4xl md:text-[38px] lg:text-[46px] xl:text-[54px] 2xl:text-[58px] leading-[1.12] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
               <span className="block font-serif italic text-[#1C2820] font-normal">
                 Grown in Nepal.
               </span>
@@ -335,8 +332,7 @@ export default function MobileHeroSection() {
               </span>
             </h1>
 
-            {/* Provenance Tags */}
-            <div className="flex flex-wrap items-center gap-1.5 pt-2 text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] lg:text-xs font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
               <span className="text-[#7A5230]/40">·</span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
@@ -347,13 +343,12 @@ export default function MobileHeroSection() {
             </div>
           </div>
 
-          {/* 3. Kinetic Animated Typography Showcase */}
-          <div className="w-full relative overflow-hidden p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-sm text-left">
+          <div className="w-full relative overflow-hidden p-4 lg:p-5 rounded-2xl lg:rounded-3xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-sm text-left">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500/10 via-amber-500/10 to-transparent rounded-full blur-2xl pointer-events-none" />
 
             <div className="flex items-center justify-between gap-2 mb-2">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#EAE3D6] text-[10px] font-bold uppercase tracking-wider text-[#7A5230] shadow-2xs">
-                {React.createElement(currentStatement.icon, { className: 'w-3 h-3 text-emerald-600' })}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#EAE3D6] text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7A5230] shadow-2xs">
+                {React.createElement(currentStatement.icon, { className: 'w-3.5 h-3.5 text-emerald-600' })}
                 <span className="font-sans">{currentStatement.badge}</span>
               </div>
               <div className="flex items-center gap-1">
@@ -362,8 +357,8 @@ export default function MobileHeroSection() {
                     key={idx}
                     type="button"
                     onClick={() => setStatementIdx(idx)}
-                    className={`h-1 rounded-full transition-all duration-400 ${
-                      statementIdx === idx ? 'w-4 bg-emerald-600' : 'w-1 bg-stone-300'
+                    className={`h-1.5 rounded-full transition-all duration-400 cursor-pointer ${
+                      statementIdx === idx ? 'w-5 bg-emerald-600' : 'w-1.5 bg-stone-300'
                     }`}
                     aria-label={`Statement ${idx + 1}`}
                   />
@@ -371,7 +366,7 @@ export default function MobileHeroSection() {
               </div>
             </div>
 
-            <div className="relative min-h-[76px] flex flex-col justify-center">
+            <div className="relative min-h-[72px] lg:min-h-[78px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`statement-tab-${statementIdx}`}
@@ -381,15 +376,15 @@ export default function MobileHeroSection() {
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="space-y-1 w-full"
                 >
-                  <p className="text-sm font-bold leading-snug font-sans text-stone-900">
-                    <span className="bg-gradient-to-r from-[#1A3826] via-emerald-700 to-teal-800 bg-clip-text text-transparent font-extrabold text-base">
+                  <p className="text-sm lg:text-base font-bold leading-snug font-sans text-stone-900">
+                    <span className="bg-gradient-to-r from-[#1A3826] via-emerald-700 to-teal-800 bg-clip-text text-transparent font-extrabold text-base lg:text-lg">
                       {currentStatement.title}
                     </span>{' '}
                     <span className={`bg-gradient-to-r ${currentStatement.color} bg-clip-text text-transparent font-extrabold`}>
                       {currentStatement.highlight}
                     </span>
                   </p>
-                  <p className="text-xs text-stone-600 font-medium leading-normal font-sans">
+                  <p className="text-xs lg:text-sm text-stone-600 font-medium leading-normal font-sans">
                     {currentStatement.sub}
                   </p>
                 </motion.div>
@@ -397,31 +392,29 @@ export default function MobileHeroSection() {
             </div>
           </div>
 
-          {/* 4. Action Buttons */}
           <div className="flex items-center gap-3 w-full pt-1">
             <Link
               href="/products"
-              className="group relative inline-flex items-center justify-center gap-2 rounded-full text-[#FAF7F2] px-6 py-3 text-sm font-semibold tracking-wide bg-[#1A3826] hover:bg-[#234832] shadow-[0_8px_20px_-4px_rgba(26,56,38,0.45)] active:scale-[0.98] transition-all font-sans overflow-hidden"
+              className="group relative inline-flex items-center justify-center gap-2 rounded-full text-[#FAF7F2] px-6 lg:px-8 py-3 lg:py-3.5 text-sm lg:text-base font-semibold tracking-wide bg-[#1A3826] hover:bg-[#234832] shadow-[0_8px_20px_-4px_rgba(26,56,38,0.45)] hover:shadow-[0_12px_24px_-4px_rgba(26,56,38,0.55)] hover:-translate-y-0.5 active:scale-[0.98] transition-all font-sans overflow-hidden cursor-pointer"
             >
               <span>Shop All Superfoods</span>
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
             </Link>
 
             <Link
               href="/our-story"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#7A5230]/40 bg-white/95 hover:bg-white text-[#7A5230] px-5 py-3 text-sm font-semibold tracking-wide shadow-2xs active:scale-[0.98] transition-all font-sans"
+              className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#7A5230]/40 bg-white/95 hover:bg-white text-[#7A5230] px-5 lg:px-7 py-3 lg:py-3.5 text-sm lg:text-base font-semibold tracking-wide shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:scale-[0.98] transition-all font-sans cursor-pointer"
             >
-              <Leaf className="w-4 h-4 text-[#7A5230]" />
+              <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-45" />
               <span>Farmer Provenance</span>
             </Link>
           </div>
 
-          {/* 5. Trust & Social Proof Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-2.5 lg:gap-3.5 pt-1">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">
               <div className="flex items-center text-[#7A5230]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-[#7A5230] text-[#7A5230]" />
                 ))}
               </div>
               <span className="text-xs font-bold text-[#242220]">4.9 / 5</span>
@@ -438,12 +431,32 @@ export default function MobileHeroSection() {
               24h Valley Delivery
             </span>
           </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 lg:gap-3 pt-1 w-full max-w-xl">
+            {[
+              { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
+              { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
+              { value: '180+', label: 'Farm Partners', highlight: false, icon: Sprout },
+              { value: '4.9★', label: 'Customer Rating', highlight: true, icon: Award },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="p-2.5 lg:p-3 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE3D6] text-center shadow-2xs hover:shadow-xs transition-all flex flex-col justify-center"
+              >
+                <div className={`text-sm lg:text-base font-heading font-extrabold ${stat.highlight ? 'text-[#1A3826]' : 'text-[#242220]'}`}>
+                  {stat.value}
+                </div>
+                <div className="text-[10px] lg:text-[11px] text-[#242220]/65 font-medium mt-0.5 truncate font-sans">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Right Column: Full-Height Immersive Poster Card */}
-        <div className="md:col-span-5 flex flex-col items-center justify-center">
+        <div className="md:col-span-5 lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center">
           <div
-            className="relative w-full max-w-[390px] mx-auto"
+            className="relative w-full max-w-[390px] lg:max-w-[430px] xl:max-w-[450px] mx-auto"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
