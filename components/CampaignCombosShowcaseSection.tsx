@@ -226,6 +226,11 @@ export default function CampaignCombosShowcaseSection() {
                       <Sparkles className="w-3 h-3" />
                       {currentOffer.festivalName}
                     </span>
+                    {currentOffer.startDate && currentOffer.endDate && (
+                      <span className="text-[10px] sm:text-xs font-bold text-amber-900 bg-amber-100/90 px-2.5 py-0.5 rounded-full border border-amber-300">
+                        📅 Valid: Sep 01 – Sep 30, 2026
+                      </span>
+                    )}
                   </div>
 
                   <div>

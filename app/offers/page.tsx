@@ -239,6 +239,11 @@ export default function FestivalOffersPage() {
                         <span className="px-2.5 py-0.5 rounded-lg bg-gray-100 text-gray-700 text-xs font-semibold">
                           {offer.categoryIcon} {offer.categoryLabel || offer.festivalName}
                         </span>
+                        {offer.startDate && offer.endDate && (
+                          <span className="px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+                            📅 Valid: Sep 01 – Sep 30, 2026
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1 text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg">

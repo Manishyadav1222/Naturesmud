@@ -18,6 +18,8 @@ export interface FestivalOffer {
   originalPrice: number;
   offerPrice: number;
   couponCode: string;
+  startDate?: string;
+  endDate?: string;
   endsAt: string;
   items: OfferItem[];
   tag: string;
@@ -29,20 +31,22 @@ export interface FestivalOffer {
 
 export const initialFestivalOffers: FestivalOffer[] = [
   {
-    id: 'offer-raksha-bandhan',
-    title: 'Sacred Raksha Bandhan Luxury Superfood Hamper',
-    subtitle: 'Dehydrated Apples, Raw Mountain Almonds, Dates Powder & Pink Salt in Eco Glass Jars',
-    festivalName: '🎋 Raksha Bandhan Special Festival Edition',
+    id: 'offer-festive-himalayan-wellness',
+    title: 'Himalayan Festival Celebration & Wellness Box',
+    subtitle: 'Sun-Dried Apples, Raw Mountain Almonds & Dates Powder Sweetener',
+    festivalName: '🇳🇵 Himalayan Seasonal Celebration Edition',
     badge: '5% OFF · Festive Special',
-    categoryIcon: '🎋',
-    categoryLabel: 'Raksha Bandhan',
+    categoryIcon: '🇳🇵',
+    categoryLabel: 'Festival Combo',
     discountPercentage: 5,
-    originalPrice: 1572,
-    offerPrice: 1493,
+    originalPrice: 1388,
+    offerPrice: 1318,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Festive Best Choice',
-    themeColor: 'amber',
+    themeColor: 'gold',
     items: [
       {
         productId: '3',
@@ -64,13 +68,6 @@ export const initialFestivalOffers: FestivalOffer[] = [
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 380,
-      },
-      {
-        productId: '10',
-        name: 'Himalayan Pink Salt (100 GM)',
-        weight: '100 GM',
-        image: '/products/pink-salt.jpg',
-        price: 184,
       },
     ],
     highlights: [
@@ -94,7 +91,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     originalPrice: 1516,
     offerPrice: 1440,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Athletes #1 Pick',
     themeColor: 'emerald',
     items: [
@@ -140,7 +139,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     originalPrice: 960,
     offerPrice: 912,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Morning Ritual',
     themeColor: 'amber',
     items: [
@@ -186,7 +187,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     originalPrice: 1486,
     offerPrice: 1412,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Family Favorite',
     themeColor: 'gold',
     items: [
@@ -232,7 +235,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     originalPrice: 1502,
     offerPrice: 1427,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Zero Crash Snacking',
     themeColor: 'crimson',
     items: [
@@ -269,25 +274,34 @@ export const initialFestivalOffers: FestivalOffer[] = [
   {
     id: 'offer-babycare',
     title: 'Pure Infant & Toddler Superfood Starter',
-    subtitle: 'Sweet Potato Powder & Dates Powder Natural Porridge Mix',
+    subtitle: 'Sweet Potato, Carrot & Dates Powders Pure Porridge Mix',
     festivalName: '👶 Baby & Toddler Nutrition Pack',
     badge: '5% OFF · Storewide Special',
     categoryIcon: '👶',
     categoryLabel: 'Baby Care',
     discountPercentage: 5,
-    originalPrice: 890,
-    offerPrice: 846,
+    originalPrice: 1380,
+    offerPrice: 1311,
     couponCode: 'STORE5 (Auto-Applied)',
-    endsAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
     tag: 'Pediatric Approved',
     themeColor: 'purple',
     items: [
       {
         productId: '25',
-        name: 'Sweet Potato Powder (150 GM)',
-        weight: '150 GM',
+        name: 'Sweet Potato Powder (100 GM)',
+        weight: '100 GM',
         image: '/products/sweet-potato-powder-100g.jpg',
         price: 510,
+      },
+      {
+        productId: '24',
+        name: 'Carrot Powder (100 GM)',
+        weight: '100 GM',
+        image: '/products/carrot-powder.jpg',
+        price: 490,
       },
       {
         productId: '8',

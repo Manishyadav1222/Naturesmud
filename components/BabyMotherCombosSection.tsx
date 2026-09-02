@@ -35,6 +35,8 @@ export interface BabyMotherCombo {
   originalPrice: number;
   offerPrice: number;
   couponCode: string;
+  startDate?: string;
+  endDate?: string;
   tag: string;
   highlights: string[];
   items: BabyMotherProductItem[];
@@ -54,6 +56,8 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     originalPrice: 1350,
     offerPrice: 1283,
     couponCode: 'STORE5',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
     tag: 'Single-Ingredient',
     purityNote: 'Pure whole vegetables and dried fruit with zero added sugar, zero salt, and zero preservatives.',
     items: [
@@ -98,6 +102,8 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     originalPrice: 1680,
     offerPrice: 1596,
     couponCode: 'STORE5',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
     tag: 'Folate & Iron Rich',
     purityNote: 'Lab-tested organic mountain superfoods for maternal energy and fetal development.',
     items: [
@@ -131,47 +137,49 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     ],
   },
   {
-    id: 'combo-sutkeri-care',
-    title: 'Sutkeri Postpartum Recovery Pack',
-    subtitle: 'Jumla Walnuts, Dates Powder & Coconut Oil',
-    stageName: '🤱 Sutkeri Postpartum Care',
-    badge: '5% OFF · Traditional Care',
-    categoryIcon: '🤱',
-    categoryLabel: 'Sutkeri Care',
+    id: 'combo-baby-immunity-growth',
+    title: 'Baby Immunity & Weight Gain Superfood Kit',
+    subtitle: 'Sweet Potato Powder, Beetroot Powder & Dates Powder',
+    stageName: '🍼 6m–3y Baby Immunity & Growth',
+    badge: '5% OFF · 100% Baby-Safe',
+    categoryIcon: '🍼',
+    categoryLabel: 'Baby Immunity',
     discountPercentage: 5,
-    originalPrice: 1520,
-    offerPrice: 1444,
+    originalPrice: 1224,
+    offerPrice: 1163,
     couponCode: 'STORE5',
-    tag: 'Lactation & Healing',
-    purityNote: 'Traditional Ayurvedic postpartum nutrition for deep pelvic strength and breastmilk supply.',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
+    tag: 'Immunity & Weight',
+    purityNote: '100% natural dehydrated whole vegetables and dates for healthy weight gain and natural immunity.',
     items: [
       {
-        productId: '21',
-        name: 'Whole Jumla Walnuts',
-        weight: '200g',
-        image: '/products/walnuts.jpg',
-        price: 520,
+        productId: '25',
+        name: 'Sweet Potato Powder',
+        weight: '100g',
+        image: '/products/sweet-potato-powder-100g.jpg',
+        price: 510,
+      },
+      {
+        productId: '9',
+        name: 'Organic Beetroot Powder',
+        weight: '100g',
+        image: '/products/beetroot-powder-100g.jpg',
+        price: 334,
       },
       {
         productId: '8',
         name: 'Dates Powder Sweetener',
         weight: '100g',
         image: '/products/dates-powder-100g.jpg',
-        price: 350,
-      },
-      {
-        productId: '22',
-        name: 'Extra Virgin Coconut Oil',
-        weight: '250ml',
-        image: '/products/coconut-oil.jpg',
-        price: 650,
+        price: 380,
       },
     ],
     highlights: [
-      'Healthy Fats for Breastmilk Quality',
-      'Natural Iron for Postpartum Strength',
-      'Pure Cold-Pressed Recovery MCTs',
-      'Ayurvedic Sutkeri Recipe Base',
+      'Natural Beta-Carotene & Iron for Hemoglobin',
+      'Gentle Precooked Baby Weaning Powder',
+      '0 Added Sugar · 0 Preservatives · 0 Salt',
+      'Pediatrician-Grade Fine Milled Texture',
     ],
   },
   {
@@ -186,6 +194,8 @@ export const babyMotherCombos: BabyMotherCombo[] = [
     originalPrice: 1480,
     offerPrice: 1406,
     couponCode: 'STORE5',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
     tag: '100% Whole Fruit',
     purityNote: 'Zero refined sugar or artificial colorings for energetic and healthy kids.',
     items: [
@@ -389,11 +399,18 @@ export default function BabyMotherCombosSection() {
             >
               {/* Title & Tagline */}
               <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="px-2 py-0.2 rounded-full bg-[#F5F1EA] text-[#1A3826] border border-[#EAE3D6] font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase">
-                    {currentCombo.badge}
-                  </span>
-                  <span className="text-[10px] text-[#242220]/60 font-normal">✨ {currentCombo.tag}</span>
+                <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2 py-0.2 rounded-full bg-[#F5F1EA] text-[#1A3826] border border-[#EAE3D6] font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase">
+                      {currentCombo.badge}
+                    </span>
+                    <span className="text-[10px] text-[#242220]/60 font-normal">✨ {currentCombo.tag}</span>
+                  </div>
+                  {currentCombo.startDate && currentCombo.endDate && (
+                    <span className="text-[9px] sm:text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                      📅 Sep 01 – Sep 30, 2026
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-heading font-extrabold text-base sm:text-lg text-[#1A3826] mt-1 leading-snug">
                   {currentCombo.title}

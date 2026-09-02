@@ -231,11 +231,18 @@ export default function HeroOfferSection() {
             >
               {/* Title & Tagline */}
               <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="px-2 py-0.2 rounded-md bg-gold/15 text-gold-800 font-heading text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider">
-                    {currentOffer.badge}
-                  </span>
-                  <span className="text-[10px] text-ink/50 font-medium">✨ {currentOffer.tag}</span>
+                <div className="flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2 py-0.2 rounded-md bg-gold/15 text-gold-800 font-heading text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider">
+                      {currentOffer.badge}
+                    </span>
+                    <span className="text-[10px] text-ink/50 font-medium">✨ {currentOffer.tag}</span>
+                  </div>
+                  {currentOffer.startDate && currentOffer.endDate && (
+                    <span className="text-[9px] sm:text-[10px] font-bold text-amber-900 bg-amber-100/90 px-2 py-0.5 rounded-full border border-amber-300 shrink-0">
+                      📅 Sep 01 – Sep 30, 2026
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-heading font-extrabold text-base sm:text-lg text-dark mt-1 leading-snug">
                   {currentOffer.title}

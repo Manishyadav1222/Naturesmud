@@ -92,6 +92,24 @@ const FESTIVE_PRESETS = [
     ],
   },
   {
+    name: '🍼 Baby First Foods',
+    title: 'Pure Infant & Baby Superfood Weaning Trio',
+    subtitle: 'Sweet Potato Powder, Carrot Powder & Dates Powder Natural Sweetener',
+    festivalName: '🍼 Baby First Foods & Growth Campaign',
+    badge: '5% OFF · Pediatric Approved',
+    categoryIcon: '🍼',
+    categoryLabel: 'Baby Care',
+    discountPercentage: 5,
+    couponCode: 'STORE5',
+    tag: '100% Baby-Safe',
+    themeColor: 'purple' as const,
+    highlights: [
+      'Precooked Gentle Porridge for 6+ Month Infants',
+      '100% Plant-Based Sweetness with Zero Added Sugar',
+      'Rich in Beta-Carotene Vitamin A & Dietary Fiber',
+    ],
+  },
+  {
     name: '🏋️ Gym & Muscle Pack',
     title: 'Himalayan Gym & Workout Muscle Pack',
     subtitle: 'High-Protein Raw Walnuts, Zinc-Rich Pumpkin Seeds & Chia Omega-3',
@@ -571,6 +589,8 @@ function OfferEditorModal({
     originalPrice: '0',
     offerPrice: '0',
     couponCode: 'STORE5',
+    startDate: '2026-09-01',
+    endDate: '2026-09-30',
     tag: 'Limited Festive Stock',
     themeColor: 'gold' as FestivalOffer['themeColor'],
     isFestival: true,
@@ -603,6 +623,8 @@ function OfferEditorModal({
           originalPrice: String(offer.originalPrice || 0),
           offerPrice: String(offer.offerPrice || 0),
           couponCode: offer.couponCode || 'STORE5',
+          startDate: offer.startDate || '2026-09-01',
+          endDate: offer.endDate || '2026-09-30',
           tag: offer.tag || 'Bestseller Combo',
           themeColor: offer.themeColor || 'gold',
           isFestival: offer.isFestival !== false,
@@ -643,6 +665,8 @@ function OfferEditorModal({
           originalPrice: String(originalTotal),
           offerPrice: String(offerTotal),
           couponCode: 'STORE5',
+          startDate: '2026-09-01',
+          endDate: '2026-09-30',
           tag: 'Festive Bestseller',
           themeColor: 'gold',
           isFestival: true,
@@ -699,6 +723,10 @@ function OfferEditorModal({
     if (existingIndex >= 0) {
       updated = selectedItems.filter((i) => i.productId !== prodId);
     } else {
+      if (selectedItems.length >= 3) {
+        alert('Offers are strictly limited to exactly 3 products (Trio Bundle). Please remove one item before selecting another.');
+        return;
+      }
       const newItem: OfferItem = {
         productId: prodId,
         name: product.name,
@@ -777,8 +805,8 @@ function OfferEditorModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (selectedItems.length === 0) {
-      alert('Please select at least 1 product for your festival offer combo bundle.');
+    if (selectedItems.length !== 3) {
+      alert(`An offer must contain strictly 3 products. You currently have ${selectedItems.length} selected. Please select exactly 3 products.`);
       return;
     }
 
@@ -794,9 +822,11 @@ function OfferEditorModal({
       originalPrice: Number(form.originalPrice) || 0,
       offerPrice: Number(form.offerPrice) || 0,
       couponCode: form.couponCode.toUpperCase(),
+      startDate: form.startDate,
+      endDate: form.endDate,
+      endsAt: form.endDate ? new Date(form.endDate).toISOString() : new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
       tag: form.tag,
       themeColor: form.themeColor,
-      endsAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
       items: selectedItems,
       highlights,
       isFestival: form.isFestival,
@@ -819,7 +849,7 @@ function OfferEditorModal({
     <Modal
       open={open}
       onClose={onClose}
-      title={offer ? 'Edit Festival Combo Offer' : 'Create Custom Festival Combo Offer'}
+      title={offer ? 'Edit 3-Product Festival Combo Offer' : 'Create 3-Product Festival Combo Offer'}
       size="xl"
       className="max-w-5xl max-h-[92vh] flex flex-col overflow-hidden"
     >
@@ -931,6 +961,27 @@ function OfferEditorModal({
                   />
                 </div>
 
+                {/* Offer Running Custom Date Ranges (From Date to To Date) */}
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-gray-700">Offer Start Date (Valid From)</label>
+                  <Input
+                    type="date"
+                    required
+                    value={form.startDate}
+                    onChange={(e) => setForm({ ...form, startDate: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-xs font-bold text-gray-700">Offer End Date (Valid To)</label>
+                  <Input
+                    type="date"
+                    required
+                    value={form.endDate}
+                    onChange={(e) => setForm({ ...form, endDate: e.target.value })}
+                  />
+                </div>
+
                 {/* Theme Color Selector */}
                 <div className="md:col-span-2">
                   <label className="mb-1.5 block text-xs font-bold text-gray-700">Visual Theme Color Accent</label>
@@ -959,26 +1010,36 @@ function OfferEditorModal({
               </div>
             </div>
 
-            {/* Section 2: Selected Products from Catalog (Admin Choice) */}
+            {/* Section 2: Selected Products from Catalog (Admin Choice - Exactly 3 Products) */}
             <div className="p-4 rounded-2xl bg-white border border-gray-200/90 space-y-4 shadow-xs">
-              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3 flex-wrap gap-2">
                 <div className="flex items-center gap-2">
                   <Layers className="w-4 h-4 text-primary" />
                   <h3 className="text-sm font-bold text-gray-900 font-heading">
-                    2. Choose Products for this Festival Combo ({selectedItems.length} selected)
+                    2. Choose Products for this Combo ({selectedItems.length} / 3 Selected)
                   </h3>
                 </div>
 
-                <Button
-                  type="button"
-                  size="sm"
-                  variant="outline"
-                  onClick={() => setIsProductPickerOpen(!isProductPickerOpen)}
-                  className="flex items-center gap-1.5"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                  {isProductPickerOpen ? 'Hide Catalog Browser' : '+ Add More Products'}
-                </Button>
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${
+                    selectedItems.length === 3 
+                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300' 
+                      : 'bg-amber-50 text-amber-800 border-amber-300'
+                  }`}>
+                    {selectedItems.length === 3 ? '✓ Strict 3-Product Trio Complete' : `Select exactly 3 products (${3 - selectedItems.length} left)`}
+                  </span>
+
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setIsProductPickerOpen(!isProductPickerOpen)}
+                    className="flex items-center gap-1.5"
+                  >
+                    <Plus className="w-3.5 h-3.5" />
+                    {isProductPickerOpen ? 'Hide Catalog' : '+ Pick Products'}
+                  </Button>
+                </div>
               </div>
 
               {/* Collapsible Product Catalog Browser */}
