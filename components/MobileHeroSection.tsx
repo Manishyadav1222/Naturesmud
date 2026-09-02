@@ -276,7 +276,7 @@ export default function MobileHeroSection() {
 
   return (
     <div
-      className="relative w-full overflow-hidden transition-colors duration-1000 px-3 sm:px-4 md:px-8 lg:px-12 py-4 md:py-8 lg:py-12"
+      className="relative w-full overflow-hidden transition-colors duration-1000 px-3 sm:px-4 md:px-8 lg:px-12 pt-1 sm:pt-2 md:pt-3 lg:pt-3 pb-4 md:pb-8 lg:pb-12"
       style={{
         backgroundColor: currentPoster.bgTint,
       }}
@@ -294,7 +294,8 @@ export default function MobileHeroSection() {
 
       <div className="hidden md:grid md:grid-cols-12 md:gap-8 lg:gap-12 xl:gap-16 md:items-center max-w-7xl mx-auto relative z-10">
         <div className="md:col-span-7 lg:col-span-7 xl:col-span-7 flex flex-col items-start text-left space-y-4 lg:space-y-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
+          {/* 1. Crest Eyebrow Badge - Positioned with minimal 1% margin from header */}
+          <div className="mt-1 lg:mt-1.5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
               From the Himalayas
@@ -306,15 +307,16 @@ export default function MobileHeroSection() {
             </span>
           </div>
 
-          <div className="space-y-1.5 w-full">
-            <h1 className="text-[34px] sm:text-4xl md:text-[38px] lg:text-[46px] xl:text-[54px] 2xl:text-[58px] leading-[1.12] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
-              <span className="block font-serif italic text-[#1C2820] font-normal">
+          {/* 2. Editorial Master Headline with elegant line-by-line breathing space */}
+          <div className="space-y-2 w-full">
+            <h1 className="text-[34px] sm:text-4xl md:text-[38px] lg:text-[46px] xl:text-[52px] 2xl:text-[56px] leading-[1.24] lg:leading-[1.32] font-normal tracking-[-0.02em] font-heading text-[#1C2820] space-y-2 lg:space-y-3.5">
+              <span className="block font-serif italic text-[#1C2820] font-normal pb-0.5">
                 Grown in Nepal.
               </span>
-              <span className="block font-sans font-extrabold tracking-[-0.015em] text-[#1A3826]">
+              <span className="block font-sans font-extrabold tracking-[-0.015em] text-[#1A3826] pb-0.5">
                 Handled with care.
               </span>
-              <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-0.5">
+              <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-1">
                 <span>Delivered to your home.</span>
                 <svg
                   className="absolute -bottom-1 left-0 w-full h-2 text-[#7A5230]/35 pointer-events-none"
@@ -332,7 +334,7 @@ export default function MobileHeroSection() {
               </span>
             </h1>
 
-            <div className="flex flex-wrap items-center gap-1.5 pt-1 text-[11px] lg:text-xs font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
+            <div className="flex flex-wrap items-center gap-1.5 pt-1.5 text-[11px] lg:text-xs font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Mustang</span>
               <span className="text-[#7A5230]/40">·</span>
               <span className="px-2.5 py-0.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">Jumla</span>
@@ -611,7 +613,7 @@ export default function MobileHeroSection() {
           ══════════════════════════════════════════════════════════════════════ */}
       <div className="md:hidden relative z-10 flex flex-col items-center text-center space-y-4">
         {/* 1. Crest Eyebrow Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
+        <div className="mt-1 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs">
           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#7A5230] font-sans">
             From the Himalayas
@@ -624,12 +626,12 @@ export default function MobileHeroSection() {
         </div>
 
         {/* 2. Editorial Master Headline */}
-        <div className="space-y-1 w-full px-2">
-          <h1 className="text-[28px] xs:text-[32px] sm:text-[38px] leading-[1.12] font-normal tracking-[-0.02em] font-heading text-[#1C2820]">
-            <span className="block font-serif italic text-[#1C2820] font-normal">
+        <div className="space-y-1.5 w-full px-2">
+          <h1 className="text-[28px] xs:text-[32px] sm:text-[38px] leading-[1.22] font-normal tracking-[-0.02em] font-heading text-[#1C2820] space-y-1.5">
+            <span className="block font-serif italic text-[#1C2820] font-normal pb-0.5">
               Grown in Nepal.
             </span>
-            <span className="block font-sans font-bold tracking-[-0.015em] text-[#1A3826]">
+            <span className="block font-sans font-bold tracking-[-0.015em] text-[#1A3826] pb-0.5">
               Handled with care.
             </span>
             <span className="relative inline-block font-serif text-[#7A5230] font-normal pb-0.5">

@@ -88,18 +88,13 @@ export default function Header() {
     <>
       <header
         className={classNames(
-          'sticky top-0 z-50 w-full max-w-full transition-all duration-300',
+          'sticky top-0 z-50 w-full max-w-full transition-all duration-300 pointer-events-auto',
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md border-b border-ink/8 shadow-sm py-2 sm:py-2.5'
-            : 'bg-transparent py-2 sm:py-2.5 pointer-events-none'
+            ? 'bg-white/95 backdrop-blur-md border-b border-ink/8 shadow-xs py-2 sm:py-2.5'
+            : 'bg-white/90 backdrop-blur-md border-b border-ink/5 shadow-2xs py-2 sm:py-2.5'
         )}
       >
-        <div
-          className={classNames(
-            'mx-auto max-w-7xl w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4',
-            !isScrolled ? 'pointer-events-auto' : ''
-          )}
-        >
+        <div className="mx-auto max-w-7xl w-full px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
           {/* ── Left Zone: Brand Logo Capsule ── */}
           <MotionLink
             href="/"
