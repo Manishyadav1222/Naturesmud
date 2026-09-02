@@ -131,7 +131,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     subheading: '100% Unrefined Natural Sweetener',
     weight: '100 GM',
     packing: 'Glass Jar',
-    price: 350,
+    price: 400,
     compareAtPrice: 400,
     rating: 4.9,
     reviews: 84,

@@ -537,7 +537,7 @@ export const blogPosts: BlogPost[] = [
   ],
   "featuredProductSlug": "dates-powder",
   "featuredProductName": "Dates Powder",
-  "featuredProductPrice": 350,
+  "featuredProductPrice": 400,
   "featuredProductImage": "/products/dates-powder.jpg"
 },
 {
@@ -849,7 +849,7 @@ export const blogPosts: BlogPost[] = [
   ],
   "featuredProductSlug": "dates-powder",
   "featuredProductName": "Dates Powder",
-  "featuredProductPrice": 350,
+  "featuredProductPrice": 400,
   "featuredProductImage": "/products/dates-powder.jpg"
 },
 {

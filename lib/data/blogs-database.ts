@@ -179,7 +179,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     ],
     "featuredProductSlug": "dates-powder",
     "featuredProductName": "100% Pure Himalayan Dates Powder",
-    "featuredProductPrice": 350,
+    "featuredProductPrice": 400,
     "featuredProductImage": "/products/dates-powder-100g.jpg",
     "metaDescription": "Learn why Nepali households in Kathmandu are switching from refined white sugar to 100% pure Dates Powder and Sweet Potato Powder for baby food (lito) and diabetic-friendly nutrition.",
     "faqs": [
@@ -786,7 +786,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
   ],
   "featuredProductSlug": "dates-powder",
   "featuredProductName": "Dates Powder",
-  "featuredProductPrice": 350,
+  "featuredProductPrice": 400,
   "featuredProductImage": "/products/dates-powder.jpg"
 },
 {
@@ -1098,7 +1098,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
   ],
   "featuredProductSlug": "dates-powder",
   "featuredProductName": "Dates Powder",
-  "featuredProductPrice": 350,
+  "featuredProductPrice": 400,
   "featuredProductImage": "/products/dates-powder.jpg"
 },
 {

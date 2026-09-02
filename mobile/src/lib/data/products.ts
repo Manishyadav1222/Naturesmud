@@ -473,8 +473,8 @@ export const products: Product[] = [
     "name": "Organic Chia Seeds 500g",
     "description": "Premium black chia seeds grown in the fertile Himalayan foothills without pesticides. These tiny seeds are nutritional powerhouses — rich in omega-3 fatty acids (ALA), fiber, protein, and essential minerals. They absorb 10x their weight in liquid, forming a gel that supports hydration and digestive health. Perfect for puddings, smoothies, baking, or as an egg substitute.",
     "shortDescription": "Omega-3 rich superfood from Himalayan foothills. High fiber, complete protein.",
-    "price": 350,
-    "compareAtPrice": 350,
+    "price": 495,
+    "compareAtPrice": 495,
     "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600",
     "images": [
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600"

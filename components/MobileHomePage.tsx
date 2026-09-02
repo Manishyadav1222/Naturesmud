@@ -546,7 +546,7 @@ export default function MobileHomePage() {
           <div className="grid grid-cols-2 gap-2 mt-3 w-full">
             {[
               { name: 'Sweet Potato Powder', slug: 'sweet-potato-powder', price: 420, img: '/products/sweet-potato-powder-100g.jpg' },
-              { name: 'Dates Powder Sweetener', slug: 'dates-powder', price: 350, img: '/products/dates-powder-100g.jpg' },
+              { name: 'Dates Powder Sweetener', slug: 'dates-powder', price: 400, img: '/products/dates-powder-100g.jpg' },
             ].map((prod) => (
               <Link
                 key={prod.slug}

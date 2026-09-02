@@ -86,7 +86,7 @@ const products = [
     qty: '100 GM',
     packing: 'Glass Jar',
     category: 'Powders',
-    mrp: 350,
+    mrp: 400,
     benefit: '1:1 natural replacement for white refined table sugar. Rich in iron & potassium.',
   },
   {

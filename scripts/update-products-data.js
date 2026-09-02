@@ -192,9 +192,9 @@ const productFixes = {
     name: 'Dates Powder',
     category: 'Powders',
     categorySlug: 'powders',
-    price: 350,
-    compareAtPrice: 350,
-    mrp: 350,
+    price: 400,
+    compareAtPrice: 400,
+    mrp: 400,
     image: '/products/dates-powder-100g.jpg',
     images: [
       '/products/dates-powder-100g.jpg',
