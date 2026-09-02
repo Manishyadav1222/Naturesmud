@@ -27,6 +27,7 @@ import {
   Award,
 } from 'lucide-react-native';
 import { products, categories, getFeaturedProducts, getBestSellers } from '@/lib/data/products';
+import type { Product } from '@/types';
 import { ProductCard } from '@/components/ProductCard';
 import { useCartStore } from '@/store/cart-store';
 import { useUIStore } from '@/store/ui-store';
@@ -198,7 +199,7 @@ export default function HomeScreen() {
         </View>
 
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.featuredRow}>
-          {featured.map((product) => (
+          {featured.map((product: Product) => (
             <View key={product.id} style={{ width: screenWidth * 0.52 }}>
               <ProductCard
                 product={product}
@@ -241,7 +242,7 @@ export default function HomeScreen() {
         </View>
 
         <View style={styles.bestSellersGrid}>
-          {bestSellers.map((product) => (
+          {bestSellers.map((product: Product) => (
             <View key={product.id} style={{ width: (screenWidth - 44) / 2 }}>
               <ProductCard
                 product={product}

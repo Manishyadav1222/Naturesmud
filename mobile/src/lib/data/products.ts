@@ -952,3 +952,27 @@ export const products: Product[] = [
     "updatedAt": "2024-11-20T10:00:00Z"
   }
 ];
+
+export function getFeaturedProducts(limit = 8): Product[] {
+  const featured = products.filter((p) => p.isFeatured);
+  return (featured.length > 0 ? featured : products).slice(0, limit);
+}
+
+export function getBestSellers(limit = 10): Product[] {
+  const bestSellers = products.filter((p) => p.isBestSeller);
+  return (bestSellers.length > 0 ? bestSellers : products).slice(0, limit);
+}
+
+export function getNewArrivals(limit = 8): Product[] {
+  const newArrivals = products.filter((p) => p.isNew);
+  return (newArrivals.length > 0 ? newArrivals : products).slice(0, limit);
+}
+
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((p) => p.slug === slug);
+}
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id);
+}
+

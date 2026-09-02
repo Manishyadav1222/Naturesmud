@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { useAuthStore } from '@/store/auth-store';
 import { products, categories, getFeaturedProducts, getBestSellers, getNewArrivals } from './data/products';
 
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://naturesmud.shop/api';
 
 class ApiClient {
   private client: AxiosInstance;
