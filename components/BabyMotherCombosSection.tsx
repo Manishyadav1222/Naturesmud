@@ -72,7 +72,7 @@ export const babyMotherCombos: BabyMotherCombo[] = [
         productId: '24',
         name: 'Carrot Powder',
         weight: '100g',
-        image: '/products/carrot-powder.jpg',
+        image: '/products/carrot-powder-100g.jpg',
         price: 490,
       },
       {

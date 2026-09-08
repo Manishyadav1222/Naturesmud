@@ -61,7 +61,7 @@ const regionsData = [
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-300',
     primaryProducts: [
       { name: 'Pure Himalayan Beetroot Powder (100g)', image: '/products/beetroot-powder-100g.jpg', slug: 'beetroot-powder' },
-      { name: 'Carrot Powder (100g)', image: '/products/carrot-powder.jpg', slug: 'carrot-powder' },
+      { name: 'Carrot Powder (100g)', image: '/products/carrot-powder-100g.jpg', slug: 'carrot-powder' },
       { name: 'Flax Seeds (100g)', image: '/products/flax-seeds.jpg', slug: 'flax-seeds' },
       { name: 'Chia Seeds (100g)', image: '/products/chia-seeds.jpg', slug: 'chia-seeds' },
     ],
@@ -172,7 +172,7 @@ const tenNepaliProducts = [
     name: 'Carrot Powder (100g)',
     place: 'Kavre & Sindhupalchok Hill Farms',
     altitude: '1,000m – 1,600m Altitude',
-    image: '/products/carrot-powder.jpg',
+    image: '/products/carrot-powder-100g.jpg',
     slug: 'carrot-powder',
     badge: 'Hill Valley Vegetable',
     howCollected:

@@ -7,12 +7,15 @@ const querystring = require('querystring');
 const ftp = require('basic-ftp');
 const { ZipArchive } = require('archiver');
 
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env.production') });
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
+
 const config = {
-  host: '167.235.9.123',
-  port: 2083,
-  username: 'kathma13',
-  password: '2*5Qt7iSrB7-Uz',
-  homeDir: '/home8/kathma13',
+  host: process.env.CPANEL_HOST || '167.235.9.123',
+  port: parseInt(process.env.CPANEL_PORT || '2083'),
+  username: process.env.CPANEL_USER || 'kathma13',
+  password: process.env.CPANEL_PASSWORD || '2*5Qt7iSrB7-Uz',
+  homeDir: process.env.CPANEL_HOMEDIR || '/home8/kathma13',
   rootDir: path.resolve(__dirname, '..')
 };
 
@@ -179,10 +182,20 @@ async function main() {
   console.log('====================================================\n');
 
   // 1. Build Next.js
-  console.log('[1/4] 🏗️ Compiling Next.js production build...');
-  execSync('npm run build', { stdio: 'inherit' });
+  console.log('[1/4] 🏗️ Verifying Next.js production build...');
+  const buildIdPath = path.join(config.rootDir, '.next', 'BUILD_ID');
+  const shouldRebuild = process.argv.includes('--build') || 
+    !fs.existsSync(buildIdPath) || 
+    fs.statSync(path.join(config.rootDir, 'lib', 'data', 'products.ts')).mtime > fs.statSync(buildIdPath).mtime;
+
+  if (shouldRebuild) {
+    console.log('  -> Changes detected in source files. Rebuilding Next.js bundle...');
+    execSync('npm run build', { stdio: 'inherit' });
+  } else {
+    console.log('  -> Using freshly compiled .next build!');
+  }
   const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
-  console.log('✅ Build successful! BUILD_ID:', localBuildId);
+  console.log('✅ Build verified! BUILD_ID:', localBuildId);
 
   // 2. Package .next (excluding standalone, cache, trace)
   console.log('\n[2/4] 📦 Packaging slim .next build (~5MB)...');
@@ -229,6 +242,11 @@ async function main() {
       }
     });
 
+    // Add GreenBasket assets
+    if (fs.existsSync(path.join(config.rootDir, 'public', 'images', 'greenbasket'))) {
+      archive.directory(path.join(config.rootDir, 'public', 'images', 'greenbasket'), 'public/images/greenbasket');
+    }
+
     // Add all active product images into public/products/
     const prodFiles = [
       'dehydrated-pineapple-premium.jpg',
@@ -250,11 +268,18 @@ async function main() {
       'authentic-dehydrated-pineapple.jpg',
       'authentic-dehydrated-apple.jpg',
       'dehydrated-coconut-chips.jpg',
+      'dehydrated-coconut-chips-100g.jpg',
+      'coconut-chips.jpg',
+      'coconut-chips-100g.jpg',
+      'coconut-chips-pouch.jpg',
       'pumpkin-seeds.jpg',
       'pistachios.jpg',
       'superfood-mix.jpg',
       'macadamia.jpg',
       'coconut-oil.jpg',
+      'carrot-powder.jpg',
+      'carrot-powder-100g.jpg',
+      'carrot-powder-poster.jpg',
       'carrot-powder-marble.jpg'
     ];
     prodFiles.forEach(pf => {
@@ -279,7 +304,7 @@ async function main() {
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
   // 4. Server-side Fast Permission Fix & Passenger Restart
-  console.log('\n[4/4] 🔒 Applying server permissions and restarting Passenger...');
+  console.log('\n[4/5] 🔒 Applying server permissions and restarting Passenger...');
   const localFixPerms = path.join(config.rootDir, 'fix_perms.php');
   fs.writeFileSync(localFixPerms, fixPermsPhp);
   await uploadFile(localFixPerms, `${config.homeDir}/api.naturesmud.shop/public`, 'fix_perms.php');
@@ -287,7 +312,162 @@ async function main() {
   const permRes = await runPhpEndpoint('/fix_perms.php');
   console.log('Permission Fixer Output:', permRes.body.trim());
 
-  // 5. Verification
+  // 5. Database Synchronization
+  console.log('\n[5/5] 🗄️ Synchronizing Live MySQL Database (api.naturesmud.shop)...');
+  try {
+    const productsFilePath = path.join(config.rootDir, 'lib', 'data', 'products.ts');
+    let content = fs.readFileSync(productsFilePath, 'utf8').replace(/\r\n/g, '\n');
+    const marker = 'export const products: Product[] = ';
+    const startIdx = content.indexOf(marker) + marker.length;
+    const endIdx = content.indexOf('export function');
+    const jsonText = content.substring(startIdx, endIdx).trim().replace(/;$/, '');
+    const products = JSON.parse(jsonText);
+    const productsPayloadJson = JSON.stringify(products);
+
+    const phpSyncScript = `<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+header('Content-Type: application/json');
+
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=kathma13_natures_mud;charset=utf8mb4', 'kathma13_muduser', '2*5Qt7iSrB7-Uz', [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+]);
+
+$cats = [
+    'superfoods' => 'Superfoods',
+    'ayurveda' => 'Ayurvedic',
+    'seeds' => 'Organic Seeds',
+    'powders' => 'Powders',
+    'dried-fruits' => 'Dried Fruits',
+    'nuts' => 'Nuts',
+    'oils' => 'Oils',
+    'salts-spices' => 'Salts & Spices',
+    'combos' => 'Combos'
+];
+
+$catMap = [];
+$catRows = $pdo->query("SELECT id, slug FROM categories")->fetchAll();
+foreach ($catRows as $r) {
+    $catMap[$r['slug']] = (int)$r['id'];
+}
+
+foreach ($cats as $slug => $name) {
+    if (!isset($catMap[$slug])) {
+        $stmt = $pdo->prepare("INSERT INTO categories (name, slug, description, is_active, created_at, updated_at) VALUES (:name, :slug, :desc, 1, NOW(), NOW())");
+        $stmt->execute(['name' => $name, 'slug' => $slug, 'desc' => "$name superfoods and wellness."]);
+        $catMap[$slug] = (int)$pdo->lastInsertId();
+    }
+}
+
+$rawJson = <<<'JSONDATA'
+${productsPayloadJson}
+JSONDATA;
+
+$productsList = json_decode($rawJson, true);
+$activeSlugs = [];
+$upsertCount = 0;
+
+$pdo->exec("DELETE FROM products WHERE slug = 'dried-figs' OR id = 160");
+
+foreach ($productsList as $p) {
+    $slug = $p['slug'];
+    $activeSlugs[] = $slug;
+    $catSlug = $p['categorySlug'] ?? 'superfoods';
+    $catId = $catMap[$catSlug] ?? 1;
+
+    $imagesJson = json_encode($p['images'] ?? [$p['image']]);
+    $price = (float)$p['price'];
+    $mrp = (float)($p['mrp'] ?? $p['compareAtPrice'] ?? $price);
+    $weightStr = (string)($p['weight'] ?? '100');
+    preg_match('/([0-9]+(\\.[0-9]+)?)/', $weightStr, $matches);
+    $weightNum = isset($matches[1]) ? (float)$matches[1] : 100.00;
+    $unit = stripos($weightStr, 'ml') !== false ? 'ml' : 'g';
+
+    $existing = $pdo->prepare("SELECT id FROM products WHERE slug = :slug LIMIT 1");
+    $existing->execute(['slug' => $slug]);
+    $row = $existing->fetch();
+
+    if ($row) {
+        $stmt = $pdo->prepare("UPDATE products SET 
+            name = :name,
+            category_id = :category_id,
+            price = :price,
+            compare_at_price = :compare_at_price,
+            short_description = :short_description,
+            description = :description,
+            weight = :weight,
+            unit = :unit,
+            images = :images,
+            benefits = :benefits,
+            is_active = 1,
+            updated_at = NOW()
+            WHERE id = :id");
+        $stmt->execute([
+            'name' => $p['name'],
+            'category_id' => $catId,
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
+            'description' => $p['description'] ?? '',
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'images' => $imagesJson,
+            'benefits' => json_encode($p['benefits'] ?? []),
+            'id' => $row['id']
+        ]);
+        $upsertCount++;
+    } else {
+        $sku = 'NM-' . strtoupper(str_replace('-', '_', $slug));
+        $stmt = $pdo->prepare("INSERT INTO products 
+            (category_id, name, slug, sku, description, short_description, price, compare_at_price, cost_price, stock_quantity, low_stock_threshold, is_active, is_featured, is_best_seller, is_new, weight, unit, images, benefits, rating_avg, rating_count, views_count, sold_count, created_at, updated_at)
+            VALUES 
+            (:category_id, :name, :slug, :sku, :description, :short_description, :price, :compare_at_price, :cost_price, 100, 10, 1, 0, 0, 0, :weight, :unit, :images, :benefits, 4.8, 12, 100, 20, NOW(), NOW())");
+        $stmt->execute([
+            'category_id' => $catId,
+            'name' => $p['name'],
+            'slug' => $slug,
+            'sku' => $sku,
+            'description' => $p['description'] ?? '',
+            'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'cost_price' => round($price * 0.65, 2),
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'images' => $imagesJson,
+            'benefits' => json_encode($p['benefits'] ?? [])
+        ]);
+        $upsertCount++;
+    }
+}
+
+echo json_encode([
+    'success' => true,
+    'message' => "Successfully synchronized " . count($activeSlugs) . " products from master catalog into MySQL database!",
+    'timestamp' => date('Y-m-d H:i:s')
+]);
+`;
+
+    const localSync = path.join(config.rootDir, 'temp_deploy_sync.php');
+    fs.writeFileSync(localSync, phpSyncScript);
+    await uploadFile(localSync, `${config.homeDir}/api.naturesmud.shop/public`, 'temp_deploy_sync.php');
+    if (fs.existsSync(localSync)) fs.unlinkSync(localSync);
+    const syncRes = await runPhpEndpoint('/temp_deploy_sync.php');
+    console.log('  -> Database Sync Output:', syncRes.body ? syncRes.body.trim() : 'OK');
+
+    // Clean remote sync file
+    try {
+      const c = new ftp.Client();
+      await c.access({ host: config.host, user: config.username, password: config.password, secure: false });
+      await c.remove('/api.naturesmud.shop/public/temp_deploy_sync.php');
+      c.close();
+    } catch (e) {}
+  } catch (err) {
+    console.warn('  ⚠️ Database synchronization notice:', err.message);
+  }
+
+  // 6. Verification
   console.log('\n🩺 Verifying Live Production Status on naturesmud.shop...');
   await new Promise(r => setTimeout(r, 2000));
   

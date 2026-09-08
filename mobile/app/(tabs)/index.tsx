@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   Image,
   Dimensions,
   Linking,
+  TextInput,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
@@ -17,257 +18,590 @@ import {
   Bell,
   Leaf,
   ShieldCheck,
-  Truck,
   Sparkles,
   ArrowRight,
-  Heart,
   Star,
   ChevronRight,
   MessageCircle,
   Award,
+  ShoppingBag,
+  CheckCircle2,
+  Heart,
+  Truck,
+  Lock,
+  Mail,
+  Check,
+  Sprout,
+  Globe,
+  Phone,
 } from 'lucide-react-native';
 import { products, categories, getFeaturedProducts, getBestSellers } from '@/lib/data/products';
 import type { Product } from '@/types';
-import { ProductCard } from '@/components/ProductCard';
 import { useCartStore } from '@/store/cart-store';
 import { useUIStore } from '@/store/ui-store';
 import { toast } from '@/store/ui-store';
+import { formatPrice } from '@/lib/utils';
 
 const { width: screenWidth } = Dimensions.get('window');
 
+const CATEGORIES_DATA = [
+  {
+    id: 'cat-veg',
+    name: 'Vegetables',
+    itemsCount: '120+ items',
+    image: 'https://naturesmud.shop/images/greenbasket/cat-vegetables.jpg',
+    fallback: 'https://naturesmud.shop/products/beetroot-powder-100g.jpg',
+    categoryKey: 'superfoods',
+  },
+  {
+    id: 'cat-fruit',
+    name: 'Fruits',
+    itemsCount: '80+ items',
+    image: 'https://naturesmud.shop/images/greenbasket/cat-fruits.jpg',
+    fallback: 'https://naturesmud.shop/products/authentic-dehydrated-mango.jpg',
+    categoryKey: 'dried-fruits',
+  },
+  {
+    id: 'cat-herbs',
+    name: 'Herbs & Greens',
+    itemsCount: '60+ items',
+    image: 'https://naturesmud.shop/images/greenbasket/cat-herbs.jpg',
+    fallback: 'https://naturesmud.shop/products/sweet-potato-powder-100g.jpg',
+    categoryKey: 'superfoods',
+  },
+  {
+    id: 'cat-dairy',
+    name: 'Dairy & Ghee',
+    itemsCount: '40+ items',
+    image: 'https://naturesmud.shop/products/coconut-oil.jpg',
+    fallback: 'https://naturesmud.shop/products/coconut-oil.jpg',
+    categoryKey: 'oils',
+  },
+  {
+    id: 'cat-nuts',
+    name: 'Nuts & Seeds',
+    itemsCount: '50+ items',
+    image: 'https://naturesmud.shop/products/authentic-cashewnuts-roasted.jpg',
+    fallback: 'https://naturesmud.shop/products/authentic-almonds.jpg',
+    categoryKey: 'nuts',
+  },
+];
+
 export default function HomeScreen() {
   const router = useRouter();
-  const { addItem } = useCartStore();
+  const { addItem, getTotalItems } = useCartStore();
   const { notifications } = useUIStore();
   const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState('All');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [wishlist, setWishlist] = useState<{ [id: string]: boolean }>({});
+  const [addedMap, setAddedMap] = useState<{ [id: string]: boolean }>({});
 
-  const featured = getFeaturedProducts(6);
-  const bestSellers = getBestSellers(4);
+  const cartCount = getTotalItems();
   const unreadCount = notifications.filter((n) => !n.isRead).length;
+
+  const featured = getFeaturedProducts(10);
+  const bestSellers = getBestSellers(10);
+
+  const displayList =
+    activeTab === 'All'
+      ? featured
+      : featured.filter(
+          (p) =>
+            p.category?.toLowerCase().includes(activeTab.toLowerCase()) ||
+            p.name?.toLowerCase().includes(activeTab.toLowerCase())
+        );
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((r) => setTimeout(r, 600));
     setRefreshing(false);
   };
 
-  const handleQuickAdd = (product: any) => {
-    addItem({
-      id: product.id,
-      slug: product.slug,
-      name: product.name,
-      price: product.price,
-      compareAtPrice: product.compareAtPrice,
-      image: product.image,
-      weight: product.weight,
-      category: product.category,
-    });
-    toast.success('Added to Cart', `${product.name} added.`);
+  const handleWhatsApp = () => {
+    Linking.openURL(
+      'https://wa.me/9779819844486?text=Namaste!%20I%20am%20interested%20in%20ordering%20GreenBasket%20organic%20produce.'
+    ).catch(() => {});
   };
 
-  const handleWhatsApp = () => {
-    Linking.openURL('https://wa.me/9779713888002?text=Namaste!%20I%20have%20an%20inquiry%20about%20Nature%27s%20Mud%20products.').catch(() => {});
+  const toggleWishlist = (id: string) => {
+    setWishlist((prev) => {
+      const next = !prev[id];
+      if (next) {
+        toast.success('Wishlist', 'Item saved to your favorites ❤️');
+      }
+      return { ...prev, [id]: next };
+    });
+  };
+
+  const handleAddToCart = (product: Product) => {
+    addItem({
+      id: product.slug || product.id,
+      slug: product.slug || product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      category: product.category,
+      weight: product.weight || '100 GM',
+    });
+
+    setAddedMap((prev) => ({ ...prev, [product.id]: true }));
+    toast.success('Added to Basket 🌿', `${product.name} added.`);
+
+    setTimeout(() => {
+      setAddedMap((prev) => ({ ...prev, [product.id]: false }));
+    }, 1500);
+  };
+
+  const handleSubscribe = () => {
+    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+      toast.error('Invalid Email', 'Please enter a valid email address');
+      return;
+    }
+    toast.success('Subscribed! 🌿', 'You will receive 10% off your first order.');
+    setNewsletterEmail('');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Top Navbar */}
+      {/* 🟢 TOP ANNOUNCEMENT BAR */}
+      <View style={styles.announcementBar}>
+        <View style={styles.announcementRow}>
+          <Truck size={12} color="#A3E635" />
+          <Text style={styles.announcementText}>
+            <Text style={{ fontWeight: '900', color: '#FFFFFF' }}>FREE DELIVERY</Text> on orders over Rs. 3,000
+          </Text>
+        </View>
+        <TouchableOpacity style={styles.announcementPhone} onPress={handleWhatsApp}>
+          <Phone size={11} color="#A3E635" />
+          <Text style={styles.announcementPhoneText}>24/7 Support</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* 🟢 MAIN NAVIGATION BAR */}
       <View style={styles.navBar}>
-        <View style={styles.brandCol}>
-          <View style={styles.brandRow}>
-            <Leaf size={20} color="#365314" />
-            <Text style={styles.brandTitle}>Nature's Mud</Text>
+        <View style={styles.brandRow}>
+          <View style={styles.brandIconWrap}>
+            <Sprout size={20} color="#091B10" />
           </View>
-          <Text style={styles.brandTagline}>Pure Himalayan Superfoods 🇳🇵</Text>
+          <View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+              <Text style={styles.brandTitle}>GreenBasket</Text>
+              <View style={styles.brandLiveDot} />
+            </View>
+            <Text style={styles.brandTagline}>Fresh from Nature · 100% Organic</Text>
+          </View>
         </View>
 
         <View style={styles.navActions}>
-          <TouchableOpacity
-            style={styles.navBtn}
-            onPress={() => router.push('/search')}
-          >
-            <Search size={20} color="#1C1917" />
+          <TouchableOpacity style={styles.navBtn} onPress={() => router.push('/search')}>
+            <Search size={18} color="#D1FAE5" />
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.navBtn}
-            onPress={() => router.push('/notifications')}
-          >
-            <Bell size={20} color="#1C1917" />
+          <TouchableOpacity style={styles.navBtn} onPress={() => router.push('/notifications')}>
+            <Bell size={18} color="#D1FAE5" />
             {unreadCount > 0 && <View style={styles.navBadgeDot} />}
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.navBtn, styles.waBtn]}
-            onPress={handleWhatsApp}
-          >
-            <MessageCircle size={20} color="#365314" />
+          <TouchableOpacity style={styles.cartBtn} onPress={() => router.push('/cart')}>
+            <ShoppingBag size={15} color="#091B10" />
+            <Text style={styles.cartCountText}>{cartCount}</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <ScrollView
         showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#365314']} />
-        }
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#84CC16']} />}
         contentContainerStyle={styles.scrollContent}
       >
-        {/* Hero Banner */}
-        <View style={styles.heroBanner}>
+        {/* 🟢 HERO SECTION: FRESH FOOD. HEALTHY LIFE. HAPPY YOU. */}
+        <View style={styles.heroSection}>
           <View style={styles.heroBadge}>
-            <Award size={13} color="#365314" />
-            <Text style={styles.heroBadgeText}>0 Additives · 0 Preservatives Harvest</Text>
+            <Leaf size={12} color="#A3E635" />
+            <Text style={styles.heroBadgeText}>100% Organic & Single-Origin</Text>
           </View>
-          <Text style={styles.heroHeading}>Purity Straight From the Himalayas</Text>
+
+          <Text style={styles.heroTitle}>Fresh Food.</Text>
+          <Text style={styles.heroTitleHighlight}>Healthy Life.</Text>
+          <Text style={styles.heroTitle}>Happy You.</Text>
+
           <Text style={styles.heroDesc}>
-            Lab-tested Shilajit Resin, Wild Cliff Honey, and Vedic A2 Ghee delivered right to your doorstep.
+            100% organic fruits, vegetables, Himalayan superfoods & snacks delivered fresh to your door across Nepal.
           </Text>
-          <TouchableOpacity
-            style={styles.heroCtaBtn}
-            onPress={() => router.push('/(tabs)/products')}
-          >
-            <Text style={styles.heroCtaText}>Explore Harvest</Text>
-            <ArrowRight size={16} color="#365314" />
-          </TouchableOpacity>
-        </View>
 
-        {/* Value Props Strip */}
-        <View style={styles.valuesStrip}>
-          <View style={styles.valueItem}>
-            <Leaf size={18} color="#365314" />
-            <Text style={styles.valueTitle}>100% Organic</Text>
-            <Text style={styles.valueSub}>Zero chemicals</Text>
-          </View>
-          <View style={styles.valueItem}>
-            <ShieldCheck size={18} color="#365314" />
-            <Text style={styles.valueTitle}>Lab Tested</Text>
-            <Text style={styles.valueSub}>85+ Minerals</Text>
-          </View>
-          <View style={styles.valueItem}>
-            <Truck size={18} color="#365314" />
-            <Text style={styles.valueTitle}>Free Shipping</Text>
-            <Text style={styles.valueSub}>Over Rs. 3,000</Text>
-          </View>
-        </View>
-
-        {/* Shop By Category */}
-        <View style={styles.sectionHeader}>
-          <View>
-            <Text style={styles.sectionTitle}>Shop by Category</Text>
-            <Text style={styles.sectionSubtitle}>Authentic Himalayan specialties</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.viewAllBtn}
-            onPress={() => router.push('/(tabs)/products')}
-          >
-            <Text style={styles.viewAllText}>View All</Text>
-            <ChevronRight size={14} color="#365314" />
-          </TouchableOpacity>
-        </View>
-
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoriesList}>
-          {categories.map((cat) => (
+          {/* CTA & Actions */}
+          <View style={styles.heroBtnRow}>
             <TouchableOpacity
-              key={cat.id}
-              style={styles.categoryCard}
+              style={styles.heroShopNowBtn}
               onPress={() => router.push('/(tabs)/products')}
-              activeOpacity={0.85}
+              activeOpacity={0.88}
             >
-              <Image source={{ uri: cat.image }} style={styles.categoryImg} />
-              <View style={styles.categoryInfo}>
-                <Text style={styles.categoryName} numberOfLines={1}>{cat.name}</Text>
-                <Text style={styles.categoryCount}>{cat.productCount || '4+'} Items</Text>
-              </View>
+              <Text style={styles.heroShopNowText}>Shop Now</Text>
+              <ArrowRight size={16} color="#091B10" />
             </TouchableOpacity>
-          ))}
-        </ScrollView>
 
-        {/* Featured Harvest Carousel */}
-        <View style={styles.sectionHeader}>
-          <View>
-            <Text style={styles.sectionTitle}>Featured Harvest</Text>
-            <Text style={styles.sectionSubtitle}>Hand-picked customer favorites</Text>
+            <TouchableOpacity style={styles.heroWhatsAppBtn} onPress={handleWhatsApp} activeOpacity={0.88}>
+              <MessageCircle size={16} color="#A3E635" />
+              <Text style={styles.heroWhatsAppText}>WhatsApp</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            style={styles.viewAllBtn}
-            onPress={() => router.push('/(tabs)/products')}
-          >
-            <Text style={styles.viewAllText}>Explore</Text>
-            <ChevronRight size={14} color="#365314" />
-          </TouchableOpacity>
+
+          {/* Heart Produce Basket Artwork */}
+          <View style={styles.heroImageContainer}>
+            <Image
+              source={{ uri: 'https://naturesmud.shop/images/greenbasket/hero-heart-basket.jpg' }}
+              defaultSource={{ uri: 'https://naturesmud.shop/products/authentic-dehydrated-mango.jpg' }}
+              style={styles.heroImage}
+              resizeMode="cover"
+            />
+
+            {/* Floating "EAT FRESH STAY HEALTHY" Badge */}
+            <View style={styles.heroFloatingBadge}>
+              <Sparkles size={12} color="#FACC15" />
+              <Text style={styles.heroFloatingBadgeSub}>EAT FRESH</Text>
+              <Text style={styles.heroFloatingBadgeMain}>STAY HEALTHY</Text>
+              <View style={{ flexDirection: 'row', gap: 2, marginTop: 2 }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={8} color="#FACC15" fill="#FACC15" />
+                ))}
+              </View>
+            </View>
+          </View>
+
+          {/* 3 Trust Badges */}
+          <View style={styles.trustBadgesRow}>
+            <View style={styles.trustItem}>
+              <View style={styles.trustIconWrap}>
+                <Leaf size={14} color="#A3E635" />
+              </View>
+              <Text style={styles.trustTitle}>100% Organic</Text>
+              <Text style={styles.trustSub}>Pure & Natural</Text>
+            </View>
+
+            <View style={styles.trustItem}>
+              <View style={styles.trustIconWrap}>
+                <Truck size={14} color="#A3E635" />
+              </View>
+              <Text style={styles.trustTitle}>Fast Delivery</Text>
+              <Text style={styles.trustSub}>On Time</Text>
+            </View>
+
+            <View style={styles.trustItem}>
+              <View style={styles.trustIconWrap}>
+                <Lock size={14} color="#A3E635" />
+              </View>
+              <Text style={styles.trustTitle}>Secure Pay</Text>
+              <Text style={styles.trustSub}>Protected</Text>
+            </View>
+          </View>
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.featuredRow}>
-          {featured.map((product: Product) => (
-            <View key={product.id} style={{ width: screenWidth * 0.52 }}>
-              <ProductCard
-                product={product}
-                variant="compact"
-                showQuickAdd
-                onQuickAdd={() => handleQuickAdd(product)}
+        {/* 🟢 "FROM OUR FARM TO YOUR TABLE" SECTION */}
+        <View style={styles.farmSection}>
+          <View style={styles.farmCard}>
+            <View style={styles.farmerRow}>
+              <Image
+                source={{ uri: 'https://naturesmud.shop/images/greenbasket/farmer-crate.jpg' }}
+                style={styles.farmerImg}
+                resizeMode="cover"
               />
+              <View style={{ flex: 1 }}>
+                <Text style={styles.farmPreTitle}>WELCOME TO GREENBASKET</Text>
+                <Text style={styles.farmTitle}>From Our Farm To Your Table</Text>
+                <Text style={styles.farmDesc}>
+                  We bring you the freshest, handpicked produce from trusted Himalayan farms.
+                </Text>
+                <TouchableOpacity style={styles.farmLearnBtn} onPress={() => router.push('/about')}>
+                  <Text style={styles.farmLearnBtnText}>Learn More</Text>
+                  <ChevronRight size={13} color="#091B10" />
+                </TouchableOpacity>
+              </View>
             </View>
-          ))}
-        </ScrollView>
 
-        {/* Himalayan Health Guide Banner */}
-        <TouchableOpacity
-          style={styles.healthBanner}
-          onPress={() => router.push('/health-benefits')}
-          activeOpacity={0.9}
-        >
-          <View style={styles.healthContent}>
-            <View style={styles.healthBadge}>
-              <Sparkles size={12} color="#FFFFFF" />
-              <Text style={styles.healthBadgeText}>Himalayan Wellness</Text>
-            </View>
-            <Text style={styles.healthTitle}>Why Himalayan Shilajit & Raw Honey?</Text>
-            <Text style={styles.healthDesc}>
-              Learn how ancient Ayurvedic foods elevate immunity, stamina, and cellular longevity.
-            </Text>
-            <View style={styles.readMoreRow}>
-              <Text style={styles.readMoreText}>Read Health Guide</Text>
-              <ArrowRight size={14} color="#FFFFFF" />
-            </View>
-          </View>
-        </TouchableOpacity>
+            {/* Stats Counters */}
+            <View style={styles.statsRow}>
+              <View style={styles.statItem}>
+                <Sprout size={16} color="#A3E635" />
+                <Text style={styles.statNum}>25+</Text>
+                <Text style={styles.statLabel}>Local Farms</Text>
+              </View>
 
-        {/* Best Sellers Grid */}
-        <View style={styles.sectionHeader}>
-          <View>
-            <Text style={styles.sectionTitle}>Bestselling Products</Text>
-            <Text style={styles.sectionSubtitle}>Loved by thousands in Nepal</Text>
+              <View style={styles.statItem}>
+                <Leaf size={16} color="#A3E635" />
+                <Text style={styles.statNum}>500+</Text>
+                <Text style={styles.statLabel}>Products</Text>
+              </View>
+
+              <View style={styles.statItem}>
+                <Award size={16} color="#A3E635" />
+                <Text style={styles.statNum}>10K+</Text>
+                <Text style={styles.statLabel}>Customers</Text>
+              </View>
+            </View>
           </View>
         </View>
 
-        <View style={styles.bestSellersGrid}>
-          {bestSellers.map((product: Product) => (
-            <View key={product.id} style={{ width: (screenWidth - 44) / 2 }}>
-              <ProductCard
-                product={product}
-                variant="default"
-                showQuickAdd
-                onQuickAdd={() => handleQuickAdd(product)}
+        {/* 🟢 "SHOP BY CATEGORY" SECTION */}
+        <View style={styles.categorySection}>
+          <View style={styles.sectionHeader}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <Leaf size={18} color="#A3E635" />
+              <Text style={styles.sectionTitle}>Shop by Category</Text>
+            </View>
+            <TouchableOpacity onPress={() => router.push('/(tabs)/products')}>
+              <Text style={styles.viewAllText}>View all →</Text>
+            </TouchableOpacity>
+          </View>
+
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.categoryScroll}>
+            {CATEGORIES_DATA.map((cat) => (
+              <TouchableOpacity
+                key={cat.id}
+                style={styles.categoryCard}
+                onPress={() => router.push('/(tabs)/products')}
+                activeOpacity={0.88}
+              >
+                <View style={styles.catImgWrap}>
+                  <Image source={{ uri: cat.image }} style={styles.catImg} resizeMode="cover" />
+                </View>
+                <Text style={styles.catName}>{cat.name}</Text>
+                <Text style={styles.catCount}>{cat.itemsCount}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* 🟢 "UP TO 30% OFF" LIMITED TIME PROMO BANNER */}
+        <View style={styles.promoSection}>
+          <View style={styles.promoCard}>
+            <Image
+              source={{ uri: 'https://naturesmud.shop/images/greenbasket/vegetables-promo-banner.jpg' }}
+              style={styles.promoBgImg}
+              resizeMode="cover"
+            />
+            <View style={styles.promoOverlay}>
+              <View style={styles.promoBadge}>
+                <Text style={styles.promoBadgeText}>LIMITED TIME OFFER</Text>
+              </View>
+              <Text style={styles.promoTitle}>UP TO 30% OFF</Text>
+              <Text style={styles.promoSub}>On Fresh Vegetables & Superfoods</Text>
+
+              <TouchableOpacity
+                style={styles.grabDealBtn}
+                onPress={() => router.push('/(tabs)/products')}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.grabDealBtnText}>Grab the Deal</Text>
+                <ArrowRight size={14} color="#091B10" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        {/* 🟢 "WHY CHOOSE US?" SECTION */}
+        <View style={styles.whySection}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 12 }}>
+            <Leaf size={18} color="#A3E635" />
+            <Text style={styles.sectionTitle}>Why Choose Us?</Text>
+          </View>
+
+          <View style={styles.whyGrid}>
+            <View style={styles.whyCard}>
+              <View style={styles.whyIconWrap}>
+                <Sprout size={18} color="#A3E635" />
+              </View>
+              <Text style={styles.whyTitle}>Farm Fresh</Text>
+              <Text style={styles.whyDesc}>Handpicked with care</Text>
+            </View>
+
+            <View style={styles.whyCard}>
+              <View style={styles.whyIconWrap}>
+                <ShieldCheck size={18} color="#A3E635" />
+              </View>
+              <Text style={styles.whyTitle}>Chemical Free</Text>
+              <Text style={styles.whyDesc}>Safe for your family</Text>
+            </View>
+
+            <View style={styles.whyCard}>
+              <View style={styles.whyIconWrap}>
+                <Globe size={18} color="#A3E635" />
+              </View>
+              <Text style={styles.whyTitle}>Sustainably Grown</Text>
+              <Text style={styles.whyDesc}>Good for nature</Text>
+            </View>
+
+            <View style={styles.whyCard}>
+              <View style={styles.whyIconWrap}>
+                <Award size={18} color="#A3E635" />
+              </View>
+              <Text style={styles.whyTitle}>Premium Quality</Text>
+              <Text style={styles.whyDesc}>Best Himalayan purity</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* 🟢 "TOP PICKS FOR YOU" SECTION */}
+        <View style={styles.topPicksSection}>
+          <View style={styles.sectionHeader}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+              <Leaf size={18} color="#A3E635" />
+              <Text style={styles.sectionTitle}>Top Picks For You</Text>
+            </View>
+            <TouchableOpacity onPress={() => router.push('/(tabs)/products')}>
+              <Text style={styles.viewAllText}>View all →</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Filter Chips */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filterRow}>
+            {['All', 'Dried', 'Powders', 'Honey', 'Nuts'].map((tab) => (
+              <TouchableOpacity
+                key={tab}
+                style={[styles.filterChip, activeTab === tab && styles.filterChipActive]}
+                onPress={() => setActiveTab(tab)}
+              >
+                <Text style={[styles.filterChipText, activeTab === tab && styles.filterChipTextActive]}>
+                  {tab === 'All' ? 'All Items' : tab}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+
+          {/* Product Cards Carousel */}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.productsScroll}>
+            {displayList.map((p) => {
+              const isFav = wishlist[p.id];
+              const isAdded = addedMap[p.id];
+
+              return (
+                <View key={p.id} style={styles.productCard}>
+                  {/* Card Header: Weight + Wishlist */}
+                  <View style={styles.prodCardTop}>
+                    <View style={styles.prodWeightTag}>
+                      <Text style={styles.prodWeightText}>{p.weight || '100 GM'}</Text>
+                    </View>
+                    <TouchableOpacity
+                      style={styles.wishBtn}
+                      onPress={() => toggleWishlist(p.id)}
+                      activeOpacity={0.8}
+                    >
+                      <Heart size={14} color={isFav ? '#EF4444' : '#9CA3AF'} fill={isFav ? '#EF4444' : 'transparent'} />
+                    </TouchableOpacity>
+                  </View>
+
+                  {/* Product Image */}
+                  <TouchableOpacity
+                    style={styles.prodImgWrap}
+                    onPress={() => router.push({ pathname: '/products/[slug]', params: { slug: p.slug || p.id } })}
+                  >
+                    <Image source={{ uri: p.image }} style={styles.prodImg} resizeMode="contain" />
+                  </TouchableOpacity>
+
+                  {/* Title */}
+                  <TouchableOpacity
+                    onPress={() => router.push({ pathname: '/products/[slug]', params: { slug: p.slug || p.id } })}
+                  >
+                    <Text style={styles.prodTitle} numberOfLines={1}>
+                      {p.name}
+                    </Text>
+                  </TouchableOpacity>
+
+                  {/* Price Row */}
+                  <View style={styles.prodPriceRow}>
+                    <Text style={styles.prodPrice}>{formatPrice(p.price)}</Text>
+                    {p.compareAtPrice && p.compareAtPrice > p.price && (
+                      <Text style={styles.prodComparePrice}>{formatPrice(p.compareAtPrice)}</Text>
+                    )}
+                  </View>
+
+                  {/* Add to Cart Button */}
+                  <TouchableOpacity
+                    style={[styles.addBtn, isAdded && styles.addBtnDone]}
+                    onPress={() => handleAddToCart(p)}
+                    activeOpacity={0.85}
+                  >
+                    {isAdded ? (
+                      <>
+                        <Check size={13} color="#FFFFFF" />
+                        <Text style={[styles.addBtnText, { color: '#FFFFFF' }]}>Added</Text>
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingBag size={13} color="#091B10" />
+                        <Text style={styles.addBtnText}>Add to Cart</Text>
+                      </>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </ScrollView>
+        </View>
+
+        {/* 🟢 NEWSLETTER SUBSCRIPTION */}
+        <View style={styles.newsletterSection}>
+          <View style={styles.newsletterCard}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+              <View style={styles.newsletterIconWrap}>
+                <Mail size={18} color="#A3E635" />
+              </View>
+              <Text style={styles.newsletterTitle}>Stay Healthy, Stay Updated!</Text>
+            </View>
+            <Text style={styles.newsletterSub}>Subscribe for fresh farm updates and exclusive 10% discount.</Text>
+
+            <View style={styles.newsletterInputRow}>
+              <TextInput
+                placeholder="Enter your email address"
+                placeholderTextColor="#9CA3AF"
+                value={newsletterEmail}
+                onChangeText={setNewsletterEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                style={styles.newsletterInput}
               />
+              <TouchableOpacity style={styles.subscribeBtn} onPress={handleSubscribe}>
+                <Text style={styles.subscribeBtnText}>Subscribe</Text>
+              </TouchableOpacity>
             </View>
-          ))}
+          </View>
         </View>
 
-        {/* Testimonials */}
-        <View style={styles.reviewsBox}>
-          <Text style={styles.reviewsHeading}>What Our Customers Say</Text>
-          <View style={styles.reviewCard}>
-            <View style={styles.starsRow}>
-              {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={14} color="#D97706" fill="#D97706" />
-              ))}
+        {/* 🟢 FOREST GREEN FOOTER */}
+        <View style={styles.footerSection}>
+          <View style={styles.footerBrandRow}>
+            <View style={styles.footerIconWrap}>
+              <Sprout size={18} color="#091B10" />
             </View>
-            <Text style={styles.reviewQuote}>
-              "The Shilajit resin dissolved completely in my morning tea. Within a week I noticed steady energy throughout the day without caffeine crashes!"
-            </Text>
-            <Text style={styles.reviewerName}>— Dr. Rajesh B., Kathmandu</Text>
+            <View>
+              <Text style={styles.footerBrandTitle}>GreenBasket</Text>
+              <Text style={styles.footerBrandSub}>Fresh from Nature · Nature's Mud</Text>
+            </View>
           </View>
+
+          <Text style={styles.footerDesc}>
+            Your trusted source for fresh, organic and healthy Himalayan produce across all 77 districts of Nepal.
+          </Text>
+
+          {/* Payment Badges */}
+          <View style={styles.paymentBadgesRow}>
+            <View style={styles.payBadge}>
+              <Text style={styles.payBadgeText}>VISA</Text>
+            </View>
+            <View style={styles.payBadge}>
+              <Text style={styles.payBadgeText}>Mastercard</Text>
+            </View>
+            <View style={[styles.payBadge, { backgroundColor: '#16A34A' }]}>
+              <Text style={[styles.payBadgeText, { color: '#FFFFFF' }]}>eSewa</Text>
+            </View>
+            <View style={[styles.payBadge, { backgroundColor: '#7C3AED' }]}>
+              <Text style={[styles.payBadgeText, { color: '#FFFFFF' }]}>Khalti</Text>
+            </View>
+          </View>
+
+          <Text style={styles.copyrightText}>
+            © {new Date().getFullYear()} GreenBasket · Nature's Mud. All Rights Reserved.
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -277,7 +611,36 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAF9F6',
+    backgroundColor: '#091B10',
+  },
+  announcementBar: {
+    backgroundColor: '#0B2415',
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(163,230,53,0.15)',
+  },
+  announcementRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  announcementText: {
+    fontSize: 10,
+    color: '#D1FAE5',
+  },
+  announcementPhone: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  announcementPhoneText: {
+    fontSize: 10,
+    color: '#A3E635',
+    fontWeight: '700',
   },
   navBar: {
     flexDirection: 'row',
@@ -285,268 +648,687 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#0C2817',
     borderBottomWidth: 1,
-    borderBottomColor: '#F0EFEA',
-  },
-  brandCol: {
-    justifyContent: 'center',
+    borderBottomColor: 'rgba(16,185,129,0.15)',
   },
   brandRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 8,
+  },
+  brandIconWrap: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    backgroundColor: '#A3E635',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   brandTitle: {
     fontSize: 18,
-    fontWeight: '800',
-    color: '#1C1917',
+    fontWeight: '900',
+    color: '#FFFFFF',
+    letterSpacing: -0.5,
+  },
+  brandLiveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#A3E635',
   },
   brandTagline: {
-    fontSize: 11,
-    color: '#78716C',
-    fontWeight: '500',
+    fontSize: 9,
+    fontWeight: '600',
+    color: '#86EFAC',
   },
   navActions: {
     flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
   },
   navBtn: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
-    backgroundColor: '#F5F5F4',
-    justifyContent: 'center',
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#07190E',
+    borderWidth: 1,
+    borderColor: '#064E3B',
     alignItems: 'center',
+    justifyContent: 'center',
     position: 'relative',
-  },
-  waBtn: {
-    backgroundColor: '#ECFCCB',
   },
   navBadgeDot: {
     position: 'absolute',
-    top: 8,
-    right: 8,
+    top: 6,
+    right: 6,
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#DC2626',
+    backgroundColor: '#EF4444',
+  },
+  cartBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+    backgroundColor: '#A3E635',
+  },
+  cartCountText: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#091B10',
   },
   scrollContent: {
-    padding: 16,
-    gap: 20,
     paddingBottom: 40,
   },
-  heroBanner: {
-    backgroundColor: '#365314',
-    borderRadius: 24,
-    padding: 20,
+  heroSection: {
+    paddingHorizontal: 16,
+    paddingTop: 18,
+    paddingBottom: 24,
+    backgroundColor: '#0C2817',
+    borderBottomWidth: 1,
+    borderBottomColor: '#064E3B',
   },
   heroBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
-    backgroundColor: '#ECFCCB',
+    gap: 5,
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(6,78,59,0.7)',
+    borderWidth: 1,
+    borderColor: '#059669',
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 12,
-    alignSelf: 'flex-start',
-    marginBottom: 12,
+    borderRadius: 14,
+    marginBottom: 10,
   },
   heroBadgeText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#365314',
-  },
-  heroHeading: {
-    fontSize: 22,
+    fontSize: 10,
     fontWeight: '800',
+    color: '#A3E635',
+    textTransform: 'uppercase',
+  },
+  heroTitle: {
+    fontSize: 28,
+    fontWeight: '900',
     color: '#FFFFFF',
-    lineHeight: 28,
-    marginBottom: 8,
+    lineHeight: 32,
+  },
+  heroTitleHighlight: {
+    fontSize: 28,
+    fontWeight: '900',
+    color: '#A3E635',
+    lineHeight: 32,
   },
   heroDesc: {
     fontSize: 13,
-    color: '#D9F99D',
+    color: 'rgba(209,250,229,0.8)',
+    marginTop: 8,
+    marginBottom: 16,
     lineHeight: 18,
+  },
+  heroBtnRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    marginBottom: 20,
+  },
+  heroShopNowBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 25,
+    backgroundColor: '#A3E635',
+  },
+  heroShopNowText: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: '#091B10',
+  },
+  heroWhatsAppBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 25,
+    backgroundColor: 'rgba(6,78,59,0.6)',
+    borderWidth: 1,
+    borderColor: '#059669',
+  },
+  heroWhatsAppText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#A3E635',
+  },
+  heroImageContainer: {
+    width: '100%',
+    height: 220,
+    borderRadius: 22,
+    overflow: 'hidden',
+    position: 'relative',
+    borderWidth: 2,
+    borderColor: 'rgba(5,150,105,0.4)',
+    backgroundColor: '#07190E',
+    marginBottom: 18,
+  },
+  heroImage: {
+    width: '100%',
+    height: '100%',
+  },
+  heroFloatingBadge: {
+    position: 'absolute',
+    bottom: 12,
+    right: 12,
+    backgroundColor: '#07190E',
+    borderWidth: 2,
+    borderColor: '#A3E635',
+    borderRadius: 18,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 6,
+  },
+  heroFloatingBadgeSub: {
+    fontSize: 8,
+    fontWeight: '900',
+    color: '#A3E635',
+  },
+  heroFloatingBadgeMain: {
+    fontSize: 10,
+    fontWeight: '900',
+    color: '#FFFFFF',
+  },
+  trustBadgesRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(6,78,59,0.5)',
+  },
+  trustItem: {
+    alignItems: 'center',
+  },
+  trustIconWrap: {
+    marginBottom: 3,
+  },
+  trustTitle: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#FFFFFF',
+  },
+  trustSub: {
+    fontSize: 9,
+    color: 'rgba(167,243,208,0.7)',
+  },
+  farmSection: {
+    paddingHorizontal: 16,
+    paddingVertical: 18,
+  },
+  farmCard: {
+    backgroundColor: '#0C2817',
+    borderRadius: 22,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#064E3B',
+  },
+  farmerRow: {
+    flexDirection: 'row',
+    gap: 12,
+    alignItems: 'center',
     marginBottom: 16,
   },
-  heroCtaBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 12,
-    alignSelf: 'flex-start',
-    gap: 6,
-  },
-  heroCtaText: {
-    color: '#365314',
-    fontWeight: '700',
-    fontSize: 13,
-  },
-  valuesStrip: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#FFFFFF',
+  farmerImg: {
+    width: 90,
+    height: 90,
     borderRadius: 16,
-    padding: 14,
     borderWidth: 1,
-    borderColor: '#E7E5E4',
+    borderColor: '#059669',
   },
-  valueItem: {
+  farmPreTitle: {
+    fontSize: 9,
+    fontWeight: '900',
+    color: '#A3E635',
+    letterSpacing: 0.5,
+  },
+  farmTitle: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    marginTop: 2,
+    marginBottom: 4,
+  },
+  farmDesc: {
+    fontSize: 11,
+    color: 'rgba(209,250,229,0.8)',
+    lineHeight: 15,
+  },
+  farmLearnBtn: {
+    flexDirection: 'row',
     alignItems: 'center',
-    gap: 2,
-    flex: 1,
+    gap: 3,
+    alignSelf: 'flex-start',
+    backgroundColor: '#A3E635',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 12,
+    marginTop: 6,
   },
-  valueTitle: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#1C1917',
+  farmLearnBtnText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: '#091B10',
+  },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(6,78,59,0.6)',
+  },
+  statItem: {
+    alignItems: 'center',
+  },
+  statNum: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#FFFFFF',
     marginTop: 2,
   },
-  valueSub: {
-    fontSize: 10,
-    color: '#78716C',
+  statLabel: {
+    fontSize: 9,
+    color: 'rgba(167,243,208,0.7)',
+  },
+  categorySection: {
+    paddingVertical: 14,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginTop: 4,
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '800',
-    color: '#1C1917',
-  },
-  sectionSubtitle: {
-    fontSize: 12,
-    color: '#78716C',
-  },
-  viewAllBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 2,
+    fontWeight: '900',
+    color: '#FFFFFF',
   },
   viewAllText: {
     fontSize: 12,
-    fontWeight: '600',
-    color: '#365314',
+    fontWeight: '800',
+    color: '#A3E635',
   },
-  categoriesList: {
+  categoryScroll: {
+    paddingHorizontal: 16,
     gap: 12,
   },
   categoryCard: {
-    width: 120,
+    width: 110,
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#E7E5E4',
-  },
-  categoryImg: {
-    width: '100%',
-    height: 80,
-  },
-  categoryInfo: {
-    padding: 8,
-  },
-  categoryName: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#1C1917',
-  },
-  categoryCount: {
-    fontSize: 10,
-    color: '#78716C',
-    marginTop: 2,
-  },
-  featuredRow: {
-    gap: 12,
-  },
-  healthBanner: {
-    backgroundColor: '#7B5E3B',
-    borderRadius: 20,
-    padding: 18,
-  },
-  healthContent: {
-    gap: 8,
-  },
-  healthBadge: {
-    flexDirection: 'row',
+    borderRadius: 18,
+    padding: 10,
     alignItems: 'center',
-    gap: 4,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+  },
+  catImgWrap: {
+    width: 70,
+    height: 70,
+    borderRadius: 14,
+    overflow: 'hidden',
+    backgroundColor: '#F8FAFC',
+    marginBottom: 6,
+  },
+  catImg: {
+    width: '100%',
+    height: '100%',
+  },
+  catName: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: '#0F172A',
+    textAlign: 'center',
+  },
+  catCount: {
+    fontSize: 9,
+    color: '#64748B',
+    marginTop: 1,
+  },
+  promoSection: {
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+  },
+  promoCard: {
+    height: 160,
+    borderRadius: 22,
+    overflow: 'hidden',
+    position: 'relative',
+    backgroundColor: '#0C2817',
+    borderWidth: 1,
+    borderColor: '#059669',
+  },
+  promoBgImg: {
+    position: 'absolute',
+    right: -20,
+    top: 0,
+    bottom: 0,
+    width: '70%',
+    opacity: 0.65,
+  },
+  promoOverlay: {
+    flex: 1,
+    padding: 16,
+    justifyContent: 'center',
+  },
+  promoBadge: {
+    backgroundColor: '#A3E635',
+    alignSelf: 'flex-start',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
-    alignSelf: 'flex-start',
+    marginBottom: 6,
   },
-  healthBadgeText: {
+  promoBadgeText: {
+    fontSize: 8,
+    fontWeight: '900',
+    color: '#091B10',
+  },
+  promoTitle: {
+    fontSize: 20,
+    fontWeight: '900',
     color: '#FFFFFF',
-    fontSize: 10,
-    fontWeight: '700',
   },
-  healthTitle: {
-    fontSize: 18,
+  promoSub: {
+    fontSize: 11,
+    color: '#D1FAE5',
+    marginBottom: 10,
+  },
+  grabDealBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'flex-start',
+    backgroundColor: '#A3E635',
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 16,
+  },
+  grabDealBtnText: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: '#091B10',
+  },
+  whySection: {
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+  },
+  whyGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
+  },
+  whyCard: {
+    width: (screenWidth - 42) / 2,
+    backgroundColor: '#0C2817',
+    borderRadius: 18,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#064E3B',
+  },
+  whyIconWrap: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: 'rgba(6,78,59,0.7)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+  },
+  whyTitle: {
+    fontSize: 12,
     fontWeight: '800',
     color: '#FFFFFF',
   },
-  healthDesc: {
-    fontSize: 12,
-    color: '#F8F4EC',
-    lineHeight: 17,
+  whyDesc: {
+    fontSize: 10,
+    color: 'rgba(209,250,229,0.7)',
+    marginTop: 2,
   },
-  readMoreRow: {
+  topPicksSection: {
+    paddingVertical: 14,
+  },
+  filterRow: {
+    paddingHorizontal: 16,
+    gap: 8,
+    marginBottom: 12,
+  },
+  filterChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: '#0C2817',
+    borderWidth: 1,
+    borderColor: '#064E3B',
+  },
+  filterChipActive: {
+    backgroundColor: '#A3E635',
+    borderColor: '#A3E635',
+  },
+  filterChipText: {
+    fontSize: 11,
+    fontWeight: '800',
+    color: '#D1FAE5',
+  },
+  filterChipTextActive: {
+    color: '#091B10',
+  },
+  productsScroll: {
+    paddingHorizontal: 16,
+    gap: 12,
+  },
+  productCard: {
+    width: 150,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  prodCardTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  prodWeightTag: {
+    backgroundColor: '#DCFCE7',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+  prodWeightText: {
+    fontSize: 8,
+    fontWeight: '800',
+    color: '#15803D',
+  },
+  wishBtn: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#F1F5F9',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  prodImgWrap: {
+    width: '100%',
+    height: 90,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F8FAFC',
+    borderRadius: 12,
+    marginBottom: 6,
+  },
+  prodImg: {
+    width: '85%',
+    height: '85%',
+  },
+  prodTitle: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#0F172A',
+  },
+  prodPriceRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
     marginTop: 4,
+    marginBottom: 8,
   },
-  readMoreText: {
-    color: '#FFFFFF',
-    fontWeight: '700',
-    fontSize: 12,
+  prodPrice: {
+    fontSize: 13,
+    fontWeight: '900',
+    color: '#0F172A',
   },
-  bestSellersGrid: {
+  prodComparePrice: {
+    fontSize: 10,
+    color: '#94A3B8',
+    textDecorationLine: 'line-through',
+  },
+  addBtn: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    backgroundColor: '#A3E635',
+    paddingVertical: 7,
+    borderRadius: 14,
   },
-  reviewsBox: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
+  addBtnDone: {
+    backgroundColor: '#16A34A',
+  },
+  addBtnText: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: '#091B10',
+  },
+  newsletterSection: {
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+  },
+  newsletterCard: {
+    backgroundColor: '#0C2817',
+    borderRadius: 22,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#E7E5E4',
-    gap: 12,
+    borderColor: '#064E3B',
   },
-  reviewsHeading: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#1C1917',
+  newsletterIconWrap: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: 'rgba(163,230,53,0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  reviewCard: {
-    backgroundColor: '#F5F5F4',
-    borderRadius: 12,
-    padding: 12,
-    gap: 6,
+  newsletterTitle: {
+    fontSize: 15,
+    fontWeight: '900',
+    color: '#FFFFFF',
   },
-  starsRow: {
-    flexDirection: 'row',
-    gap: 2,
-  },
-  reviewQuote: {
-    fontSize: 12,
-    color: '#44403C',
-    fontStyle: 'italic',
-    lineHeight: 18,
-  },
-  reviewerName: {
+  newsletterSub: {
     fontSize: 11,
-    fontWeight: '700',
-    color: '#365314',
+    color: 'rgba(209,250,229,0.7)',
+    marginBottom: 12,
+  },
+  newsletterInputRow: {
+    flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 4,
+    alignItems: 'center',
+  },
+  newsletterInput: {
+    flex: 1,
+    paddingHorizontal: 12,
+    fontSize: 11,
+    color: '#0F172A',
+  },
+  subscribeBtn: {
+    backgroundColor: '#A3E635',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 16,
+  },
+  subscribeBtnText: {
+    fontSize: 11,
+    fontWeight: '900',
+    color: '#091B10',
+  },
+  footerSection: {
+    backgroundColor: '#06140B',
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#071F11',
+  },
+  footerBrandRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  footerIconWrap: {
+    width: 28,
+    height: 28,
+    borderRadius: 8,
+    backgroundColor: '#A3E635',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  footerBrandTitle: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#FFFFFF',
+  },
+  footerBrandSub: {
+    fontSize: 9,
+    color: '#86EFAC',
+  },
+  footerDesc: {
+    fontSize: 11,
+    color: 'rgba(209,250,229,0.6)',
+    lineHeight: 15,
+    marginBottom: 14,
+  },
+  paymentBadgesRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 14,
+  },
+  payBadge: {
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 4,
+  },
+  payBadgeText: {
+    fontSize: 9,
+    fontWeight: '900',
+    color: '#0F172A',
+  },
+  copyrightText: {
+    fontSize: 9,
+    color: 'rgba(167,243,208,0.5)',
   },
 });

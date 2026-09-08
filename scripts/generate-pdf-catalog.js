@@ -16,7 +16,7 @@ const products = [
     qty: '100 GM',
     packing: 'Standup Ziplock Pouch',
     category: 'Dried Fruits',
-    mrp: 395,
+    mrp: 595,
     benefit: '100% pure tree-ripened mango. High in Vitamins A & C, zero added sugar or sulfur.',
   },
   {
@@ -41,7 +41,7 @@ const products = [
   },
   {
     sn: 4,
-    name: 'Dehydrated Coconut Chip',
+    name: 'Dehydrated Coconut Chips',
     sub: 'Dehydrated Crunchy Coconut Chips',
     qty: '100 GM',
     packing: 'Standup Ziplock Pouch',

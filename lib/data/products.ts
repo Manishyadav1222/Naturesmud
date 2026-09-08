@@ -9,9 +9,9 @@ export const products: Product[] = [
     "name": "Dehydrated Mango",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 395,
-    "compareAtPrice": 395,
-    "mrp": 395,
+    "price": 595,
+    "compareAtPrice": 595,
+    "mrp": 595,
     "rating": 4.9,
     "reviewCount": 68,
     "image": "/products/authentic-dehydrated-mango.jpg",
@@ -215,13 +215,16 @@ export const products: Product[] = [
     "reviewCount": 36,
     "image": "/products/dehydrated-coconut-chips.jpg",
     "images": [
-      "/products/dehydrated-coconut-chips.jpg"
+      "/products/dehydrated-coconut-chips.jpg",
+      "/products/dehydrated-coconut-chips-100g.jpg",
+      "/products/coconut-chips-pouch.jpg"
     ],
-    "description": "Gently dehydrated whole coconut flakes rich in medium-chain triglycerides (MCTs) and dietary fiber. A keto-friendly, crunchy whole-food snack that provides sustained cellular energy and supports healthy metabolism.",
-    "shortDescription": "Crunchy dehydrated coconut flakes rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
+    "description": "Gently dehydrated whole coconut flakes rich in medium-chain triglycerides (MCTs) and dietary fiber. A keto-friendly, crunchy whole-food snack that provides sustained cellular energy, aids digestion, and supports everyday vitality.",
+    "shortDescription": "100% pure crunchy dehydrated coconut chips rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
     "badges": [
       "new",
-      "organic"
+      "organic",
+      "keto"
     ],
     "stock": 90,
     "weight": "100 GM",
@@ -230,10 +233,11 @@ export const products: Product[] = [
       "100% Pure Dehydrated Coconut Meat Flakes"
     ],
     "benefits": [
-      "Loaded with MCTs for quick ketone energy and mental focus",
-      "High in insoluble fiber for colon wellness and satiety",
-      "Keto-friendly and low glycemic whole-food snack",
-      "Zero added sugars, artificial flavors, or palm oil"
+      "Natural energy boost powered by clean medium-chain triglycerides (MCTs)",
+      "Heart healthy natural fats supporting cardiovascular wellness",
+      "High in insoluble dietary fiber that aids gut digestion",
+      "Supports natural immune system vitality",
+      "Rich in healthy plant fats with zero added sugar, preservatives, or palm oil"
     ],
     "nutrition": [
       {
@@ -347,8 +351,8 @@ export const products: Product[] = [
       "/products/dried-blueberries-100g.jpg",
       "/products/blueberries.jpg"
     ],
-    "description": "Wild alpine berries foraged at 3,200m in pristine Himalayan frontiers. Densely concentrated in dark-violet Anthocyanins to shield eyes against smartphone screen fatigue, enhance memory, and protect against cellular oxidation.",
-    "shortDescription": "Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar.",
+    "description": "Whole wild alpine berries harvested at high Himalayan altitudes. Naturally rich in dark-violet Anthocyanins to support screen-weary eyes, promote sharp mental focus, and deliver powerful antioxidant protection.",
+    "shortDescription": "Wild alpine dark-violet antioxidant berries for daily focus, eye vitality & delicious healthy snacking in a Glass Jar.",
     "badges": [
       "bestseller"
     ],
@@ -356,13 +360,13 @@ export const products: Product[] = [
     "weight": "100 GM",
     "packing": "Glass Jar",
     "ingredients": [
-      "100% Wild Himalayan Dried Blueberries (0 Additives, 0 Preservatives)"
+      "100% Wild Himalayan Dried Blueberries (Pure Whole Fruit)"
     ],
     "benefits": [
-      "Dense Anthocyanins cross blood-brain barrier for cognitive sharpness",
-      "Eases digital screen eye strain and ocular micro-circulation",
-      "One of nature's highest ORAC antioxidant-rated super berries",
-      "Pure alpine harvest free from pesticide sprays"
+      "Dense Anthocyanins support mental clarity, memory, and cognitive sharpness",
+      "Nourishes eye vitality and eases digital screen strain naturally",
+      "One of nature's highest ORAC antioxidant-rated wild mountain berries",
+      "Pure alpine harvest full of deep natural berry goodness"
     ],
     "nutrition": [
       {
@@ -412,8 +416,8 @@ export const products: Product[] = [
       "/products/cranberries-2.jpg",
       "/products/cranberries-glowing-jar.jpg"
     ],
-    "description": "Plump, ruby-red whole dried cranberries rich in Type-A Proanthocyanidins (PACs). Clinically recognized for supporting urinary tract health, cardiovascular function, and cellular defense against oxidative stress.",
-    "shortDescription": "Antioxidant-dense whole dried cranberries for urinary tract and cellular wellness in a Glass Jar.",
+    "description": "Plump, ruby-red whole dried cranberries bursting with natural tart-sweet flavor and rich in Type-A Proanthocyanidins (PACs). Revered for supporting daily urinary tract vitality, active antioxidant defense, and whole-body wellness.",
+    "shortDescription": "Antioxidant-dense whole ruby cranberries for natural urinary vitality and daily wellness in a Glass Jar.",
     "badges": [
       "popular"
     ],
@@ -421,13 +425,13 @@ export const products: Product[] = [
     "weight": "100 GM",
     "packing": "Glass Jar",
     "ingredients": [
-      "100% Premium Whole Dried Cranberries (0 Additives, 0 Preservatives)"
+      "100% Premium Whole Dried Ruby Cranberries (Pure Fruit Goodness)"
     ],
     "benefits": [
-      "Rich in Type-A PACs that prevent bacterial adhesion in urinary tract",
-      "Boosts cardiovascular endothelial function and blood flow",
-      "High in Vitamin C, Vitamin E, and trace minerals",
-      "Delicious sweet-tart balance without artificial preservatives"
+      "Rich in Type-A PACs that promote natural urinary tract balance and comfort",
+      "Packed with potent flavonoids and natural antioxidants for radiant wellness",
+      "High in Vitamin C, Vitamin E, and protective dietary fiber",
+      "Delicious natural sweet-tart flavor, perfect for smoothies, bowls, and healthy snacking"
     ],
     "nutrition": [
       {
@@ -609,9 +613,9 @@ export const products: Product[] = [
     "name": "Himalayan Pink Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "price": 180,
-    "compareAtPrice": 180,
-    "mrp": 180,
+    "price": 250,
+    "compareAtPrice": 250,
+    "mrp": 250,
     "rating": 4.8,
     "reviewCount": 46,
     "image": "/products/pink-salt.jpg",
@@ -676,9 +680,9 @@ export const products: Product[] = [
     "name": "Himalayan Black Salt (Bire Noon)",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "price": 195,
-    "compareAtPrice": 195,
-    "mrp": 195,
+    "price": 220,
+    "compareAtPrice": 220,
+    "mrp": 220,
     "rating": 4.9,
     "reviewCount": 51,
     "image": "/products/himalayan-black-salt-digestive.jpg",
@@ -1503,14 +1507,16 @@ export const products: Product[] = [
     "name": "Carrot Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 440,
-    "compareAtPrice": 440,
-    "mrp": 440,
+    "price": 490,
+    "compareAtPrice": 490,
+    "mrp": 490,
     "rating": 4.8,
     "reviewCount": 38,
-    "image": "/products/carrot-powder-marble.jpg",
+    "image": "/products/carrot-powder-100g.jpg",
     "images": [
+      "/products/carrot-powder-100g.jpg",
       "/products/carrot-powder-marble.jpg",
+      "/products/carrot-powder-eye-health.jpg",
       "/products/carrot-powder.jpg"
     ],
     "description": "Sun-dried and gently milled organic carrots harvested from fertile mid-hill farms of Nepal. Packed with beta-carotene (pro-vitamin A), lutein, and dietary fiber to protect eyes, support cell regeneration, and enhance everyday cooking with a mild natural sweetness.",
@@ -1568,9 +1574,9 @@ export const products: Product[] = [
     "name": "Sweet Potato Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 420,
-    "compareAtPrice": 420,
-    "mrp": 420,
+    "price": 510,
+    "compareAtPrice": 510,
+    "mrp": 510,
     "rating": 5,
     "reviewCount": 96,
     "image": "/products/sweet-potato-powder-100g.jpg",
@@ -1579,7 +1585,7 @@ export const products: Product[] = [
       "/products/sweet-potato-powder.jpg",
       "/products/sweet-potato-jar-display.jpg"
     ],
-    "description": "100% pure organic dehydrated sweet potato powder milled from farm-fresh Nepali sweet potatoes. A nutrient-dense complex carbohydrate powerhouse packed with Vitamin A (beta-carotene), fiber, potassium, and minerals. Perfect for infant weaning porridge, baby cereals, pre-workout energy shakes, pancakes, and healthy baking without any added sugars, preservatives, or artificial additives.",
+    "description": "100% pure organic dehydrated sweet potato powder milled from farm-fresh Nepali sweet potatoes. A nutrient-dense complex carbohydrate powerhouse packed with Vitamin A (beta-carotene), fiber, potassium, and minerals. Perfect for infant weaning porridge, baby cereals, pre-workout energy shakes, pancakes, and healthy baking with pure single-ingredient Himalayan goodness.",
     "shortDescription": "100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar.",
     "badges": [
       "bestseller",
@@ -1596,7 +1602,7 @@ export const products: Product[] = [
       "Gentle complex carbohydrates for baby weaning porridge (6M+)",
       "Sustained clean glycogen energy for fitness, running, and gym workouts",
       "High in prebiotic dietary fiber for smooth gut digestion",
-      "Zero added sugar, 100% chemical-free and gluten-free"
+      "100% pure single-ingredient, chemical-free and gluten-free"
     ],
     "nutrition": [
       {

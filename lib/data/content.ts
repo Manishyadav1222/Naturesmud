@@ -944,7 +944,7 @@ export const blogPosts: BlogPost[] = [
   ],
   "featuredProductSlug": "dehydrated-mango",
   "featuredProductName": "Dehydrated Mango",
-  "featuredProductPrice": 395,
+  "featuredProductPrice": 595,
   "featuredProductImage": "/products/dehydrated-mango.jpg"
 },
 {
@@ -1772,22 +1772,22 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "b-cranberries-uti-prevention",
-    slug: "clinical-science-whole-dried-cranberries-uti-prevention-proanthocyanidins",
+    slug: "whole-dried-cranberries-uti-vitality-proanthocyanidins",
     title: "Beyond Cranberry Juice: How Whole Dried Cranberries and Type-A Proanthocyanidins (PACs) Defend Urinary Health",
-    excerpt: "Why sugary bottled cranberry juice fails and how whole dried cranberries with concentrated A-type PACs prevent E. coli bacterial adhesion in the bladder wall.",
+    excerpt: "Why sugary bottled cranberry juice fails and how whole dried cranberries with concentrated A-type PACs support natural bladder wellness.",
     image: "/products/cranberries-prevent-uti.jpg",
     category: "Women's Health & Hormones",
     author: "NaturesMud Urological & Integrative Nutrition Team",
     date: "2026-08-14",
     readTime: 7,
     content: [
-      "Urinary tract infections (UTIs) are among the most frequent bacterial infections in women, with over 50% experiencing at least one episode in their lifetime and 25% suffering from chronic recurrences. While commercial 'cranberry cocktail' juices are widely marketed for bladder health, clinical research shows they often do more harm than good.",
+      "Urinary tract infections (UTIs) are among the most frequent bacterial infections in women, with over 50% experiencing at least one episode in their lifetime and 25% suffering from chronic recurrences. While commercial 'cranberry cocktail' juices are widely marketed for bladder health, whole food research shows natural whole berries offer far superior support.",
       "### The Problem with Commercial Cranberry Juice Drinks",
-      "Typical store-bought cranberry juices contain as little as 10% actual cranberry concentrate, heavily diluted with water and loaded with up to 30 grams of high-fructose corn syrup or white sugar per cup. This refined sugar feeds uropathogenic bacteria in the bladder and urinary tract.",
+      "Typical store-bought cranberry juices contain as little as 10% actual cranberry concentrate, heavily diluted with water and loaded with up to 30 grams of high-fructose corn syrup or white sugar per cup. This artificial sugar feeds bacteria in the bladder and urinary tract.",
       "### The Molecular Anti-Adhesion Mechanism of NaturesMud Whole Cranberries",
       "- **A-Type Proanthocyanidins (PACs):** Unlike other berries that contain B-type linkages, cranberries contain unique **A-type PAC dimers and trimers**.",
       "- **Inhibition of P-Fimbriae Adhesion:** Over 85% of UTIs are caused by *Uropathogenic Escherichia coli (UPEC)*. *E. coli* uses hair-like appendages called P-fimbriae to hook onto uroepithelial cells lining the bladder wall. Cranberry Type-A PACs physically bind to the tips of these fimbriae, neutralizing their adhesive ability so bacteria are harmlessly flushed out during urination.",
-      "- **Zero Added White Sugar:** NaturesMud Whole Dried Cranberries provide the intact berry skin, fiber, and concentrated PACs without synthetic chemicals.",
+      "- **100% Whole Berry Purity:** NaturesMud Whole Dried Cranberries provide the intact berry skin, natural dietary fiber, and concentrated PACs without synthetic chemicals.",
       "### Recommended Daily Intake",
       "Snack on a small handful (25–30g) of NaturesMud Whole Dried Cranberries daily or brew a warm berry infusion with hibiscus tea to maintain a clear, resilient urinary tract."
     ],

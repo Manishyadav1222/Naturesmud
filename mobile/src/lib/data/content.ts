@@ -112,7 +112,24 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export const recipes = [
+export interface Recipe {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  prepTime: number;
+  cookTime: number;
+  servings: number;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  ingredients: string[];
+  instructions: string[];
+  tags: string[];
+  featured?: boolean;
+}
+
+export const recipes: Recipe[] = [
   {
     id: '1',
     slug: 'golden-turmeric-latte',

@@ -21,6 +21,8 @@ NUL
 # Environment files
 .env
 .env.local
+.env.production
+.env*.local
 backend/.env
 admin-server/.env
 
@@ -29,6 +31,7 @@ admin-server/.env
 cpanel-deploy/
 scratch/
 assetsphotovodeo/
+naturemud product imagge/
 playwright-report/
 test-results/
 public/videos/

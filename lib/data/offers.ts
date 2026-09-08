@@ -300,7 +300,7 @@ export const initialFestivalOffers: FestivalOffer[] = [
         productId: '24',
         name: 'Carrot Powder (100 GM)',
         weight: '100 GM',
-        image: '/products/carrot-powder.jpg',
+        image: '/products/carrot-powder-100g.jpg',
         price: 490,
       },
       {

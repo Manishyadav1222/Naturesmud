@@ -10,13 +10,14 @@ import {
   Dimensions,
 } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Search, Filter, Sparkles, SlidersHorizontal, ChevronDown } from 'lucide-react-native';
+import { Search, Sparkles, SlidersHorizontal } from 'lucide-react-native';
 import { products as allProducts, categories as allCategories } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { useCartStore } from '@/store/cart-store';
 import { toast } from '@/store/ui-store';
 
 const { width: screenWidth } = Dimensions.get('window');
+const COLUMN_WIDTH = (screenWidth - 36) / 2;
 
 export default function ProductsScreen() {
   const router = useRouter();
@@ -24,7 +25,6 @@ export default function ProductsScreen() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'featured' | 'price_asc' | 'price_desc' | 'rating'>('featured');
-  const [showSortDropdown, setShowSortDropdown] = useState(false);
 
   const filteredProducts = useMemo(() => {
     let list = allProducts;
@@ -48,39 +48,30 @@ export default function ProductsScreen() {
     return list;
   }, [selectedCategory, sortBy]);
 
-  const handleQuickAdd = (product: any) => {
-    addItem({
-      id: product.id,
-      slug: product.slug,
-      name: product.name,
-      price: product.price,
-      compareAtPrice: product.compareAtPrice,
-      image: product.image,
-      weight: product.weight,
-      category: product.category,
-    });
-    toast.success('Added to Cart', `${product.name} added.`);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
+      {/* 🌿 Deep Emerald Header (Image 2) */}
       <View style={styles.header}>
         <View>
+          <View style={styles.liveBadge}>
+            <View style={styles.liveDot} />
+            <Text style={styles.liveBadgeText}>Botanical Sanctuary · Image 2</Text>
+          </View>
           <Text style={styles.headerTitle}>Himalayan Harvest</Text>
           <Text style={styles.headerSubtitle}>
-            {filteredProducts.length} pure whole food products
+            {filteredProducts.length} single-origin superfoods on 3D pedestals
           </Text>
         </View>
+
         <TouchableOpacity
           style={styles.searchBtn}
           onPress={() => router.push('/search')}
         >
-          <Search size={20} color="#1C1917" />
+          <Search size={18} color="#A7F3D0" />
         </TouchableOpacity>
       </View>
 
-      {/* Category Pills */}
+      {/* 🏷️ Glassmorphic Category Pills */}
       <View style={styles.categoriesWrapper}>
         <ScrollView
           horizontal
@@ -100,6 +91,7 @@ export default function ProductsScreen() {
               All Harvest
             </Text>
           </TouchableOpacity>
+
           {allCategories.map((cat) => (
             <TouchableOpacity
               key={cat.id}
@@ -119,54 +111,18 @@ export default function ProductsScreen() {
         </ScrollView>
       </View>
 
-      {/* Filter & Sort Bar */}
-      <View style={styles.filterBar}>
-        <Text style={styles.resultsCount}>
-          Showing {filteredProducts.length} items
-        </Text>
-        <View style={styles.sortChipsRow}>
-          <TouchableOpacity
-            style={[styles.sortChip, sortBy === 'featured' && styles.sortChipActive]}
-            onPress={() => setSortBy('featured')}
-          >
-            <Text style={[styles.sortChipText, sortBy === 'featured' && styles.sortChipTextActive]}>
-              Popular
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.sortChip, sortBy === 'price_asc' && styles.sortChipActive]}
-            onPress={() => setSortBy('price_asc')}
-          >
-            <Text style={[styles.sortChipText, sortBy === 'price_asc' && styles.sortChipTextActive]}>
-              Price ↑
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.sortChip, sortBy === 'rating' && styles.sortChipActive]}
-            onPress={() => setSortBy('rating')}
-          >
-            <Text style={[styles.sortChipText, sortBy === 'rating' && styles.sortChipTextActive]}>
-              Rating
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* Products Grid */}
+      {/* 🌿 3D Podium Products Grid (Image 2) */}
       <FlatList
         data={filteredProducts}
         keyExtractor={(item) => item.id}
         numColumns={2}
-        columnWrapperStyle={styles.columnWrapper}
-        contentContainerStyle={styles.productListContent}
+        contentContainerStyle={styles.gridContent}
+        columnWrapperStyle={styles.gridRow}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
-          <ProductCard
-            product={item}
-            variant="default"
-            showQuickAdd
-            onQuickAdd={() => handleQuickAdd(item)}
-          />
+          <View style={{ width: COLUMN_WIDTH }}>
+            <ProductCard product={item} />
+          </View>
         )}
       />
     </SafeAreaView>
@@ -176,41 +132,63 @@ export default function ProductsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAF9F6',
+    backgroundColor: '#071A0F',
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingVertical: 14,
-    backgroundColor: '#FFFFFF',
+    paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F0EFEA',
+    borderBottomColor: 'rgba(52, 211, 153, 0.15)',
+    backgroundColor: '#0A2216',
+  },
+  liveBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginBottom: 4,
+  },
+  liveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#34D399',
+  },
+  liveBadgeText: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: '#A7F3D0',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
   },
   headerTitle: {
-    fontSize: 20,
-    fontWeight: '800',
-    color: '#1C1917',
+    fontSize: 22,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    letterSpacing: -0.4,
   },
   headerSubtitle: {
-    fontSize: 12,
-    color: '#78716C',
+    fontSize: 11,
+    color: 'rgba(167, 243, 208, 0.7)',
     marginTop: 2,
   },
   searchBtn: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#F5F5F4',
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: 'rgba(6, 78, 59, 0.6)',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(52, 211, 153, 0.3)',
   },
   categoriesWrapper: {
-    backgroundColor: '#FFFFFF',
     paddingVertical: 10,
+    backgroundColor: '#0A2216',
     borderBottomWidth: 1,
-    borderBottomColor: '#F0EFEA',
+    borderBottomColor: 'rgba(52, 211, 153, 0.15)',
   },
   categoriesScroll: {
     paddingHorizontal: 16,
@@ -218,61 +196,30 @@ const styles = StyleSheet.create({
   },
   catPill: {
     paddingHorizontal: 14,
-    paddingVertical: 7,
+    paddingVertical: 6,
     borderRadius: 20,
-    backgroundColor: '#F5F5F4',
+    backgroundColor: 'rgba(6, 78, 59, 0.4)',
+    borderWidth: 1,
+    borderColor: 'rgba(52, 211, 153, 0.2)',
   },
   catPillActive: {
-    backgroundColor: '#365314',
+    backgroundColor: '#34D399',
+    borderColor: '#34D399',
   },
   catPillText: {
-    fontSize: 13,
-    color: '#57534E',
-    fontWeight: '500',
+    fontSize: 11,
+    fontWeight: '700',
+    color: 'rgba(167, 243, 208, 0.8)',
   },
   catPillTextActive: {
-    color: '#FFFFFF',
-    fontWeight: '600',
+    color: '#041F13',
   },
-  filterBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-  },
-  resultsCount: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#78716C',
-  },
-  sortChipsRow: {
-    flexDirection: 'row',
-    gap: 6,
-  },
-  sortChip: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 8,
-    backgroundColor: '#E7E5E4',
-  },
-  sortChipActive: {
-    backgroundColor: '#D9F99D',
-  },
-  sortChipText: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: '#57534E',
-  },
-  sortChipTextActive: {
-    color: '#365314',
-  },
-  columnWrapper: {
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    marginBottom: 16,
-  },
-  productListContent: {
+  gridContent: {
+    padding: 12,
     paddingBottom: 40,
+  },
+  gridRow: {
+    justifyContent: 'space-between',
+    marginBottom: 4,
   },
 });

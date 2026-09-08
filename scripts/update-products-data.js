@@ -229,9 +229,11 @@ const productFixes = {
     price: 440,
     compareAtPrice: 440,
     mrp: 440,
-    image: '/products/carrot-powder-marble.jpg',
+    image: '/products/carrot-powder-100g.jpg',
     images: [
+      '/products/carrot-powder-100g.jpg',
       '/products/carrot-powder-marble.jpg',
+      '/products/carrot-powder-eye-health.jpg',
       '/products/carrot-powder.jpg'
     ],
     weight: '100 GM',
@@ -259,9 +261,9 @@ const productFixes = {
     name: 'Dehydrated Mango',
     category: 'Dried Fruits',
     categorySlug: 'dried-fruits',
-    price: 395,
-    compareAtPrice: 395,
-    mrp: 395,
+    price: 595,
+    compareAtPrice: 595,
+    mrp: 595,
     image: '/products/authentic-dehydrated-mango.jpg',
     images: [
       '/products/authentic-dehydrated-mango.jpg',
@@ -315,7 +317,9 @@ const productFixes = {
     mrp: 495,
     image: '/products/dehydrated-coconut-chips.jpg',
     images: [
-      '/products/dehydrated-coconut-chips.jpg'
+      '/products/dehydrated-coconut-chips.jpg',
+      '/products/dehydrated-coconut-chips-100g.jpg',
+      '/products/coconut-chips-pouch.jpg'
     ],
     weight: '100 GM',
     packing: 'Standup Ziplock Pouch',

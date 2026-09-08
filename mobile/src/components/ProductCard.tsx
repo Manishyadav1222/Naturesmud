@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Star, Heart, ShieldCheck, Zap } from 'lucide-react-native';
+import { Star, Heart, ShoppingBag, Zap, Sparkles } from 'lucide-react-native';
 import { formatPrice, calculateDiscount } from '@/lib/utils';
 import { useWishlistStore } from '@/store/wishlist-store';
 import { useCartStore } from '@/store/cart-store';
@@ -20,7 +20,7 @@ interface ProductCardProps {
 export function ProductCard({
   product,
   variant = 'default',
-  showQuickAdd = false,
+  showQuickAdd = true,
   onQuickAdd,
 }: ProductCardProps) {
   const router = useRouter();
@@ -44,9 +44,9 @@ export function ProductCard({
   const handleToggleWishlist = () => {
     const next = toggleFavorite(product.id);
     if (next) {
-      toast.success('Wishlist Updated', `${product.name} saved.`);
+      toast.success('Saved to Wishlist', `${product.name}`);
     } else {
-      toast.info('Removed from Wishlist', `${product.name} removed.`);
+      toast.info('Removed', `${product.name} removed from wishlist.`);
     }
   };
 
@@ -61,206 +61,247 @@ export function ProductCard({
         price: product.price,
         compareAtPrice: product.compareAtPrice,
         image: product.image,
-        weight: product.weight,
-        category: product.category,
+        weight: product.weight || '100g',
+        category: typeof product.category === 'object' ? (product.category as any)?.name : product.category,
       });
-      toast.success('Added to Cart', `${product.name} added.`);
+      toast.success('Added to Basket', `${product.name}`);
     }
   };
 
+  const categoryLabel =
+    typeof product.category === 'object' && product.category !== null
+      ? (product.category as any)?.name || 'Himalayan Superfood'
+      : product.category || 'Himalayan Superfood';
+
   return (
     <TouchableOpacity
-      style={[styles.card, isCompact && styles.cardCompact]}
+      style={[styles.podiumCard, isCompact && styles.podiumCardCompact]}
       onPress={handleCardPress}
-      activeOpacity={0.88}
+      activeOpacity={0.9}
     >
-      {/* Image & Overlay Badges */}
-      <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: product.image }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-
-        {/* Badges Top-Left */}
-        <View style={styles.badgeColumn}>
-          {discount > 0 && (
-            <View style={styles.discountBadge}>
-              <Text style={styles.discountText}>{discount}% OFF</Text>
-            </View>
-          )}
-          {product.isFeatured && (
-            <View style={styles.featuredBadge}>
-              <Star size={10} color="#FFFFFF" fill="#FFFFFF" />
-              <Text style={styles.featuredText}>Popular</Text>
-            </View>
-          )}
+      {/* Top Controls Row */}
+      <View style={styles.topRow}>
+        <View style={styles.statusBadge}>
+          <View style={styles.glowingDot} />
+          <Text style={styles.statusText}>{discount > 0 ? `-${discount}%` : '100% PURE'}</Text>
         </View>
 
-        {/* Wishlist Top-Right */}
         <TouchableOpacity
           style={styles.wishlistBtn}
           onPress={handleToggleWishlist}
           activeOpacity={0.8}
         >
           <Heart
-            size={16}
-            color={favorited ? '#DC2626' : '#1C1917'}
-            fill={favorited ? '#DC2626' : 'transparent'}
+            size={14}
+            color={favorited ? '#EF4444' : '#A7F3D0'}
+            fill={favorited ? '#EF4444' : 'transparent'}
           />
         </TouchableOpacity>
-
-        {/* Quick Add Overlay Button */}
-        {showQuickAdd && (
-          <TouchableOpacity
-            style={styles.quickAddOverlay}
-            onPress={handleDefaultQuickAdd}
-            activeOpacity={0.85}
-          >
-            <Zap size={13} color="#FFFFFF" />
-            <Text style={styles.quickAddText}>Quick Add</Text>
-          </TouchableOpacity>
-        )}
       </View>
 
-      {/* Content */}
-      <View style={styles.content}>
-        <Text style={styles.category} numberOfLines={1}>
-          {product.category} · {product.weight}
-        </Text>
+      {/* 3D Floating Cylindrical Podium Section (Image 2) */}
+      <View style={styles.podiumStage}>
+        {/* 3D Circular Pedestal Disc Base */}
+        <View style={styles.podiumDiscBase} />
+        {/* Top Rim Reflection */}
+        <View style={styles.podiumDiscTop} />
+        {/* Cast Ambient Drop Shadow */}
+        <View style={styles.podiumShadow} />
 
-        <Text style={styles.name} numberOfLines={2}>
+        {/* Floating Product Image on Podium */}
+        <Image
+          source={{ uri: product.image }}
+          style={styles.productImage}
+          resizeMode="contain"
+        />
+      </View>
+
+      {/* Product Details Area */}
+      <View style={styles.infoArea}>
+        <View style={styles.categoryRow}>
+          <Text style={styles.categoryText} numberOfLines={1}>
+            {categoryLabel}
+          </Text>
+          {product.weight && (
+            <Text style={styles.weightBadge}>
+              {/^\d+(\.00)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
+            </Text>
+          )}
+        </View>
+
+        <Text style={styles.titleText} numberOfLines={1}>
           {product.name}
         </Text>
 
+        {/* Rating Stars */}
         <View style={styles.ratingRow}>
-          <Star size={12} color="#D97706" fill="#D97706" />
-          <Text style={styles.ratingText}>{product.rating || 4.9}</Text>
-          <Text style={styles.reviewCount}>({product.reviewCount || 24})</Text>
+          <View style={styles.starsBox}>
+            {[1, 2, 3, 4, 5].map((s) => (
+              <Star
+                key={s}
+                size={10}
+                color="#FBBF24"
+                fill={s <= Math.round(product.rating || 5) ? '#FBBF24' : 'transparent'}
+              />
+            ))}
+          </View>
+          <Text style={styles.ratingCount}>({product.reviewCount || 42})</Text>
         </View>
 
-        <View style={styles.priceRow}>
-          <Text style={styles.price}>{formatPrice(product.price)}</Text>
-          {product.compareAtPrice && (
-            <Text style={styles.comparePrice}>{formatPrice(product.compareAtPrice)}</Text>
-          )}
+        {/* Price & Action Row */}
+        <View style={styles.actionRow}>
+          <View style={styles.priceCol}>
+            <Text style={styles.priceVal}>{formatPrice(product.price)}</Text>
+            {product.compareAtPrice && product.compareAtPrice > product.price && (
+              <Text style={styles.comparePrice}>{formatPrice(product.compareAtPrice)}</Text>
+            )}
+          </View>
+
+          <TouchableOpacity
+            style={styles.addBtn}
+            onPress={handleDefaultQuickAdd}
+            activeOpacity={0.85}
+          >
+            <ShoppingBag size={14} color="#041F13" />
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableOpacity>
   );
 }
 
-export function ProductCardSkeleton() {
-  return (
-    <View style={[styles.card, styles.skeletonCard]}>
-      <View style={[styles.imageContainer, styles.skeletonBox]} />
-      <View style={styles.content}>
-        <View style={[styles.skeletonLine, { width: '40%' }]} />
-        <View style={[styles.skeletonLine, { width: '80%', height: 14 }]} />
-        <View style={[styles.skeletonLine, { width: '50%' }]} />
-      </View>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 18,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#E7E5E4',
-    width: '100%',
-  },
-  cardCompact: {
-    borderRadius: 16,
-  },
-  imageContainer: {
-    width: '100%',
-    height: 145,
-    backgroundColor: '#F5F5F4',
-    position: 'relative',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-  badgeColumn: {
-    position: 'absolute',
-    top: 8,
-    left: 8,
-    gap: 4,
-  },
-  discountBadge: {
-    backgroundColor: '#DC2626',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  discountText: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    fontWeight: '800',
-  },
-  featuredBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#365314',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-    gap: 3,
-  },
-  featuredText: {
-    color: '#FFFFFF',
-    fontSize: 9,
-    fontWeight: '700',
-  },
-  wishlistBtn: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: 'rgba(255, 255, 255, 0.92)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  quickAddOverlay: {
-    position: 'absolute',
-    bottom: 8,
-    left: 8,
-    right: 8,
-    backgroundColor: 'rgba(54, 83, 20, 0.92)',
-    borderRadius: 10,
-    paddingVertical: 6,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 4,
-  },
-  quickAddText: {
-    color: '#FFFFFF',
-    fontSize: 11,
-    fontWeight: '700',
-  },
-  content: {
+  podiumCard: {
+    backgroundColor: '#0A2417',
+    borderRadius: 22,
     padding: 12,
-    gap: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(52, 211, 153, 0.25)',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.35,
+    shadowRadius: 14,
+    elevation: 6,
+    marginBottom: 8,
+    justifyContent: 'space-between',
   },
-  category: {
-    fontSize: 10,
-    fontWeight: '600',
-    color: '#78716C',
-    textTransform: 'uppercase',
+  podiumCardCompact: {
+    width: screenWidth * 0.48,
+    marginRight: 10,
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+    zIndex: 10,
+  },
+  statusBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    backgroundColor: 'rgba(6, 78, 59, 0.8)',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(52, 211, 153, 0.3)',
+  },
+  glowingDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#34D399',
+  },
+  statusText: {
+    fontSize: 9,
+    fontWeight: '800',
+    color: '#A7F3D0',
     letterSpacing: 0.5,
   },
-  name: {
-    fontSize: 13,
+  wishlistBtn: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  podiumStage: {
+    width: '100%',
+    height: 130,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    marginVertical: 4,
+  },
+  podiumDiscBase: {
+    position: 'absolute',
+    bottom: 8,
+    width: '78%',
+    height: 16,
+    borderRadius: 100,
+    backgroundColor: '#174A30',
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(52, 211, 153, 0.4)',
+  },
+  podiumDiscTop: {
+    position: 'absolute',
+    bottom: 11,
+    width: '72%',
+    height: 11,
+    borderRadius: 100,
+    backgroundColor: '#206342',
+    opacity: 0.85,
+  },
+  podiumShadow: {
+    position: 'absolute',
+    bottom: 2,
+    width: '82%',
+    height: 8,
+    borderRadius: 100,
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
+  },
+  productImage: {
+    width: '82%',
+    height: '82%',
+    zIndex: 5,
+    marginBottom: 8,
+  },
+  infoArea: {
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(52, 211, 153, 0.15)',
+    paddingTop: 8,
+    gap: 2,
+  },
+  categoryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  categoryText: {
+    fontSize: 9,
     fontWeight: '700',
-    color: '#1C1917',
-    lineHeight: 17,
+    color: '#34D399',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+    flex: 1,
+  },
+  weightBadge: {
+    fontSize: 9,
+    color: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    paddingHorizontal: 4,
+    paddingVertical: 1,
+    borderRadius: 4,
+  },
+  titleText: {
+    fontSize: 13,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginTop: 2,
   },
   ratingRow: {
     flexDirection: 'row',
@@ -268,41 +309,44 @@ const styles = StyleSheet.create({
     gap: 4,
     marginTop: 2,
   },
-  ratingText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#B45309',
-  },
-  reviewCount: {
-    fontSize: 10,
-    color: '#A8A29E',
-  },
-  priceRow: {
+  starsBox: {
     flexDirection: 'row',
-    alignItems: 'baseline',
-    gap: 6,
-    marginTop: 4,
+    gap: 1,
   },
-  price: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: '#365314',
+  ratingCount: {
+    fontSize: 10,
+    color: 'rgba(255, 255, 255, 0.45)',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 6,
+  },
+  priceCol: {
+    flex: 1,
+  },
+  priceVal: {
+    fontSize: 15,
+    fontWeight: '900',
+    color: '#FFFFFF',
   },
   comparePrice: {
-    fontSize: 11,
-    color: '#A8A29E',
+    fontSize: 10,
+    color: 'rgba(255, 255, 255, 0.4)',
     textDecorationLine: 'line-through',
   },
-  skeletonCard: {
-    borderColor: '#F0EFEA',
-  },
-  skeletonBox: {
-    backgroundColor: '#E7E5E4',
-  },
-  skeletonLine: {
-    height: 10,
-    backgroundColor: '#E7E5E4',
-    borderRadius: 4,
-    marginBottom: 4,
+  addBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: '#34D399',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#34D399',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 3,
   },
 });

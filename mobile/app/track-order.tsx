@@ -80,14 +80,14 @@ export default function TrackOrderScreen() {
 
   const handleWhatsApp = () => {
     const text = encodeURIComponent(`Namaste Nature's Mud! I'd like to check on my order ${currentOrder?.orderNumber || ''}.`);
-    Linking.openURL(`https://wa.me/9779713888002?text=${text}`).catch(() => {
-      Alert.alert('WhatsApp', 'Unable to open WhatsApp. Contact us at +977 9713888002.');
+    Linking.openURL(`https://wa.me/9779819844486?text=${text}`).catch(() => {
+      Alert.alert('WhatsApp', 'Unable to open WhatsApp. Contact us at +977 9819844486.');
     });
   };
 
   const handleCall = () => {
-    Linking.openURL('tel:+9779713888002').catch(() => {
-      Alert.alert('Call Support', '+977 9713888002');
+    Linking.openURL('tel:+9779819844486').catch(() => {
+      Alert.alert('Call Support', '+977 9819844486');
     });
   };
 

@@ -65,7 +65,7 @@ const newProductsData = `
       '/images/combos/baby-superfood-lineup.jpg',
       '/products/sweet-potato-powder-100g.jpg',
       '/products/dates-powder-100g.jpg',
-      '/products/carrot-powder.jpg',
+      '/products/carrot-powder-100g.jpg',
     ],
     description: 'The wholesome starter pack for weaning infants (6M–24M). Includes Organic Sweet Potato Powder (100g) for gentle carbs and beta-carotene, Natural Dates Powder (100g) for 100% chemical-free sweetener, and Organic Carrot Powder (100g) for natural Pro-Vitamin A and nutrition.',
     shortDescription: 'The wholesome 3-in-1 organic weaning pack: Sweet Potato, Dates & Carrot Powders.',

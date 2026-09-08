@@ -78,11 +78,11 @@ async function runLiveOrderTest() {
         shippingAddress: 'Gongabu Chowk, Kathmandu',
         shippingCity: 'Kathmandu',
         items: [
-          { name: 'Dehydrated Mango', quantity: 2, price: 395 },
+          { name: 'Dehydrated Mango', quantity: 2, price: 595 },
           { name: 'Dehydrated Pineapple', quantity: 1, price: 495 }
         ],
-        total: 1285,
-        subtotal: 1285,
+        total: 1685,
+        subtotal: 1685,
         shippingFee: 0,
         paymentMethod: 'cod',
         isValley: true

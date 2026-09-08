@@ -2476,7 +2476,7 @@ export const recipes: Recipe[] = [
     id: "r-cranberry-hibiscus-bladder-cooler",
     slug: "uti-defense-dried-cranberry-mountain-hibiscus-tea",
     title: "UTI-Defense Whole Dried Cranberry & Mountain Hibiscus Chilled Tea",
-    excerpt: "Clinically proven Type-A Proanthocyanidins (PACs) in whole cranberries infused with tart hibiscus to prevent bacterial adhesion in the urinary tract.",
+    excerpt: "Potent natural Type-A Proanthocyanidins (PACs) in whole cranberries infused with tart mountain hibiscus to support daily urinary tract wellness and vitality.",
     image: "/products/cranberries-prevent-uti.jpg",
     category: "Women's Health",
     prepTime: 5,
@@ -2873,9 +2873,9 @@ export const recipes: Recipe[] = [
   },
   {
     id: "r-chia-seed-berry-jam",
-    slug: "10-minute-no-sugar-wild-blueberry-chia-refrigerator-jam",
-    title: "10-Minute No-Sugar Wild Blueberry & Chia Refrigerator Jam",
-    excerpt: "Pure berry jam thickened naturally with black chia seed soluble fiber and sweetened with raw Mustang wild honey—0% white sugar.",
+    slug: "10-minute-wild-blueberry-chia-refrigerator-jam",
+    title: "10-Minute Wild Blueberry & Chia Refrigerator Jam",
+    excerpt: "Pure mountain berry spread thickened naturally with black chia seed soluble fiber and enhanced with raw Mustang wild honey.",
     image: "/products/blueberries-brain-power.jpg",
     category: "Dessert & Festive",
     prepTime: 5,
@@ -2894,7 +2894,7 @@ export const recipes: Recipe[] = [
       "Let stand for 10 minutes until thick and spreadable.",
       "Store in a sealed glass jar in the fridge for up to 3 weeks. Spread over sourdough toast or stir into morning porridge."
     ],
-    tags: ["jam","chia jam","blueberries","no sugar jam","superfood spread"],
+    tags: ["jam","chia jam","blueberries","mountain berry jam","superfood spread"],
     featured: false,
   },
   {

@@ -32,6 +32,15 @@ import {
   Sparkles,
   Truck,
   Plus,
+  BookOpen,
+  Utensils,
+  Camera,
+  Tag,
+  HelpCircle,
+  Info,
+  Mail,
+  Building2,
+  LayoutDashboard,
 } from 'lucide-react-native';
 import { useAuthStore } from '@/store/auth-store';
 import { useOrderStore } from '@/store/order-store';
@@ -277,6 +286,70 @@ export default function AccountScreen() {
 
           <View style={styles.menuDivider} />
 
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/blog')}>
+            <BookOpen size={18} color="#1A3826" />
+            <Text style={styles.menuLabel}>Blog & Health Articles</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/recipes')}>
+            <Utensils size={18} color="#D97706" />
+            <Text style={styles.menuLabel}>Superfood Recipes</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/gallery')}>
+            <Camera size={18} color="#7C3AED" />
+            <Text style={styles.menuLabel}>Photo Gallery & Reels</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/offers')}>
+            <Tag size={18} color="#DC2626" />
+            <Text style={styles.menuLabel}>Offers & Coupon Codes</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/faq')}>
+            <HelpCircle size={18} color="#1D4ED8" />
+            <Text style={styles.menuLabel}>FAQ & Help Center</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/about')}>
+            <Info size={18} color="#365314" />
+            <Text style={styles.menuLabel}>Our Story & Mission</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/contact')}>
+            <Mail size={18} color="#BE185D" />
+            <Text style={styles.menuLabel}>Contact Us</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
+          <TouchableOpacity style={styles.menuRow} onPress={() => router.push('/wholesale')}>
+            <Building2 size={18} color="#1D4ED8" />
+            <Text style={styles.menuLabel}>Wholesale / Become Distributor</Text>
+            <ChevronRight size={16} color="#A8A29E" />
+          </TouchableOpacity>
+
+          <View style={styles.menuDivider} />
+
           <TouchableOpacity
             style={styles.menuRow}
             onPress={handleCallSupport}
@@ -285,6 +358,20 @@ export default function AccountScreen() {
             <Text style={styles.menuLabel}>Direct Phone Support (+977 9713888002)</Text>
             <ChevronRight size={16} color="#A8A29E" />
           </TouchableOpacity>
+
+          {isAuthenticated && (user?.role === 'admin' || user?.role === 'super_admin') && (
+            <>
+              <View style={styles.menuDivider} />
+              <TouchableOpacity
+                style={[styles.menuRow, { backgroundColor: '#1A3826' + '10' }]}
+                onPress={() => router.push('/admin/dashboard' as any)}
+              >
+                <LayoutDashboard size={18} color="#1A3826" />
+                <Text style={[styles.menuLabel, { color: '#1A3826', fontWeight: '800' }]}>🔐 Admin Panel</Text>
+                <ChevronRight size={16} color="#1A3826" />
+              </TouchableOpacity>
+            </>
+          )}
 
           {isAuthenticated && (
             <>

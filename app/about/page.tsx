@@ -40,7 +40,7 @@ const regionsData = [
     locationsNp: 'चितवन · झापा · नवलपुर · सर्लाही',
     primaryProducts: [
       { nameEn: 'Organic Sweet Potato Powder (100g)', nameNp: 'अर्ग्यानिक सखरखण्ड पाउडर (१००g)', image: '/products/sweet-potato-powder-100g.jpg', slug: 'sweet-potato-powder' },
-      { nameEn: 'Organic Carrot Powder (100g)', nameNp: 'अर्ग्यानिक गाजर पाउडर (१००g)', image: '/products/carrot-powder.jpg', slug: 'carrot-powder' },
+      { nameEn: 'Organic Carrot Powder (100g)', nameNp: 'अर्ग्यानिक गाजर पाउडर (१००g)', image: '/products/carrot-powder-100g.jpg', slug: 'carrot-powder' },
       { nameEn: 'Sun-Dried Sweet Papaya (100g)', nameNp: 'डिहाइड्रेटेड गुलियो मेवा (१००g)', image: '/products/papaya.jpg', slug: 'dehydrated-papaya' },
       { nameEn: 'Natural Dates Powder (100g)', nameNp: 'प्राकृतिक खजुर पाउडर (१००g)', image: '/products/dates-powder-100g.jpg', slug: 'dates-powder' },
     ],

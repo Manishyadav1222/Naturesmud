@@ -254,7 +254,6 @@ export default function MobileHeroSection() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [addedItem, setAddedItem] = useState<string | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
 
   const addItem = useCartStore((s) => s.addItem);
   const openDrawer = useCartStore((s) => s.openDrawer);
@@ -267,13 +266,13 @@ export default function MobileHeroSection() {
     (p) => p.slug === currentPoster.slug || p.id === currentPoster.id
   );
 
+  // 2-second auto-transition across laptop, tablet & mobile viewports
   useEffect(() => {
-    if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [activeIdx]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -330,8 +329,6 @@ export default function MobileHeroSection() {
       style={{
         backgroundColor: currentPoster.bgTint,
       }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div
         className="absolute -top-12 -right-12 w-64 md:w-96 lg:w-[500px] h-64 md:h-96 lg:h-[500px] rounded-full blur-3xl pointer-events-none transition-colors duration-1000 opacity-30"

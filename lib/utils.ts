@@ -104,8 +104,14 @@ const IMAGE_ALIAS_MAP: Record<string, string> = {
   '/products/dried-blueberries-100g.jpg': '/products/dried-blueberries-orchard.jpg',
   '/products/pista.jpg': '/products/pistachios.jpg',
   '/products/coconut-chips.jpg': '/products/dehydrated-coconut-chips.jpg',
+  '/products/coconut-chips-100g.jpg': '/products/dehydrated-coconut-chips.jpg',
+  '/products/dehydrated-coconut-chips-100g.jpg': '/products/dehydrated-coconut-chips.jpg',
+  '/products/coconut-chips-pouch.jpg': '/products/dehydrated-coconut-chips.jpg',
+  '/products/coconut-chips-standup-pouch.jpg': '/products/dehydrated-coconut-chips.jpg',
   '/products/black-salt.jpg': '/products/himalayan-black-salt-digestive.jpg',
   '/products/black-salt-jar.jpg': '/products/himalayan-black-salt-digestive.jpg',
+  '/products/carrot.jpg': '/products/carrot-powder-100g.jpg',
+  '/products/carrot-powder.jpg': '/products/carrot-powder-100g.jpg',
   '/products/pink-salt-jar.jpg': '/products/pink-salt.jpg',
 };
 
