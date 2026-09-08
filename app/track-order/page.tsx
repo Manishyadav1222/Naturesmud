@@ -14,6 +14,7 @@ import {
   MapPin,
   AlertCircle,
   Loader2,
+  Download,
 } from 'lucide-react';
 import { ordersApi, type Order } from '@/lib/orders-api';
 import { formatPrice } from '@/lib/utils';
@@ -158,7 +159,7 @@ function TrackOrderContent() {
                     rel="noopener noreferrer"
                     className="text-xs text-red-800 underline font-semibold mt-1 inline-block"
                   >
-                    Ask for help on WhatsApp (+977 9713888002) →
+                    Ask for help on WhatsApp (+977 9819844486) →
                   </a>
                 </div>
               </div>
@@ -235,24 +236,35 @@ function TrackOrderContent() {
                 </div>
 
                 {/* Action Buttons: Invoice & WhatsApp */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                  <a
+                    href={`/api/orders/${encodeURIComponent(order.order_number.replace(/[^a-zA-Z0-9_-]/g, ''))}/invoice?download=1&name=${encodeURIComponent(order.shipping_name)}&phone=${encodeURIComponent(order.shipping_phone)}&address=${encodeURIComponent(order.shipping_address)}&city=${encodeURIComponent(order.shipping_city)}&subtotal=${order.subtotal}&shipping=${order.shipping_fee}&discount=${order.discount || 0}&total=${order.total}&payment=${order.payment_method}&items=${encodeURIComponent(JSON.stringify(order.items.map(it => ({ name: it.product_name, quantity: it.quantity, price: it.unit_price }))))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={`NaturesMud-Invoice-${order.order_number.replace(/[^a-zA-Z0-9_-]/g, '')}.pdf`}
+                    className="py-3 px-4 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm cursor-pointer"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download PDF Invoice</span>
+                  </a>
+
                   <button
                     type="button"
                     onClick={() => setShowInvoice(true)}
-                    className="flex-1 py-3 px-4 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm cursor-pointer"
+                    className="py-3 px-4 rounded-2xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-2xs cursor-pointer"
                   >
                     <Printer className="w-4 h-4" />
-                    <span>View & Print Official Invoice</span>
+                    <span>View &amp; Print</span>
                   </button>
 
                   <a
                     href={waInquiryLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
+                    className="py-3 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Inquire on WhatsApp (+977 9713888002)</span>
+                    <span>WhatsApp Inquiry</span>
                   </a>
                 </div>
               </div>
@@ -278,6 +290,7 @@ function TrackOrderContent() {
             items: order.items.map((it) => ({
               id: it.id,
               name: it.product_name,
+              weight: (it as any).weight || (it as any).product?.weight,
               quantity: it.quantity,
               price: Number(it.unit_price) || 0,
             })),

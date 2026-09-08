@@ -7,6 +7,7 @@ export interface InvoiceItemInput {
   sku?: string;
   quantity: number;
   price: number;
+  weight?: string;
 }
 
 export interface InvoiceOrderInput {
@@ -91,7 +92,7 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promis
     color: textMuted,
   });
 
-  page.drawText('PAN / Reg No: 610294857 | WhatsApp: +977 9713888002 | Email: contact@naturesmud.shop', {
+  page.drawText('PAN / Reg No: 610294857 | WhatsApp: +977 9819844486 | Email: info@naturesmud.shop', {
     x: margin,
     y: height - 88,
     size: 8,
@@ -299,7 +300,13 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promis
     });
 
     const itemTotal = Number(item.price || 0) * Number(item.quantity || 1);
-    const itemName = item.name.length > 45 ? item.name.substring(0, 43) + '...' : item.name;
+    let rawWeight = item.weight ? String(item.weight).trim() : '';
+    if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+      rawWeight = `${parseFloat(rawWeight)} GM`;
+    }
+    const weightDisplay = rawWeight ? ` (${rawWeight})` : '';
+    const fullItemName = `${item.name}${weightDisplay}`;
+    const itemName = fullItemName.length > 52 ? fullItemName.substring(0, 50) + '...' : fullItemName;
 
     page.drawText(String(idx + 1), { x: margin + 8, y: currentY + 6, size: 8, font: helvetica, color: textDark });
     page.drawText(itemName, { x: margin + 30, y: currentY + 6, size: 8, font: helveticaBold, color: textDark });
@@ -400,7 +407,7 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promis
     color: textDark,
   });
 
-  page.drawText('For assistance, inquiries, or return requests: contact@naturesmud.shop | WhatsApp: +977 9713888002', {
+  page.drawText('For assistance, inquiries, or return requests: info@naturesmud.shop | WhatsApp: +977 9819844486', {
     x: margin + 14,
     y: 58,
     size: 7,

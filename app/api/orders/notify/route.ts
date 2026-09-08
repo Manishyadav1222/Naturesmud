@@ -36,40 +36,47 @@ export async function POST(req: NextRequest) {
     }
     console.log(`========================================\n`);
 
-    // Build line items breakdown for WhatsApp message
+    const cleanOrderNumber = String(orderNumber).replace(/[^a-zA-Z0-9_-]/g, '');
     let itemsText = '';
     if (Array.isArray(items) && items.length > 0) {
       itemsText = items
         .map((it: any, i: number) => {
           const name = it.name || it.product_name || `Item ${i + 1}`;
+          let rawWeight = it.weight ? String(it.weight).trim() : '';
+          if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+            rawWeight = `${parseFloat(rawWeight)} GM`;
+          }
+          const weightStr = rawWeight ? ` (${rawWeight})` : '';
           const qty = it.quantity || 1;
           const price = it.price || it.unit_price || 0;
-          return `  ${i + 1}. ${name} x${qty} - Rs. ${(price * qty).toLocaleString()}`;
+          return `  ${i + 1}. *${name}${weightStr}* x${qty} = Rs. ${(price * qty).toLocaleString()}`;
         })
         .join('\n');
     }
 
     // Format rich WhatsApp message
     const waLines = [
-      `*🌿 Namaste NaturesMud Nepal!*`,
-      ``,
-      `I have just placed an order on your website:`,
+      `*🌿 NATURE'S MUD NEPAL — OFFICIAL ORDER NOTIFICATION*`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `📦 *Order:* #${orderNumber}`,
-      `👤 *Customer:* ${customerName}`,
-      `📱 *Phone:* ${customerPhone}`,
+      `📦 *Order Reference:* #${cleanOrderNumber}`,
+      `👤 *Customer Name:* ${customerName}`,
+      `📱 *Mobile Phone:* ${customerPhone}`,
       customerEmail ? `📧 *Email:* ${customerEmail}` : null,
       `📍 *Destination:* ${destination}`,
       fullAddress ? `🏠 *Address:* ${fullAddress}` : null,
       ``,
       itemsText ? `🛒 *Items Ordered:*\n${itemsText}\n` : null,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `💰 *Subtotal:* Rs. ${Number(subtotal || total).toLocaleString()}`,
+      discount && discount > 0 ? `🏷️ *Discount:* - Rs. ${Number(discount).toLocaleString()}` : null,
+      `🚚 *Delivery Fee:* ${!shippingFee || Number(shippingFee) === 0 ? 'FREE (Order > Rs. 3,000)' : `Rs. ${Number(shippingFee).toLocaleString()}`}`,
+      `💵 *FINAL TOTAL:* *Rs. ${Number(total).toLocaleString()}*`,
       `💳 *Payment Method:* ${formattedPayment}`,
       hasReceipt ? `🧾 *Payment Receipt Slip:* ${receiptUrl || 'Attached'}` : null,
       paymentReference ? `🔢 *Reference ID:* ${paymentReference}` : null,
-      `💰 *Total Amount:* Rs. ${Number(total).toLocaleString()}`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `📄 *Official Tax Invoice:* https://naturesmud.shop/uploads/invoices/INV-${orderNumber.replace(/[^a-zA-Z0-9]/g, '')}.pdf`,
-      `🚚 *Track Order Live:* https://naturesmud.shop/track-order?number=${orderNumber}`,
+      `📄 *Download Official PDF Invoice:* https://naturesmud.shop/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice`,
+      `🚚 *Track Order Live:* https://naturesmud.shop/track-order?number=${encodeURIComponent(cleanOrderNumber)}`,
       `━━━━━━━━━━━━━━━━━━━━`,
       `Please confirm my order and share the dispatch tracking details. Dhanyabad! 🙏`,
     ]

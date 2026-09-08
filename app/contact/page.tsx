@@ -56,7 +56,7 @@ export default function ContactPage() {
         setErrorMsg(data.message || 'Failed to send message. Please try again.');
       }
     } catch {
-      setErrorMsg('Network error. Please WhatsApp us at +977 9713888002.');
+      setErrorMsg('Network error. Please WhatsApp us at +977 9819844486.');
     } finally {
       setIsSubmitting(false);
     }
@@ -103,7 +103,7 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <Phone className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
-                      <p className="font-bold text-gray-900">+977 9713888002</p>
+                      <p className="font-bold text-gray-900">+977 9819844486</p>
                       <p className="text-xs text-gray-500">Direct Orders & Customer Care (Sun–Fri, 9am–7pm)</p>
                     </div>
                   </div>

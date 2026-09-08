@@ -88,7 +88,14 @@ export function buildOrderInvoiceMessageText(order: InvoiceOrderInput, invoiceUr
   let itemsBreakdown = '';
   if (Array.isArray(order.items) && order.items.length > 0) {
     itemsBreakdown = order.items
-      .map((it, idx) => `  ${idx + 1}. *${it.name}* x${it.quantity} — Rs. ${(it.price * it.quantity).toLocaleString()}`)
+      .map((it, idx) => {
+        let rawWeight = it.weight ? String(it.weight).trim() : '';
+        if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+          rawWeight = `${parseFloat(rawWeight)} GM`;
+        }
+        const weightStr = rawWeight ? ` (${rawWeight})` : '';
+        return `  ${idx + 1}. *${it.name}${weightStr}* x${it.quantity} — Rs. ${(it.price * it.quantity).toLocaleString()}`;
+      })
       .join('\n');
   }
 
@@ -205,12 +212,13 @@ export async function sendOrderInvoiceWhatsAppNotification(
     lastAttemptAt: new Date().toISOString(),
   });
 
-  let invoicePdfUrl = `${config.appBaseUrl}/uploads/invoices/INV-${orderNum.replace(/[^a-zA-Z0-9]/g, '')}.pdf`;
+  const cleanOrderNum = orderNum.replace(/[^a-zA-Z0-9_-]/g, '');
+  let invoicePdfUrl = `${config.appBaseUrl}/api/orders/${encodeURIComponent(cleanOrderNum)}/invoice`;
 
   try {
     // 2. Generate and store the official PDF Invoice
-    const { fileUrl } = await saveInvoicePdfFile(order);
-    invoicePdfUrl = fileUrl.startsWith('http') ? fileUrl : `${config.appBaseUrl}${fileUrl}`;
+    await saveInvoicePdfFile(order).catch(() => null);
+    invoicePdfUrl = `${config.appBaseUrl}/api/orders/${encodeURIComponent(cleanOrderNum)}/invoice`;
 
     // 3. Construct WhatsApp Message text
     const messageText = buildOrderInvoiceMessageText(order, invoicePdfUrl);

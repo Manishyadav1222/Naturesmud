@@ -28,8 +28,8 @@ import {
   Send,
   Radio,
   Clock,
-  ExternalLink,
   Package,
+  Download,
 } from 'lucide-react';
 import { useCartStore, resolveCartProduct } from '@/lib/store/cart-store';
 import { useOrderStore } from '@/lib/store/order-store';
@@ -336,29 +336,48 @@ export default function CheckoutPage() {
       });
 
       // Construct rich invoice lines for immediate WhatsApp dispatch
-      const invoiceNumber = `INV-${order.order_number.replace('#', '')}`;
+      const isOrderReady = Boolean(receiptUrl || paymentMethod === 'fonepay');
+      const cleanOrderNumber = order.order_number.replace(/[^a-zA-Z0-9_-]/g, '');
+      const invoiceNumber = `INV-${cleanOrderNumber}`;
+      const invoiceDownloadUrl = `https://naturesmud.shop/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice`;
+
       const itemsListText = orderItems
-        .map((it, i) => `  ${i + 1}. ${it.name} x${it.quantity} - Rs. ${(it.price * it.quantity).toLocaleString()}`)
+        .map((it, i) => {
+          let rawWeight = it.weight ? String(it.weight).trim() : '';
+          if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+            rawWeight = `${parseFloat(rawWeight)} GM`;
+          }
+          const weightDisplay = rawWeight ? ` (${rawWeight})` : '';
+          return `  ${i + 1}. *${it.name}${weightDisplay}*\n     • Qty: ${it.quantity} × Rs. ${it.price.toLocaleString()} = *Rs. ${(it.price * it.quantity).toLocaleString()}*`;
+        })
         .join('\n');
 
       const waInvoiceText = [
-        `*🧾 NaturesMud Nepal - Official Order Invoice*`,
+        `*🧾 NATURE'S MUD NEPAL — OFFICIAL ORDER INVOICE*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `📄 *Invoice No:* #${invoiceNumber}`,
-        `📦 *Order No:* #${order.order_number}`,
+        `📦 *Order Reference:* #${cleanOrderNumber}`,
         `👤 *Customer:* ${form.name}`,
-        `📱 *Phone:* ${form.phone}`,
+        `📱 *Mobile Phone:* ${form.phone}`,
         form.email ? `📧 *Email:* ${form.email}` : null,
         `📍 *Destination:* ${form.city} (${isValley ? 'Inside Kathmandu Valley' : 'Outside Valley Courier'})`,
         form.address ? `🏠 *Address:* ${form.address}` : null,
         ``,
         itemsListText ? `🛒 *Items Ordered:*\n${itemsListText}\n` : null,
+        `━━━━━━━━━━━━━━━━━━━━`,
+        `💰 *Subtotal:* Rs. ${Number(subtotal).toLocaleString()}`,
+        discount > 0 ? `🏷️ *Festival Discount:* - Rs. ${Number(discount).toLocaleString()}` : null,
+        `🚚 *Delivery Fee:* ${shipping === 0 ? 'FREE (Order > Rs. 3,000)' : `Rs. ${shipping}`}`,
+        `💵 *GRAND TOTAL:* *Rs. ${Number(finalRecordedTotal).toLocaleString()}*`,
         `💳 *Payment Method:* ${paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash on Delivery (COD)'}`,
+        `📊 *Payment Status:* ${isOrderReady ? 'PAID / CONFIRMED' : 'COD / PENDING'}`,
         paymentReference ? `🔢 *Reference ID:* ${paymentReference}` : null,
         receiptUrl ? `🧾 *Receipt Slip:* ${receiptUrl}` : null,
-        `💰 *Total Amount:* Rs. ${Number(finalRecordedTotal).toLocaleString()}`,
         `━━━━━━━━━━━━━━━━━━━━`,
-        `Please find my order & invoice above. Kindly confirm dispatch and tracking details. Dhanyabad! 🙏`,
+        `📥 *Download Official PDF Invoice:*`,
+        `${invoiceDownloadUrl}`,
+        ``,
+        `Please find my official order invoice above. Kindly confirm dispatch & tracking details. Dhanyabad! 🙏`,
       ]
         .filter(Boolean)
         .join('\n');
@@ -413,24 +432,49 @@ export default function CheckoutPage() {
     const isOrderReady = Boolean(receiptUrl || paymentMethod === 'fonepay');
     const finalAmount = Number(placedOrder.total) || total;
 
+    const cleanOrderNumber = placedOrder.order_number.replace(/[^a-zA-Z0-9_-]/g, '');
+    const invoiceNumber = `INV-${cleanOrderNumber}`;
+    const invoiceDownloadUrl = `https://naturesmud.shop/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice`;
+
+    const successItemsText = (savedOrderedItems.length > 0 ? savedOrderedItems : [
+      { name: 'NaturesMud Himalayan Superfoods Package', weight: '100 GM', quantity: 1, price: total }
+    ])
+      .map((it, i) => {
+        let rawWeight = it.weight ? String(it.weight).trim() : '';
+        if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+          rawWeight = `${parseFloat(rawWeight)} GM`;
+        }
+        const weightDisplay = rawWeight ? ` (${rawWeight})` : '';
+        return `  ${i + 1}. *${it.name}${weightDisplay}*\n     • Qty: ${it.quantity} × Rs. ${Number(it.price).toLocaleString()} = *Rs. ${(Number(it.price) * it.quantity).toLocaleString()}*`;
+      })
+      .join('\n');
+
     const directWaLines = [
-      `*🌿 Namaste NaturesMud Nepal!*`,
-      ``,
-      `I have placed an order on your website:`,
+      `*🧾 NATURE'S MUD NEPAL — OFFICIAL ORDER INVOICE*`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `📦 *Order:* #${placedOrder.order_number}`,
+      `📄 *Invoice No:* #${invoiceNumber}`,
+      `📦 *Order Reference:* #${cleanOrderNumber}`,
       `👤 *Customer:* ${form.name}`,
-      `📱 *Phone:* ${form.phone}`,
+      `📱 *Mobile Phone:* ${form.phone}`,
       form.email ? `📧 *Email:* ${form.email}` : null,
       `📍 *Destination:* ${form.city} (${isValley ? 'Inside Kathmandu Valley' : 'Outside Valley Courier'})`,
       form.address ? `🏠 *Address:* ${form.address}` : null,
       ``,
+      successItemsText ? `🛒 *Items Ordered:*\n${successItemsText}\n` : null,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `💰 *Subtotal:* Rs. ${Number(subtotal).toLocaleString()}`,
+      discount > 0 ? `🏷️ *Festival Discount:* - Rs. ${Number(discount).toLocaleString()}` : null,
+      `🚚 *Delivery Fee:* ${shipping === 0 ? 'FREE (Order > Rs. 3,000)' : `Rs. ${shipping}`}`,
+      `💵 *GRAND TOTAL:* *Rs. ${Number(finalAmount).toLocaleString()}*`,
       `💳 *Payment Method:* ${paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash on Delivery (COD)'}`,
+      `📊 *Payment Status:* ${isOrderReady ? 'PAID / CONFIRMED' : 'COD / PENDING'}`,
       paymentReference ? `🔢 *Reference ID:* ${paymentReference}` : null,
       receiptUrl ? `🧾 *Receipt Slip:* ${receiptUrl}` : null,
-      `💰 *Total Amount:* Rs. ${Number(finalAmount).toLocaleString()}`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `Please confirm my order and share the dispatch tracking details. Dhanyabad! 🙏`,
+      `📥 *Download Official PDF Invoice:*`,
+      `${invoiceDownloadUrl}`,
+      ``,
+      `Please find my official order invoice above. Kindly confirm dispatch & tracking details. Dhanyabad! 🙏`,
     ]
       .filter(Boolean)
       .join('\n');
@@ -653,19 +697,30 @@ export default function CheckoutPage() {
                   <span>Chat on WhatsApp (+977 9819844486)</span>
                 </a>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <a
+                    href={`/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice?download=1&name=${encodeURIComponent(form.name)}&phone=${encodeURIComponent(form.phone)}&address=${encodeURIComponent(form.address)}&city=${encodeURIComponent(form.city)}&subtotal=${subtotal}&shipping=${shipping}&discount=${discount}&total=${finalAmount}&payment=${paymentMethod}&items=${encodeURIComponent(JSON.stringify((savedOrderedItems.length > 0 ? savedOrderedItems : [{ name: 'NaturesMud Himalayan Superfoods', weight: '100 GM', quantity: 1, price: subtotal }]).map(it => ({ name: it.name, weight: it.weight, quantity: it.quantity, price: it.price }))))}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={`NaturesMud-Invoice-${cleanOrderNumber}.pdf`}
+                    className="py-3.5 px-4 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-black text-sm flex items-center justify-center gap-2 shadow-sm transition-all cursor-pointer"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download PDF Invoice</span>
+                  </a>
+
                   <button
                     type="button"
                     onClick={() => setShowInvoiceModal(true)}
-                    className="flex-1 py-3.5 px-5 rounded-2xl bg-white border-2 border-[#2D5A27] text-[#2D5A27] hover:bg-emerald-50 font-black text-sm flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
+                    className="py-3.5 px-4 rounded-2xl bg-white border-2 border-[#2D5A27] text-[#2D5A27] hover:bg-emerald-50 font-black text-sm flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
                   >
                     <Printer className="w-4 h-4" />
-                    <span>View & Print Official Invoice</span>
+                    <span>View &amp; Print</span>
                   </button>
 
                   <Link
                     href={`/track-order?number=${placedOrder.order_number}`}
-                    className="flex-1 py-3.5 px-5 rounded-2xl bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-sm"
+                    className="py-3.5 px-4 rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-sm flex items-center justify-center gap-2 transition-colors shadow-2xs"
                   >
                     <Truck className="w-4 h-4" />
                     <span>My Orders &amp; Status</span>
@@ -703,11 +758,19 @@ export default function CheckoutPage() {
               shippingProvince: form.province,
               deliveryRegion,
               items:
-                Array.isArray(placedOrder.items) && placedOrder.items.length > 0
+                savedOrderedItems && savedOrderedItems.length > 0
+                  ? savedOrderedItems.map((it) => ({
+                      name: it.name,
+                      weight: it.weight,
+                      quantity: it.quantity,
+                      price: it.price,
+                    }))
+                  : Array.isArray(placedOrder.items) && placedOrder.items.length > 0
                   ? placedOrder.items
                   : [
                       {
                         name: 'NaturesMud Himalayan Superfoods Package',
+                        weight: '100 GM',
                         quantity: 1,
                         price: subtotal,
                       },

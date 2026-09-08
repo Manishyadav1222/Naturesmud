@@ -459,9 +459,9 @@ export default function AdminOrderDetailPage() {
         <div className="flex flex-wrap items-center gap-2">
           {/* Download Official PDF Invoice */}
           <a
-            href={`/api/orders/${order.orderNumber.replace('#', '')}/invoice`}
+            href={`/api/orders/${encodeURIComponent(order.orderNumber.replace(/[^a-zA-Z0-9_-]/g, ''))}/invoice?download=1`}
             target="_blank"
-            download
+            download={`NaturesMud-Invoice-${order.orderNumber.replace(/[^a-zA-Z0-9_-]/g, '')}.pdf`}
             className="px-3 py-2 rounded-xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-[#2D5A27]" />
@@ -824,11 +824,11 @@ export default function AdminOrderDetailPage() {
                 <div className="flex justify-between text-gray-500">
                   <span>Invoice PDF:</span>
                   <a
-                    href={`/api/orders/${order.orderNumber.replace('#', '')}/invoice`}
+                    href={`/api/orders/${encodeURIComponent(order.orderNumber.replace(/[^a-zA-Z0-9_-]/g, ''))}/invoice`}
                     target="_blank"
                     className="font-bold text-[#2D5A27] hover:underline flex items-center gap-1"
                   >
-                    <span>INV-{order.orderNumber.replace('#', '')}.pdf</span>
+                    <span>INV-{order.orderNumber.replace(/[^a-zA-Z0-9_-]/g, '')}.pdf</span>
                     <ExternalLink className="w-2.5 h-2.5" />
                   </a>
                 </div>

@@ -99,6 +99,7 @@ export default function OrderInvoicePage() {
             items: order.items.map((it) => ({
               id: it.id,
               name: it.product_name,
+              weight: (it as any).weight || (it as any).product?.weight,
               quantity: it.quantity,
               price: Number(it.unit_price) || 0,
             })),

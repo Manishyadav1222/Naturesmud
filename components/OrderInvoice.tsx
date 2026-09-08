@@ -79,29 +79,53 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
     }
   };
 
+  const cleanOrderNumber = order.orderNumber.replace(/[^a-zA-Z0-9_-]/g, '');
+  const invoiceDownloadUrl = `https://naturesmud.shop/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice`;
+
+  const directDownloadUrl = `/api/orders/${encodeURIComponent(cleanOrderNumber)}/invoice?download=1&name=${encodeURIComponent(order.customerName)}&phone=${encodeURIComponent(order.customerPhone)}&address=${encodeURIComponent(order.shippingAddress)}&city=${encodeURIComponent(order.shippingCity)}&subtotal=${order.subtotal}&shipping=${order.shippingFee}&discount=${order.discount || 0}&total=${order.total}&payment=${order.paymentMethod}&items=${encodeURIComponent(JSON.stringify(order.items.map(it => ({ name: it.name || it.product_name, weight: it.weight, quantity: it.quantity, price: it.price || it.unit_price }))))}`;
+
   const getWhatsAppShareUrl = () => {
+    const itemsList = order.items.map((it, idx) => {
+      const name = it.name || it.product_name || `Item ${idx + 1}`;
+      let rawWeight = it.weight ? String(it.weight).trim() : '';
+      if (rawWeight && /^\d+(\.00)?$/.test(rawWeight)) {
+        rawWeight = `${parseFloat(rawWeight)} GM`;
+      }
+      const weightStr = rawWeight ? ` (${rawWeight})` : '';
+      const unitPrice = typeof it.price === 'number' ? it.price : Number(it.unit_price) || 0;
+      const qty = it.quantity || 1;
+      const lineTotal = unitPrice * qty;
+      return `  ${idx + 1}. *${name}${weightStr}*\n     • Qty: ${qty} × Rs. ${unitPrice.toLocaleString()} = *Rs. ${lineTotal.toLocaleString()}*`;
+    }).join('\n');
+
     const lines = [
-      `*🧾 NaturesMud Nepal - Official Order Invoice*`,
+      `*🧾 NATURE'S MUD NEPAL — OFFICIAL ORDER INVOICE*`,
       `━━━━━━━━━━━━━━━━━━━━`,
       `📄 *Invoice No:* #${invoiceNumber}`,
-      `📦 *Order No:* ${order.orderNumber}`,
+      `📦 *Order Reference:* #${cleanOrderNumber}`,
       `📅 *Date:* ${formattedDate}`,
+      ``,
       `👤 *Customer:* ${order.customerName}`,
-      `📱 *Phone:* ${order.customerPhone}`,
-      `📍 *Address:* ${order.shippingAddress}, ${order.shippingCity} (${isValley ? 'Inside Valley' : 'Outside Valley'})`,
+      `📱 *Mobile Phone:* ${order.customerPhone}`,
+      order.customerEmail ? `📧 *Email:* ${order.customerEmail}` : null,
+      `📍 *Delivery Destination:* ${order.shippingCity} (${isValley ? 'Inside Kathmandu Valley' : 'Outside Valley Courier'})`,
+      `🏠 *Address:* ${order.shippingAddress}${order.shippingProvince ? `, ${order.shippingProvince}` : ''}`,
       ``,
-      `🛒 *Items:*`,
-      ...order.items.map((it, idx) => {
-        const name = it.name || it.product_name || `Item ${idx + 1}`;
-        const price = it.price || it.unit_price || 0;
-        return `  ${idx + 1}. ${name} x${it.quantity} = Rs. ${(price * it.quantity).toLocaleString()}`;
-      }),
+      `🛒 *Items Ordered:*\n${itemsList}`,
       ``,
-      `💳 *Payment:* ${order.paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash On Delivery'}`,
-      order.paymentReference ? `🔢 *Ref ID:* ${order.paymentReference}` : null,
-      `💰 *Grand Total:* Rs. ${Number(order.total).toLocaleString()}`,
       `━━━━━━━━━━━━━━━━━━━━`,
-      `Thank you for trusting NaturesMud Nepal! 🙏`,
+      `💰 *Subtotal:* Rs. ${Number(order.subtotal || order.total).toLocaleString()}`,
+      order.discount && order.discount > 0 ? `🏷️ *Festival Discount:* - Rs. ${Number(order.discount).toLocaleString()}` : null,
+      `🚚 *Delivery Fee:* ${order.shippingFee === 0 ? 'FREE (Order > Rs. 3,000)' : `Rs. ${Number(order.shippingFee).toLocaleString()}`}`,
+      `💵 *GRAND TOTAL:* *Rs. ${Number(order.total).toLocaleString()}*`,
+      `💳 *Payment Method:* ${order.paymentMethod === 'fonepay' ? 'FonePay QR Advance' : 'Cash On Delivery (COD)'}`,
+      `📊 *Payment Status:* ${isPaid ? 'PAID / CONFIRMED' : 'COD / PENDING'}`,
+      order.paymentReference ? `🔢 *Reference ID:* ${order.paymentReference}` : null,
+      `━━━━━━━━━━━━━━━━━━━━`,
+      `📥 *Download Official PDF Invoice:*`,
+      `${invoiceDownloadUrl}`,
+      ``,
+      `Thank you for choosing 100% Pure Himalayan Superfoods! Dhanyabad 🙏`,
     ]
       .filter(Boolean)
       .join('\n');
@@ -120,13 +144,24 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
         </div>
 
         <div className="flex items-center gap-2">
+          <a
+            href={directDownloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            download={`NaturesMud-Invoice-${cleanOrderNumber}.pdf`}
+            className="px-4 py-2 bg-[#2D5A27] hover:bg-[#23471e] text-white rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download PDF</span>
+          </a>
+
           <button
             onClick={handlePrint}
             type="button"
-            className="px-4 py-2 bg-[#2D5A27] hover:bg-[#23471e] text-white rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-sm cursor-pointer"
+            className="px-3.5 py-2 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
           >
             <Printer className="w-4 h-4" />
-            <span>Print / PDF</span>
+            <span className="hidden sm:inline">Print</span>
           </button>
 
           <a
@@ -342,7 +377,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
       {/* Footer Notes */}
       <div className="mt-8 pt-6 border-t border-gray-100 text-center text-xs text-gray-400 space-y-1">
         <p className="font-bold text-gray-600">Dhanyabad for supporting local Himalayan farmers! 🌿</p>
-        <p>For inquiries, order status, or returns, contact WhatsApp: <strong>+977 9713888002</strong></p>
+        <p>For inquiries, order status, or returns, contact WhatsApp: <strong>+977 9819844486</strong></p>
         <p className="text-[10px] text-gray-400">Nature&apos;s Mud Nepal · Pure Food · Real Nature · 100% Chemical-Free</p>
       </div>
     </div>

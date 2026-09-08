@@ -179,7 +179,7 @@ const showrooms = [
     nameNp: 'काठमाडौँ, नेपाल',
     addressEn: 'Kathmandu Sourcing Hub, Kathmandu, Nepal',
     addressNp: 'काठमाडौँ हब, काठमाडौँ, नेपाल',
-    phone: '+977 9713888002',
+    phone: '+977 9819844486',
     icon: Building2,
   },
   {
