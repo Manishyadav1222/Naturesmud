@@ -233,7 +233,15 @@ async function main() {
       'sweet-vibes.jpg',
       'tropical-crunch.jpg',
       'papaya-pop.jpg',
-      'blueberry-bite.jpg'
+      'blueberry-bite.jpg',
+      'earth-ritual-beetroot.jpg',
+      'mountain-apple-crisp.jpg',
+      'premium-harvest-cashew.jpg',
+      'pure-pumpkin-seeds.jpg',
+      'ruby-cranberries-delight.jpg',
+      'mango-poster-2k.jpg',
+      'apple-poster-2k.jpg',
+      'beetroot-poster-2k.jpg'
     ];
     posterFiles.forEach(pf => {
       const full = path.join(config.rootDir, 'public', 'images', 'posters', pf);
@@ -241,6 +249,11 @@ async function main() {
         archive.file(full, { name: 'public/images/posters/' + pf });
       }
     });
+
+    // Add Hero assets
+    if (fs.existsSync(path.join(config.rootDir, 'public', 'images', 'hero'))) {
+      archive.directory(path.join(config.rootDir, 'public', 'images', 'hero'), 'public/images/hero');
+    }
 
     // Add GreenBasket assets
     if (fs.existsSync(path.join(config.rootDir, 'public', 'images', 'greenbasket'))) {
@@ -254,19 +267,49 @@ async function main() {
       'dried-blueberries-100g.jpg',
       'blueberries.jpg',
       'dried-blueberries.jpg',
+      'blueberries-brain-power.jpg',
       'papaya-splash.jpg',
+      'papaya.jpg',
+      'papaya-2.jpg',
       'chia-seeds.jpg',
+      'chia-power.jpg',
       'authentic-almonds.jpg',
+      'almonds.jpg',
+      'almonds-2.jpg',
       'authentic-cashewnuts-roasted.jpg',
+      'cashews.jpg',
+      'cashewnuts-roasted.jpg',
+      'cashews-roasted.jpg',
       'pink-salt.jpg',
+      'pink-salt-jar.jpg',
+      'pink-salt-crystals.jpg',
       'himalayan-black-salt-digestive.jpg',
       'cranberries.jpg',
+      'cranberries-2.jpg',
+      'cranberries-glowing-jar.jpg',
       'sweet-potato-powder-100g.jpg',
+      'sweet-potato-powder.jpg',
+      'sweet-potato-jar-display.jpg',
       'dates-powder-100g.jpg',
+      'dates-powder.jpg',
+      'dates-powder-jar-2k.jpg',
+      'dates-powder-product-shot.jpg',
       'beetroot-powder-100g.jpg',
+      'beetroot-powder.jpg',
+      'beetroot-glass-jar.jpg',
+      'beetroot-poster-2k.jpg',
       'authentic-dehydrated-mango.jpg',
+      'dehydrated-mango.jpg',
+      'mango.jpg',
+      'dehydrated-mango-poster.jpg',
       'authentic-dehydrated-pineapple.jpg',
+      'dehydrated-pineapple.jpg',
+      'pineapple.jpg',
+      'pineapple-poster-2k.jpg',
       'authentic-dehydrated-apple.jpg',
+      'dehydrated-apple.jpg',
+      'apple.jpg',
+      'dehydrated-apple-poster.jpg',
       'dehydrated-coconut-chips.jpg',
       'dehydrated-coconut-chips-100g.jpg',
       'coconut-chips.jpg',
@@ -277,6 +320,8 @@ async function main() {
       'superfood-mix.jpg',
       'macadamia.jpg',
       'coconut-oil.jpg',
+      'shilajit.jpg',
+      'fox-nuts-jar-2k.jpg',
       'carrot-powder.jpg',
       'carrot-powder-100g.jpg',
       'carrot-powder-poster.jpg',
