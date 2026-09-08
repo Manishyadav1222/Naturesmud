@@ -57,9 +57,7 @@ function cpanelLogin() {
 }
 
 async function callApi(apiPath, method = 'GET') {
-  if (!sessionCache) {
-    sessionCache = await cpanelLogin();
-  }
+  sessionCache = await cpanelLogin();
   return new Promise((resolve, reject) => {
     const req = https.request({
       hostname: config.host,
