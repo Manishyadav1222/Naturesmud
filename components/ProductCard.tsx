@@ -26,11 +26,16 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const inWishlist = isInWishlist(product.id);
   const discount = calculateDiscount(product.price, product.compareAtPrice);
   const badges = Array.isArray(product.badges) ? product.badges : [];
-  const [imgSrc, setImgSrc] = useState(() => resolveImageUrl(product.image));
+  const frontImg = resolveImageUrl(product.image);
+  const secondaryImg = Array.isArray(product.images) && product.images.length > 1 && product.images[1] !== product.image
+    ? resolveImageUrl(product.images[1])
+    : null;
+
+  const [imgSrc, setImgSrc] = useState(() => frontImg);
 
   useEffect(() => {
-    setImgSrc(resolveImageUrl(product.image));
-  }, [product.image]);
+    setImgSrc(frontImg);
+  }, [frontImg]);
 
   return (
     <div
@@ -38,6 +43,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     >
       {/* Image */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-gray-50">
+        {/* Front Primary Image (Crisp 2K Studio Photography) */}
         <Image
           src={imgSrc}
           alt={product.name}
@@ -45,8 +51,22 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           priority={index < 4}
           onError={() => setImgSrc('/products/naturesmud-all-products-100g.jpg')}
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
+          className={classNames(
+            'object-cover transition-all duration-700',
+            secondaryImg ? 'group-hover:opacity-0 group-hover:scale-105' : 'group-hover:scale-105'
+          )}
         />
+
+        {/* Secondary Image (Lifestyle / Feature Poster / Angle on Hover) */}
+        {secondaryImg && (
+          <Image
+            src={secondaryImg}
+            alt={`${product.name} alternate view`}
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="object-cover opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-700"
+          />
+        )}
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">

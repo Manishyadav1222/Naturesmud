@@ -92,13 +92,24 @@ export const products: Product[] = [
     "shortDescription": "100% natural date sugar substitute. Rich in potassium, iron & dietary fiber.",
     "price": 400,
     "compareAtPrice": 450,
-    "image": "https://naturesmud.shop/products/dates-powder.jpg",
-    "images": ["https://naturesmud.shop/products/dates-powder.jpg"],
+    "image": "/products/dates-powder-100g.jpg",
+    "images": [
+      "/products/dates-powder-100g.jpg",
+      "/products/dates-powder-jar-2k.jpg",
+      "/products/dates-powder-product-shot.jpg",
+      "/products/dates-powder.jpg"
+    ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["bestseller", "organic", "sugar-free"],
-    "ingredients": ["100% Premium Sun-Dried Dates (Pitted & Milled)"],
+    "badges": [
+      "bestseller",
+      "organic",
+      "sugar-free"
+    ],
+    "ingredients": [
+      "100% Premium Sun-Dried Dates (Pitted & Milled)"
+    ],
     "benefits": [
       "Natural sugar replacement for babies & diabetics",
       "High dietary fiber promotes smooth digestion",
@@ -106,11 +117,26 @@ export const products: Product[] = [
       "Zero preservatives or artificial additives"
     ],
     "nutrition": [
-      { "label": "Energy", "value": "277 kcal" },
-      { "label": "Carbohydrates", "value": "75g" },
-      { "label": "Dietary Fiber", "value": "7g" },
-      { "label": "Potassium", "value": "656mg" },
-      { "label": "Iron", "value": "1.2mg" }
+      {
+        "label": "Energy",
+        "value": "277 kcal"
+      },
+      {
+        "label": "Carbohydrates",
+        "value": "75g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "7g"
+      },
+      {
+        "label": "Potassium",
+        "value": "656mg"
+      },
+      {
+        "label": "Iron",
+        "value": "1.2mg"
+      }
     ],
     "usage": "Add 1-2 teaspoons to warm milk, oatmeal, baby porridge, or desserts as a healthy natural sweetener.",
     "storage": "Keep airtight in a cool, dry place. Reseal after use.",
@@ -120,7 +146,14 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": false,
-    "tags": ["dates", "powder", "baby-food", "sugar-free", "natural", "nepal"],
+    "tags": [
+      "dates",
+      "powder",
+      "baby-food",
+      "sugar-free",
+      "natural",
+      "nepal"
+    ],
     "metaTitle": "Dates Powder Nepal | Pure Natural Sweetener Rs. 400",
     "metaDescription": "Pure sun-dried dates powder in Nepal. Zero chemicals, 100% wholefood baby sweetener. Free shipping over Rs. 3,000.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -134,23 +167,45 @@ export const products: Product[] = [
     "shortDescription": "Triple-cleaned organic chia seeds. 5x calcium of milk, 3x antioxidant power.",
     "price": 495,
     "compareAtPrice": 550,
-    "image": "https://naturesmud.shop/products/chia-seeds.jpg",
-    "images": ["https://naturesmud.shop/products/chia-seeds.jpg"],
+    "image": "/products/chia-seeds.jpg",
+    "images": [
+      "/products/chia-seeds.jpg",
+      "/products/chia-power.jpg",
+      "/images/posters/chia-power.jpg"
+    ],
     "weight": "250g",
     "category": "Nuts & Seeds",
     "categorySlug": "nuts-seeds",
-    "badges": ["bestseller", "organic", "omega-3"],
-    "ingredients": ["100% Organic Whole Chia Seeds (Salvia hispanica)"],
+    "badges": [
+      "bestseller",
+      "organic",
+      "omega-3"
+    ],
+    "ingredients": [
+      "100% Organic Whole Chia Seeds (Salvia hispanica)"
+    ],
     "benefits": [
       "Rich in Omega-3 fatty acids for cardiovascular health",
       "Absorbs 10-12x water weight for extended hydration",
       "High plant protein & dietary fiber for weight management"
     ],
     "nutrition": [
-      { "label": "Protein", "value": "16.5g" },
-      { "label": "Fiber", "value": "34.4g" },
-      { "label": "Omega-3", "value": "17.8g" },
-      { "label": "Calcium", "value": "631mg" }
+      {
+        "label": "Protein",
+        "value": "16.5g"
+      },
+      {
+        "label": "Fiber",
+        "value": "34.4g"
+      },
+      {
+        "label": "Omega-3",
+        "value": "17.8g"
+      },
+      {
+        "label": "Calcium",
+        "value": "631mg"
+      }
     ],
     "usage": "Soak 1 tablespoon in water, juice, or yogurt for 15 minutes before consumption.",
     "storage": "Store in a cool, dry place away from sunlight.",
@@ -160,7 +215,14 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": false,
-    "tags": ["chia", "seeds", "omega3", "fiber", "organic", "superfood"],
+    "tags": [
+      "chia",
+      "seeds",
+      "omega3",
+      "fiber",
+      "organic",
+      "superfood"
+    ],
     "metaTitle": "Organic Chia Seeds Nepal Rs. 495",
     "metaDescription": "Buy high-altitude organic chia seeds in Nepal. Free shipping over Rs. 3,000.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -174,22 +236,41 @@ export const products: Product[] = [
     "shortDescription": "Pure nitric oxide booster & natural blood builder. 100g.",
     "price": 430,
     "compareAtPrice": 490,
-    "image": "https://naturesmud.shop/images/posters/earth-ritual-beetroot.jpg",
-    "images": ["https://naturesmud.shop/images/posters/earth-ritual-beetroot.jpg"],
+    "image": "/products/beetroot-powder-100g.jpg",
+    "images": [
+      "/products/beetroot-powder-100g.jpg",
+      "/products/beetroot-poster-2k.jpg",
+      "/products/beetroot-glass-jar.jpg",
+      "/products/beetroot-powder.jpg"
+    ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["organic", "pre-workout"],
-    "ingredients": ["100% Whole Organic Beetroot (Beta vulgaris)"],
+    "badges": [
+      "organic",
+      "pre-workout"
+    ],
+    "ingredients": [
+      "100% Whole Organic Beetroot (Beta vulgaris)"
+    ],
     "benefits": [
       "Natural dietary nitrates elevate stamina & blood flow",
       "Supports healthy blood pressure and cardiovascular fitness",
       "Rich in betaine and natural antioxidant pigments"
     ],
     "nutrition": [
-      { "label": "Dietary Nitrates", "value": "250mg" },
-      { "label": "Iron", "value": "1.8mg" },
-      { "label": "Folate", "value": "109µg" }
+      {
+        "label": "Dietary Nitrates",
+        "value": "250mg"
+      },
+      {
+        "label": "Iron",
+        "value": "1.8mg"
+      },
+      {
+        "label": "Folate",
+        "value": "109µg"
+      }
     ],
     "usage": "Mix 1 teaspoon in 200ml water, smoothie, or juice 30 minutes before workout or breakfast.",
     "storage": "Store in an airtight container in a cool, dry place.",
@@ -199,7 +280,12 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": true,
-    "tags": ["beetroot", "preworkout", "nitric-oxide", "blood-builder"],
+    "tags": [
+      "beetroot",
+      "preworkout",
+      "nitric-oxide",
+      "blood-builder"
+    ],
     "metaTitle": "Earth's Ritual Beetroot Powder Rs. 430",
     "metaDescription": "Pure mountain beetroot powder for athletic stamina and heart wellness.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -214,20 +300,33 @@ export const products: Product[] = [
     "price": 510,
     "compareAtPrice": 580,
     "image": "https://naturesmud.shop/images/posters/mountain-apple-crisp.jpg",
-    "images": ["https://naturesmud.shop/images/posters/mountain-apple-crisp.jpg"],
+    "images": [
+      "https://naturesmud.shop/images/posters/mountain-apple-crisp.jpg"
+    ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["zero-oil", "crispy"],
-    "ingredients": ["100% Mountain Red Apples"],
+    "badges": [
+      "zero-oil",
+      "crispy"
+    ],
+    "ingredients": [
+      "100% Mountain Red Apples"
+    ],
     "benefits": [
       "Healthy snack for children and clean eaters",
       "Rich in polyphenols and apple pectin fiber",
       "Zero trans-fats, zero palm oil"
     ],
     "nutrition": [
-      { "label": "Pectin Fiber", "value": "4.2g" },
-      { "label": "Vitamin C", "value": "8.5mg" }
+      {
+        "label": "Pectin Fiber",
+        "value": "4.2g"
+      },
+      {
+        "label": "Vitamin C",
+        "value": "8.5mg"
+      }
     ],
     "usage": "Enjoy straight from the pouch or top on cereals and salads.",
     "storage": "Reseal tightly to preserve crunchiness.",
@@ -237,7 +336,12 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": false,
     "isNew": true,
-    "tags": ["apple", "crisps", "snacks", "healthy"],
+    "tags": [
+      "apple",
+      "crisps",
+      "snacks",
+      "healthy"
+    ],
     "metaTitle": "Mountain Apple Crisp Rs. 510",
     "metaDescription": "Crispy dehydrated Himalayan apple chips.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -251,16 +355,23 @@ export const products: Product[] = [
     "shortDescription": "100% pure crunchy dehydrated coconut chips rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
     "price": 495,
     "compareAtPrice": 495,
-    "image": "https://naturesmud.shop/products/dehydrated-coconut-chips.jpg",
+    "image": "/products/dehydrated-coconut-chips.jpg",
     "images": [
-      "https://naturesmud.shop/products/dehydrated-coconut-chips.jpg",
-      "https://naturesmud.shop/products/dehydrated-coconut-chips-100g.jpg"
+      "/products/dehydrated-coconut-chips.jpg",
+      "/products/dehydrated-coconut-chips-100g.jpg",
+      "/products/coconut-chips-pouch.jpg"
     ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["new", "organic", "keto"],
-    "ingredients": ["100% Pure Dehydrated Coconut Meat Flakes"],
+    "badges": [
+      "new",
+      "organic",
+      "keto"
+    ],
+    "ingredients": [
+      "100% Pure Dehydrated Coconut Meat Flakes"
+    ],
     "benefits": [
       "Natural energy boost powered by clean medium-chain triglycerides (MCTs)",
       "Heart healthy natural fats supporting cardiovascular wellness",
@@ -269,10 +380,22 @@ export const products: Product[] = [
       "Rich in healthy plant fats with zero added sugar, preservatives, or palm oil"
     ],
     "nutrition": [
-      { "label": "Calories", "value": "560 kcal / 100g" },
-      { "label": "MCT Healthy Fats", "value": "48g" },
-      { "label": "Dietary Fiber", "value": "14g" },
-      { "label": "Protein", "value": "6.5g" }
+      {
+        "label": "Calories",
+        "value": "560 kcal / 100g"
+      },
+      {
+        "label": "MCT Healthy Fats",
+        "value": "48g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "14g"
+      },
+      {
+        "label": "Protein",
+        "value": "6.5g"
+      }
     ],
     "usage": "Munch directly as a keto snack, toss on smoothie bowls, or mix into homemade trail mix.",
     "storage": "Airtight dry storage away from direct sunlight.",
@@ -282,7 +405,13 @@ export const products: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNew": true,
-    "tags": ["coconut-chips", "mct", "keto-snack", "dried-fruits", "healthy-fats"],
+    "tags": [
+      "coconut-chips",
+      "mct",
+      "keto-snack",
+      "dried-fruits",
+      "healthy-fats"
+    ],
     "metaTitle": "Dehydrated Coconut Chips Rs. 495",
     "metaDescription": "Pure dehydrated crunchy coconut chips in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -297,31 +426,52 @@ export const products: Product[] = [
     "price": 750,
     "compareAtPrice": 850,
     "image": "https://naturesmud.shop/images/posters/premium-harvest-cashew.jpg",
-    "images": ["https://naturesmud.shop/images/posters/premium-harvest-cashew.jpg"],
+    "images": [
+      "https://naturesmud.shop/images/posters/premium-harvest-cashew.jpg"
+    ],
     "weight": "150g",
     "category": "Nuts & Seeds",
     "categorySlug": "nuts-seeds",
-    "badges": ["keto", "premium"],
-    "ingredients": ["Jumbo Cashew Nuts (W240), Himalayan Pink Salt"],
+    "badges": [
+      "keto",
+      "premium"
+    ],
+    "ingredients": [
+      "Jumbo Cashew Nuts (W240), Himalayan Pink Salt"
+    ],
     "benefits": [
       "Packed with zinc, copper, and magnesium",
       "Supports healthy cholesterol balance",
       "High satiety healthy snack"
     ],
     "nutrition": [
-      { "label": "Protein", "value": "18g" },
-      { "label": "Healthy Fats", "value": "44g" },
-      { "label": "Magnesium", "value": "292mg" }
+      {
+        "label": "Protein",
+        "value": "18g"
+      },
+      {
+        "label": "Healthy Fats",
+        "value": "44g"
+      },
+      {
+        "label": "Magnesium",
+        "value": "292mg"
+      }
     ],
     "usage": "Enjoy 10-12 nuts daily as an energizing snack.",
     "storage": "Keep airtight to preserve freshness.",
     "stock": 70,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 112,
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": true,
-    "tags": ["cashews", "roasted", "nuts", "keto"],
+    "tags": [
+      "cashews",
+      "roasted",
+      "nuts",
+      "keto"
+    ],
     "metaTitle": "Royal Roasted Cashews Rs. 750",
     "metaDescription": "Slow roasted jumbo cashews with Himalayan salt.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -335,22 +485,41 @@ export const products: Product[] = [
     "shortDescription": "Raw AAA pumpkin seeds. High zinc & plant protein. 300g.",
     "price": 520,
     "compareAtPrice": 600,
-    "image": "https://naturesmud.shop/images/posters/pure-pumpkin-seeds.jpg",
-    "images": ["https://naturesmud.shop/images/posters/pure-pumpkin-seeds.jpg"],
+    "image": "/products/pumpkin-seeds.jpg",
+    "images": [
+      "/products/pumpkin-seeds.jpg",
+      "/images/posters/pure-pumpkin-seeds.jpg",
+      "/products/pumpkin-seeds-product-shot.jpg",
+      "/products/pumpkin-seeds-2.jpg"
+    ],
     "weight": "300g",
     "category": "Nuts & Seeds",
     "categorySlug": "nuts-seeds",
-    "badges": ["zinc-boost", "raw"],
-    "ingredients": ["100% Raw Shelled Pumpkin Seeds (Pepitas)"],
+    "badges": [
+      "zinc-boost",
+      "raw"
+    ],
+    "ingredients": [
+      "100% Raw Shelled Pumpkin Seeds (Pepitas)"
+    ],
     "benefits": [
       "Natural zinc boosts immunity & cellular repair",
       "Tryptophan supports restful sleep cycles",
       "Excellent source of plant-based protein"
     ],
     "nutrition": [
-      { "label": "Protein", "value": "30g" },
-      { "label": "Zinc", "value": "7.8mg" },
-      { "label": "Magnesium", "value": "592mg" }
+      {
+        "label": "Protein",
+        "value": "30g"
+      },
+      {
+        "label": "Zinc",
+        "value": "7.8mg"
+      },
+      {
+        "label": "Magnesium",
+        "value": "592mg"
+      }
     ],
     "usage": "Eat raw, roast lightly, or add to smoothies and breakfast bowls.",
     "storage": "Store in a cool, dry place.",
@@ -360,7 +529,12 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": true,
-    "tags": ["pumpkin-seeds", "zinc", "sleep", "protein"],
+    "tags": [
+      "pumpkin-seeds",
+      "zinc",
+      "sleep",
+      "protein"
+    ],
     "metaTitle": "Pure Mountain Pumpkin Seeds Rs. 520",
     "metaDescription": "Raw protein & zinc rich pumpkin seeds in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -375,20 +549,33 @@ export const products: Product[] = [
     "price": 415,
     "compareAtPrice": 475,
     "image": "https://naturesmud.shop/images/posters/ruby-cranberries-delight.jpg",
-    "images": ["https://naturesmud.shop/images/posters/ruby-cranberries-delight.jpg"],
+    "images": [
+      "https://naturesmud.shop/images/posters/ruby-cranberries-delight.jpg"
+    ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["antioxidant", "uti-health"],
-    "ingredients": ["Whole Dried Cranberries (Vaccinium macrocarpon)"],
+    "badges": [
+      "antioxidant",
+      "uti-health"
+    ],
+    "ingredients": [
+      "Whole Dried Cranberries (Vaccinium macrocarpon)"
+    ],
     "benefits": [
       "Rich in Type-A PACs that promote natural urinary tract wellness",
       "Vibrant antioxidants combat oxidative stress",
       "Delicious natural tart-sweet flavor profile"
     ],
     "nutrition": [
-      { "label": "Antioxidants", "value": "High PACs" },
-      { "label": "Vitamin C", "value": "13.3mg" }
+      {
+        "label": "Antioxidants",
+        "value": "High PACs"
+      },
+      {
+        "label": "Vitamin C",
+        "value": "13.3mg"
+      }
     ],
     "usage": "Snack directly or mix into oats, yogurt, and trail mixes.",
     "storage": "Store in a cool, dry location.",
@@ -398,7 +585,12 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": false,
     "isNew": true,
-    "tags": ["cranberries", "uti", "antioxidant", "berries"],
+    "tags": [
+      "cranberries",
+      "uti",
+      "antioxidant",
+      "berries"
+    ],
     "metaTitle": "Ruby Cranberries Delight Rs. 415",
     "metaDescription": "Whole sun-kissed cranberries in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -412,31 +604,51 @@ export const products: Product[] = [
     "shortDescription": "Dehydrated sweet potato powder for baby food & smoothies. 100g.",
     "price": 510,
     "compareAtPrice": 510,
-    "image": "https://naturesmud.shop/products/sweet-potato-powder-100g.jpg",
-    "images": ["https://naturesmud.shop/products/sweet-potato-powder-100g.jpg"],
+    "image": "/products/sweet-potato-powder-100g.jpg",
+    "images": [
+      "/products/sweet-potato-powder-100g.jpg",
+      "/images/posters/sweet-vibes.jpg",
+      "/products/sweet-potato-jar-display.jpg",
+      "/products/sweet-potato-powder.jpg"
+    ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["bestseller", "organic"],
-    "ingredients": ["100% Dehydrated Nepali Sweet Potato"],
+    "badges": [
+      "bestseller",
+      "organic"
+    ],
+    "ingredients": [
+      "100% Dehydrated Nepali Sweet Potato"
+    ],
     "benefits": [
       "Natural Beta-Carotene Vitamin A for eye vitality",
       "Gentle complex carbs for baby porridge",
       "Clean sustained fitness energy"
     ],
     "nutrition": [
-      { "label": "Vitamin A", "value": "720% DV" },
-      { "label": "Dietary Fiber", "value": "7.5g" }
+      {
+        "label": "Vitamin A",
+        "value": "720% DV"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "7.5g"
+      }
     ],
     "usage": "Mix 1-2 tablespoons into warm milk, oats, or smoothies.",
     "storage": "Keep sealed in a dry location.",
     "stock": 100,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 96,
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": true,
-    "tags": ["sweet-potato", "powders", "baby-food"],
+    "tags": [
+      "sweet-potato",
+      "powders",
+      "baby-food"
+    ],
     "metaTitle": "Sweet Potato Powder Rs. 510",
     "metaDescription": "Pure sweet potato powder in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -450,25 +662,36 @@ export const products: Product[] = [
     "shortDescription": "Pure organic carrot powder rich in beta-carotene. 100g.",
     "price": 490,
     "compareAtPrice": 490,
-    "image": "https://naturesmud.shop/products/carrot-powder-100g.jpg",
+    "image": "/products/carrot-powder-100g.jpg",
     "images": [
-      "https://naturesmud.shop/products/carrot-powder-100g.jpg",
-      "https://naturesmud.shop/products/carrot-powder-marble.jpg",
-      "https://naturesmud.shop/products/carrot-powder-eye-health.jpg"
+      "/products/carrot-powder-100g.jpg",
+      "/products/carrot-powder-poster.jpg",
+      "/products/carrot-powder-marble.jpg",
+      "/products/carrot-powder.jpg"
     ],
     "weight": "100g",
     "category": "Superfoods & Powders",
     "categorySlug": "superfoods",
-    "badges": ["organic"],
-    "ingredients": ["100% Dehydrated Organic Carrots"],
+    "badges": [
+      "organic"
+    ],
+    "ingredients": [
+      "100% Dehydrated Organic Carrots"
+    ],
     "benefits": [
       "Loaded with Beta-Carotene Pro-Vitamin A",
       "Easy to blend into kids meals and soups",
       "Rich in natural antioxidants"
     ],
     "nutrition": [
-      { "label": "Vitamin A", "value": "850% DV" },
-      { "label": "Fiber", "value": "12g" }
+      {
+        "label": "Vitamin A",
+        "value": "850% DV"
+      },
+      {
+        "label": "Fiber",
+        "value": "12g"
+      }
     ],
     "usage": "Stir into baby purees, soups, or smoothies.",
     "storage": "Store in a dry location.",
@@ -478,7 +701,11 @@ export const products: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNew": true,
-    "tags": ["carrot", "carrot-powder", "vitamin-a"],
+    "tags": [
+      "carrot",
+      "carrot-powder",
+      "vitamin-a"
+    ],
     "metaTitle": "Carrot Powder Rs. 490",
     "metaDescription": "Organic carrot powder in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -492,21 +719,36 @@ export const products: Product[] = [
     "shortDescription": "Pure unrefined pink rock salt with 84+ minerals. 100g.",
     "price": 250,
     "compareAtPrice": 250,
-    "image": "https://naturesmud.shop/products/pink-salt.jpg",
-    "images": ["https://naturesmud.shop/products/pink-salt.jpg"],
+    "image": "/products/pink-salt.jpg",
+    "images": [
+      "/products/pink-salt.jpg",
+      "/products/pink-salt-jar.jpg",
+      "/products/pink-salt-crystals.jpg",
+      "/products/client-authentic-label-1.jpg"
+    ],
     "weight": "100g",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "badges": ["organic"],
-    "ingredients": ["100% Pure Himalayan Pink Salt Crystals"],
+    "badges": [
+      "organic"
+    ],
+    "ingredients": [
+      "100% Pure Himalayan Pink Salt Crystals"
+    ],
     "benefits": [
       "Contains 84+ essential trace minerals",
       "Zero bleaches or anti-caking agents",
       "Supports healthy hydration and electrolytes"
     ],
     "nutrition": [
-      { "label": "Sodium Chloride", "value": "98%" },
-      { "label": "Trace Minerals", "value": "84+ Minerals" }
+      {
+        "label": "Sodium Chloride",
+        "value": "98%"
+      },
+      {
+        "label": "Trace Minerals",
+        "value": "84+ Minerals"
+      }
     ],
     "usage": "Use as daily seasoning for cooking or detox drinks.",
     "storage": "Store in a dry location.",
@@ -516,7 +758,11 @@ export const products: Product[] = [
     "isFeatured": false,
     "isBestSeller": false,
     "isNew": false,
-    "tags": ["pink-salt", "salt", "minerals"],
+    "tags": [
+      "pink-salt",
+      "salt",
+      "minerals"
+    ],
     "metaTitle": "Himalayan Pink Salt Rs. 250",
     "metaDescription": "Pure Himalayan pink salt in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -530,21 +776,35 @@ export const products: Product[] = [
     "shortDescription": "Volcanic sulfur-rich Himalayan black salt. 100g.",
     "price": 220,
     "compareAtPrice": 220,
-    "image": "https://naturesmud.shop/products/himalayan-black-salt-digestive.jpg",
-    "images": ["https://naturesmud.shop/products/himalayan-black-salt-digestive.jpg"],
+    "image": "/products/himalayan-black-salt-digestive.jpg",
+    "images": [
+      "/products/himalayan-black-salt-digestive.jpg",
+      "/products/black-salt.jpg",
+      "/products/client-authentic-label-2.jpg"
+    ],
     "weight": "100g",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
-    "badges": ["ayurvedic"],
-    "ingredients": ["100% Pure Himalayan Black Salt (Bire Noon)"],
+    "badges": [
+      "ayurvedic"
+    ],
+    "ingredients": [
+      "100% Pure Himalayan Black Salt (Bire Noon)"
+    ],
     "benefits": [
       "Stimulates digestive fire (Agni) and eases bloating",
       "Naturally lower sodium than table salt",
       "Rich in active sulfur compounds and iron"
     ],
     "nutrition": [
-      { "label": "Sodium Chloride", "value": "90%" },
-      { "label": "Iron & Sulfur", "value": "Naturally Present" }
+      {
+        "label": "Sodium Chloride",
+        "value": "90%"
+      },
+      {
+        "label": "Iron & Sulfur",
+        "value": "Naturally Present"
+      }
     ],
     "usage": "Use in chaats, fruits, salads, or warm water digestive drinks.",
     "storage": "Keep sealed in a dry place.",
@@ -554,7 +814,11 @@ export const products: Product[] = [
     "isFeatured": true,
     "isBestSeller": false,
     "isNew": false,
-    "tags": ["black-salt", "bire-noon", "digestive"],
+    "tags": [
+      "black-salt",
+      "bire-noon",
+      "digestive"
+    ],
     "metaTitle": "Himalayan Black Salt Rs. 220",
     "metaDescription": "Authentic Bire Noon black salt in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
@@ -568,31 +832,51 @@ export const products: Product[] = [
     "shortDescription": "Wild alpine anthocyanin berries for daily focus & eye defense. 100g.",
     "price": 650,
     "compareAtPrice": 650,
-    "image": "https://naturesmud.shop/products/dried-blueberries-orchard.jpg",
-    "images": ["https://naturesmud.shop/products/dried-blueberries-orchard.jpg"],
+    "image": "/products/dried-blueberries-100g.jpg",
+    "images": [
+      "/products/dried-blueberries-100g.jpg",
+      "/products/blueberries-brain-power.jpg",
+      "/products/dried-blueberries-orchard.jpg",
+      "/products/blueberries-2.jpg"
+    ],
     "weight": "100g",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "badges": ["bestseller", "wild-harvest"],
-    "ingredients": ["100% Wild Himalayan Dried Blueberries"],
+    "badges": [
+      "bestseller",
+      "wild-harvest"
+    ],
+    "ingredients": [
+      "100% Wild Himalayan Dried Blueberries"
+    ],
     "benefits": [
       "Dense Anthocyanins support mental focus and memory",
       "Nourishes eye vitality against screen strain",
       "One of nature's highest antioxidant berries"
     ],
     "nutrition": [
-      { "label": "Anthocyanins", "value": "High Potency" },
-      { "label": "Fiber", "value": "7.8g" }
+      {
+        "label": "Anthocyanins",
+        "value": "High Potency"
+      },
+      {
+        "label": "Fiber",
+        "value": "7.8g"
+      }
     ],
     "usage": "Snack daily or blend into morning smoothies and bowls.",
     "storage": "Keep sealed in a dry place.",
     "stock": 80,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 78,
     "isFeatured": true,
     "isBestSeller": true,
     "isNew": false,
-    "tags": ["blueberries", "antioxidants", "eye-health"],
+    "tags": [
+      "blueberries",
+      "antioxidants",
+      "eye-health"
+    ],
     "metaTitle": "Dried Blueberries Rs. 650",
     "metaDescription": "Wild Himalayan dried blueberries in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
