@@ -1049,7 +1049,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                         Nature&apos;s Mud 2026 Master Magazine
                       </h3>
                       <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#C9982A] text-[#1B3D2F]">
-                        16 Pages • HD Print
+                        8 Pages • Master Edition
                       </span>
                     </div>
                     <p className="text-[11px] text-gray-400 hidden xs:block">

@@ -262,6 +262,14 @@ async function main() {
   const stats = fs.statSync(outZip);
   console.log(`✅ Build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
+  // Ensure fresh 8-page catalog PDF
+  console.log('\n[3.5/6] 📄 Generating fresh 8-Page Master Magazine Catalog PDF...');
+  try {
+    execSync('node scripts/generate-magazine-pdf.js', { cwd: config.rootDir, stdio: 'inherit' });
+  } catch (e) {
+    console.warn('PDF generation notice:', e.message);
+  }
+
   const publicZip = path.join(config.rootDir, 'public-assets-dist.zip');
   if (fs.existsSync(publicZip)) fs.unlinkSync(publicZip);
   await new Promise((resolve, reject) => {
