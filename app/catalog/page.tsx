@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import CatalogClient from './CatalogClient';
-import { products } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct } from '@/lib/data/products';
 import { categories } from '@/lib/data/categories';
+import { api } from '@/lib/api';
+import { Product } from '@/lib/types';
 
 export const metadata: Metadata = {
   title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
@@ -41,6 +43,22 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default function CatalogPage() {
-  return <CatalogClient initialProducts={products} categories={categories} />;
+export default async function CatalogPage() {
+  let allProducts: Product[] = localProducts.map((p) => normalizeProduct(p));
+
+  try {
+    const res = await api.get('/products', { params: { per_page: 50 } });
+    if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
+      const dbProducts = res.data.data
+        .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)
+        .map((p: any) => normalizeProduct(p));
+      if (dbProducts.length > 0) {
+        allProducts = dbProducts;
+      }
+    }
+  } catch (error) {
+    allProducts = localProducts.map((p) => normalizeProduct(p));
+  }
+
+  return <CatalogClient initialProducts={allProducts} categories={categories} />;
 }

@@ -47,7 +47,7 @@ let festivalOffers: any[] = [
     categoryIcon: '🏋️‍♂️',
     categoryLabel: 'Gym & Workout',
     discountPercentage: 5,
-    originalPrice: 1516,
+    originalPrice: 1646,
     offerPrice: 1440,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
@@ -57,7 +57,7 @@ let festivalOffers: any[] = [
     themeColor: 'emerald',
     items: [
       { productId: '14', name: 'Premium Cashewnut (250 GM)', weight: '250 GM', image: '/products/cashewnuts.jpg', price: 600 },
-      { productId: '13', name: 'Pumpkin Seeds (300 GM)', weight: '300 GM', image: '/products/pumpkin-seeds.jpg', price: 520 },
+      { productId: '13', name: 'Pumpkin Seeds (300 GM)', weight: '300 GM', image: '/products/pumpkin-seeds.jpg', price: 650 },
       { productId: '12', name: 'Chia Seeds (300 GM)', weight: '300 GM', image: '/products/chia-seeds.jpg', price: 396 },
     ],
     highlights: [
@@ -137,7 +137,7 @@ let festivalOffers: any[] = [
     categoryIcon: '⚡',
     categoryLabel: 'Focus & Study',
     discountPercentage: 5,
-    originalPrice: 1502,
+    originalPrice: 1632,
     offerPrice: 1427,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
@@ -148,7 +148,7 @@ let festivalOffers: any[] = [
     items: [
       { productId: '6', name: 'Dried Blueberries (100 GM)', weight: '100 GM', image: '/products/dried-blueberries-100g.jpg', price: 650 },
       { productId: '7', name: 'Dried Cranberry (100 GM)', weight: '100 GM', image: '/products/cranberries.jpg', price: 332 },
-      { productId: '13', name: 'Pumpkin Seeds (300 GM)', weight: '300 GM', image: '/products/pumpkin-seeds.jpg', price: 520 },
+      { productId: '13', name: 'Pumpkin Seeds (300 GM)', weight: '300 GM', image: '/products/pumpkin-seeds.jpg', price: 650 },
     ],
     highlights: [
       'Anthocyanins for Neural Focus & Memory Recall',

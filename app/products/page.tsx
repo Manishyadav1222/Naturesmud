@@ -92,11 +92,10 @@ export default async function ProductsPage({
                 Interactive Price List
               </Link>
               <a
-                href="/Nature_Mud_Product_Catalog.pdf"
-                download="Nature_Mud_Product_Catalog_2026.pdf"
+                href="/api/catalog/download"
                 className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] text-xs sm:text-sm font-heading font-bold shadow-sm transition-all"
               >
-                Catalog
+                Download Catalog (PDF)
               </a>
             </div>
           </div>

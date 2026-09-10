@@ -2390,7 +2390,7 @@ export const allBlogPosts: ExtendedBlogPost[] = [
     featured: true,
     featuredProductSlug: 'pumpkin-seeds',
     featuredProductName: "Organic Himalayan Pumpkin Seeds (300g)",
-    featuredProductPrice: 520,
+    featuredProductPrice: 650,
     featuredProductImage: '/products/pumpkin-seeds.jpg',
     metaDescription: "Pumpkin seeds benefits: Zinc content, magnesium for sleep, prostate health, heart benefits, and daily portion guidelines for Nepal.",
     keyTakeaways: [
@@ -3944,7 +3944,7 @@ const productMapDetails: Record<string, { name: string; price: number; image: st
   'carrot-powder': { name: 'Organic Carrot Powder (100g)', price: 490, image: '/products/carrot-powder-100g.jpg' },
   'dried-blueberries': { name: 'Wild Dried Himalayan Blueberries (100g)', price: 520, image: '/products/dried-blueberries.jpg' },
   'dried-cranberries': { name: 'Whole Dried Cranberries (100g)', price: 332, image: '/products/cranberries.jpg' },
-  'pumpkin-seeds': { name: 'Organic Himalayan Pumpkin Seeds (300g)', price: 520, image: '/products/pumpkin-seeds.jpg' },
+  'pumpkin-seeds': { name: 'Organic Himalayan Pumpkin Seeds (300g)', price: 650, image: '/products/pumpkin-seeds.jpg' },
   'chia-seeds': { name: 'Premium Black Chia Seeds (300g)', price: 396, image: '/products/chia-seeds.jpg' },
   'dehydrated-mango': { name: 'Sun-Dried Himalayan Mango Slices', price: 595, image: '/products/authentic-dehydrated-mango.jpg' },
   'dehydrated-pineapple': { name: 'Dehydrated Himalayan Pineapple', price: 396, image: '/products/dehydrated-pineapple.jpg' },

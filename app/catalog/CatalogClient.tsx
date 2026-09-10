@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -25,10 +25,14 @@ import {
   X,
   Layers,
   ZoomIn,
+  BookOpen,
 } from 'lucide-react';
+import { toast } from 'sonner';
 import { Product, Category } from '@/lib/types';
 import { formatPrice, resolveImageUrl } from '@/lib/utils';
 import { useCartStore } from '@/lib/store/cart-store';
+import { api } from '@/lib/api';
+import { normalizeProduct } from '@/lib/data/products';
 
 interface CatalogClientProps {
   initialProducts: Product[];
@@ -63,19 +67,19 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     id: 'dried-fruits-berries',
     title: 'DRIED FRUITS & BERRIES',
     subtitle: 'STRESS DEFENSE — LITTLE BERRIES, BIG GOODNESS',
-    tagline: 'High-altitude wild alpine berries and nutrient-dense sun-dried figs in airtight glass jars.',
+    tagline: 'High-altitude wild alpine berries and nutrient-dense sun-dried fruit in airtight glass jars.',
     badge: 'Antioxidant & Cognitive Power',
     heroImage: '/products/authentic-dehydrated-mango.jpg',
     heroImageAlt: 'NaturesMud Dried Fruits & Berries Collection',
     accentColor: '#8E2800',
-    productIds: ['dried-blueberries', 'dried-cranberries', 'dried-figs'],
+    productIds: ['dried-blueberries', 'dried-cranberries'],
   },
   {
     id: 'powders-salts',
     title: 'NATURESMUD POWDERS & ESSENTIAL SALTS',
     subtitle: 'OUR SIGNATURE POWDER & SALT COLLECTION',
     tagline: '100% fine micro-milled superfood powders and ancient volcanic ionic mineral rock salts.',
-    badge: 'Zero Sugar • 84+ Trace Minerals',
+    badge: '100% Pure Superfood • 84+ Minerals',
     heroImage: '/products/sweet-potato-powder-100g.jpg',
     heroImageAlt: 'NaturesMud Signature Powders & Himalayan Salts Collection',
     accentColor: '#3A6B35',
@@ -90,7 +94,15 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     heroImage: '/products/almonds.jpg',
     heroImageAlt: 'NaturesMud Raw Almond & Whole Nuts Collection',
     accentColor: '#B85D19',
-    productIds: ['almonds', 'walnuts', 'cashews', 'superfood-mix'],
+    productIds: [
+      'raw-himalayan-almonds',
+      'roasted-almonds',
+      'premium-cashewnuts',
+      'roasted-cashewnuts',
+      'premium-pistachios',
+      'superfood-trail-mix',
+      'macadamia-nuts',
+    ],
   },
   {
     id: 'seeds-oils',
@@ -106,16 +118,68 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
 ];
 
 export default function CatalogClient({ initialProducts, categories }: CatalogClientProps) {
+  const [productsList, setProductsList] = useState<Product[]>(initialProducts);
   const [activeTab, setActiveTab] = useState<'flyer' | 'poster' | 'table'>('flyer');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPackaging, setSelectedPackaging] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'mrp'>('default');
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
+  const [isMagazineModalOpen, setIsMagazineModalOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [addedSlug, setAddedSlug] = useState<string | null>(null);
+
+  const handleDownloadMagazine = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setIsDownloading(true);
+    toast.success("Preparing official Nature's Mud 2026 Magazine Catalog (PDF)...");
+
+    // Initiate download via API endpoint with attachment header
+    const link = document.createElement('a');
+    link.href = '/api/catalog/download';
+    link.download = 'NaturesMud_Himalayan_Master_Magazine_Catalog_2026.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 2000);
+  };
 
   const addItem = useCartStore((s) => s.addItem);
   const openDrawer = useCartStore((s) => s.openDrawer);
+
+  useEffect(() => {
+    setProductsList(initialProducts);
+  }, [initialProducts]);
+
+  // Client-side live sync to ensure real-time database prices are always reflected
+  useEffect(() => {
+    let isMounted = true;
+    async function syncLatestDbPrices() {
+      try {
+        const res = await api.get('/products', { params: { per_page: 50 } });
+        if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0 && isMounted) {
+          const activeItems = res.data.data
+            .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)
+            .map((p: any) => normalizeProduct(p));
+          if (activeItems.length > 0) {
+            setProductsList(activeItems);
+          }
+        }
+      } catch (err) {
+        // Silently fallback to current productsList
+      }
+    }
+    syncLatestDbPrices();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleAddToCart = (product: Product, e: React.MouseEvent) => {
     e.preventDefault();
@@ -128,24 +192,40 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
 
   const productMap = useMemo(() => {
     const map = new Map<string, Product>();
-    initialProducts.forEach((p) => {
+    productsList.forEach((p) => {
       map.set(String(p.id), p);
       map.set(String(p.slug), p);
       if (p.dbId) map.set(String(p.dbId), p);
     });
+
+    // Provide friendly alias fallbacks
+    const aliasPairs: [string, string][] = [
+      ['almonds', 'raw-himalayan-almonds'],
+      ['walnuts', 'superfood-trail-mix'],
+      ['cashews', 'premium-cashewnuts'],
+      ['superfood-mix', 'superfood-trail-mix'],
+      ['pistachios', 'premium-pistachios'],
+      ['macadamia', 'macadamia-nuts'],
+    ];
+    aliasPairs.forEach(([alias, targetSlug]) => {
+      if (!map.has(alias) && map.has(targetSlug)) {
+        map.set(alias, map.get(targetSlug)!);
+      }
+    });
+
     return map;
-  }, [initialProducts]);
+  }, [productsList]);
 
   const packagingTypes = useMemo(() => {
     const set = new Set<string>();
-    initialProducts.forEach((p) => {
+    productsList.forEach((p) => {
       if (p.packing) set.add(p.packing);
     });
     return Array.from(set);
-  }, [initialProducts]);
+  }, [productsList]);
 
   const filteredProducts = useMemo(() => {
-    return initialProducts
+    return productsList
       .filter((p) => {
         const matchesSearch =
           searchQuery.trim() === '' ||
@@ -168,7 +248,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
         if (sortBy === 'mrp') return (b.mrp || b.compareAtPrice || 0) - (a.mrp || a.compareAtPrice || 0);
         return Number(a.id) - Number(b.id);
       });
-  }, [initialProducts, searchQuery, selectedCategory, selectedPackaging, sortBy]);
+  }, [productsList, searchQuery, selectedCategory, selectedPackaging, sortBy]);
 
   const whatsappMessage = encodeURIComponent(
     "Hello NaturesMud! I reviewed your official 2026 Product Catalog & Price List and would like to place an order / wholesale inquiry."
@@ -232,26 +312,35 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 </div>
                 <div>
                   <h2 className="font-heading font-bold text-white text-base leading-snug">Official Printables</h2>
-                  <p className="text-xs text-white/70">Official Master Catalog & Flyer</p>
+                  <p className="text-xs text-white/70">16-Page Master Magazine & Flyer</p>
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 pt-1">
-                <a
-                  href="/Nature_Mud_Product_Catalog.pdf"
-                  download="Nature_Mud_Product_Catalog_2026.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D4AF37] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] font-heading font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all"
+                <button
+                  type="button"
+                  onClick={() => handleDownloadMagazine()}
+                  disabled={isDownloading}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D4AF37] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] font-heading font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-80"
                 >
-                  <Download className="w-4 h-4" /> Catalog
-                </a>
+                  <Download className={`w-4 h-4 ${isDownloading ? 'animate-bounce' : ''}`} />
+                  {isDownloading ? 'Downloading Magazine...' : 'Download Magazine Catalog (PDF)'}
+                </button>
 
                 <button
-                  onClick={() => setIsPosterModalOpen(true)}
-                  className="flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-white/15 hover:bg-white/25 text-white border border-white/20 font-semibold text-xs transition-colors"
+                  type="button"
+                  onClick={() => setIsMagazineModalOpen(true)}
+                  className="flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-white/20 hover:bg-white/30 text-white border border-white/30 font-semibold text-xs transition-colors cursor-pointer"
                 >
-                  <Eye className="w-4 h-4 text-[#C9982A]" /> View Full Official Flyer Image
+                  <BookOpen className="w-4 h-4 text-[#F4E8C1]" /> Read Magazine Online
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsPosterModalOpen(true)}
+                  className="flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 border border-white/20 font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  <Eye className="w-4 h-4 text-[#C9982A]" /> View Master Flyer Poster
                 </button>
 
                 <a
@@ -356,13 +445,14 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 >
                   Inspect Full Poster
                 </button>
-                <a
-                  href="/Nature_Mud_Product_Catalog.pdf"
-                  download="Nature_Mud_Product_Catalog_2026.pdf"
-                  className="px-3 py-1.5 rounded-lg bg-[#1B3D2F] hover:bg-[#2D5A27] text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5"
+                <button
+                  onClick={() => handleDownloadMagazine()}
+                  disabled={isDownloading}
+                  className="px-3 py-1.5 rounded-lg bg-[#1B3D2F] hover:bg-[#2D5A27] text-white text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 disabled:opacity-70 cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5" /> Catalog
-                </a>
+                  <Download className={`w-3.5 h-3.5 ${isDownloading ? 'animate-bounce' : ''}`} />
+                  {isDownloading ? 'Downloading...' : 'Magazine PDF'}
+                </button>
               </div>
             </div>
 
@@ -663,13 +753,20 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 >
                   <Download className="w-4 h-4" /> Download Poster
                 </a>
-                <a
-                  href="/Nature_Mud_Product_Catalog.pdf"
-                  download="Nature_Mud_Product_Catalog_2026.pdf"
-                  className="px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-200 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2"
+                <button
+                  onClick={() => setIsMagazineModalOpen(true)}
+                  className="px-5 py-2.5 rounded-xl bg-[#1B3D2F] hover:bg-[#25523F] text-white text-xs sm:text-sm font-heading font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer"
                 >
-                  <FileText className="w-4 h-4 text-[#1B3D2F]" /> Catalog
-                </a>
+                  <BookOpen className="w-4 h-4 text-[#C9982A]" /> Read Magazine
+                </button>
+                <button
+                  onClick={() => handleDownloadMagazine()}
+                  disabled={isDownloading}
+                  className="px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-200 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 disabled:opacity-70 cursor-pointer"
+                >
+                  <Download className={`w-4 h-4 text-[#1B3D2F] ${isDownloading ? 'animate-bounce' : ''}`} />
+                  {isDownloading ? 'Downloading...' : 'Magazine PDF'}
+                </button>
               </div>
             </div>
 
@@ -840,13 +937,20 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-4">
-              <a
-                href="/Nature_Mud_Product_Catalog.pdf"
-                download="Nature_Mud_Product_Catalog_2026.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D4AF37] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] font-heading font-bold text-sm shadow-lg transition-all"
+              <button
+                onClick={() => handleDownloadMagazine()}
+                disabled={isDownloading}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D4AF37] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] font-heading font-bold text-sm shadow-lg transition-all cursor-pointer disabled:opacity-80"
               >
-                <Download className="w-4 h-4" /> Catalog
-              </a>
+                <Download className={`w-4 h-4 ${isDownloading ? 'animate-bounce' : ''}`} />
+                {isDownloading ? 'Preparing Magazine...' : 'Download Magazine Catalog (PDF)'}
+              </button>
+              <button
+                onClick={() => setIsMagazineModalOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-[#C9982A]/40 font-heading font-bold text-sm shadow transition-all cursor-pointer"
+              >
+                <BookOpen className="w-4 h-4 text-[#C9982A]" /> Read Magazine Online
+              </button>
 
               <a
                 href={`https://wa.me/9779819844486?text=${whatsappMessage}`}
@@ -914,6 +1018,99 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                   alt="NaturesMud Official Master Product Catalog 2026"
                   className="max-h-[80vh] w-auto object-contain rounded-lg shadow-xl"
                 />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* ── INTERACTIVE LUXURY MAGAZINE READER MODAL ── */}
+      <AnimatePresence>
+        {isMagazineModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6"
+            onClick={() => setIsMagazineModalOpen(false)}
+          >
+            <div
+              className="relative max-w-5xl max-h-[95vh] w-full bg-[#12281E] rounded-2xl overflow-hidden shadow-2xl border border-[#C9982A]/40 flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Top Bar */}
+              <div className="p-3.5 sm:p-4 bg-[#0E1F18] text-white flex items-center justify-between border-b border-[#C9982A]/30">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-[#C9982A]/20 flex items-center justify-center border border-[#C9982A]/40">
+                    <BookOpen className="w-4 h-4 text-[#C9982A]" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-heading font-bold text-sm sm:text-base text-white">
+                        Nature&apos;s Mud 2026 Master Magazine
+                      </h3>
+                      <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#C9982A] text-[#1B3D2F]">
+                        16 Pages • HD Print
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-gray-400 hidden xs:block">
+                      Official Ayurvedic &amp; Himalayan Superfood Portfolio
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleDownloadMagazine()}
+                    disabled={isDownloading}
+                    className="px-3 py-1.5 rounded-lg bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] font-heading font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-75"
+                  >
+                    <Download className={`w-3.5 h-3.5 ${isDownloading ? 'animate-bounce' : ''}`} />
+                    <span className="hidden sm:inline">Save PDF</span>
+                  </button>
+                  <a
+                    href="/Nature_Mud_Product_Catalog.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 sm:px-3 sm:py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                    title="Open in new window"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-[#C9982A]" />
+                    <span className="hidden md:inline">Open Tab</span>
+                  </a>
+                  <button
+                    onClick={() => setIsMagazineModalOpen(false)}
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-red-500/30 hover:text-red-300 text-white transition-colors cursor-pointer"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* PDF Viewer Body */}
+              <div className="relative flex-1 w-full bg-[#1A1A1A] min-h-[500px] h-[75vh]">
+                <iframe
+                  src="/Nature_Mud_Product_Catalog.pdf#toolbar=1&navpanes=1&view=FitH"
+                  className="w-full h-full border-0"
+                  title="Natures Mud Magazine Catalog"
+                />
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-3 bg-[#0E1F18] border-t border-[#C9982A]/20 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-300">
+                <div className="flex items-center gap-2">
+                  <Leaf className="w-3.5 h-3.5 text-[#C9982A]" />
+                  <span>100% Himalayan Raw Ingredients &bull; Zero Additives &bull; Nepal Bureau Certified</span>
+                </div>
+                <div className="flex items-center gap-2 font-medium">
+                  <span>Wholesale inquiries:</span>
+                  <a
+                    href="tel:+9779819844486"
+                    className="text-[#C9982A] hover:underline"
+                  >
+                    +977 9819844486
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

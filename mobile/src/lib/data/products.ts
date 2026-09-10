@@ -483,8 +483,8 @@ export const products: Product[] = [
     "name": "Pure Mountain Pumpkin Seeds",
     "description": "Raw, unsalted high-altitude pumpkin seeds rich in zinc, magnesium, and tryptophan for prostate health, deep sleep, and immune strength.",
     "shortDescription": "Raw AAA pumpkin seeds. High zinc & plant protein. 300g.",
-    "price": 520,
-    "compareAtPrice": 600,
+    "price": 650,
+    "compareAtPrice": 700,
     "image": "/products/pumpkin-seeds.jpg",
     "images": [
       "/products/pumpkin-seeds.jpg",
@@ -535,7 +535,7 @@ export const products: Product[] = [
       "sleep",
       "protein"
     ],
-    "metaTitle": "Pure Mountain Pumpkin Seeds Rs. 520",
+    "metaTitle": "Pure Mountain Pumpkin Seeds Rs. 650",
     "metaDescription": "Raw protein & zinc rich pumpkin seeds in Nepal.",
     "createdAt": "2024-01-01T00:00:00Z",
     "updatedAt": "2026-09-02T00:00:00Z"

@@ -823,9 +823,9 @@ export const products: Product[] = [
     "name": "Raw Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 520,
-    "compareAtPrice": 520,
-    "mrp": 520,
+    "price": 650,
+    "compareAtPrice": 700,
+    "mrp": 700,
     "rating": 4.9,
     "reviewCount": 57,
     "image": "/products/pumpkin-seeds.jpg",
@@ -1720,10 +1720,10 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
   const rawCompare = Number(raw.compare_at_price || raw.compareAtPrice || 0);
   const rawPrice = Number(raw.price || 0);
   const localPrice = Number(local?.price || 0);
-  const localCompare = Number(local?.compareAtPrice || 0);
+  const localCompare = Number(local?.compareAtPrice || local?.mrp || 0);
 
   const price = rawPrice > 0 ? rawPrice : (localPrice > 0 ? localPrice : Number(raw.mrp || local?.mrp || 0));
-  const compareAtPrice = rawCompare > price ? rawCompare : (localCompare > price ? localCompare : price);
+  const compareAtPrice = rawCompare > 0 ? (rawCompare >= price ? rawCompare : price) : (localCompare >= price ? localCompare : price);
   const mrp = Number(raw.mrp || local?.mrp || compareAtPrice || price);
 
   return {
