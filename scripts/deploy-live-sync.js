@@ -316,7 +316,16 @@ async function main() {
   await uploadFile(publicZip, `${config.homeDir}/naturesmud.shop/public`, 'public-assets-dist.zip');
   await extractArchive(`${config.homeDir}/naturesmud.shop/public/public-assets-dist.zip`, `${config.homeDir}/naturesmud.shop/public`);
   if (fs.existsSync(publicZip)) fs.unlinkSync(publicZip);
-  console.log('✅ Archive uploaded and extracted on server!');
+
+  // Guarantee direct overwrite of 8-page catalog PDFs
+  const catalogPdfs = ['Nature_Mud_Product_Catalog.pdf', 'catalog.pdf', 'Nature_Mud_Magazine_Catalog.pdf'];
+  for (const pdf of catalogPdfs) {
+    const localPdf = path.join(config.rootDir, 'public', pdf);
+    if (fs.existsSync(localPdf)) {
+      await uploadFile(localPdf, `${config.homeDir}/naturesmud.shop/public`, pdf);
+    }
+  }
+  console.log('✅ Archive & fresh 8-page catalog PDFs uploaded and verified!');
 
   // 5. Server-side Native Fast Permission Fix & Passenger Restart
   console.log('\n[5/6] 🔒 Applying server permissions (0755/0644) and restarting Passenger...');
