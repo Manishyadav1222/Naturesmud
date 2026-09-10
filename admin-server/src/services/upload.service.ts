@@ -81,6 +81,8 @@ export const uploadToCloudinary = async (
       path.resolve(process.cwd(), '..', 'public', 'uploads'),
       path.resolve(process.cwd(), '..', 'public_html', 'uploads'),
       path.resolve(process.cwd(), '..', 'frontend', 'public', 'uploads'),
+      '/home8/kathma13/naturesmud.shop/public/uploads',
+      '/home8/kathma13/api.naturesmud.shop/public/uploads',
       '/home8/kathma13/public_html/uploads',
       '/home8/kathma13/frontend/public/uploads',
       path.resolve(__dirname, '../../../public/uploads'),
