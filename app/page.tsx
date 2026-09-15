@@ -70,8 +70,37 @@ export default function HomePage() {
           setFeaturedProducts(apiProducts.filter((p: any) => p.isFeatured).slice(0, 8));
           setTrendingProducts(apiProducts.slice(0, 4));
         }
-        if (blogsRes.data && blogsRes.data.data) {
-          setLatestPosts(blogsRes.data.data.slice(0, 3));
+        if (blogsRes.data && Array.isArray(blogsRes.data.data)) {
+          const apiBlogs = blogsRes.data.data.map((p: any) => ({
+            id: String(p.id),
+            title: p.title,
+            slug: p.slug,
+            excerpt: p.excerpt || p.short_description || '',
+            category: p.category || 'Nutrition',
+            image: p.featured_image || p.image || '/products/sweet-potato-powder-100g.jpg',
+            date: p.published_at
+              ? new Date(p.published_at).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric',
+                })
+              : 'Recent',
+            rawDate: p.published_at || p.created_at || '',
+            readTime: Number(p.read_time || 7),
+            author: p.author?.name || p.author || "NaturesMud Council",
+          }));
+          const merged = new Map<string, any>();
+          for (const s of staticBlogPosts) {
+            if (s.slug) merged.set(s.slug, s);
+          }
+          for (const a of apiBlogs) {
+            if (a.slug && !merged.has(a.slug)) {
+              merged.set(a.slug, a);
+            }
+          }
+          const allPosts = Array.from(merged.values());
+          allPosts.sort((a, b) => new Date(b.date || b.rawDate || 0).getTime() - new Date(a.date || a.rawDate || 0).getTime());
+          setLatestPosts(allPosts.slice(0, 3));
         }
         // Featured blogs would be handled by the featuredBlogsRes if needed
       } catch (error) {

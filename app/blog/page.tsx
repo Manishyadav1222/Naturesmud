@@ -39,7 +39,17 @@ export default async function BlogPage() {
         isFeatured: p.is_featured === true,
       }));
 
-      posts = apiPosts;
+      // Merge apiPosts with masterBlogCatalog so all comprehensive articles are preserved
+      const mergedMap = new Map<string, any>();
+      for (const p of masterBlogCatalog) {
+        if (p.slug) mergedMap.set(p.slug, p);
+      }
+      for (const p of apiPosts) {
+        if (p.slug && !mergedMap.has(p.slug)) {
+          mergedMap.set(p.slug, p);
+        }
+      }
+      posts = Array.from(mergedMap.values());
     }
   } catch {
     posts = masterBlogCatalog;
