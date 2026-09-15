@@ -160,11 +160,13 @@ export default function ContactPage() {
                         .filter(Boolean)
                         .join('\n');
                     }
-                    window.open(
-                      `https://wa.me/9779713888002?text=${encodeURIComponent(text)}`,
-                      '_blank',
-                      'noopener,noreferrer'
-                    );
+                    const waUrl = `https://api.whatsapp.com/send?phone=9779713888002&text=${encodeURIComponent(text)}`;
+                    const isMobile = typeof window !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                    if (isMobile) {
+                      window.location.href = waUrl;
+                    } else {
+                      window.open(waUrl, '_blank', 'noopener,noreferrer');
+                    }
                   }}
                   className="w-full py-3 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
                 >

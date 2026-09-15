@@ -85,6 +85,42 @@ if (empty($tables)) {
 
 $blogs = [
     [
+        'title' => "Dates Powder: Nature's Perfect Sugar Substitute for Babies, Diabetics & Every Nepali Kitchen",
+        'slug' => "dates-powder-natural-sweetener-baby-food-diabetic-nepal",
+        'excerpt' => "Swap refined white sugar forever. Pure NaturesMud Dates Powder delivers caramel-rich sweetness packed with iron, potassium, and natural fibre — making it Nepal's safest sweetener for infants from 6 months, pregnant mothers, and anyone managing blood sugar.",
+        'content' => "Pure Dates Powder is 100% single-ingredient, stone-ground from ripe Medjool and Deglet Nour dates slow-dehydrated below 45°C. With a low Glycemic Index of ~42 and zero additives, it delivers clean caramel sweetness with essential iron, potassium, and fibre. Safe for weaning infants from 6 months and a proven 1-for-1 sugar replacement for diabetics and clean-eating households across Nepal.",
+        'category' => "Nutrition & Superfoods",
+        'featured_image' => "/products/dates-powder-jar-2k.jpg",
+        'author' => "NaturesMud Nutrition Council",
+        'read_time' => 7,
+        'is_published' => 1,
+        'tags' => json_encode(["dates powder nepal", "natural sugar substitute nepal", "baby food sweetener nepal", "dates powder benefits", "organic sweetener kathmandu"])
+    ],
+    [
+        'title' => "Raw Himalayan Almonds: The Ultimate Brain Food & Immunity Shield for Nepal's High-Altitude Lifestyle",
+        'slug' => "raw-himalayan-almonds-brain-food-immunity-nutrition-nepal",
+        'excerpt' => "Discover why NaturesMud's raw, unsalted Himalayan almonds — grown at 2,000m+ altitude in pristine mountain valleys — deliver 50% more nutrient density than store-bought roasted almonds. A complete guide to benefits, daily recipes, and why they're Nepal's top brain and heart food.",
+        'content' => "Sourced from traditional orchards at 1,800m to 2,400m elevation in Nepal's mountain zones, high UV intensity and diurnal variance concentrate Vitamin E, magnesium, and polyphenols. Consuming 20-25 raw unroasted almonds daily protects neuronal cell membranes, lowers LDL cholesterol, and sustains cognitive focus in urban Kathmandu.",
+        'category' => "Superfoods & Brain Health",
+        'featured_image' => "/products/authentic-almonds.jpg",
+        'author' => "NaturesMud Nutrition Council",
+        'read_time' => 6,
+        'is_published' => 1,
+        'tags' => json_encode(["himalayan almonds nepal", "raw almonds kathmandu", "brain food nepal", "almond benefits", "heart healthy food nepal"])
+    ],
+    [
+        'title' => "Dehydrated Apple Rings: Nepal's Crunchiest Gut-Healing Snack with Zero Sugar, Preservatives or Guilt",
+        'slug' => "dehydrated-apple-rings-gut-health-fibre-snack-nepal",
+        'excerpt' => "NaturesMud's dehydrated Himalayan apple rings lock in 100% of the fruit's pectin, quercetin, and natural fibre at low-temperature — delivering a crisp, intensely flavoured snack that heals your gut, feeds your microbiome, and eliminates ultra-processed chip cravings completely.",
+        'content' => "Slow-dehydrated at low temperatures from crisp Himalayan apples, each ring preserves natural pectin and quercetin. An ideal school tiffin or office snack with zero sulfur dioxide, zero added sugars, and prebiotic fibre that nourishes beneficial gut flora.",
+        'category' => "Clean Snacking & Gut Health",
+        'featured_image' => "/products/authentic-dehydrated-apple.jpg",
+        'author' => "NaturesMud Nutrition Council",
+        'read_time' => 5,
+        'is_published' => 1,
+        'tags' => json_encode(["dehydrated apple nepal", "healthy snack kathmandu", "gut health food nepal", "sugar free snack nepal", "apple chips nepal"])
+    ],
+    [
         'title' => "Himalayan Shilajit & Mountain Endurance: Why Nepal's Ancient Resin is Kathmandu's #1 Clean Fitness Fuel in 2026",
         'slug' => "himalayan-shilajit-mountain-endurance-clean-fitness-nepal-kathmandu",
         'excerpt' => "From gym athletes in Jhamsikhel to marathon runners in Pokhara, pure Himalayan Shilajit resin with 84+ ionic minerals and fulvic acid is replacing artificial caffeine and synthetic supplements across Nepal.",

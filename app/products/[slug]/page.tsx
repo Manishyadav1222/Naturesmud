@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Star, Truck, ShieldCheck, Leaf } from 'lucide-react';
+import { Star, Truck, ShieldCheck, Leaf, MessageCircle } from 'lucide-react';
 import { categories } from '@/lib/data/categories';
 import { getProductBySlug, normalizeProduct, products } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
@@ -229,16 +229,28 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               )}
             </p>
 
-            {/* Add to cart & Buy Now */}
+            {/* Add to cart & Buy Now & WhatsApp */}
             <div className="flex flex-wrap items-center gap-3.5 mb-8">
               <AddToCartButton productId={product.id} product={product} />
               <BuyNowButton productId={product.id} product={product} variant="gold" label="⚡ Buy Now" />
+              <a
+                href={`https://api.whatsapp.com/send?phone=9779713888002&text=${encodeURIComponent(
+                  `Hello NaturesMud Nepal! 🙏\nI would like to order: *${product.name}* (Rs. ${product.price}${product.weight ? `, ${product.weight}` : ''}).\nPlease confirm delivery availability in Nepal.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm shadow-sm transition-all hover:scale-[1.02] cursor-pointer"
+                title="Order directly via WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>Order on WhatsApp</span>
+              </a>
             </div>
 
             {/* Key benefits */}
             <div className="space-y-3 mb-8">
               {[
-                { icon: Truck, text: 'Free delivery on orders over Rs. 10,000' },
+                { icon: Truck, text: 'Free delivery on orders over Rs. 3,000' },
                 { icon: ShieldCheck, text: 'Quality checked · 0 Additives · 0 Preservatives' },
                 { icon: Leaf, text: '100% natural — no artificial anything' },
               ].map((item) => (
