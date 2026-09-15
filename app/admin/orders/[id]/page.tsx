@@ -40,6 +40,7 @@ import {
   MessageSquare,
   AlertCircle,
   RefreshCw,
+  Trash2,
 } from 'lucide-react';
 import { products } from '@/lib/data/products';
 import { resolveImageUrl } from '@/lib/utils';
@@ -181,6 +182,8 @@ export default function AdminOrderDetailPage() {
   const [showCancelDialog, setShowCancelDialog] = useState(false);
   const [showReturnDialog, setShowReturnDialog] = useState(false);
   const [showReceiptModal, setShowReceiptModal] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   // WhatsApp Automation State
   const [waLog, setWaLog] = useState<any>(null);
@@ -278,8 +281,8 @@ export default function AdminOrderDetailPage() {
       setWaFeedback(null);
 
       const targetPhone = recipientTarget === 'admin'
-        ? '9779819844486'
-        : (order.customer?.phone || order.shippingAddress?.phone || '9779819844486');
+        ? '9779713888002'
+        : (order.customer?.phone || order.shippingAddress?.phone || '9779713888002');
 
       const messageText = constructWhatsAppMessage(order);
       const cleanTarget = targetPhone.replace(/[^0-9]/g, '');
@@ -396,6 +399,20 @@ export default function AdminOrderDetailPage() {
       }
     } finally {
       setIsUpdating(false);
+    }
+  };
+
+  const handleDeleteOrder = async () => {
+    if (!order) return;
+    try {
+      setIsDeleting(true);
+      await api.delete(`/orders/${order.id}`);
+      setShowDeleteDialog(false);
+      router.push('/admin/orders');
+    } catch (err: any) {
+      setError(err.message || 'Failed to delete order');
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -516,6 +533,18 @@ export default function AdminOrderDetailPage() {
           {!isCancelled && !isReturned && canManageOrders && (
             <Button variant="outline" size="sm" onClick={() => setShowCancelDialog(true)} className="text-rose-600 hover:bg-rose-50">
               Cancel Order
+            </Button>
+          )}
+
+          {canManageOrders && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowDeleteDialog(true)}
+              className="text-red-600 hover:bg-red-50 hover:text-red-700 border-red-200"
+            >
+              <Trash2 className="w-4 h-4 mr-1.5" />
+              Delete Order
             </Button>
           )}
         </div>
@@ -790,7 +819,7 @@ export default function AdminOrderDetailPage() {
                     }`}
                   >
                     <p className="leading-tight">My Testing Number</p>
-                    <p className="text-[10px] opacity-80 font-mono">+977 9819844486</p>
+                    <p className="text-[10px] opacity-80 font-mono">+977-9713888002</p>
                   </button>
 
                   <button
@@ -814,7 +843,7 @@ export default function AdminOrderDetailPage() {
                 <div className="flex justify-between text-gray-500">
                   <span>Target Phone:</span>
                   <span className="font-mono font-bold text-gray-900">
-                    +{recipientTarget === 'admin' ? '9779819844486' : (order.customer?.phone || order.shippingAddress?.phone || '9779819844486').replace(/[^0-9]/g, '')}
+                    +{recipientTarget === 'admin' ? '9779713888002' : (order.customer?.phone || order.shippingAddress?.phone || '9779713888002').replace(/[^0-9]/g, '')}
                   </span>
                 </div>
                 <div className="flex justify-between text-gray-500">
@@ -862,7 +891,7 @@ export default function AdminOrderDetailPage() {
                     {isSendingWa
                       ? 'Opening WhatsApp...'
                       : recipientTarget === 'admin'
-                      ? '💬 Send / Open on My WhatsApp (+977 9819844486)'
+                      ? '💬 Send / Open on My WhatsApp (+977-9713888002)'
                       : '💬 Send / Open Customer WhatsApp'}
                   </span>
                 </Button>
@@ -994,6 +1023,19 @@ export default function AdminOrderDetailPage() {
         confirmLabel="Cancel Order"
         cancelLabel="Keep Order"
         variant="danger"
+      />
+
+      {/* Delete Confirmation Dialog */}
+      <ConfirmDialog
+        open={showDeleteDialog}
+        onClose={() => setShowDeleteDialog(false)}
+        onConfirm={handleDeleteOrder}
+        title="Delete Order Permanently"
+        description={`Are you sure you want to permanently delete order #${order.orderNumber}? This will remove all items and status history. This action cannot be undone.`}
+        confirmLabel={isDeleting ? 'Deleting...' : 'Delete Order'}
+        cancelLabel="Keep Order"
+        variant="danger"
+        loading={isDeleting}
       />
     </div>
   );

@@ -295,6 +295,49 @@ class LaravelDbService {
     return this.getOrderById(orderId);
   }
 
+  async deleteOrder(orderId: string) {
+    const conn = await pool.getConnection();
+    try {
+      await conn.beginTransaction();
+
+      const [orderRows] = await conn.query(
+        'SELECT * FROM orders WHERE id = ? OR order_number = ?',
+        [orderId, orderId]
+      );
+      const order = (orderRows as any[])[0];
+      if (!order) throw new Error('Order not found');
+
+      const realId = order.id;
+
+      // Delete child references
+      await conn.query('DELETE FROM reviews WHERE order_id = ?', [realId]);
+      await conn.query('DELETE FROM order_status_histories WHERE order_id = ?', [realId]);
+      await conn.query('DELETE FROM order_items WHERE order_id = ?', [realId]);
+      await conn.query('DELETE FROM orders WHERE id = ?', [realId]);
+
+      await conn.commit();
+      return { success: true, id: realId, orderNumber: order.order_number };
+    } catch (err) {
+      await conn.rollback();
+      throw err;
+    } finally {
+      conn.release();
+    }
+  }
+
+  async deleteOrders(orderIds: string[]) {
+    const results = [];
+    for (const id of orderIds) {
+      try {
+        const res = await this.deleteOrder(id);
+        results.push(res);
+      } catch (err) {
+        // ignore missing or continue
+      }
+    }
+    return results;
+  }
+
   // ---------- CUSTOMERS ----------
 
   async getCustomers(params: {

@@ -208,4 +208,39 @@ router.put('/:id', requireMinRole('ADMIN'), async (req, res, next) => {
   }
 });
 
+// DELETE /api/admin/orders/:id - Delete single order
+router.delete('/:id', requireMinRole('ADMIN'), async (req, res, next) => {
+  try {
+    const result = await laravelDb.deleteOrder(String(req.params.id));
+    res.json({
+      success: true,
+      message: 'Order deleted successfully.',
+      data: result,
+    });
+  } catch (err: any) {
+    if (err.message?.includes('not found')) {
+      return res.status(404).json({ message: err.message });
+    }
+    next(err);
+  }
+});
+
+// POST /api/admin/orders/bulk-delete - Delete multiple orders
+router.post('/bulk-delete', requireMinRole('ADMIN'), async (req, res, next) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ message: 'Order IDs array is required' });
+    }
+    const results = await laravelDb.deleteOrders(ids.map(String));
+    res.json({
+      success: true,
+      message: `${results.length} orders deleted successfully.`,
+      data: results,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 export default router;

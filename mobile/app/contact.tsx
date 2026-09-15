@@ -28,7 +28,7 @@ import {
 } from 'lucide-react-native';
 
 const SOCIAL_LINKS = [
-  { id: 'whatsapp', label: 'WhatsApp', handle: '+977 9819844486', color: '#25D366', url: 'https://wa.me/9779819844486?text=Namaste!%20I%20have%20a%20query%20about%20NaturesMud.' },
+  { id: 'whatsapp', label: 'WhatsApp', handle: '+977-9713888002', color: '#25D366', url: 'https://wa.me/9779713888002?text=Namaste!%20I%20have%20a%20query%20about%20NaturesMud.' },
   { id: 'instagram', label: 'Instagram', handle: '@naturesmud.np', color: '#E1306C', url: 'https://www.instagram.com/naturesmud.np/' },
   { id: 'facebook', label: 'Facebook', handle: 'NaturesMud Nepal', color: '#1877F2', url: 'https://www.facebook.com/naturesmud' },
 ];
@@ -43,11 +43,11 @@ export default function ContactScreen() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleWhatsApp = () => {
-    Linking.openURL('https://wa.me/9779819844486?text=Namaste!%20I%20have%20a%20query%20about%20NaturesMud.').catch(() => {});
+    Linking.openURL('https://wa.me/9779713888002?text=Namaste!%20I%20have%20a%20query%20about%20NaturesMud.').catch(() => {});
   };
 
   const handlePhone = () => {
-    Linking.openURL('tel:+9779819844486').catch(() => {});
+    Linking.openURL('tel:+9779713888002').catch(() => {});
   };
 
   const handleEmail = () => {
@@ -109,7 +109,7 @@ export default function ContactScreen() {
               <TouchableOpacity style={styles.quickBtn} onPress={handlePhone} activeOpacity={0.85}>
                 <Phone size={20} color="#1A3826" />
                 <Text style={styles.quickBtnLabel}>Call Us</Text>
-                <Text style={styles.quickBtnSub}>+977 9819844486</Text>
+                <Text style={styles.quickBtnSub}>+977-9713888002</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.quickBtn} onPress={handleEmail} activeOpacity={0.85}>
                 <Mail size={20} color="#1A3826" />

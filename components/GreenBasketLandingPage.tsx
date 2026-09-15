@@ -177,12 +177,12 @@ export default function GreenBasketLandingPage() {
           <div className="flex items-center justify-center gap-2 mx-auto sm:mx-0 text-emerald-200">
             <Headphones className="w-3.5 h-3.5 text-lime-400" />
             <a
-              href="https://wa.me/9779819844486"
+              href="https://wa.me/9779713888002"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-lime-300 transition-colors flex items-center gap-1"
             >
-              Support 24/7: <span className="text-white font-bold">+977 9819844486</span>
+              Support 24/7: <span className="text-white font-bold">+977-9713888002</span>
             </a>
           </div>
         </div>

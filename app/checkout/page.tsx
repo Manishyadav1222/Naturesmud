@@ -158,10 +158,14 @@ export default function CheckoutPage() {
 
   const total = Math.max(0, subtotal - discount + shipping);
 
-  // If outside valley is selected, force FonePay QR
+  const [paymentSwitchWarning, setPaymentSwitchWarning] = useState(false);
+
+  // If outside valley is selected, force FonePay QR — notify user explicitly
   useEffect(() => {
     if (!isValley && paymentMethod === 'cod') {
       setPaymentMethod('fonepay');
+      setPaymentSwitchWarning(true);
+      setTimeout(() => setPaymentSwitchWarning(false), 5000);
     }
   }, [isValley, paymentMethod]);
 
@@ -382,7 +386,7 @@ export default function CheckoutPage() {
         .filter(Boolean)
         .join('\n');
 
-      const directWaUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(waInvoiceText)}`;
+      const directWaUrl = `https://wa.me/9779713888002?text=${encodeURIComponent(waInvoiceText)}`;
       setWhatsappLink(directWaUrl);
 
       // Trigger internal server notification webhook
@@ -480,7 +484,7 @@ export default function CheckoutPage() {
       .join('\n');
 
     const effectiveWhatsAppLink =
-      whatsappLink || `https://wa.me/9779819844486?text=${encodeURIComponent(directWaLines)}`;
+      whatsappLink || `https://wa.me/9779713888002?text=${encodeURIComponent(directWaLines)}`;
 
     return (
       <>
@@ -694,7 +698,7 @@ export default function CheckoutPage() {
                   className="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                 >
                   <MessageCircle className="w-5 h-5 fill-white text-[#25D366]" />
-                  <span>Chat on WhatsApp (+977 9819844486)</span>
+                  <span>Chat on WhatsApp (+977-9713888002)</span>
                 </a>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

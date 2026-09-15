@@ -94,7 +94,7 @@ function TrackOrderContent() {
     { title: 'Delivered', desc: 'Delivered safely to your hands' },
   ];
 
-  const waInquiryLink = `https://wa.me/9779819844486?text=${encodeURIComponent(
+  const waInquiryLink = `https://wa.me/9779713888002?text=${encodeURIComponent(
     `*Namaste NaturesMud Nepal!* 🙏\nI would like to inquire about the live delivery status of my order:\n\n📦 *Order Number:* ${orderId || 'NM-'}\n\nPlease update me on the courier dispatch. Thank you!`
   )}`;
 
@@ -159,7 +159,7 @@ function TrackOrderContent() {
                     rel="noopener noreferrer"
                     className="text-xs text-red-800 underline font-semibold mt-1 inline-block"
                   >
-                    Ask for help on WhatsApp (+977 9819844486) →
+                    Ask for help on WhatsApp (+977-9713888002) →
                   </a>
                 </div>
               </div>

@@ -87,7 +87,6 @@ export default function Header() {
   return (
     <>
       <header
-        style={{ position: 'sticky', top: 0, zIndex: 50 }}
         className={classNames(
           'sticky top-0 z-50 w-full max-w-full transition-all duration-300 pointer-events-auto',
           isScrolled

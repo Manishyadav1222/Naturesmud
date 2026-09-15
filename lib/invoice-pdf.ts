@@ -92,7 +92,7 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promis
     color: textMuted,
   });
 
-  page.drawText('PAN / Reg No: 610294857 | WhatsApp: +977 9819844486 | Email: info@naturesmud.shop', {
+  page.drawText('PAN / Reg No: 610294857 | WhatsApp: +977-9713888002 | Email: info@naturesmud.shop', {
     x: margin,
     y: height - 88,
     size: 8,
@@ -407,7 +407,7 @@ export async function generateInvoicePdfBuffer(order: InvoiceOrderInput): Promis
     color: textDark,
   });
 
-  page.drawText('For assistance, inquiries, or return requests: info@naturesmud.shop | WhatsApp: +977 9819844486', {
+  page.drawText('For assistance, inquiries, or return requests: info@naturesmud.shop | WhatsApp: +977-9713888002', {
     x: margin + 14,
     y: 58,
     size: 7,

@@ -53,7 +53,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         : [{ name: 'Himalayan Superfood Harvest', quantity: 1, price: 1500 }],
     };
 
-    const targetRecipient = recipientOverride || (recipientType === 'customer' ? orderInput.customerPhone : '9779819844486');
+    const targetRecipient = recipientOverride || (recipientType === 'customer' ? orderInput.customerPhone : '9779713888002');
 
     const result = await NotificationService.WhatsApp.sendNewOrder(orderInput, {
       forceResend,

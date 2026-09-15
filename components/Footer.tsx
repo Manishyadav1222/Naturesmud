@@ -8,13 +8,31 @@ import { footerLinks, siteConfig } from '@/lib/site';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [footerError, setFooterError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 3000);
+    if (!email) return;
+    setIsSubmitting(true);
+    setFooterError(null);
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setSubscribed(true);
+        setEmail('');
+        setTimeout(() => setSubscribed(false), 4000);
+      } else {
+        setFooterError('Failed to subscribe. Please try again.');
+      }
+    } catch {
+      setFooterError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -28,7 +46,7 @@ export default function Footer() {
       <div className="relative border-b border-white/10 bg-white/5">
         <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 py-3.5 sm:py-5 lg:py-6 grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
           {[
-            { icon: Truck, title: 'Free Delivery', text: 'Over Rs. 10,000', accent: 'from-primary-500/20 to-primary-600/20 text-primary-300' },
+            { icon: Truck, title: 'Free Delivery', text: 'Over Rs. 3,000', accent: 'from-primary-500/20 to-primary-600/20 text-primary-300' },
             { icon: Leaf, title: '0 Additives', text: 'Pure Himalayan', accent: 'from-secondary-500/20 to-secondary-600/20 text-secondary-300' },
             { icon: ShieldCheck, title: 'Quality Assured', text: 'Tested & Verified', accent: 'from-gold-500/20 to-gold-600/20 text-gold-300' },
           ].map((item) => (
@@ -142,23 +160,30 @@ export default function Footer() {
               <p className="text-xs text-white/70 mt-0.5">Subscribe for recipes, health tips, and flash sales.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex w-full sm:w-auto items-center gap-2 max-w-md">
-              <div className="relative flex-1 sm:w-60">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter email address"
-                  className="w-full rounded-xl bg-white/10 border border-white/15 px-3 py-2 text-xs text-white placeholder:text-white/40 focus:border-primary focus:outline-none transition-all"
-                />
+            <form onSubmit={handleSubmit} className="flex flex-col w-full sm:w-auto gap-2 max-w-md">
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1 sm:w-60">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter email address"
+                    disabled={isSubmitting}
+                    className="w-full rounded-xl bg-white/10 border border-white/15 px-3 py-2 text-xs text-white placeholder:text-white/40 focus:border-primary focus:outline-none transition-all disabled:opacity-50"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary-600 px-4 py-2 text-xs font-bold text-white shrink-0 active:scale-95 transition-all shadow-xs disabled:opacity-60"
+                >
+                  {subscribed ? 'Done ✓' : isSubmitting ? '...' : 'Subscribe'}
+                </button>
               </div>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary hover:bg-primary-600 px-4 py-2 text-xs font-bold text-white shrink-0 active:scale-95 transition-all shadow-xs"
-              >
-                {subscribed ? 'Done ✓' : 'Subscribe'}
-              </button>
+              {footerError && (
+                <p className="text-[10px] text-red-300 font-medium">{footerError}</p>
+              )}
             </form>
           </div>
         </div>

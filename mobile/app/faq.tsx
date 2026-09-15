@@ -100,7 +100,7 @@ const FAQ_DATA = [
       },
       {
         q: 'How do I request a refund?',
-        a: 'Contact us via WhatsApp (+977 9819844486) or email (hello@naturesmud.shop) with your order number and reason. Refunds are processed within 5–7 business days.',
+        a: 'Contact us via WhatsApp (+977-9713888002) or email (hello@naturesmud.shop) with your order number and reason. Refunds are processed within 5–7 business days.',
       },
       {
         q: 'What if my product arrived damaged?',
@@ -258,7 +258,7 @@ export default function FAQScreen() {
           <TouchableOpacity
             style={styles.ctaBtn}
             onPress={() => {
-              require('react-native').Linking.openURL('https://wa.me/9779819844486').catch(() => {});
+              require('react-native').Linking.openURL('https://wa.me/9779713888002').catch(() => {});
             }}
           >
             <Text style={styles.ctaBtnText}>Chat</Text>

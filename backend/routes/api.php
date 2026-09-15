@@ -56,6 +56,7 @@ Route::prefix('v1')->group(function () {
         Route::get('orders', [OrderController::class, 'index']);
         Route::get('orders/{orderNumber}', [OrderController::class, 'show']);
         Route::post('orders/{orderNumber}/cancel', [OrderController::class, 'cancel']);
+        Route::delete('orders/{order}', [OrderController::class, 'destroy']);
 
         Route::get('wishlist', [WishlistController::class, 'index']);
         Route::post('wishlist', [WishlistController::class, 'store']);

@@ -18,7 +18,7 @@ query
 *.tsbuildinfo
 NUL
 
-# Environment files
+# Environment files (NEVER commit these)
 .env
 .env.local
 .env.production
@@ -34,3 +34,16 @@ assetsphotovodeo/
 playwright-report/
 test-results/
 public/videos/
+
+# Root-level scratch & dev utility files (should not be in source)
+scratch*.js
+scratch*.php
+scratch*.html
+scratch-*.js
+scratch-*.html
+fix-auth-service.*
+restart.cjs
+upload-missing-images.cjs
+eng.traineddata
+RUN_ME.vbs
+FIX_HOSTS.bat

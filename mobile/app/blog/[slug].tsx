@@ -65,7 +65,7 @@ export default function BlogDetailScreen() {
 
   const handleWhatsApp = () => {
     Linking.openURL(
-      `https://wa.me/9779819844486?text=I%20read%20your%20article:%20${encodeURIComponent(post.title)}`
+      `https://wa.me/9779713888002?text=I%20read%20your%20article:%20${encodeURIComponent(post.title)}`
     ).catch(() => {});
   };
 

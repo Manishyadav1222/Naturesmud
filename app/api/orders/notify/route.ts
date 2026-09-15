@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join('\n');
 
-    let rawNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779819844486').replace(/[^0-9]/g, '');
+    let rawNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '9779713888002').replace(/[^0-9]/g, '');
     if (rawNumber.startsWith('977977')) {
       rawNumber = rawNumber.substring(3);
     }

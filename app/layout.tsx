@@ -82,8 +82,8 @@ export const metadata: Metadata = {
     images: ['/products/naturesmud-all-products-100g.jpg'],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-naturesmud',
-    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || 'yandex-verification-naturesmud',
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
   },
   other: {
     'geo.region': 'NP-BA',

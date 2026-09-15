@@ -120,7 +120,7 @@ export default function HomeScreen() {
 
   const handleWhatsApp = () => {
     Linking.openURL(
-      'https://wa.me/9779819844486?text=Namaste!%20I%20am%20interested%20in%20ordering%20GreenBasket%20organic%20produce.'
+      'https://wa.me/9779713888002?text=Namaste!%20I%20am%20interested%20in%20ordering%20GreenBasket%20organic%20produce.'
     ).catch(() => {});
   };
 

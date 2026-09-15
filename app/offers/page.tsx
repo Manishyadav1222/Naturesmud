@@ -322,7 +322,7 @@ export default function FestivalOffersPage() {
                     <div className="flex items-center gap-2.5 w-full sm:w-auto">
                       {/* Direct WhatsApp Order */}
                       <a
-                        href={`https://wa.me/9779819844486?text=${encodeURIComponent(
+                        href={`https://wa.me/9779713888002?text=${encodeURIComponent(
                           `Hello Nature's Mud Nepal! I want to order the combo: ${offer.title} (Discounted Price: Rs. ${offer.offerPrice}). Please deliver to my address.`
                         )}`}
                         target="_blank"

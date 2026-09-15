@@ -160,7 +160,7 @@ export default function WholesaleScreen() {
                   style={styles.waSuccessBtn}
                   onPress={() => {
                     const msg = `Namaste! I just applied for NaturesMud wholesale. My business: ${form.businessName}.`;
-                    require('react-native').Linking.openURL(`https://wa.me/9779819844486?text=${encodeURIComponent(msg)}`).catch(() => {});
+                    require('react-native').Linking.openURL(`https://wa.me/9779713888002?text=${encodeURIComponent(msg)}`).catch(() => {});
                   }}
                 >
                   <MessageCircle size={16} color="#FFFFFF" />

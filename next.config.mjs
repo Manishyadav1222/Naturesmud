@@ -5,12 +5,21 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   images: {
-    unoptimized: true,
+    // ✅ Remove unoptimized:true — re-enable WebP conversion and responsive sizing for LCP
     remotePatterns: [
-      { protocol: 'https', hostname: '**' },
-      { protocol: 'http', hostname: '**' },
+      // ✅ Only allow known trusted image sources (prevents SSRF abuse)
+      { protocol: 'https', hostname: 'naturesmud.shop' },
+      { protocol: 'https', hostname: 'naturesmud.com' },
+      { protocol: 'https', hostname: 'www.naturesmud.com' },
+      { protocol: 'https', hostname: 'www.naturesmud.shop' },
+      // Allow subdomain hosting e.g. cdn.naturesmud.shop, admin.naturesmud.shop
+      { protocol: 'https', hostname: '*.naturesmud.shop' },
+      { protocol: 'https', hostname: '*.naturesmud.com' },
     ],
     dangerouslyAllowSVG: true,
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [375, 640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'swiper', 'date-fns', 'clsx', 'tailwind-merge', 'sonner'],

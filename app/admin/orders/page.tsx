@@ -33,7 +33,9 @@ import {
   Radio,
   Sparkles,
   MessageCircle,
+  Trash2,
 } from 'lucide-react';
+import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
 
 interface Order {
   id: string;
@@ -116,6 +118,11 @@ export default function AdminOrdersPage() {
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const lastKnownFirstOrderIdRef = React.useRef<string | null>(null);
   const isInitialLoadRef = React.useRef<boolean>(true);
+
+  const [selectedOrders, setSelectedOrders] = useState<string[]>([]);
+  const [orderToDelete, setOrderToDelete] = useState<{ id: string; orderNumber: string } | null>(null);
+  const [showBulkDeleteDialog, setShowBulkDeleteDialog] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const canViewOrders = hasPermission(PERMISSIONS.VIEW_ORDERS);
   const canManageOrders = hasPermission(PERMISSIONS.MANAGE_ORDERS);
@@ -230,6 +237,52 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const confirmDeleteSingle = async () => {
+    if (!orderToDelete) return;
+    try {
+      setIsDeleting(true);
+      await api.delete(`/orders/${orderToDelete.id}`);
+      toast.success(`Order #${orderToDelete.orderNumber} deleted successfully.`);
+      setOrderToDelete(null);
+      setSelectedOrders(prev => prev.filter(id => id !== orderToDelete.id));
+      fetchOrders(false);
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to delete order');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const confirmBulkDelete = async () => {
+    if (selectedOrders.length === 0) return;
+    try {
+      setIsDeleting(true);
+      await api.post('/orders/bulk-delete', { ids: selectedOrders });
+      toast.success(`${selectedOrders.length} orders deleted successfully.`);
+      setSelectedOrders([]);
+      setShowBulkDeleteDialog(false);
+      fetchOrders(false);
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to delete selected orders');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedOrders.length === orders.length && orders.length > 0) {
+      setSelectedOrders([]);
+    } else {
+      setSelectedOrders(orders.map(o => o.id));
+    }
+  };
+
+  const toggleSelectOrder = (id: string) => {
+    setSelectedOrders(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
   const handleQuickSendWhatsApp = (order: Order) => {
     const custName = order.customer?.name || 'Valued Customer';
     const custEmail = order.customer?.email || '';
@@ -251,7 +304,7 @@ export default function AdminOrdersPage() {
       `🔒 *Admin Order Link:* https://naturesmud.shop/admin/orders/${order.id}`,
     ].filter(Boolean).join('\n');
 
-    const directUrl = `https://wa.me/9779819844486?text=${encodeURIComponent(lines)}`;
+    const directUrl = `https://wa.me/9779713888002?text=${encodeURIComponent(lines)}`;
     window.open(directUrl, '_blank');
 
     // Trigger server logging silently
@@ -261,7 +314,7 @@ export default function AdminOrdersPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         forceResend: true,
-        recipientOverride: '9779819844486',
+        recipientOverride: '9779713888002',
         orderData: {
           orderNumber: order.orderNumber,
           customerName: custName,
@@ -410,116 +463,187 @@ export default function AdminOrdersPage() {
           ) : undefined}
         />
       ) : (
-        <Card>
-          <CardContent className="p-0 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Order
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Customer
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Total
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Payment
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-100">
-                  {orders.map((order) => (
-                    <tr key={order.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <Link href={`/admin/orders/${order.id}`} className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50">
-                            <ShoppingCart className="h-4 w-4 text-primary-600" />
-                          </div>
-                          <span className="text-sm font-medium text-gray-900">
-                            {order.orderNumber || order.id.slice(0, 8)}
-                          </span>
-                        </Link>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <Link href={`/admin/orders/${order.id}`}>
-                          <p className="text-sm font-medium text-gray-900">
-                            {order.customer?.name || 'Guest'}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            {order.customer?.email || 'No email'}
-                          </p>
-                        </Link>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {formatDateTime(order.createdAt)}
-                        <p className="text-xs text-gray-400">{timeAgo(order.createdAt)}</p>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                        {formatNPR(order.grandTotal)}
-                        <p className="text-xs text-gray-400">{order.items?.length || 0} items</p>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {canManageOrders ? (
-                          <Select
-                            value={order.status}
-                            onChange={(e) => handleStatusChange(order.id, e.target.value)}
-                            className="text-xs w-32 py-1"
-                            options={FILTER_STATUS_OPTIONS.map(opt => ({ value: opt.value, label: opt.label }))}
-                          />
-                        ) : (
-                          <Badge className={STATUS_STYLES[order.status] || 'bg-gray-50 text-gray-700 border-gray-200'}>
-                            {order.status}
-                          </Badge>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <Badge className={PAYMENT_STATUS_STYLES[order.paymentStatus] || 'bg-gray-50 text-gray-700 border-gray-200'}>
-                          {order.paymentStatus}
-                        </Badge>
-                        <p className="mt-1 text-xs text-gray-400">{order.paymentMethod}</p>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right">
-                        <div className="flex items-center justify-end gap-1.5">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="h-8 px-2.5 text-[#25D366] hover:text-white hover:bg-[#25D366] border-emerald-300 shadow-2xs font-bold text-xs flex items-center gap-1 cursor-pointer"
-                            title="Send / Open in WhatsApp (+977 9819844486)"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleQuickSendWhatsApp(order);
-                            }}
-                          >
-                            <MessageCircle className="h-3.5 w-3.5" />
-                            <span>WhatsApp</span>
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => router.push(`/admin/orders/${order.id}`)}
-                          >
-                            <Eye className="h-4 w-4" />
-                            View
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <div className="space-y-4">
+          {selectedOrders.length > 0 && (
+            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 flex flex-wrap items-center justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#2D5A27] text-xs font-bold text-white">
+                  {selectedOrders.length}
+                </span>
+                <span className="text-sm font-bold text-emerald-950">
+                  {selectedOrders.length === 1 ? 'order selected' : 'orders selected'}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-xs font-bold bg-white"
+                  onClick={() => setSelectedOrders([])}
+                >
+                  Clear Selection
+                </Button>
+                {canManageOrders && (
+                  <Button
+                    size="sm"
+                    className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs"
+                    onClick={() => setShowBulkDeleteDialog(true)}
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                    <span>Delete Selected ({selectedOrders.length})</span>
+                  </Button>
+                )}
+              </div>
             </div>
+          )}
+
+          <Card>
+            <CardContent className="p-0 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 py-3 text-left w-10">
+                        <input
+                          type="checkbox"
+                          className="rounded border-gray-300 text-[#2D5A27] focus:ring-[#2D5A27] h-4 w-4 cursor-pointer"
+                          checked={orders.length > 0 && selectedOrders.length === orders.length}
+                          onChange={toggleSelectAll}
+                          title="Select All Orders"
+                        />
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Order
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Customer
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Date
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Total
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Status
+                      </th>
+                      <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Payment
+                      </th>
+                      <th className="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-100">
+                    {orders.map((order) => (
+                      <tr
+                        key={order.id}
+                        className={cn(
+                          "hover:bg-gray-50 transition-colors",
+                          selectedOrders.includes(order.id) && "bg-emerald-50/60"
+                        )}
+                      >
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          <input
+                            type="checkbox"
+                            className="rounded border-gray-300 text-[#2D5A27] focus:ring-[#2D5A27] h-4 w-4 cursor-pointer"
+                            checked={selectedOrders.includes(order.id)}
+                            onChange={() => toggleSelectOrder(order.id)}
+                          />
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <Link href={`/admin/orders/${order.id}`} className="flex items-center gap-3">
+                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50">
+                              <ShoppingCart className="h-4 w-4 text-primary-600" />
+                            </div>
+                            <span className="text-sm font-medium text-gray-900">
+                              {order.orderNumber || order.id.slice(0, 8)}
+                            </span>
+                          </Link>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <Link href={`/admin/orders/${order.id}`}>
+                            <p className="text-sm font-medium text-gray-900">
+                              {order.customer?.name || 'Guest'}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {order.customer?.email || 'No email'}
+                            </p>
+                          </Link>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {formatDateTime(order.createdAt)}
+                          <p className="text-xs text-gray-400">{timeAgo(order.createdAt)}</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                          {formatNPR(order.grandTotal)}
+                          <p className="text-xs text-gray-400">{order.items?.length || 0} items</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {canManageOrders ? (
+                            <Select
+                              value={order.status}
+                              onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                              className="text-xs w-32 py-1"
+                              options={FILTER_STATUS_OPTIONS.map(opt => ({ value: opt.value, label: opt.label }))}
+                            />
+                          ) : (
+                            <Badge className={STATUS_STYLES[order.status] || 'bg-gray-50 text-gray-700 border-gray-200'}>
+                              {order.status}
+                            </Badge>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <Badge className={PAYMENT_STATUS_STYLES[order.paymentStatus] || 'bg-gray-50 text-gray-700 border-gray-200'}>
+                            {order.paymentStatus}
+                          </Badge>
+                          <p className="mt-1 text-xs text-gray-400">{order.paymentMethod}</p>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right">
+                          <div className="flex items-center justify-end gap-1.5">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="h-8 px-2.5 text-[#25D366] hover:text-white hover:bg-[#25D366] border-emerald-300 shadow-2xs font-bold text-xs flex items-center gap-1 cursor-pointer"
+                              title="Send / Open in WhatsApp (+977-9713888002)"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleQuickSendWhatsApp(order);
+                              }}
+                            >
+                              <MessageCircle className="h-3.5 w-3.5" />
+                              <span>WhatsApp</span>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => router.push(`/admin/orders/${order.id}`)}
+                            >
+                              <Eye className="h-4 w-4" />
+                              View
+                            </Button>
+                            {canManageOrders && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-red-500 hover:text-red-700 hover:bg-red-50 h-8 px-2"
+                                title="Delete Order"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setOrderToDelete({ id: order.id, orderNumber: order.orderNumber });
+                                }}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             {/* Pagination */}
             <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200">
               <p className="text-sm text-gray-500">
@@ -548,7 +672,34 @@ export default function AdminOrdersPage() {
             </div>
           </CardContent>
         </Card>
+      </div>
       )}
+
+      {/* Single Delete Confirmation Dialog */}
+      <ConfirmDialog
+        open={!!orderToDelete}
+        onClose={() => setOrderToDelete(null)}
+        onConfirm={confirmDeleteSingle}
+        title="Delete Order Permanently"
+        description={`Are you sure you want to delete order #${orderToDelete?.orderNumber}? This will permanently remove the order, its purchased items, and status history.`}
+        confirmLabel={isDeleting ? 'Deleting...' : 'Delete Order'}
+        cancelLabel="Keep Order"
+        variant="danger"
+        loading={isDeleting}
+      />
+
+      {/* Bulk Delete Confirmation Dialog */}
+      <ConfirmDialog
+        open={showBulkDeleteDialog}
+        onClose={() => setShowBulkDeleteDialog(false)}
+        onConfirm={confirmBulkDelete}
+        title="Delete Selected Orders"
+        description={`Are you sure you want to permanently delete ${selectedOrders.length} selected orders? All associated items and records will be removed. This cannot be undone.`}
+        confirmLabel={isDeleting ? 'Deleting...' : `Delete ${selectedOrders.length} Orders`}
+        cancelLabel="Cancel"
+        variant="danger"
+        loading={isDeleting}
+      />
     </div>
   );
 }

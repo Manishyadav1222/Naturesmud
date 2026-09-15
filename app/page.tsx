@@ -381,6 +381,7 @@ export default function HomePage() {
                   href="https://www.instagram.com/naturesmud_official/"
                   className="btn-outline shrink-0 inline-flex items-center gap-1.5 text-xs"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Instagram className="w-4 h-4 text-rose-500" />
                   <span className="hidden sm:inline">@naturesmud_official</span>

@@ -7,8 +7,10 @@ use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class OrderController extends Controller
@@ -113,8 +115,53 @@ class OrderController extends Controller
             $orderStatus = $isPaidOnline ? 'processing' : 'pending';
             $paymentStatus = $isPaidOnline ? 'paid' : 'pending';
 
+            // If customer is checking out without being logged in, find or register them in users table
+            $userId = $request->user()?->id;
+            if (!$userId) {
+                $shippingEmail = !empty($validated['shipping_email']) ? trim($validated['shipping_email']) : null;
+                $shippingPhone = !empty($validated['shipping_phone']) ? trim($validated['shipping_phone']) : null;
+
+                $user = null;
+                if ($shippingEmail) {
+                    $user = User::where('email', $shippingEmail)->first();
+                }
+                if (!$user && $shippingPhone) {
+                    $user = User::where('phone', $shippingPhone)->first();
+                }
+
+                if (!$user) {
+                    $cleanDigits = preg_replace('/[^0-9]/', '', (string)$shippingPhone);
+                    $fallbackEmail = $shippingEmail ?: ($cleanDigits ? "guest_{$cleanDigits}@naturesmud.shop" : 'guest_' . Str::random(8) . '@naturesmud.shop');
+                    $user = User::create([
+                        'name' => $validated['shipping_name'],
+                        'email' => $fallbackEmail,
+                        'phone' => $shippingPhone,
+                        'password' => Hash::make(Str::random(24)),
+                        'is_active' => true,
+                    ]);
+
+                    \App\Models\Address::create([
+                        'user_id' => $user->id,
+                        'label' => 'Shipping',
+                        'name' => $validated['shipping_name'],
+                        'phone' => $shippingPhone,
+                        'address_line1' => $validated['shipping_address'],
+                        'city' => $validated['shipping_city'],
+                        'zone' => $validated['shipping_zone'] ?? null,
+                        'country' => 'Nepal',
+                        'is_default' => true,
+                    ]);
+                } else {
+                    if (empty($user->phone) && $shippingPhone) {
+                        $user->phone = $shippingPhone;
+                        $user->save();
+                    }
+                }
+                $userId = $user->id;
+            }
+
             $order = Order::create([
-                'user_id' => $request->user()?->id,
+                'user_id' => $userId,
                 'order_number' => 'NM-' . strtoupper(Str::random(10)),
                 'status' => $orderStatus,
                 'payment_status' => $paymentStatus,
@@ -258,5 +305,31 @@ class OrderController extends Controller
         }
 
         return response()->json(['message' => 'Order cancelled.']);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        abort_unless($request->user() && $request->user()->hasRole('admin'), 403);
+
+        return DB::transaction(function () use ($id) {
+            $order = is_numeric($id)
+                ? Order::find($id)
+                : Order::where('order_number', $id)->first();
+
+            if (!$order) {
+                return response()->json(['message' => 'Order not found.'], 404);
+            }
+
+            // Clean up related reviews, histories, and items before deleting order
+            DB::table('reviews')->where('order_id', $order->id)->delete();
+            $order->statusHistories()->delete();
+            $order->items()->delete();
+            $order->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order deleted successfully.',
+            ]);
+        });
     }
 }

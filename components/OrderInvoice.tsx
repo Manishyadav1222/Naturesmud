@@ -130,7 +130,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
       .filter(Boolean)
       .join('\n');
 
-    return `https://wa.me/9779819844486?text=${encodeURIComponent(lines)}`;
+    return `https://wa.me/9779713888002?text=${encodeURIComponent(lines)}`;
   };
 
   const content = (
@@ -211,7 +211,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
             </p>
             <p className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />
-              +977 9819844486 (Customer Care / WhatsApp)
+              +977-9713888002 (Customer Care / WhatsApp)
             </p>
             <p className="flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-[#2D5A27] shrink-0" />
@@ -377,7 +377,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
       {/* Footer Notes */}
       <div className="mt-8 pt-6 border-t border-gray-100 text-center text-xs text-gray-400 space-y-1">
         <p className="font-bold text-gray-600">Dhanyabad for supporting local Himalayan farmers! 🌿</p>
-        <p>For inquiries, order status, or returns, contact WhatsApp: <strong>+977 9819844486</strong></p>
+        <p>For inquiries, order status, or returns, contact WhatsApp: <strong>+977-9713888002</strong></p>
         <p className="text-[10px] text-gray-400">Nature&apos;s Mud Nepal · Pure Food · Real Nature · 100% Chemical-Free</p>
       </div>
     </div>

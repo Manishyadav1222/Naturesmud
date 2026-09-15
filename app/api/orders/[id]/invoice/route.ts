@@ -87,7 +87,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
       source?.customerPhone ||
       source?.shipping_phone ||
       url.searchParams.get('phone') ||
-      '+977 9819844486';
+      '+977-9713888002';
 
     const customerEmail =
       source?.customerEmail ||

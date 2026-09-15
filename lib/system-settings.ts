@@ -40,7 +40,7 @@ const DEFAULT_SETTINGS: SystemSettings = {
   supportEmail: 'support@naturesmud.com',
   supportPhone: '+977-1-5550123',
   address: 'Kathmandu, Nepal',
-  whatsapp: '+977-9819844486',
+  whatsapp: '+977-9713888002',
   facebook: 'https://facebook.com/naturesmud',
   instagram: 'https://instagram.com/naturesmud',
   tiktok: 'https://tiktok.com/@naturesmud',

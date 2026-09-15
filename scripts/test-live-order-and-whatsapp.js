@@ -49,7 +49,7 @@ async function runLiveOrderTest() {
       { product_id: 2, quantity: 1 }
     ],
     shipping_name: 'Test Customer',
-    shipping_phone: '9819844486',
+    shipping_phone: '+977-9713888002',
     shipping_email: 'test.customer@naturesmud.shop',
     shipping_address: 'Gongabu Chowk, Kathmandu',
     shipping_city: 'Kathmandu',
@@ -73,7 +73,7 @@ async function runLiveOrderTest() {
       const notifyPayload = {
         orderNumber: orderNumber,
         customerName: 'Test Customer',
-        customerPhone: '+9779819844486',
+        customerPhone: '+977-9713888002',
         customerEmail: 'test.customer@naturesmud.shop',
         shippingAddress: 'Gongabu Chowk, Kathmandu',
         shippingCity: 'Kathmandu',

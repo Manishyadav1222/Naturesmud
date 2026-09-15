@@ -21,7 +21,7 @@ export default function AdminSettingsPage() {
     supportEmail: 'support@naturesmud.com',
     supportPhone: '+977-1-5550123',
     address: 'Kathmandu, Nepal',
-    whatsapp: '+977-9819844486',
+    whatsapp: '+977-9713888002',
     facebook: 'https://facebook.com/naturesmud',
     instagram: 'https://instagram.com/naturesmud',
     tiktok: 'https://tiktok.com/@naturesmud',
@@ -156,7 +156,7 @@ export default function AdminSettingsPage() {
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-700">Business WhatsApp Alert Number</label>
                   <Input
-                    placeholder="+977-9819844486"
+                    placeholder="+977-9713888002"
                     value={settings.whatsapp}
                     onChange={(e) => updateField('whatsapp', e.target.value)}
                   />
@@ -184,7 +184,7 @@ export default function AdminSettingsPage() {
                   <span>📱</span> How to activate 100% Free Automatic WhatsApp in 30 seconds:
                 </p>
                 <ol className="list-decimal list-inside space-y-1 text-amber-800 text-[11px]">
-                  <li>Open your WhatsApp on phone (<span className="font-mono font-bold">+977 9819844486</span>).</li>
+                  <li>Open your WhatsApp on phone (<span className="font-mono font-bold">+977-9713888002</span>).</li>
                   <li>Send this exact message to CallMeBot: <span className="font-mono bg-white px-1.5 py-0.5 rounded border font-bold">I allow callmebot to send me messages</span> to number: <span className="font-mono font-bold">+34 644 44 20 48</span> or <span className="font-mono font-bold">+34 644 97 54 81</span>.</li>
                   <li>CallMeBot will immediately reply to you on WhatsApp with your personal <strong>apikey</strong>.</li>
                   <li>Paste that API Key in the field above and click <strong>Save Changes</strong>. That's it! Every new order will instantly ding your WhatsApp automatically!</li>

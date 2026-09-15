@@ -25,7 +25,7 @@ export default function ShippingPolicyPage() {
             </ol>
           </nav>
           <h1 className="font-heading font-bold text-3xl sm:text-4xl text-[#2B2B2B]">Shipping Policy</h1>
-          <p className="text-gray-600 mt-2">Last updated: January 2025</p>
+          <p className="text-gray-600 mt-2">Last updated: September 2026</p>
         </div>
       </section>
 
