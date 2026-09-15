@@ -24,6 +24,295 @@ export interface ExtendedBlogPost extends BlogPost {
 
 // Generate the master 100 comprehensive SEO blogs catalog
 export const allBlogPosts: ExtendedBlogPost[] = [
+  // ─── NEW FEATURED BLOG POSTS ───────────────────────────────────────────────
+  {
+    id: "b-dates-powder-natural-sweetener-nepal",
+    title: "Dates Powder: Nature's Perfect Sugar Substitute for Babies, Diabetics & Every Nepali Kitchen",
+    slug: "dates-powder-natural-sweetener-baby-food-diabetic-nepal",
+    excerpt: "Swap refined white sugar forever. Pure NaturesMud Dates Powder delivers caramel-rich sweetness packed with iron, potassium, and natural fibre — making it Nepal's safest sweetener for infants from 6 months, pregnant mothers, and anyone managing blood sugar.",
+    category: "Nutrition & Superfoods",
+    date: "2026-09-15",
+    author: "NaturesMud Nutrition Council",
+    readTime: 7,
+    featured: true,
+    image: "/products/dates-powder-jar-2k.jpg",
+    tags: [
+      "dates powder nepal",
+      "natural sugar substitute nepal",
+      "baby food sweetener nepal",
+      "dates powder benefits",
+      "organic sweetener kathmandu",
+      "iron rich food baby",
+      "low glycemic sweetener nepal"
+    ],
+    featuredProductSlug: "dates-powder",
+    featuredProductName: "Pure Dates Powder — 100g",
+    featuredProductPrice: 450,
+    featuredProductImage: "/products/dates-powder-jar-2k.jpg",
+    metaDescription: "Discover why NaturesMud Dates Powder is Nepal's best natural sugar substitute. Safe for babies from 6 months, diabetics, and pregnant mothers. Rich in iron, potassium, and natural fibre.",
+    keyTakeaways: [
+      "Zero Refined Sugar: Dates powder is 100% single-ingredient — whole dates slow-dehydrated and stone-ground with zero additives, fillers, or preservatives whatsoever.",
+      "Safe for Babies from 6 Months: Unlike honey (botulism risk) or white sugar (empty calories), dates powder provides essential iron, magnesium, and natural energy for growing infants during weaning.",
+      "Low Glycemic Index (~42 vs White Sugar ~65): The natural fructose in dates is buffered by dietary fibre, causing a much gentler, sustained blood sugar rise — ideal for diabetics and insulin-sensitive individuals.",
+      "Caramel-Butterscotch Flavour Profile: Enhances porridge, smoothies, baked goods, and warm milk without the harsh sweetness or chemical aftertaste of refined sugar or artificial sweeteners."
+    ],
+    tableOfContents: [
+      { id: "what-is-dates-powder", title: "What Is Dates Powder & How Is It Made?" },
+      { id: "baby-food-use", title: "Using Dates Powder for Baby Weaning (6–18 Months)" },
+      { id: "diabetic-safe", title: "Is Dates Powder Safe for Diabetics?" },
+      { id: "nutrition-profile", title: "Full Nutritional Profile: Iron, Potassium & Fibre" },
+      { id: "recipes", title: "5 Easy Dates Powder Recipes for Nepali Kitchens" },
+      { id: "vs-jaggery", title: "Dates Powder vs Jaggery vs Honey vs White Sugar" }
+    ],
+    faqs: [
+      {
+        question: "Can I give dates powder to my 6-month-old baby?",
+        answer: "Yes! Pure dates powder is one of the safest and most nutritious sweeteners for infants from 6 months onwards. Unlike honey, it carries no botulism risk. Unlike refined sugar, it provides iron, fibre, and natural energy. Simply stir a small pinch (1/4 tsp) into rice porridge or dal soup and gradually increase over time."
+      },
+      {
+        question: "Does dates powder raise blood sugar like white sugar?",
+        answer: "No. Dates powder has a Glycemic Index of approximately 42 — significantly lower than white sugar (GI 65) and even lower than many commercial jaggeries. The natural dietary fibre in whole dates buffers fructose absorption, resulting in a gentler, sustained energy curve without insulin spikes. However, diabetics should still practice portion control and consult their doctor."
+      },
+      {
+        question: "How much dates powder equals 1 tablespoon of sugar?",
+        answer: "Use approximately 1.25 tablespoons of dates powder to replace 1 tablespoon of white sugar due to the slightly milder intensity. Since dates powder also adds caramel-depth and fibre, you may find you actually need less overall sweetener in recipes."
+      }
+    ],
+    content: [
+      "### What Is Dates Powder & How Is It Made?",
+      "NaturesMud Dates Powder is created from a single, pure ingredient: **whole, ripe Medjool and Deglet Nour dates** sourced from premium arid orchards, slowly dehydrated at low temperatures below 45°C to preserve every enzyme, vitamin, and mineral. Once perfectly dehydrated, the dates are stone-ground into a fine caramel-brown powder with zero additives, zero preservatives, and absolutely nothing else.",
+      "Unlike commercial jaggery which often contains sulfur dioxide bleaching agents, or refined white sugar which is stripped of all nutritional value during chemical processing, NaturesMud Dates Powder is a true whole-food sweetener — every tablespoon carries the complete nutrition of real dates.",
+      "",
+      "### Using Dates Powder for Baby Weaning (6–18 Months)",
+      "The **6-month weaning window** is one of the most critical nutritional periods in a child's life. Paediatric nutrition guidelines are clear: **no added sugar, no honey, no artificial sweeteners** for babies under one year. Dates powder is the *only* sweet ingredient that checks every safety box:",
+      "- ✅ **No botulism risk** (safe from 6 months unlike honey)",
+      "- ✅ **Natural iron content** supports brain oxygenation and red blood cell development",
+      "- ✅ **Dietary fibre** prevents constipation — a common issue during food introduction",
+      "- ✅ **Natural fructose** provides gentle, sustained energy without sugar crashes",
+      "**Starter recipe for 6–8 month babies:** Stir 1/4 teaspoon of NaturesMud Dates Powder into 3 tablespoons of rice porridge cooked in breast milk. The caramel notes naturally encourage acceptance of new solid foods without training a preference for refined sweetness.",
+      "",
+      "### Is Dates Powder Safe for Diabetics?",
+      "The answer depends on quantity, but dates powder's **Glycemic Index of ~42** makes it one of the safest whole-food sweeteners available. The key mechanism is dietary fibre: whole-date fibre slows intestinal glucose absorption, preventing the sharp insulin spikes caused by sucrose or glucose syrups.",
+      "Clinical nutritionists in Nepal increasingly recommend dates powder as a 1-for-1 sugar replacement in controlled amounts (1–2 teaspoons per serving) for Type 2 diabetic patients seeking to eliminate refined sugar without sacrificing the pleasures of sweet chai, porridge, or desserts. Always monitor your blood glucose response individually.",
+      "",
+      "### Full Nutritional Profile: Iron, Potassium & Fibre",
+      "Per 100g of pure dates powder, you receive approximately:",
+      "- **Iron:** 0.9mg (supports red blood cell production and prevents anaemia)",
+      "- **Potassium:** 696mg (heart health, blood pressure regulation)",
+      "- **Dietary Fibre:** 6.7g (gut microbiome health, satiety)",
+      "- **Magnesium:** 54mg (muscle relaxation, sleep quality)",
+      "- **Natural Sugars:** 63g (predominantly fructose and glucose — no sucrose)",
+      "- **Calories:** 282 kcal per 100g (vs 387 kcal for white sugar — 27% fewer calories!)",
+      "- **Vitamin B6:** supports serotonin production and mood regulation",
+      "",
+      "### 5 Easy Dates Powder Recipes for Nepali Kitchens",
+      "**1. Dates Powder Morning Chai:** Add 1 tsp to freshly brewed black or ginger tea. Caramel depth enhances Masala Chai beautifully — no more refined sugar ever.",
+      "**2. Baby Daliya Porridge:** Cook broken wheat daliya in water, stir in 1/2 tsp dates powder and a pinch of cardamom. Perfect weaning food for 8-month-old babies.",
+      "**3. Dates Powder Lassi:** Blend 200ml yogurt with 1 tsp dates powder, a pinch of black salt, and ice. A naturally sweet, probiotic-rich summer drink.",
+      "**4. Healthy Banana Bread (No Sugar):** Replace all white sugar in your banana bread recipe with an equal weight of dates powder. Adds moisture, natural caramel notes, and significantly more nutrition.",
+      "**5. Dates Oats Energy Balls:** Mix 2 cups rolled oats, 4 tbsp dates powder, 2 tbsp almond butter, and 1 tbsp chia seeds. Roll into balls and refrigerate. A perfect pre-workout or school tiffin snack.",
+      "",
+      "### Dates Powder vs Jaggery vs Honey vs White Sugar",
+      "| Sweetener | GI Index | Iron | Safe for Babies | Additives | Calories/100g |",
+      "|-----------|----------|------|-----------------|-----------|---------------|",
+      "| **Dates Powder** | ~42 | ✅ Yes | ✅ From 6 months | ❌ None | 282 kcal |",
+      "| Jaggery | ~55 | Moderate | ⚠️ Limited | Often SO₂ | 383 kcal |",
+      "| Honey | ~58 | ❌ No | ❌ Under 1 year | Varies | 304 kcal |",
+      "| White Sugar | 65 | ❌ No | ❌ Not recommended | Yes | 387 kcal |",
+      "",
+      "The verdict is clear. If you are serious about clean nutrition for your family — especially your infant, a pregnant mother, or managing blood sugar — NaturesMud Dates Powder is the only sweetener you need on your kitchen shelf.",
+      "### Shop NaturesMud Dates Powder",
+      "Available in 100g, 250g, and 500g resealable kraft pouches with free shipping on orders above Rs. 3,000. Every batch is third-party tested for purity — no sulfates, no added sugar, no filler starches."
+    ]
+  },
+  {
+    id: "b-himalayan-almonds-brain-immunity-nepal",
+    title: "Raw Himalayan Almonds: The Ultimate Brain Food & Immunity Shield for Nepal's High-Altitude Lifestyle",
+    slug: "raw-himalayan-almonds-brain-food-immunity-nutrition-nepal",
+    excerpt: "Discover why NaturesMud's raw, unsalted Himalayan almonds — grown at 2,000m+ altitude in pristine mountain orchards — deliver 50% more nutrient density than store-bought roasted almonds. A complete guide to benefits, daily recipes, and why they're Nepal's top brain and heart food.",
+    category: "Superfoods & Brain Health",
+    date: "2026-09-14",
+    author: "NaturesMud Nutrition Council",
+    readTime: 6,
+    featured: true,
+    image: "/products/authentic-almonds.jpg",
+    tags: [
+      "himalayan almonds nepal",
+      "raw almonds kathmandu",
+      "brain food nepal",
+      "almond benefits",
+      "organic almonds nepal",
+      "vitamin e food nepal",
+      "heart healthy food nepal"
+    ],
+    featuredProductSlug: "raw-himalayan-almonds",
+    featuredProductName: "Raw Himalayan Mountain Almonds — 200g",
+    featuredProductPrice: 750,
+    featuredProductImage: "/products/authentic-almonds.jpg",
+    metaDescription: "Raw Himalayan Almonds from NaturesMud Nepal: richer in Vitamin E, magnesium, and brain-healthy fats than regular almonds. Full nutrition guide, daily recipes, and immunity benefits.",
+    keyTakeaways: [
+      "High-Altitude Advantage: Almonds grown at 2,000m+ in Nepal's mountain valleys develop 30–50% higher antioxidant and mineral concentrations due to intense UV exposure and temperature variance.",
+      "Brain & Nervous System: A single 30g handful delivers 7.3mg of Vitamin E — 49% of your daily requirement — protecting neurons from oxidative damage and supporting memory and focus.",
+      "Heart Health & Cholesterol: Regular almond consumption lowers LDL 'bad' cholesterol by 5–10% within 4 weeks through monounsaturated oleic acids and plant sterols.",
+      "Eat Raw, Not Roasted: High-heat roasting (>180°C) destroys up to 40% of Vitamin E and oxidises delicate polyunsaturated fats into pro-inflammatory compounds. Always choose raw."
+    ],
+    tableOfContents: [
+      { id: "high-altitude-difference", title: "Why Himalayan Almonds Are Superior" },
+      { id: "brain-food", title: "Almonds as Nepal's #1 Brain Food" },
+      { id: "heart-health", title: "Heart Health & Cholesterol Management" },
+      { id: "raw-vs-roasted", title: "Raw vs Roasted: The Critical Difference" },
+      { id: "daily-use", title: "How Many Almonds Per Day?" },
+      { id: "recipes", title: "5 Himalayan Almond Recipes for Nepali Families" }
+    ],
+    faqs: [
+      {
+        question: "How many raw almonds should I eat per day?",
+        answer: "The optimal amount is 20–25 raw almonds per day (approximately 30g). This quantity provides meaningful Vitamin E, magnesium, and heart-healthy fats without excessive caloric intake. Eating more than 40–50g daily provides diminishing nutritional returns and excess calories."
+      },
+      {
+        question: "Should I soak almonds overnight before eating?",
+        answer: "Soaking for 8–12 hours removes phytic acid — a natural compound that binds to minerals like zinc and iron and reduces their absorption. Soaked almonds are softer, easier to digest, and deliver higher bioavailable nutrients. Drain, rinse, and eat fresh. For maximum Vitamin E, however, consume raw unskinned (brown-skin on) almonds as the skin contains powerful antioxidant tannins."
+      },
+      {
+        question: "Are NaturesMud almonds roasted or salted?",
+        answer: "NaturesMud Himalayan Almonds are 100% raw, unroasted, and completely unsalted — just pure almonds as nature intended. We never apply heat treatment, oils, or salt coatings that degrade nutritional value and add unnecessary sodium."
+      }
+    ],
+    content: [
+      "### Why Himalayan Almonds Are Superior",
+      "Not all almonds are equal. Almonds sold loose in Kathmandu's Asan and Indrachowk bazaars frequently arrive from California or Australia — grown at near-sea-level with heavy irrigation, pesticides, and often fumigated with propylene oxide (PPO) for export compliance. By the time they reach your kitchen in Nepal, months of transit and storage have degraded the delicate polyunsaturated fats.",
+      "**NaturesMud Himalayan Almonds** are sourced from traditional orchard communities at 1,800m to 2,400m elevation in Nepal's pristine mountain zones. At these altitudes, almond trees experience significant UV intensity and dramatic day-night temperature swings — forcing the tree to synthesize **concentrated bioactive compounds** for cellular protection:",
+      "- **30–50% higher Vitamin E** concentrations vs lowland almonds",
+      "- **Elevated polyphenolic antioxidants** (catechins, flavonoids, chlorogenic acid)",
+      "- **Zero pesticide residues** — traditional mountain orchards never require synthetic chemical inputs",
+      "- **Harvested fresh, never fumigated** — delivered to NaturesMud's facility within weeks, not months",
+      "",
+      "### Almonds as Nepal's #1 Brain Food",
+      "The human brain is approximately **60% fat by dry weight** — and the specific type of fat consumed directly determines cognitive performance, memory formation, and protection against age-related neurodegeneration. Raw almonds provide three critical brain nutrients in a single convenient handful:",
+      "**1. Vitamin E (Alpha-Tocopherol):** 30g of raw almonds delivers 7.3mg — nearly half your daily requirement. Vitamin E is a potent fat-soluble antioxidant that resides directly within neuronal cell membranes, neutralising free radical damage from Kathmandu's air pollution, screen radiation, and metabolic stress.",
+      "**2. Magnesium:** 76mg per 30g serving. Magnesium activates over 300 enzymatic reactions in the brain including NMDA receptor regulation — the brain's primary learning and memory receptor. Deficiency (extremely common in Nepal's urban population eating processed food) directly causes brain fog, anxiety, poor sleep, and mood instability.",
+      "**3. Monounsaturated Oleic Acid:** The same fatty acid found in premium olive oil. Oleic acid maintains the fluidity and permeability of neuronal membranes, enhancing electrical signal transmission speed between brain cells.",
+      "",
+      "### Heart Health & Cholesterol Management",
+      "The science is robust and consistent: **consuming 30g of raw almonds daily for 4 weeks reduces LDL (bad) cholesterol by 5–10%** without medication in multiple peer-reviewed clinical trials. The mechanisms are multiple:",
+      "- **Phytosterols** in the almond skin directly compete with dietary cholesterol for intestinal absorption, reducing net cholesterol uptake",
+      "- **Arginine** (an amino acid abundant in almonds) is the direct biochemical precursor to nitric oxide — which dilates arteries, lowers blood pressure, and prevents arterial plaque",
+      "- **Soluble dietary fibre** binds bile acids (made from cholesterol) in the gut and removes them via excretion, forcing the liver to pull LDL from the bloodstream to make new bile",
+      "For Kathmandu's high-stress, sedentary office population eating ghee-heavy traditional meals, daily raw almonds represent one of the simplest, most evidence-based dietary interventions for cardiovascular risk reduction.",
+      "",
+      "### Raw vs Roasted: The Critical Difference",
+      "Roasting almonds above 160–180°C causes significant, measurable nutritional degradation:",
+      "- **Vitamin E destruction:** Up to 40% loss at standard commercial roasting temperatures",
+      "- **Oxidised fats:** Polyunsaturated fats become oxidised during roasting, creating lipid peroxides — pro-inflammatory compounds that contribute to the very cardiovascular damage almonds are supposed to prevent",
+      "- **Advanced Glycation End Products (AGEs):** High-heat processing of any nut creates inflammatory AGE compounds linked to accelerated cellular ageing",
+      "- **Salt coating:** Commercial roasted almonds add 150–400mg sodium per 30g serving",
+      "**Always choose raw.** NaturesMud Himalayan Almonds are delivered exactly as harvested — raw, unsalted, unprocessed — so every handful delivers the full, uncompromised nutritional profile nature designed.",
+      "",
+      "### 5 Himalayan Almond Recipes for Nepali Families",
+      "**1. Morning Soaked Almonds:** Soak 20 almonds overnight in cold water. Drain in morning, slip off skins if desired, eat on empty stomach with warm water for maximum absorption.",
+      "**2. Almond & Dates Power Smoothie:** Blend 15 soaked almonds + 1 tsp NaturesMud Dates Powder + 1 banana + 200ml oat milk. Nutritionally complete breakfast for children and adults.",
+      "**3. Almond-Crusted Momo Topping:** Crush raw almonds coarsely, toast lightly in a dry pan, and sprinkle over steamed vegetable momos with a drizzle of sesame oil. A Kathmandu fusion classic.",
+      "**4. Homemade Almond Milk:** Blend 1 cup soaked almonds with 4 cups fresh water, strain through cloth. Sweeten lightly with 1 tsp dates powder. Far superior to commercial carton almond milk.",
+      "**5. Almond Kheer (No Sugar):** Cook 2 cups milk with 30 soaked, blended almonds, 1 tbsp NaturesMud Dates Powder, cardamom and saffron. A guilt-free festival dessert."
+    ]
+  },
+  {
+    id: "b-dehydrated-apple-gut-health-himalaya",
+    title: "Dehydrated Apple Rings: Nepal's Crunchiest Gut-Healing Snack with Zero Sugar, Preservatives or Guilt",
+    slug: "dehydrated-apple-rings-gut-health-fibre-snack-nepal",
+    excerpt: "NaturesMud's dehydrated Himalayan apple rings lock in 100% of the fruit's pectin, quercetin, and natural fibre at low-temperature — delivering a crisp, intensely flavoured snack that heals your gut, feeds your microbiome, and eliminates ultra-processed chip cravings completely.",
+    category: "Clean Snacking & Gut Health",
+    date: "2026-09-13",
+    author: "NaturesMud Nutrition Council",
+    readTime: 5,
+    featured: true,
+    image: "/products/authentic-dehydrated-apple.jpg",
+    tags: [
+      "dehydrated apple nepal",
+      "healthy snack kathmandu",
+      "gut health food nepal",
+      "sugar free snack nepal",
+      "dried fruit nepal",
+      "school snack nepal",
+      "apple chips nepal"
+    ],
+    featuredProductSlug: "dehydrated-apple",
+    featuredProductName: "Dehydrated Himalayan Apple Rings — 150g",
+    featuredProductPrice: 380,
+    featuredProductImage: "/products/authentic-dehydrated-apple.jpg",
+    metaDescription: "NaturesMud Dehydrated Apple Rings: zero added sugar, zero preservatives, 100% Himalayan apples. Rich in pectin fibre for gut health. Nepal's cleanest, crunchiest healthy snack.",
+    keyTakeaways: [
+      "100% Single Ingredient: Just pure Himalayan apples — no sugar coating, no sulfur dioxide preservatives, no artificial apple flavouring, no fillers whatsoever.",
+      "Gut Microbiome Powerhouse: Each serving delivers 2–3g of pectin — a prebiotic soluble fibre that feeds Bifidobacterium and Lactobacillus colonies, reducing bloating and improving bowel regularity.",
+      "Quercetin Concentration: Dehydration concentrates quercetin (apple's signature antioxidant) 8–10x compared to fresh apple. Quercetin is a potent anti-inflammatory and natural antihistamine.",
+      "Perfect School & Office Snack: Lightweight, non-perishable, mess-free, and naturally sweet — the ideal replacement for chips, biscuits, and packaged junk food for children and adults alike."
+    ],
+    tableOfContents: [
+      { id: "low-temp-dehydration", title: "Low-Temperature Dehydration: Why It Matters" },
+      { id: "gut-health", title: "Pectin & Your Gut Microbiome" },
+      { id: "quercetin-power", title: "Quercetin: The Apple's Secret Weapon" },
+      { id: "school-snack", title: "The Perfect School & Office Snack" },
+      { id: "vs-commercial", title: "vs Commercial Dried Fruit: What's in the Packet?" },
+      { id: "serving-ideas", title: "6 Creative Ways to Use Dehydrated Apple Rings" }
+    ],
+    faqs: [
+      {
+        question: "Do NaturesMud dehydrated apple rings have added sugar?",
+        answer: "Absolutely not. Our dehydrated apple rings contain a single ingredient: 100% pure Himalayan apples. No sugar, no honey glaze, no sulfur dioxide preservatives, no artificial flavourings. The natural sweetness comes entirely from the fruit's inherent fructose concentrated during dehydration."
+      },
+      {
+        question: "How long do dehydrated apple rings last?",
+        answer: "When stored in a cool, dry place away from direct sunlight in the sealed kraft pouch, NaturesMud Dehydrated Apple Rings remain fresh for 6–9 months. Once opened, consume within 30 days and reseal the pouch between uses. Refrigeration extends shelf life further."
+      },
+      {
+        question: "Are they safe for children's school tiffin boxes?",
+        answer: "Yes — they are one of the safest possible school snack foods. No nut allergens, no added sugar, no artificial colours or flavours. A 30g serving provides meaningful fibre and antioxidants. Children typically love the intense, naturally sweet apple flavour and satisfying crunch."
+      }
+    ],
+    content: [
+      "### Low-Temperature Dehydration: Why It Matters",
+      "Walk through any Kathmandu supermarket and you'll find shelves of 'dried fruit' — mangoes glistening with sugar syrup, raisins coated in mineral oil, packaged apricots soaked in sulfur dioxide to maintain their artificial orange colour. These are not health foods. They are confectionery with a healthy marketing label.",
+      "NaturesMud Dehydrated Apple Rings are produced through an entirely different philosophy. **Whole Himalayan apples** — grown without synthetic pesticides in traditional orchards above 2,000m elevation — are cored, sliced into 8mm rings, and placed in solar-assisted dehydration chambers maintained strictly between **40°C and 48°C** for 18–24 hours.",
+      "This low-temperature, slow-dehydration process is critical because:",
+      "- **Enzymes survive:** Food enzymes (amylase, lipase, protease) that aid your own digestion remain active below 48°C",
+      "- **Vitamin C is preserved:** High-heat drying destroys 80%+ of ascorbic acid. Low-temp dehydration retains 60–70%",
+      "- **Pectin integrity maintained:** Pectin fibre molecular structure remains intact and functional at low temperatures, while high-heat processing degrades it",
+      "- **Quercetin concentration without oxidation:** Slow dehydration concentrates quercetin without triggering oxidative degradation",
+      "",
+      "### Pectin & Your Gut Microbiome",
+      "You've heard about probiotics — live bacteria added to yogurt and supplements. But the real frontier of gut science is **prebiotics**: the specific dietary fibres that feed and grow your existing beneficial bacteria colonies.",
+      "**Pectin** — the soluble fibre that gives cooked apple its jammy, gel-like texture — is one of the most potent prebiotic compounds in any whole food. Each 30g serving of NaturesMud Dehydrated Apple Rings delivers **2–3g of pectin**, which:",
+      "- **Selectively feeds Bifidobacterium and Lactobacillus** — the 'good' bacteria associated with immune regulation, mood, and metabolic health",
+      "- **Ferments into Short-Chain Fatty Acids (SCFAs)** including butyrate — the primary fuel for colonocytes (colon cells), maintaining gut wall integrity and preventing leaky gut syndrome",
+      "- **Lowers LDL cholesterol** by binding bile acids in the intestine and removing them from circulation",
+      "- **Slows gastric emptying,** producing lasting satiety that prevents overeating and blood sugar spikes",
+      "For Kathmandu's rapidly growing population experiencing IBS, bloating, constipation, and gut dysbiosis from antibiotic overuse and processed food consumption, daily dehydrated apple is one of the most accessible, evidence-based dietary interventions available.",
+      "",
+      "### Quercetin: The Apple's Secret Weapon",
+      "The old adage 'an apple a day keeps the doctor away' has a biochemical explanation: **quercetin**, a flavonoid antioxidant concentrated in apple skin. Dehydrating apples concentrates quercetin **8–10 times** compared to fresh apple flesh — making each ring of NaturesMud dried apple a genuinely therapeutic dose.",
+      "Quercetin delivers three clinically documented benefits:",
+      "- **Anti-inflammatory:** Inhibits NF-κB signalling pathways — the master switch of chronic systemic inflammation linked to diabetes, heart disease, and neurodegeneration",
+      "- **Natural antihistamine:** Stabilises mast cells and inhibits histamine release — providing genuine relief for seasonal allergy sufferers in Kathmandu's increasingly polluted air",
+      "- **Antiviral activity:** Quercetin has demonstrated broad antiviral properties in cell culture studies, disrupting viral replication and supporting innate immune surveillance",
+      "",
+      "### The Perfect School & Office Snack",
+      "The modern snack food industry has engineered ultra-processed products to bypass your brain's satiety signals — refined starch, industrial seed oils, artificial flavours, and MSG create a 'bliss point' that drives overconsumption. Chips, biscuits, and wafers deliver calories, inflammation, and blood sugar chaos — not nutrition.",
+      "NaturesMud Dehydrated Apple Rings offer a **genuinely satisfying alternative** because:",
+      "- **Intense natural sweetness** from concentrated fructose satisfies sweet cravings completely",
+      "- **Significant dietary fibre** triggers satiety hormones (CCK, GLP-1), ending the binge-snacking loop",
+      "- **Crunchy texture** activates the same sensory satisfaction as chips without the seed oils or acrylamide",
+      "- **Lightweight, non-perishable, and mess-free** — perfect for children's school tiffin boxes, office desk drawers, and hiking packs on Nepal's famous trekking trails",
+      "",
+      "### 6 Creative Ways to Use Dehydrated Apple Rings",
+      "**1. Morning Muesli Crunch:** Layer dehydrated apple rings with rolled oats, raw almonds, a teaspoon of dates powder, and yogurt. The apple rings soften overnight into a luxurious, naturally sweet overnight oats.",
+      "**2. Trail Mix (Himalayan Edition):** Combine apple rings with raw almonds, pumpkin seeds, and dark chocolate chunks for Nepal's ultimate trekking fuel.",
+      "**3. Apple Ring Chutney:** Simmer dehydrated apple rings with tamarind, ginger, and green chilli for an intensely flavoured fresh chutney. Pairs beautifully with dal bhat and roti.",
+      "**4. Rehydrated Apple Compote:** Soak rings in warm water for 20 minutes until plump. Cook with cinnamon and cardamom into a compote for pancake topping, baby food, or dessert.",
+      "**5. Cheese Board Garnish:** Arrange apple rings alongside local chenna cheese, walnuts, and honey for an impressive Nepali-fusion cheese board.",
+      "**6. Apple Ring Chips with Nut Butter:** Serve whole rings with a small bowl of almond butter for the perfect afternoon protein + fibre snack that keeps blood sugar stable for 3–4 hours.",
+    ]
+  },
+  // ─── END NEW FEATURED BLOG POSTS ───────────────────────────────────────────
   {
     "id": "b-trending-shilajit-stamina-kathmandu-nepal",
     "title": "Himalayan Shilajit & Mountain Endurance: Why Nepal's Ancient Resin is Kathmandu's #1 Clean Fitness Fuel in 2026",

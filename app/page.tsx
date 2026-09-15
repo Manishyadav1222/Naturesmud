@@ -436,47 +436,86 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* Latest Posts */}
+      {/* Latest Posts — From Our Journal */}
       <ScrollReveal direction="up" distance={30}>
         <section className="section-padding bg-cream-50 overflow-hidden w-full max-w-full">
           <div className="container-nm">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
               <div>
                 <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-2">
                   <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
-                  <span>Journal & Stories</span>
+                  <span>Journal &amp; Stories</span>
                 </div>
                 <h2 className="section-title mt-1">From Our Journal</h2>
-                <p className="section-subtitle hidden sm:block">Tips, guides, and stories from the farm.</p>
+                <p className="section-subtitle hidden sm:block">Evidence-based nutrition guides, recipes, and stories from the Himalayas.</p>
               </div>
               <Link href="/blog" className="btn-outline shrink-0 text-sm">View All Posts</Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-              {latestPosts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-                  <div className="overflow-hidden rounded-2xl aspect-[4/3] mb-3 sm:mb-4 relative bg-cream-100">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
+              {latestPosts.slice(0, 3).map((post, idx) => (
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-400 border border-ink/5 hover:-translate-y-1"
+                >
+                  {/* Thumbnail with category badge & read time overlay */}
+                  <div className="relative overflow-hidden aspect-[16/10] bg-cream-100 shrink-0">
                     <Image
                       src={post.image || '/products/naturesmud-all-products-100g.jpg'}
                       alt={post.title}
                       fill
+                      priority={idx === 0}
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-108"
                     />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Category pill */}
+                    <div className="absolute top-3 left-3">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-sm text-primary-700 shadow-sm">
+                        {post.category}
+                      </span>
+                    </div>
+                    {/* Read time pill */}
+                    <div className="absolute top-3 right-3">
+                      <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-semibold bg-black/40 backdrop-blur-sm text-white">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                        {post.readTime} min
+                      </span>
+                    </div>
+                    {/* Read now CTA on hover */}
+                    <div className="absolute bottom-3 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-primary-700 text-xs font-bold shadow-md">
+                        Read Article →
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-ink/50 uppercase tracking-wider mb-2">
-                    <span className="text-primary-600">{post.category}</span>
-                    <span>•</span>
-                    <span>{post.date}</span>
-                    <span>•</span>
-                    <span>{post.readTime} min read</span>
+
+                  {/* Card body */}
+                  <div className="flex flex-col flex-1 p-4 sm:p-5">
+                    <p className="text-[11px] text-ink/40 uppercase tracking-wider font-semibold mb-2">{post.date}</p>
+                    <h3 className="font-heading font-bold text-base sm:text-[17px] text-ink leading-snug group-hover:text-primary-700 transition-colors line-clamp-3 mb-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-ink/55 text-sm line-clamp-2 leading-relaxed mb-4 flex-1">{post.excerpt}</p>
+                    <div className="flex items-center gap-2 pt-3 border-t border-ink/8">
+                      <div className="w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center shrink-0">
+                        <span className="text-primary-700 text-[10px] font-black">N</span>
+                      </div>
+                      <span className="text-xs text-ink/50 font-medium truncate">{post.author || 'NaturesMud Council'}</span>
+                    </div>
                   </div>
-                  <h3 className="font-heading font-semibold text-base sm:text-lg text-ink leading-snug group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="mt-2 text-ink/50 text-sm line-clamp-2">{post.excerpt}</p>
                 </Link>
               ))}
+            </div>
+
+            {/* Bottom CTA strip */}
+            <div className="mt-8 sm:mt-10 text-center">
+              <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-900 transition-colors group">
+                Explore all articles &amp; recipes
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4-4 4M3 12h18"/></svg>
+              </Link>
             </div>
           </div>
         </section>
