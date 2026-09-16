@@ -37,7 +37,7 @@ async function getOptimizedImage(relPath, maxDim = 400) {
   }
 }
 
-// 24 Master Products with exact pricing, weights and benefits
+// Official Master Himalayan Superfoods Portfolio with exact pricing, weights and benefits
 const products = [
   // --- COLLECTION I: DRIED FRUITS ---
   {
@@ -173,30 +173,30 @@ const products = [
     ritual: 'Easily digestible infant food or athletic complex carb fuel.'
   },
   {
-    category: 'Powders & Elixirs',
-    name: 'Himalayan Shilajit Resin',
-    weight: '20 GM / 50 GM',
-    pack: 'UV-Shield Glass Jar + Spoon',
-    price: 1450,
-    mrp: 1650,
-    image: 'public/products/shilajit.jpg',
-    origin: 'High Himalaya (18,000+ ft), Nepal',
-    benefit: '75%+ Fulvic Acid & 84+ Trace Minerals',
-    ingredients: '100% Purified Gold-Grade Shilajit',
-    ritual: 'Dissolve rice-grain size in warm water or milk at dawn.'
+    category: 'Powders & Oils',
+    name: 'Cold-Pressed Extra Virgin Coconut Oil',
+    weight: '500 ML',
+    pack: 'Food-Grade Glass Bottle',
+    price: 850,
+    mrp: 850,
+    image: 'public/products/coconut-oil.jpg',
+    origin: 'Cold-Pressed Micro-Expeller, Nepal',
+    benefit: '50%+ Lauric Acid & Bioactive Ketones',
+    ingredients: '100% Pure Cold-Pressed Virgin Coconut Oil',
+    ritual: '1 spoonful morning detox, cooking, hair & skin nourishment.'
   },
   {
-    category: 'Powders & Elixirs',
-    name: 'Extra Virgin Coconut Oil',
-    weight: '180 ML / 500 ML',
+    category: 'Powders & Oils',
+    name: 'Cold-Pressed Extra Virgin Coconut Oil',
+    weight: '180 ML',
     pack: 'Food-Grade Glass Bottle',
     price: 420,
     mrp: 420,
-    image: 'public/products/coconut-oil.jpg',
-    origin: 'Cold-Pressed Micro-Expeller',
-    benefit: 'Lauric Acid & Bioactive Ketone Energy',
-    ingredients: '100% Cold-Pressed Raw Coconut Milk',
-    ritual: '1 spoonful morning detox, bulletproof coffee, skin & hair.'
+    image: 'public/products/coconut-oil-product.jpg',
+    origin: 'Cold-Pressed Micro-Expeller, Nepal',
+    benefit: 'Lauric Acid Skincare & Oil Pulling',
+    ingredients: '100% Pure Raw Coconut Oil (0 Heat)',
+    ritual: 'Daily facial moisturizer, Gandusha oil pulling, travel jar.'
   },
 
   // --- COLLECTION III: NUTS & SEEDS ---
@@ -206,7 +206,7 @@ const products = [
     weight: '300 GM',
     pack: 'Airtight Seal Jar',
     price: 650,
-    mrp: 700,
+    mrp: 650,
     image: 'public/products/pumpkin-seeds.jpg',
     origin: 'AAA-Grade Himalayan Harvest',
     benefit: 'Zinc & Magnesium for Sleep & Immunity',
@@ -494,7 +494,7 @@ async function generateMasterCatalogPDF() {
   doc.roundedRect(coverVisualX, coverVisualY, coverVisualW, coverVisualH, 8).fill('#0C2318');
   doc.lineWidth(1.2).strokeColor(C_GOLD).roundedRect(coverVisualX, coverVisualY, coverVisualW, coverVisualH, 8).stroke();
 
-  const coverImgPath = 'public/images/posters/healthy_food_jars_on_pedestals_202608122122.jpeg';
+  const coverImgPath = 'public/images/posters/naturesmud-master-catalog-cover-4k.jpg';
   const coverBuf = await getOptimizedImage(coverImgPath, 700);
   if (coverBuf) {
     doc.save();
@@ -512,7 +512,7 @@ async function generateMasterCatalogPDF() {
   }
 
   doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(13.5).text(
-    '24 MASTER ORGANIC SUPERFOODS & MOUNTAIN ELIXIRS',
+    'OFFICIAL MASTER HIMALAYAN SUPERFOOD COLLECTION',
     coverVisualX + 12,
     coverVisualY + coverVisualH - 68,
     { width: coverVisualW - 24, align: 'center' }
@@ -651,7 +651,7 @@ async function generateMasterCatalogPDF() {
       num: '02',
       title: 'Vitality Powders & Mountain Elixirs',
       page: 'Page 4',
-      desc: 'Dates Sweetener, Beetroot, Carrot, Sweet Potato, Shilajit, Coconut Oil'
+      desc: 'Dates Sweetener, Beetroot, Carrot, Sweet Potato, Virgin Coconut Oils'
     },
     {
       num: '03',
@@ -663,7 +663,7 @@ async function generateMasterCatalogPDF() {
       num: '04',
       title: 'Master Price List & Nutrition Matrix',
       page: 'Page 6',
-      desc: 'Complete 24-product master table with SKU, net weight, MRP & pricing'
+      desc: 'Complete Master Product Portfolio with SKU, net weight, MRP & pricing'
     },
     {
       num: '05',
@@ -873,10 +873,10 @@ async function generateMasterCatalogPDF() {
   // =========================================================================
   const powdersAndElixirs = products.slice(6, 12);
   await renderProductGridPage(
-    'Collection II: Vitality Powders & Mountain Elixirs',
+    'Collection II: Vitality Powders & Cold-Pressed Elixirs',
     4,
     powdersAndElixirs,
-    'Stone-Ground Botanicals | 75%+ Fulvic Shilajit | Zero Carriers'
+    'Stone-Ground Botanicals | Pure Cold-Pressed Virgin Oils | Zero Carriers'
   );
 
   // =========================================================================
@@ -891,7 +891,7 @@ async function generateMasterCatalogPDF() {
   );
 
   // =========================================================================
-  // PAGE 6: COMPLETE MASTER SPECIFICATION & PRICE MATRIX (ALL 24 PRODUCTS)
+  // PAGE 6: COMPLETE MASTER SPECIFICATION & PRICE MATRIX
   // =========================================================================
   doc.addPage({ size: 'A4', margins: { top: 0, bottom: 0, left: 0, right: 0 } });
   doc.rect(0, 0, pageWidth, pageHeight).fill(C_CREAM);
@@ -900,7 +900,7 @@ async function generateMasterCatalogPDF() {
   // Section Header Box
   doc.rect(margin, 46, contentWidth, 32).fill(C_FOREST);
   doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(12).text('COMPLETE 2026 MASTER PRODUCT & PRICE LIST', margin + 12, 54);
-  doc.fillColor(C_CHAMPAGNE).font('Helvetica').fontSize(8).text('24 Active Superfoods - Official Retail & Wholesale Baseline', pageWidth - margin - 260, 56, { align: 'right', width: 250 });
+  doc.fillColor(C_CHAMPAGNE).font('Helvetica').fontSize(8).text('Master Superfood Portfolio - Official Retail & Wholesale Baseline', pageWidth - margin - 280, 56, { align: 'right', width: 270 });
 
   // Master Table Container
   const tableY = 84;
@@ -976,7 +976,7 @@ async function generateMasterCatalogPDF() {
     },
     {
       goal: 'GOAL 2: ATHLETIC STAMINA & RECOVERY',
-      products: 'Beetroot Powder - Shilajit Resin - Pumpkin Seeds - Almonds',
+      products: 'Beetroot Powder - Extra Virgin Coconut Oil - Pumpkin Seeds - Almonds',
       benefit: 'Natural nitric oxide blood flow, high plant zinc, magnesium, and endurance electrolytes.'
     },
     {
@@ -1057,7 +1057,7 @@ async function generateMasterCatalogPDF() {
   const giftContent =
     "Elevate your corporate gifting, Dashain, Tihar, and executive events with our bespoke, handcrafted Himalayan wellness hampers:\n\n" +
     "- Custom Engraved Wooden Hampers: Premium pine-wood keepsake boxes laser-engraved with your company's corporate identity & logo.\n" +
-    "- Tailored Product Configurations: Mix and match dry-roasted cashews, wild blueberries, raw shilajit, organic dates sweetener, and mountain almonds.\n" +
+    "- Tailored Product Configurations: Mix and match dry-roasted cashews, wild blueberries, virgin coconut oil, organic dates sweetener, and mountain almonds.\n" +
     "- Personal Executive Note Cards: High-gsm gold-foiled greeting cards with personalized executive messages.\n" +
     "- Pan-Nepal & International Delivery: Direct doorstep dispatch to VIP clients, board members, and staff nationwide.\n" +
     "- Custom Corporate Invoicing: Fully VAT-compliant corporate billing and formal quotations provided within 2 business hours.";

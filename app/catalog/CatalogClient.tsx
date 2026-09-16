@@ -312,7 +312,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 </div>
                 <div>
                   <h2 className="font-heading font-bold text-white text-base leading-snug">Official Printables</h2>
-                  <p className="text-xs text-white/70">16-Page Master Magazine & Flyer</p>
+                  <p className="text-xs text-white/70">Official Master Magazine & Flyer</p>
                 </div>
               </div>
 
@@ -495,8 +495,8 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                       </div>
 
                       <div className="shrink-0 flex items-center gap-2">
-                        <span className="bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-mono font-bold text-white">
-                          {secProducts.length} Items
+                        <span className="bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/20 text-xs font-heading font-semibold text-white tracking-wide">
+                          Master Collection
                         </span>
                       </div>
                     </div>
