@@ -703,7 +703,7 @@ async function createPoster() {
       <text x="50" y="42" class="sans" font-size="10" fill="#666">Centrifuged raw coconut milk, 50%+ Lauric acid for immunity &amp; baby</text>
       <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">500 ML</text>
       <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Bottle</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 850</text>
+      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 1750</text>
     </g>
 
     <!-- 4. Coconut Oil 180ml -->
@@ -715,7 +715,7 @@ async function createPoster() {
       <text x="50" y="42" class="sans" font-size="10" fill="#666">Compact glass bottle for daily skin hydration &amp; oil pulling</text>
       <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">180 ML</text>
       <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Bottle</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 420</text>
+      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 700</text>
     </g>
 
     <!-- Oil Note Banner -->
@@ -847,7 +847,7 @@ async function createPoster() {
         <rect x="0" y="0" width="310" height="90" rx="8" fill="#FFFFFF" stroke="#D9A441" stroke-width="1" />
         <text x="16" y="28" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Seeds &amp; Cold-Pressed Oils</text>
         <text x="16" y="48" class="sans" font-size="10.5" fill="#555">Chia Seeds, Pumpkin Seeds, Virgin Coconut Oil</text>
-        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Jars &amp; Bottles • Rs. 415–850</text>
+        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Jars &amp; Bottles • Rs. 415–1750</text>
       </g>
 
       <!-- Grand Seal Box -->

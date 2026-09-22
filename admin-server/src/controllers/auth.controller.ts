@@ -101,9 +101,11 @@ export class AuthController {
         try {
           await authService.logout(refreshToken);
         } catch {
-          // Token may already be revoked or expired - logout is best-effort.
+          // Token may already be revoked, expired, or invalid.
+          // Logout is always best-effort — never fail the client.
         }
       }
+      // Always respond 200 so the frontend clears tokens
       res.status(200).json({
         success: true,
         data: { success: true },

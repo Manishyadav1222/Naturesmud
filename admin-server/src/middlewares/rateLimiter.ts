@@ -24,8 +24,8 @@ const createRateLimiter = (options: {
     });
   },
   skip: (req) => {
-    // Skip rate limiting for health checks
-    return req.path === '/health';
+    // Skip rate limiting for health checks (matches /health and /api/health)
+    return req.originalUrl?.includes('/health') || false;
   },
 });
 

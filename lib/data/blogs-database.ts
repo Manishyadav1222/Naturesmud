@@ -4239,7 +4239,7 @@ const productMapDetails: Record<string, { name: string; price: number; image: st
   'dehydrated-pineapple': { name: 'Dehydrated Himalayan Pineapple', price: 396, image: '/products/dehydrated-pineapple.jpg' },
   'dehydrated-apple': { name: 'Dehydrated Himalayan Apple Rings', price: 408, image: '/products/dehydrated-apple.jpg' },
   'dehydrated-coconut-chips': { name: 'Premium Dehydrated Coconut Chips (100g)', price: 495, image: '/products/dehydrated-coconut-chips.jpg' },
-  'dehydrated-papaya': { name: 'Dehydrated Sweet Papaya Slices', price: 316, image: '/products/papaya.jpg' },
+  'dehydrated-papaya': { name: 'Dehydrated Sweet Papaya Slices (80g)', price: 395, image: '/products/papaya.jpg' },
   'roasted-cashewnuts': { name: 'Slow-Roasted Cashewnuts (150g)', price: 600, image: '/products/cashews.jpg' },
   'premium-cashewnuts': { name: 'Premium Whole Cashewnuts (200g)', price: 600, image: '/products/cashews.jpg' },
   'dried-figs': { name: 'Premium Whole Dried Figs (200g)', price: 552, image: '/products/dried-blueberries.jpg' },
@@ -4248,10 +4248,10 @@ const productMapDetails: Record<string, { name: string; price: number; image: st
   'premium-pistachios': { name: 'California Premium Pistachios (150g)', price: 716, image: '/products/almonds.jpg' },
   'superfood-trail-mix': { name: 'Himalayan Superfood Mix Dry Nuts (300g)', price: 552, image: '/products/superfood-mix.jpg' },
   'macadamia-nuts': { name: 'Gourmet Raw Macadamia Nuts (150g)', price: 680, image: '/products/cashews.jpg' },
-  'virgin-coconut-oil-500ml': { name: 'Cold-Pressed Extra Virgin Coconut Oil (500ml)', price: 1400, image: '/products/coconut-oil.jpg' },
-  'virgin-coconut-oil-180ml': { name: 'Cold-Pressed Extra Virgin Coconut Oil (180ml)', price: 520, image: '/products/coconut-oil.jpg' },
-  'himalayan-pink-salt': { name: 'Ancient Himalayan Pink Rock Salt', price: 144, image: '/products/pink-salt.jpg' },
-  'pure-himalayan-black-salt-bire-noon': { name: 'Pure Himalayan Black Salt (Bire Noon)', price: 120, image: '/products/black-salt.jpg' },
+  'virgin-coconut-oil-500ml': { name: 'Cold-Pressed Extra Virgin Coconut Oil (500ml)', price: 1750, image: '/products/coconut-oil.jpg' },
+  'virgin-coconut-oil-180ml': { name: 'Cold-Pressed Extra Virgin Coconut Oil (200ml)', price: 650, image: '/products/coconut-oil.jpg' },
+  'himalayan-pink-salt': { name: 'Ancient Himalayan Pink Rock Salt (200g)', price: 250, image: '/products/pink-salt.jpg' },
+  'pure-himalayan-black-salt-bire-noon': { name: 'Pure Himalayan Black Salt (Bire Noon 200g)', price: 220, image: '/products/black-salt.jpg' },
 };
 
 const getCategoryThumbnail = (category: string, prodKey: string, slug: string): string => {

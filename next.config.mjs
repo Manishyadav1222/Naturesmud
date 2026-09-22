@@ -56,13 +56,8 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    const adminUrl = process.env.INTERNAL_ADMIN_API_URL || 'http://localhost:4001/api/admin';
     const backendUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
     return [
-      {
-        source: '/api/admin/:path*',
-        destination: `${adminUrl.replace(/\/api\/admin\/?$/, '')}/api/admin/:path*`,
-      },
       {
         source: '/api/v1/:path*',
         destination: `${backendUrl.replace(/\/api\/?$/, '')}/api/v1/:path*`,

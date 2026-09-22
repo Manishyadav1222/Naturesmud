@@ -16,6 +16,12 @@ export const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   dateStrings: true,
+  connectTimeout: 5000, // fail fast — don't block requests for >5s
+});
+
+// Gracefully handle MySQL connection errors without crashing the server
+pool.on('error' as any, (err: any) => {
+  console.warn('[laravelDb] MySQL pool error (non-fatal):', err?.message);
 });
 
 export interface DbOrder {

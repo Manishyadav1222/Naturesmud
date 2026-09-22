@@ -3,9 +3,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const FormData = require('form-data');
 const querystring = require('querystring');
-const { ZipArchive } = require('archiver');
+const ftp = require('basic-ftp');
 
 const config = {
   host: '167.235.9.123',
@@ -13,184 +12,236 @@ const config = {
   username: 'kathma13',
   password: '2*5Qt7iSrB7-Uz',
   homeDir: '/home8/kathma13',
-  rootDir: path.resolve(__dirname, '..')
+  rootDir: path.resolve(__dirname, '..'),
+  frontendRemoteDir: '/home8/kathma13/naturesmud.shop'
 };
 
-const auth = Buffer.from(`${config.username}:${config.password}`).toString('base64');
+let sessionCache = null;
 
-function callApi(apiPath, method = 'GET', data = null, contentType = null) {
+function cpanelLogin() {
   return new Promise((resolve, reject) => {
-    const headers = {
-      'Authorization': 'Basic ' + auth
-    };
-
-    if (contentType) {
-      headers['Content-Type'] = contentType;
-    }
-
-    if (data && Buffer.isBuffer(data)) {
-      headers['Content-Length'] = data.length;
-    }
-
+    const postData = querystring.stringify({
+      user: config.username,
+      pass: config.password
+    });
     const req = https.request({
       hostname: config.host,
       port: config.port,
-      path: apiPath,
-      method: method,
-      headers: headers,
+      path: '/login/?login_only=1',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(postData)
+      },
       rejectUnauthorized: false
     }, (res) => {
-      let body = '';
-      res.on('data', chunk => body += chunk);
+      let data = '';
+      const cookies = res.headers['set-cookie'] || [];
+      res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
-          resolve(JSON.parse(body));
+          const json = JSON.parse(data);
+          resolve({ token: json.security_token, cookies });
         } catch (e) {
-          resolve(body);
+          reject(e);
         }
       });
     });
-
     req.on('error', reject);
-    if (data) req.write(data);
+    req.write(postData);
     req.end();
   });
 }
 
-function uploadFile(remoteDir, localFilePath) {
+async function callApi(apiPath, method = 'GET') {
+  if (!sessionCache) {
+    sessionCache = await cpanelLogin();
+  }
   return new Promise((resolve, reject) => {
-    const form = new FormData();
-    form.append('dir', remoteDir);
-    form.append('overwrite', '1');
-    form.append('file-1', fs.createReadStream(localFilePath));
-
     const req = https.request({
       hostname: config.host,
       port: config.port,
-      path: '/execute/Fileman/upload_files',
-      method: 'POST',
+      path: sessionCache.token + apiPath,
+      method: method,
       headers: {
-        'Authorization': 'Basic ' + auth,
-        ...form.getHeaders()
+        'Cookie': sessionCache.cookies.map(c => c.split(';')[0]).join('; ')
       },
       rejectUnauthorized: false
     }, (res) => {
-      let body = '';
-      res.on('data', chunk => body += chunk);
+      let data = '';
+      res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
-          resolve(JSON.parse(body));
+          resolve(JSON.parse(data));
         } catch (e) {
-          resolve(body);
+          resolve(data);
         }
       });
     });
-
     req.on('error', reject);
-    form.pipe(req);
+    req.end();
   });
 }
 
-async function extractRemoteZip(remoteDir, zipFileName) {
-  const postData = querystring.stringify({
-    dir: remoteDir,
-    file: zipFileName,
-    overwrite: 1
-  });
+async function uploadFileFtp(localPath, remoteDir, remoteFileName) {
+  const client = new ftp.Client();
+  client.timeout = 300000;
+  try {
+    await client.access({
+      host: config.host,
+      user: config.username,
+      password: config.password,
+      secure: false
+    });
+    let ftpDir = remoteDir;
+    if (ftpDir.startsWith(config.homeDir)) {
+      ftpDir = ftpDir.substring(config.homeDir.length);
+    }
+    const remotePath = ftpDir + '/' + remoteFileName;
+    console.log(`  -> Uploading ${localPath} to ${remotePath} via FTP...`);
+    await client.uploadFrom(localPath, remotePath);
+    console.log('  -> Upload complete.');
+  } finally {
+    client.close();
+  }
+}
 
-  return callApi(
-    '/execute/Fileman/extract_archive',
-    'POST',
-    Buffer.from(postData),
-    'application/x-www-form-urlencoded'
-  );
+async function extractArchive(remoteZipPath, destDir) {
+  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=extract&sourcefiles=${encodeURIComponent(remoteZipPath)}&destfiles=${encodeURIComponent(destDir)}`;
+  return callApi(query, 'GET');
+}
+
+async function unlinkRemote(remotePath) {
+  const query = `/json-api/cpanel?cpanel_jsonapi_user=kathma13&cpanel_jsonapi_apiversion=2&cpanel_jsonapi_module=Fileman&cpanel_jsonapi_func=fileop&op=unlink&sourcefiles=${encodeURIComponent(remotePath)}`;
+  return callApi(query, 'GET');
+}
+
+function copyRecursiveSync(src, dest, ignoreList = []) {
+  const exists = fs.existsSync(src);
+  const stats = exists && fs.statSync(src);
+  const isDirectory = exists && stats.isDirectory();
+  if (isDirectory) {
+    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+    fs.readdirSync(src).forEach((childItemName) => {
+      if (ignoreList.includes(childItemName)) return;
+      copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName), ignoreList);
+    });
+  } else {
+    fs.copyFileSync(src, dest);
+  }
 }
 
 async function restartFrontend() {
-  const postData = querystring.stringify({
-    dir: `${config.homeDir}/naturesmud.shop/tmp`,
-    file: 'restart.txt',
-    content: `Restarted at ${new Date().toISOString()}`,
-    encoding: 'utf-8'
-  });
-
-  return callApi(
-    '/execute/Fileman/save_file_content',
-    'POST',
-    Buffer.from(postData),
-    'application/x-www-form-urlencoded'
-  );
+  const client = new ftp.Client();
+  try {
+    await client.access({
+      host: config.host,
+      user: config.username,
+      password: config.password,
+      secure: false
+    });
+    const timestamp = Date.now().toString();
+    const scratchDir = path.join(config.rootDir, 'scratch');
+    if (!fs.existsSync(scratchDir)) fs.mkdirSync(scratchDir, { recursive: true });
+    const tempRestartFile = path.join(scratchDir, 'restart.txt');
+    fs.writeFileSync(tempRestartFile, timestamp, 'utf8');
+    await client.uploadFrom(tempRestartFile, '/naturesmud.shop/tmp/restart.txt');
+    if (fs.existsSync(tempRestartFile)) fs.unlinkSync(tempRestartFile);
+    return true;
+  } finally {
+    client.close();
+  }
 }
 
 async function main() {
   console.log('====================================================');
-  console.log('🚀 NATURE\'S MUD RELIABLE REST API DEPLOYMENT PIPELINE');
+  console.log('🚀 NATURE\'S MUD FRONTEND UPDATE PIPELINE');
   console.log('====================================================\n');
 
-  // 1. Build Next.js
-  console.log('[1/5] 🏗️ Compiling Next.js production build...');
-  execSync('npm run build', { stdio: 'inherit' });
-  const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
-  console.log('✅ Build successful! BUILD_ID:', localBuildId);
-
-  // 2. Clean cache & package
-  console.log('\n[2/5] 📦 Packaging .next (stripping cache)...');
-  const cacheDir = path.join(config.rootDir, '.next', 'cache');
-  if (fs.existsSync(cacheDir)) {
-    fs.rmSync(cacheDir, { recursive: true, force: true });
+  // 1. Check build
+  const buildIdPath = path.join(config.rootDir, '.next', 'BUILD_ID');
+  if (!fs.existsSync(buildIdPath)) {
+    console.log('[1/5] 🏗️ Compiling Next.js production build...');
+    execSync('npm run build', { stdio: 'inherit' });
   }
+  const localBuildId = fs.readFileSync(buildIdPath, 'utf8').trim();
+  console.log('✅ Local Build Ready. BUILD_ID:', localBuildId);
+
+  // 2. Stage clean .next without cache or standalone
+  console.log('\n[2/5] 📦 Staging clean update files...');
+  const stagingDir = path.join(config.rootDir, 'scratch', 'frontend-update-staging');
+  if (fs.existsSync(stagingDir)) {
+    fs.rmSync(stagingDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(stagingDir, { recursive: true });
+
+  const nextStagingDir = path.join(stagingDir, '.next');
+  fs.mkdirSync(nextStagingDir, { recursive: true });
+
+  const nextSrc = path.join(config.rootDir, '.next');
+  for (const item of fs.readdirSync(nextSrc)) {
+    if (item !== 'cache' && item !== 'standalone') {
+      copyRecursiveSync(path.join(nextSrc, item), path.join(nextStagingDir, item));
+    }
+  }
+
+  // Also include next.config.mjs
+  fs.copyFileSync(
+    path.join(config.rootDir, 'next.config.mjs'),
+    path.join(stagingDir, 'next.config.mjs')
+  );
 
   const outZip = path.join(config.rootDir, 'deploy_frontend_update.zip');
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
-  await new Promise((resolve, reject) => {
-    const output = fs.createWriteStream(outZip);
-    const archive = new ZipArchive({ zlib: { level: 9 } });
-
-    output.on('close', resolve);
-    archive.on('error', reject);
-    archive.pipe(output);
-
-    archive.directory(
-      path.join(config.rootDir, '.next'),
-      '.next',
-      (entry) => {
-        if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
-          entry.mode = 0o755;
-        } else {
-          entry.mode = 0o644;
-        }
-        return entry;
-      }
-    );
-
-    archive.finalize();
-  });
-
+  console.log('  -> Compressing staged files using tar/zip...');
+  execSync(`tar -a -c -f "${outZip}" -C "${stagingDir}" .next next.config.mjs`, { stdio: 'inherit' });
   const stats = fs.statSync(outZip);
-  console.log(`✅ Build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`✅ Build package created: ${(stats.size / 1024 / 1024).toFixed(2)} MB`);
 
-  // 3. Upload via HTTPS cPanel API
-  console.log('\n[3/5] 🌐 Uploading update to Nest Nepal /naturesmud.shop via HTTPS API...');
-  const upRes = await uploadFile(`${config.homeDir}/naturesmud.shop`, outZip);
-  console.log('  -> Upload response:', upRes.status === 1 ? '✅ Uploaded' : JSON.stringify(upRes));
+  // 3. Upload via FTP
+  console.log('\n[3/5] 🌐 Uploading deploy_frontend_update.zip to /naturesmud.shop via FTP...');
+  await uploadFileFtp(outZip, config.frontendRemoteDir, 'deploy_frontend_update.zip');
 
-  // 4. Extract archive
-  console.log('\n[4/5] 📦 Extracting archive on server...');
-  const extRes = await extractRemoteZip(`${config.homeDir}/naturesmud.shop`, 'deploy_frontend_update.zip');
-  console.log('  -> Extraction response:', extRes.status === 1 ? '✅ Extracted' : JSON.stringify(extRes));
+  // 4. Extract archive on server
+  console.log('\n[4/5] 📦 Extracting archive on cPanel host...');
+  const extractResult = await extractArchive(
+    `${config.frontendRemoteDir}/deploy_frontend_update.zip`,
+    config.frontendRemoteDir
+  );
+  console.log('  -> Extraction response:', JSON.stringify(extractResult?.cpanelresult?.data || extractResult));
 
   // 5. Restart Passenger
-  console.log('\n[5/5] 🔄 Restarting Phusion Passenger Node.js App...');
-  const rstRes = await restartFrontend();
-  console.log('  -> Restart trigger:', rstRes.status === 1 ? '✅ Restarted' : JSON.stringify(rstRes));
+  console.log('\n[5/5] 🔄 Restarting Phusion Passenger Frontend Node.js App...');
+  await restartFrontend();
+  console.log('  -> tmp/restart.txt updated successfully');
 
-  // Clean local temp zip
+  // Clean local temp files & remote zip
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
+  if (fs.existsSync(stagingDir)) fs.rmSync(stagingDir, { recursive: true, force: true });
+  await unlinkRemote(`${config.frontendRemoteDir}/deploy_frontend_update.zip`).catch(() => {});
 
   console.log('\n====================================================');
-  console.log('🎉 FRONTEND UPDATE SUCCESSFULLY DEPLOYED TO NATURESMUD.SHOP!');
+  console.log('🎉 FRONTEND DEPLOYMENT COMPLETE! Verifying live site...');
   console.log('====================================================\n');
+
+  // Wait 4 seconds for Passenger reload
+  await new Promise(r => setTimeout(r, 4000));
+
+  https.get('https://naturesmud.shop/admin/login', (res) => {
+    let body = '';
+    res.on('data', d => body += d);
+    res.on('end', () => {
+      const m = body.match(/<!--([a-zA-Z0-9_-]+)-->/);
+      console.log(`Live Status: ${res.statusCode}`);
+      console.log(`Live Build ID: ${m ? m[1] : 'unknown'}`);
+      if (m && m[1] === localBuildId) {
+        console.log('✅ LIVE BUILD ID MATCHES LOCAL BUILD ID EXACTLY!');
+      } else {
+        console.log(`Note: Build ID is ${m ? m[1] : 'unknown'} (local is ${localBuildId})`);
+      }
+    });
+  });
 }
 
 main().catch(console.error);

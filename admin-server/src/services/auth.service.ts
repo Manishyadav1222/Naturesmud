@@ -56,7 +56,9 @@ export class AuthService {
     if (user.isTwoFactorEnabled) {
       if (!otpCode) {
         return {
-          requiresTwoFactor: true,
+          // 'requires2FA' matches what the login page checks (res.requires2FA)
+          requires2FA: true,
+          requiresOtp: true,
           message: 'Two-factor authentication code required',
         };
       }
@@ -382,8 +384,8 @@ export class AuthService {
     };
   }
 
-  async refreshToken(refreshToken: string) {
-    const payload = await verifyRefreshToken(refreshToken);
+  async refreshToken(refreshTokenStr: string) {
+    const payload = await verifyRefreshToken(refreshTokenStr);
 
     const user = await prisma.user.findUnique({
       where: { id: payload.sub },
@@ -394,8 +396,12 @@ export class AuthService {
       throw new ApiError(401, 'User not found or deactivated');
     }
 
+    // Revoke old token and issue a fresh pair (token rotation)
+    await revokeRefreshToken(payload.jti);
     const accessToken = signAccessToken(user.id, user.role?.name ?? 'VIEWER');
-    return { accessToken };
+    const { token: newRefreshToken, expiresAt } = await signRefreshToken(user.id);
+
+    return { accessToken, refreshToken: newRefreshToken, expiresAt };
   }
 
   async logout(refreshToken: string) {

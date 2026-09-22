@@ -95,7 +95,7 @@ const products = [
   {
     category: 'Dried Fruits',
     name: 'Dehydrated Papaya Slices',
-    weight: '100 GM',
+    weight: '80 GM',
     pack: 'Standup Ziplock Pouch',
     price: 395,
     mrp: 395,
@@ -177,8 +177,8 @@ const products = [
     name: 'Cold-Pressed Extra Virgin Coconut Oil',
     weight: '500 ML',
     pack: 'Food-Grade Glass Bottle',
-    price: 850,
-    mrp: 850,
+    price: 1750,
+    mrp: 1750,
     image: 'public/products/coconut-oil.jpg',
     origin: 'Cold-Pressed Micro-Expeller, Nepal',
     benefit: '50%+ Lauric Acid & Bioactive Ketones',
@@ -188,10 +188,10 @@ const products = [
   {
     category: 'Powders & Oils',
     name: 'Cold-Pressed Extra Virgin Coconut Oil',
-    weight: '180 ML',
+    weight: '200 ML',
     pack: 'Food-Grade Glass Bottle',
-    price: 420,
-    mrp: 420,
+    price: 650,
+    mrp: 650,
     image: 'public/products/coconut-oil-product.jpg',
     origin: 'Cold-Pressed Micro-Expeller, Nepal',
     benefit: 'Lauric Acid Skincare & Oil Pulling',
@@ -335,7 +335,7 @@ const products = [
   {
     category: 'Salts & Berries',
     name: 'Himalayan Pink Rock Salt',
-    weight: '100 GM',
+    weight: '200 GM',
     pack: 'Aroma-Lock Glass Jar',
     price: 250,
     mrp: 250,
@@ -348,7 +348,7 @@ const products = [
   {
     category: 'Salts & Berries',
     name: 'Himalayan Black Salt (Bire Noon)',
-    weight: '100 GM',
+    weight: '200 GM',
     pack: 'Aroma-Lock Glass Jar',
     price: 220,
     mrp: 220,
@@ -486,48 +486,51 @@ async function generateMasterCatalogPDF() {
   );
 
   // Visual Showcase Box
-  const coverVisualY = 158;
+  const coverVisualY = 150;
   const coverVisualW = contentWidth;
-  const coverVisualH = 340;
+  const innerImgW = coverVisualW - 10;
+  // Aspect ratio of custom cover artwork (1024 x 571)
+  const innerImgH = Math.round((innerImgW * 571) / 1024); // ~295
+  const coverVisualH = innerImgH + 10; // ~305
   const coverVisualX = margin;
 
   doc.roundedRect(coverVisualX, coverVisualY, coverVisualW, coverVisualH, 8).fill('#0C2318');
   doc.lineWidth(1.2).strokeColor(C_GOLD).roundedRect(coverVisualX, coverVisualY, coverVisualW, coverVisualH, 8).stroke();
 
-  const coverImgPath = 'public/images/posters/naturesmud-master-catalog-cover-4k.jpg';
-  const coverBuf = await getOptimizedImage(coverImgPath, 700);
+  const coverImgPath = 'public/images/posters/naturesmud-authenticity-table-cover.jpg';
+  const coverBuf = await getOptimizedImage(coverImgPath, 1024);
   if (coverBuf) {
     doc.save();
-    doc.roundedRect(coverVisualX + 6, coverVisualY + 6, coverVisualW - 12, coverVisualH - 12, 6).clip();
-    doc.image(coverBuf, coverVisualX + 6, coverVisualY + 6, {
-      width: coverVisualW - 12,
-      height: coverVisualH - 12,
-      fit: [coverVisualW - 12, coverVisualH - 12],
-      align: 'center',
-      valign: 'center'
+    doc.roundedRect(coverVisualX + 5, coverVisualY + 5, innerImgW, innerImgH, 6).clip();
+    doc.image(coverBuf, coverVisualX + 5, coverVisualY + 5, {
+      width: innerImgW,
+      height: innerImgH
     });
-    // Dark bottom overlay for text readability
-    doc.rect(coverVisualX + 6, coverVisualY + coverVisualH - 85, coverVisualW - 12, 79).fillOpacity(0.90).fill(C_DARK);
     doc.restore();
   }
 
-  doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(13.5).text(
-    'OFFICIAL MASTER HIMALAYAN SUPERFOOD COLLECTION',
-    coverVisualX + 12,
-    coverVisualY + coverVisualH - 68,
-    { width: coverVisualW - 24, align: 'center' }
+  // Showcase Title Banner below visual artwork
+  const bannerY = coverVisualY + coverVisualH + 8;
+  doc.roundedRect(margin, bannerY, contentWidth, 38, 6).fill('#0E291D');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(margin, bannerY, contentWidth, 38, 6).stroke();
+
+  doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(12).text(
+    'AUTHENTICITY ON EVERY TABLE  -  MASTER HIMALAYAN SUPERFOODS',
+    margin,
+    bannerY + 8,
+    { width: contentWidth, align: 'center' }
   );
-  doc.fillColor(C_WHITE).font('Helvetica').fontSize(8.5).text(
-    'Comprehensive price list, laboratory-tested single origins, full transparency & dietary usage guide',
-    coverVisualX + 12,
-    coverVisualY + coverVisualH - 48,
-    { width: coverVisualW - 24, align: 'center' }
+  doc.fillColor('#D6E5DF').font('Helvetica').fontSize(8).text(
+    'Official 2026 Price List  |  Single-Origin Lab Tested  |  100% Pure & Living Mountain Enzymes',
+    margin,
+    bannerY + 24,
+    { width: contentWidth, align: 'center' }
   );
 
   // 4 Quality Pillars Grid
-  const pGridY = 516;
+  const pGridY = bannerY + 48;
   const pBoxW = (contentWidth - 14) / 2;
-  const pBoxH = 55;
+  const pBoxH = 50;
 
   const coverPillars = [
     { title: 'I. Solar Dehydration Under 42 deg C', desc: 'Preserves living active enzymes, delicate vitamins & natural fruit aromas.' },
@@ -540,42 +543,42 @@ async function generateMasterCatalogPDF() {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
     const px = margin + col * (pBoxW + 14);
-    const py = pGridY + row * (pBoxH + 10);
+    const py = pGridY + row * (pBoxH + 8);
 
     doc.roundedRect(px, py, pBoxW, pBoxH, 5).fill('#102E20');
     doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(px, py, pBoxW, pBoxH, 5).stroke();
 
-    doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(9).text(p.title, px + 10, py + 8);
-    doc.fillColor('#D6E5DF').font('Helvetica').fontSize(7.5).text(p.desc, px + 10, py + 22, { width: pBoxW - 20, lineGap: 2 });
+    doc.fillColor(C_BRIGHT_GOLD).font('Helvetica-Bold').fontSize(8.5).text(p.title, px + 10, py + 7);
+    doc.fillColor('#D6E5DF').font('Helvetica').fontSize(7.5).text(p.desc, px + 10, py + 20, { width: pBoxW - 20, lineGap: 1.5 });
   });
 
   // Ribbon Banner
-  const ribbonY = 658;
-  doc.roundedRect(margin + 30, ribbonY, contentWidth - 60, 26, 6).fill(C_GOLD);
-  doc.fillColor(C_DARK).font('Helvetica-Bold').fontSize(9.5).text(
+  const ribbonY = pGridY + pBoxH * 2 + 18;
+  doc.roundedRect(margin + 30, ribbonY, contentWidth - 60, 24, 6).fill(C_GOLD);
+  doc.fillColor(C_DARK).font('Helvetica-Bold').fontSize(9).text(
     'NEPAL BUREAU OF STANDARDS & FOOD HYGIENE CERTIFIED',
     margin + 30,
-    ribbonY + 8,
+    ribbonY + 7,
     { align: 'center', width: contentWidth - 60 }
   );
 
   // Cover Footer
-  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(10).text(
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(9.5).text(
     "Nature's Mud Nepal Pvt. Ltd.  -  Kathmandu, Nepal",
     0,
-    712,
+    ribbonY + 36,
     { align: 'center', width: pageWidth }
   );
-  doc.fillColor(C_CHAMPAGNE).font('Helvetica').fontSize(8.5).text(
+  doc.fillColor(C_CHAMPAGNE).font('Helvetica').fontSize(8).text(
     'Direct Delivery & WhatsApp Support: +977-9713888002  |  info@naturesmud.shop',
     0,
-    728,
+    ribbonY + 50,
     { align: 'center', width: pageWidth }
   );
-  doc.fillColor('#9AB8AB').font('Helvetica').fontSize(8).text(
+  doc.fillColor('#9AB8AB').font('Helvetica').fontSize(7.5).text(
     'Official Online Store: https://naturesmud.shop  -  Volume 2026 Master Edition',
     0,
-    744,
+    ribbonY + 64,
     { align: 'center', width: pageWidth }
   );
 

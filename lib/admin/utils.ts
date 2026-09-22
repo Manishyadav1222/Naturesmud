@@ -272,32 +272,28 @@ const isServer = typeof window === 'undefined';
 
 export function getAdminApiBase(): string {
   if (isServer) {
+    // Server-side: use internal URL for direct server-to-server communication
     return process.env.INTERNAL_ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:4001/api/admin';
   }
 
-  // In browser:
-  if (typeof window !== 'undefined') {
-    const origin = window.location.origin;
-    const hostname = window.location.hostname;
-
-    // When running in the browser on the deployed site (e.g. naturesmud.shop) or any domain,
-    // use the same-origin /api/admin so that Next.js server rewrites proxy requests smoothly,
-    // avoiding CORS, cross-subdomain DNS, and SSL issues.
-    if (origin && !origin.startsWith('http://localhost') && !origin.startsWith('http://127.0.0.1')) {
-      return '/api/admin';
-    }
-
-    // If accessed via localhost, check if an explicit local server is configured,
-    // otherwise route through /api/admin Next.js proxy
-    const envUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
-    if (envUrl && envUrl.includes('localhost')) {
-      return envUrl;
-    }
-
-    return '/api/admin';
+  // Browser-side:
+  // 1. If NEXT_PUBLIC_ADMIN_API_URL is configured with an absolute URL, use it directly
+  const envUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
+  if (envUrl && envUrl.startsWith('http')) {
+    return envUrl;
   }
 
-  return process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:4001/api/admin';
+  // 2. On production domains, direct browser calls to the admin API backend
+  //    (which has CORS explicitly configured for naturesmud domains with credentials)
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    if (hostname.includes('naturesmud.shop') || hostname.includes('naturesmud.com')) {
+      return 'https://admin-api.naturesmud.shop/api/admin';
+    }
+  }
+
+  // 3. Fallback to /api/admin Next.js route handler proxy
+  return '/api/admin';
 }
 
 export const ADMIN_API_BASE = getAdminApiBase();

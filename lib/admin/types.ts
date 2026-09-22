@@ -80,8 +80,9 @@ export interface LoginResponse {
 
 export interface RefreshResponse {
   accessToken: string;
-  refreshToken: string;
+  refreshToken?: string; // Optional — server rotates token on new builds; older builds omit it
 }
+
 
 export interface ApiResponse<T = unknown> {
   success: boolean;

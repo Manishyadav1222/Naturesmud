@@ -3,6 +3,50 @@ import { resolveImageUrl } from '@/lib/utils';
 
 export const products: Product[] = [
   {
+    "id": "1010",
+    "slug": "makhana-fox-nuts",
+    "dbId": 1010,
+    "name": "Makhana (Fox Nuts)",
+    "category": "Seeds",
+    "categorySlug": "seeds",
+    "price": 250,
+    "compareAtPrice": 250,
+    "mrp": 250,
+    "rating": 4.8,
+    "reviewCount": 12,
+    "image": "/products/makhana-jar.jpeg",
+    "images": [
+      "/products/makhana-jar.jpeg"
+    ],
+    "description": "Premium Himalayan Fox Nuts (Makhana). A healthy, crunchy, and lightweight snack loaded with antioxidants, calcium, and protein. Enjoy guilt-free snacking with these beautifully puffed lotus seeds.",
+    "shortDescription": "Crunchy and lightweight Himalayan Fox Nuts (Makhana) for healthy snacking.",
+    "badges": [
+      "new"
+    ],
+    "stock": 100,
+    "weight": "60 GM",
+    "packing": "Glass Jar",
+    "ingredients": [
+      "100% Pure Fox Nuts (Makhana)"
+    ],
+    "benefits": [
+      "Rich in calcium for bone health",
+      "Low in calories and high in protein",
+      "Great source of antioxidants"
+    ],
+    "nutrition": [],
+    "usage": "Roast lightly with a pinch of pink salt for a perfect evening snack.",
+    "storage": "Store in an airtight container to maintain crispness.",
+    "isFeatured": true,
+    "isBestSeller": false,
+    "tags": [
+      "makhana",
+      "fox-nuts",
+      "snack",
+      "healthy"
+    ]
+  },
+  {
     "id": "1",
     "slug": "dehydrated-mango",
     "dbId": 1,
@@ -14,10 +58,9 @@ export const products: Product[] = [
     "mrp": 595,
     "rating": 4.9,
     "reviewCount": 68,
-    "image": "/products/authentic-dehydrated-mango.jpg",
+    "image": "/products/mango-pouch.jpeg",
     "images": [
-      "/products/authentic-dehydrated-mango.jpg",
-      "/products/dehydrated-mango-poster.jpg",
+      "/products/mango-pouch.jpeg",
       "/products/dehydrated-mango.jpg",
       "/products/mango.jpg"
     ],
@@ -84,12 +127,11 @@ export const products: Product[] = [
     "mrp": 495,
     "rating": 4.9,
     "reviewCount": 45,
-    "image": "/products/authentic-dehydrated-pineapple.jpg",
+    "image": "/products/pineapple-pouch.jpeg",
     "images": [
-      "/products/authentic-dehydrated-pineapple.jpg",
-      "/products/pineapple-poster-2k.jpg",
-      "/products/dehydrated-pineapple-premium.jpg",
-      "/products/dehydrated-pineapple.jpg"
+      "/products/pineapple-pouch.jpeg",
+      "/products/dehydrated-pineapple.jpg",
+      "/products/pineapple.jpg"
     ],
     "description": "Tangy-sweet pineapple slices harvested from sun-drenched terraced hills and slowly dehydrated. Packed with natural bromelain digestive enzyme, vitamin C, and manganese for anti-inflammatory wellness.",
     "shortDescription": "Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme in a Standup Ziplock Pouch.",
@@ -150,10 +192,9 @@ export const products: Product[] = [
     "mrp": 510,
     "rating": 4.8,
     "reviewCount": 42,
-    "image": "/products/authentic-dehydrated-apple.jpg",
+    "image": "/products/apple-pouch.jpeg",
     "images": [
-      "/products/authentic-dehydrated-apple.jpg",
-      "/products/dehydrated-apple-poster.jpg",
+      "/products/apple-pouch.jpeg",
       "/products/dehydrated-apple.jpg",
       "/products/apple.jpg"
     ],
@@ -223,7 +264,7 @@ export const products: Product[] = [
       "/products/coconut-chips-pouch.jpg"
     ],
     "description": "Gently dehydrated whole coconut flakes rich in medium-chain triglycerides (MCTs) and dietary fiber. A keto-friendly, crunchy whole-food snack that provides sustained cellular energy, aids digestion, and supports everyday vitality.",
-    "shortDescription": "100% pure crunchy dehydrated coconut chips rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
+    "shortDescription": "Crunchy dehydrated coconut flakes rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
     "badges": [
       "new",
       "organic",
@@ -284,20 +325,18 @@ export const products: Product[] = [
     "mrp": 395,
     "rating": 4.9,
     "reviewCount": 54,
-    "image": "/products/papaya.jpg",
+    "image": "/products/papaya-flat.jpeg",
     "images": [
-      "/products/papaya.jpg",
-      "/images/posters/papaya-splash-delight.jpg",
-      "/products/papaya-2.jpg",
-      "/products/papaya-splash.jpg"
+      "/products/papaya-flat.jpeg",
+      "/products/papaya-2.jpg"
     ],
     "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
-    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a Standup Ziplock Pouch.",
+    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.",
     "badges": [
       "bestseller"
     ],
     "stock": 115,
-    "weight": "100 GM",
+    "weight": "80 GM",
     "packing": "Standup Ziplock Pouch",
     "ingredients": [
       "100% Natural Dehydrated Papaya Slices"
@@ -350,15 +389,14 @@ export const products: Product[] = [
     "mrp": 650,
     "rating": 5,
     "reviewCount": 78,
-    "image": "/products/dried-blueberries-100g.jpg",
+    "image": "/products/blueberry-jar.jpeg",
     "images": [
-      "/products/dried-blueberries-100g.jpg",
-      "/products/blueberries-brain-power.jpg",
-      "/products/dried-blueberries-orchard.jpg",
+      "/products/blueberry-jar.jpeg",
+      "/products/blueberries.jpg",
       "/products/blueberries-2.jpg"
     ],
     "description": "Whole wild alpine berries harvested at high Himalayan altitudes. Naturally rich in dark-violet Anthocyanins to support screen-weary eyes, promote sharp mental focus, and deliver powerful antioxidant protection.",
-    "shortDescription": "Wild alpine dark-violet antioxidant berries for daily focus, eye vitality & delicious healthy snacking in a Glass Jar.",
+    "shortDescription": "Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar.",
     "badges": [
       "bestseller"
     ],
@@ -416,15 +454,14 @@ export const products: Product[] = [
     "mrp": 415,
     "rating": 4.8,
     "reviewCount": 49,
-    "image": "/products/cranberries.jpg",
+    "image": "/products/cranberry-jar.jpeg",
     "images": [
-      "/products/cranberries.jpg",
-      "/images/posters/ruby-cranberries-delight.jpg",
-      "/products/cranberries-glowing-jar.jpg",
-      "/products/cranberries-2.jpg"
+      "/products/cranberry-jar.jpeg",
+      "/products/cranberries-2.jpg",
+      "/products/cranberries-glowing-jar.jpg"
     ],
     "description": "Plump, ruby-red whole dried cranberries bursting with natural tart-sweet flavor and rich in Type-A Proanthocyanidins (PACs). Revered for supporting daily urinary tract vitality, active antioxidant defense, and whole-body wellness.",
-    "shortDescription": "Antioxidant-dense whole ruby cranberries for natural urinary vitality and daily wellness in a Glass Jar.",
+    "shortDescription": "Antioxidant-dense whole dried cranberries for urinary tract and cellular wellness in a Glass Jar.",
     "badges": [
       "popular"
     ],
@@ -482,12 +519,11 @@ export const products: Product[] = [
     "mrp": 400,
     "rating": 4.9,
     "reviewCount": 84,
-    "image": "/products/dates-powder-100g.jpg",
+    "image": "/products/dates-jar.jpeg",
     "images": [
-      "/products/dates-powder-100g.jpg",
-      "/products/dates-powder-jar-2k.jpg",
-      "/products/dates-powder-product-shot.jpg",
-      "/products/dates-powder.jpg"
+      "/products/dates-jar.jpeg",
+      "/products/dates-jar.jpeg",
+      "/products/dates-powder-product-shot.jpg"
     ],
     "description": "100% pure dehydrated date powder made by slowly drying and micro-grinding whole premium dates. The healthiest, unrefined natural sweetener alternative to white table sugar for children, toddlers, and fitness enthusiasts. Loaded with natural potassium, magnesium, iron, and fiber without spiking blood sugar aggressively.",
     "shortDescription": "100% unrefined natural sweetener made from whole dehydrated dates — 0% white sugar in a Glass Jar.",
@@ -555,12 +591,11 @@ export const products: Product[] = [
     "mrp": 430,
     "rating": 4.9,
     "reviewCount": 62,
-    "image": "/products/beetroot-powder-100g.jpg",
+    "image": "/products/beetroot-jar.jpeg",
     "images": [
-      "/products/beetroot-powder-100g.jpg",
-      "/products/beetroot-poster-2k.jpg",
+      "/products/beetroot-jar.jpeg",
       "/products/beetroot-glass-jar.jpg",
-      "/products/beetroot-powder.jpg"
+      "/products/beetroot-jar.jpeg"
     ],
     "description": "Cold-dehydrated and finely milled from pesticide-free Nepali red beetroots. Naturally rich in dietary nitrates, betalains, and folate that convert into nitric oxide in the bloodstream to boost oxygen delivery, lower blood pressure, and enhance endurance for athletes.",
     "shortDescription": "Natural dietary nitrate booster for glowing skin, blood stamina & cardiac health in a Glass Jar.",
@@ -627,20 +662,20 @@ export const products: Product[] = [
     "mrp": 250,
     "rating": 4.8,
     "reviewCount": 46,
-    "image": "/products/pink-salt.jpg",
+    "image": "/products/pink-salt-jar.jpeg",
     "images": [
-      "/products/pink-salt.jpg",
-      "/products/pink-salt-jar.jpg",
+      "/products/pink-salt-jar.jpeg",
+      "/products/client-authentic-label-1.jpg",
       "/products/pink-salt-crystals.jpg",
-      "/products/client-authentic-label-1.jpg"
+      "/products/pink-salt-moss.jpg"
     ],
     "description": "Unrefined ancient Himalayan pink rock salt crystallized over 250 million years ago. Packed with 84+ bioavailable ionic trace minerals including magnesium, calcium, and potassium with zero microplastics, chemical bleaches, or anti-caking agents.",
-    "shortDescription": "Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a Glass Jar.",
+    "shortDescription": "Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a 200g Glass Jar.",
     "badges": [
       "organic"
     ],
     "stock": 200,
-    "weight": "100 GM",
+    "weight": "200 GM",
     "packing": "Glass Jar",
     "ingredients": [
       "100% Pure Himalayan Pink Rock Salt Crystals"
@@ -697,16 +732,16 @@ export const products: Product[] = [
     "image": "/products/himalayan-black-salt-digestive.jpg",
     "images": [
       "/products/himalayan-black-salt-digestive.jpg",
-      "/products/black-salt.jpg",
-      "/products/client-authentic-label-2.jpg"
+      "/products/client-authentic-label-2.jpg",
+      "/products/black-salt.jpg"
     ],
     "description": "Authentic volcanic mineral-dense Himalayan Black Salt (Bire Noon / Kala Namak). Mined from ancient pristine salt veins, it is revered in Ayurvedic medicine for kindling digestive fire (Agni), relieving bloating, indigestion, and heartburn.",
-    "shortDescription": "Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 100g Glass Jar.",
+    "shortDescription": "Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 200g Glass Jar.",
     "badges": [
       "organic"
     ],
     "stock": 180,
-    "weight": "100 GM",
+    "weight": "200 GM",
     "packing": "Glass Jar",
     "ingredients": [
       "100% Pure Himalayan Black Salt (Kala Namak / Bire Noon) with active sulfur compounds and iron minerals"
@@ -757,10 +792,9 @@ export const products: Product[] = [
     "mrp": 495,
     "rating": 4.9,
     "reviewCount": 65,
-    "image": "/products/chia-seeds.jpg",
+    "image": "/products/chia-jar.jpeg",
     "images": [
-      "/products/chia-seeds.jpg",
-      "/products/chia-power.jpg",
+      "/products/chia-jar.jpeg",
       "/images/posters/chia-power.jpg"
     ],
     "description": "Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein. Hydrophilic seeds that expand up to 10x in liquids to support steady hydration, weight balance, and gut motility.",
@@ -823,17 +857,16 @@ export const products: Product[] = [
     "name": "Raw Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 650,
-    "compareAtPrice": 700,
-    "mrp": 700,
+    "price": 520,
+    "compareAtPrice": 520,
+    "mrp": 520,
     "rating": 4.9,
     "reviewCount": 57,
     "image": "/products/pumpkin-seeds.jpg",
     "images": [
       "/products/pumpkin-seeds.jpg",
-      "/images/posters/pure-pumpkin-seeds.jpg",
-      "/products/pumpkin-seeds-product-shot.jpg",
-      "/products/pumpkin-seeds-2.jpg"
+      "/products/pumpkin-seeds-2.jpg",
+      "/products/pumpkin-seeds-product-shot.jpg"
     ],
     "description": "Raw AAA-grade dark-green pumpkin seed kernels (pepitas). One of the richest dietary sources of natural bioavailable Zinc, Magnesium, Tryptophan, and antioxidants for deep sleep, prostate health, and immune defense.",
     "shortDescription": "Zinc, magnesium, and tryptophan rich raw pumpkin seeds for prostate wellness, deep sleep, and hair vitality in a 300g Plastic Jar.",
@@ -900,11 +933,9 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 53,
-    "image": "/products/authentic-cashewnuts-roasted.jpg",
+    "image": "/products/cashew-jar.jpeg",
     "images": [
-      "/products/authentic-cashewnuts-roasted.jpg",
-      "/images/posters/premium-harvest-cashew.jpg",
-      "/products/cashews.jpg",
+      "/products/cashew-jar.jpeg",
       "/products/cashewnuts-roasted.jpg"
     ],
     "description": "Handpicked whole jumbo W240 grade cashew nuts, delightfully sweet, buttery, and crunch-packed. Rich in copper, magnesium, plant protein, and heart-healthy oleic acid for bone strength, energy metabolism, and cardiac wellness.",
@@ -971,12 +1002,11 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.8,
     "reviewCount": 39,
-    "image": "/products/authentic-cashewnuts-roasted.jpg",
+    "image": "/products/cashew-jar.jpeg",
     "images": [
-      "/products/authentic-cashewnuts-roasted.jpg",
-      "/images/posters/premium-harvest-cashew.jpg",
-      "/products/cashews-roasted.jpg",
-      "/products/cashewnuts-roasted.jpg"
+      "/products/cashew-jar.jpeg",
+      "/products/cashewnuts-roasted.jpg",
+      "/products/cashews-roasted.jpg"
     ],
     "description": "Artisan slow-roasted golden cashew nuts roasted without added oils or synthetic flavor enhancers. Delicate toasty aroma with an irresistible crisp snap, delivering pure wholesome nut satisfaction.",
     "shortDescription": "Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 150g Glass Jar.",
@@ -1037,19 +1067,19 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 66,
-    "image": "/products/authentic-almonds.jpg",
+    "image": "/products/almond-jar.jpeg",
     "images": [
-      "/products/authentic-almonds.jpg",
-      "/products/almonds-2.jpg",
+      "/products/almond-jar.jpeg",
+      "/products/almond-jar.jpeg",
       "/products/almonds.jpg"
     ],
     "description": "Crispy slow-roasted mountain almonds sealed in a glass jar for maximum crunch and flavor. Exceptionally rich in Vitamin E, plant protein, dietary fiber, and heart-protective monounsaturated fatty acids.",
-    "shortDescription": "Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 100g Glass Jar.",
+    "shortDescription": "Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar.",
     "badges": [
       "bestseller"
     ],
     "stock": 120,
-    "weight": "100 GM",
+    "weight": "200 GM",
     "packing": "Glass Jar",
     "ingredients": [
       "100% Pure Slow-Roasted Himalayan Almonds (Oil-Free)"
@@ -1107,11 +1137,11 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 59,
-    "image": "/products/authentic-almonds.jpg",
+    "image": "/products/almond-jar.jpeg",
     "images": [
-      "/products/authentic-almonds.jpg",
+      "/products/almond-jar.jpeg",
       "/products/almonds.jpg",
-      "/products/almonds-2.jpg"
+      "/products/almond-jar.jpeg"
     ],
     "description": "Unpasteurized, premium raw almonds harvested from pristine mountain orchards. Ideal for soaking overnight (badam pani) to activate live digestive enzymes, making fresh almond milk, and fueling daily cognitive memory.",
     "shortDescription": "Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar.",
@@ -1385,9 +1415,9 @@ export const products: Product[] = [
     "name": "Cold-Pressed Extra Virgin Coconut Oil (500ml)",
     "category": "Oils",
     "categorySlug": "oils",
-    "price": 850,
-    "compareAtPrice": 850,
-    "mrp": 850,
+    "price": 1750,
+    "compareAtPrice": 1750,
+    "mrp": 1750,
     "rating": 5,
     "reviewCount": 88,
     "image": "/products/coconut-oil.jpg",
@@ -1453,12 +1483,12 @@ export const products: Product[] = [
     "id": "153",
     "slug": "virgin-coconut-oil-180ml",
     "dbId": 153,
-    "name": "Cold-Pressed Extra Virgin Coconut Oil (180ml)",
+    "name": "Cold-Pressed Extra Virgin Coconut Oil (200ml)",
     "category": "Oils",
     "categorySlug": "oils",
-    "price": 420,
-    "compareAtPrice": 420,
-    "mrp": 420,
+    "price": 650,
+    "compareAtPrice": 650,
+    "mrp": 650,
     "rating": 4.9,
     "reviewCount": 52,
     "image": "/products/coconut-oil-product.jpg",
@@ -1467,12 +1497,12 @@ export const products: Product[] = [
       "/products/coconut-oil.jpg"
     ],
     "description": "Compact handy glass jar of 100% raw cold-pressed extra virgin coconut oil. Perfectly sized for daily facial skincare, Ayurvedic morning oil pulling, desk moisturizer, travel, and infant skin nourishing.",
-    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180ml Glass Bottle.",
+    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 200ml Glass Bottle.",
     "badges": [
       "cold-pressed"
     ],
     "stock": 110,
-    "weight": "180 ML",
+    "weight": "200 ML",
     "packing": "Glass Bottle",
     "ingredients": [
       "100% Pure Cold-Pressed Extra Virgin Coconut Oil (Unrefined)"
@@ -1521,16 +1551,16 @@ export const products: Product[] = [
     "name": "Carrot Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 490,
-    "compareAtPrice": 490,
-    "mrp": 490,
+    "price": 440,
+    "compareAtPrice": 440,
+    "mrp": 440,
     "rating": 4.8,
     "reviewCount": 38,
-    "image": "/products/carrot-powder-100g.jpg",
+    "image": "/products/carrot-jar.jpeg",
     "images": [
-      "/products/carrot-powder-100g.jpg",
-      "/products/carrot-powder-poster.jpg",
+      "/products/carrot-jar.jpeg",
       "/products/carrot-powder-marble.jpg",
+      "/products/carrot-powder-eye-health.jpg",
       "/products/carrot-powder.jpg"
     ],
     "description": "Sun-dried and gently milled organic carrots harvested from fertile mid-hill farms of Nepal. Packed with beta-carotene (pro-vitamin A), lutein, and dietary fiber to protect eyes, support cell regeneration, and enhance everyday cooking with a mild natural sweetness.",
@@ -1588,17 +1618,16 @@ export const products: Product[] = [
     "name": "Sweet Potato Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 510,
-    "compareAtPrice": 510,
-    "mrp": 510,
+    "price": 420,
+    "compareAtPrice": 420,
+    "mrp": 420,
     "rating": 5,
     "reviewCount": 96,
-    "image": "/products/sweet-potato-powder-100g.jpg",
+    "image": "/products/sweet-potato-jar.jpeg",
     "images": [
-      "/products/sweet-potato-powder-100g.jpg",
-      "/images/posters/sweet-vibes.jpg",
-      "/products/sweet-potato-jar-display.jpg",
-      "/products/sweet-potato-powder.jpg"
+      "/products/sweet-potato-jar.jpeg",
+      "/products/sweet-potato-jar.jpeg",
+      "/products/sweet-potato-jar-display.jpg"
     ],
     "description": "100% pure organic dehydrated sweet potato powder milled from farm-fresh Nepali sweet potatoes. A nutrient-dense complex carbohydrate powerhouse packed with Vitamin A (beta-carotene), fiber, potassium, and minerals. Perfect for infant weaning porridge, baby cereals, pre-workout energy shakes, pancakes, and healthy baking with pure single-ingredient Himalayan goodness.",
     "shortDescription": "100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar.",
@@ -1658,6 +1687,69 @@ export const products: Product[] = [
       "powders",
       "superfood"
     ]
+  },
+  {
+    "id": "40",
+    "slug": "pure-mountain-himalayan-shilajit-resin",
+    "dbId": 40,
+    "name": "Pure Mountain Shilajit Resin",
+    "category": "Ayurveda",
+    "categorySlug": "ayurveda",
+    "price": 1995,
+    "compareAtPrice": 1995,
+    "mrp": 1995,
+    "rating": 5.0,
+    "reviewCount": 114,
+    "image": "/products/shilajit-jar.jpeg",
+    "images": [
+      "/products/shilajit-jar.jpeg",
+      "/products/shilajit.jpg"
+    ],
+    "description": "Gold-grade 100% pure Himalayan Shilajit resin, sustainably harvested from pristine Himalayan altitudes above 16,000 feet. Purified using traditional Ayurvedic triphala water decoction. Naturally concentrated with >75% fulvic acid and 84+ ionic trace minerals to support cellular mitochondrial energy, stamina, cognitive clarity, and vitality.",
+    "shortDescription": "Authentic gold-grade Himalayan Shilajit resin with >75% fulvic acid for peak vitality in a 20g Glass Jar.",
+    "badges": [
+      "organic",
+      "bestseller"
+    ],
+    "stock": 50,
+    "weight": "20 GM",
+    "packing": "Glass Jar",
+    "ingredients": [
+      "100% Pure Purified Himalayan Shilajit Resin (Gold Grade, >75% Fulvic Acid)"
+    ],
+    "benefits": [
+      "Boosts cellular ATP energy and mitochondrial oxygenation",
+      "Supports healthy stamina and vitality in men and women",
+      "Enhances cognitive memory, focus, and neuroprotective resilience",
+      "Contains 84+ bioavailable ionic trace minerals for deep nourishment"
+    ],
+    "nutrition": [
+      {
+        "label": "Fulvic Acid",
+        "value": ">75%"
+      },
+      {
+        "label": "Ionic Trace Minerals",
+        "value": "84+"
+      },
+      {
+        "label": "Heavy Metal Tested",
+        "value": "Safety Certified"
+      }
+    ],
+    "usage": "Dissolve a pea-sized portion (300-500mg) in warm water, milk, or green tea once daily in the morning.",
+    "storage": "Store in a cool dry place. Keep jar tightly closed to avoid drying out.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "shilajit",
+      "ayurveda",
+      "fulvic-acid",
+      "vitality",
+      "energy",
+      "rasayana",
+      "himalayan"
+    ]
   }
 ];
 
@@ -1686,21 +1778,21 @@ export const categories = [
     name: 'Dried Fruits',
     slug: 'dried-fruits',
     description: '100% pure sun-dried fruits with zero added sugar or sulfur dioxide',
-    image: '/products/authentic-dehydrated-mango.jpg',
+    image: '/products/mango-pouch.jpeg',
     count: products.filter((p) => p.categorySlug === 'dried-fruits').length,
   },
   {
     name: 'Organic Powders',
     slug: 'powders',
     description: 'Micro-pulverized 100% organic vegetable & fruit superfood powders',
-    image: '/products/sweet-potato-powder-100g.jpg',
+    image: '/products/sweet-potato-jar.jpeg',
     count: products.filter((p) => p.categorySlug === 'powders').length,
   },
   {
     name: 'Mountain Nuts',
     slug: 'nuts',
     description: 'Premium Himalayan almonds, walnuts, and mountain crunch',
-    image: '/products/authentic-almonds.jpg',
+    image: '/products/almond-jar.jpeg',
     count: products.filter((p) => p.categorySlug === 'nuts').length,
   },
   {
@@ -1758,3 +1850,6 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
     tags: Array.isArray(raw.tags) ? raw.tags : (local?.tags || []),
   };
 }
+
+
+

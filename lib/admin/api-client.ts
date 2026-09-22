@@ -53,7 +53,11 @@ async function refreshTokens(): Promise<string | null> {
     }
 
     const data = (await res.json()) as ApiResponse<RefreshResponse>;
-    tokenStore.setTokens(data.data.accessToken, data.data.refreshToken);
+    const newAccessToken = data.data.accessToken;
+    // Server now sends a rotated refresh token (token rotation pattern).
+    // If it doesn't (older builds), preserve the existing one to avoid logout.
+    const newRefreshToken = data.data.refreshToken ?? refreshToken;
+    tokenStore.setTokens(newAccessToken, newRefreshToken);
 
     const newToken = data.data.accessToken;
     refreshQueue.forEach((cb) => cb(newToken));
@@ -147,6 +151,16 @@ export async function apiRequest<T = unknown>(
   let response: Response;
   try {
     response = await makeRequest(base);
+    if (!response.ok && response.status >= 500 && fallbackBase && fallbackBase !== base) {
+      try {
+        const fallbackRes = await makeRequest(fallbackBase);
+        if (fallbackRes.ok || fallbackRes.status < 500) {
+          response = fallbackRes;
+        }
+      } catch {
+        // retain original response
+      }
+    }
   } catch (firstErr) {
     if (fallbackBase && fallbackBase !== base) {
       try {
@@ -174,7 +188,9 @@ export async function apiRequest<T = unknown>(
 
   if (!response.ok) {
     let errorData: unknown;
-    let errorMessage = `Request failed with status ${response.status}`;
+    let errorMessage = response.status >= 500
+      ? `Admin service is temporarily unavailable (Status: ${response.status}). Please try again in a few moments.`
+      : `Request failed with status ${response.status}`;
     try {
       const json = await response.json();
       errorData = json;
@@ -189,9 +205,18 @@ export async function apiRequest<T = unknown>(
 
   const contentType = response.headers.get('content-type') || '';
   if (contentType.includes('application/json')) {
-    return (await response.json()) as T;
+    try {
+      return (await response.json()) as T;
+    } catch {
+      // fallback to text parse
+    }
   }
-  return (await response.text()) as unknown as T;
+  const text = await response.text();
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return text as unknown as T;
+  }
 }
 
 // ---------- Convenience methods ----------
@@ -233,6 +258,21 @@ export async function loginRequest(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, otpCode, twoFactorToken }),
     });
+    // Auto-fallback if primary endpoint returned 5xx
+    if (!res.ok && res.status >= 500 && fallbackBase && fallbackBase !== base) {
+      try {
+        const fallbackRes = await fetch(`${fallbackBase}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, otpCode, twoFactorToken }),
+        });
+        if (fallbackRes.ok || fallbackRes.status < 500) {
+          res = fallbackRes;
+        }
+      } catch {
+        // retain original
+      }
+    }
   } catch (firstErr) {
     if (fallbackBase && fallbackBase !== base) {
       try {
@@ -244,14 +284,14 @@ export async function loginRequest(
       } catch (secondErr) {
         throw new ApiClientError(
           0,
-          `Unable to connect to the admin server. Please ensure the admin backend is running on https://admin-api.naturesmud.shop/api/admin`,
+          `Unable to connect to the admin server. Please ensure the admin backend is running.`,
           secondErr
         );
       }
     } else {
       throw new ApiClientError(
         0,
-        `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
+        `Unable to connect to the admin server. Please ensure the admin backend is running.`,
         firstErr
       );
     }
@@ -263,7 +303,9 @@ export async function loginRequest(
   } catch (parseErr) {
     throw new ApiClientError(
       res.status,
-      `Invalid response from admin server (Status: ${res.status}). Expected JSON.`,
+      res.status >= 500
+        ? `The admin server is currently busy or updating (HTTP ${res.status}). Please try again in a few moments.`
+        : `Invalid response from admin server (Status: ${res.status}).`,
       parseErr
     );
   }
@@ -291,6 +333,20 @@ export async function verifyOtpRequest(otpCode: string, otpToken: string): Promi
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ otpCode, otpToken }),
     });
+    if (!res.ok && res.status >= 500 && fallbackBase && fallbackBase !== base) {
+      try {
+        const fallbackRes = await fetch(`${fallbackBase}/auth/verify-otp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ otpCode, otpToken }),
+        });
+        if (fallbackRes.ok || fallbackRes.status < 500) {
+          res = fallbackRes;
+        }
+      } catch {
+        // retain original
+      }
+    }
   } catch (firstErr) {
     if (fallbackBase && fallbackBase !== base) {
       try {
@@ -302,14 +358,14 @@ export async function verifyOtpRequest(otpCode: string, otpToken: string): Promi
       } catch (secondErr) {
         throw new ApiClientError(
           0,
-          `Unable to connect to the admin server. Please ensure the admin backend is running on https://admin-api.naturesmud.shop/api/admin`,
+          `Unable to connect to the admin server. Please ensure the admin backend is running.`,
           secondErr
         );
       }
     } else {
       throw new ApiClientError(
         0,
-        `Unable to connect to the admin server. Please ensure the admin backend is running on ${base}`,
+        `Unable to connect to the admin server. Please ensure the admin backend is running.`,
         firstErr
       );
     }
@@ -321,7 +377,9 @@ export async function verifyOtpRequest(otpCode: string, otpToken: string): Promi
   } catch (parseErr) {
     throw new ApiClientError(
       res.status,
-      `Invalid response from admin server (Status: ${res.status}). Expected JSON.`,
+      res.status >= 500
+        ? `The admin server is currently busy or updating (HTTP ${res.status}). Please try again in a few moments.`
+        : `Invalid response from admin server (Status: ${res.status}).`,
       parseErr
     );
   }

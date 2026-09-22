@@ -106,9 +106,9 @@ const productFixes = {
     name: 'Himalayan Pink Salt',
     category: 'Salts & Spices',
     categorySlug: 'salts-spices',
-    price: 180,
-    compareAtPrice: 180,
-    mrp: 180,
+    price: 250,
+    compareAtPrice: 250,
+    mrp: 250,
     image: '/products/pink-salt.jpg',
     images: [
       '/products/pink-salt.jpg',
@@ -116,26 +116,26 @@ const productFixes = {
       '/products/pink-salt-crystals.jpg',
       '/products/pink-salt-moss.jpg'
     ],
-    weight: '100 GM',
+    weight: '200 GM',
     packing: 'Glass Jar',
-    shortDescription: 'Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a Glass Jar.'
+    shortDescription: 'Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a 200g Glass Jar.'
   },
   'pure-himalayan-black-salt-bire-noon': {
     name: 'Himalayan Black Salt (Bire Noon)',
     category: 'Salts & Spices',
     categorySlug: 'salts-spices',
-    price: 195,
-    compareAtPrice: 195,
-    mrp: 195,
+    price: 220,
+    compareAtPrice: 220,
+    mrp: 220,
     image: '/products/himalayan-black-salt-digestive.jpg',
     images: [
       '/products/himalayan-black-salt-digestive.jpg',
       '/products/client-authentic-label-2.jpg',
       '/products/black-salt.jpg'
     ],
-    weight: '100 GM',
+    weight: '200 GM',
     packing: 'Glass Jar',
-    shortDescription: 'Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 100g Glass Jar.'
+    shortDescription: 'Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 200g Glass Jar.'
   },
   'dried-cranberries': {
     name: 'Dried Cranberries',
@@ -337,9 +337,9 @@ const productFixes = {
       '/products/papaya.jpg',
       '/products/papaya-2.jpg'
     ],
-    weight: '100 GM',
+    weight: '80 GM',
     packing: 'Standup Ziplock Pouch',
-    shortDescription: 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a Standup Ziplock Pouch.'
+    shortDescription: 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.'
   },
   'premium-pistachios': {
     name: 'Premium Roasted Pistachios',
@@ -391,9 +391,9 @@ const productFixes = {
     name: 'Cold-Pressed Extra Virgin Coconut Oil (500ml)',
     category: 'Oils',
     categorySlug: 'oils',
-    price: 850,
-    compareAtPrice: 850,
-    mrp: 850,
+    price: 1750,
+    compareAtPrice: 1750,
+    mrp: 1750,
     image: '/products/coconut-oil.jpg',
     images: [
       '/products/coconut-oil.jpg',
@@ -404,20 +404,20 @@ const productFixes = {
     shortDescription: 'Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 500ml Glass Bottle.'
   },
   'virgin-coconut-oil-180ml': {
-    name: 'Cold-Pressed Extra Virgin Coconut Oil (180ml)',
+    name: 'Cold-Pressed Extra Virgin Coconut Oil (200ml)',
     category: 'Oils',
     categorySlug: 'oils',
-    price: 420,
-    compareAtPrice: 420,
-    mrp: 420,
+    price: 650,
+    compareAtPrice: 650,
+    mrp: 650,
     image: '/products/coconut-oil-product.jpg',
     images: [
       '/products/coconut-oil-product.jpg',
       '/products/coconut-oil.jpg'
     ],
-    weight: '180 ML',
+    weight: '200 ML',
     packing: 'Glass Bottle',
-    shortDescription: 'Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180ml Glass Bottle.'
+    shortDescription: 'Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 200ml Glass Bottle.'
   }
 };
 

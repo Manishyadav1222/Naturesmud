@@ -10,6 +10,7 @@ import { formatPrice, calculateDiscount } from '@/lib/utils';
 import ProductReviews from './ProductReviews';
 import { api } from '@/lib/api';
 import { Product } from '@/lib/types';
+import FeaturesStrip from '@/components/FeaturesStrip';
 
 import type { Metadata } from 'next';
 
@@ -417,6 +418,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           >
             Learn How We Help Farmers
           </Link>
+        </div>
+
+        {/* Features Strip */}
+        <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">
+          <FeaturesStrip />
         </div>
 
         {/* Reviews */}

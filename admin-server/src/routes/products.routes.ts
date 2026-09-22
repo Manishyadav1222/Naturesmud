@@ -94,15 +94,22 @@ const mapProduct = (p: any) => {
 router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {
   try {
     const { page, limit, search, status, stockStatus, sortBy, sortOrder } = req.query;
-    const result = await laravelDb.getAllProducts({
-      page: page ? Number(page) : undefined,
-      limit: limit ? Number(limit) : undefined,
-      search: search?.toString(),
-      status: status?.toString(),
-      stockStatus: stockStatus?.toString(),
-      sortBy: sortBy?.toString(),
-      sortOrder: sortOrder?.toString(),
-    });
+    let result;
+    try {
+      result = await laravelDb.getAllProducts({
+        page: page ? Number(page) : undefined,
+        limit: limit ? Number(limit) : undefined,
+        search: search?.toString(),
+        status: status?.toString(),
+        stockStatus: stockStatus?.toString(),
+        sortBy: sortBy?.toString(),
+        sortOrder: sortOrder?.toString(),
+      });
+    } catch (dbErr: any) {
+      // Graceful degradation: DB unavailable → return empty list, not 500
+      console.warn('[products] laravelDb.getAllProducts failed:', dbErr?.message);
+      result = { data: [], pagination: { page: 1, limit: 20, total: 0, totalPages: 0 } };
+    }
 
     res.json({
       data: result.data.map(mapProduct),
@@ -130,7 +137,13 @@ router.post('/bulk-delete', requireMinRole('ADMIN'), async (req, res, next) => {
 // GET /api/admin/products/:id - Get single product
 router.get('/:id', requireMinRole('VIEWER'), async (req, res, next) => {
   try {
-    const product = await laravelDb.getProductById(String(req.params.id));
+    let product = null;
+    try {
+      product = await laravelDb.getProductById(String(req.params.id));
+    } catch (dbErr: any) {
+      console.warn('[products] laravelDb.getProductById failed:', dbErr?.message);
+      return res.status(503).json({ success: false, message: 'Database temporarily unavailable' });
+    }
     if (!product) {
       return res.status(404).json({ message: 'Product not found' });
     }

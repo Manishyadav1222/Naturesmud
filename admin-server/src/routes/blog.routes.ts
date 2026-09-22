@@ -38,27 +38,36 @@ router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {
   try {
     const { page = 1, limit = 20, search } = req.query;
     const offset = (Number(page) - 1) * Number(limit);
-    let query = 'SELECT SQL_CALC_FOUND_ROWS * FROM blog_posts';
-    const params = [];
-    if (search) {
-      query += ' WHERE title LIKE ? OR excerpt LIKE ?';
-      params.push(`%${search}%`, `%${search}%`);
-    }
-    query += ' ORDER BY created_at DESC LIMIT ? OFFSET ?';
-    params.push(Number(limit), offset);
 
-    const [rows] = await laravelDb.query(query, params);
-    const [countResult] = await laravelDb.query('SELECT FOUND_ROWS() as count');
-    const total = (countResult as any)[0].count;
+    let rows: any[] = [];
+    let total = 0;
+    try {
+      let query = 'SELECT SQL_CALC_FOUND_ROWS * FROM blog_posts';
+      const params: any[] = [];
+      if (search) {
+        query += ' WHERE title LIKE ? OR excerpt LIKE ?';
+        params.push(`%${search}%`, `%${search}%`);
+      }
+      query += ' ORDER BY created_at DESC LIMIT ? OFFSET ?';
+      params.push(Number(limit), offset);
+
+      const [dbRows] = await laravelDb.query(query, params);
+      const [countResult] = await laravelDb.query('SELECT FOUND_ROWS() as count');
+      rows = dbRows as any[];
+      total = (countResult as any)[0].count;
+    } catch (dbErr: any) {
+      // Graceful degradation: blog_posts table may not exist locally
+      console.warn('[blog] DB query failed:', dbErr?.message);
+    }
 
     res.json({
-      data: (rows as any[]).map(mapBlogPost),
+      data: rows.map(mapBlogPost),
       pagination: {
         page: Number(page),
         limit: Number(limit),
         total,
-        totalPages: Math.ceil(total / Number(limit))
-      }
+        totalPages: Math.ceil(total / Number(limit)) || 0,
+      },
     });
   } catch (err) {
     next(err);
@@ -68,8 +77,14 @@ router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {
 // GET /api/admin/blog/:id - Get single blog post
 router.get('/:id', requireMinRole('VIEWER'), async (req, res, next) => {
   try {
-    const [rows] = await laravelDb.query('SELECT * FROM blog_posts WHERE id = ?', [req.params.id]);
-    const post = (rows as any[])[0];
+    let post: any = null;
+    try {
+      const [rows] = await laravelDb.query('SELECT * FROM blog_posts WHERE id = ?', [req.params.id]);
+      post = (rows as any[])[0];
+    } catch (dbErr: any) {
+      console.warn('[blog] DB query failed:', dbErr?.message);
+      return res.status(503).json({ success: false, message: 'Database temporarily unavailable' });
+    }
     if (!post) {
       return res.status(404).json({ message: 'Blog post not found' });
     }

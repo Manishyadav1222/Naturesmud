@@ -18,6 +18,7 @@ import analyticsRoutes from './analytics.routes';
 import messagesRoutes from './messages.routes';
 import usersRoutes from './users.routes';
 import rolesRoutes from './roles.routes';
+import settingsRoutes from './settings.routes';
 
 const router = Router();
 
@@ -42,5 +43,6 @@ router.use('/brands', brandsRoutes);
 router.use('/upload', uploadRoutes);
 router.use('/blog', blogRoutes);
 router.use('/reviews', reviewsRoutes);
+router.use('/settings', settingsRoutes);
 
-export default router;
+export default router;
