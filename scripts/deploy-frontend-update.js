@@ -158,12 +158,10 @@ async function main() {
   console.log('🚀 NATURE\'S MUD FRONTEND UPDATE PIPELINE');
   console.log('====================================================\n');
 
-  // 1. Check build
+  // 1. Compile fresh build
+  console.log('[1/5] 🏗️ Compiling fresh Next.js production build...');
+  execSync('npm run build', { stdio: 'inherit' });
   const buildIdPath = path.join(config.rootDir, '.next', 'BUILD_ID');
-  if (!fs.existsSync(buildIdPath)) {
-    console.log('[1/5] 🏗️ Compiling Next.js production build...');
-    execSync('npm run build', { stdio: 'inherit' });
-  }
   const localBuildId = fs.readFileSync(buildIdPath, 'utf8').trim();
   console.log('✅ Local Build Ready. BUILD_ID:', localBuildId);
 

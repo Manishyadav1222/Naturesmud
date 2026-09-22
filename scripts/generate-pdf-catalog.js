@@ -172,8 +172,8 @@ const products = [
   {
     sn: 17,
     name: 'Roasted Almond',
-    sub: 'Premium Roasted Himalayan Almonds (100g)',
-    qty: '100 GM',
+    sub: 'Premium Roasted Himalayan Almonds (200g)',
+    qty: '200 GM',
     packing: 'Glass Jar',
     category: 'Nuts',
     mrp: 750,
@@ -232,8 +232,8 @@ const products = [
   {
     sn: 23,
     name: 'Coconut oil',
-    sub: 'Cold-Pressed Extra Virgin Coconut Oil (180ml)',
-    qty: '180ml',
+    sub: 'Cold-Pressed Extra Virgin Coconut Oil (200ml)',
+    qty: '200ml',
     packing: 'Glass Jar',
     category: 'Oils',
     mrp: 650,
@@ -258,6 +258,26 @@ const products = [
     category: 'Powders',
     mrp: 510,
     benefit: '100% pure organic complex carbs with 720% DV Vitamin A. Ideal for baby weaning & workout fuel.',
+  },
+  {
+    sn: 26,
+    name: 'Makhana (Fox Nuts)',
+    sub: 'Lightweight Puffed Lotus Seeds (60g)',
+    qty: '60 GM',
+    packing: 'Glass Jar',
+    category: 'Seeds',
+    mrp: 250,
+    benefit: 'Crispy puffed lotus seeds loaded with calcium, protein, and antioxidants. Healthy guilt-free snack.',
+  },
+  {
+    sn: 27,
+    name: 'Pure Shilajit Resin',
+    sub: 'Authentic Grade-A Himalayan Shilajit (20g)',
+    qty: '20 GM',
+    packing: 'Glass Jar',
+    category: 'Salts & Spices',
+    mrp: 1995,
+    benefit: 'High-altitude Himalayan rock exudate with 84+ ionic minerals & fulvic acid for vigor and stamina.',
   },
 ];
 
@@ -371,8 +391,8 @@ function generatePDF() {
       bY += 58;
     });
 
-    doc.roundedRect(pageWidth / 2 - 130, coverCardY + 386, 260, 24, 6).fill(C_GOLD);
-    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(9.5).text('★ 25 MASTER CERTIFIED PRODUCTS INCLUDED ★', 0, coverCardY + 393, { align: 'center', width: pageWidth });
+    doc.roundedRect(pageWidth / 2 - 140, coverCardY + 386, 280, 24, 6).fill(C_GOLD);
+    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(9.5).text('★ 27 MASTER CERTIFIED PRODUCTS INCLUDED ★', 0, coverCardY + 393, { align: 'center', width: pageWidth });
 
     doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(11).text('Nature\'s Mud Nepal (naturesmud.shop)', 0, pageHeight - 120, { align: 'center', width: pageWidth });
     doc.fillColor('#C4D4CC').font('Helvetica').fontSize(9).text('Headquarters: Samakhushi, Gongabu Chowk, Kathmandu, Nepal', 0, pageHeight - 104, { align: 'center', width: pageWidth });
@@ -511,7 +531,7 @@ function generatePDF() {
     });
 
     let rowY = tableTop + 16;
-    const rowHeight = 24.2;
+    const rowHeight = 23.0;
 
     products.forEach((p, idx) => {
       const isEven = idx % 2 === 0;

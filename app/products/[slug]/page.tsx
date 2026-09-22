@@ -6,6 +6,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { BuyNowButton } from '@/components/BuyNowButton';
 import ProductImageGallery from '@/components/ProductImageGallery';
+import ProductVisualsGallery from '@/components/ProductVisualsGallery';
 import { formatPrice, calculateDiscount } from '@/lib/utils';
 import ProductReviews from './ProductReviews';
 import { api } from '@/lib/api';
@@ -419,6 +420,13 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             Learn How We Help Farmers
           </Link>
         </div>
+
+        {/* Situated Secondary Perspectives & Authentic Product Visuals Gallery */}
+        <ProductVisualsGallery
+          images={productImages}
+          productName={product.name}
+          productSlug={product.slug}
+        />
 
         {/* Features Strip */}
         <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">

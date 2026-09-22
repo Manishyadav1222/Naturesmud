@@ -268,7 +268,7 @@ const products = [
   {
     category: 'Nuts & Seeds',
     name: 'Slow-Roasted Mountain Almonds',
-    weight: '100 GM',
+    weight: '200 GM',
     pack: 'Aroma-Lock Glass Jar',
     price: 750,
     mrp: 750,
@@ -277,6 +277,19 @@ const products = [
     benefit: 'Crisp Heart-Healthy Natural Energy',
     ingredients: '100% Slow Dry-Roasted Almonds',
     ritual: 'Healthy midday desk fuel or chopped over desserts.'
+  },
+  {
+    category: 'Nuts & Seeds',
+    name: 'Himalayan Fox Nuts (Makhana)',
+    weight: '60 GM',
+    pack: 'Aroma-Lock Glass Jar',
+    price: 250,
+    mrp: 250,
+    image: 'public/products/nm-makhana-jar.jpeg',
+    origin: 'Pristine Himalayan Wetlands',
+    benefit: 'High Calcium, Low Calorie Superfood Snack',
+    ingredients: '100% Puffed Lotus Seeds (Makhana)',
+    ritual: 'Crisp roasted evening snack or light post-workout bite.'
   },
   {
     category: 'Nuts & Seeds',
@@ -357,6 +370,19 @@ const products = [
     benefit: 'Active Sulfur Compounds for Digestive Agni',
     ingredients: '100% Authentic Himalayan Kala Namak',
     ritual: 'Sprinkle on fruits, salads, chaats, or warm lemon water.'
+  },
+  {
+    category: 'Salts & Berries',
+    name: 'Pure Mountain Shilajit Resin',
+    weight: '20 GM',
+    pack: 'Aroma-Lock Glass Jar',
+    price: 1995,
+    mrp: 1995,
+    image: 'public/products/nm-shilajit-jar.jpeg',
+    origin: 'High Himalayan Cliffs (4,500m+)',
+    benefit: '84+ Ionic Minerals & Pure Fulvic Acid',
+    ingredients: '100% Purified Grade-A Shilajit Resin',
+    ritual: 'Pea-sized portion dissolved in warm mountain milk or water.'
   }
 ];
 
@@ -935,8 +961,8 @@ async function generateMasterCatalogPDF() {
   doc.text('PRICE (NPR)', colX.price, tableY + 7);
   doc.text('CORE NUTRITIONAL BENEFIT', colX.benefit, tableY + 7);
 
-  // Render 24 Product Rows
-  const rowH = 21.8;
+  // Render All Master Product Rows
+  const rowH = 20.0;
   products.forEach((p, idx) => {
     const ry = tableY + 22 + idx * rowH;
 

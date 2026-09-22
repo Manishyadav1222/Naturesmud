@@ -554,7 +554,7 @@ async function createPoster() {
       <text x="22" y="30" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">2</text>
       <text x="50" y="24" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Roasted Himalayan Almonds</text>
       <text x="50" y="40" class="sans" font-size="10" fill="#666">Slow dry-roasted crispy whole kernels, 0 added oil, 0 salt</text>
-      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 GM</text>
       <text x="440" y="30" class="sans" font-size="11" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 750</text>
     </g>
@@ -706,31 +706,43 @@ async function createPoster() {
       <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 1750</text>
     </g>
 
-    <!-- 4. Coconut Oil 180ml -->
+    <!-- 4. Coconut Oil 200ml -->
     <g transform="translate(20, 452)">
       <rect x="0" y="0" width="670" height="54" fill="#FAF9F5" stroke="#F0EBE0" />
       <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
       <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">4</text>
       <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Cold-Pressed Extra Virgin Coconut Oil</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">Compact glass bottle for daily skin hydration &amp; oil pulling</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">180 ML</text>
+      <text x="50" y="42" class="sans" font-size="10" fill="#666">Compact glass jar for daily skin hydration, cooking &amp; oil pulling</text>
+      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 ML</text>
       <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Bottle</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 700</text>
+      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 650</text>
+    </g>
+
+    <!-- 5. Makhana Fox Nuts -->
+    <g transform="translate(20, 511)">
+      <rect x="0" y="0" width="670" height="54" fill="#FFFFFF" stroke="#F0EBE0" />
+      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
+      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">5</text>
+      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Himalayan Fox Nuts (Makhana)</text>
+      <text x="50" y="42" class="sans" font-size="10" fill="#666">Puffed lotus seeds high in calcium, protein &amp; antioxidants (0 oil snack)</text>
+      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">60 GM</text>
+      <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Jar</text>
+      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 250</text>
     </g>
 
     <!-- Oil Note Banner -->
-    <g transform="translate(20, 520)">
-      <rect x="0" y="0" width="670" height="95" rx="8" fill="#F4EFE2" stroke="#D9A441" stroke-width="1" />
-      <text x="20" y="26" class="title" font-size="13" font-weight="bold" fill="#1B3D2F">
-        Cold-Extracted Bioactive Lipids:
+    <g transform="translate(20, 575)">
+      <rect x="0" y="0" width="670" height="78" rx="8" fill="#F4EFE2" stroke="#D9A441" stroke-width="1" />
+      <text x="20" y="24" class="title" font-size="12.5" font-weight="bold" fill="#1B3D2F">
+        Cold-Extracted Bioactive Lipids &amp; Superfood Purity:
       </text>
-      <text x="20" y="46" class="sans" font-size="10.5" fill="#444">
+      <text x="20" y="42" class="sans" font-size="10" fill="#444">
         Zero thermal processing, zero hexane chemical solvents, and zero deodorizers.
       </text>
-      <text x="20" y="64" class="sans" font-size="10.5" fill="#444">
+      <text x="20" y="58" class="sans" font-size="10" fill="#444">
         Solidifies naturally below 24°C into pure snowy velvet. Edible grade &amp; infant body massage safe.
       </text>
-      <text x="20" y="82" class="sans" font-size="10.5" font-weight="bold" fill="#8E2800">
+      <text x="20" y="72" class="sans" font-size="9.5" font-weight="bold" fill="#8E2800">
         • 100% Raw Extra Virgin • High Lauric Acid • Nepal Hygiene Certified
       </text>
     </g>

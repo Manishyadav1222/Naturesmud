@@ -14,9 +14,10 @@ export const products: Product[] = [
     "mrp": 250,
     "rating": 4.8,
     "reviewCount": 12,
-    "image": "/products/makhana-jar.jpeg",
+    "image": "/products/nm-makhana-jar.jpeg",
     "images": [
-      "/products/makhana-jar.jpeg"
+      "/products/nm-makhana-jar.jpeg",
+      "/products/fox-nuts-jar-2k.jpg"
     ],
     "description": "Premium Himalayan Fox Nuts (Makhana). A healthy, crunchy, and lightweight snack loaded with antioxidants, calcium, and protein. Enjoy guilt-free snacking with these beautifully puffed lotus seeds.",
     "shortDescription": "Crunchy and lightweight Himalayan Fox Nuts (Makhana) for healthy snacking.",
@@ -58,10 +59,12 @@ export const products: Product[] = [
     "mrp": 595,
     "rating": 4.9,
     "reviewCount": 68,
-    "image": "/products/mango-pouch.jpeg",
+    "image": "/products/nm-mango-pouch.jpeg",
     "images": [
-      "/products/mango-pouch.jpeg",
-      "/products/dehydrated-mango.jpg",
+      "/products/nm-mango-pouch.jpeg",
+      "/products/nm-mango-prod.jpeg",
+      "/products/dehydrated-mango-poster.jpg",
+      "/products/authentic-dehydrated-mango.jpg",
       "/products/mango.jpg"
     ],
     "description": "Golden, intensely flavorful naturally dried mango slices sourced directly from the Tarai lowlands of Nepal. Gently dehydrated at low temperatures with 0 additives and 0 preservatives—pure tropical sweetness packed with Vitamins A & C.",
@@ -127,11 +130,12 @@ export const products: Product[] = [
     "mrp": 495,
     "rating": 4.9,
     "reviewCount": 45,
-    "image": "/products/pineapple-pouch.jpeg",
+    "image": "/products/nm-pineapple-pouch.jpeg",
     "images": [
-      "/products/pineapple-pouch.jpeg",
-      "/products/dehydrated-pineapple.jpg",
-      "/products/pineapple.jpg"
+      "/products/nm-pineapple-pouch.jpeg",
+      "/products/nm-pineapple-design.jpeg",
+      "/products/authentic-dehydrated-pineapple.jpg",
+      "/products/dehydrated-pineapple.jpg"
     ],
     "description": "Tangy-sweet pineapple slices harvested from sun-drenched terraced hills and slowly dehydrated. Packed with natural bromelain digestive enzyme, vitamin C, and manganese for anti-inflammatory wellness.",
     "shortDescription": "Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme in a Standup Ziplock Pouch.",
@@ -192,10 +196,12 @@ export const products: Product[] = [
     "mrp": 510,
     "rating": 4.8,
     "reviewCount": 42,
-    "image": "/products/apple-pouch.jpeg",
+    "image": "/products/nm-apple-pouch.jpeg",
     "images": [
-      "/products/apple-pouch.jpeg",
-      "/products/dehydrated-apple.jpg",
+      "/products/nm-apple-pouch.jpeg",
+      "/products/nm-apple-design.jpeg",
+      "/products/dehydrated-apple-poster.jpg",
+      "/products/authentic-dehydrated-apple.jpg",
       "/products/apple.jpg"
     ],
     "description": "Crisp and naturally sweet dehydrated apple rings from high-altitude Himalayan orchards in Jumla and Mustang. Packed with soluble pectin fiber, quercetin, and polyphenols for cardiovascular health and gut digestion.",
@@ -325,9 +331,9 @@ export const products: Product[] = [
     "mrp": 395,
     "rating": 4.9,
     "reviewCount": 54,
-    "image": "/products/papaya-flat.jpeg",
+    "image": "/products/nm-papaya-flat.jpeg",
     "images": [
-      "/products/papaya-flat.jpeg",
+      "/products/nm-papaya-flat.jpeg",
       "/products/papaya-2.jpg"
     ],
     "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
@@ -389,9 +395,12 @@ export const products: Product[] = [
     "mrp": 650,
     "rating": 5,
     "reviewCount": 78,
-    "image": "/products/blueberry-jar.jpeg",
+    "image": "/products/nm-blueberry-jar.jpeg",
     "images": [
-      "/products/blueberry-jar.jpeg",
+      "/products/nm-blueberry-jar.jpeg",
+      "/products/nm-blueberry-purple.jpeg",
+      "/products/nm-blueberry-shoot.jpeg",
+      "/products/blueberries-brain-power.jpg",
       "/products/blueberries.jpg",
       "/products/blueberries-2.jpg"
     ],
@@ -454,11 +463,13 @@ export const products: Product[] = [
     "mrp": 415,
     "rating": 4.8,
     "reviewCount": 49,
-    "image": "/products/cranberry-jar.jpeg",
+    "image": "/products/nm-cranberry-jar.jpeg",
     "images": [
-      "/products/cranberry-jar.jpeg",
-      "/products/cranberries-2.jpg",
-      "/products/cranberries-glowing-jar.jpg"
+      "/products/nm-cranberry-jar.jpeg",
+      "/products/cranberries-glowing-jar.jpg",
+      "/products/cranberries-infographic.jpg",
+      "/products/cranberries-prevent-uti.jpg",
+      "/products/cranberries-2.jpg"
     ],
     "description": "Plump, ruby-red whole dried cranberries bursting with natural tart-sweet flavor and rich in Type-A Proanthocyanidins (PACs). Revered for supporting daily urinary tract vitality, active antioxidant defense, and whole-body wellness.",
     "shortDescription": "Antioxidant-dense whole dried cranberries for urinary tract and cellular wellness in a Glass Jar.",
@@ -519,11 +530,13 @@ export const products: Product[] = [
     "mrp": 400,
     "rating": 4.9,
     "reviewCount": 84,
-    "image": "/products/dates-jar.jpeg",
+    "image": "/products/nm-dates-jar.jpeg",
     "images": [
-      "/products/dates-jar.jpeg",
-      "/products/dates-jar.jpeg",
-      "/products/dates-powder-product-shot.jpg"
+      "/products/nm-dates-jar.jpeg",
+      "/products/dates-powder-jar-2k.jpg",
+      "/products/dates-powder-health-poster.jpg",
+      "/products/dates-powder-product-shot.jpg",
+      "/products/dates-powder-100g.jpg"
     ],
     "description": "100% pure dehydrated date powder made by slowly drying and micro-grinding whole premium dates. The healthiest, unrefined natural sweetener alternative to white table sugar for children, toddlers, and fitness enthusiasts. Loaded with natural potassium, magnesium, iron, and fiber without spiking blood sugar aggressively.",
     "shortDescription": "100% unrefined natural sweetener made from whole dehydrated dates — 0% white sugar in a Glass Jar.",
@@ -591,11 +604,15 @@ export const products: Product[] = [
     "mrp": 430,
     "rating": 4.9,
     "reviewCount": 62,
-    "image": "/products/beetroot-jar.jpeg",
+    "image": "/products/nm-beetroot-jar.jpeg",
     "images": [
-      "/products/beetroot-jar.jpeg",
+      "/products/nm-beetroot-jar.jpeg",
+      "/products/nm-beetroot-ad1.jpeg",
+      "/products/nm-beetroot-ad2.jpeg",
       "/products/beetroot-glass-jar.jpg",
-      "/products/beetroot-jar.jpeg"
+      "/products/beetroot-poster-2k.jpg",
+      "/products/beetroot-vital-blood.jpg",
+      "/products/beetroot-powder-100g.jpg"
     ],
     "description": "Cold-dehydrated and finely milled from pesticide-free Nepali red beetroots. Naturally rich in dietary nitrates, betalains, and folate that convert into nitric oxide in the bloodstream to boost oxygen delivery, lower blood pressure, and enhance endurance for athletes.",
     "shortDescription": "Natural dietary nitrate booster for glowing skin, blood stamina & cardiac health in a Glass Jar.",
@@ -662,9 +679,9 @@ export const products: Product[] = [
     "mrp": 250,
     "rating": 4.8,
     "reviewCount": 46,
-    "image": "/products/pink-salt-jar.jpeg",
+    "image": "/products/nm-pink-salt-jar.jpeg",
     "images": [
-      "/products/pink-salt-jar.jpeg",
+      "/products/nm-pink-salt-jar.jpeg",
       "/products/client-authentic-label-1.jpg",
       "/products/pink-salt-crystals.jpg",
       "/products/pink-salt-moss.jpg"
@@ -792,10 +809,15 @@ export const products: Product[] = [
     "mrp": 495,
     "rating": 4.9,
     "reviewCount": 65,
-    "image": "/products/chia-jar.jpeg",
+    "image": "/products/nm-chia-jar.jpeg",
     "images": [
-      "/products/chia-jar.jpeg",
-      "/images/posters/chia-power.jpg"
+      "/products/nm-chia-jar.jpeg",
+      "/products/nm-chia-ad.jpeg",
+      "/products/nm-chia-ad2.jpeg",
+      "/products/nm-chia-display.jpeg",
+      "/products/nm-chia-studio.jpeg",
+      "/images/posters/chia-power.jpg",
+      "/products/chia-seeds.jpg"
     ],
     "description": "Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein. Hydrophilic seeds that expand up to 10x in liquids to support steady hydration, weight balance, and gut motility.",
     "shortDescription": "Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein in a 300g Plastic Jar.",
@@ -862,11 +884,12 @@ export const products: Product[] = [
     "mrp": 520,
     "rating": 4.9,
     "reviewCount": 57,
-    "image": "/products/pumpkin-seeds.jpg",
+    "image": "/images/posters/pure-pumpkin-seeds.jpg",
     "images": [
+      "/images/posters/pure-pumpkin-seeds.jpg",
       "/products/pumpkin-seeds.jpg",
-      "/products/pumpkin-seeds-2.jpg",
-      "/products/pumpkin-seeds-product-shot.jpg"
+      "/products/pumpkin-seeds-product-shot.jpg",
+      "/products/pumpkin-seeds-2.jpg"
     ],
     "description": "Raw AAA-grade dark-green pumpkin seed kernels (pepitas). One of the richest dietary sources of natural bioavailable Zinc, Magnesium, Tryptophan, and antioxidants for deep sleep, prostate health, and immune defense.",
     "shortDescription": "Zinc, magnesium, and tryptophan rich raw pumpkin seeds for prostate wellness, deep sleep, and hair vitality in a 300g Plastic Jar.",
@@ -933,9 +956,11 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 53,
-    "image": "/products/cashew-jar.jpeg",
+    "image": "/products/nm-cashew-jar1.jpeg",
     "images": [
-      "/products/cashew-jar.jpeg",
+      "/products/nm-cashew-jar1.jpeg",
+      "/products/nm-cashew-jar2.jpeg",
+      "/products/authentic-cashewnuts-roasted.jpg",
       "/products/cashewnuts-roasted.jpg"
     ],
     "description": "Handpicked whole jumbo W240 grade cashew nuts, delightfully sweet, buttery, and crunch-packed. Rich in copper, magnesium, plant protein, and heart-healthy oleic acid for bone strength, energy metabolism, and cardiac wellness.",
@@ -1002,11 +1027,12 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.8,
     "reviewCount": 39,
-    "image": "/products/cashew-jar.jpeg",
+    "image": "/products/nm-cashew-jar1.jpeg",
     "images": [
-      "/products/cashew-jar.jpeg",
-      "/products/cashewnuts-roasted.jpg",
-      "/products/cashews-roasted.jpg"
+      "/products/nm-cashew-jar1.jpeg",
+      "/products/nm-cashew-jar2.jpeg",
+      "/products/authentic-cashewnuts-roasted.jpg",
+      "/products/cashewnuts-roasted.jpg"
     ],
     "description": "Artisan slow-roasted golden cashew nuts roasted without added oils or synthetic flavor enhancers. Delicate toasty aroma with an irresistible crisp snap, delivering pure wholesome nut satisfaction.",
     "shortDescription": "Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 150g Glass Jar.",
@@ -1067,11 +1093,12 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 66,
-    "image": "/products/almond-jar.jpeg",
+    "image": "/products/nm-almond-jar.jpeg",
     "images": [
-      "/products/almond-jar.jpeg",
-      "/products/almond-jar.jpeg",
-      "/products/almonds.jpg"
+      "/products/nm-almond-jar.jpeg",
+      "/products/authentic-almonds.jpg",
+      "/products/almonds.jpg",
+      "/products/almonds-2.jpg"
     ],
     "description": "Crispy slow-roasted mountain almonds sealed in a glass jar for maximum crunch and flavor. Exceptionally rich in Vitamin E, plant protein, dietary fiber, and heart-protective monounsaturated fatty acids.",
     "shortDescription": "Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar.",
@@ -1137,11 +1164,11 @@ export const products: Product[] = [
     "mrp": 750,
     "rating": 4.9,
     "reviewCount": 59,
-    "image": "/products/almond-jar.jpeg",
+    "image": "/products/nm-almond-jar.jpeg",
     "images": [
-      "/products/almond-jar.jpeg",
-      "/products/almonds.jpg",
-      "/products/almond-jar.jpeg"
+      "/products/nm-almond-jar.jpeg",
+      "/products/authentic-almonds.jpg",
+      "/products/almonds.jpg"
     ],
     "description": "Unpasteurized, premium raw almonds harvested from pristine mountain orchards. Ideal for soaking overnight (badam pani) to activate live digestive enzymes, making fresh almond milk, and fueling daily cognitive memory.",
     "shortDescription": "Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar.",
@@ -1556,12 +1583,13 @@ export const products: Product[] = [
     "mrp": 440,
     "rating": 4.8,
     "reviewCount": 38,
-    "image": "/products/carrot-jar.jpeg",
+    "image": "/products/nm-carrot-jar.jpeg",
     "images": [
-      "/products/carrot-jar.jpeg",
-      "/products/carrot-powder-marble.jpg",
+      "/products/nm-carrot-jar.jpeg",
+      "/products/carrot-benefits-poster.jpg",
       "/products/carrot-powder-eye-health.jpg",
-      "/products/carrot-powder.jpg"
+      "/products/carrot-powder-marble.jpg",
+      "/products/carrot-powder-100g.jpg"
     ],
     "description": "Sun-dried and gently milled organic carrots harvested from fertile mid-hill farms of Nepal. Packed with beta-carotene (pro-vitamin A), lutein, and dietary fiber to protect eyes, support cell regeneration, and enhance everyday cooking with a mild natural sweetness.",
     "shortDescription": "Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 100g Glass Jar.",
@@ -1623,11 +1651,14 @@ export const products: Product[] = [
     "mrp": 420,
     "rating": 5,
     "reviewCount": 96,
-    "image": "/products/sweet-potato-jar.jpeg",
+    "image": "/products/nm-sweet-potato-jar.jpeg",
     "images": [
-      "/products/sweet-potato-jar.jpeg",
-      "/products/sweet-potato-jar.jpeg",
-      "/products/sweet-potato-jar-display.jpg"
+      "/products/nm-sweet-potato-jar.jpeg",
+      "/products/sweet-potato-jar-display.jpg",
+      "/products/sweet-potato-product-poster.jpg",
+      "/products/sweet-potato-creation-process.jpg",
+      "/products/sweet-potato-powder-100g.jpg",
+      "/products/sweet-potato-powder.jpg"
     ],
     "description": "100% pure organic dehydrated sweet potato powder milled from farm-fresh Nepali sweet potatoes. A nutrient-dense complex carbohydrate powerhouse packed with Vitamin A (beta-carotene), fiber, potassium, and minerals. Perfect for infant weaning porridge, baby cereals, pre-workout energy shakes, pancakes, and healthy baking with pure single-ingredient Himalayan goodness.",
     "shortDescription": "100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar.",
@@ -1698,11 +1729,11 @@ export const products: Product[] = [
     "price": 1995,
     "compareAtPrice": 1995,
     "mrp": 1995,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 114,
-    "image": "/products/shilajit-jar.jpeg",
+    "image": "/products/nm-shilajit-jar.jpeg",
     "images": [
-      "/products/shilajit-jar.jpeg",
+      "/products/nm-shilajit-jar.jpeg",
       "/products/shilajit.jpg"
     ],
     "description": "Gold-grade 100% pure Himalayan Shilajit resin, sustainably harvested from pristine Himalayan altitudes above 16,000 feet. Purified using traditional Ayurvedic triphala water decoction. Naturally concentrated with >75% fulvic acid and 84+ ionic trace minerals to support cellular mitochondrial energy, stamina, cognitive clarity, and vitality.",
