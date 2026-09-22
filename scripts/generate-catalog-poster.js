@@ -234,7 +234,7 @@ async function createPoster() {
       <text x="22" y="35" text-anchor="middle" class="sans" font-size="12" font-weight="bold" fill="#1B3D2F">5</text>
       <text x="50" y="26" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Dehydrated Papaya Slices</text>
       <text x="50" y="44" class="sans" font-size="10.5" fill="#666">Papain-rich sweet slices for digestive health and snacking</text>
-      <text x="360" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">100 GM</text>
+      <text x="360" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">80 GM</text>
       <text x="440" y="34" class="sans" font-size="11" fill="#555">Standup Pouch</text>
       <text x="655" y="35" text-anchor="end" class="title" font-size="17" font-weight="bold" fill="#1B3D2F">Rs. 395</text>
     </g>
@@ -316,7 +316,7 @@ async function createPoster() {
       <text x="50" y="40" class="sans" font-size="10" fill="#666">Concentrated Beta-Carotene for vision &amp; baby weaning</text>
       <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
       <text x="440" y="30" class="sans" font-size="11" fill="#555">Glass Jar</text>
-      <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 490</text>
+      <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 440</text>
     </g>
 
     <!-- Sweet Potato Powder -->
@@ -328,7 +328,7 @@ async function createPoster() {
       <text x="50" y="40" class="sans" font-size="10" fill="#666">Resistant starch complex carb for baby porridge &amp; gym</text>
       <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
       <text x="440" y="30" class="sans" font-size="11" fill="#555">Glass Jar</text>
-      <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 510</text>
+      <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 420</text>
     </g>
 
     <!-- Himalayan Pink Salt -->
@@ -338,7 +338,7 @@ async function createPoster() {
       <text x="22" y="30" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">5</text>
       <text x="50" y="24" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Himalayan Pink Salt</text>
       <text x="50" y="40" class="sans" font-size="10" fill="#666">Unrefined ancient rock salt with 84+ mineral electrolytes</text>
-      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 GM</text>
       <text x="440" y="30" class="sans" font-size="11" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 250</text>
     </g>
@@ -350,7 +350,7 @@ async function createPoster() {
       <text x="22" y="30" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">6</text>
       <text x="50" y="24" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Himalayan Black Salt (Bire Noon)</text>
       <text x="50" y="40" class="sans" font-size="10" fill="#666">Ayurvedic volcanic rock salt for digestion &amp; gut flora</text>
-      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="360" y="30" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 GM</text>
       <text x="440" y="30" class="sans" font-size="11" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 220</text>
     </g>
@@ -634,15 +634,15 @@ async function createPoster() {
     </g>
   </g>
 
-  <!-- 5. ORGANIC SEEDS & COLD-PRESSED VIRGIN OILS (4 Products) -->
+  <!-- 5. ORGANIC SEEDS, COLD-PRESSED OILS & HIMALAYAN SUPERFOODS (6 Products) -->
   <g transform="translate(830, 1280)">
-    <rect x="0" y="0" width="710" height="720" rx="12" fill="#FFFFFF" stroke="#E5DAC5" stroke-width="1.5" filter="url(#cardShadow)" />
+    <rect x="0" y="0" width="710" height="725" rx="12" fill="#FFFFFF" stroke="#E5DAC5" stroke-width="1.5" filter="url(#cardShadow)" />
     <path d="M0,12 Q0,0 12,0 L698,0 Q710,0 710,12 L710,50 L0,50 Z" fill="url(#tableHeadGrad)" />
-    <text x="24" y="32" class="title" font-size="20" font-weight="bold" fill="#FFFFFF" letter-spacing="1.5">
-      5. SEEDS &amp; COLD-PRESSED OILS
+    <text x="24" y="32" class="title" font-size="19" font-weight="bold" fill="#FFFFFF" letter-spacing="1">
+      5. SEEDS, OILS &amp; SUPERFOODS
     </text>
-    <text x="686" y="32" text-anchor="end" class="sans" font-size="11" font-weight="bold" fill="#F4E8C1" letter-spacing="1">
-      RAW COLD-EXTRACTED • UNREFINED
+    <text x="686" y="32" text-anchor="end" class="sans" font-size="9.5" font-weight="bold" fill="#F4E8C1" letter-spacing="0.5">
+      RAW EXTRACTED • BIOACTIVE LIPIDS &amp; RESIN
     </text>
 
     <!-- Visual Showcase of Seeds & Oil -->
@@ -661,89 +661,101 @@ async function createPoster() {
     </g>
 
     <!-- Table Header -->
-    <g transform="translate(20, 235)">
-      <rect x="0" y="0" width="670" height="32" rx="6" fill="#1B3D2F" />
-      <text x="15" y="21" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">SN</text>
-      <text x="50" y="21" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">PRODUCT NAME</text>
-      <text x="360" y="21" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">QTY</text>
-      <text x="440" y="21" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">PACKING</text>
-      <text x="655" y="21" text-anchor="end" class="sans" font-size="11" font-weight="bold" fill="#F4E8C1">OFFICIAL MRP</text>
+    <g transform="translate(20, 230)">
+      <rect x="0" y="0" width="670" height="30" rx="6" fill="#1B3D2F" />
+      <text x="15" y="20" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">SN</text>
+      <text x="50" y="20" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">PRODUCT NAME</text>
+      <text x="360" y="20" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">QTY</text>
+      <text x="440" y="20" class="sans" font-size="11" font-weight="bold" fill="#FFFFFF">PACKING</text>
+      <text x="655" y="20" text-anchor="end" class="sans" font-size="11" font-weight="bold" fill="#F4E8C1">OFFICIAL MRP</text>
     </g>
 
     <!-- 1. Chia Seeds -->
-    <g transform="translate(20, 275)">
-      <rect x="0" y="0" width="670" height="54" fill="#FFFFFF" stroke="#F0EBE0" />
-      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
-      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">1</text>
-      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Organic Chia Seeds</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">Whole black seeds rich in Omega-3 ALA, calcium &amp; prebiotic fiber</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">300 GM</text>
-      <text x="440" y="31" class="sans" font-size="11" fill="#555">Plastic Jar</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 495</text>
+    <g transform="translate(20, 266)">
+      <rect x="0" y="0" width="670" height="50" fill="#FFFFFF" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">1</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Organic Chia Seeds</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">Whole black seeds rich in Omega-3 ALA, calcium &amp; prebiotic fiber</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">300 GM</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Plastic Jar</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 495</text>
     </g>
 
     <!-- 2. Pumpkin Seeds -->
-    <g transform="translate(20, 334)">
-      <rect x="0" y="0" width="670" height="54" fill="#FAF9F5" stroke="#F0EBE0" />
-      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
-      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">2</text>
-      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Raw Pumpkin Seeds</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">AAA grade pepitas high in zinc &amp; magnesium for sleep &amp; immunity</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">300 GM</text>
-      <text x="440" y="31" class="sans" font-size="11" fill="#555">Plastic Jar</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 650</text>
+    <g transform="translate(20, 320)">
+      <rect x="0" y="0" width="670" height="50" fill="#FAF9F5" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">2</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Raw Pumpkin Seeds</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">AAA grade pepitas high in zinc &amp; magnesium for sleep &amp; immunity</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">300 GM</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Plastic Jar</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 520</text>
     </g>
 
     <!-- 3. Coconut Oil 500ml -->
-    <g transform="translate(20, 393)">
-      <rect x="0" y="0" width="670" height="54" fill="#FFFFFF" stroke="#F0EBE0" />
-      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
-      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">3</text>
-      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Cold-Pressed Extra Virgin Coconut Oil</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">Centrifuged raw coconut milk, 50%+ Lauric acid for immunity &amp; baby</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">500 ML</text>
-      <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Bottle</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 1750</text>
+    <g transform="translate(20, 374)">
+      <rect x="0" y="0" width="670" height="50" fill="#FFFFFF" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">3</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Cold-Pressed Extra Virgin Coconut Oil</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">Centrifuged raw coconut milk, 50%+ Lauric acid for immunity &amp; baby</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">500 ML</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Glass Bottle</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 1750</text>
     </g>
 
     <!-- 4. Coconut Oil 200ml -->
-    <g transform="translate(20, 452)">
-      <rect x="0" y="0" width="670" height="54" fill="#FAF9F5" stroke="#F0EBE0" />
-      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
-      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">4</text>
-      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Cold-Pressed Extra Virgin Coconut Oil</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">Compact glass jar for daily skin hydration, cooking &amp; oil pulling</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 ML</text>
-      <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Bottle</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 650</text>
+    <g transform="translate(20, 428)">
+      <rect x="0" y="0" width="670" height="50" fill="#FAF9F5" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">4</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Cold-Pressed Extra Virgin Coconut Oil</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">Compact glass jar for daily skin hydration, cooking &amp; oil pulling</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 ML</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Glass Bottle</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 650</text>
     </g>
 
     <!-- 5. Makhana Fox Nuts -->
-    <g transform="translate(20, 511)">
-      <rect x="0" y="0" width="670" height="54" fill="#FFFFFF" stroke="#F0EBE0" />
-      <circle cx="22" cy="27" r="11" fill="#FAF5E8" />
-      <text x="22" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">5</text>
-      <text x="50" y="25" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Himalayan Fox Nuts (Makhana)</text>
-      <text x="50" y="42" class="sans" font-size="10" fill="#666">Puffed lotus seeds high in calcium, protein &amp; antioxidants (0 oil snack)</text>
-      <text x="360" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">60 GM</text>
-      <text x="440" y="31" class="sans" font-size="11" fill="#555">Glass Jar</text>
-      <text x="655" y="33" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 250</text>
+    <g transform="translate(20, 482)">
+      <rect x="0" y="0" width="670" height="50" fill="#FFFFFF" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">5</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Himalayan Fox Nuts (Makhana)</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">Puffed lotus seeds high in calcium, protein &amp; antioxidants (0 oil snack)</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">60 GM</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Glass Jar</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 250</text>
+    </g>
+
+    <!-- 6. Pure Mountain Shilajit Resin -->
+    <g transform="translate(20, 536)">
+      <rect x="0" y="0" width="670" height="50" fill="#FAF9F5" stroke="#F0EBE0" />
+      <circle cx="22" cy="25" r="11" fill="#FAF5E8" />
+      <text x="22" y="29" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#1B3D2F">6</text>
+      <text x="50" y="23" class="title" font-size="13.5" font-weight="bold" fill="#1B3D2F">Pure Mountain Shilajit Resin</text>
+      <text x="50" y="39" class="sans" font-size="10" fill="#666">Gold-grade high-altitude exudate with 85+ ionic minerals &amp; fulvic acid</text>
+      <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">20 GM</text>
+      <text x="440" y="29" class="sans" font-size="11" fill="#555">Glass Jar</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 1995</text>
     </g>
 
     <!-- Oil Note Banner -->
-    <g transform="translate(20, 575)">
-      <rect x="0" y="0" width="670" height="78" rx="8" fill="#F4EFE2" stroke="#D9A441" stroke-width="1" />
-      <text x="20" y="24" class="title" font-size="12.5" font-weight="bold" fill="#1B3D2F">
+    <g transform="translate(20, 594)">
+      <rect x="0" y="0" width="670" height="74" rx="8" fill="#F4EFE2" stroke="#D9A441" stroke-width="1" />
+      <text x="20" y="22" class="title" font-size="12" font-weight="bold" fill="#1B3D2F">
         Cold-Extracted Bioactive Lipids &amp; Superfood Purity:
       </text>
-      <text x="20" y="42" class="sans" font-size="10" fill="#444">
-        Zero thermal processing, zero hexane chemical solvents, and zero deodorizers.
+      <text x="20" y="39" class="sans" font-size="9.5" fill="#444">
+        Zero thermal processing, zero hexane chemical solvents, zero deodorizers, and 100% single-origin harvest.
       </text>
-      <text x="20" y="58" class="sans" font-size="10" fill="#444">
-        Solidifies naturally below 24°C into pure snowy velvet. Edible grade &amp; infant body massage safe.
+      <text x="20" y="53" class="sans" font-size="9.5" fill="#444">
+        Coconut oil solidifies naturally below 24°C into pure snowy velvet. Shilajit resin tested for heavy-metal purity.
       </text>
-      <text x="20" y="72" class="sans" font-size="9.5" font-weight="bold" fill="#8E2800">
-        • 100% Raw Extra Virgin • High Lauric Acid • Nepal Hygiene Certified
+      <text x="20" y="67" class="sans" font-size="9.5" font-weight="bold" fill="#8E2800">
+        • 100% Raw Extra Virgin • High Lauric Acid • Gold-Grade Resin • Nepal Certified
       </text>
     </g>
   </g>
@@ -845,7 +857,7 @@ async function createPoster() {
         <rect x="0" y="0" width="310" height="90" rx="8" fill="#FFFFFF" stroke="#D9A441" stroke-width="1" />
         <text x="16" y="28" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Superfood Powders &amp; Salts</text>
         <text x="16" y="48" class="sans" font-size="10.5" fill="#555">Dates, Beetroot, Carrot, Sweet Potato, Salts</text>
-        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Glass Jars • Rs. 220–510</text>
+        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Glass Jars • Rs. 220–440</text>
       </g>
 
       <g transform="translate(0, 180)">
@@ -857,9 +869,9 @@ async function createPoster() {
 
       <g transform="translate(330, 180)">
         <rect x="0" y="0" width="310" height="90" rx="8" fill="#FFFFFF" stroke="#D9A441" stroke-width="1" />
-        <text x="16" y="28" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Seeds &amp; Cold-Pressed Oils</text>
-        <text x="16" y="48" class="sans" font-size="10.5" fill="#555">Chia Seeds, Pumpkin Seeds, Virgin Coconut Oil</text>
-        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Jars &amp; Bottles • Rs. 415–1750</text>
+        <text x="16" y="28" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Seeds, Oils &amp; Superfoods</text>
+        <text x="16" y="48" class="sans" font-size="10.5" fill="#555">Chia, Pumpkin, Coconut Oil, Fox Nuts, Shilajit</text>
+        <text x="16" y="70" class="sans" font-size="11" font-weight="bold" fill="#8E2800">6 Products • Jars &amp; Bottles • Rs. 250–1995</text>
       </g>
 
       <!-- Grand Seal Box -->

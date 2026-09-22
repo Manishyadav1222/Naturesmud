@@ -1835,6 +1835,23 @@ export const categories = [
   },
 ];
 
+function formatProductWeight(val: any, fallbackWeight?: string): string {
+  if (fallbackWeight && /[a-zA-Z]/.test(fallbackWeight)) {
+    if (!val || /^\d+(\.\d+)?$/.test(String(val).trim())) {
+      const num = val ? Math.round(Number(val)) : null;
+      const unitMatch = fallbackWeight.match(/[a-zA-Z]+/);
+      const unit = unitMatch ? ' ' + unitMatch[0].toUpperCase() : ' GM';
+      return num ? `${num}${unit}` : fallbackWeight;
+    }
+  }
+  if (!val) return fallbackWeight || '100 GM';
+  const str = String(val).trim();
+  if (/^\d+(\.\d+)?$/.test(str)) {
+    return `${Math.round(Number(str))} GM`;
+  }
+  return str;
+}
+
 export function normalizeProduct(raw: any, fallback?: Product | null): Product {
   if (!raw) return (fallback || undefined) as unknown as Product;
   const slug = raw.slug || fallback?.slug || String(raw.id || '');
@@ -1869,7 +1886,7 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
     shortDescription: raw.shortDescription || raw.short_description || local?.shortDescription || '',
     badges: Array.isArray(raw.badges) ? raw.badges : (local?.badges || []),
     stock: typeof raw.stock === 'number' ? raw.stock : (local?.stock ?? 100),
-    weight: raw.weight || local?.weight || '100 GM',
+    weight: formatProductWeight(raw.weight, local?.weight),
     packing: raw.packing || local?.packing || 'Standup Ziplock Pouch',
     ingredients: Array.isArray(raw.ingredients) ? raw.ingredients : (local?.ingredients || []),
     benefits: Array.isArray(raw.benefits) ? raw.benefits : (local?.benefits || []),

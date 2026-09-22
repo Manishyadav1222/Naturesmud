@@ -106,7 +106,7 @@ const products = [
     qty: '200 GM',
     packing: 'Glass Jar',
     category: 'Salts & Spices',
-    mrp: 180,
+    mrp: 250,
     benefit: '84+ ionic trace minerals with zero microplastics, anti-caking chemicals, or bleach.',
   },
   {
@@ -116,7 +116,7 @@ const products = [
     qty: '200 GM',
     packing: 'Glass Jar',
     category: 'Salts & Spices',
-    mrp: 150,
+    mrp: 220,
     benefit: 'Ayurvedic volcanic rock salt (Kala Namak) to kindle digestive Agni and ease gas & acid.',
   },
   {
@@ -136,7 +136,7 @@ const products = [
     qty: '300 GM',
     packing: 'Plastic Jar',
     category: 'Seeds',
-    mrp: 650,
+    mrp: 520,
     benefit: 'AAA-grade raw pepitas loaded with bioavailable Zinc & Magnesium for sleep and immunity.',
   },
   {
@@ -246,7 +246,7 @@ const products = [
     qty: '100 GM',
     packing: 'Glass Jar',
     category: 'Powders',
-    mrp: 490,
+    mrp: 440,
     benefit: 'Solar-dehydrated fine carrot powder rich in Beta-Carotene for baby meals, soups, and skin.',
   },
   {
@@ -256,7 +256,7 @@ const products = [
     qty: '100 GM',
     packing: 'Glass Jar',
     category: 'Powders',
-    mrp: 510,
+    mrp: 420,
     benefit: '100% pure organic complex carbs with 720% DV Vitamin A. Ideal for baby weaning & workout fuel.',
   },
   {

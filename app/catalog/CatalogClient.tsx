@@ -51,6 +51,16 @@ interface CatalogSectionDef {
   productIds: string[]; // Corresponding to 1-25 in products list
 }
 
+function getDisplayWeight(w?: string, slug?: string): string {
+  if (!w) return '100 GM';
+  const str = String(w).trim();
+  if (/^\d+(\.\d+)?$/.test(str)) {
+    const num = Math.round(Number(str));
+    return slug && slug.includes('oil') ? `${num} ML` : `${num} GM`;
+  }
+  return str;
+}
+
 const CATALOG_SECTIONS: CatalogSectionDef[] = [
   {
     id: 'dehydrated-fruits',
@@ -106,14 +116,21 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
   },
   {
     id: 'seeds-oils',
-    title: 'ORGANIC SEEDS & COLD-PRESSED OILS',
-    subtitle: 'CELLULAR WELLNESS & PURE LIPIDS',
-    tagline: 'Pesticide-free certified seeds and single-origin extra virgin wood-pressed coconut oil.',
-    badge: 'Cold-Extracted • Unrefined',
+    title: 'ORGANIC SEEDS, OILS & SUPERFOODS',
+    subtitle: 'CELLULAR WELLNESS, PURE LIPIDS & RESIN',
+    tagline: 'Pesticide-free certified seeds, single-origin virgin coconut oil, and gold-grade Himalayan shilajit.',
+    badge: 'Cold-Extracted • Unrefined • 100% Pure',
     heroImage: '/products/flax-seeds.jpg',
     heroImageAlt: 'NaturesMud Organic Seeds & Cold-Pressed Virgin Oils',
     accentColor: '#1B3D2F',
-    productIds: ['chia-seeds', 'pumpkin-seeds', 'virgin-coconut-oil-500ml', 'virgin-coconut-oil-180ml'],
+    productIds: [
+      'chia-seeds',
+      'pumpkin-seeds',
+      'makhana-fox-nuts',
+      'virgin-coconut-oil-500ml',
+      'virgin-coconut-oil-180ml',
+      'pure-mountain-himalayan-shilajit-resin',
+    ],
   },
 ];
 
@@ -557,7 +574,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                                   </Link>
                                 </td>
                                 <td className="py-3.5 px-4 text-center font-mono font-bold text-gray-800">
-                                  {p.weight}
+                                  {getDisplayWeight(p.weight, p.slug)}
                                 </td>
                                 <td className="py-3.5 px-4 text-gray-600 font-medium">
                                   <span className="inline-block px-2.5 py-0.5 rounded-md bg-gray-100 border border-gray-200 text-xs">
@@ -641,7 +658,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
 
                               <div className="absolute top-2 right-2">
                                 <span className="bg-black/75 backdrop-blur-sm text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm font-mono">
-                                  {prod.weight}
+                                  {getDisplayWeight(prod.weight, prod.slug)}
                                 </span>
                               </div>
 
@@ -890,7 +907,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                             </span>
                           </td>
                           <td className="py-3 px-4 text-center font-mono font-semibold text-gray-800">
-                            {p.weight}
+                            {getDisplayWeight(p.weight, p.slug)}
                           </td>
                           <td className="py-3 px-4 font-medium text-gray-600">{p.packing || 'Glass Jar'}</td>
                           <td className="py-3 px-4 text-right font-heading font-black text-[#2D5A27] text-base">
