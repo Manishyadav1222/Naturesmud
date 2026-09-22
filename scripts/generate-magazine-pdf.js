@@ -95,7 +95,7 @@ const products = [
   {
     category: 'Dried Fruits',
     name: 'Dehydrated Papaya Slices',
-    weight: '80 GM',
+    weight: '90 GM',
     pack: 'Standup Ziplock Pouch',
     price: 395,
     mrp: 395,

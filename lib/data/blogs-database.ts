@@ -4239,7 +4239,7 @@ const productMapDetails: Record<string, { name: string; price: number; image: st
   'dehydrated-pineapple': { name: 'Dehydrated Himalayan Pineapple', price: 396, image: '/products/dehydrated-pineapple.jpg' },
   'dehydrated-apple': { name: 'Dehydrated Himalayan Apple Rings', price: 408, image: '/products/dehydrated-apple.jpg' },
   'dehydrated-coconut-chips': { name: 'Premium Dehydrated Coconut Chips (100g)', price: 495, image: '/products/dehydrated-coconut-chips.jpg' },
-  'dehydrated-papaya': { name: 'Dehydrated Sweet Papaya Slices (80g)', price: 395, image: '/products/papaya.jpg' },
+  'dehydrated-papaya': { name: 'Dehydrated Sweet Papaya Slices (90g)', price: 395, image: '/products/papaya.jpg' },
   'roasted-cashewnuts': { name: 'Slow-Roasted Cashewnuts (150g)', price: 600, image: '/products/cashews.jpg' },
   'premium-cashewnuts': { name: 'Premium Whole Cashewnuts (200g)', price: 600, image: '/products/cashews.jpg' },
   'dried-figs': { name: 'Premium Whole Dried Figs (200g)', price: 552, image: '/products/dried-blueberries.jpg' },

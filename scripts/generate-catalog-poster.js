@@ -234,7 +234,7 @@ async function createPoster() {
       <text x="22" y="35" text-anchor="middle" class="sans" font-size="12" font-weight="bold" fill="#1B3D2F">5</text>
       <text x="50" y="26" class="title" font-size="14" font-weight="bold" fill="#1B3D2F">Dehydrated Papaya Slices</text>
       <text x="50" y="44" class="sans" font-size="10.5" fill="#666">Papain-rich sweet slices for digestive health and snacking</text>
-      <text x="360" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">80 GM</text>
+      <text x="360" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">90 GM</text>
       <text x="440" y="34" class="sans" font-size="11" fill="#555">Standup Pouch</text>
       <text x="655" y="35" text-anchor="end" class="title" font-size="17" font-weight="bold" fill="#1B3D2F">Rs. 395</text>
     </g>

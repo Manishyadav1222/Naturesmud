@@ -333,7 +333,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             },
             'carrot-powder': {
               videoUrl: '/videos/naturesmud-product-reel.mp4',
-              title: 'NaturesMud 100g Pure Food Collection in Action',
+              title: 'NaturesMud Pure Himalayan Collection in Action',
               desc: 'Single-ingredient superfoods from Nepal’s 3 ecological belts delivered in eco glass jars.',
             },
             'roasted-almonds': {
@@ -348,13 +348,23 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             },
             'dehydrated-papaya': {
               videoUrl: '/videos/apple.mp4',
-              title: 'Active Papain Enzyme Dehydrated Papaya Slices',
-              desc: 'Tree-ripened organic papayas slowly dehydrated for digestive health.',
+              title: 'Active Papain Enzyme Dehydrated Papaya Slices (90g)',
+              desc: 'Tree-ripened organic papayas slowly dehydrated below 42°C for digestive enzymes and gut health.',
             },
             'dehydrated-mango': {
               videoUrl: '/videos/apple.mp4',
               title: 'Sun-Dried Himalayan Sweet Mango Slices',
               desc: '100% pure sunshine dried mango slices from warm valleys of Nepal.',
+            },
+            'himalayan-pink-salt': {
+              videoUrl: '/videos/naturesmud-product-reel.mp4',
+              title: 'Pure Himalayan Pink Rock Salt (200g)',
+              desc: 'Ancient unrefined crystalline rock salt with 84+ essential bioavailable trace minerals.',
+            },
+            'pure-himalayan-black-salt-bire-noon': {
+              videoUrl: '/videos/naturesmud-product-reel.mp4',
+              title: 'Himalayan Black Salt (Bire Noon 200g)',
+              desc: 'Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness.',
             },
           };
 
@@ -410,7 +420,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               Direct Fair-Trade from Nepal’s Terai, Hills & Himalayas
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 max-w-xl">
-              Every 100g jar supports rural organic cooperatives with guaranteed +35% above-market pricing and zero chemical additives.
+              Every {product.weight ? `${product.weight} pack` : 'pack'} supports rural organic cooperatives with guaranteed +35% above-market pricing and zero chemical additives.
             </p>
           </div>
           <Link

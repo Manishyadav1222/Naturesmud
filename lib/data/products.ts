@@ -337,12 +337,12 @@ export const products: Product[] = [
       "/products/papaya-2.jpg"
     ],
     "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
-    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.",
+    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a 90g Standup Ziplock Pouch.",
     "badges": [
       "bestseller"
     ],
     "stock": 115,
-    "weight": "80 GM",
+    "weight": "90 GM",
     "packing": "Standup Ziplock Pouch",
     "ingredients": [
       "100% Natural Dehydrated Papaya Slices"

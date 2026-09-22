@@ -53,7 +53,7 @@ const products = [
     sn: 5,
     name: 'Dehydrated Papaya',
     sub: 'Dehydrated Sweet Papaya Slices',
-    qty: '80 GM',
+    qty: '90 GM',
     packing: 'Standup Ziplock Pouch',
     category: 'Dried Fruits',
     mrp: 395,

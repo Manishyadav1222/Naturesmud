@@ -226,7 +226,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     image: '/products/nm-papaya-flat.jpeg',
     price: 395,
     originalPrice: 395,
-    weight: '80g',
+    weight: '90g',
     badge: 'Digestive Enzymes',
     primary: '#EA580C',
     secondary: '#C2410C',

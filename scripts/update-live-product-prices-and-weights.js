@@ -33,11 +33,11 @@ async function updateRemoteProducts() {
   // 3. Dehydrated Papaya
   await conn.query(`
     UPDATE products 
-    SET weight = 80.00,
-        short_description = 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.'
+    SET weight = 90.00,
+        short_description = 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a 90g Standup Ziplock Pouch.'
     WHERE slug = 'dehydrated-papaya'
   `);
-  console.log('✅ Updated dehydrated-papaya: 80 GM');
+  console.log('✅ Updated dehydrated-papaya: 90 GM');
 
   // 4. Himalayan Pink Salt
   await conn.query(`
