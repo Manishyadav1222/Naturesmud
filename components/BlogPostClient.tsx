@@ -405,7 +405,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </span>
           </div>
 
-          <h1 className="font-heading font-black text-2xl sm:text-4xl lg:text-5xl text-gray-900 mt-3 leading-tight">
+          <h1 className="post-title font-heading font-black text-gray-900 mt-3">
             {activeTitle}
           </h1>
 

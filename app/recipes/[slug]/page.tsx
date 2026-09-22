@@ -107,7 +107,7 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
               <span className="text-xs font-bold text-primary uppercase tracking-wider bg-primary/10 px-3 py-1 rounded-full">
                 {recipe.category}
               </span>
-              <h1 className="font-heading font-extrabold text-2xl sm:text-4xl text-dark mt-3 leading-tight">
+              <h1 className="post-title font-heading font-extrabold text-dark mt-3">
                 {recipe.title}
               </h1>
               <p className="text-gray-600 text-sm sm:text-base mt-3 leading-relaxed">

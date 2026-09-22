@@ -97,10 +97,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        heading: ['Arial', 'Helvetica', 'sans-serif'],
+        serif: ['Arial', 'Helvetica', 'sans-serif'],
+        body: ['Arial', 'Helvetica', 'sans-serif'],
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '1rem',
