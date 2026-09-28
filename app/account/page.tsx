@@ -69,55 +69,173 @@ export default function AccountPage() {
   const [forgotMsg, setForgotMsg] = useState('');
   const [forgotErr, setForgotErr] = useState('');
 
-  const handleSocialLogin = async (provider: 'google' | 'meta') => {
-    setSocialLoading(provider);
-    setError('');
-    try {
-      // Direct call to admin-server social-login endpoint
-      const mockSocialEmail = provider === 'google' ? 'google.customer@gmail.com' : 'meta.customer@facebook.com';
-      const mockSocialName = provider === 'google' ? 'Google User' : 'Meta User';
+  // ─── Social OAuth (Google GSI + Meta FB SDK) ─────────────────────────────
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '';
+  const metaAppId = process.env.NEXT_PUBLIC_META_APP_ID || '';
 
-      const res = await fetch('/api/admin/auth/social-login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          provider,
-          email: mockSocialEmail,
-          name: mockSocialName,
-        }),
-      });
-
-      const json = await res.json();
-      if (json.success && json.data) {
-        const authData = json.data;
-        localStorage.setItem('naturesmud_token', authData.accessToken);
-        localStorage.setItem('naturesmud_user', JSON.stringify({
-          id: authData.user.id,
-          name: authData.user.name,
-          email: authData.user.email,
-          phone: authData.user.phone || '+977 9800000000',
-          role: authData.user.role,
-          isVerified: true,
-        }));
-        if (typeof window !== 'undefined') window.dispatchEvent(new Event('storage'));
-        setUser({
-          id: authData.user.id,
-          name: authData.user.name,
-          email: authData.user.email,
-          phone: authData.user.phone || '+977 9800000000',
-          role: authData.user.role,
-        });
-        loadOrders(true);
-        setActiveTab('dashboard');
-      } else {
-        throw new Error(json.message || `Failed to sign in with ${provider}`);
-      }
-    } catch (err: any) {
-      setError(err.message || `Social login with ${provider} failed.`);
-    } finally {
-      setSocialLoading(null);
+  // Load Google & Meta SDKs once on mount
+  useEffect(() => {
+    // Google Identity Services script
+    if (googleClientId && !document.getElementById('google-gsi-script')) {
+      const script = document.createElement('script');
+      script.id = 'google-gsi-script';
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
     }
+
+    // Meta / Facebook SDK script
+    if (metaAppId && !document.getElementById('facebook-jssdk')) {
+      const script = document.createElement('script');
+      script.id = 'facebook-jssdk';
+      script.src = 'https://connect.facebook.net/en_US/sdk.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        (window as any).FB?.init({
+          appId: metaAppId,
+          cookie: true,
+          xfbml: true,
+          version: 'v19.0',
+        });
+      };
+      document.head.appendChild(script);
+    }
+  }, [googleClientId, metaAppId]);
+
+  /**
+   * Shared helper: posts a verified social identity to our server-side
+   * /api/auth/social handler, which verifies the token with the provider
+   * and then creates / fetches the user via the admin server.
+   */
+  const completeSocialLogin = async (
+    provider: 'google' | 'meta',
+    payload: { credential?: string; accessToken?: string }
+  ) => {
+    const res = await fetch('/api/auth/social', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ provider, ...payload }),
+    });
+
+    const json = await res.json();
+    if (!res.ok || !json.success || !json.data) {
+      throw new Error(json.message || `${provider} sign-in failed`);
+    }
+
+    const authData = json.data;
+    localStorage.setItem('naturesmud_token', authData.accessToken);
+    localStorage.setItem('naturesmud_user', JSON.stringify({
+      id: authData.user.id,
+      name: authData.user.name,
+      email: authData.user.email,
+      phone: authData.user.phone || null,
+      avatar: authData.user.avatar || null,
+      role: authData.user.role,
+      isVerified: true,
+    }));
+    if (typeof window !== 'undefined') window.dispatchEvent(new Event('storage'));
+    setUser({
+      id: authData.user.id,
+      name: authData.user.name,
+      email: authData.user.email,
+      phone: authData.user.phone || null,
+      role: authData.user.role,
+    });
+    loadOrders(true);
+    setActiveTab('dashboard');
   };
+
+  /**
+   * Google OAuth via Google Identity Services popup.
+   * Triggers the Google account picker and gets a signed ID token.
+   */
+  const handleGoogleLogin = () => {
+    if (!googleClientId) {
+      setError('Google sign-in is not configured. Please add NEXT_PUBLIC_GOOGLE_CLIENT_ID to .env');
+      return;
+    }
+    setSocialLoading('google');
+    setError('');
+
+    const google = (window as any).google;
+    if (!google?.accounts?.id) {
+      setError('Google Sign-In SDK is still loading. Please try again in a moment.');
+      setSocialLoading(null);
+      return;
+    }
+
+    google.accounts.id.initialize({
+      client_id: googleClientId,
+      callback: async (response: { credential: string }) => {
+        try {
+          await completeSocialLogin('google', { credential: response.credential });
+        } catch (err: any) {
+          setError(err.message || 'Google sign-in failed.');
+        } finally {
+          setSocialLoading(null);
+        }
+      },
+      auto_select: false,
+      cancel_on_tap_outside: true,
+    });
+
+    // Open account picker popup
+    google.accounts.id.prompt((notification: any) => {
+      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+        // Fallback: render a hidden button and click it
+        const container = document.getElementById('g-signin-container');
+        if (container) {
+          google.accounts.id.renderButton(container, {
+            type: 'standard',
+            theme: 'outline',
+            size: 'large',
+          });
+          (container.querySelector('[role="button"]') as HTMLElement)?.click();
+        }
+        setSocialLoading(null);
+      }
+    });
+  };
+
+  /**
+   * Meta / Facebook OAuth via FB.login popup.
+   * Requests email permission and exchanges for an access token.
+   */
+  const handleMetaLogin = () => {
+    if (!metaAppId) {
+      setError('Meta sign-in is not configured. Please add NEXT_PUBLIC_META_APP_ID to .env');
+      return;
+    }
+    const FB = (window as any).FB;
+    if (!FB) {
+      setError('Facebook SDK is still loading. Please try again in a moment.');
+      return;
+    }
+
+    setSocialLoading('meta');
+    setError('');
+
+    FB.login(
+      async (response: any) => {
+        if (response.authResponse?.accessToken) {
+          try {
+            await completeSocialLogin('meta', { accessToken: response.authResponse.accessToken });
+          } catch (err: any) {
+            setError(err.message || 'Meta sign-in failed.');
+          } finally {
+            setSocialLoading(null);
+          }
+        } else {
+          setError('Meta sign-in was cancelled or failed.');
+          setSocialLoading(null);
+        }
+      },
+      { scope: 'public_profile,email' }
+    );
+  };
+
 
   const handleSendVerificationOtp = async () => {
     if (!user?.email) return;
@@ -571,10 +689,12 @@ export default function AccountPage() {
               </div>
 
               {/* Google & Meta Social Buttons */}
+              {/* Hidden container for Google Sign-In button fallback */}
+              <div id="g-signin-container" className="hidden" />
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
-                  onClick={() => handleSocialLogin('google')}
+                  onClick={handleGoogleLogin}
                   disabled={!!socialLoading}
                   className="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm disabled:opacity-50"
                 >
@@ -589,7 +709,7 @@ export default function AccountPage() {
 
                 <button
                   type="button"
-                  onClick={() => handleSocialLogin('meta')}
+                  onClick={handleMetaLogin}
                   disabled={!!socialLoading}
                   className="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm disabled:opacity-50"
                 >

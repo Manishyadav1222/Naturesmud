@@ -314,22 +314,20 @@ export class AuthService {
         throw new ApiError(403, 'Your account has been deactivated');
       }
 
-      // Auto-verify email if logged in via Google/Meta
-      if (!user.emailVerifiedAt) {
-        user = await prisma.user.update({
-          where: { id: user.id },
-          data: {
-            emailVerifiedAt: new Date(),
-            avatar: user.avatar || avatar,
-            lastLoginAt: new Date(),
+      // Always update lastLoginAt and avatar on social login
+      user = await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          emailVerifiedAt: user.emailVerifiedAt ?? new Date(), // auto-verify if not already
+          avatar: user.avatar || avatar || null,
+          lastLoginAt: new Date(),
+        },
+        include: {
+          role: {
+            include: { permissions: true },
           },
-          include: {
-            role: {
-              include: { permissions: true },
-            },
-          },
-        });
-      }
+        },
+      });
     } else {
       // Create new user authenticated via social provider
       const defaultRole = (await prisma.role.findUnique({ where: { name: 'CUSTOMER' } })) ||
