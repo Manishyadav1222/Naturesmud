@@ -47,7 +47,7 @@ export default async function CatalogPage() {
   let allProducts: Product[] = localProducts.map((p) => normalizeProduct(p));
 
   try {
-    const res = await api.get('/products', { params: { per_page: 50 } });
+    const res = await api.get('/products', { params: { per_page: 100 } });
     if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
       const dbProducts = res.data.data
         .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)

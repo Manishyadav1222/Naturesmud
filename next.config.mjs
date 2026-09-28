@@ -42,9 +42,10 @@ const nextConfig = {
         ],
       },
       {
-        source: '/products/:path*',
+        // Only cache static product image assets, NOT the HTML product web pages!
+        source: '/products/:file*\\.(jpg|jpeg|png|webp|avif|svg|gif)',
         headers: [
-          { key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' },
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
         ],
       },
       {
@@ -56,7 +57,7 @@ const nextConfig = {
     ];
   },
   async rewrites() {
-    const backendUrl = process.env.INTERNAL_API_URL || 'http://localhost:8000/api';
+    const backendUrl = process.env.INTERNAL_API_URL || 'https://api.naturesmud.shop/api';
     return [
       {
         source: '/api/v1/:path*',

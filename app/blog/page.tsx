@@ -45,8 +45,17 @@ export default async function BlogPage() {
         if (p.slug) mergedMap.set(p.slug, p);
       }
       for (const p of apiPosts) {
-        if (p.slug && !mergedMap.has(p.slug)) {
-          mergedMap.set(p.slug, p);
+        if (p.slug) {
+          const local = mergedMap.get(p.slug);
+          mergedMap.set(p.slug, {
+            ...local,
+            ...p,
+            title: p.title || local?.title,
+            excerpt: p.excerpt || local?.excerpt,
+            image: p.image || local?.image,
+            category: p.category || local?.category,
+            author: p.author || local?.author,
+          });
         }
       }
       posts = Array.from(mergedMap.values());

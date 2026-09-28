@@ -15,7 +15,7 @@ export function getBaseApiUrl(): string {
     }
     return `${window.location.origin}/api`;
   }
-  return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+  return process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://api.naturesmud.shop/api';
 }
 
 const API_URL = getBaseApiUrl();

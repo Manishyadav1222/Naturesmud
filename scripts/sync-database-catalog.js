@@ -144,34 +144,8 @@ foreach ($productsList as $p) {
     $row = $existing->fetch();
 
     if ($row) {
-        $stmt = $pdo->prepare("UPDATE products SET 
-            name = :name,
-            category_id = :category_id,
-            price = :price,
-            compare_at_price = :compare_at_price,
-            stock_quantity = :stock_quantity,
-            weight = :weight,
-            unit = :unit,
-            images = :images,
-            short_description = :short_description,
-            description = :description,
-            is_active = 1,
-            is_featured = 1,
-            updated_at = NOW()
-            WHERE slug = :slug");
-        $stmt->execute([
-            'slug' => $slug,
-            'name' => $p['name'],
-            'category_id' => $catId,
-            'price' => $price,
-            'compare_at_price' => $mrp,
-            'stock_quantity' => (int)($p['stock'] ?? 100),
-            'weight' => $weightNum,
-            'unit' => $unit,
-            'images' => $imagesJson,
-            'short_description' => $p['shortDescription'] ?? $p['description'],
-            'description' => $p['description']
-        ]);
+        // Product already exists in database - DO NOT OVERWRITE admin edits!
+        // Admin edits must be preserved forever.
     } else {
         $stmt = $pdo->prepare("INSERT INTO products 
             (name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 
@@ -192,16 +166,11 @@ foreach ($productsList as $p) {
             'short_description' => $p['shortDescription'] ?? $p['description'],
             'description' => $p['description']
         ]);
+        $upsertCount++;
     }
-    $upsertCount++;
 }
 
-// Ensure any non-active slugs are deactivated
-if (!empty($activeSlugs)) {
-    $placeholders = implode(',', array_fill(0, count($activeSlugs), '?'));
-    $deactStmt = $pdo->prepare("UPDATE products SET is_active = 0 WHERE slug NOT IN ($placeholders)");
-    $deactStmt->execute($activeSlugs);
-}
+// NOTE: Never deactivate other products! Products created in Admin Panel must remain active.
 
 echo json_encode([
     'success' => true,

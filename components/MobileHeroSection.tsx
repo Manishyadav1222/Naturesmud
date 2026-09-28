@@ -49,11 +49,96 @@ export interface MobileHeroPoster {
 
 export const MOBILE_POSTERS: MobileHeroPoster[] = [
   {
+    id: 'banana-powder',
+    name: 'Pure Banana Powder',
+    subname: '100% Natural Himalayan Banana Powder – Rich in Potassium & Energy',
+    slug: 'banana-powder',
+    image: '/products/posters/banana-powder-ad-2k.jpg',
+    price: 450,
+    originalPrice: 550,
+    weight: '100g',
+    badge: '⚡ Energy Booster',
+    primary: '#D97706',
+    secondary: '#B45309',
+    accent: '#FDE047',
+    bgTint: 'rgba(217, 119, 6, 0.08)',
+    overlayFrom: 'rgba(217,119,6,0.30)',
+    overlayTo: 'rgba(45,20,0,0.88)',
+  },
+  {
+    id: 'moringa-leaf-powder',
+    name: 'Moringa Leaf Powder',
+    subname: 'Pure Himalayan Leaf Powder – 90+ Nutrients & 46 Antioxidants',
+    slug: 'moringa-leaf-powder',
+    image: '/products/posters/moringa-leaf-advertising-2k.jpg',
+    price: 550,
+    originalPrice: 650,
+    weight: '200g',
+    badge: '🌿 Pure Real Better',
+    primary: '#166534',
+    secondary: '#14532D',
+    accent: '#4ADE80',
+    bgTint: 'rgba(22, 101, 52, 0.08)',
+    overlayFrom: 'rgba(22,101,52,0.32)',
+    overlayTo: 'rgba(5,30,15,0.90)',
+  },
+  {
+    id: 'freeze-dried-avocado-powder',
+    name: 'Freeze Dried Avocado Powder',
+    subname: 'Product of Nepal 🇳🇵 – Slow Freeze-Dried Real Fruit Goodness',
+    slug: 'freeze-dried-avocado-powder',
+    image: '/products/posters/avocado-powder-photoshoot-2k.jpg',
+    price: 690,
+    originalPrice: 820,
+    weight: '100g',
+    badge: '🇳🇵 Product of Nepal',
+    primary: '#3F6212',
+    secondary: '#365314',
+    accent: '#A3E635',
+    bgTint: 'rgba(63, 98, 18, 0.08)',
+    overlayFrom: 'rgba(63,98,18,0.32)',
+    overlayTo: 'rgba(20,35,5,0.88)',
+  },
+  {
+    id: 'strawberry-powder',
+    name: 'Strawberry Powder',
+    subname: 'Pure Goodness from Strawberries – Nature’s Protection & Vitamin C',
+    slug: 'strawberry-powder',
+    image: '/products/posters/strawberry-powder-photoshoot-2k.jpg',
+    price: 620,
+    originalPrice: 750,
+    weight: '200g',
+    badge: '🍓 Nature’s Antioxidant',
+    primary: '#9F1239',
+    secondary: '#881337',
+    accent: '#FB7185',
+    bgTint: 'rgba(159, 18, 57, 0.08)',
+    overlayFrom: 'rgba(159,18,57,0.35)',
+    overlayTo: 'rgba(40,5,15,0.88)',
+  },
+  {
+    id: 'dry-figs-anjeer',
+    name: 'Premium Dry Figs (Anjeer)',
+    subname: '100% Natural Selected Mountain Figs – Rich in Fiber & Iron',
+    slug: 'dry-figs-anjeer',
+    image: '/products/posters/dry-figs-advertisement-2k.jpg',
+    price: 850,
+    originalPrice: 990,
+    weight: '200g',
+    badge: '👑 Royal Dry Fruit',
+    primary: '#581C87',
+    secondary: '#3B0764',
+    accent: '#E9D5FF',
+    bgTint: 'rgba(88, 28, 135, 0.08)',
+    overlayFrom: 'rgba(88,28,135,0.35)',
+    overlayTo: 'rgba(20,5,35,0.90)',
+  },
+  {
     id: 'makhana-fox-nuts',
     name: 'Makhana (Fox Nuts)',
     subname: 'Lightweight Puffed Lotus Seeds – High Calcium & Protein',
     slug: 'makhana-fox-nuts',
-    image: '/products/nm-makhana-jar.jpeg',
+    image: '/products/posters/makhana-fox-nuts-surrounded-2k.jpg',
     price: 250,
     originalPrice: 250,
     weight: '60g',
@@ -70,7 +155,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Sweet Potato Powder',
     subname: 'Sun-Dried Sweet Potato Powder – High Vitamin A',
     slug: 'sweet-potato-powder',
-    image: '/products/nm-sweet-potato-jar.jpeg',
+    image: '/products/sweet-potato-powder-100g.jpg',
     price: 420,
     originalPrice: 450,
     weight: '100g',
@@ -87,7 +172,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Roasted Himalayan Almonds',
     subname: 'Crispy Mountain Almonds – Pure Vitamin E & Protein',
     slug: 'roasted-almonds',
-    image: '/products/nm-almond-jar.jpeg',
+    image: '/products/posters/almonds-explosion-2k.jpg',
     price: 750,
     originalPrice: 750,
     weight: '200g',
@@ -104,7 +189,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Beetroot Powder',
     subname: "Earth's Ritual 100% Pure Red Beetroot Powder",
     slug: 'beetroot-powder',
-    image: '/products/nm-beetroot-jar.jpeg',
+    image: '/products/posters/beetroot-powder-explosion-2k.jpg',
     price: 430,
     originalPrice: 430,
     weight: '100g',
@@ -121,7 +206,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Chia Seeds',
     subname: 'Himalayan High-Altitude Organic Chia Seeds',
     slug: 'chia-seeds',
-    image: '/products/nm-chia-jar.jpeg',
+    image: '/products/posters/chia-seeds-flowers-2k.jpg',
     price: 495,
     originalPrice: 495,
     weight: '300g',
@@ -138,7 +223,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dried Blueberries',
     subname: 'Whole Sun-Dried Wild Himalayan Blueberries',
     slug: 'dried-blueberries',
-    image: '/products/nm-blueberry-jar.jpeg',
+    image: '/products/posters/blueberries-surrounded-2k.jpg',
     price: 650,
     originalPrice: 650,
     weight: '100g',
@@ -155,7 +240,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Roasted Cashews',
     subname: 'Premium Harvest Slow-Roasted Golden Cashews',
     slug: 'roasted-cashewnuts',
-    image: '/products/nm-cashew-jar1.jpeg',
+    image: '/products/posters/cashews-tropical-leaves-2k.jpg',
     price: 750,
     originalPrice: 750,
     weight: '150g',
@@ -172,7 +257,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dehydrated Apple',
     subname: 'Naturally Nutritious Himalayan Orchard Apple Rings',
     slug: 'dehydrated-apple',
-    image: '/products/nm-apple-pouch.jpeg',
+    image: '/products/authentic-dehydrated-apple.jpg',
     price: 510,
     originalPrice: 510,
     weight: '100g',
@@ -189,7 +274,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dehydrated Mango',
     subname: 'Sun-Dried Sweet Mango Slices – 0% Added Sugar',
     slug: 'dehydrated-mango',
-    image: '/products/nm-mango-pouch.jpeg',
+    image: '/products/authentic-dehydrated-mango.jpg',
     price: 595,
     originalPrice: 595,
     weight: '100g',
@@ -206,7 +291,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dehydrated Pineapple',
     subname: 'Sun-Dried Pineapple Rings – High in Bromelain',
     slug: 'dehydrated-pineapple',
-    image: '/products/nm-pineapple-pouch.jpeg',
+    image: '/products/authentic-dehydrated-pineapple.jpg',
     price: 495,
     originalPrice: 495,
     weight: '100g',
@@ -223,7 +308,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dehydrated Papaya',
     subname: 'Solar-Dehydrated Sweet Papaya Slices',
     slug: 'dehydrated-papaya',
-    image: '/products/nm-papaya-flat.jpeg',
+    image: '/products/posters/papaya-pouch-fruit-2k.jpg',
     price: 395,
     originalPrice: 395,
     weight: '90g',
@@ -240,7 +325,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dried Cranberry',
     subname: 'Ruby Himalayan Mountain Berries – Urinary & Cell Defense',
     slug: 'dried-cranberries',
-    image: '/products/nm-cranberry-jar.jpeg',
+    image: '/products/posters/cranberries-juice-splash-2k.jpg',
     price: 415,
     originalPrice: 415,
     weight: '100g',
@@ -257,7 +342,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Carrot Powder',
     subname: 'Pure Himalayan Carrot Powder – Beta-Carotene Rich',
     slug: 'carrot-powder',
-    image: '/products/nm-carrot-jar.jpeg',
+    image: '/products/posters/carrot-powder-explosion-2k.jpg',
     price: 440,
     originalPrice: 440,
     weight: '100g',
@@ -274,7 +359,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Dates Powder',
     subname: 'Natural Unrefined Dates Powder Sweetener',
     slug: 'dates-powder',
-    image: '/products/nm-dates-jar.jpeg',
+    image: '/products/posters/dates-powder-on-wood-2k.jpg',
     price: 400,
     originalPrice: 400,
     weight: '100g',
@@ -291,7 +376,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Himalayan Pink Salt',
     subname: 'Ancient 84+ Trace Minerals Rock Salt',
     slug: 'himalayan-pink-salt',
-    image: '/products/nm-pink-salt-jar.jpeg',
+    image: '/products/posters/pink-salt-crystals-roses-2k.jpg',
     price: 250,
     originalPrice: 250,
     weight: '200g',
@@ -308,7 +393,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Pure Shilajit Resin',
     subname: 'Authentic Grade-A Himalayan Shilajit – 84+ Minerals',
     slug: 'pure-mountain-himalayan-shilajit-resin',
-    image: '/products/nm-shilajit-jar.jpeg',
+    image: '/products/shilajit.jpg',
     price: 1995,
     originalPrice: 1995,
     weight: '20g',
@@ -325,7 +410,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Pumpkin Seeds',
     subname: 'Raw & Unroasted AAA-Grade Himalayan Pepitas',
     slug: 'pumpkin-seeds',
-    image: '/images/posters/pure-pumpkin-seeds.jpg',
+    image: '/products/posters/pumpkin-seeds-ad-2k.jpg',
     price: 650,
     originalPrice: 700,
     weight: '300g',
@@ -384,31 +469,69 @@ export const MARQUEE_ITEMS = [
   { text: 'Baby-Safe Weaning', bg: 'bg-purple-50 text-purple-800 border-purple-200', icon: '👶' },
 ];
 
-export default function MobileHeroSection() {
+export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts?: any[] } = {}) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [statementIdx, setStatementIdx] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [addedItem, setAddedItem] = useState<string | null>(null);
+  const [liveProducts, setLiveProducts] = useState<any[]>(dynamicProducts || []);
+
+  useEffect(() => {
+    if (dynamicProducts && dynamicProducts.length > 0) {
+      setLiveProducts(dynamicProducts);
+    }
+  }, [dynamicProducts]);
+
+  useEffect(() => {
+    if (!dynamicProducts || dynamicProducts.length === 0) {
+      fetch('/api/products?per_page=100')
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+            setLiveProducts(data.data);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [dynamicProducts]);
+
+  const posters = React.useMemo(() => {
+    if (!liveProducts || liveProducts.length === 0) return MOBILE_POSTERS;
+    return MOBILE_POSTERS.map((poster) => {
+      const live = liveProducts.find((p) => p.slug === poster.slug || String(p.id) === poster.id);
+      if (!live) return poster;
+      return {
+        ...poster,
+        name: live.name || poster.name,
+        price: Number(live.price || poster.price),
+        originalPrice: Number(live.compareAtPrice || live.compare_at_price || live.price || poster.originalPrice),
+        weight: live.weight || poster.weight,
+        image: poster.image || (live.images && Array.isArray(live.images) && live.images.find((img: string) => img.includes('/posters/'))) || live.image,
+      };
+    });
+  }, [liveProducts]);
 
   const addItem = useCartStore((s) => s.addItem);
   const openDrawer = useCartStore((s) => s.openDrawer);
   const openQuickView = useUIStore((s) => s.openQuickView);
 
-  const currentPoster = MOBILE_POSTERS[activeIdx];
+  const currentPoster = posters[activeIdx] || MOBILE_POSTERS[0];
   const currentStatement = ANIMATED_STATEMENTS[statementIdx];
 
-  const matchedCatalogProduct = products.find(
+  const matchedCatalogProduct = liveProducts.find(
+    (p) => p.slug === currentPoster.slug || String(p.id) === currentPoster.id
+  ) || products.find(
     (p) => p.slug === currentPoster.slug || p.id === currentPoster.id
   );
 
   // 2-second auto-transition across laptop, tablet & mobile viewports
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
+      setActiveIdx((prev) => (prev + 1) % posters.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, [activeIdx]);
+  }, [activeIdx, posters.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -418,11 +541,11 @@ export default function MobileHeroSection() {
   }, []);
 
   const handleNext = () => {
-    setActiveIdx((prev) => (prev + 1) % MOBILE_POSTERS.length);
+    setActiveIdx((prev) => (prev + 1) % posters.length);
   };
 
   const handlePrev = () => {
-    setActiveIdx((prev) => (prev - 1 + MOBILE_POSTERS.length) % MOBILE_POSTERS.length);
+    setActiveIdx((prev) => (prev - 1 + posters.length) % posters.length);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -648,7 +771,7 @@ export default function MobileHeroSection() {
           >
             {/* Card Showcase Frame */}
             <div className="relative w-full aspect-[4/5] md:aspect-[3/4.2] md:min-h-[530px] lg:min-h-0 lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/90 bg-stone-900 group">
-              {MOBILE_POSTERS.map((poster, idx) => {
+              {posters.map((poster, idx) => {
                 const isCurrent = activeIdx === idx;
                 return (
                   <div
@@ -782,7 +905,7 @@ export default function MobileHeroSection() {
 
             {/* Smooth Indicator Pills */}
             <div className="flex items-center justify-center gap-1.5 pt-3">
-              {MOBILE_POSTERS.map((poster, idx) => (
+              {posters.map((poster, idx) => (
                 <button
                   key={poster.id}
                   type="button"
@@ -863,7 +986,7 @@ export default function MobileHeroSection() {
           onTouchEnd={handleTouchEnd}
         >
           <div className="relative w-full aspect-[4/5] xs:aspect-[1/1.18] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-stone-900 group">
-            {MOBILE_POSTERS.map((poster, idx) => {
+            {posters.map((poster, idx) => {
               const isCurrent = activeIdx === idx;
               return (
                 <div
@@ -991,7 +1114,7 @@ export default function MobileHeroSection() {
           </div>
 
           <div className="flex items-center justify-center gap-1.5 pt-2.5">
-            {MOBILE_POSTERS.map((poster, idx) => (
+            {posters.map((poster, idx) => (
               <button
                 key={poster.id}
                 type="button"

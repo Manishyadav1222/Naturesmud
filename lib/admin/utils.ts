@@ -273,7 +273,7 @@ const isServer = typeof window === 'undefined';
 export function getAdminApiBase(): string {
   if (isServer) {
     // Server-side: use internal URL for direct server-to-server communication
-    return process.env.INTERNAL_ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:4001/api/admin';
+    return process.env.INTERNAL_ADMIN_API_URL || process.env.NEXT_PUBLIC_ADMIN_API_URL || 'https://admin-api.naturesmud.shop/api/admin';
   }
 
   // Browser-side:

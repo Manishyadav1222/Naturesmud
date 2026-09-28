@@ -26,6 +26,10 @@ export default function QuickViewModal() {
   const inWishlist = product ? isInWishlist(product.id) : false;
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
+  useEffect(() => {
+    setSelectedImgIndex(0);
+  }, [quickViewProductId]);
+
   const rawImages = Array.isArray(product?.images) && product.images.length > 0
     ? product.images
     : [product?.image || '/products/sweet-potato-powder-100g.jpg'];

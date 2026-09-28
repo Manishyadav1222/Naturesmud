@@ -110,8 +110,11 @@ export default function CheckoutPage() {
   const [showInvoiceModal, setShowInvoiceModal] = useState(false);
   const [savedOrderedItems, setSavedOrderedItems] = useState<any[]>([]);
 
+  const [mounted, setMounted] = useState(false);
+
   // Auto-fill registered user credentials & delivery details on mount
   useEffect(() => {
+    setMounted(true);
     try {
       const saved = localStorage.getItem('naturesmud_user');
       if (saved) {
@@ -795,8 +798,16 @@ export default function CheckoutPage() {
   }
 
   // ----------------------------------------------------
-  // EMPTY CART
+  // HYDRATION & EMPTY CART
   // ----------------------------------------------------
+  if (!mounted) {
+    return (
+      <div className="py-24 bg-[#FAF7F2] min-h-[70vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[#2D5A27] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <div className="py-24 bg-[#FAF7F2] min-h-[70vh] flex items-center justify-center">

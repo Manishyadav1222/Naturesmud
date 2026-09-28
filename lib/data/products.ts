@@ -3,20 +3,393 @@ import { resolveImageUrl } from '@/lib/utils';
 
 export const products: Product[] = [
   {
+    "id": "168",
+    "dbId": 168,
+    "slug": "banana-powder",
+    "name": "Pure Banana Powder",
+    "category": "Powders",
+    "categorySlug": "powders",
+    "price": 450,
+    "compareAtPrice": 550,
+    "rating": 4.9,
+    "reviewCount": 28,
+    "image": "/products/banana-powder.jpg",
+    "images": [
+      "/products/banana-powder.jpg",
+      "/products/posters/banana-powder-ad-2k.jpg",
+      "/products/posters/banana-powder-scene-1.jpg",
+      "/products/posters/banana-powder-scene-2.jpg"
+    ],
+    "description": "Nature's Mud Pure Banana Powder is crafted from 100% naturally ripened and sun-dried bananas. Packed with natural potassium, dietary fiber, and essential vitamins. Zero added sugar, zero preservatives, zero artificial additives. Perfectly suited for baby porridge, weaning, morning smoothies, pancake batters, oatmeal, and quick healthy energy drinks.",
+    "shortDescription": "100% Natural & Pure Himalayan Banana Powder. Natural energy booster, supports digestion and child growth.",
+    "badges": [
+      "new",
+      "featured"
+    ],
+    "stock": 50,
+    "weight": "100 GM",
+    "packing": "Glass Jar",
+    "mrp": 550,
+    "ingredients": [
+      "100% Pure & Natural Himalayan Bananas"
+    ],
+    "benefits": [
+      "Natural Energy Booster for active children & fitness lovers",
+      "Supports healthy digestion and gentle gut motility",
+      "Rich in dietary potassium and natural vitamins",
+      "Zero added sugars, zero chemicals, zero preservatives",
+      "Ideal wholesome weaning food for babies & toddlers"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "346 kcal / 100g"
+      },
+      {
+        "label": "Potassium",
+        "value": "1,150 mg"
+      },
+      {
+        "label": "Carbohydrates",
+        "value": "88g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "6.8g"
+      },
+      {
+        "label": "Protein",
+        "value": "3.9g"
+      }
+    ],
+    "usage": "Mix 1-2 scoops into warm milk, oatmeal, porridge, smoothies, or baking recipes.",
+    "storage": "Store in a cool, dry place. Seal lid tightly after every use to prevent moisture clumping.",
+    "isFeatured": true,
+    "isBestSeller": false,
+    "tags": [
+      "banana",
+      "banana-powder",
+      "energy",
+      "baby-food",
+      "superfood",
+      "powders"
+    ]
+  },
+  {
+    "id": "169",
+    "dbId": 169,
+    "slug": "moringa-leaf-powder",
+    "name": "Organic Moringa Leaf Powder",
+    "category": "Powders",
+    "categorySlug": "powders",
+    "price": 550,
+    "compareAtPrice": 650,
+    "rating": 4.9,
+    "reviewCount": 36,
+    "image": "/products/moringa-leaf-powder.jpg",
+    "images": [
+      "/products/moringa-leaf-powder.jpg",
+      "/products/posters/moringa-leaf-advertising-2k.jpg",
+      "/products/posters/moringa-leaf-social-template-2k.jpg",
+      "/products/posters/moringa-powder-leaves-2k.jpg",
+      "/products/posters/moringa-powder-jar-2k.jpg"
+    ],
+    "description": "Handpicked from shade-dried organic Himalayan Moringa oleifera leaves, Nature's Mud Pure Moringa Leaf Powder is nature's most nutrient-rich miracle tree food. Packed with 90+ nutrients, 46 antioxidants, and all 9 essential amino acids. 100% natural, kosher, gluten-free, and additive-free. Enhances natural vitality, skin radiance, and immune defense.",
+    "shortDescription": "Pure Natural Leaf Moringa Powder. Himalayan superfood powerhouse delivering pure, real nutrition in every scoop.",
+    "badges": [
+      "new",
+      "featured",
+      "organic"
+    ],
+    "stock": 50,
+    "weight": "200 GM",
+    "packing": "Glass Jar",
+    "mrp": 650,
+    "ingredients": [
+      "100% Pure Organic Moringa Oleifera Leaves"
+    ],
+    "benefits": [
+      "Over 90 bio-available nutrients and 46 natural antioxidants",
+      "Rich in iron, plant-based calcium, and Vitamin A & C",
+      "Natural detoxifier supporting metabolic and liver vitality",
+      "100% Natural, Kosher, Gluten-Free, and zero additives",
+      "Boosts immune resilience and sustained cellular energy"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "305 kcal / 100g"
+      },
+      {
+        "label": "Protein",
+        "value": "27g"
+      },
+      {
+        "label": "Iron",
+        "value": "28.2 mg (156% DV)"
+      },
+      {
+        "label": "Calcium",
+        "value": "2,003 mg (200% DV)"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "19.2g"
+      }
+    ],
+    "usage": "Stir 1 teaspoon (3-5g) into warm water with lemon, green tea, fresh juice, or your daily morning smoothie.",
+    "storage": "Keep tightly sealed in a cool, dark and dry place away from direct sunlight.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "moringa",
+      "moringa-powder",
+      "immunity",
+      "detox",
+      "superfood",
+      "powders"
+    ]
+  },
+  {
+    "id": "170",
+    "dbId": 170,
+    "slug": "freeze-dried-avocado-powder",
+    "name": "Freeze Dried Avocado Powder",
+    "category": "Powders",
+    "categorySlug": "powders",
+    "price": 690,
+    "compareAtPrice": 820,
+    "rating": 5,
+    "reviewCount": 24,
+    "image": "/products/avocado-powder.jpg",
+    "images": [
+      "/products/avocado-powder.jpg",
+      "/products/posters/avocado-powder-scene-1.jpg",
+      "/products/posters/avocado-powder-display-2k.jpg",
+      "/products/posters/avocado-powder-photoshoot-2k.jpg",
+      "/products/freeze-dried-avocado-powder.jpg"
+    ],
+    "description": "Proudly harvested and crafted in Nepal! Nature's Mud Freeze Dried Avocado Powder preserves the rich buttery texture and heart-healthy monounsaturated fats of fresh avocados. Processed with advanced gentle freeze-drying technology to preserve raw cellular nutrients, natural potassium, Vitamin E, and dietary fiber. 100% natural, no sugar, no preservatives.",
+    "shortDescription": "Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats.",
+    "badges": [
+      "new",
+      "featured",
+      "nepal"
+    ],
+    "stock": 50,
+    "weight": "100 GM",
+    "packing": "Standup Ziplock Pouch",
+    "mrp": 820,
+    "ingredients": [
+      "100% Pure Freeze-Dried Fresh Himalayan Avocados"
+    ],
+    "benefits": [
+      "Proud Product of Nepal 🇳🇵 crafted from premium mountain avocados",
+      "Rich in heart-healthy monounsaturated fatty acids (Omega-9)",
+      "Nutrient-dense with high dietary fiber and active enzymes",
+      "Slow dried to perfection to protect raw antioxidants & Vitamin E",
+      "Effortless gourmet avocado crema, keto shakes, dressings & dips"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "580 kcal / 100g"
+      },
+      {
+        "label": "Healthy Fats",
+        "value": "52g (Monounsaturated)"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "28g"
+      },
+      {
+        "label": "Potassium",
+        "value": "980 mg"
+      },
+      {
+        "label": "Vitamin E",
+        "value": "4.5 mg"
+      }
+    ],
+    "usage": "Whisk 2 tablespoons with warm water and lemon juice for instant guacamole or avocado toast, or add into keto smoothies.",
+    "storage": "Reseal ziplock immediately after opening. Store in a cool, dry pantry.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "avocado",
+      "avocado-powder",
+      "freeze-dried",
+      "healthy-fats",
+      "keto",
+      "powders",
+      "nepal"
+    ]
+  },
+  {
+    "id": "171",
+    "dbId": 171,
+    "slug": "strawberry-powder",
+    "name": "Pure Natural Strawberry Powder",
+    "category": "Powders",
+    "categorySlug": "powders",
+    "price": 620,
+    "compareAtPrice": 750,
+    "rating": 4.9,
+    "reviewCount": 31,
+    "image": "/products/strawberry-powder.jpg",
+    "images": [
+      "/products/strawberry-powder.jpg",
+      "/products/posters/strawberry-powder-berries-2k.jpg",
+      "/products/posters/strawberry-powder-roses-2k.jpg",
+      "/products/posters/strawberry-powder-photoshoot-2k.jpg"
+    ],
+    "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Strawberry Powder delivers pure goodness from ripe strawberries gently dehydrated at low temperatures to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
+    "shortDescription": "Pure Goodness from Strawberries for a brighter, healthier tomorrow. High Vitamin C & anthocyanin antioxidants.",
+    "badges": [
+      "new",
+      "featured"
+    ],
+    "stock": 50,
+    "weight": "200 GM",
+    "packing": "Glass Jar",
+    "mrp": 750,
+    "ingredients": [
+      "100% Pure Whole Natural Strawberries"
+    ],
+    "benefits": [
+      "Potent antioxidant defense rich in natural Vitamin C and anthocyanins",
+      "Supports glowing skin, collagen synthesis, and immune health",
+      "100% whole real fruit with authentic luscious berry aroma",
+      "No artificial colors, no preservatives, no added refined sugar",
+      "Sensational in smoothie bowls, chia puddings, ice creams, and yogurt"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "325 kcal / 100g"
+      },
+      {
+        "label": "Vitamin C",
+        "value": "310 mg (340% DV)"
+      },
+      {
+        "label": "Carbohydrates",
+        "value": "75g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "14g"
+      },
+      {
+        "label": "Natural Sugars",
+        "value": "Pure Fruit Sugar (0g Added)"
+      }
+    ],
+    "usage": "Blend 1-2 teaspoons into your yogurt bowls, pancake mixes, herbal teas, or post-workout berry protein shakes.",
+    "storage": "Keep lid tightly sealed in a dry, cool area away from heat and moisture.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "strawberry",
+      "strawberry-powder",
+      "antioxidant",
+      "vitamin-c",
+      "superfood",
+      "powders"
+    ]
+  },
+  {
+    "id": "172",
+    "dbId": 172,
+    "slug": "dry-figs-anjeer",
+    "name": "Premium Dry Figs (Anjeer)",
+    "category": "Dried Fruits",
+    "categorySlug": "dried-fruits",
+    "price": 850,
+    "compareAtPrice": 990,
+    "rating": 5,
+    "reviewCount": 42,
+    "image": "/products/dry-figs-anjeer.jpg",
+    "images": [
+      "/products/dry-figs-anjeer.jpg",
+      "/products/posters/dry-figs-advertisement-2k.jpg",
+      "/products/posters/dry-figs-product-photo-2k.jpg",
+      "/products/posters/dry-figs-flat-lay-2k.jpg",
+      "/products/dried-figs.jpg"
+    ],
+    "description": "Nature's Mud Premium Dry Figs (Anjeer) are hand-selected, plump, sun-ripened mountain figs with a delightfully chewy texture and natural honeyed sweetness. Renowned in Ayurveda for their exceptional soluble fiber, iron, calcium, and digestive wellness qualities. 100% natural, chemical-free, unsulphured, and packed in luxury protective jars.",
+    "shortDescription": "100% Natural Premium Quality Dry Figs (Anjeer). Rich in fiber & minerals, nature's goodness in every bite.",
+    "badges": [
+      "new",
+      "featured",
+      "premium"
+    ],
+    "stock": 50,
+    "weight": "200 GM",
+    "packing": "Glass Jar",
+    "mrp": 990,
+    "ingredients": [
+      "100% Selected Sun-Dried Natural Figs (Anjeer)"
+    ],
+    "benefits": [
+      "Superior soluble and insoluble dietary fiber for smooth digestive health",
+      "Rich source of natural iron to support healthy hemoglobin levels",
+      "High in bone-strengthening calcium and potassium for heart vitality",
+      "100% Natural, unsulphured, and free from preservatives",
+      "Natural stamina food recommended for morning soaking rituals"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "249 kcal / 100g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "9.8g (39% DV)"
+      },
+      {
+        "label": "Calcium",
+        "value": "162 mg (16% DV)"
+      },
+      {
+        "label": "Iron",
+        "value": "2.0 mg (11% DV)"
+      },
+      {
+        "label": "Potassium",
+        "value": "680 mg (14% DV)"
+      }
+    ],
+    "usage": "Eat 2-3 dried figs directly as a premium snack, or soak overnight in water and consume in the morning for optimal gut health.",
+    "storage": "Store in an airtight jar in a cool, dry place or refrigerate for maximum freshness.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "figs",
+      "anjeer",
+      "dry-figs",
+      "fiber",
+      "calcium",
+      "dried-fruits",
+      "premium"
+    ]
+  },
+  {
     "id": "1010",
-    "slug": "makhana-fox-nuts",
     "dbId": 1010,
+    "slug": "makhana-fox-nuts",
     "name": "Makhana (Fox Nuts)",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 250,
-    "compareAtPrice": 250,
-    "mrp": 250,
+    "price": 350,
+    "compareAtPrice": 499.93,
     "rating": 4.8,
     "reviewCount": 12,
     "image": "/products/nm-makhana-jar.jpeg",
     "images": [
       "/products/nm-makhana-jar.jpeg",
+      "/products/posters/makhana-fox-nuts-surrounded-2k.jpg",
       "/products/fox-nuts-jar-2k.jpg"
     ],
     "description": "Premium Himalayan Fox Nuts (Makhana). A healthy, crunchy, and lightweight snack loaded with antioxidants, calcium, and protein. Enjoy guilt-free snacking with these beautifully puffed lotus seeds.",
@@ -24,9 +397,10 @@ export const products: Product[] = [
     "badges": [
       "new"
     ],
-    "stock": 100,
+    "stock": 50,
     "weight": "60 GM",
     "packing": "Glass Jar",
+    "mrp": 250,
     "ingredients": [
       "100% Pure Fox Nuts (Makhana)"
     ],
@@ -49,14 +423,13 @@ export const products: Product[] = [
   },
   {
     "id": "1",
-    "slug": "dehydrated-mango",
     "dbId": 1,
+    "slug": "dehydrated-mango",
     "name": "Dehydrated Mango",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 595,
-    "compareAtPrice": 595,
-    "mrp": 595,
+    "compareAtPrice": 597,
     "rating": 4.9,
     "reviewCount": 68,
     "image": "/products/nm-mango-pouch.jpeg",
@@ -72,9 +445,10 @@ export const products: Product[] = [
     "badges": [
       "bestseller"
     ],
-    "stock": 120,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
+    "mrp": 595,
     "ingredients": [
       "100% Pure Himalayan Mango (0 Additives, 0 Preservatives)"
     ],
@@ -120,14 +494,13 @@ export const products: Product[] = [
   },
   {
     "id": "157",
-    "slug": "dehydrated-pineapple",
     "dbId": 157,
+    "slug": "dehydrated-pineapple",
     "name": "Dehydrated Pineapple",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 495,
     "compareAtPrice": 495,
-    "mrp": 495,
     "rating": 4.9,
     "reviewCount": 45,
     "image": "/products/nm-pineapple-pouch.jpeg",
@@ -142,9 +515,10 @@ export const products: Product[] = [
     "badges": [
       "organic"
     ],
-    "stock": 95,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
+    "mrp": 495,
     "ingredients": [
       "100% Pure Dehydrated Pineapple Slices"
     ],
@@ -186,14 +560,13 @@ export const products: Product[] = [
   },
   {
     "id": "3",
-    "slug": "dehydrated-apple",
     "dbId": 3,
+    "slug": "dehydrated-apple",
     "name": "Dehydrated Apple",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 510,
     "compareAtPrice": 510,
-    "mrp": 510,
     "rating": 4.8,
     "reviewCount": 42,
     "image": "/products/nm-apple-pouch.jpeg",
@@ -209,9 +582,10 @@ export const products: Product[] = [
     "badges": [
       "organic"
     ],
-    "stock": 85,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
+    "mrp": 510,
     "ingredients": [
       "100% Pure Mountain Apple Slices (Unsulfured)"
     ],
@@ -241,7 +615,7 @@ export const products: Product[] = [
     ],
     "usage": "Enjoy as a crunchy snack, dip in warm cinnamon tea, or crumble over morning oatmeal.",
     "storage": "Keep zip pouch sealed in a cool, dry area.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "apple",
@@ -253,14 +627,13 @@ export const products: Product[] = [
   },
   {
     "id": "156",
-    "slug": "dehydrated-coconut-chips",
     "dbId": 156,
+    "slug": "dehydrated-coconut-chips",
     "name": "Dehydrated Coconut Chips",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 495,
-    "compareAtPrice": 495,
-    "mrp": 495,
+    "price": 475,
+    "compareAtPrice": 500,
     "rating": 4.8,
     "reviewCount": 36,
     "image": "/products/dehydrated-coconut-chips.jpg",
@@ -276,9 +649,10 @@ export const products: Product[] = [
       "organic",
       "keto"
     ],
-    "stock": 90,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
+    "mrp": 495,
     "ingredients": [
       "100% Pure Dehydrated Coconut Meat Flakes"
     ],
@@ -309,7 +683,7 @@ export const products: Product[] = [
     ],
     "usage": "Munch directly as a keto snack, toss on smoothie bowls, or mix into homemade trail mix.",
     "storage": "Airtight dry storage away from direct sunlight.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "coconut-chips",
@@ -321,19 +695,21 @@ export const products: Product[] = [
   },
   {
     "id": "22",
-    "slug": "dehydrated-papaya",
     "dbId": 22,
+    "slug": "dehydrated-papaya",
     "name": "Dehydrated Papaya",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 395,
     "compareAtPrice": 395,
-    "mrp": 395,
     "rating": 4.9,
     "reviewCount": 54,
     "image": "/products/nm-papaya-flat.jpeg",
     "images": [
       "/products/nm-papaya-flat.jpeg",
+      "/products/posters/papaya-pouch-fruit-2k.jpg",
+      "/products/posters/papaya-orange-bg-2k.jpg",
+      "/products/posters/papaya-social-template-2k.jpg",
       "/products/papaya-2.jpg"
     ],
     "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
@@ -341,9 +717,10 @@ export const products: Product[] = [
     "badges": [
       "bestseller"
     ],
-    "stock": 115,
+    "stock": 50,
     "weight": "90 GM",
     "packing": "Standup Ziplock Pouch",
+    "mrp": 395,
     "ingredients": [
       "100% Natural Dehydrated Papaya Slices"
     ],
@@ -385,19 +762,21 @@ export const products: Product[] = [
   },
   {
     "id": "4",
-    "slug": "dried-blueberries",
     "dbId": 4,
+    "slug": "dried-blueberries",
     "name": "Dried Blueberries",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 650,
     "compareAtPrice": 650,
-    "mrp": 650,
     "rating": 5,
     "reviewCount": 78,
     "image": "/products/nm-blueberry-jar.jpeg",
     "images": [
       "/products/nm-blueberry-jar.jpeg",
+      "/products/posters/blueberries-flowers-2k.jpg",
+      "/products/posters/blueberries-jar-2k.jpg",
+      "/products/posters/blueberries-surrounded-2k.jpg",
       "/products/nm-blueberry-purple.jpeg",
       "/products/nm-blueberry-shoot.jpeg",
       "/products/blueberries-brain-power.jpg",
@@ -409,9 +788,10 @@ export const products: Product[] = [
     "badges": [
       "bestseller"
     ],
-    "stock": 80,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 650,
     "ingredients": [
       "100% Wild Himalayan Dried Blueberries (Pure Whole Fruit)"
     ],
@@ -453,19 +833,22 @@ export const products: Product[] = [
   },
   {
     "id": "155",
-    "slug": "dried-cranberries",
     "dbId": 155,
+    "slug": "dried-cranberries",
     "name": "Dried Cranberries",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 415,
     "compareAtPrice": 415,
-    "mrp": 415,
     "rating": 4.8,
     "reviewCount": 49,
     "image": "/products/nm-cranberry-jar.jpeg",
     "images": [
       "/products/nm-cranberry-jar.jpeg",
+      "/products/posters/cranberries-juice-splash-2k.jpg",
+      "/products/posters/cranberries-roses-flat-2k.jpg",
+      "/products/posters/cranberries-social-template-2k.jpg",
+      "/products/posters/cranberries-jar-bg-2k.jpg",
       "/products/cranberries-glowing-jar.jpg",
       "/products/cranberries-infographic.jpg",
       "/products/cranberries-prevent-uti.jpg",
@@ -476,9 +859,10 @@ export const products: Product[] = [
     "badges": [
       "popular"
     ],
-    "stock": 95,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 415,
     "ingredients": [
       "100% Premium Whole Dried Ruby Cranberries (Pure Fruit Goodness)"
     ],
@@ -520,19 +904,22 @@ export const products: Product[] = [
   },
   {
     "id": "6",
-    "slug": "dates-powder",
     "dbId": 6,
+    "slug": "dates-powder",
     "name": "Dates Powder",
     "category": "Powders",
     "categorySlug": "powders",
     "price": 400,
     "compareAtPrice": 400,
-    "mrp": 400,
     "rating": 4.9,
     "reviewCount": 84,
     "image": "/products/nm-dates-jar.jpeg",
     "images": [
       "/products/nm-dates-jar.jpeg",
+      "/products/posters/dates-powder-on-wood-2k.jpg",
+      "/products/posters/dates-powder-roses-2k.jpg",
+      "/products/posters/dates-powder-social-2k.jpg",
+      "/products/posters/dates-powder-jar-2k.jpg",
       "/products/dates-powder-jar-2k.jpg",
       "/products/dates-powder-health-poster.jpg",
       "/products/dates-powder-product-shot.jpg",
@@ -544,9 +931,10 @@ export const products: Product[] = [
       "bestseller",
       "natural-sweetener"
     ],
-    "stock": 150,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 400,
     "ingredients": [
       "100% Pure Dehydrated Whole Dates (0% Refined Sugar, 0% Preservatives)"
     ],
@@ -594,19 +982,22 @@ export const products: Product[] = [
   },
   {
     "id": "5",
-    "slug": "beetroot-powder",
     "dbId": 5,
+    "slug": "beetroot-powder",
     "name": "Beetroot Powder",
     "category": "Powders",
     "categorySlug": "powders",
     "price": 430,
     "compareAtPrice": 430,
-    "mrp": 430,
     "rating": 4.9,
     "reviewCount": 62,
     "image": "/products/nm-beetroot-jar.jpeg",
     "images": [
       "/products/nm-beetroot-jar.jpeg",
+      "/products/posters/beetroot-powder-explosion-2k.jpg",
+      "/products/posters/beetroot-powder-social-2k.jpg",
+      "/products/posters/beetroot-powder-studio-2k.jpg",
+      "/products/posters/beetroot-powder-flat-2k.jpg",
       "/products/nm-beetroot-ad1.jpeg",
       "/products/nm-beetroot-ad2.jpeg",
       "/products/beetroot-glass-jar.jpg",
@@ -620,9 +1011,10 @@ export const products: Product[] = [
       "organic",
       "bestseller"
     ],
-    "stock": 120,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 430,
     "ingredients": [
       "100% Pure Dehydrated Red Beetroots (Beta vulgaris)"
     ],
@@ -669,19 +1061,20 @@ export const products: Product[] = [
   },
   {
     "id": "14",
-    "slug": "himalayan-pink-salt",
     "dbId": 14,
+    "slug": "himalayan-pink-salt",
     "name": "Himalayan Pink Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 250,
     "compareAtPrice": 250,
-    "mrp": 250,
     "rating": 4.8,
     "reviewCount": 46,
     "image": "/products/nm-pink-salt-jar.jpeg",
     "images": [
       "/products/nm-pink-salt-jar.jpeg",
+      "/products/posters/pink-salt-crystals-roses-2k.jpg",
+      "/products/posters/pink-salt-flat-2k.jpg",
       "/products/client-authentic-label-1.jpg",
       "/products/pink-salt-crystals.jpg",
       "/products/pink-salt-moss.jpg"
@@ -691,9 +1084,10 @@ export const products: Product[] = [
     "badges": [
       "organic"
     ],
-    "stock": 200,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 250,
     "ingredients": [
       "100% Pure Himalayan Pink Rock Salt Crystals"
     ],
@@ -723,7 +1117,7 @@ export const products: Product[] = [
     ],
     "usage": "Use as a daily seasoning for cooking, salads, detox electrolyte drinks, or bath soaks.",
     "storage": "Store in a sealed glass jar in a dry location.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "pink-salt",
@@ -736,14 +1130,13 @@ export const products: Product[] = [
   },
   {
     "id": "15",
-    "slug": "pure-himalayan-black-salt-bire-noon",
     "dbId": 15,
+    "slug": "pure-himalayan-black-salt-bire-noon",
     "name": "Himalayan Black Salt (Bire Noon)",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 220,
     "compareAtPrice": 220,
-    "mrp": 220,
     "rating": 4.9,
     "reviewCount": 51,
     "image": "/products/himalayan-black-salt-digestive.jpg",
@@ -757,9 +1150,10 @@ export const products: Product[] = [
     "badges": [
       "organic"
     ],
-    "stock": 180,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 220,
     "ingredients": [
       "100% Pure Himalayan Black Salt (Kala Namak / Bire Noon) with active sulfur compounds and iron minerals"
     ],
@@ -799,24 +1193,25 @@ export const products: Product[] = [
   },
   {
     "id": "7",
-    "slug": "chia-seeds",
     "dbId": 7,
+    "slug": "chia-seeds",
     "name": "Organic Chia Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
     "price": 495,
     "compareAtPrice": 495,
-    "mrp": 495,
     "rating": 4.9,
     "reviewCount": 65,
     "image": "/products/nm-chia-jar.jpeg",
     "images": [
       "/products/nm-chia-jar.jpeg",
+      "/products/posters/chia-seeds-flowers-2k.jpg",
+      "/products/posters/chia-seeds-purple-2k.jpg",
+      "/products/posters/chia-seeds-swirl-2k.jpg",
       "/products/nm-chia-ad.jpeg",
       "/products/nm-chia-ad2.jpeg",
       "/products/nm-chia-display.jpeg",
       "/products/nm-chia-studio.jpeg",
-      "/images/posters/chia-power.jpg",
       "/products/chia-seeds.jpg"
     ],
     "description": "Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein. Hydrophilic seeds that expand up to 10x in liquids to support steady hydration, weight balance, and gut motility.",
@@ -825,9 +1220,10 @@ export const products: Product[] = [
       "bestseller",
       "organic"
     ],
-    "stock": 110,
+    "stock": 50,
     "weight": "300 GM",
     "packing": "Plastic Jar",
+    "mrp": 495,
     "ingredients": [
       "100% Pure Organic Black Chia Seeds (Salvia hispanica)"
     ],
@@ -874,19 +1270,21 @@ export const products: Product[] = [
   },
   {
     "id": "8",
-    "slug": "pumpkin-seeds",
     "dbId": 8,
+    "slug": "pumpkin-seeds",
     "name": "Raw Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
     "price": 520,
     "compareAtPrice": 520,
-    "mrp": 520,
     "rating": 4.9,
     "reviewCount": 57,
     "image": "/images/posters/pure-pumpkin-seeds.jpg",
     "images": [
       "/images/posters/pure-pumpkin-seeds.jpg",
+      "/products/posters/pumpkin-seeds-ad-2k.jpg",
+      "/products/posters/pumpkin-seeds-flat-lay-2k.jpg",
+      "/products/posters/pumpkin-seeds-social-2k.jpg",
       "/products/pumpkin-seeds.jpg",
       "/products/pumpkin-seeds-product-shot.jpg",
       "/products/pumpkin-seeds-2.jpg"
@@ -897,9 +1295,10 @@ export const products: Product[] = [
       "bestseller",
       "organic"
     ],
-    "stock": 105,
+    "stock": 50,
     "weight": "300 GM",
     "packing": "Plastic Jar",
+    "mrp": 520,
     "ingredients": [
       "100% Pure Raw Green Pumpkin Seed Kernels (Pepitas)"
     ],
@@ -946,14 +1345,13 @@ export const products: Product[] = [
   },
   {
     "id": "161",
-    "slug": "premium-cashewnuts",
     "dbId": 161,
+    "slug": "premium-cashewnuts",
     "name": "Premium Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "mrp": 750,
     "rating": 4.9,
     "reviewCount": 53,
     "image": "/products/nm-cashew-jar1.jpeg",
@@ -968,9 +1366,10 @@ export const products: Product[] = [
     "badges": [
       "popular"
     ],
-    "stock": 100,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 750,
     "ingredients": [
       "100% Whole Jumbo Cashew Nuts (Grade W240)"
     ],
@@ -1017,19 +1416,20 @@ export const products: Product[] = [
   },
   {
     "id": "11",
-    "slug": "roasted-cashewnuts",
     "dbId": 11,
+    "slug": "roasted-cashewnuts",
     "name": "Roasted Himalayan Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "mrp": 750,
     "rating": 4.8,
     "reviewCount": 39,
     "image": "/products/nm-cashew-jar1.jpeg",
     "images": [
       "/products/nm-cashew-jar1.jpeg",
+      "/products/posters/cashews-cream-bg-2k.jpg",
+      "/products/posters/cashews-tropical-leaves-2k.jpg",
       "/products/nm-cashew-jar2.jpeg",
       "/products/authentic-cashewnuts-roasted.jpg",
       "/products/cashewnuts-roasted.jpg"
@@ -1039,9 +1439,10 @@ export const products: Product[] = [
     "badges": [
       "bestseller"
     ],
-    "stock": 85,
+    "stock": 50,
     "weight": "150 GM",
     "packing": "Glass Jar",
+    "mrp": 750,
     "ingredients": [
       "100% Slow-Roasted Whole Cashew Nuts (Oil-Free)"
     ],
@@ -1071,7 +1472,7 @@ export const products: Product[] = [
     ],
     "usage": "Enjoy directly from the jar during tea time or as a nutritious evening snack.",
     "storage": "Keep glass jar firmly closed to retain crispness.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": true,
     "tags": [
       "roasted-cashews",
@@ -1083,19 +1484,20 @@ export const products: Product[] = [
   },
   {
     "id": "9",
-    "slug": "roasted-almonds",
     "dbId": 9,
+    "slug": "roasted-almonds",
     "name": "Roasted Himalayan Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "mrp": 750,
     "rating": 4.9,
     "reviewCount": 66,
     "image": "/products/nm-almond-jar.jpeg",
     "images": [
       "/products/nm-almond-jar.jpeg",
+      "/products/posters/almonds-explosion-2k.jpg",
+      "/products/posters/almonds-surrounded-2k.jpg",
       "/products/authentic-almonds.jpg",
       "/products/almonds.jpg",
       "/products/almonds-2.jpg"
@@ -1105,9 +1507,10 @@ export const products: Product[] = [
     "badges": [
       "bestseller"
     ],
-    "stock": 120,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 750,
     "ingredients": [
       "100% Pure Slow-Roasted Himalayan Almonds (Oil-Free)"
     ],
@@ -1154,14 +1557,13 @@ export const products: Product[] = [
   },
   {
     "id": "10",
-    "slug": "raw-himalayan-almonds",
     "dbId": 10,
+    "slug": "raw-himalayan-almonds",
     "name": "Raw Himalayan Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "mrp": 750,
     "rating": 4.9,
     "reviewCount": 59,
     "image": "/products/nm-almond-jar.jpeg",
@@ -1176,9 +1578,10 @@ export const products: Product[] = [
       "organic",
       "popular"
     ],
-    "stock": 130,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 750,
     "ingredients": [
       "100% Pure Raw Himalayan Whole Almonds"
     ],
@@ -1212,7 +1615,7 @@ export const products: Product[] = [
     ],
     "usage": "Soak 6–8 almonds overnight in water, peel in the morning, and consume before breakfast.",
     "storage": "Keep sealed in a cool, dark cupboard.",
-    "isFeatured": true,
+    "isFeatured": false,
     "isBestSeller": false,
     "tags": [
       "raw-almonds",
@@ -1225,14 +1628,13 @@ export const products: Product[] = [
   },
   {
     "id": "162",
-    "slug": "premium-pistachios",
     "dbId": 162,
+    "slug": "premium-pistachios",
     "name": "Premium Roasted Pistachios",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 820,
     "compareAtPrice": 820,
-    "mrp": 820,
     "rating": 4.9,
     "reviewCount": 44,
     "image": "/products/pistachios.jpg",
@@ -1244,9 +1646,10 @@ export const products: Product[] = [
     "badges": [
       "popular"
     ],
-    "stock": 80,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 820,
     "ingredients": [
       "100% Premium Naturally Opened Whole Pistachios"
     ],
@@ -1280,7 +1683,7 @@ export const products: Product[] = [
     ],
     "usage": "Snack directly, toss onto Mediterranean salads, or garnish festive desserts and kheer.",
     "storage": "Store in an airtight glass container in a cool spot.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "pistachios",
@@ -1293,14 +1696,13 @@ export const products: Product[] = [
   },
   {
     "id": "12",
-    "slug": "superfood-trail-mix",
     "dbId": 12,
+    "slug": "superfood-trail-mix",
     "name": "Superfood Trail Mix (Nuts & Seeds)",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 790,
     "compareAtPrice": 790,
-    "mrp": 790,
     "rating": 5,
     "reviewCount": 92,
     "image": "/products/superfood-mix.jpg",
@@ -1314,9 +1716,10 @@ export const products: Product[] = [
       "bestseller",
       "organic"
     ],
-    "stock": 140,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 790,
     "ingredients": [
       "Himalayan Almonds",
       "Jumbo Cashews",
@@ -1368,14 +1771,13 @@ export const products: Product[] = [
   },
   {
     "id": "159",
-    "slug": "macadamia-nuts",
     "dbId": 159,
+    "slug": "macadamia-nuts",
     "name": "Macadamia Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 1100,
     "compareAtPrice": 1100,
-    "mrp": 1100,
     "rating": 4.9,
     "reviewCount": 31,
     "image": "/products/macadamia.jpg",
@@ -1388,9 +1790,10 @@ export const products: Product[] = [
       "new",
       "organic"
     ],
-    "stock": 65,
+    "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
+    "mrp": 1100,
     "ingredients": [
       "100% Pure Raw Gourmet Macadamia Nut Kernels"
     ],
@@ -1424,7 +1827,7 @@ export const products: Product[] = [
     ],
     "usage": "Savor raw as a gourmet delicacy, chop into artisanal salads, or blend into velvety plant creams.",
     "storage": "Store sealed in glass jar in a cool pantry or refrigerator.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "macadamia",
@@ -1437,14 +1840,13 @@ export const products: Product[] = [
   },
   {
     "id": "154",
-    "slug": "virgin-coconut-oil-500ml",
     "dbId": 154,
+    "slug": "virgin-coconut-oil-500ml",
     "name": "Cold-Pressed Extra Virgin Coconut Oil (500ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 1750,
     "compareAtPrice": 1750,
-    "mrp": 1750,
     "rating": 5,
     "reviewCount": 88,
     "image": "/products/coconut-oil.jpg",
@@ -1458,9 +1860,10 @@ export const products: Product[] = [
       "bestseller",
       "cold-pressed"
     ],
-    "stock": 95,
+    "stock": 50,
     "weight": "500 ML",
     "packing": "Glass Bottle",
+    "mrp": 1750,
     "ingredients": [
       "100% Pure Cold-Pressed Extra Virgin Coconut Oil (Zero Heat, Unrefined)"
     ],
@@ -1508,29 +1911,29 @@ export const products: Product[] = [
   },
   {
     "id": "153",
-    "slug": "virgin-coconut-oil-180ml",
     "dbId": 153,
+    "slug": "virgin-coconut-oil-180ml",
     "name": "Cold-Pressed Extra Virgin Coconut Oil (200ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 650,
     "compareAtPrice": 650,
-    "mrp": 650,
     "rating": 4.9,
     "reviewCount": 52,
-    "image": "/products/coconut-oil-product.jpg",
+    "image": "/products/coconut-oil.jpg",
     "images": [
-      "/products/coconut-oil-product.jpg",
-      "/products/coconut-oil.jpg"
+      "/products/coconut-oil.jpg",
+      "/products/coconut-oil-product.jpg"
     ],
     "description": "Compact handy glass jar of 100% raw cold-pressed extra virgin coconut oil. Perfectly sized for daily facial skincare, Ayurvedic morning oil pulling, desk moisturizer, travel, and infant skin nourishing.",
     "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 200ml Glass Bottle.",
     "badges": [
       "cold-pressed"
     ],
-    "stock": 110,
+    "stock": 50,
     "weight": "200 ML",
     "packing": "Glass Bottle",
+    "mrp": 650,
     "ingredients": [
       "100% Pure Cold-Pressed Extra Virgin Coconut Oil (Unrefined)"
     ],
@@ -1560,7 +1963,7 @@ export const products: Product[] = [
     ],
     "usage": "Apply small dab to clean damp skin or hair tips, or swish 1 tbsp in mouth for 5–10 minutes for oil pulling.",
     "storage": "Store sealed at room temperature.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "coconut-oil-180ml",
@@ -1573,19 +1976,19 @@ export const products: Product[] = [
   },
   {
     "id": "27",
-    "slug": "carrot-powder",
     "dbId": 27,
+    "slug": "carrot-powder",
     "name": "Carrot Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 440,
-    "compareAtPrice": 440,
-    "mrp": 440,
+    "price": 490,
+    "compareAtPrice": 550,
     "rating": 4.8,
     "reviewCount": 38,
     "image": "/products/nm-carrot-jar.jpeg",
     "images": [
       "/products/nm-carrot-jar.jpeg",
+      "/products/posters/carrot-powder-explosion-2k.jpg",
       "/products/carrot-benefits-poster.jpg",
       "/products/carrot-powder-eye-health.jpg",
       "/products/carrot-powder-marble.jpg",
@@ -1596,9 +1999,10 @@ export const products: Product[] = [
     "badges": [
       "organic"
     ],
-    "stock": 85,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 440,
     "ingredients": [
       "100% Dehydrated Organic Carrots (Daucus carota)"
     ],
@@ -1628,7 +2032,7 @@ export const products: Product[] = [
     ],
     "usage": "Stir into baby purees, soups, gravies, pancake batter, or morning smoothies.",
     "storage": "Store sealed in a dry pantry away from sunlight.",
-    "isFeatured": false,
+    "isFeatured": true,
     "isBestSeller": false,
     "tags": [
       "carrot",
@@ -1641,14 +2045,13 @@ export const products: Product[] = [
   },
   {
     "id": "24",
-    "slug": "sweet-potato-powder",
     "dbId": 24,
+    "slug": "sweet-potato-powder",
     "name": "Sweet Potato Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 420,
-    "compareAtPrice": 420,
-    "mrp": 420,
+    "price": 510,
+    "compareAtPrice": 600,
     "rating": 5,
     "reviewCount": 96,
     "image": "/products/nm-sweet-potato-jar.jpeg",
@@ -1666,9 +2069,10 @@ export const products: Product[] = [
       "bestseller",
       "organic"
     ],
-    "stock": 160,
+    "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
+    "mrp": 420,
     "ingredients": [
       "100% Pure Dehydrated Nepali Sweet Potato (Ipomoea batatas)"
     ],
@@ -1721,14 +2125,13 @@ export const products: Product[] = [
   },
   {
     "id": "40",
-    "slug": "pure-mountain-himalayan-shilajit-resin",
     "dbId": 40,
+    "slug": "pure-mountain-himalayan-shilajit-resin",
     "name": "Pure Mountain Shilajit Resin",
     "category": "Ayurveda",
     "categorySlug": "ayurveda",
     "price": 1995,
     "compareAtPrice": 1995,
-    "mrp": 1995,
     "rating": 5,
     "reviewCount": 114,
     "image": "/products/nm-shilajit-jar.jpeg",
@@ -1745,6 +2148,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "20 GM",
     "packing": "Glass Jar",
+    "mrp": 1995,
     "ingredients": [
       "100% Pure Purified Himalayan Shilajit Resin (Gold Grade, >75% Fulvic Acid)"
     ],
@@ -1780,6 +2184,106 @@ export const products: Product[] = [
       "energy",
       "rasayana",
       "himalayan"
+    ]
+  },
+  {
+    "id": "8",
+    "slug": "premium-coconut-oil",
+    "name": "Raw Pumpkin Seeds",
+    "categorySlug": "seeds-mix",
+    "price": 650,
+    "compareAtPrice": 650,
+    "rating": 5,
+    "reviewCount": 18,
+    "image": "/products/pumpkin-seeds.jpg",
+    "images": [
+      "/products/pumpkin-seeds.jpg",
+      "/products/pumpkin-seeds-2.jpg",
+      "/products/pumpkin-seeds-product-shot.jpg"
+    ],
+    "description": "Raw AAA-grade dark-green pumpkin seed kernels (pepitas). One of the richest dietary sources of natural bioavailable Zinc, Magnesium, Tryptophan, and antioxidants for deep sleep, prostate health, and immune defense.",
+    "shortDescription": "Raw zinc and magnesium rich pepitas for immune strength, sleep quality & hormone balance in a 300g Plastic Jar.",
+    "badges": [
+      "organic",
+      "bestseller"
+    ],
+    "stock": 50,
+    "weight": "300.00",
+    "ingredients": [
+      "Premium Coconut Oil"
+    ],
+    "benefits": [
+      "100% Natural",
+      "Rich in nutrients",
+      "No artificial colors",
+      "No added sugar"
+    ],
+    "nutrition": [
+      {
+        "label": "Energy",
+        "value": "350 kcal"
+      },
+      {
+        "label": "Protein",
+        "value": "4g"
+      }
+    ],
+    "storage": "Keep in an airtight container away from direct sunlight.",
+    "isFeatured": true,
+    "category": "Seeds",
+    "usage": "Add 1-2 teaspoons to warm water, milk, smoothies, or recipes.",
+    "isBestSeller": false,
+    "tags": [
+      "premium-coconut-oil"
+    ]
+  },
+  {
+    "id": "18",
+    "slug": "flaxseed-crackers",
+    "name": "Raw Almond",
+    "categorySlug": "superfood-powders",
+    "price": 570,
+    "compareAtPrice": 600,
+    "rating": 5,
+    "reviewCount": 18,
+    "image": "/products/flax-seeds.jpg",
+    "images": [
+      "/products/flax-seeds.jpg"
+    ],
+    "description": "Whole raw brown flax seeds loaded with dietary soluble and insoluble fiber.",
+    "shortDescription": "Whole raw flax seeds packed with lignans, alpha-linolenic acid (Omega-3) & fiber.",
+    "badges": [
+      "organic",
+      "bestseller"
+    ],
+    "stock": 50,
+    "weight": "200.00",
+    "ingredients": [
+      "Flaxseed Crackers"
+    ],
+    "benefits": [
+      "100% Natural",
+      "Rich in nutrients",
+      "No artificial colors",
+      "No added sugar"
+    ],
+    "nutrition": [
+      {
+        "label": "Energy",
+        "value": "350 kcal"
+      },
+      {
+        "label": "Protein",
+        "value": "4g"
+      }
+    ],
+    "storage": "Keep in an airtight container away from direct sunlight.",
+    "isFeatured": false,
+    "category": "Powders",
+    "usage": "Add 1-2 teaspoons to warm water, milk, smoothies, or recipes.",
+    "isBestSeller": false,
+    "tags": [
+      "flaxseed-crackers"
     ]
   }
 ];
@@ -1835,21 +2339,26 @@ export const categories = [
   },
 ];
 
-function formatProductWeight(val: any, fallbackWeight?: string): string {
-  if (fallbackWeight && /[a-zA-Z]/.test(fallbackWeight)) {
-    if (!val || /^\d+(\.\d+)?$/.test(String(val).trim())) {
-      const num = val ? Math.round(Number(val)) : null;
-      const unitMatch = fallbackWeight.match(/[a-zA-Z]+/);
-      const unit = unitMatch ? ' ' + unitMatch[0].toUpperCase() : ' GM';
-      return num ? `${num}${unit}` : fallbackWeight;
+function formatProductWeight(val: any, rawUnit?: string, fallbackWeight?: string): string {
+  if (val !== undefined && val !== null && String(val).trim() !== '') {
+    const str = String(val).trim();
+    if (/^\d+(\.\d+)?$/.test(str)) {
+      const num = Math.round(Number(str));
+      const u = rawUnit ? String(rawUnit).trim().toUpperCase() : '';
+      if (u === 'G' || u === 'GM' || u === 'GRAM' || u === 'GRAMS') return `${num} GM`;
+      if (u === 'KG') return `${num} KG`;
+      if (u === 'ML') return `${num} ML`;
+      if (u === 'L' || u === 'LTR') return `${num} L`;
+      if (u) return `${num} ${u}`;
+      if (fallbackWeight) {
+        const match = fallbackWeight.match(/[a-zA-Z]+/);
+        if (match) return `${num} ${match[0].toUpperCase()}`;
+      }
+      return `${num} GM`;
     }
+    return str;
   }
-  if (!val) return fallbackWeight || '100 GM';
-  const str = String(val).trim();
-  if (/^\d+(\.\d+)?$/.test(str)) {
-    return `${Math.round(Number(str))} GM`;
-  }
-  return str;
+  return fallbackWeight || '100 GM';
 }
 
 export function normalizeProduct(raw: any, fallback?: Product | null): Product {
@@ -1866,6 +2375,12 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
   const compareAtPrice = rawCompare > 0 ? (rawCompare >= price ? rawCompare : price) : (localCompare >= price ? localCompare : price);
   const mrp = Number(raw.mrp || local?.mrp || compareAtPrice || price);
 
+  const rawImages = Array.isArray(raw.images) && raw.images.length > 0
+    ? raw.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : (img.url || img.image_url || img.path || ''))).filter(Boolean)
+    : (raw.image ? [resolveImageUrl(raw.image)] : (local?.images || [resolveImageUrl('/products/naturesmud-all-products-100g.jpg')]));
+
+  const rawPrimaryImage = resolveImageUrl(raw.image || (rawImages.length > 0 ? rawImages[0] : null) || local?.image || '/products/naturesmud-all-products-100g.jpg');
+
   return {
     id: String(raw.id || local?.id || slug),
     dbId: typeof raw.id === 'number' ? raw.id : (local?.dbId || parseInt(raw.id, 10) || undefined),
@@ -1876,17 +2391,15 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
     price: price,
     compareAtPrice: compareAtPrice,
     mrp: mrp,
-    rating: Number(raw.rating || local?.rating || 4.9),
-    reviewCount: Number(raw.reviewCount || raw.reviews_count || local?.reviewCount || 24),
-    image: resolveImageUrl(raw.image || local?.image || '/products/naturesmud-all-products-100g.jpg'),
-    images: Array.isArray(raw.images) && raw.images.length > 0
-      ? raw.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : img.url || img.image_url))
-      : (local?.images || [resolveImageUrl(raw.image || local?.image || '/products/naturesmud-all-products-100g.jpg')]),
+    rating: Number(raw.rating || raw.rating_avg || local?.rating || 4.9),
+    reviewCount: Number(raw.reviewCount || raw.rating_count || raw.reviews_count || local?.reviewCount || 24),
+    image: rawPrimaryImage,
+    images: rawImages.length > 0 ? rawImages : [rawPrimaryImage],
     description: raw.description || local?.description || '',
     shortDescription: raw.shortDescription || raw.short_description || local?.shortDescription || '',
     badges: Array.isArray(raw.badges) ? raw.badges : (local?.badges || []),
-    stock: typeof raw.stock === 'number' ? raw.stock : (local?.stock ?? 100),
-    weight: formatProductWeight(raw.weight, local?.weight),
+    stock: raw.stock !== undefined ? Number(raw.stock) : (raw.stock_quantity !== undefined ? Number(raw.stock_quantity) : (local?.stock ?? 100)),
+    weight: formatProductWeight(raw.weight, raw.unit, local?.weight),
     packing: raw.packing || local?.packing || 'Standup Ziplock Pouch',
     ingredients: Array.isArray(raw.ingredients) ? raw.ingredients : (local?.ingredients || []),
     benefits: Array.isArray(raw.benefits) ? raw.benefits : (local?.benefits || []),

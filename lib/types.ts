@@ -105,8 +105,9 @@ export interface CartProductSnapshot {
   price: number;
   compareAtPrice?: number;
   image: string;
+  images?: string[];
   weight?: string;
-  category?: string;
+  category?: string | { id?: number | string; name?: string; slug?: string };
 }
 
 export interface CartItem {

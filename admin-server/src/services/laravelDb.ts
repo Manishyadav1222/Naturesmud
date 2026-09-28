@@ -986,9 +986,18 @@ class LaravelDbService {
       image = null,
     } = data;
 
-    const finalImages = Array.isArray(images) && images.length > 0 
+    const rawImages = Array.isArray(images) && images.length > 0 
       ? images 
       : (image ? [image] : (images ? [images] : []));
+    const finalImages = rawImages
+      .map((img: any) => {
+        if (typeof img === 'string') return img.trim();
+        if (img && typeof img === 'object') {
+          return (img.url || img.secure_url || img.path || img.preview || '').trim();
+        }
+        return '';
+      })
+      .filter(Boolean);
 
     const finalSlug = slug || this.slugify(name);
     const finalSku =
@@ -1011,21 +1020,21 @@ class LaravelDbService {
         rating_avg, rating_count, views_count, sold_count, created_at, updated_at
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?, ?, 0, 0, 0, 0, NOW(), NOW())`,
       [
-        categoryId || null,
+        categoryId ? Number(categoryId) : null,
         name,
         finalSlug,
         finalSku,
         description,
         shortDescription,
-        price,
-        compareAtPrice,
-        cost,
-        stock,
-        lowStockThreshold,
+        parseFloat(price) || 0,
+        compareAtPrice != null && compareAtPrice !== '' ? parseFloat(compareAtPrice) : null,
+        parseFloat(cost) || 0,
+        parseInt(stock, 10) || 0,
+        parseInt(lowStockThreshold, 10) || 5,
         isActiveFlag,
         isFeatured ? 1 : 0,
-        weight,
-        unit,
+        weight != null && weight !== '' ? parseFloat(weight) : null,
+        unit || 'PC',
         JSON.stringify(finalImages),
       ]
     );
@@ -1047,52 +1056,96 @@ class LaravelDbService {
     };
 
     if (data.name !== undefined) setField('name', data.name);
-    if (data.slug !== undefined) setField('slug', data.slug);
+    if (data.slug !== undefined) setField('slug', this.slugify(data.slug || data.name));
     if (data.sku !== undefined) setField('sku', data.sku);
     if (data.description !== undefined) setField('description', data.description);
     if (data.shortDescription !== undefined) setField('short_description', data.shortDescription);
-    if (data.price !== undefined) setField('price', data.price);
-    if (data.compareAtPrice !== undefined) setField('compare_at_price', data.compareAtPrice || null);
-    if (data.cost !== undefined) setField('cost_price', data.cost);
-    if (data.stock !== undefined) setField('stock_quantity', data.stock);
-    if (data.lowStockThreshold !== undefined) setField('low_stock_threshold', data.lowStockThreshold);
-    if (data.categoryId !== undefined) setField('category_id', data.categoryId || null);
+    if (data.price !== undefined) setField('price', parseFloat(data.price) || 0);
+    if (data.compareAtPrice !== undefined) {
+      setField('compare_at_price', data.compareAtPrice != null && data.compareAtPrice !== '' ? parseFloat(data.compareAtPrice) : null);
+    }
+    if (data.cost !== undefined) setField('cost_price', parseFloat(data.cost) || 0);
+    if (data.stock !== undefined) setField('stock_quantity', parseInt(data.stock, 10) || 0);
+    if (data.lowStockThreshold !== undefined) setField('low_stock_threshold', parseInt(data.lowStockThreshold, 10) || 5);
+    if (data.categoryId !== undefined) setField('category_id', data.categoryId ? Number(data.categoryId) : null);
     if (data.unit !== undefined) setField('unit', data.unit);
-    if (data.weight !== undefined) setField('weight', data.weight);
+    if (data.weight !== undefined) {
+      setField('weight', data.weight != null && data.weight !== '' ? parseFloat(data.weight) : null);
+    }
     if (data.isFeatured !== undefined) setField('is_featured', data.isFeatured ? 1 : 0);
+    if (data.isBestSeller !== undefined || data.is_best_seller !== undefined) {
+      setField('is_best_seller', (data.isBestSeller ?? data.is_best_seller) ? 1 : 0);
+    }
+    if (data.isNew !== undefined || data.is_new !== undefined) {
+      setField('is_new', (data.isNew ?? data.is_new) ? 1 : 0);
+    }
+
     if (data.images !== undefined) {
       const arr = Array.isArray(data.images) ? data.images : [data.images];
-      setField('images', JSON.stringify(arr));
+      const primaryItem = arr.find((img: any) => img && typeof img === 'object' && img.isPrimary);
+      const otherItems = arr.filter((img: any) => img !== primaryItem);
+      const ordered = primaryItem ? [primaryItem, ...otherItems] : arr;
+
+      const urls = ordered
+        .map((img: any) => {
+          if (typeof img === 'string') return img.trim();
+          if (img && typeof img === 'object') {
+            return (img.url || img.secure_url || img.path || img.preview || '').trim();
+          }
+          return '';
+        })
+        .filter(Boolean);
+      setField('images', JSON.stringify(urls));
     } else if (data.image !== undefined) {
-      setField('images', JSON.stringify([data.image]));
+      const url = typeof data.image === 'string' ? data.image.trim() : (data.image?.url || '').trim();
+      setField('images', JSON.stringify(url ? [url] : []));
     }
+
+    if (data.ingredients !== undefined) {
+      const val = Array.isArray(data.ingredients) ? data.ingredients : (typeof data.ingredients === 'string' ? [data.ingredients] : []);
+      setField('ingredients', JSON.stringify(val));
+    }
+    if (data.nutritionFacts !== undefined) {
+      setField('nutrition_facts', typeof data.nutritionFacts === 'object' ? JSON.stringify(data.nutritionFacts) : data.nutritionFacts);
+    }
+    if (data.benefits !== undefined) {
+      const val = Array.isArray(data.benefits) ? data.benefits : (typeof data.benefits === 'string' ? [data.benefits] : []);
+      setField('benefits', JSON.stringify(val));
+    }
+    if (data.usageInstructions !== undefined) setField('usage_instructions', data.usageInstructions);
+    if (data.storageInstructions !== undefined) setField('storage_instructions', data.storageInstructions);
+    if (data.metaTitle !== undefined) setField('meta_title', data.metaTitle);
+    if (data.metaDescription !== undefined) setField('meta_description', data.metaDescription);
 
     // status / isActive / isPublished all map onto the single is_active column
     if (data.status !== undefined) {
       const status = String(data.status).toUpperCase();
       if (status === 'ACTIVE') setField('is_active', 1);
-      else if (status === 'DRAFT' || status === 'ARCHIVED') setField('is_active', 0);
+      else if (status === 'DRAFT' || status === 'ARCHIVED' || status === 'INACTIVE') setField('is_active', 0);
+    } else if (data.isActive !== undefined) {
+      setField('is_active', data.isActive ? 1 : 0);
+    } else if (data.isPublished !== undefined) {
+      setField('is_active', data.isPublished ? 1 : 0);
     }
-    if (data.isActive !== undefined) setField('is_active', data.isActive ? 1 : 0);
-    if (data.isPublished !== undefined) setField('is_active', data.isPublished ? 1 : 0);
 
     if (fields.length === 0) return existing;
 
     fields.push('updated_at = NOW()');
 
+    // CRITICAL: Must use existing.id (the integer primary key), NOT the raw id parameter which could be a slug!
     await pool.query(
       `UPDATE products SET ${fields.join(', ')} WHERE id = ?`,
-      [...paramsArr, id]
+      [...paramsArr, existing.id]
     );
 
-    return this.getProductById(id);
+    return this.getProductById(String(existing.id));
   }
 
   async deleteProduct(id: string) {
     const existing = await this.getProductById(id);
     if (!existing) return false;
 
-    await pool.query(`DELETE FROM products WHERE id = ?`, [id]);
+    await pool.query(`DELETE FROM products WHERE id = ?`, [existing.id]);
     return true;
   }
 
@@ -1108,6 +1161,16 @@ class LaravelDbService {
   async duplicateProduct(id: string) {
     const existing = await this.getProductById(id);
     if (!existing) return null;
+
+    let cleanImages: any[] = [];
+    if (existing.images) {
+      try {
+        const parsed = typeof existing.images === 'string' ? JSON.parse(existing.images) : existing.images;
+        cleanImages = Array.isArray(parsed) ? parsed : [parsed];
+      } catch {
+        cleanImages = [existing.images];
+      }
+    }
 
     return this.createProduct({
       name: `${existing.name} (Copy)`,
@@ -1126,6 +1189,7 @@ class LaravelDbService {
       weight: existing.weight,
       isFeatured: false,
       isActive: false,
+      images: cleanImages,
     });
   }
 

@@ -198,6 +198,22 @@ router.put('/:id', requireMinRole('ADMIN'), async (req, res, next) => {
   }
 });
 
+// PATCH /api/admin/products/:id - Update product (alias for PUT)
+router.patch('/:id', requireMinRole('ADMIN'), async (req, res, next) => {
+  try {
+    const result = await laravelDb.updateProduct(String(req.params.id), req.body);
+    if (!result) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+    res.json({ data: mapProduct(result) });
+  } catch (err: any) {
+    if (err.message?.includes('ER_DUP_ENTRY') || err.code === 'ER_DUP_ENTRY') {
+      return res.status(400).json({ message: 'A product with this slug or SKU already exists' });
+    }
+    next(err);
+  }
+});
+
 // DELETE /api/admin/products/:id - Delete product
 router.delete('/:id', requireMinRole('ADMIN'), async (req, res, next) => {
   try {

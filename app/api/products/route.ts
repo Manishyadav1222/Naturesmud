@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
-import { products, normalizeProduct } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct } from '@/lib/data/products';
+import { api } from '@/lib/api';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET(request: Request) {
   try {
@@ -12,7 +16,19 @@ export async function GET(request: Request) {
     const limit = parseInt(searchParams.get('limit') || searchParams.get('per_page') || '50', 10);
     const page = parseInt(searchParams.get('page') || '1', 10);
 
-    let result = products.map((p) => normalizeProduct(p));
+    let result = localProducts.map((p) => normalizeProduct(p));
+
+    try {
+      const res = await api.get('/products', { params: { per_page: 100 } });
+      if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
+        result = res.data.data
+          .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)
+          .map((p: any) => normalizeProduct(p));
+      }
+    } catch {
+      // Graceful fallback to local catalog
+      result = localProducts.map((p) => normalizeProduct(p));
+    }
 
     if (category && category !== 'all') {
       const catLower = category.toLowerCase().trim();

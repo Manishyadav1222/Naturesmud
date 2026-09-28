@@ -5,6 +5,23 @@ const { createServer } = require('http');
 const { parse } = require('url');
 const next = require('next');
 
+const fs = require('fs');
+const path = require('path');
+
+// Ensure environment variables are loaded for Phusion Passenger on cPanel
+try {
+  const dotenv = require('dotenv');
+  const envPath = path.resolve(__dirname, '.env');
+  const envProdPath = path.resolve(__dirname, '.env.production');
+  if (fs.existsSync(envPath)) {
+    dotenv.config({ path: envPath });
+  } else if (fs.existsSync(envProdPath)) {
+    dotenv.config({ path: envProdPath });
+  }
+} catch (e) {
+  // Ignore if dotenv is unavailable
+}
+
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = '0.0.0.0';
 const port = parseInt(process.env.PORT, 10) || 3000;

@@ -43,8 +43,8 @@ const navLinks = [
 ];
 
 const featuredCategories = [
-  { name: 'Dried Fruits', slug: 'dried-fruits', image: '/products/authentic-dehydrated-mango.jpg', count: '8 items' },
-  { name: 'Organic Powders', slug: 'powders', image: '/products/sweet-potato-powder-100g.jpg', count: '4 items' },
+  { name: 'Organic Powders', slug: 'powders', image: '/products/banana-powder.jpg', count: '8 items' },
+  { name: 'Dried Fruits & Figs', slug: 'dried-fruits', image: '/products/dry-figs-anjeer.jpg', count: '9 items' },
   { name: 'Mountain Nuts', slug: 'nuts', image: '/products/authentic-almonds.jpg', count: '7 items' },
   { name: 'Seeds & Salts', slug: 'seeds', image: '/products/pumpkin-seeds.jpg', count: '4 items' },
 ];
@@ -86,6 +86,28 @@ export default function Header() {
 
   return (
     <>
+      {/* 🌟 Animated Top Announcement Bar for New Products Lineup */}
+      <div className="bg-gradient-to-r from-[#143020] via-[#1A3826] to-[#143020] text-white text-[11px] sm:text-xs font-medium py-1.5 px-3 overflow-hidden relative border-b border-gold/20 shadow-xs z-50">
+        <div className="mx-auto max-w-7xl flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 overflow-hidden mx-auto sm:mx-0">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gold/20 text-gold-300 font-bold uppercase tracking-wider text-[9px] border border-gold/40 shrink-0">
+              <Sparkles className="w-2.5 h-2.5 text-gold-300 animate-spin" style={{ animationDuration: '4s' }} />
+              New Launch
+            </span>
+            <span className="text-white/95 font-medium truncate text-center sm:text-left">
+              🇳🇵 Freeze Dried Avocado, Pure Strawberry, Banana Powder, Moringa & Premium Anjeer (Dry Figs) are now live!
+            </span>
+          </div>
+          <Link
+            href="/products?category=powders"
+            className="hidden md:inline-flex items-center gap-1 font-bold text-gold-300 hover:text-white transition-colors shrink-0 text-[11px] group"
+          >
+            <span>Shop New Arrivals</span>
+            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
+      </div>
+
       <header
         className={classNames(
           'sticky top-0 z-50 w-full max-w-full transition-all duration-300 pointer-events-auto',

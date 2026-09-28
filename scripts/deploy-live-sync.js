@@ -82,29 +82,38 @@ async function callApi(apiPath, method = 'GET') {
   });
 }
 
-async function uploadFile(localPath, remoteDir, remoteFileName) {
+async function uploadFile(localPath, remoteDir, remoteFileName, maxRetries = 4) {
   const ftp = require('basic-ftp');
-  const client = new ftp.Client();
-  client.timeout = 300000;
-  try {
-    await client.access({
-      host: config.host,
-      user: config.username,
-      password: config.password,
-      secure: false
-    });
-    // FTP root is already /home8/kathma13/, so we remove it from the path
-    let ftpDir = remoteDir;
-    if (ftpDir.startsWith(config.homeDir)) {
-      ftpDir = ftpDir.substring(config.homeDir.length);
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    const client = new ftp.Client();
+    client.timeout = 300000;
+    try {
+      await client.access({
+        host: config.host,
+        user: config.username,
+        password: config.password,
+        secure: false
+      });
+      // FTP root is already /home8/kathma13/, so we remove it from the path
+      let ftpDir = remoteDir;
+      if (ftpDir.startsWith(config.homeDir)) {
+        ftpDir = ftpDir.substring(config.homeDir.length);
+      }
+      const remotePath = ftpDir + '/' + remoteFileName;
+      console.log(`  [FTP] Uploading ${remoteFileName} (${(fs.statSync(localPath).size / 1024 / 1024).toFixed(2)} MB, attempt ${attempt}/${maxRetries})...`);
+      await client.uploadFrom(localPath, remotePath);
+      console.log(`  [FTP] Successfully uploaded ${remoteFileName}!`);
+      return;
+    } catch (err) {
+      console.error(`  [FTP] Attempt ${attempt} failed for ${remoteFileName}: ${err.message}`);
+      if (attempt === maxRetries) {
+        throw err;
+      }
+      console.log(`  [FTP] Waiting ${(3 * attempt)}s before retrying...`);
+      await new Promise(r => setTimeout(r, 3000 * attempt));
+    } finally {
+      client.close();
     }
-    const remotePath = ftpDir + '/' + remoteFileName;
-    await client.uploadFrom(localPath, remotePath);
-  } catch (err) {
-    console.error(`FTP Upload error for ${remoteFileName}:`, err);
-    throw err;
-  } finally {
-    client.close();
   }
 }
 
@@ -219,10 +228,14 @@ async function main() {
   }
 
   // 2. Build Next.js
-  console.log('\n[2/6] 🏗️ Compiling Next.js production build...');
-  execSync('npm run build', { stdio: 'inherit' });
+  if (process.argv.includes('--skip-build') && fs.existsSync(path.join(config.rootDir, '.next', 'BUILD_ID'))) {
+    console.log('\n[2/6] ⏭️ Skipping Next.js build (--skip-build flag provided)...');
+  } else {
+    console.log('\n[2/6] 🏗️ Compiling Next.js production build...');
+    execSync('npm run build', { stdio: 'inherit' });
+  }
   const localBuildId = fs.readFileSync(path.join(config.rootDir, '.next', 'BUILD_ID'), 'utf8').trim();
-  console.log('✅ Build successful! BUILD_ID:', localBuildId);
+  console.log('✅ Build verified! BUILD_ID:', localBuildId);
 
   // 3. Clean cache & package .next with ZipArchive
   console.log('\n[3/6] 📦 Packaging .next with ZipArchive (POSIX modes)...');
@@ -270,42 +283,6 @@ async function main() {
     console.warn('PDF generation notice:', e.message);
   }
 
-  const publicZip = path.join(config.rootDir, 'public-assets-dist.zip');
-  if (fs.existsSync(publicZip)) fs.unlinkSync(publicZip);
-  await new Promise((resolve, reject) => {
-    const { ZipArchive } = require('archiver');
-    const output = fs.createWriteStream(publicZip);
-    const archive = new ZipArchive({ zlib: { level: 9 } });
-    output.on('close', resolve);
-    archive.on('error', reject);
-    archive.pipe(output);
-
-    // Archive all public directory assets recursively (excluding heavy video files)
-    archive.directory(
-      path.join(config.rootDir, 'public'),
-      false,
-      (entry) => {
-        const norm = entry.name.replace(/\\/g, '/');
-        if (
-          norm.startsWith('videos/') ||
-          norm === 'videos' ||
-          norm.endsWith('.zip')
-        ) {
-          return false;
-        }
-        if (entry.name.endsWith('/') || entry.stats?.isDirectory?.()) {
-          entry.mode = 0o755;
-        } else {
-          entry.mode = 0o644;
-        }
-        return entry;
-      }
-    );
-
-    archive.finalize();
-  });
-  console.log(`✅ Complete public assets package created (${(fs.statSync(publicZip).size / 1024 / 1024).toFixed(2)} MB)`);
-
   // 4. Remote cleanup & upload
   console.log('\n[4/6] 🌐 Uploading & extracting build to cPanel...');
   await unlinkRemote(`${config.homeDir}/naturesmud.shop/.next`);
@@ -313,9 +290,16 @@ async function main() {
   await extractArchive(`${config.homeDir}/naturesmud.shop/frontend-optimized-dist.zip`, `${config.homeDir}/naturesmud.shop`);
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
-  await uploadFile(publicZip, `${config.homeDir}/naturesmud.shop/public`, 'public-assets-dist.zip');
-  await extractArchive(`${config.homeDir}/naturesmud.shop/public/public-assets-dist.zip`, `${config.homeDir}/naturesmud.shop/public`);
-  if (fs.existsSync(publicZip)) fs.unlinkSync(publicZip);
+  // Upload public assets only if explicitly requested (--sync-public) to prevent 750MB timeouts
+  if (process.argv.includes('--sync-public')) {
+    const publicZip = path.join(config.rootDir, 'public-assets-dist.zip');
+    if (fs.existsSync(publicZip)) {
+      console.log('Uploading public-assets-dist.zip...');
+      await uploadFile(publicZip, `${config.homeDir}/naturesmud.shop/public`, 'public-assets-dist.zip');
+      await extractArchive(`${config.homeDir}/naturesmud.shop/public/public-assets-dist.zip`, `${config.homeDir}/naturesmud.shop/public`);
+      fs.unlinkSync(publicZip);
+    }
+  }
 
   // Guarantee direct overwrite of 8-page catalog PDFs
   const catalogPdfs = ['Nature_Mud_Product_Catalog.pdf', 'catalog.pdf', 'Nature_Mud_Magazine_Catalog.pdf'];
@@ -325,7 +309,22 @@ async function main() {
       await uploadFile(localPdf, `${config.homeDir}/naturesmud.shop/public`, pdf);
     }
   }
-  console.log('✅ Archive & fresh 8-page catalog PDFs uploaded and verified!');
+
+  // Upload server.js, next.config.mjs & .env to ensure passenger loads environment
+  const serverJsPath = path.join(config.rootDir, 'server.js');
+  if (fs.existsSync(serverJsPath)) {
+    await uploadFile(serverJsPath, `${config.homeDir}/naturesmud.shop`, 'server.js');
+  }
+  const nextConfigPath = path.join(config.rootDir, 'next.config.mjs');
+  if (fs.existsSync(nextConfigPath)) {
+    await uploadFile(nextConfigPath, `${config.homeDir}/naturesmud.shop`, 'next.config.mjs');
+  }
+  const envProdPath = path.join(config.rootDir, '.env.production');
+  if (fs.existsSync(envProdPath)) {
+    await uploadFile(envProdPath, `${config.homeDir}/naturesmud.shop`, '.env');
+    await uploadFile(envProdPath, `${config.homeDir}/naturesmud.shop`, '.env.production');
+  }
+  console.log('✅ Archive, server.js, next.config.mjs, .env & fresh 8-page catalog PDFs uploaded and verified!');
 
   // 5. Server-side Native Fast Permission Fix & Passenger Restart
   console.log('\n[5/6] 🔒 Applying server permissions (0755/0644) and restarting Passenger...');
@@ -434,24 +433,24 @@ foreach ($catalog as $p) {
     $stmt->execute(['slug' => $slug]);
     $row = $stmt->fetch();
 
-    if ($row) {
-        $stmt = $pdo->prepare("UPDATE products SET 
-            category_id = :category_id,
-            name = :name,
-            description = :description,
-            short_description = :short_description,
-            price = :price,
-            compare_at_price = :compare_at_price,
-            cost_price = :cost_price,
-            weight = :weight,
-            unit = :unit,
-            images = :images,
-            benefits = :benefits,
-            updated_at = NOW()
-            WHERE id = :id");
+    if (!$row) {
+        $sku = 'NM-' . strtoupper(preg_replace('/[^A-Za-z0-9]+/', '_', $slug)) . '-' . substr(strval(time()), -4);
+        $stmt = $pdo->prepare("INSERT INTO products (
+            category_id, name, slug, sku, description, short_description,
+            price, compare_at_price, cost_price, stock_quantity, low_stock_threshold,
+            is_active, is_featured, is_best_seller, is_new, weight, unit,
+            images, created_at, updated_at
+        ) VALUES (
+            :category_id, :name, :slug, :sku, :description, :short_description,
+            :price, :compare_at_price, :cost_price, 100, 5,
+            1, 1, 0, 1, :weight, :unit,
+            :images, NOW(), NOW()
+        )");
         $stmt->execute([
             'category_id' => $catId,
             'name' => $p['name'],
+            'slug' => $slug,
+            'sku' => $sku,
             'description' => $p['description'] ?? '',
             'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
             'price' => $price,
@@ -459,9 +458,7 @@ foreach ($catalog as $p) {
             'cost_price' => round($price * 0.65, 2),
             'weight' => $weightNum,
             'unit' => $unit,
-            'images' => $imagesJson,
-            'benefits' => json_encode($p['benefits'] ?? []),
-            'id' => $row['id']
+            'images' => $imagesJson
         ]);
         $upsertCount++;
     }
@@ -504,6 +501,7 @@ echo json_encode([
     'https://naturesmud.shop/products',
     'https://naturesmud.shop/cart',
     'https://naturesmud.shop/checkout',
+    'https://naturesmud.shop/wishlist',
     'https://api.naturesmud.shop/api/v1/products'
   ];
 

@@ -54,6 +54,7 @@ import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
+  const [dynamicProducts, setDynamicProducts] = useState<Product[]>([]);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>(staticProducts.filter((p) => p.isFeatured).slice(0, 4));
   const [trendingProducts, setTrendingProducts] = useState<Product[]>(staticProducts.slice(0, 3));
   const [latestPosts, setLatestPosts] = useState<any[]>(staticBlogPosts.slice(0, 3));
@@ -62,12 +63,13 @@ export default function HomePage() {
     async function fetchData() {
       try {
         const [productsRes, blogsRes, featuredBlogsRes] = await Promise.all([
-          api.get('/products', { params: { per_page: 50 } }),
-          api.get('/blogs'),
+          api.get('/products', { params: { per_page: 100 } }),
+          api.get('/blogs', { params: { per_page: 50 } }),
           api.get('/blogs', { params: { featured: true, per_page: 4 } })
         ]);
         if (productsRes.data && productsRes.data.data) {
           const apiProducts = productsRes.data.data.map((p: any) => normalizeProduct(p));
+          setDynamicProducts(apiProducts);
           setFeaturedProducts(apiProducts.filter((p: any) => p.isFeatured).slice(0, 8));
           setTrendingProducts(apiProducts.slice(0, 4));
         }
@@ -95,8 +97,17 @@ export default function HomePage() {
             if (s.slug) merged.set(s.slug, s);
           }
           for (const a of apiBlogs) {
-            if (a.slug && !merged.has(a.slug)) {
-              merged.set(a.slug, a);
+            if (a.slug) {
+              const local = merged.get(a.slug);
+              merged.set(a.slug, {
+                ...local,
+                ...a,
+                title: a.title || local?.title,
+                excerpt: a.excerpt || local?.excerpt,
+                image: a.image || local?.image,
+                category: a.category || local?.category,
+                author: a.author || local?.author,
+              });
             }
           }
           const allPosts = Array.from(merged.values());
@@ -123,7 +134,7 @@ export default function HomePage() {
   return (
     <main className="w-full max-w-full">
       {/* 🏔️ Unified Responsive Hero Section (Mobile, Tablet & Laptop with 3-Second Interactive Product Poster Cards, Dynamic Color Shifts & Kinetic Statements) */}
-      <MobileHeroSection />
+      <MobileHeroSection dynamicProducts={dynamicProducts} />
 
       {/* 🌿 Shop by Category (Interactive 6-Category Bento Grid across Mobile, Tablet & Laptop) */}
       <MobileCategorySection />

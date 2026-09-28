@@ -305,8 +305,10 @@ export default function AdminProductEditPage() {
         images: uploadedImages,
       };
 
-      await api.put(`/products/${productId}`, productData);
-      router.push(`/admin/products/${productId}`);
+      const res = await api.put<{ data: any }>(`/products/${productId}`, productData);
+      const targetId = res?.data?.id || productId;
+      router.push(`/admin/products/${targetId}`);
+      router.refresh();
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);

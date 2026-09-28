@@ -69,9 +69,7 @@ const navItems: NavItem[] = [
     children: [
       { label: 'Blog Posts', href: '/admin/blog', icon: <Circle className="h-3 w-3" /> },
       { label: 'Recipes', href: '/admin/recipes', icon: <Circle className="h-3 w-3" /> },
-      { label: 'Gallery', href: '/admin/gallery', icon: <Circle className="h-3 w-3" /> },
-      { label: 'Media', href: '/admin/media', icon: <Circle className="h-3 w-3" /> },
-      { label: 'Website Pages', href: '/admin/pages', icon: <Circle className="h-3 w-3" /> },
+      { label: 'Gallery & Media', href: '/admin/gallery', icon: <Circle className="h-3 w-3" /> },
     ],
   },
   { label: 'Messages', href: '/admin/messages', icon: <MessageCircle className="h-4 w-4" />, permission: PERMISSIONS.MANAGE_MESSAGES },

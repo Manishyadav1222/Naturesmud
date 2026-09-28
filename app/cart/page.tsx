@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Plus, Minus, Trash2, ShoppingBag, Tag, ShieldCheck, Truck } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCartStore, FREE_SHIPPING_THRESHOLD, resolveCartProduct } from '@/lib/store/cart-store';
 import { formatPrice } from '@/lib/utils';
 
@@ -11,11 +11,24 @@ export default function CartPage() {
   const { items, updateQuantity, removeItem, clearCart, getSubtotal } = useCartStore();
   const [coupon, setCoupon] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const subtotal = getSubtotal();
   const shipping = subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0 ? 0 : 100;
   const discount = couponApplied ? Math.round(subtotal * 0.1) : 0;
   const total = Math.max(0, subtotal - discount + shipping);
+
+  if (!mounted) {
+    return (
+      <div className="py-24 bg-white min-h-[60vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[#3A6B35] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   if (items.length === 0) {
     return (
