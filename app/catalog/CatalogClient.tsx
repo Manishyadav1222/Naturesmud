@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FileText,
@@ -26,6 +27,7 @@ import {
   Layers,
   ZoomIn,
   BookOpen,
+  Zap,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Product, Category } from '@/lib/types';
@@ -135,6 +137,7 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
 ];
 
 export default function CatalogClient({ initialProducts, categories }: CatalogClientProps) {
+  const router = useRouter();
   const [productsList, setProductsList] = useState<Product[]>(initialProducts);
   const [activeTab, setActiveTab] = useState<'flyer' | 'poster' | 'table'>('flyer');
   const [searchQuery, setSearchQuery] = useState('');
@@ -205,6 +208,14 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
     setAddedSlug(product.slug);
     setTimeout(() => setAddedSlug(null), 2000);
     openDrawer();
+  };
+
+  const handleBuyNow = (product: Product, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem(product, 1);
+    useCartStore.getState().closeDrawer();
+    router.push('/checkout');
   };
 
   const productMap = useMemo(() => {
@@ -592,14 +603,15 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                                   )}
                                 </td>
                                 <td className="py-3.5 px-4 text-center">
-                                  <div className="flex items-center justify-center gap-2">
+                                  <div className="flex items-center justify-center gap-1.5">
                                     <button
                                       onClick={(e) => handleAddToCart(p, e)}
-                                      className={`px-3 py-1.5 rounded-lg text-xs font-heading font-bold transition-all ${
+                                      className={`px-2.5 py-1.5 rounded-lg text-xs font-heading font-bold transition-all ${
                                         isAdded
                                           ? 'bg-emerald-600 text-white'
-                                          : 'bg-[#1B3D2F] hover:bg-[#2D5A27] text-white shadow-sm'
+                                          : 'bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#143020] border border-gray-200 shadow-xs'
                                       }`}
+                                      title="Add to Cart"
                                     >
                                       {isAdded ? (
                                         <span className="flex items-center gap-1">
@@ -611,10 +623,18 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                                         </span>
                                       )}
                                     </button>
+                                    <button
+                                      onClick={(e) => handleBuyNow(p, e)}
+                                      className="px-2.5 py-1.5 rounded-lg text-xs font-heading font-black bg-gradient-to-r from-[#C9982A] to-[#D9A441] text-gray-950 hover:brightness-105 transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                                      title="Buy Now (Instant Checkout)"
+                                    >
+                                      <Zap className="w-3 h-3 fill-current text-gray-950" />
+                                      <span>Buy</span>
+                                    </button>
                                     <Link
                                       href={`/products/${p.slug}`}
-                                      className="p-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-colors"
-                                      title="View Product Details"
+                                      className="p-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-950 transition-colors"
+                                      title="View Details"
                                     >
                                       <ArrowRight className="w-3.5 h-3.5" />
                                     </Link>
@@ -699,32 +719,35 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                                   )}
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                                   <button
                                     onClick={(e) => handleAddToCart(prod, e)}
-                                    className={`flex items-center justify-center gap-1 py-1.5 px-3 rounded-xl text-xs font-heading font-bold transition-all ${
+                                    className={`flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-heading font-bold transition-all border cursor-pointer active:scale-95 ${
                                       isAdded
-                                        ? 'bg-emerald-600 text-white'
-                                        : 'bg-[#1B3D2F] hover:bg-[#2D5A27] text-white shadow-sm'
+                                        ? 'bg-emerald-600 text-white border-emerald-600'
+                                        : 'bg-[#FAF7F2] hover:bg-[#F2ECE1] text-[#143020] border-ink/10'
                                     }`}
                                   >
                                     {isAdded ? (
                                       <>
-                                        <Check className="w-3.5 h-3.5" /> Added!
+                                        <Check className="w-3.5 h-3.5 text-white" />
+                                        <span>Added!</span>
                                       </>
                                     ) : (
                                       <>
-                                        <ShoppingBag className="w-3.5 h-3.5" /> Add
+                                        <ShoppingBag className="w-3.5 h-3.5" />
+                                        <span>Add</span>
                                       </>
                                     )}
                                   </button>
 
-                                  <Link
-                                    href={`/products/${prod.slug}`}
-                                    className="flex items-center justify-center gap-1 py-1.5 px-3 rounded-xl bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 text-xs font-semibold transition-colors"
+                                  <button
+                                    onClick={(e) => handleBuyNow(prod, e)}
+                                    className="flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-heading font-black bg-gradient-to-r from-[#C9982A] via-[#D9A441] to-[#B88720] hover:brightness-105 text-gray-950 transition-all shadow-xs cursor-pointer active:scale-95"
                                   >
-                                    Details <ArrowRight className="w-3 h-3" />
-                                  </Link>
+                                    <Zap className="w-3.5 h-3.5 fill-current text-gray-950" />
+                                    <span>Buy Now</span>
+                                  </button>
                                 </div>
                               </div>
                             </div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
@@ -21,16 +22,46 @@ import {
   Layers,
   HeartHandshake,
   Star,
+  Zap,
 } from 'lucide-react';
 import { initialFestivalOffers, FestivalOffer } from '@/lib/data/offers';
 import { useCartStore } from '@/lib/store/cart-store';
+import FeaturesStrip from '@/components/FeaturesStrip';
+import { ProductCard } from '@/components/ProductCard';
+import { products as staticProducts, normalizeProduct } from '@/lib/data/products';
+import { Product } from '@/lib/types';
 
 export default function FestivalOffersPage() {
+  const router = useRouter();
   const [offers, setOffers] = useState<FestivalOffer[]>(initialFestivalOffers);
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [addedId, setAddedId] = useState<string | null>(null);
   const openDrawer = useCartStore((s) => s.openDrawer);
+
+  const [soloProducts, setSoloProducts] = useState<Product[]>(() => {
+    const prioritySlugs = [
+      'dates-powder',
+      'freeze-dried-avocado-powder',
+      'banana-powder',
+      'moringa-leaf-powder',
+      'strawberry-powder',
+      'pure-mountain-himalayan-shilajit-resin',
+      'pumpkin-seeds',
+      'dehydrated-mango',
+      'makhana-fox-nuts',
+      'roasted-almonds',
+      'sweet-potato-powder',
+      'beetroot-powder',
+    ];
+    const map = new Map<string, Product>();
+    staticProducts.forEach((p) => map.set(p.slug, normalizeProduct(p)));
+    const selected: Product[] = [];
+    prioritySlugs.forEach((s) => {
+      if (map.has(s)) selected.push(map.get(s)!);
+    });
+    return selected.length > 0 ? selected : staticProducts.slice(0, 8).map((p) => normalizeProduct(p));
+  });
 
   const [timeLeft, setTimeLeft] = useState({
     days: 3,
@@ -55,6 +86,46 @@ export default function FestivalOffersPage() {
       }
     }
     fetchOffers();
+  }, []);
+
+  useEffect(() => {
+    async function fetchDynamicProducts() {
+      try {
+        const res = await fetch('/api/products?limit=50');
+        if (res.ok) {
+          const json = await res.json();
+          const prods = json.data || json.products || (Array.isArray(json) ? json : null);
+          if (Array.isArray(prods) && prods.length > 0) {
+            const prioritySlugs = [
+              'dates-powder',
+              'freeze-dried-avocado-powder',
+              'banana-powder',
+              'moringa-leaf-powder',
+              'strawberry-powder',
+              'pure-mountain-himalayan-shilajit-resin',
+              'pumpkin-seeds',
+              'dehydrated-mango',
+              'makhana-fox-nuts',
+              'roasted-almonds',
+              'sweet-potato-powder',
+              'beetroot-powder',
+            ];
+            const sorted = [...prods].sort((a, b) => {
+              const idxA = prioritySlugs.indexOf(a.slug);
+              const idxB = prioritySlugs.indexOf(b.slug);
+              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+              if (idxA !== -1) return -1;
+              if (idxB !== -1) return 1;
+              return 0;
+            });
+            setSoloProducts(sorted.slice(0, 12).map((p) => normalizeProduct(p)));
+          }
+        }
+      } catch {
+        // Fallback to static
+      }
+    }
+    fetchDynamicProducts();
   }, []);
 
   useEffect(() => {
@@ -93,6 +164,24 @@ export default function FestivalOffersPage() {
     setAddedId(offer.id);
     openDrawer();
     setTimeout(() => setAddedId(null), 2500);
+  };
+
+  const handleBuyComboNow = (offer: FestivalOffer) => {
+    useCartStore.getState().addItem(
+      {
+        id: offer.id,
+        slug: offer.items[0]?.productId || offer.id,
+        name: offer.title,
+        price: offer.offerPrice,
+        compareAtPrice: offer.originalPrice,
+        image: offer.items[0]?.image || '/products/superfood-mix.jpg',
+        weight: 'Festival Bundle',
+        category: offer.categoryLabel || 'Festival Combo',
+      },
+      1
+    );
+    useCartStore.getState().closeDrawer();
+    router.push('/checkout');
   };
 
   const filteredOffers = offers.filter((o) => {
@@ -150,29 +239,8 @@ export default function FestivalOffersPage() {
           </div>
         </section>
 
-        {/* Guarantees Bar */}
-        <section className="bg-white border-b border-gray-200/80 py-4 shadow-xs">
-          <div className="container-nm px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-700">
-                <Truck className="w-4 h-4 text-[#2D5A27]" />
-                <span>Free Doorstep Delivery Across Nepal</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-700">
-                <Gift className="w-4 h-4 text-[#C9982A]" />
-                <span>Special Festive Gift Packaging</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-700">
-                <ShieldCheck className="w-4 h-4 text-[#2D5A27]" />
-                <span>100% Organic & Chemical-Free</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 text-xs font-bold text-gray-700">
-                <HeartHandshake className="w-4 h-4 text-[#C9982A]" />
-                <span>Cash On Delivery (COD) Available</span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 4 Core Animated Trust Features Strip */}
+        <FeaturesStrip className="my-0 shadow-xs" />
 
         {/* Offers Grid Section */}
         <section className="py-12 lg:py-16 container-nm px-4">
@@ -303,7 +371,7 @@ export default function FestivalOffersPage() {
                     )}
                   </div>
 
-                  {/* Bottom Action Footer */}
+                  {/* Bottom Action Footer with BOTH Add and Buy Now */}
                   <div className="p-6 bg-gradient-to-r from-gray-900 via-gray-800 to-[#1E3A18] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div>
                       <div className="flex items-baseline gap-2">
@@ -319,7 +387,7 @@ export default function FestivalOffersPage() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
                       {/* Direct WhatsApp Order */}
                       <a
                         href={`https://wa.me/9779713888002?text=${encodeURIComponent(
@@ -327,7 +395,7 @@ export default function FestivalOffersPage() {
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                        className="px-3 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors shadow-sm cursor-pointer"
                         title="Order via WhatsApp"
                       >
                         <Phone className="w-4 h-4" />
@@ -337,21 +405,30 @@ export default function FestivalOffersPage() {
                       {/* Add Combo to Cart */}
                       <button
                         onClick={() => handleClaimCombo(offer)}
-                        className={`flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer ${
+                        className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer border ${
                           isAdded
-                            ? 'bg-emerald-500 text-white'
-                            : 'bg-gradient-to-r from-[#C9982A] to-[#EBC164] hover:from-[#d4a333] hover:to-[#f0ca75] text-gray-950 hover:scale-[1.02]'
+                            ? 'bg-emerald-500 text-white border-emerald-400'
+                            : 'bg-white/10 hover:bg-white/20 text-white border-white/20 hover:scale-[1.02]'
                         }`}
                       >
                         {isAdded ? (
                           <>
-                            <Check className="w-4 h-4" /> Added to Cart!
+                            <Check className="w-4 h-4" /> Added!
                           </>
                         ) : (
                           <>
-                            <ShoppingBag className="w-4 h-4" /> Claim Festival Offer
+                            <ShoppingBag className="w-4 h-4" /> Add
                           </>
                         )}
+                      </button>
+
+                      {/* Instant Direct Buy Now */}
+                      <button
+                        onClick={() => handleBuyComboNow(offer)}
+                        className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-black flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer bg-gradient-to-r from-[#C9982A] via-[#D9A441] to-[#B88720] hover:brightness-105 text-gray-950 hover:scale-[1.02] active:scale-95"
+                      >
+                        <Zap className="w-4 h-4 fill-current text-gray-950" />
+                        <span>Buy Now</span>
                       </button>
                     </div>
                   </div>
@@ -360,7 +437,51 @@ export default function FestivalOffersPage() {
             })}
           </div>
         </section>
+
+        {/* ========================================================= */}
+        {/* SOLO SUPERFOOD DEALS (Dates Powder, Avocado, Shilajit, etc) */}
+        {/* ========================================================= */}
+        <section className="py-12 lg:py-16 bg-[#F5EFE4] border-t border-[#E5DAC5]">
+          <div className="container-nm px-4">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold uppercase tracking-wider mb-3">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                Single-Ingredient Pure Botanical Nutrition
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-black text-[#143020] font-heading tracking-tight">
+                Flash Deals on Solo Superfoods &amp; Natural Sweeteners
+              </h2>
+              <p className="text-gray-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+                Prefer single jars? Explore 100% natural, whole food nutrition with 0 additives and zero refined sugar — crafted in recyclable glass jars with express delivery across all 77 districts of Nepal.
+              </p>
+            </div>
+
+            {/* Solo Product Cards Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+              {soloProducts.map((prod, idx) => (
+                <ProductCard key={prod.id || prod.slug} product={prod} index={idx} />
+              ))}
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/products"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#143020] hover:bg-[#1f4831] text-white font-heading font-bold text-sm transition-all shadow-md hover:shadow-lg"
+              >
+                <span>Browse All 30+ Single Superfoods</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/catalog"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 font-heading font-bold text-sm transition-all shadow-sm"
+              >
+                <span>View Master Catalog &amp; PDF</span>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
 }
+
