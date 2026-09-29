@@ -523,7 +523,7 @@ export default function RealCustomerReviewsSection() {
                 </span>
               </div>
               <p className="section-subtitle text-ink/70 text-xs sm:text-sm lg:text-base max-w-2xl mt-2 leading-relaxed">
-                Real unboxing photos, doctor recommendations, and kitchen reviews from Kathmandu to Pokhara, Dharan, Butwal, and beyond.
+                Real unboxing photos, nutritionist and family recommendations, and kitchen reviews from Kathmandu to Pokhara, Dharan, Butwal, and beyond.
               </p>
             </div>
 

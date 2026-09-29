@@ -450,7 +450,7 @@ export const ANIMATED_STATEMENTS = [
     icon: Zap,
   },
   {
-    badge: 'DOCTOR & PEDIATRIC APPROVED',
+    badge: 'HOLISTIC WELLNESS & LAB TESTED',
     title: 'Gentle Whole Foods for Family',
     highlight: 'From 6m Babies to Athletes',
     sub: 'Clean nutrition tailored for baby first solids, maternal nourishment, student focus, and workout recovery.',

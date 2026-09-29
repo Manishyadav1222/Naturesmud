@@ -949,7 +949,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
             </h2>
 
             <p className="mt-3 text-sm sm:text-base text-white/80 leading-relaxed">
-              NaturesMud supplies certified superfoods and dehydrated fruits to retail stores, pediatric clinics,
+              NaturesMud supplies lab-certified superfoods and dehydrated fruits to retail stores, holistic wellness centers,
               ayurvedic pharmacies, sports gyms, and hospitality partners nationwide across Nepal.
             </p>
 

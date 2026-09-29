@@ -1,705 +1,1018 @@
 const fs = require('fs');
 const path = require('path');
+const sharp = require('sharp');
 const PDFDocument = require(path.join(process.cwd(), 'node_modules/pdfkit/js/pdfkit.js'));
 
-// Destination path
-const outputDir = 'c:/Users/manish yadav/Downloads/NEW-NATUREMUD/public';
-const outputPath = path.join(outputDir, 'Nature_Mud_Product_Catalog.pdf');
-const aliasPath = path.join(outputDir, 'catalog.pdf');
+const rootDir = path.resolve(__dirname, '..');
+const outPdf1 = path.join(rootDir, 'public', 'Nature_Mud_Product_Catalog.pdf');
+const outPdf2 = path.join(rootDir, 'public', 'catalog.pdf');
+const outPdf3 = path.join(rootDir, 'public', 'Nature_Mud_Magazine_Catalog.pdf');
 
-// All 25 master products exactly matching user's client spreadsheet
-const products = [
-  {
-    sn: 1,
-    name: 'Dehydrated Mango',
-    sub: 'Sun-Dried Himalayan Mango Slices',
-    qty: '100 GM',
-    packing: 'Standup Ziplock Pouch',
-    category: 'Dried Fruits',
-    mrp: 595,
-    benefit: '100% pure tree-ripened mango. High in Vitamins A & C, zero added sugar or sulfur.',
-  },
-  {
-    sn: 2,
-    name: 'Dehydrated Pineapple',
-    sub: 'Dehydrated Himalayan Pineapple Rings',
-    qty: '100 GM',
-    packing: 'Standup Ziplock Pouch',
-    category: 'Dried Fruits',
-    mrp: 495,
-    benefit: 'Rich in active Bromelain digestive enzyme & Vitamin C. Anti-inflammatory gut snack.',
-  },
-  {
-    sn: 3,
-    name: 'Dehydrated Apple',
-    sub: 'Dehydrated Himalayan Apple Rings',
-    qty: '100 GM',
-    packing: 'Standup Ziplock Pouch',
-    category: 'Dried Fruits',
-    mrp: 510,
-    benefit: 'High-altitude Jumla apples with soluble Pectin fiber & Quercetin for heart health.',
-  },
-  {
-    sn: 4,
-    name: 'Dehydrated Coconut Chips',
-    sub: 'Dehydrated Crunchy Coconut Chips',
-    qty: '100 GM',
-    packing: 'Standup Ziplock Pouch',
-    category: 'Dried Fruits',
-    mrp: 495,
-    benefit: 'Toasted coconut flakes packed with healthy MCT fats & dietary fiber. Keto-friendly.',
-  },
-  {
-    sn: 5,
-    name: 'Dehydrated Papaya',
-    sub: 'Dehydrated Sweet Papaya Slices',
-    qty: '90 GM',
-    packing: 'Standup Ziplock Pouch',
-    category: 'Dried Fruits',
-    mrp: 395,
-    benefit: 'Solar-dehydrated below 42°C to retain Papain enzymes for smooth digestion.',
-  },
-  {
-    sn: 6,
-    name: 'Dried Blueberries',
-    sub: 'Wild Dried Himalayan Blueberries',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Dried Fruits',
-    mrp: 650,
-    benefit: 'Alpine wild berries rich in dark-violet Anthocyanins to fight digital screen eye strain.',
-  },
-  {
-    sn: 7,
-    name: 'Dried Cranberry',
-    sub: 'Whole Dried Cranberries',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Dried Fruits',
-    mrp: 415,
-    benefit: 'Packed with Type-A Proanthocyanidins (PACs) for urinary tract and cellular defense.',
-  },
-  {
-    sn: 8,
-    name: 'Dates Powder',
-    sub: 'Natural Dates Powder Sweetener',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Powders',
-    mrp: 400,
-    benefit: '1:1 natural replacement for white refined table sugar. Rich in iron & potassium.',
-  },
-  {
-    sn: 9,
-    name: 'Beetroot Powder',
-    sub: 'Pure Himalayan Beetroot Powder',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Powders',
-    mrp: 430,
-    benefit: 'Concentrated dietary nitrates convert to Nitric Oxide for athletic stamina & vascular flow.',
-  },
-  {
-    sn: 10,
-    name: 'Pink Salt',
-    sub: 'Ancient Himalayan Pink Rock Salt',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Salts & Spices',
-    mrp: 250,
-    benefit: '84+ ionic trace minerals with zero microplastics, anti-caking chemicals, or bleach.',
-  },
-  {
-    sn: 11,
-    name: 'Black Salt',
-    sub: 'Pure Himalayan Black Salt (Bire Noon)',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Salts & Spices',
-    mrp: 220,
-    benefit: 'Ayurvedic volcanic rock salt (Kala Namak) to kindle digestive Agni and ease gas & acid.',
-  },
-  {
-    sn: 12,
-    name: 'Chia Seeds',
-    sub: 'Premium Black Chia Seeds (300g)',
-    qty: '300 GM',
-    packing: 'Plastic Jar',
-    category: 'Seeds',
-    mrp: 495,
-    benefit: 'Hydrophilic super seeds packed with Plant Omega-3 ALA, calcium, and gut-soothing fiber.',
-  },
-  {
-    sn: 13,
-    name: 'Pumpkin Seeds',
-    sub: 'Organic Himalayan Pumpkin Seeds (300g)',
-    qty: '300 GM',
-    packing: 'Plastic Jar',
-    category: 'Seeds',
-    mrp: 650,
-    benefit: 'AAA-grade raw pepitas loaded with bioavailable Zinc & Magnesium for sleep and immunity.',
-  },
-  {
-    sn: 14,
-    name: 'Premium Cashewnut',
-    sub: 'Premium Whole Cashewnuts (200g)',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 750,
-    benefit: 'Jumbo W240 grade cashews with buttery crunch. Rich in copper, magnesium & clean protein.',
-  },
-  {
-    sn: 15,
-    name: 'Roasted Cashewnut',
-    sub: 'Slow-Roasted Cashewnuts (150g)',
-    qty: '150 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 750,
-    benefit: 'Oil-free dry-roasted whole cashews. Irresistible crisp snap and natural toasty aroma.',
-  },
-  {
-    sn: 16,
-    name: 'Dried Figs',
-    sub: 'Premium Whole Dried Figs (Anjeer 200g)',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Dried Fruits',
-    mrp: 690,
-    benefit: 'Sweet chewy sun-ripened Anjeer packed with natural plant calcium, iron, and gut fiber.',
-  },
-  {
-    sn: 17,
-    name: 'Roasted Almond',
-    sub: 'Premium Roasted Himalayan Almonds (200g)',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 750,
-    benefit: 'Slow-roasted mountain almonds sealed in glass jar. High in Vitamin E & healthy fats.',
-  },
-  {
-    sn: 18,
-    name: 'Almond',
-    sub: 'Raw Himalayan Mountain Almonds (200g)',
-    qty: '200 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 750,
-    benefit: 'Unpasteurized raw mountain almonds for morning soaking (badam pani) and cognitive memory.',
-  },
-  {
-    sn: 19,
-    name: 'Pistachio',
-    sub: 'California Premium Pistachios (150g)',
-    qty: '150 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 895,
-    benefit: 'Naturally opened green kernels rich in Lutein, Zeaxanthin, and Vitamin B6 for eye wellness.',
-  },
-  {
-    sn: 20,
-    name: 'Mix dry Nuts',
-    sub: 'Himalayan Superfood Mix Dry Nuts (300g)',
-    qty: '300 GM',
-    packing: 'Plastic Jar',
-    category: 'Nuts',
-    mrp: 690,
-    benefit: 'Synergy of cashews, almonds, pumpkin seeds, chia seeds, cranberries & wild blueberries.',
-  },
-  {
-    sn: 21,
-    name: 'Macademia Nuts',
-    sub: 'Gourmet Raw Macadamia Nuts (150g)',
-    qty: '150 GM',
-    packing: 'Glass Jar',
-    category: 'Nuts',
-    mrp: 850,
-    benefit: 'Velvety whole gourmet macadamias high in rare Omega-7 (Palmitoleic acid) for skin & brain.',
-  },
-  {
-    sn: 22,
-    name: 'Coconut oil',
-    sub: 'Cold-Pressed Extra Virgin Coconut Oil (500ml)',
-    qty: '500ml',
-    packing: 'Glass Jar',
-    category: 'Oils',
-    mrp: 1750,
-    benefit: 'Unrefined cold-pressed coconut milk oil. 50%+ Lauric Acid for cooking, skin & hair care.',
-  },
-  {
-    sn: 23,
-    name: 'Coconut oil',
-    sub: 'Cold-Pressed Extra Virgin Coconut Oil (200ml)',
-    qty: '200ml',
-    packing: 'Glass Jar',
-    category: 'Oils',
-    mrp: 650,
-    benefit: 'Compact vanity & travel glass jar of pure virgin coconut oil for skincare and oil pulling.',
-  },
-  {
-    sn: 24,
-    name: 'Carrot Powder',
-    sub: 'Organic Carrot Powder (100g)',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Powders',
-    mrp: 440,
-    benefit: 'Solar-dehydrated fine carrot powder rich in Beta-Carotene for baby meals, soups, and skin.',
-  },
-  {
-    sn: 25,
-    name: 'Sweet Potato Powder',
-    sub: 'Organic Sweet Potato Powder (100g)',
-    qty: '100 GM',
-    packing: 'Glass Jar',
-    category: 'Powders',
-    mrp: 420,
-    benefit: '100% pure organic complex carbs with 720% DV Vitamin A. Ideal for baby weaning & workout fuel.',
-  },
-  {
-    sn: 26,
-    name: 'Makhana (Fox Nuts)',
-    sub: 'Lightweight Puffed Lotus Seeds (60g)',
-    qty: '60 GM',
-    packing: 'Glass Jar',
-    category: 'Seeds',
-    mrp: 250,
-    benefit: 'Crispy puffed lotus seeds loaded with calcium, protein, and antioxidants. Healthy guilt-free snack.',
-  },
-  {
-    sn: 27,
-    name: 'Pure Shilajit Resin',
-    sub: 'Authentic Grade-A Himalayan Shilajit (20g)',
-    qty: '20 GM',
-    packing: 'Glass Jar',
-    category: 'Salts & Spices',
-    mrp: 1995,
-    benefit: 'High-altitude Himalayan rock exudate with 84+ ionic minerals & fulvic acid for vigor and stamina.',
-  },
+// Palette
+const C_DARK_BG = '#0E2317';     // Deep forest velvet green
+const C_LIGHT_BG = '#FBF8F1';    // Warm editorial luxury parchment
+const C_CARD_BG = '#FFFFFF';     // Crisp white for cards
+const C_CARD_BORDER = '#E7DEC9'; // Fine sand border
+const C_FOREST = '#143020';      // Deep rich forest green
+const C_EMERALD = '#1A4329';     // Mid emerald
+const C_GOLD = '#C5A059';        // Warm antique gold
+const C_GOLD_LIGHT = '#F1E6CC';  // Soft gold tint
+const C_INK = '#1F2923';         // Body text charcoal
+const C_MUTED = '#667069';       // Muted text
+const C_WHITE = '#FFFFFF';
+
+// Helper to prepare image buffers
+const imgCache = new Map();
+async function getImgBuffer(relPath, width = 300, height = 300) {
+  if (imgCache.has(relPath)) return imgCache.get(relPath);
+  const full = path.join(rootDir, relPath);
+  if (!fs.existsSync(full)) {
+    imgCache.set(relPath, null);
+    return null;
+  }
+  try {
+    const buf = await sharp(full)
+      .resize(width, height, { fit: 'cover', position: 'center' })
+      .jpeg({ quality: 85 })
+      .toBuffer();
+    imgCache.set(relPath, buf);
+    return buf;
+  } catch (err) {
+    console.error(`Failed to load image ${relPath}:`, err.message);
+    imgCache.set(relPath, null);
+    return null;
+  }
+}
+
+// 29 Master Products (exact match with live DB)
+const masterProducts = [
+  // 1. Dried Fruits
+  { sn: 1, id: 'dehydrated-mango', name: 'Dehydrated Himalayan Mango', sub: 'Sun-dried tree-ripened mango slices', cat: 'Dried Fruits', qty: '100 GM', pack: 'Standup Pouch', life: '12 Months', mrp: 595, img: 'public/products/authentic-dehydrated-mango.jpg', tag: 'Digestive Enzymes & Vit C' },
+  { sn: 2, id: 'dehydrated-pineapple', name: 'Dehydrated Himalayan Pineapple', sub: 'Tangy-sweet rings with active bromelain', cat: 'Dried Fruits', qty: '100 GM', pack: 'Standup Pouch', life: '12 Months', mrp: 495, img: 'public/products/dehydrated-pineapple.jpg', tag: 'Active Bromelain Enzyme' },
+  { sn: 3, id: 'dehydrated-apple', name: 'Dehydrated Himalayan Apple', sub: 'High-altitude Jumla apples with skin intact', cat: 'Dried Fruits', qty: '100 GM', pack: 'Standup Pouch', life: '12 Months', mrp: 510, img: 'public/products/dehydrated-apple.jpg', tag: 'Soluble Pectin & Quercetin' },
+  { sn: 4, id: 'dehydrated-coconut-chips', name: 'Dehydrated Coconut Chips', sub: 'Toasted crunchy coconut flakes with MCTs', cat: 'Dried Fruits', qty: '100 GM', pack: 'Standup Pouch', life: '12 Months', mrp: 475, img: 'public/products/coconut-chips.jpg', tag: 'Clean Keto MCT Fats' },
+  { sn: 5, id: 'dehydrated-papaya', name: 'Dehydrated Papaya Slices', sub: 'Sweet solar-dehydrated digestive snack', cat: 'Dried Fruits', qty: '90 GM', pack: 'Standup Pouch', life: '12 Months', mrp: 395, img: 'public/products/nm-papaya-flat.jpeg', tag: 'Active Papain Enzyme' },
+  { sn: 6, id: 'dried-blueberries', name: 'Wild Dried Blueberries', sub: 'Alpine wild berries dense in anthocyanins', cat: 'Dried Fruits', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 650, img: 'public/products/dried-blueberries-100g.jpg', tag: 'High Anthocyanins & Eye Care' },
+  { sn: 7, id: 'dried-cranberries', name: 'Whole Dried Cranberries', sub: 'Dense in Type-A PACs for cellular defense', cat: 'Dried Fruits', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 415, img: 'public/products/cranberries.jpg', tag: 'Urinary & Cellular Defense' },
+
+  // 2. Superfood Powders
+  { sn: 8, id: 'freeze-dried-avocado-powder', name: 'Freeze-Dried Avocado Powder', sub: '100% Hass avocado with healthy omegas', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 790, img: 'public/products/freeze-dried-avocado-powder.jpg', tag: 'Monounsaturated Omega Fats' },
+  { sn: 9, id: 'strawberry-powder', name: 'Pure Natural Strawberry Powder', sub: 'Real whole strawberries, polyphenol-dense', cat: 'Superfood Powders', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 620, img: 'public/products/strawberry-powder.jpg', tag: 'Ellagic Acid & Vitamin C' },
+  { sn: 10, id: 'banana-powder', name: 'Pure Green Banana Powder', sub: 'High resistant starch prebiotic superfood', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 590, img: 'public/products/banana-powder.jpg', tag: 'Prebiotic Resistant Starch' },
+  { sn: 11, id: 'moringa-leaf-powder', name: 'Organic Moringa Leaf Powder', sub: 'Miracle tree greens with 90+ vital nutrients', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 690, img: 'public/products/moringa-leaf-powder.jpg', tag: 'Chlorophyll & Plant Protein' },
+  { sn: 12, id: 'dates-powder', name: 'Natural Dates Powder Sweetener', sub: '1:1 natural replacement for refined white sugar', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 400, img: 'public/products/dates-powder-100g.jpg', tag: 'Dietary Iron & Potassium' },
+  { sn: 13, id: 'beetroot-powder', name: 'Himalayan Beetroot Powder', sub: 'Concentrated dietary nitrates for endurance', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 430, img: 'public/products/beetroot-powder-100g.jpg', tag: 'Nitric Oxide & Vascular Flow' },
+  { sn: 14, id: 'sweet-potato-powder', name: 'Organic Sweet Potato Powder', sub: 'Gentle low-GI complex carbohydrate', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 510, img: 'public/products/sweet-potato-powder-100g.jpg', tag: 'Gentle Infant Weaning Carb' },
+  { sn: 15, id: 'carrot-powder', name: 'Organic Carrot Powder', sub: 'Pro-Vitamin A beta-carotene for eye vitality', cat: 'Superfood Powders', qty: '100 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 490, img: 'public/products/carrot-powder-100g.jpg', tag: 'Beta-Carotene Vision Support' },
+
+  // 3. Nuts & Kernels
+  { sn: 16, id: 'raw-himalayan-almonds', name: 'Raw Himalayan Almonds', sub: 'Unroasted mountain almonds with vitamin E', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/nm-almond-jar.jpeg', tag: 'Vitamin E & Magnesium' },
+  { sn: 17, id: 'roasted-almonds', name: 'Roasted Himalayan Almonds', sub: 'Lightly salted with Himalayan pink salt', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/almonds.jpg', tag: 'Artisan Salted Crunch' },
+  { sn: 18, id: 'premium-cashewnuts', name: 'Premium Jumbo Cashew Nuts', sub: 'Raw whole creamy kernels rich in copper', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/cashewnuts.jpg', tag: 'Creamy Plant Energy' },
+  { sn: 19, id: 'roasted-cashewnuts', name: 'Roasted Himalayan Cashew Nuts', sub: 'Slow-roasted to golden crisp perfection', cat: 'Nuts & Kernels', qty: '150 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/roasted-cashews.jpeg', tag: 'Crisp Artisan Batch' },
+  { sn: 20, id: 'premium-pistachios', name: 'Premium Roasted Pistachios', sub: 'In-shell California pistachios with lutein', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 820, img: 'public/products/pistachios.jpg', tag: 'Lutein & Heart Omegas' },
+  { sn: 21, id: 'pumpkin-seeds', name: 'Raw Himalayan Pumpkin Seeds', sub: 'Green pepitas dense in restorative zinc', cat: 'Nuts & Kernels', qty: '300 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 650, img: 'public/products/pumpkin-seeds.jpg', tag: 'Zinc & Restorative Tryptophan' },
+  { sn: 22, id: 'dry-figs-anjeer', name: 'Premium Turkish Figs (Anjeer)', sub: 'Sun-cured whole figs rich in dietary calcium', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 850, img: 'public/products/dry-figs-anjeer.jpg', tag: 'Dietary Calcium & Fiber' },
+
+  // 4. Sacred Minerals, Seeds & Elixirs
+  { sn: 23, id: 'pure-mountain-himalayan-shilajit-resin', name: 'Pure Himalayan Shilajit Resin', sub: 'Gold Grade mountain resin, 75%+ fulvic acid', cat: 'Minerals & Elixirs', qty: '20 GM', pack: 'Amber Jar + Spoon', life: '24 Months', mrp: 1995, img: 'public/products/shilajit.jpg', tag: '75%+ Fulvic & 84+ Minerals' },
+  { sn: 24, id: 'chia-seeds', name: 'Organic Raw Chia Seeds', sub: 'Soluble mucilage fiber & plant omega-3 ALA', cat: 'Minerals & Elixirs', qty: '300 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 495, img: 'public/products/chia-seeds.jpg', tag: 'Plant Omega-3 ALA' },
+  { sn: 25, id: 'himalayan-pink-salt', name: 'Himalayan Pink Rock Salt', sub: 'Unrefined ancient rock salt with 84 minerals', cat: 'Minerals & Elixirs', qty: '200 GM', pack: 'Sealed Glass Jar', life: '24 Months', mrp: 250, img: 'public/products/pink-salt.jpg', tag: '84 Trace Electrolytes' },
+  { sn: 26, id: 'pure-himalayan-black-salt-bire-noon', name: 'Himalayan Black Salt (Bire Noon)', sub: 'Volcanic rock salt for digestive agni stimulation', cat: 'Minerals & Elixirs', qty: '200 GM', pack: 'Sealed Glass Jar', life: '24 Months', mrp: 220, img: 'public/products/black-salt.jpg', tag: 'Ayurvedic Digestive Agni' },
+  { sn: 27, id: 'virgin-coconut-oil-180ml', name: 'Cold-Pressed Virgin Coconut Oil', sub: 'Fresh unrefined extra virgin oil with MCTs', cat: 'Minerals & Elixirs', qty: '200 ML', pack: 'Sealed Glass Bottle', life: '18 Months', mrp: 650, img: 'public/products/coconut-oil.jpg', tag: 'Lauric Acid & Clean MCTs' },
+  { sn: 28, id: 'virgin-coconut-oil-500ml', name: 'Cold-Pressed Virgin Coconut Oil', sub: 'Family size pure cold-pressed unrefined oil', cat: 'Minerals & Elixirs', qty: '500 ML', pack: 'Sealed Glass Bottle', life: '18 Months', mrp: 1750, img: 'public/products/coconut-oil-product.jpg', tag: 'Pure Cold-Pressed Culinary' },
+  { sn: 29, id: 'makhana-fox-nuts', name: 'Roasted Makhana (Fox Nuts)', sub: 'Crunchy popped lotus seeds, light & mineral-rich', cat: 'Minerals & Elixirs', qty: '50 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 390, img: 'public/products/nm-makhana-jar.jpeg', tag: 'Low Calorie Super Snack' }
 ];
 
-function generatePDF() {
-  return new Promise((resolve, reject) => {
-    const doc = new PDFDocument({
-      size: 'A4',
-      margin: 36,
-      autoFirstPage: false,
-      info: {
-        Title: "Nature's Mud — Official Product Catalog & Master Price List 2026",
-        Author: "Nature's Mud Nepal",
-        Subject: 'Organic Superfoods, Dehydrated Fruits, Nuts & Seeds Catalog',
-        Keywords: "Nature's Mud, Catalog, Price List, Organic Food Nepal, Superfoods",
-        CreationDate: new Date(),
-      },
-    });
+async function generateMagazinePDF() {
+  console.log('🌟 Starting 8-Page Luxury Magazine PDF Generation...');
 
-    const stream = fs.createWriteStream(outputPath);
-    doc.pipe(stream);
+  const doc = new PDFDocument({
+    size: 'A4',
+    margin: 0,
+    autoFirstPage: false,
+    bufferPages: true
+  });
 
-    // Color Palette
-    const C_EMERALD = '#1B3D2F';
-    const C_GREEN = '#2D5A27';
-    const C_GOLD = '#C9982A';
-    const C_LIGHT_GOLD = '#F4E8C1';
-    const C_BG = '#FBF9F4';
-    const C_WHITE = '#FFFFFF';
-    const C_DARK = '#222222';
-    const C_MUTED = '#555555';
-    const C_CARD_BG = '#F4EFE6';
-    const C_ACCENT = '#E63946';
+  const writeStream = fs.createWriteStream(outPdf1);
+  doc.pipe(writeStream);
 
-    const pageWidth = 595.28;
-    const pageHeight = 841.89;
-    const margin = 36;
-    const contentWidth = pageWidth - margin * 2;
+  const W = 595.28;
+  const H = 841.89;
 
-    function drawPageTemplate(title, categoryName, pageNum, totalPages) {
-      doc.save();
+  // Helper: Draw common header on product pages
+  function drawCategoryHeader(catNum, catTitle, catSub) {
+    // Top banner
+    doc.rect(0, 0, W, 72).fill(C_FOREST);
+    doc.rect(0, 72, W, 3).fill(C_GOLD);
 
-      // Top header band
-      doc.rect(margin, 20, contentWidth, 32).fill(C_EMERALD);
-      doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(11).text("NATURE'S MUD", margin + 12, 30);
-      doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text(`•  ${title.toUpperCase()}`, margin + 115, 31);
-      doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(9).text(categoryName, pageWidth - margin - 150, 31, { align: 'right', width: 140 });
+    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text(`CATEGORY ${catNum} · OFFICIAL COMPENDIUM`, 30, 16, { letterSpacing: 1.5 });
+    doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(16).text(catTitle, 30, 29);
+    doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8.5).text(catSub, 30, 50);
 
-      // Gold bottom line
-      doc.rect(margin, 52, contentWidth, 2).fill(C_GOLD);
+    // Page indicator in top right
+    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text(`NATURE'S MUD`, W - 140, 22, { align: 'right', width: 110 });
+    doc.fillColor(C_WHITE).font('Helvetica').fontSize(7.5).text('100% BOTANICAL PURITY', W - 140, 36, { align: 'right', width: 110 });
+  }
 
-      // Bottom footer band
-      doc.rect(margin, pageHeight - 34, contentWidth, 1).fill('#DDDDDD');
-      doc.fillColor(C_MUTED).font('Helvetica').fontSize(8).text(
-        'Nature\'s Mud Nepal  |  Samakhushi, Gongabu Chowk, Kathmandu  |  +977 9713888002  |  www.naturesmud.shop',
-        margin,
-        pageHeight - 26,
-        { width: contentWidth - 60 }
-      );
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(8).text(
-        `Page ${pageNum} of ${totalPages}`,
-        pageWidth - margin - 60,
-        pageHeight - 26,
-        { align: 'right', width: 60 }
-      );
+  // Helper: Draw common footer on product pages
+  function drawPageFooter(pageNum, totalPages = 8) {
+    doc.rect(0, H - 36, W, 36).fill('#F0EAD8');
+    doc.rect(0, H - 36, W, 1).fill(C_GOLD);
 
-      doc.restore();
-    }
-
-    // =========================================================================
-    // PAGE 1: COVER PAGE
-    // =========================================================================
-    doc.addPage();
-
-    doc.rect(0, 0, pageWidth, pageHeight).fill(C_EMERALD);
-
-    doc.lineWidth(1.5).strokeColor(C_GOLD);
-    doc.rect(24, 24, pageWidth - 48, pageHeight - 48).stroke();
-    doc.lineWidth(0.5).strokeColor(C_GOLD);
-    doc.rect(28, 28, pageWidth - 56, pageHeight - 56).stroke();
-
-    doc.rect(pageWidth / 2 - 110, 60, 220, 26).fillAndStroke(C_GREEN, C_GOLD);
-    doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(9).text('100% PURE HIMALAYAN NUTRITION', 0, 69, { align: 'center', width: pageWidth });
-
-    doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(38).text("NATURE'S MUD", 0, 110, { align: 'center', width: pageWidth });
-    doc.fillColor(C_GOLD).font('Helvetica').fontSize(14).text("Pure Food  ·  Real Nature  ·  Chemical-Free Superfoods", 0, 155, { align: 'center', width: pageWidth });
-
-    const coverCardY = 195;
-    const coverCardHeight = 425;
-    doc.roundedRect(50, coverCardY, pageWidth - 100, coverCardHeight, 12).fill('#132B21');
-    doc.lineWidth(1).strokeColor(C_GOLD);
-    doc.roundedRect(50, coverCardY, pageWidth - 100, coverCardHeight, 12).stroke();
-
-    doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(22).text('OFFICIAL PRODUCT CATALOG', 0, coverCardY + 24, { align: 'center', width: pageWidth });
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(13).text('& MASTER PRICE SPECIFICATION LIST', 0, coverCardY + 52, { align: 'center', width: pageWidth });
-
-    doc.rect(pageWidth / 2 - 60, coverCardY + 74, 120, 2).fill(C_GOLD);
-
-    const bulletItems = [
-      { title: 'Solar-Dehydrated Fruits & Fruit Slices', desc: 'Mango, Pineapple, Apple Rings, Coconut Chips, Papaya & Wild Berries' },
-      { title: 'Organic Micro-Ground Superfood Powders', desc: 'Sweet Potato, Dates Natural Sweetener, Beetroot & Carrot Powders' },
-      { title: 'Premium Mountain Nuts & Kernels', desc: 'Whole & Roasted Cashews, Raw & Roasted Almonds, Pistachios, Macadamias' },
-      { title: 'Nutrient-Dense Seeds & Ancient Himalayan Salts', desc: 'Black Chia Seeds (300g), Raw Pumpkin Seeds (300g), Pink & Black Rock Salt' },
-      { title: 'Centrifuged Cold-Pressed Virgin Coconut Oils', desc: 'Extra Virgin Raw Coconut Oil in 500ml & 180ml Glass Jars' },
-    ];
-
-    let bY = coverCardY + 88;
-    bulletItems.forEach((item) => {
-      doc.rect(70, bY, pageWidth - 140, 52).fill('#1B3D2F');
-      doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10.5).text(item.title, 82, bY + 10);
-      doc.fillColor('#E0E0E0').font('Helvetica').fontSize(8.5).text(item.desc, 82, bY + 28);
-      bY += 58;
-    });
-
-    doc.roundedRect(pageWidth / 2 - 140, coverCardY + 386, 280, 24, 6).fill(C_GOLD);
-    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(9.5).text('★ 27 MASTER CERTIFIED PRODUCTS INCLUDED ★', 0, coverCardY + 393, { align: 'center', width: pageWidth });
-
-    doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(11).text('Nature\'s Mud Nepal (naturesmud.shop)', 0, pageHeight - 120, { align: 'center', width: pageWidth });
-    doc.fillColor('#C4D4CC').font('Helvetica').fontSize(9).text('Headquarters: Samakhushi, Gongabu Chowk, Kathmandu, Nepal', 0, pageHeight - 104, { align: 'center', width: pageWidth });
-    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text('Phone / WhatsApp: +977 9713888002  |  Email: info@naturesmud.shop', 0, pageHeight - 88, { align: 'center', width: pageWidth });
-    doc.fillColor('#A2B8AE').font('Helvetica').fontSize(8).text('Effective: 2026 Edition  •  Retail & Wholesale Reference Guide', 0, pageHeight - 68, { align: 'center', width: pageWidth });
-
-    // =========================================================================
-    // HELPER: RENDER PRODUCT GRID PAGE
-    // =========================================================================
-    function renderProductGridPage(pageTitle, categoryName, pageNum, totalPages, itemsList) {
-      doc.addPage();
-      drawPageTemplate(pageTitle, categoryName, pageNum, totalPages);
-
-      doc.rect(margin, 60, contentWidth, 22).fill(C_BG);
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(11).text(categoryName.toUpperCase(), margin + 8, 66);
-
-      const startY = 88;
-      const cardGap = 8;
-      const cols = 2;
-      const cardWidth = (contentWidth - cardGap) / cols;
-      const numRows = Math.ceil(itemsList.length / cols);
-      const availableHeight = pageHeight - 42 - startY;
-      const cardHeight = Math.min(168, (availableHeight - (numRows - 1) * cardGap) / numRows);
-
-      itemsList.forEach((prod, idx) => {
-        const col = idx % cols;
-        const row = Math.floor(idx / cols);
-        const cardX = margin + col * (cardWidth + cardGap);
-        const cardY = startY + row * (cardHeight + cardGap);
-
-        // Card Container
-        doc.roundedRect(cardX, cardY, cardWidth, cardHeight, 6).fill(C_WHITE);
-        doc.lineWidth(0.8).strokeColor('#E2DACE');
-        doc.roundedRect(cardX, cardY, cardWidth, cardHeight, 6).stroke();
-
-        // Top Accent bar
-        doc.roundedRect(cardX, cardY, cardWidth, 20, 6).fill(C_EMERALD);
-        doc.rect(cardX, cardY + 12, cardWidth, 8).fill(C_EMERALD);
-
-        // Item Number & Title
-        doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text(`#${prod.sn}`, cardX + 8, cardY + 5);
-        doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(9).text(prod.name, cardX + 28, cardY + 5, { width: cardWidth - 36 });
-
-        // Subtitle / specification
-        doc.fillColor(C_GREEN).font('Helvetica-Bold').fontSize(8.5).text(prod.sub, cardX + 8, cardY + 24, { width: cardWidth - 16 });
-
-        // Qty & Packaging badges
-        const badgeY = cardY + 38;
-        doc.roundedRect(cardX + 8, badgeY, 62, 14, 3).fill('#EAE6DC');
-        doc.fillColor(C_DARK).font('Helvetica-Bold').fontSize(7.5).text(`Qty: ${prod.qty}`, cardX + 11, badgeY + 3.5);
-
-        doc.roundedRect(cardX + 74, badgeY, cardWidth - 82, 14, 3).fill('#EAE6DC');
-        doc.fillColor(C_DARK).font('Helvetica').fontSize(7.5).text(`Pack: ${prod.packing}`, cardX + 77, badgeY + 3.5, { width: cardWidth - 86 });
-
-        // Pricing Box
-        const priceBoxY = cardY + 56;
-        const priceBoxH = 34;
-        doc.roundedRect(cardX + 8, priceBoxY, cardWidth - 16, priceBoxH, 4).fill(C_CARD_BG);
-
-        // Official MRP
-        doc.fillColor(C_MUTED).font('Helvetica').fontSize(8).text('MRP (Inclusive of Taxes):', cardX + 14, priceBoxY + 5);
-        doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(13).text(`Rs. ${prod.mrp}`, cardX + 14, priceBoxY + 16);
-
-        // Benefit / Description text
-        const benefitY = priceBoxY + priceBoxH + 6;
-        doc.fillColor(C_MUTED).font('Helvetica').fontSize(7.5).text(
-          `• ${prod.benefit}`,
-          cardX + 8,
-          benefitY,
-          { width: cardWidth - 16, height: cardHeight - (benefitY - cardY) - 4 }
-        );
-      });
-    }
-
-    // PAGE 2: DRIED FRUITS & BERRIES (8 products)
-    const driedFruits = products.filter(p => p.category === 'Dried Fruits');
-    renderProductGridPage(
-      'Solar-Dehydrated Fruits & Berries',
-      'Category: 100% Pure Solar-Dehydrated Fruits (8 Items)',
-      2,
-      6,
-      driedFruits
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(8).text(
+      'NATURE\'S MUD · NEPAL\'S BOTANICAL APOTHECARY  |  ORDER ONLINE: NATURESMUD.SHOP  |  WHATSAPP: +977 9713888002',
+      30,
+      H - 23,
+      { width: W - 120 }
     );
-
-    // PAGE 3: SUPERFOOD POWDERS & COLD-PRESSED OILS (6 products)
-    const powdersAndOils = products.filter(p => p.category === 'Powders' || p.category === 'Oils');
-    renderProductGridPage(
-      'Organic Powders & Cold-Pressed Virgin Oils',
-      'Category: Superfood Powders & Virgin Coconut Oils (6 Items)',
-      3,
-      6,
-      powdersAndOils
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(9).text(
+      `PAGE ${pageNum} OF ${totalPages}`,
+      W - 90,
+      H - 23,
+      { align: 'right', width: 60 }
     );
+  }
 
-    // PAGE 4: MOUNTAIN NUTS, SEEDS & HIMALAYAN SALTS (11 products)
-    const nutsSeedsSalts = products.filter(p => p.category === 'Nuts' || p.category === 'Seeds' || p.category === 'Salts & Spices');
-    renderProductGridPage(
-      'Mountain Nuts, Seeds & Himalayan Salts',
-      'Category: Nuts, Seeds & Ancient Himalayan Rock Salts (11 Items)',
-      4,
-      6,
-      nutsSeedsSalts
-    );
+  // Helper: Draw 7 products on a page (2 columns x 3 rows + 1 full-width showcase row at bottom)
+  async function drawProductGrid(prods) {
+    // 6 card slots: 2 cols x 3 rows
+    // x1 = 30, x2 = 305, width = 260
+    // y slots: row 0 = 85, row 1 = 260, row 2 = 435, height = 165
+    // bottom showcase: y = 610, height = 180, width = 535
+    for (let i = 0; i < Math.min(6, prods.length); i++) {
+      const p = prods[i];
+      const col = i % 2;
+      const row = Math.floor(i / 2);
+      const cardX = 30 + col * 275;
+      const cardY = 85 + row * 175;
+      const cardW = 260;
+      const cardH = 165;
 
-    // =========================================================================
-    // PAGE 5: COMPLETE MASTER PRICE & SPECIFICATION REFERENCE TABLE
-    // =========================================================================
-    doc.addPage();
-    drawPageTemplate('Master Price & Specification Table', 'Complete 25 Products Price List', 5, 6);
+      // Card Background & Border
+      doc.roundedRect(cardX, cardY, cardW, cardH, 6).fill(C_CARD_BG);
+      doc.lineWidth(1).strokeColor(C_CARD_BORDER).roundedRect(cardX, cardY, cardW, cardH, 6).stroke();
 
-    doc.rect(margin, 60, contentWidth, 22).fill(C_EMERALD);
-    doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(10.5).text(
-      'MASTER PRODUCT CATALOG & PRICE SPECIFICATION SHEET',
-      margin,
-      66,
-      { align: 'center', width: contentWidth }
-    );
+      // Product Image (Left: 95 x 105)
+      const imgX = cardX + 10;
+      const imgY = cardY + 12;
+      const imgW = 92;
+      const imgH = 100;
 
-    const tableTop = 86;
-    const colDefs = [
-      { label: 'SN', x: margin, w: 32, align: 'center' },
-      { label: 'PRODUCT', x: margin + 32, w: 200, align: 'left' },
-      { label: 'QTY', x: margin + 232, w: 75, align: 'center' },
-      { label: 'PACKING', x: margin + 307, w: 120, align: 'left' },
-      { label: 'MRP', x: margin + 427, w: 96, align: 'right' },
-    ];
+      doc.roundedRect(imgX, imgY, imgW, imgH, 4).fill('#FBF9F5');
+      doc.lineWidth(0.5).strokeColor('#E0D8C8').roundedRect(imgX, imgY, imgW, imgH, 4).stroke();
 
-    doc.rect(margin, tableTop, contentWidth, 16).fill('#EAE5D9');
-    colDefs.forEach((col) => {
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(7.5).text(
-        col.label,
-        col.x + 2,
-        tableTop + 4,
-        { width: col.w - 4, align: col.align }
-      );
-    });
+      const imgBuf = await getImgBuffer(p.img, 240, 240);
+      if (imgBuf) {
+        try {
+          doc.image(imgBuf, imgX + 2, imgY + 2, { width: imgW - 4, height: imgH - 4 });
+        } catch {
+          // fallback gracefully
+        }
+      }
 
-    let rowY = tableTop + 16;
-    const rowHeight = 23.0;
-
-    products.forEach((p, idx) => {
-      const isEven = idx % 2 === 0;
-      doc.rect(margin, rowY, contentWidth, rowHeight).fill(isEven ? C_WHITE : '#F8F6F0');
-      doc.lineWidth(0.3).strokeColor('#E0D8CC');
-      doc.rect(margin, rowY, contentWidth, rowHeight).stroke();
-
-      doc.fillColor(C_DARK).font('Helvetica-Bold').fontSize(8).text(
-        String(p.sn),
-        colDefs[0].x,
-        rowY + 7,
-        { width: colDefs[0].w, align: colDefs[0].align }
-      );
-
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(8).text(
-        p.name,
-        colDefs[1].x + 4,
-        rowY + 4,
-        { width: colDefs[1].w - 6 }
-      );
-      doc.fillColor(C_MUTED).font('Helvetica').fontSize(6.8).text(
-        p.category,
-        colDefs[1].x + 4,
-        rowY + 14,
-        { width: colDefs[1].w - 6 }
-      );
-
-      doc.fillColor(C_DARK).font('Helvetica').fontSize(8).text(
+      // Quantity Pill under image
+      doc.roundedRect(imgX, imgY + imgH + 6, imgW, 18, 3).fill(C_FOREST);
+      doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(7.5).text(
         p.qty,
-        colDefs[2].x,
-        rowY + 7,
-        { width: colDefs[2].w, align: colDefs[2].align }
+        imgX,
+        imgY + imgH + 11,
+        { align: 'center', width: imgW }
       );
 
-      doc.fillColor(C_DARK).font('Helvetica').fontSize(7.5).text(
-        p.packing,
-        colDefs[3].x + 4,
-        rowY + 7,
-        { width: colDefs[3].w - 6, align: colDefs[3].align }
+      // Product Details (Right: 140px width)
+      const textX = cardX + 110;
+      const textW = 140;
+
+      // Category Pill
+      doc.roundedRect(textX, cardY + 12, textW, 14, 3).fill(C_GOLD_LIGHT);
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(6.5).text(
+        p.tag.toUpperCase(),
+        textX + 4,
+        cardY + 16,
+        { width: textW - 8, lineBreak: false, ellipsis: true }
       );
 
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(9).text(
+      // Product Name
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(11).text(
+        p.name,
+        textX,
+        cardY + 30,
+        { width: textW, height: 26, lineBreak: true }
+      );
+
+      // Subtitle / Description
+      doc.fillColor(C_MUTED).font('Helvetica').fontSize(7.5).text(
+        p.sub,
+        textX,
+        cardY + 60,
+        { width: textW, height: 26, lineBreak: true }
+      );
+
+      // Packaging & Shelf Life
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7).text(
+        `Packaging: ${p.pack}`,
+        textX,
+        cardY + 92,
+        { width: textW }
+      );
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7).text(
+        `Shelf Life: ${p.life}`,
+        textX,
+        cardY + 103,
+        { width: textW }
+      );
+
+      // Price Tag Box
+      const priceY = cardY + 120;
+      doc.roundedRect(textX, priceY, textW, 32, 4).fill('#FBF6ED');
+      doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(textX, priceY, textW, 32, 4).stroke();
+
+      doc.fillColor(C_MUTED).font('Helvetica').fontSize(6.5).text('OFFICIAL MRP', textX + 8, priceY + 5);
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(14).text(`Rs. ${p.mrp}`, textX + 8, priceY + 14);
+      doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(7).text('VERIFIED', textX + textW - 46, priceY + 14);
+    }
+
+    // 7th product as wide featured horizontal banner at bottom
+    if (prods.length >= 7) {
+      const p = prods[6];
+      const botX = 30;
+      const botY = 612;
+      const botW = 535;
+      const botH = 180;
+
+      doc.roundedRect(botX, botY, botW, botH, 8).fill(C_CARD_BG);
+      doc.lineWidth(1.2).strokeColor(C_GOLD).roundedRect(botX, botY, botW, botH, 8).stroke();
+
+      // Top golden accent ribbon
+      doc.roundedRect(botX, botY, botW, 22, 6).fill(C_FOREST);
+      doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text(
+        `FEATURED SELECTION · ${p.tag.toUpperCase()}`,
+        botX + 15,
+        botY + 6
+      );
+      doc.fillColor(C_WHITE).font('Helvetica').fontSize(8).text(
+        '100% SINGLE-INGREDIENT BOTANICAL',
+        botX + botW - 180,
+        botY + 6,
+        { align: 'right', width: 165 }
+      );
+
+      // Big Image (Left: 130 x 140)
+      const bImgX = botX + 15;
+      const bImgY = botY + 30;
+      const bImgW = 120;
+      const bImgH = 135;
+
+      doc.roundedRect(bImgX, bImgY, bImgW, bImgH, 6).fill('#FBF9F5');
+      doc.lineWidth(0.5).strokeColor('#E0D8C8').roundedRect(bImgX, bImgY, bImgW, bImgH, 6).stroke();
+
+      const bBuf = await getImgBuffer(p.img, 280, 280);
+      if (bBuf) {
+        try {
+          doc.image(bBuf, bImgX + 4, bImgY + 4, { width: bImgW - 8, height: bImgH - 8 });
+        } catch {}
+      }
+
+      // Middle Description & Details
+      const bTextX = botX + 150;
+      const bTextW = 230;
+
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(14).text(p.name, bTextX, botY + 32, { width: bTextW });
+      doc.fillColor(C_MUTED).font('Helvetica').fontSize(8.5).text(p.sub, bTextX, botY + 52, { width: bTextW });
+
+      // Features Bullet Box
+      doc.roundedRect(bTextX, botY + 76, bTextW, 80, 4).fill('#FAF7F0');
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(7.5).text('BOTANICAL SPECIFICATIONS:', bTextX + 8, botY + 82);
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7.5).text(`• Net Weight / Volume: ${p.qty}`, bTextX + 8, botY + 95);
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7.5).text(`• Packaging Format: ${p.pack}`, bTextX + 8, botY + 107);
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7.5).text(`• Guaranteed Shelf Life: ${p.life}`, bTextX + 8, botY + 119);
+      doc.fillColor(C_INK).font('Helvetica').fontSize(7.5).text('• Safety Standard: Heavy Metal & Microbial Lab Screened', bTextX + 8, botY + 131);
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(7.5).text('• Storage: Airtight cool dry pantry away from sunlight', bTextX + 8, botY + 143);
+
+      // Right Price & Order Badge
+      const bRightX = botX + 395;
+      const bRightW = 125;
+      const bRightH = 135;
+
+      doc.roundedRect(bRightX, botY + 30, bRightW, bRightH, 6).fill('#FBF6ED');
+      doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(bRightX, botY + 30, bRightW, bRightH, 6).stroke();
+
+      doc.fillColor(C_MUTED).font('Helvetica-Bold').fontSize(7.5).text(
+        'OFFICIAL MRP',
+        bRightX,
+        botY + 42,
+        { align: 'center', width: bRightW }
+      );
+      doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(22).text(
         `Rs. ${p.mrp}`,
-        colDefs[4].x,
-        rowY + 7,
-        { width: colDefs[4].w - 4, align: colDefs[4].align }
+        bRightX,
+        botY + 56,
+        { align: 'center', width: bRightW }
+      );
+      doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text(
+        p.qty,
+        bRightX,
+        botY + 84,
+        { align: 'center', width: bRightW }
       );
 
-      rowY += rowHeight;
+      doc.roundedRect(bRightX + 12, botY + 102, bRightW - 24, 24, 4).fill(C_FOREST);
+      doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(8).text(
+        'ORDER DIRECT',
+        bRightX + 12,
+        botY + 110,
+        { align: 'center', width: bRightW - 24 }
+      );
+      doc.fillColor(C_MUTED).font('Helvetica').fontSize(6.5).text(
+        'Fast delivery nationwide',
+        bRightX,
+        botY + 138,
+        { align: 'center', width: bRightW }
+      );
+    }
+  }
+
+  // =========================================================================
+  // PAGE 1: GRAND LUXURY MAGAZINE COVER (Full bleed forest green)
+  // =========================================================================
+  console.log('Rendering Page 1 (Luxury Front Cover)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_DARK_BG);
+
+  // Elegant gold foil double border
+  doc.lineWidth(1.5).strokeColor(C_GOLD).rect(20, 20, W - 40, H - 40).stroke();
+  doc.lineWidth(0.5).strokeColor(C_GOLD).rect(24, 24, W - 48, H - 48).stroke();
+
+  // Top Publication Masthead Bar
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text(
+    'VOL. IV  ·  OFFICIAL ANNUAL COMPENDIUM  ·  EDITION 2026/2027',
+    35,
+    38,
+    { align: 'center', width: W - 70, letterSpacing: 2 }
+  );
+
+  // Ornamental separator line
+  doc.lineWidth(0.8).strokeColor(C_GOLD).moveTo(120, 52).lineTo(W - 120, 52).stroke();
+
+  // Primary Magazine Title
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(40).text(
+    'NATURE\'S MUD',
+    35,
+    65,
+    { align: 'center', width: W - 70, letterSpacing: 3 }
+  );
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(12).text(
+    'JOURNAL OF HIMALAYAN BOTANICAL PURITY & WHOLE FOODS',
+    35,
+    112,
+    { align: 'center', width: W - 70, letterSpacing: 1.5 }
+  );
+
+  // Subtitle
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(9).text(
+    'ARTISANAL SOLAR-DEHYDRATED FRUITS · SUPERFOOD POWDERS · MOUNTAIN NUTS · ANCIENT MINERALS',
+    35,
+    130,
+    { align: 'center', width: W - 70 }
+  );
+
+  // Grand Hero Photo Showcase (Centered: 495 x 350)
+  const heroX = 50;
+  const heroY = 152;
+  const heroW = W - 100;
+  const heroH = 360;
+
+  doc.roundedRect(heroX, heroY, heroW, heroH, 8).fill('#0B1C12');
+  doc.lineWidth(1.5).strokeColor(C_GOLD).roundedRect(heroX, heroY, heroW, heroH, 8).stroke();
+
+  const heroBuf = await getImgBuffer('public/images/posters/naturesmud-master-catalog-cover-4k.jpg', 600, 440) ||
+                  await getImgBuffer('public/products/shilajit.jpg', 600, 440);
+  if (heroBuf) {
+    try {
+      doc.image(heroBuf, heroX + 4, heroY + 4, { width: heroW - 8, height: heroH - 8 });
+    } catch {}
+  }
+
+  // Inside Hero Banner Ribbon
+  doc.roundedRect(heroX + 15, heroY + heroH - 46, heroW - 30, 32, 6).fill('rgba(14, 35, 23, 0.92)');
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text(
+    'THE EXCLUSIVE ARTISANAL COLLECTION · 29 LIVING SUPERFOODS',
+    heroX + 25,
+    heroY + heroH - 36
+  );
+  doc.fillColor(C_WHITE).font('Helvetica').fontSize(8).text(
+    'Handcrafted in Nepal · Solar Dehydrated <42°C',
+    heroX + heroW - 225,
+    heroY + heroH - 36,
+    { align: 'right', width: 200 }
+  );
+
+  // Editorial Feature Bullets (Magazine Feature Callouts)
+  const featY = 530;
+  const featBoxW = (W - 80) / 3;
+
+  // Box 1
+  doc.roundedRect(40, featY, featBoxW - 6, 120, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(40, featY, featBoxW - 6, 120, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text('SPECIAL REPORT', 50, featY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(11).text('THE <42°C REVOLUTION', 50, featY + 26);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    'How gentle solar low-temperature dehydration preserves 98% of active living enzymes, raw vitamins, and prebiotic fiber.',
+    50,
+    featY + 54,
+    { width: featBoxW - 26, lineGap: 2 }
+  );
+
+  // Box 2
+  const f2X = 40 + featBoxW;
+  doc.roundedRect(f2X, featY, featBoxW - 6, 120, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(f2X, featY, featBoxW - 6, 120, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text('ANCIENT ELIXIRS', f2X + 10, featY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(11).text('GOLD GRADE SHILAJIT', f2X + 10, featY + 26);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    'High-altitude Himalayan resin tested at 75%+ active Fulvic Acid with 84+ ionic trace minerals for cellular energy and vitality.',
+    f2X + 10,
+    featY + 54,
+    { width: featBoxW - 26, lineGap: 2 }
+  );
+
+  // Box 3
+  const f3X = 40 + featBoxW * 2;
+  doc.roundedRect(f3X, featY, featBoxW - 6, 120, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(f3X, featY, featBoxW - 6, 120, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text('FAMILY NUTRITION', f3X + 10, featY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(11).text('HOLISTIC WEANING & DIET', f3X + 10, featY + 26);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    'Clean, chemical-free, single-ingredient botanicals safe for infant weaning (6m+), growing students, and active athletes.',
+    f3X + 10,
+    featY + 54,
+    { width: featBoxW - 26, lineGap: 2 }
+  );
+
+  // Bottom Trust Badges Ribbon
+  const badgeY = 665;
+  doc.roundedRect(40, badgeY, W - 80, 52, 6).fill('#09170E');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(40, badgeY, W - 80, 52, 6).stroke();
+
+  const trustBadges = [
+    { title: 'LAB CERTIFIED', sub: 'Heavy Metal Free' },
+    { title: '0% ADDED SUGAR', sub: 'Zero Bleach or Preservatives' },
+    { title: 'AYURVEDIC HERITAGE', sub: 'Traditional Sourcing' },
+    { title: '77 DISTRICT DELIVERY', sub: 'Direct from Kathmandu' }
+  ];
+
+  trustBadges.forEach((tb, i) => {
+    const tX = 50 + i * ((W - 100) / 4);
+    const tW = (W - 100) / 4;
+    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text(tb.title, tX, badgeY + 12, { align: 'center', width: tW });
+    doc.fillColor(C_WHITE).font('Helvetica').fontSize(7.5).text(tb.sub, tX, badgeY + 26, { align: 'center', width: tW });
+  });
+
+  // Footer Cover Bar
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica-Bold').fontSize(8.5).text(
+    'PUBLISHED BY NATURE\'S MUD APOTHECARY  ·  SAMAKHUSHI, KATHMANDU, NEPAL  ·  NATURESMUD.SHOP',
+    35,
+    H - 45,
+    { align: 'center', width: W - 70 }
+  );
+
+  // =========================================================================
+  // PAGE 2: EDITORIAL & HIMALAYAN PURITY STANDARDS
+  // =========================================================================
+  console.log('Rendering Page 2 (Editorial & Philosophy)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  // Editorial Top Banner
+  doc.rect(0, 0, W, 70).fill(C_FOREST);
+  doc.rect(0, 70, W, 3).fill(C_GOLD);
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text('NATURE\'S MUD ESSAY · VOLUME IV', 30, 16, { letterSpacing: 2 });
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(16).text('FROM THE HIGH HIMALAYAN RIDGES TO YOUR TABLE', 30, 29);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8.5).text('The philosophy, technology, and rigorous botanical integrity behind every harvest', 30, 50);
+
+  // Page 2 Editorial Text & 2 Column Layout
+  const edY = 85;
+
+  // Left Column: Editorial Essay
+  doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(13).text('A Return to Unadulterated Himalayan Nourishment', 30, edY);
+  doc.fillColor(C_INK).font('Helvetica').fontSize(8.5).text(
+    'In an era dominated by hyper-processed grocery staples, chemical bleaching, and artificial food coloring, Nature\'s Mud was founded with a singular, uncompromising pledge: to deliver food exactly as nature conceived it in the pristine valleys of the Himalayas.\n\n' +
+    'Every fruit, nut, seed, and botanical powder in this catalog originates from fertile high-altitude soils, nourished by mineral-rich snowmelt and clean mountain air. We partner directly with indigenous harvesting cooperatives across Jumla, Mustang, Dolpa, and the fertile plains of Nepal, ensuring fair farmer wages and sustainable regenerative agriculture.',
+    30,
+    edY + 20,
+    { width: 260, lineGap: 3 }
+  );
+
+  // Editorial Image Left Box
+  const edImgY = edY + 155;
+  doc.roundedRect(30, edImgY, 260, 165, 6).fill('#FFFFFF');
+  doc.lineWidth(1).strokeColor(C_CARD_BORDER).roundedRect(30, edImgY, 260, 165, 6).stroke();
+
+  const edHarvestBuf = await getImgBuffer('public/products/sweet-potato-creation-process.jpg', 300, 200) ||
+                       await getImgBuffer('public/products/authentic-dehydrated-mango.jpg', 300, 200);
+  if (edHarvestBuf) {
+    try {
+      doc.image(edHarvestBuf, 34, edImgY + 4, { width: 252, height: 135 });
+    } catch {}
+  }
+  doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(7.5).text(
+    'Artisanal Solar Dehydration Facility & Quality Inspection · Kathmandu',
+    34,
+    edImgY + 146,
+    { align: 'center', width: 252 }
+  );
+
+  // Right Column: The 4 Pillars of Nature's Mud Purity Standards
+  const rColX = 305;
+  doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(13).text('The Four Pillars of Botanical Integrity', rColX, edY);
+
+  const pillars = [
+    {
+      num: '01',
+      title: 'SOLAR DEHYDRATION BELOW 42°C',
+      desc: 'Conventional industrial dehydrators bake fruit at 80°C to 120°C, destroying heat-sensitive enzymes, vitamins, and bioflavonoids. Our proprietary solar chambers never exceed 42°C, preserving 98% of living enzymatic activity and raw cellular vitality.'
+    },
+    {
+      num: '02',
+      title: '100% SINGLE-INGREDIENT BOTANICALS',
+      desc: 'Zero cane sugar, zero sulfur dioxide, zero maltodextrin, and zero synthetic preservatives. When you open a jar of Nature\'s Mud Beetroot or Avocado Powder, the only ingredient inside is pure, dehydrated beetroot or avocado.'
+    },
+    {
+      num: '03',
+      title: 'INDEPENDENT LABORATORY PURITY SCREENING',
+      desc: 'Every single batch undergoes testing for heavy metal toxicity (Lead, Cadmium, Arsenic, Mercury), moisture safety (<5%), and microbial limits. We adhere strictly to national food safety guidelines for total family safety.'
+    },
+    {
+      num: '04',
+      title: 'NATUROPATHIC & AYURVEDIC HARMONY',
+      desc: 'Formulated in consultation with certified holistic wellness practitioners and classical Ayurvedic pharmacopeia. Our foods are naturally hypo-allergenic, gentle on digestive agni, and perfect for baby first solids (6m+) and athlete stamina.'
+    }
+  ];
+
+  let pY = edY + 20;
+  pillars.forEach((p) => {
+    doc.roundedRect(rColX, pY, 260, 68, 4).fill(C_CARD_BG);
+    doc.lineWidth(0.8).strokeColor(C_CARD_BORDER).roundedRect(rColX, pY, 260, 68, 4).stroke();
+
+    // Num badge
+    doc.roundedRect(rColX + 8, pY + 8, 22, 16, 3).fill(C_FOREST);
+    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text(p.num, rColX + 8, pY + 12, { align: 'center', width: 22 });
+
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(8.5).text(p.title, rColX + 36, pY + 12, { width: 215 });
+    doc.fillColor(C_INK).font('Helvetica').fontSize(7.2).text(p.desc, rColX + 8, pY + 28, { width: 244, lineGap: 1.5 });
+
+    pY += 74;
+  });
+
+  // Editorial Lower Section: Alternative Compliant Wellness Standards & Food Safety Notice
+  const noticeY = 430;
+  doc.roundedRect(30, noticeY, W - 60, 165, 8).fill('#F4EFE2');
+  doc.lineWidth(1.2).strokeColor(C_GOLD).roundedRect(30, noticeY, W - 60, 165, 8).stroke();
+
+  doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(12).text(
+    'HOLISTIC WELLNESS STANDARDS & FAMILY SAFETY PLEDGE',
+    45,
+    noticeY + 14
+  );
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8).text(
+    'INDEPENDENTLY VERIFIED · FOOD SAFETY CERTIFIED · NON-GMO · 100% WHOLE FOOD',
+    45,
+    noticeY + 30
+  );
+
+  doc.fillColor(C_INK).font('Helvetica').fontSize(8).text(
+    'Nature\'s Mud champions transparent whole-food nourishment. Rather than synthetic multivitamins or laboratory-synthesized compounds, we advocate for whole-food nutrition where vitamins, trace minerals, and antioxidants exist in their natural organic synergy with dietary fiber and co-enzymes.\n\n' +
+    'Our products are trusted across Nepal by holistic nutritionists, ayurvedic vaidyas, sports fitness trainers, and health-conscious mothers for complementary baby weaning porridge (6M+), post-natal mother rejuvenation, memory vitality, and athletic endurance.\n\n' +
+    'STATUTORY WELLNESS DISCLAIMER:\n' +
+    'Nature\'s Mud botanical foods and functional supplements are pure single-ingredient natural products crafted to support daily nutrition, stamina, and holistic wellness. These products are not intended to diagnose, treat, cure, or prevent any medical disease. Individuals with specific medical conditions, nursing or pregnant mothers, and parents introducing solid foods to infants should consult their qualified health practitioner or holistic nutritionist.',
+    45,
+    noticeY + 44,
+    { width: W - 90, lineGap: 2.2 }
+  );
+
+  // Quote ribbon at bottom of Page 2
+  const quoteY = 610;
+  doc.roundedRect(30, quoteY, W - 60, 175, 8).fill(C_FOREST);
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(11).text(
+    '“Let food be thy medicine, and let mountain purity be thy standard.”',
+    45,
+    quoteY + 20,
+    { align: 'center', width: W - 90 }
+  );
+  doc.fillColor(C_WHITE).font('Helvetica').fontSize(8.5).text(
+    'Every package bearing the Nature\'s Mud seal represents an unbroken chain of custody from organic Himalayan growers, through low-temperature solar drying, to hermetic glass and barrier packaging in Kathmandu.\n\n' +
+    'Browse our complete 2026/2027 collection in the following pages organized across 4 dedicated product categories, followed by the complete master verification index and nationwide ordering directory.',
+    55,
+    quoteY + 45,
+    { align: 'center', width: W - 110, lineGap: 3 }
+  );
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica-Bold').fontSize(8.5).text(
+    'THE FOUNDING TEAM  ·  NATURE\'S MUD BOTANICALS  ·  KATHMANDU, NEPAL',
+    45,
+    quoteY + 140,
+    { align: 'center', width: W - 90 }
+  );
+
+  drawPageFooter(2);
+
+  // =========================================================================
+  // PAGE 3: CATEGORY 01 - SOLAR-DEHYDRATED FRUITS & ALPINE BERRIES (7 Products)
+  // =========================================================================
+  console.log('Rendering Page 3 (Category 01: Dehydrated Fruits)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  drawCategoryHeader(
+    '01',
+    'SOLAR-DEHYDRATED FRUITS & ALPINE BERRIES',
+    'Gently dehydrated below 42°C · 0% added sugar · 0% sulfur dioxide · 100% natural fruit'
+  );
+
+  const cat1Products = masterProducts.slice(0, 7);
+  await drawProductGrid(cat1Products);
+  drawPageFooter(3);
+
+  // =========================================================================
+  // PAGE 4: CATEGORY 02 - MOUNTAIN SUPERFOOD POWDERS (7 Products)
+  // =========================================================================
+  console.log('Rendering Page 4 (Category 02: Superfood Powders)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  drawCategoryHeader(
+    '02',
+    'MOUNTAIN SUPERFOOD POWDERS & NATURAL SWEETENERS',
+    'Micro-milled raw botanicals for baby weaning (6m+), daily smoothies, teas & active gym vitality'
+  );
+
+  // Avocado, Strawberry, Banana, Moringa, Dates, Beetroot, Carrot
+  const cat2Products = [
+    masterProducts[7],  // Avocado
+    masterProducts[8],  // Strawberry
+    masterProducts[9],  // Banana
+    masterProducts[10], // Moringa
+    masterProducts[11], // Dates
+    masterProducts[12], // Beetroot
+    masterProducts[14]  // Carrot (sweet potato is highlighted in master table and callout)
+  ];
+  await drawProductGrid(cat2Products);
+  drawPageFooter(4);
+
+  // =========================================================================
+  // PAGE 5: CATEGORY 03 - MOUNTAIN WHOLE NUTS, SEEDS & KERNELS (7 Products)
+  // =========================================================================
+  console.log('Rendering Page 5 (Category 03: Nuts & Kernels)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  drawCategoryHeader(
+    '03',
+    'MOUNTAIN WHOLE NUTS, SEEDS & ROASTED KERNELS',
+    'Jumbo grade whole nuts, slow-roasted with Himalayan pink salt · No industrial cooking oils'
+  );
+
+  // Raw Almonds, Roasted Almonds, Cashews, Roasted Cashews, Pistachios, Pumpkin Seeds, Anjeer
+  const cat3Products = [
+    masterProducts[15], // Raw Almonds
+    masterProducts[16], // Roasted Almonds
+    masterProducts[17], // Cashews
+    masterProducts[18], // Roasted Cashews
+    masterProducts[19], // Pistachios
+    masterProducts[20], // Pumpkin Seeds
+    masterProducts[21]  // Figs Anjeer
+  ];
+  await drawProductGrid(cat3Products);
+  drawPageFooter(5);
+
+  // =========================================================================
+  // PAGE 6: CATEGORY 04 - SACRED MINERALS, BOTANICAL ELIXIRS & OILS (7 Products)
+  // =========================================================================
+  console.log('Rendering Page 6 (Category 04: Minerals & Elixirs)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  drawCategoryHeader(
+    '04',
+    'SACRED MINERALS, BOTANICAL ELIXIRS & COLD-PRESSED OILS',
+    'Authentic Gold Grade Himalayan Shilajit, ancient volcanic salts, raw seeds & virgin cold-pressed oils'
+  );
+
+  // Shilajit, Chia, Pink Salt, Black Salt, Coconut Oil 200ml, Coconut Oil 500ml, Makhana
+  const cat4Products = [
+    masterProducts[22], // Shilajit
+    masterProducts[23], // Chia Seeds
+    masterProducts[24], // Pink Salt
+    masterProducts[25], // Black Salt
+    masterProducts[26], // Coconut Oil 200ml
+    masterProducts[27], // Coconut Oil 500ml
+    masterProducts[28]  // Makhana
+  ];
+  await drawProductGrid(cat4Products);
+  drawPageFooter(6);
+
+  // =========================================================================
+  // PAGE 7: MASTER VERIFICATION & SPECIFICATION INDEX (ALL 29 PRODUCTS)
+  // =========================================================================
+  console.log('Rendering Page 7 (Master Verification Index - All 29 Products)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_LIGHT_BG);
+
+  // Table Page Header
+  doc.rect(0, 0, W, 70).fill(C_FOREST);
+  doc.rect(0, 70, W, 3).fill(C_GOLD);
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8.5).text('OFFICIAL RECORD & INVENTORY SPECIFICATION', 30, 16, { letterSpacing: 1.5 });
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(16).text('MASTER PRODUCT SPECIFICATION INDEX (ALL 29 PRODUCTS)', 30, 29);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8.5).text('Verified SKU codes, net weights, packaging formats, shelf lives, and official MRP (NPR)', 30, 50);
+
+  // Master Table Dimensions
+  const tblX = 25;
+  const tblY = 82;
+  const tblW = W - 50; // 545.28 pt
+
+  // Table Column Headers (Height: 22pt)
+  doc.roundedRect(tblX, tblY, tblW, 20, 3).fill(C_FOREST);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(7);
+  doc.text('SN', tblX + 5, tblY + 6, { width: 18, align: 'center' });
+  doc.text('PRODUCT NAME', tblX + 26, tblY + 6, { width: 175 });
+  doc.text('CATEGORY', tblX + 205, tblY + 6, { width: 95 });
+  doc.text('NET WT/VOL', tblX + 305, tblY + 6, { width: 60 });
+  doc.text('PACKAGING', tblX + 370, tblY + 6, { width: 75 });
+  doc.text('SHELF LIFE', tblX + 450, tblY + 6, { width: 45 });
+  doc.text('OFFICIAL MRP', tblX + 498, tblY + 6, { width: 42, align: 'right' });
+
+  // 29 Table Rows
+  let curY = tblY + 22;
+  const rowH = 19;
+
+  masterProducts.forEach((p, idx) => {
+    const isEven = idx % 2 === 0;
+    doc.rect(tblX, curY, tblW, rowH).fill(isEven ? '#FFFFFF' : '#F6F1E5');
+    doc.lineWidth(0.3).strokeColor('#E2D7C2').rect(tblX, curY, tblW, rowH).stroke();
+
+    // SN
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(7.5).text(
+      String(p.sn),
+      tblX + 5,
+      curY + 5,
+      { width: 18, align: 'center' }
+    );
+
+    // Product Name
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(7.8).text(
+      p.name,
+      tblX + 26,
+      curY + 5,
+      { width: 175, lineBreak: false, ellipsis: true }
+    );
+
+    // Category
+    doc.fillColor(C_MUTED).font('Helvetica').fontSize(7).text(
+      p.cat,
+      tblX + 205,
+      curY + 5,
+      { width: 95 }
+    );
+
+    // Net Qty
+    doc.fillColor(C_INK).font('Helvetica-Bold').fontSize(7.5).text(
+      p.qty,
+      tblX + 305,
+      curY + 5,
+      { width: 60 }
+    );
+
+    // Packaging
+    doc.fillColor(C_INK).font('Helvetica').fontSize(7).text(
+      p.pack,
+      tblX + 370,
+      curY + 5,
+      { width: 75, lineBreak: false, ellipsis: true }
+    );
+
+    // Shelf Life
+    doc.fillColor(C_MUTED).font('Helvetica').fontSize(7).text(
+      p.life,
+      tblX + 450,
+      curY + 5,
+      { width: 45 }
+    );
+
+    // MRP (Right aligned bold)
+    doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(8.5).text(
+      `Rs. ${p.mrp}`,
+      tblX + 490,
+      curY + 4,
+      { width: 50, align: 'right' }
+    );
+
+    curY += rowH;
+  });
+
+  // Table Verification Footer Box (Below Row 29)
+  const vBoxY = curY + 6;
+  doc.roundedRect(tblX, vBoxY, tblW, 115, 6).fill('#F4EFE2');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(tblX, vBoxY, tblW, 115, 6).stroke();
+
+  doc.fillColor(C_FOREST).font('Helvetica-Bold').fontSize(9.5).text(
+    'OFFICIAL QUALITY, TAX & PACKAGING VERIFICATION NOTICE',
+    tblX + 15,
+    vBoxY + 10
+  );
+  doc.fillColor(C_INK).font('Helvetica').fontSize(7.8).text(
+    '• All prices listed in this compendium are in Nepalese Rupees (NPR) and are inclusive of all applicable domestic taxes.\n' +
+    '• Every food grade standup pouch and sealed glass jar features tamper-evident holographic sealing and a batch-specific QR traceability code.\n' +
+    '• Storage Guidance: Keep dried fruits, whole nuts, and micro-milled powders in a cool, dark pantry below 24°C. Reseal airtight after every opening.\n' +
+    '• Special Dietary Notes: 100% Gluten-Free, Dairy-Free, Non-GMO, Vegan, and naturally free from artificial coloring, sulfur dioxide, and synthetic bleaches.\n' +
+    '• For institutional orders, restaurant supplies, gym pantries, or customized festive gift hampers, contact wholesale@naturesmud.shop.',
+    tblX + 15,
+    vBoxY + 26,
+    { width: tblW - 30, lineGap: 2.5 }
+  );
+
+  drawPageFooter(7);
+
+  // =========================================================================
+  // PAGE 8: GRAND MAGAZINE BACK COVER & DIRECTORY (Full bleed forest green)
+  // =========================================================================
+  console.log('Rendering Page 8 (Grand Back Cover & Order Directory)...');
+  doc.addPage({ size: 'A4', margin: 0 });
+  doc.rect(0, 0, W, H).fill(C_DARK_BG);
+
+  // Double gold foil border
+  doc.lineWidth(1.5).strokeColor(C_GOLD).rect(20, 20, W - 40, H - 40).stroke();
+  doc.lineWidth(0.5).strokeColor(C_GOLD).rect(24, 24, W - 48, H - 48).stroke();
+
+  // Top Back Cover Masthead
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text(
+    'NATURE\'S MUD  ·  DIRECT CLIENT ORDERING DIRECTORY',
+    35,
+    38,
+    { align: 'center', width: W - 70, letterSpacing: 2 }
+  );
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(22).text(
+    'HOW TO ORDER ACROSS NEPAL',
+    35,
+    54,
+    { align: 'center', width: W - 70, letterSpacing: 1.5 }
+  );
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(9).text(
+    'Seamless digital shopping, direct WhatsApp assistance, and express delivery to all 77 districts',
+    35,
+    80,
+    { align: 'center', width: W - 70 }
+  );
+
+  // Ordering Channels (3 Columns: 155w each)
+  const oColY = 102;
+  const oColW = (W - 90) / 3;
+
+  // Channel 1: Online Website
+  doc.roundedRect(35, oColY, oColW, 115, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(35, oColY, oColW, 115, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text('OFFICIAL STORE', 45, oColY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(12).text('naturesmud.shop', 45, oColY + 28);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    '• Browse all 29 products\n• Live inventory status\n• eSewa, Khalti, Card & COD\n• Instant order confirmation SMS',
+    45,
+    oColY + 48,
+    { width: oColW - 20, lineGap: 3 }
+  );
+
+  // Channel 2: WhatsApp & Phone
+  const c2X = 35 + oColW + 10;
+  doc.roundedRect(c2X, oColY, oColW, 115, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(c2X, oColY, oColW, 115, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text('PHONE & WHATSAPP', c2X + 10, oColY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(12).text('+977 9713888002', c2X + 10, oColY + 28);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    '• Direct chat with our team\n• Custom combo ordering\n• Voice & text order booking\n• Fast response 8AM – 9PM',
+    c2X + 10,
+    oColY + 48,
+    { width: oColW - 20, lineGap: 3 }
+  );
+
+  // Channel 3: Delivery Coverage
+  const c3X = c2X + oColW + 10;
+  doc.roundedRect(c3X, oColY, oColW, 115, 6).fill('#132B1E');
+  doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(c3X, oColY, oColW, 115, 6).stroke();
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text('NATIONWIDE COURIER', c3X + 10, oColY + 12);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(12).text('All 77 Districts', c3X + 10, oColY + 28);
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    '• Kathmandu: 24–48 Hours\n• Major Cities: 2–3 Days\n• Remote Districts: 4–6 Days\n• Safe bubble wrap packaging',
+    c3X + 10,
+    oColY + 48,
+    { width: oColW - 20, lineGap: 3 }
+  );
+
+  // Authorized Retail Outlets & Stockists Directory (Middle Box)
+  const retY = 230;
+  const retW = W - 70;
+  doc.roundedRect(35, retY, retW, 205, 6).fill('#11261B');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(35, retY, retW, 205, 6).stroke();
+
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(11).text(
+    'AUTHORIZED RETAIL PARTNERS & EXPERIENCE CENTERS IN NEPAL',
+    50,
+    retY + 12
+  );
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
+    'Walk in to sample and purchase authentic Nature\'s Mud products at our official partner outlets:',
+    50,
+    retY + 28
+  );
+
+  const outlets = [
+    { name: 'Headquarters & Flagship Experience Center', loc: 'Samakhushi, Gongabu Chowk (near Kumari Bank), Kathmandu', contact: '+977 9713888002' },
+    { name: 'Kids Kottage — Gongabu', loc: 'Arya Complex, Gongabu Chowk, Kathmandu', contact: 'Tel: 9802323451' },
+    { name: 'Kids Kottage — Kupondol', loc: 'Kupondol Height, Lalitpur & Kapan Branch, Kathmandu', contact: 'Tel: 9802323452' },
+    { name: 'Kids Kottage — Pokhara', loc: 'New Road & Chipledhunga, Pokhara, Kaski', contact: 'Tel: 9802323453' },
+    { name: 'Zero to Ten Baby & Mother Store', loc: 'Chabahil Chowk (opposite KL Tower), Kathmandu', contact: 'Tel: 9802323454' },
+    { name: 'Baby Love Store', loc: 'Main Commercial Road, Hetauda, Makwanpur', contact: 'Tel: 9802323455' }
+  ];
+
+  let rRowY = retY + 45;
+  outlets.forEach((o, idx) => {
+    const isEven = idx % 2 === 0;
+    doc.roundedRect(48, rRowY, retW - 26, 24, 3).fill(isEven ? '#173324' : '#142C1F');
+
+    doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(8).text(o.name, 56, rRowY + 7);
+    doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(7.5).text(o.loc, 235, rRowY + 7, { width: 220, lineBreak: false, ellipsis: true });
+    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(8).text(o.contact, retW - 60, rRowY + 7, { align: 'right', width: 80 });
+
+    rRowY += 26;
+  });
+
+  // Wholesale, Corporate Gifting & Export Box
+  const wsY = 448;
+  doc.roundedRect(35, wsY, retW, 110, 6).fill('#132B1E');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(35, wsY, retW, 110, 6).stroke();
+
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(11).text(
+    'INSTITUTIONAL B2B, RESELLERS & CORPORATE FESTIVE GIFTING',
+    50,
+    wsY + 12
+  );
+  doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8.5).text(
+    'Nature\'s Mud partners with supermarkets, organic grocery chains, corporate banks, wellness spas, yoga retreats, and hospitality resorts across Nepal and international export markets.\n\n' +
+    '• Custom Corporate Hampers: Handcrafted wooden and velvet gift boxes for Dashain, Tihar, New Year, and AGMs.\n' +
+    '• Bulk Commercial Supplies: 5kg, 10kg, and 25kg vacuum-sealed packs for bakeries, juice bars, and cafes.\n' +
+    '• Direct B2B Inquiries: Call +977 9713888002  |  Email: wholesale@naturesmud.shop  |  info@naturesmud.shop',
+    50,
+    wsY + 30,
+    { width: retW - 30, lineGap: 3 }
+  );
+
+  // Purity Guarantee & Compliant Alternative Claims Badge
+  const purY = 570;
+  doc.roundedRect(35, purY, retW, 160, 6).fill('#0B1C12');
+  doc.lineWidth(1).strokeColor(C_GOLD).roundedRect(35, purY, retW, 160, 6).stroke();
+
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10.5).text(
+    '100% SATISFACTION & BOTANICAL PURITY GUARANTEE',
+    50,
+    purY + 12,
+    { align: 'center', width: retW - 30 }
+  );
+  doc.fillColor(C_WHITE).font('Helvetica').fontSize(8).text(
+    'Every single jar and pouch is backed by our full money-back purity guarantee. If you are ever dissatisfied with product freshness, texture, or quality, we offer immediate replacement or a full refund with zero questions asked.\n\n' +
+    'ALTERNATIVE COMPLIANCE & LEGAL NOTICE:\n' +
+    'Nature\'s Mud products are whole-food nutritional staples and traditional botanical supplements. They are not manufactured or intended to diagnose, treat, prevent, or cure any medical illness or condition. Dietary advice in this compendium reflects traditional Ayurvedic ethnobotany and general whole-food nutritional science. Always consult a licensed healthcare professional or holistic practitioner regarding clinical health questions.',
+    50,
+    purY + 30,
+    { align: 'center', width: retW - 30, lineGap: 2.8 }
+  );
+
+  // Gold Seal Bottom Footer Bar
+  doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text(
+    'WWW.NATURESMUD.SHOP  ·  KATHMANDU, NEPAL  ·  © 2026/2027 NATURE\'S MUD APOTHECARY',
+    35,
+    H - 45,
+    { align: 'center', width: W - 70, letterSpacing: 1.5 }
+  );
+
+  // Assert page count before ending
+  const pageRange = doc.bufferedPageRange();
+  console.log(`Verified Total Page Count: ${pageRange.count}`);
+
+  doc.end();
+
+  await new Promise((resolve, reject) => {
+    writeStream.on('finish', () => {
+      // Copy to aliases
+      fs.copyFileSync(outPdf1, outPdf2);
+      fs.copyFileSync(outPdf1, outPdf3);
+      console.log('✅ Generated 8-Page Magazine PDF at:');
+      console.log('  1.', outPdf1);
+      console.log('  2.', outPdf2);
+      console.log('  3.', outPdf3);
+      resolve();
     });
-
-    doc.rect(margin, rowY + 6, contentWidth, 32).fill(C_BG);
-    doc.lineWidth(0.5).strokeColor(C_GOLD);
-    doc.rect(margin, rowY + 6, contentWidth, 32).stroke();
-
-    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(8).text(
-      '• Maximum Retail Price (MRP) is inclusive of all taxes. Official certified Nature\'s Mud Price List.',
-      margin + 8,
-      rowY + 12
-    );
-    doc.fillColor(C_MUTED).font('Helvetica').fontSize(7.5).text(
-      '• Certified 100% natural, chemical-free Himalayan superfoods, dehydrated fruits, and cold-pressed virgin oils.',
-      margin + 8,
-      rowY + 24
-    );
-
-    // =========================================================================
-    // PAGE 6: HOW TO ORDER, STORE LOCATIONS & QUALITY PROMISE
-    // =========================================================================
-    doc.addPage();
-    drawPageTemplate('Ordering & Retail Partner Directory', 'Customer & Wholesale Support', 6, 6);
-
-    const orderBoxY = 60;
-    doc.roundedRect(margin, orderBoxY, contentWidth, 125, 8).fill(C_EMERALD);
-    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(13).text('HOW TO PLACE AN ORDER', margin + 16, orderBoxY + 14);
-
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text('1. Order Online 24/7:', margin + 16, orderBoxY + 36);
-    doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(9.5).text('www.naturesmud.shop  or  www.naturesmud.com', margin + 130, orderBoxY + 36);
-
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text('2. WhatsApp / Phone:', margin + 16, orderBoxY + 54);
-    doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(9.5).text('+977 9713888002  (Instant order confirmation & tracking)', margin + 130, orderBoxY + 54);
-
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text('3. Delivery Coverage:', margin + 16, orderBoxY + 72);
-    doc.fillColor('#E0E0E0').font('Helvetica').fontSize(9).text('Same-day / Next-day delivery in Kathmandu Valley; 2-4 days across all 77 districts.', margin + 130, orderBoxY + 72);
-
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(9).text('4. Payment Options:', margin + 16, orderBoxY + 90);
-    doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(9).text('FonePay QR, eSewa, Khalti, Direct Bank Transfer & Cash On Delivery (COD)', margin + 130, orderBoxY + 90);
-
-    doc.fillColor(C_WHITE).font('Helvetica-Oblique').fontSize(8).text('Free express shipping across Nepal on all orders over Rs. 3,000.', margin + 16, orderBoxY + 108);
-
-    const outletY = orderBoxY + 135;
-    doc.rect(margin, outletY, contentWidth, 20).fill(C_BG);
-    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(10.5).text('OFFICIAL RETAIL OUTLETS & SHOWROOMS IN NEPAL', margin + 8, outletY + 5);
-
-    const outlets = [
-      { name: 'Headquarters & Showroom', loc: 'Samakhushi, Gongabu Chowk (near Kumari Bank), Kathmandu', phone: '+977 9713888002' },
-      { name: 'Kids Kottage — Gongabu', loc: 'Arya Complex, Gongabu Chowk, Kathmandu', phone: '9802323451' },
-      { name: 'Kids Kottage — Kupondol', loc: 'Kupondol, Lalitpur & Kapan, Kathmandu', phone: '9802323452' },
-      { name: 'Kids Kottage — Pokhara', loc: 'New Road / Chipledhunga, Pokhara', phone: '9802323453' },
-      { name: 'Zero to Ten', loc: 'Chabahil, Kathmandu', phone: '9802323454' },
-      { name: 'Baby Love', loc: 'Main Road, Hetauda', phone: '9802323455' },
-    ];
-
-    let oY = outletY + 28;
-    outlets.forEach((o, i) => {
-      const isEven = i % 2 === 0;
-      doc.roundedRect(margin, oY, contentWidth, 34, 4).fill(isEven ? C_WHITE : '#F5F2EA');
-      doc.lineWidth(0.5).strokeColor('#E0D8CC');
-      doc.roundedRect(margin, oY, contentWidth, 34, 4).stroke();
-
-      doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(9).text(o.name, margin + 12, oY + 6);
-      doc.fillColor(C_MUTED).font('Helvetica').fontSize(8).text(o.loc, margin + 12, oY + 19);
-      doc.fillColor(C_GREEN).font('Helvetica-Bold').fontSize(8.5).text(`Ph: ${o.phone}`, pageWidth - margin - 120, oY + 12, { align: 'right', width: 110 });
-
-      oY += 38;
-    });
-
-    const wsY = oY + 6;
-    doc.roundedRect(margin, wsY, contentWidth, 90, 6).fill('#EFE9DD');
-    doc.lineWidth(1).strokeColor(C_GOLD);
-    doc.roundedRect(margin, wsY, contentWidth, 90, 6).stroke();
-
-    doc.fillColor(C_EMERALD).font('Helvetica-Bold').fontSize(11).text('WHOLESALE, INSTITUTIONAL & EXPORT INQUIRIES', margin + 14, wsY + 10);
-    doc.fillColor(C_DARK).font('Helvetica').fontSize(8.5).text(
-      'Nature\'s Mud partners with supermarkets, organic grocers, gymnasiums, pediatrics clinics, ayurvedic wellness centers, and hospitality resorts across Nepal and abroad.',
-      margin + 14,
-      wsY + 26,
-      { width: contentWidth - 28 }
-    );
-    doc.fillColor(C_DARK).font('Helvetica').fontSize(8.5).text(
-      'Custom packaging sizes, bulk sacks (5kg/10kg/25kg), private labeling, and direct B2B invoicing available upon request.',
-      margin + 14,
-      wsY + 50,
-      { width: contentWidth - 28 }
-    );
-    doc.fillColor(C_GREEN).font('Helvetica-Bold').fontSize(9).text(
-      'Direct Wholesale Line: +977 9713888002  |  Email: wholesale@naturesmud.shop',
-      margin + 14,
-      wsY + 72
-    );
-
-    const gY = wsY + 98;
-    doc.roundedRect(margin, gY, contentWidth, 38, 6).fill(C_EMERALD);
-    doc.fillColor(C_LIGHT_GOLD).font('Helvetica-Bold').fontSize(9.5).text(
-      '100% SATISFACTION & NATURAL PURITY GUARANTEE',
-      margin,
-      gY + 8,
-      { align: 'center', width: contentWidth }
-    );
-    doc.fillColor(C_WHITE).font('Helvetica').fontSize(8).text(
-      'Every product is rigorously quality-checked. If you are not 100% satisfied, we offer instant replacement or refund.',
-      margin,
-      gY + 22,
-      { align: 'center', width: contentWidth }
-    );
-
-    doc.end();
-
-    stream.on('finish', () => {
-      fs.copyFileSync(outputPath, aliasPath);
-      console.log('Successfully generated PDF catalog at:');
-      console.log('1.', outputPath);
-      console.log('2.', aliasPath);
-      resolve(outputPath);
-    });
-
-    stream.on('error', reject);
+    writeStream.on('error', reject);
   });
 }
 
-generatePDF().catch(console.error);
+generateMagazinePDF().catch((err) => {
+  console.error('❌ PDF generation failed:', err);
+  process.exit(1);
+});
