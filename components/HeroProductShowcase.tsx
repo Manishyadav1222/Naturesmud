@@ -282,7 +282,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '300 GM',
     packing: 'Plastic Jar',
     price: 650,
-    compareAtPrice: 720,
+    compareAtPrice: 650,
     rating: 4.9,
     reviews: 57,
     category: 'Seeds',

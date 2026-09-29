@@ -6,31 +6,75 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Search, X, TrendingUp, Sparkles, Leaf } from 'lucide-react';
 import { useUIStore } from '@/lib/store/ui-store';
-import { products } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct } from '@/lib/data/products';
 import { formatPrice, resolveImageUrl } from '@/lib/utils';
+import { Product } from '@/lib/types';
 
 export default function SearchOverlay() {
   const { isSearchOpen, closeSearch, searchQuery: initialSearchQuery } = useUIStore();
   const [query, setQuery] = useState('');
+  const [liveProducts, setLiveProducts] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Fetch live products on mount so we always have up-to-date prices
   useEffect(() => {
-    if (isSearchOpen) {
-      setQuery(initialSearchQuery || '');
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
-  }, [isSearchOpen, initialSearchQuery]);
-  const results = query
-    ? products.filter(
-        (p) => {
-          const catStr = typeof p.category === 'object' && p.category !== null ? ((p.category as any)?.name || '') : (p.category || '');
-          return (
-            p.name.toLowerCase().includes(query.toLowerCase()) ||
-            catStr.toLowerCase().includes(query.toLowerCase()) ||
-            (Array.isArray(p.tags) && p.tags.some((t) => t.toLowerCase().includes(query.toLowerCase())))
-          );
+    let cancelled = false;
+    async function fetchLive() {
+      try {
+        const res = await fetch('/api/products?per_page=200', { cache: 'no-store' });
+        if (!res.ok) throw new Error('fetch failed');
+        const json = await res.json();
+        if (json?.data && Array.isArray(json.data) && json.data.length > 0 && !cancelled) {
+          setLiveProducts(json.data);
         }
-      )
+      } catch {
+        // Gracefully fall back to local static catalog on network error
+      }
+    }
+    fetchLive();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Also refresh live data every time the search overlay is opened
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    setQuery(initialSearchQuery || '');
+    setTimeout(() => inputRef.current?.focus(), 100);
+
+    let cancelled = false;
+    async function refreshLive() {
+      try {
+        const res = await fetch('/api/products?per_page=200', { cache: 'no-store' });
+        if (!res.ok) throw new Error('fetch failed');
+        const json = await res.json();
+        if (json?.data && Array.isArray(json.data) && json.data.length > 0 && !cancelled) {
+          setLiveProducts(json.data);
+        }
+      } catch {
+        // Keep existing live data or fall back to local
+      }
+    }
+    refreshLive();
+    return () => { cancelled = true; };
+  }, [isSearchOpen, initialSearchQuery]);
+
+  // Use live API products when available, otherwise fall back to local static data
+  const catalog: Product[] = liveProducts.length > 0
+    ? liveProducts
+    : localProducts.map((p) => normalizeProduct(p));
+
+  const results = query
+    ? catalog.filter((p) => {
+        const catStr =
+          typeof p.category === 'object' && p.category !== null
+            ? ((p.category as any)?.name || '')
+            : (p.category || '');
+        return (
+          p.name.toLowerCase().includes(query.toLowerCase()) ||
+          catStr.toLowerCase().includes(query.toLowerCase()) ||
+          (Array.isArray(p.tags) && p.tags.some((t) => t.toLowerCase().includes(query.toLowerCase())))
+        );
+      })
     : [];
 
   const trendingSearches = ['honey', 'almonds', 'chia', 'moringa', 'turmeric'];
@@ -149,7 +193,7 @@ export default function SearchOverlay() {
                     </span>
                     <div>
                       <p className="text-sm font-semibold text-gray-700">
-                        Discover Nature's Finest
+                        Discover Nature&apos;s Finest
                       </p>
                       <p className="text-xs text-gray-500">
                         Search for healthy, organic products straight from Nepal
@@ -166,3 +210,4 @@ export default function SearchOverlay() {
     </AnimatePresence>
   );
 }
+

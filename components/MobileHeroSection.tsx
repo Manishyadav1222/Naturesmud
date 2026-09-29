@@ -412,7 +412,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     slug: 'pumpkin-seeds',
     image: '/products/posters/pumpkin-seeds-ad-2k.jpg',
     price: 650,
-    originalPrice: 700,
+    originalPrice: 650,
     weight: '300g',
     badge: 'Zinc & Magnesium',
     primary: '#3F6212',

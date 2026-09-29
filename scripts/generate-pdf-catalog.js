@@ -136,7 +136,7 @@ const products = [
     qty: '300 GM',
     packing: 'Plastic Jar',
     category: 'Seeds',
-    mrp: 520,
+    mrp: 650,
     benefit: 'AAA-grade raw pepitas loaded with bioavailable Zinc & Magnesium for sleep and immunity.',
   },
   {

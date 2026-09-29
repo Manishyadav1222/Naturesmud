@@ -28,7 +28,11 @@ async function uploadAssets() {
       { local: 'public/official-product-catalog.jpg', remote: '/naturesmud.shop/public/official-product-catalog.jpg' },
       { local: 'public/images/official-product-catalog.jpg', remote: '/naturesmud.shop/public/images/official-product-catalog.jpg' },
       { local: 'public/images/posters/naturesmud-authenticity-table-cover.jpg', remote: '/naturesmud.shop/public/images/posters/naturesmud-authenticity-table-cover.jpg' },
-      { local: 'public/images/posters/naturesmud-master-catalog-cover-4k.jpg', remote: '/naturesmud.shop/public/images/posters/naturesmud-master-catalog-cover-4k.jpg' }
+      { local: 'public/images/posters/naturesmud-master-catalog-cover-4k.jpg', remote: '/naturesmud.shop/public/images/posters/naturesmud-master-catalog-cover-4k.jpg' },
+      { local: 'public/images/posters/festival-offer-magazine.jpg', remote: '/naturesmud.shop/public/images/posters/festival-offer-magazine.jpg' },
+      { local: 'public/images/posters/festival-offer-masterflyer.jpg', remote: '/naturesmud.shop/public/images/posters/festival-offer-masterflyer.jpg' },
+      { local: 'public/images/posters/pumpkin-seeds-magazine-ad.jpg', remote: '/naturesmud.shop/public/images/posters/pumpkin-seeds-magazine-ad.jpg' },
+      { local: 'public/images/posters/pumpkin-seeds-masterflyer.jpg', remote: '/naturesmud.shop/public/images/posters/pumpkin-seeds-masterflyer.jpg' }
     ];
 
     console.log('Uploading updated PDFs, posters, and cover assets...');

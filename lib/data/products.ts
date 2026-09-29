@@ -9,8 +9,8 @@ export const products: Product[] = [
     "name": "Pure Banana Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 450,
-    "compareAtPrice": 550,
+    "price": 590,
+    "compareAtPrice": 650,
     "rating": 4.9,
     "reviewCount": 28,
     "image": "/products/banana-powder.jpg",
@@ -29,7 +29,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
-    "mrp": 550,
+    "mrp": 650,
     "ingredients": [
       "100% Pure & Natural Himalayan Bananas"
     ],
@@ -82,8 +82,8 @@ export const products: Product[] = [
     "name": "Organic Moringa Leaf Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 550,
-    "compareAtPrice": 650,
+    "price": 690,
+    "compareAtPrice": 750,
     "rating": 4.9,
     "reviewCount": 36,
     "image": "/products/moringa-leaf-powder.jpg",
@@ -102,9 +102,9 @@ export const products: Product[] = [
       "organic"
     ],
     "stock": 50,
-    "weight": "200 GM",
+    "weight": "100 GM",
     "packing": "Glass Jar",
-    "mrp": 650,
+    "mrp": 750,
     "ingredients": [
       "100% Pure Organic Moringa Oleifera Leaves"
     ],
@@ -157,8 +157,8 @@ export const products: Product[] = [
     "name": "Freeze Dried Avocado Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 690,
-    "compareAtPrice": 820,
+    "price": 790,
+    "compareAtPrice": 900,
     "rating": 5,
     "reviewCount": 24,
     "image": "/products/avocado-powder.jpg",
@@ -179,7 +179,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
-    "mrp": 820,
+    "mrp": 900,
     "ingredients": [
       "100% Pure Freeze-Dried Fresh Himalayan Avocados"
     ],
@@ -376,14 +376,14 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "1010",
-    "dbId": 1010,
+    "id": "166",
+    "dbId": 166,
     "slug": "makhana-fox-nuts",
     "name": "Makhana (Fox Nuts)",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 350,
-    "compareAtPrice": 499.93,
+    "price": 390,
+    "compareAtPrice": 500,
     "rating": 4.8,
     "reviewCount": 12,
     "image": "/products/nm-makhana-jar.jpeg",
@@ -398,9 +398,9 @@ export const products: Product[] = [
       "new"
     ],
     "stock": 50,
-    "weight": "60 GM",
+    "weight": "50 GM",
     "packing": "Glass Jar",
-    "mrp": 250,
+    "mrp": 500,
     "ingredients": [
       "100% Pure Fox Nuts (Makhana)"
     ],
@@ -1275,8 +1275,8 @@ export const products: Product[] = [
     "name": "Raw Pumpkin Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
-    "price": 520,
-    "compareAtPrice": 520,
+    "price": 650,
+    "compareAtPrice": 650,
     "rating": 4.9,
     "reviewCount": 57,
     "image": "/images/posters/pure-pumpkin-seeds.jpg",
@@ -1298,7 +1298,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "300 GM",
     "packing": "Plastic Jar",
-    "mrp": 520,
+    "mrp": 650,
     "ingredients": [
       "100% Pure Raw Green Pumpkin Seed Kernels (Pepitas)"
     ],

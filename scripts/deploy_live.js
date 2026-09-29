@@ -109,15 +109,15 @@ if (!file_exists($zipFile)) {
     exit;
 }
 
-$zip = new ZipArchive();
-if ($zip->open($zipFile) !== TRUE) {
-    echo json_encode(['success' => false, 'error' => 'Could not open zip archive']);
+$out = [];
+$code = 0;
+exec("unzip -o " . escapeshellarg($zipFile) . " -d " . escapeshellarg($destDir) . " 2>&1", $out, $code);
+@unlink($zipFile);
+
+if ($code !== 0) {
+    echo json_encode(['success' => false, 'error' => 'Unzip failed with code ' . $code, 'output' => array_slice($out, -10)]);
     exit;
 }
-
-$zip->extractTo($destDir);
-$zip->close();
-@unlink($zipFile);
 
 function chmod_r($path) {
     if (!is_dir($path)) return;

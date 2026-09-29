@@ -142,7 +142,7 @@ export default function HomePage() {
       {/* 🎁 Side-by-Side Dual Offer & Combos Section (Baby Superfoods + Himalayan Festival Box) */}
       <section className="mx-auto max-w-7xl w-full px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-8 items-stretch">
-          {/* Left Side Offer: Baby & Mother Care Combos */}
+          {/* Left Side Offer: Dashain & Tihar Festival Gift Combos */}
           <div className="w-full flex justify-center md:justify-start">
             <ErrorBoundary name="Baby & Mother Combos">
               <BabyMotherCombosSection />

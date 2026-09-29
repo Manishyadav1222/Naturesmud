@@ -1,21 +1,22 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import {
-  Baby,
+  Gift,
   ShoppingBag,
   CheckCircle2,
-  ShieldCheck,
+  Timer,
   ChevronLeft,
   ChevronRight,
   Zap,
+  Sparkles,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
 
-export interface BabyMotherProductItem {
+export interface FestivalComboItem {
   productId: string;
   name: string;
   weight: string;
@@ -23,11 +24,11 @@ export interface BabyMotherProductItem {
   price: number;
 }
 
-export interface BabyMotherCombo {
+export interface FestivalCombo {
   id: string;
   title: string;
   subtitle: string;
-  stageName: string;
+  festivalLabel: string;
   badge: string;
   categoryIcon: string;
   categoryLabel: string;
@@ -35,91 +36,32 @@ export interface BabyMotherCombo {
   originalPrice: number;
   offerPrice: number;
   couponCode: string;
-  startDate?: string;
-  endDate?: string;
   tag: string;
   highlights: string[];
-  items: BabyMotherProductItem[];
-  purityNote: string;
+  items: FestivalComboItem[];
 }
 
-export const babyMotherCombos: BabyMotherCombo[] = [
+export const festivalCombos: FestivalCombo[] = [
   {
-    id: 'combo-baby-solids',
-    title: 'First Solids Whole Food Starter Kit',
-    subtitle: 'Sweet Potato, Carrot & Dates Powders',
-    stageName: '🍼 6–24m First Solids',
-    badge: '5% OFF · Single-Ingredient',
-    categoryIcon: '🍼',
-    categoryLabel: 'First Solids',
+    id: 'festival-himalayan-celebration',
+    title: 'Himalayan Festive Celebration Box',
+    subtitle: 'Sun-Dried Apples, Raw Mountain Almonds & Dates Powder',
+    festivalLabel: '🎉 Dashain & Tihar Festival Special',
+    badge: '5% OFF · Sacred Gift Box',
+    categoryIcon: '🎁',
+    categoryLabel: 'Gift Box',
     discountPercentage: 5,
-    originalPrice: 1400,
-    offerPrice: 1330,
+    originalPrice: 1408,
+    offerPrice: 1338,
     couponCode: 'STORE5',
-    startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    tag: 'Single-Ingredient',
-    purityNote: 'Pure whole vegetables and dried fruit with zero added sugar, zero salt, and zero preservatives.',
+    tag: 'Best Festival Pick',
     items: [
       {
-        productId: '25',
-        name: 'Sweet Potato Powder',
+        productId: '3',
+        name: 'Dehydrated Apple',
         weight: '100g',
-        image: '/products/sweet-potato-powder-100g.jpg',
-        price: 510,
-      },
-      {
-        productId: '24',
-        name: 'Carrot Powder',
-        weight: '100g',
-        image: '/products/carrot-powder-100g.jpg',
-        price: 490,
-      },
-      {
-        productId: '8',
-        name: 'Dates Powder Sweetener',
-        weight: '100g',
-        image: '/products/dates-powder-100g.jpg',
-        price: 400,
-      },
-    ],
-    highlights: [
-      'Naturally Rich in Beta-Carotene',
-      'Gentle Single-Ingredient Foods',
-      '0 Added Sugar · 0 Preservatives',
-      'Finely Milled Powder',
-    ],
-  },
-  {
-    id: 'combo-pregnancy-nourish',
-    title: 'Motherhood Pregnancy Complete Box',
-    subtitle: 'Sun-Dried Figs, Chia Seeds & Mountain Almonds',
-    stageName: '🤰 Pregnancy Trimesters 1, 2 & 3',
-    badge: '5% OFF · Maternal Nourish',
-    categoryIcon: '🤰',
-    categoryLabel: 'Pregnancy',
-    discountPercentage: 5,
-    originalPrice: 1785,
-    offerPrice: 1696,
-    couponCode: 'STORE5',
-    startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    tag: 'Folate & Iron Rich',
-    purityNote: 'Lab-tested organic mountain superfoods for maternal energy and fetal development.',
-    items: [
-      {
-        productId: '4',
-        name: 'Sun-Dried Himalayan Figs',
-        weight: '200g',
-        image: '/products/dehydrated-fig.jpg',
-        price: 690,
-      },
-      {
-        productId: '12',
-        name: 'Organic Black Chia Seeds',
-        weight: '300g',
-        image: '/products/chia-seeds.jpg',
-        price: 495,
+        image: '/products/dehydrated-apple.jpg',
+        price: 408,
       },
       {
         productId: '18',
@@ -128,127 +70,189 @@ export const babyMotherCombos: BabyMotherCombo[] = [
         image: '/products/almonds.jpg',
         price: 600,
       },
-    ],
-    highlights: [
-      'High Dietary Folate & Iron',
-      'Omega-3 ALA for Fetal Development',
-      'Calcium for Bone Density',
-      'Natural Fiber for Digestion',
-    ],
-  },
-  {
-    id: 'combo-baby-immunity-growth',
-    title: 'Baby Immunity & Weight Gain Superfood Kit',
-    subtitle: 'Sweet Potato Powder, Beetroot Powder & Dates Powder',
-    stageName: '🍼 6m–3y Baby Immunity & Growth',
-    badge: '5% OFF · 100% Baby-Safe',
-    categoryIcon: '🍼',
-    categoryLabel: 'Baby Immunity',
-    discountPercentage: 5,
-    originalPrice: 1244,
-    offerPrice: 1182,
-    couponCode: 'STORE5',
-    startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    tag: 'Immunity & Weight',
-    purityNote: '100% natural dehydrated whole vegetables and dates for healthy weight gain and natural immunity.',
-    items: [
-      {
-        productId: '25',
-        name: 'Sweet Potato Powder',
-        weight: '100g',
-        image: '/products/sweet-potato-powder-100g.jpg',
-        price: 510,
-      },
-      {
-        productId: '9',
-        name: 'Organic Beetroot Powder',
-        weight: '100g',
-        image: '/products/beetroot-powder-100g.jpg',
-        price: 334,
-      },
       {
         productId: '8',
-        name: 'Dates Powder Sweetener',
+        name: 'Dates Powder',
         weight: '100g',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
       },
     ],
     highlights: [
-      'Natural Beta-Carotene & Iron for Hemoglobin',
-      'Gentle Precooked Baby Weaning Powder',
-      '0 Added Sugar · 0 Preservatives · 0 Salt',
-      'Pediatrician-Grade Fine Milled Texture',
+      '100% Preservative-Free Sacred Gifting',
+      'Reusable Glass Jars + Free Festive Note',
+      'Same-Day Delivery Inside Kathmandu Valley',
+      'Naturally Dehydrated Himalayan Fruits',
     ],
   },
   {
-    id: 'combo-toddler-growth',
-    title: 'Toddler Super-Snack & Brain Bites',
-    subtitle: 'Dehydrated Apples, Pumpkin Seeds & Cranberries',
-    stageName: '🌱 2y+ Toddler Growth',
-    badge: '5% OFF · Smart Snacking',
-    categoryIcon: '🌱',
-    categoryLabel: 'Toddler Bites',
-    discountPercentage: 5,
-    originalPrice: 1480,
-    offerPrice: 1406,
-    couponCode: 'STORE5',
-    startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    tag: '100% Whole Fruit',
-    purityNote: 'Zero refined sugar or artificial colorings for energetic and healthy kids.',
+    id: 'festival-superfood-launch',
+    title: 'New Superfood Launch: Avocado, Strawberry & Anjeer',
+    subtitle: 'Freeze-Dried Avocado, Strawberry Powder & Premium Dry Figs',
+    festivalLabel: '✨ Brand New Lineup 2026 · Festival Edition',
+    badge: '10% OFF · New Launch',
+    categoryIcon: '🌟',
+    categoryLabel: 'New Launch',
+    discountPercentage: 10,
+    originalPrice: 2060,
+    offerPrice: 1854,
+    couponCode: 'SUPERFOOD10',
+    tag: 'Festival Trending',
     items: [
       {
-        productId: '3',
-        name: 'Sun-Dried Mountain Apple Slices',
+        productId: 'freeze-dried-avocado-powder',
+        name: 'Avocado Powder',
         weight: '100g',
-        image: '/products/dehydrated-apple.jpg',
-        price: 415,
+        image: '/products/avocado-powder.jpg',
+        price: 690,
+      },
+      {
+        productId: 'strawberry-powder',
+        name: 'Strawberry Powder',
+        weight: '200g',
+        image: '/products/strawberry-powder.jpg',
+        price: 620,
+      },
+      {
+        productId: 'dry-figs-anjeer',
+        name: 'Dry Figs Anjeer',
+        weight: '200g',
+        image: '/products/dry-figs-anjeer.jpg',
+        price: 850,
+      },
+    ],
+    highlights: [
+      'Freeze-Dried Avocado — 100% Nepal Origin',
+      'Pure Strawberry Powder — Zero Added Sugar',
+      'Sun-Dried Mountain Figs Rich in Iron & Fiber',
+      'Premium Gift-Ready Foil Pouches & Glass Jars',
+    ],
+  },
+  {
+    id: 'festival-wellness-box',
+    title: 'Maha Wellness & Immunity Festival Box',
+    subtitle: 'Mix Dry Nuts, Roasted Almonds & Beetroot Powder',
+    festivalLabel: '🧘 Total Health Festive Combo',
+    badge: '5% OFF · Family Wellness',
+    categoryIcon: '🧘',
+    categoryLabel: 'Wellness',
+    discountPercentage: 5,
+    originalPrice: 1486,
+    offerPrice: 1412,
+    couponCode: 'STORE5',
+    tag: 'Family Favourite',
+    items: [
+      {
+        productId: '20',
+        name: 'Mix Dry Nuts',
+        weight: '300g',
+        image: '/products/superfood-mix.jpg',
+        price: 552,
+      },
+      {
+        productId: '17',
+        name: 'Roasted Almonds',
+        weight: '100g',
+        image: '/products/almonds-2.jpg',
+        price: 600,
+      },
+      {
+        productId: '9',
+        name: 'Beetroot Powder',
+        weight: '100g',
+        image: '/products/beetroot-powder-100g.jpg',
+        price: 334,
+      },
+    ],
+    highlights: [
+      'Full Mineral & Vitamin Spectrum Daily',
+      'Blood Flow & Heart Health Support',
+      'Handpicked Organic from Nepal Co-ops',
+      'Perfect for Elders & Parents Festival Gift',
+    ],
+  },
+  {
+    id: 'festival-gym-pack',
+    title: 'Festival Gym & Workout Muscle Pack',
+    subtitle: 'Premium Cashews, Zinc Pumpkin Seeds & Chia Omega-3',
+    festivalLabel: '🏋️ Festival Workout Combo',
+    badge: '5% OFF · Athlete Special',
+    categoryIcon: '💪',
+    categoryLabel: 'Gym Pack',
+    discountPercentage: 5,
+    originalPrice: 1745,
+    offerPrice: 1658,
+    couponCode: 'STORE5',
+    tag: "Athletes' Festival Pick",
+    items: [
+      {
+        productId: '14',
+        name: 'Premium Cashews',
+        weight: '250g',
+        image: '/products/cashewnuts.jpg',
+        price: 600,
       },
       {
         productId: '13',
-        name: 'Organic Himalayan Pumpkin Seeds',
+        name: 'Raw Pumpkin Seeds',
         weight: '300g',
         image: '/products/pumpkin-seeds.jpg',
         price: 650,
       },
       {
-        productId: '7',
-        name: 'Whole Dried Cranberries',
-        weight: '100g',
-        image: '/products/cranberries.jpg',
-        price: 415,
+        productId: '12',
+        name: 'Chia Seeds',
+        weight: '300g',
+        image: '/products/chia-seeds.jpg',
+        price: 495,
       },
     ],
     highlights: [
-      'High-Protein Crunchy Mountain Snack',
-      'Natural Dietary Zinc & Magnesium',
-      'Antioxidants from Sun-Dried Berries',
-      '0 Added Sugar · 0 Flavours',
+      'High Plant Protein & Zinc for Muscle Repair',
+      'Plant Omega-3 to Reduce Joint Inflammation',
+      'Clean Pre/Post-Workout Zero Sugar Nutrition',
+      'Gift-Ready Festive Pack for the Gym Lover',
     ],
   },
 ];
 
-export default function BabyMotherCombosSection() {
+export default function FestivalCombosSection() {
   const router = useRouter();
   const [activeIdx, setActiveIdx] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const openDrawer = useCartStore((s) => s.openDrawer);
 
-  const currentCombo = babyMotherCombos[activeIdx] || babyMotherCombos[0];
+  // Countdown — ends at Tihar 2026 (Oct 20)
+  const [timeLeft, setTimeLeft] = useState({ days: 21, hours: 8, minutes: 30, seconds: 0 });
 
-  // Auto-cycle through combo tabs every 4s unless hovered
+  useEffect(() => {
+    const endDate = new Date('2026-10-20T23:59:59');
+    const tick = () => {
+      const diff = endDate.getTime() - Date.now();
+      if (diff <= 0) return;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  // Auto-cycle
   useEffect(() => {
     if (isHovered) return;
     const interval = setInterval(() => {
-      setActiveIdx((prev) => (prev + 1) % babyMotherCombos.length);
+      setActiveIdx((prev) => (prev + 1) % festivalCombos.length);
       setIsAdded(false);
     }, 4500);
-
     return () => clearInterval(interval);
   }, [isHovered]);
+
+  const currentCombo = festivalCombos[activeIdx] || festivalCombos[0];
 
   const handleClaimCombo = () => {
     useCartStore.getState().addItem(
@@ -259,8 +263,8 @@ export default function BabyMotherCombosSection() {
         price: currentCombo.offerPrice,
         compareAtPrice: currentCombo.originalPrice,
         image: currentCombo.items[0]?.image || '/products/superfood-mix.jpg',
-        weight: 'Care Pack Bundle',
-        category: 'Baby & Mother Care',
+        weight: 'Festival Gift Bundle',
+        category: 'Festival Combos',
       },
       1
     );
@@ -269,7 +273,7 @@ export default function BabyMotherCombosSection() {
     setTimeout(() => setIsAdded(false), 2400);
   };
 
-  const handleBuyNowCombo = () => {
+  const handleBuyNow = () => {
     useCartStore.getState().addItem(
       {
         id: currentCombo.id,
@@ -278,8 +282,8 @@ export default function BabyMotherCombosSection() {
         price: currentCombo.offerPrice,
         compareAtPrice: currentCombo.originalPrice,
         image: currentCombo.items[0]?.image || '/products/superfood-mix.jpg',
-        weight: 'Care Pack Bundle',
-        category: 'Baby & Mother Care',
+        weight: 'Festival Gift Bundle',
+        category: 'Festival Combos',
       },
       1
     );
@@ -287,13 +291,8 @@ export default function BabyMotherCombosSection() {
     router.push('/checkout');
   };
 
-  const nextTab = () => {
-    setActiveIdx((prev) => (prev + 1) % babyMotherCombos.length);
-  };
-
-  const prevTab = () => {
-    setActiveIdx((prev) => (prev - 1 + babyMotherCombos.length) % babyMotherCombos.length);
-  };
+  const nextTab = () => setActiveIdx((prev) => (prev + 1) % festivalCombos.length);
+  const prevTab = () => setActiveIdx((prev) => (prev - 1 + festivalCombos.length) % festivalCombos.length);
 
   return (
     <div
@@ -303,82 +302,76 @@ export default function BabyMotherCombosSection() {
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setIsHovered(false)}
     >
-      {/* Ambient decorative glow */}
-      <div className="absolute -inset-1 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-500/20 via-primary/15 to-gold/20 blur-lg opacity-50 group-hover:opacity-80 transition-opacity duration-700 pointer-events-none" />
+      {/* Festive ambient glow — crimson + gold */}
+      <div className="absolute -inset-1 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-red-600/25 via-amber-400/20 to-yellow-500/25 blur-lg opacity-60 group-hover:opacity-90 transition-opacity duration-700 pointer-events-none" />
 
-      {/* Main Card */}
-      <div className="relative rounded-2xl sm:rounded-3xl bg-white border border-ink/8 p-3.5 sm:p-5 shadow-sm overflow-hidden">
-        {/* Top Auto-Cycle Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1 bg-[#EAE3D6]/60 overflow-hidden">
+      {/* Main Festive Card */}
+      <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#FFF8F0] via-white to-[#FFF3E8] border border-amber-200/60 p-3.5 sm:p-5 shadow-sm overflow-hidden">
+
+        {/* Subtle festive diagonal pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #B91C1C 0, #B91C1C 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px' }}
+        />
+
+        {/* Top Auto-Cycle Progress Bar — crimson */}
+        <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1 bg-red-100 overflow-hidden">
           <motion.div
             key={activeIdx}
             initial={{ width: '0%' }}
-            animate={{ width: isHovered ? '100%' : '100%' }}
+            animate={{ width: '100%' }}
             transition={{ duration: isHovered ? 0 : 4.5, ease: 'linear' }}
-            className="h-full bg-[#1A3826]"
+            className="h-full bg-gradient-to-r from-red-600 to-amber-500"
           />
         </div>
 
-        {/* Top Header Row: Stage Ribbon & Controls */}
-        <div className="relative z-10 flex items-center justify-between gap-2 pb-2.5 border-b border-[#242220]/8 pt-0.5">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#F5F1EA] border border-[#EAE3D6]">
-            <Baby className="w-3 h-3 text-[#7A5230]" />
-            <span className="text-[11px] sm:text-xs font-semibold text-[#242220] font-sans">
-              {currentCombo.stageName}
+        {/* Header Row: Festival Ribbon & Countdown */}
+        <div className="relative z-10 flex items-center justify-between gap-2 pb-2.5 border-b border-amber-200/60 pt-0.5">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-red-600/10 via-amber-400/10 to-yellow-400/10 border border-red-300/40">
+            <Sparkles className="w-3 h-3 text-red-600" />
+            <span className="text-[11px] sm:text-xs font-bold text-red-800 font-heading truncate max-w-[150px] sm:max-w-none">
+              {currentCombo.festivalLabel}
             </span>
           </div>
 
           <div className="flex items-center gap-1.5">
-            {/* Quick Next/Prev Controls */}
+            {/* Prev / Next */}
             <div className="flex items-center gap-1">
-              <button
-                onClick={prevTab}
-                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Previous combo"
-              >
+              <button onClick={prevTab} className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 flex items-center justify-center transition-colors cursor-pointer" aria-label="Previous offer">
                 <ChevronLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
-              <button
-                onClick={nextTab}
-                className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Next combo"
-              >
+              <button onClick={nextTab} className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-amber-50 hover:bg-amber-100 text-amber-800 flex items-center justify-center transition-colors cursor-pointer" aria-label="Next offer">
                 <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
               </button>
             </div>
 
-            {/* Whole Food Guarantee Badge */}
-            <div className="hidden sm:flex items-center gap-1 text-[10px] sm:text-[11px] font-medium text-[#1A3826] bg-[#F5F1EA] border border-[#EAE3D6] px-2.5 py-0.5 rounded-full">
-              <ShieldCheck className="w-3 h-3 text-[#1A3826]" />
-              <span>100% Pure · 0 Additives</span>
+            {/* Countdown Clock */}
+            <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-red-800 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">
+              <Timer className="w-3 h-3 text-red-600 animate-pulse" />
+              <span className="font-bold">
+                {timeLeft.days}d {String(timeLeft.hours).padStart(2,'0')}h:{String(timeLeft.minutes).padStart(2,'0')}m:{String(timeLeft.seconds).padStart(2,'0')}s
+              </span>
             </div>
           </div>
         </div>
 
-        {/* 4 Stage Switcher Tabs */}
+        {/* Festival Category Tabs */}
         <div className="relative z-10 flex items-center gap-1 pt-2 pb-2 overflow-x-auto no-scrollbar scroll-smooth">
-          {babyMotherCombos.map((combo, idx) => {
+          {festivalCombos.map((combo, idx) => {
             const isSelected = idx === activeIdx;
             return (
               <button
                 key={combo.id}
-                onClick={() => {
-                  setActiveIdx(idx);
-                  setIsAdded(false);
-                }}
-                className={`px-2 sm:px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-medium whitespace-nowrap transition-all duration-200 flex items-center gap-1 cursor-pointer border shrink-0 font-sans ${
+                onClick={() => { setActiveIdx(idx); setIsAdded(false); }}
+                className={`px-2 sm:px-2.5 py-1 rounded-xl text-[10px] sm:text-xs font-bold whitespace-nowrap transition-all duration-200 flex items-center gap-1 cursor-pointer border shrink-0 ${
                   isSelected
-                    ? 'bg-[#1A3826] text-[#FAF7F2] border-[#1A3826] shadow-2xs'
-                    : 'bg-[#F5F1EA] hover:bg-[#EAE3D6] text-[#242220]/70 border-transparent'
+                    ? 'bg-gradient-to-r from-red-600 to-amber-500 text-white border-red-500 shadow-sm'
+                    : 'bg-amber-50/80 hover:bg-amber-100 text-amber-900 border-transparent'
                 }`}
               >
                 <span>{combo.categoryIcon}</span>
                 <span>{combo.categoryLabel}</span>
-                <span
-                  className={`text-[9px] px-1 py-0.1 rounded-full font-semibold ${
-                    isSelected ? 'bg-white/20 text-[#FAF7F2]' : 'bg-[#7A5230]/10 text-[#7A5230]'
-                  }`}
-                >
+                <span className={`text-[9px] px-1 rounded-full font-extrabold ${isSelected ? 'bg-white/20 text-white' : 'bg-red-100 text-red-700'}`}>
                   -{combo.discountPercentage}%
                 </span>
               </button>
@@ -386,7 +379,7 @@ export default function BabyMotherCombosSection() {
           })}
         </div>
 
-        {/* Dynamic Offer Content Area with Compact Min-Height */}
+        {/* Dynamic Content */}
         <div className="relative min-h-[210px] sm:min-h-[260px] lg:min-h-[290px] flex flex-col justify-between">
           <AnimatePresence mode="wait">
             <motion.div
@@ -397,38 +390,34 @@ export default function BabyMotherCombosSection() {
               transition={{ duration: 0.2 }}
               className="relative z-10 pt-1 space-y-2.5 flex flex-col justify-between h-full"
             >
-              {/* Title & Tagline */}
+              {/* Title & Badge */}
               <div>
                 <div className="flex items-center justify-between gap-1.5 flex-wrap">
                   <div className="flex items-center gap-1.5">
-                    <span className="px-2 py-0.2 rounded-full bg-[#F5F1EA] text-[#1A3826] border border-[#EAE3D6] font-sans text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase">
+                    <span className="px-2 py-0.5 rounded-md bg-gradient-to-r from-red-600/15 to-amber-500/15 text-red-800 border border-red-200/60 font-heading text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider">
                       {currentCombo.badge}
                     </span>
-                    <span className="text-[10px] text-[#242220]/60 font-normal">✨ {currentCombo.tag}</span>
+                    <span className="text-[10px] text-amber-700 font-medium">🪔 {currentCombo.tag}</span>
                   </div>
-                  {currentCombo.startDate && currentCombo.endDate && (
-                    <span className="text-[9px] sm:text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
-                      📅 Sep 01 – Sep 30, 2026
-                    </span>
-                  )}
+                  <span className="text-[9px] sm:text-[10px] font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-300 shrink-0">
+                    🗓️ Oct 2–20, 2026
+                  </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-base sm:text-lg text-[#1A3826] mt-1 leading-snug">
+                <h3 className="font-heading font-extrabold text-base sm:text-lg text-red-900 mt-1 leading-snug">
                   {currentCombo.title}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-[#242220]/70 mt-0.5 line-clamp-1 font-sans">
-                  {currentCombo.subtitle}
-                </p>
+                <p className="text-[11px] sm:text-xs text-amber-800/70 mt-0.5 line-clamp-1">{currentCombo.subtitle}</p>
               </div>
 
-              {/* Multi-Product Thumbnail Stack (Compact) */}
-              <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#FAF7F2] border border-[#EAE3D6]/70">
+              {/* Product Thumbnails */}
+              <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-amber-50 via-white to-amber-50 border border-amber-200/50 shadow-sm">
                 <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                   {currentCombo.items.map((item, i) => (
                     <div
                       key={item.productId}
-                      className="group/item relative flex flex-col items-center text-center p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white border border-[#EAE3D6]/60 shadow-2xs transition-all"
+                      className="group/item relative flex flex-col items-center text-center p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white border border-amber-100 shadow-sm transition-all hover:border-amber-300"
                     >
-                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden mb-1 bg-[#FAF7F2]">
+                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden mb-1 bg-amber-50">
                         <Image
                           src={item.image || '/products/superfood-mix.jpg'}
                           alt={item.name}
@@ -437,16 +426,12 @@ export default function BabyMotherCombosSection() {
                           className="object-cover transition-transform duration-300 group-hover/item:scale-105"
                         />
                       </div>
-                      <p className="text-[10px] sm:text-[11px] font-bold text-[#242220] leading-tight line-clamp-1">
-                        {item.name}
-                      </p>
-                      <p className="text-[9px] text-[#242220]/50 font-mono mt-0.2">
-                        {item.weight && /^\d+(\.00)?$/.test(item.weight.trim()) ? `${parseFloat(item.weight)} GM` : item.weight}
-                      </p>
+                      <p className="text-[10px] sm:text-[11px] font-bold text-red-900 leading-tight line-clamp-1">{item.name}</p>
+                      <p className="text-[9px] text-amber-700 font-mono mt-0.5">{item.weight}</p>
 
-                      {/* Plus connector between images */}
+                      {/* Plus connector */}
                       {i < currentCombo.items.length - 1 && (
-                        <div className="hidden sm:flex absolute -right-1.5 top-1/2 -translate-y-1/2 z-10 w-3 h-3 rounded-full bg-[#1A3826] text-white items-center justify-center text-[8px] font-bold">
+                        <div className="hidden sm:flex absolute -right-1.5 top-1/2 -translate-y-1/2 z-10 w-3 h-3 rounded-full bg-red-600 text-white items-center justify-center text-[8px] font-bold">
                           +
                         </div>
                       )}
@@ -455,46 +440,46 @@ export default function BabyMotherCombosSection() {
                 </div>
               </div>
 
-              {/* Combo Benefits Checklist (Visible on tablet/desktop, compact single line on mobile) */}
+              {/* Highlights */}
               <div className="hidden sm:grid grid-cols-2 gap-1 py-0.5">
                 {currentCombo.highlights.slice(0, 2).map((hl, i) => (
-                  <div key={i} className="flex items-center gap-1 text-[11px] text-[#242220]/80 font-sans">
-                    <CheckCircle2 className="w-3 h-3 text-[#1A3826] shrink-0" />
+                  <div key={i} className="flex items-center gap-1 text-[11px] text-amber-900">
+                    <CheckCircle2 className="w-3 h-3 text-red-600 shrink-0" />
                     <span className="line-clamp-1">{hl}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Pricing & Action Buttons */}
-              <div className="pt-2 border-t border-[#242220]/8 flex items-center justify-between gap-2">
+              {/* Price & CTA */}
+              <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between gap-2">
                 <div>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="font-heading font-extrabold text-lg sm:text-xl text-[#1A3826]">
+                    <span className="font-heading font-extrabold text-lg sm:text-xl text-red-700">
                       Rs. {currentCombo.offerPrice.toLocaleString()}
                     </span>
-                    <span className="text-[11px] text-[#242220]/40 line-through">
+                    <span className="text-[11px] text-gray-400 line-through">
                       Rs. {currentCombo.originalPrice.toLocaleString()}
                     </span>
                   </div>
-                  <p className="text-[9px] sm:text-[10px] text-[#242220]/60 font-sans">
-                    ✓ Free Delivery in Nepal
+                  <p className="text-[9px] sm:text-[10px] text-amber-700 font-medium">
+                    🎁 Free Festive Wrapping + Delivery
                   </p>
                 </div>
 
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={handleClaimCombo}
-                    className="inline-flex items-center gap-1 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-heading font-bold bg-[#FAF7F2] hover:bg-[#EAE3D6] text-[#1A3826] border border-[#EAE3D6] transition-all active:scale-95 cursor-pointer shadow-2xs"
+                    className="inline-flex items-center gap-1 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-heading font-bold bg-amber-50 hover:bg-amber-100 text-red-800 border border-amber-300 transition-all active:scale-95 cursor-pointer shadow-sm"
                   >
                     <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    <span>{isAdded ? 'Added!' : 'Add'}</span>
+                    <span>{isAdded ? 'Added! 🎉' : 'Add'}</span>
                   </button>
 
                   <button
-                    onClick={handleBuyNowCombo}
-                    className="inline-flex items-center gap-1 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-heading font-bold bg-[#1A3826] hover:bg-[#2A4D38] text-white transition-all active:scale-95 cursor-pointer shadow-2xs"
+                    onClick={handleBuyNow}
+                    className="inline-flex items-center gap-1 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-heading font-bold bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-700 hover:to-amber-600 text-white transition-all active:scale-95 cursor-pointer shadow-sm"
                   >
-                    <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-300" />
+                    <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-yellow-200" />
                     <span>Buy Now</span>
                   </button>
                 </div>

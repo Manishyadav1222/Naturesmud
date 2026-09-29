@@ -691,7 +691,7 @@ async function createPoster() {
       <text x="50" y="39" class="sans" font-size="10" fill="#666">AAA grade pepitas high in zinc &amp; magnesium for sleep &amp; immunity</text>
       <text x="360" y="29" class="sans" font-size="11.5" font-weight="bold" fill="#333">300 GM</text>
       <text x="440" y="29" class="sans" font-size="11" fill="#555">Plastic Jar</text>
-      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 520</text>
+      <text x="655" y="31" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#1B3D2F">Rs. 650</text>
     </g>
 
     <!-- 3. Coconut Oil 500ml -->
