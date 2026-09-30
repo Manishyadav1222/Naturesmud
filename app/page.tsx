@@ -63,12 +63,14 @@ export default function HomePage() {
     async function fetchData() {
       try {
         const [productsRes, blogsRes, featuredBlogsRes] = await Promise.all([
-          api.get('/products', { params: { per_page: 100 } }),
-          api.get('/blogs', { params: { per_page: 50 } }),
-          api.get('/blogs', { params: { featured: true, per_page: 4 } })
+          api.get('/products', { params: { per_page: 100, _t: Date.now() } }),
+          api.get('/blogs', { params: { per_page: 50, _t: Date.now() } }),
+          api.get('/blogs', { params: { featured: true, per_page: 4, _t: Date.now() } })
         ]);
         if (productsRes.data && productsRes.data.data) {
-          const apiProducts = productsRes.data.data.map((p: any) => normalizeProduct(p));
+          const apiProducts = productsRes.data.data
+            .map((p: any) => normalizeProduct(p))
+            .filter((p: any) => p.isActive !== false);
           setDynamicProducts(apiProducts);
           setFeaturedProducts(apiProducts.filter((p: any) => p.isFeatured).slice(0, 8));
           setTrendingProducts(apiProducts.slice(0, 4));
@@ -353,8 +355,8 @@ export default function HomePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {[
-                { src: '/products/dates-powder.jpg', label: 'Dates Powder Fuel', likes: 342, tag: 'Dates Powder' },
-                { src: '/products/coconut-oil.jpg', label: 'Virgin Cold-Pressed', likes: 512, tag: 'Coconut Oil' },
+                { src: '/products/nm-pistachio-jar.jpg', label: 'Premium Pistachio Roasted & Salted', likes: 487, tag: 'Pistachio' },
+                { src: '/products/nm-cashew-new-jar.jpg', label: 'Naturesmud Premium Cashew', likes: 612, tag: 'Cashew' },
                 { src: '/products/authentic-dehydrated-mango.jpg', label: 'Tarai Sun-Ripened Mango', likes: 678, tag: 'Mango' },
                 { src: '/products/almonds-2.jpg', label: 'Roasted Himalayan Almonds', likes: 819, tag: 'Almonds' },
               ].map((item, i) => (
@@ -504,104 +506,256 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* SEO Authority & Regional Knowledge Section for Nepal Search Dominance */}
-      <section className="py-10 sm:py-14 lg:py-16 bg-[#F8F5EE] border-t border-ink/10 text-ink">
-        <div className="container-nm">
-          <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-            <div className="text-center space-y-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-2xs">
-                About NaturesMud Nepal (naturesmud.com)
-              </span>
-              <h2 className="font-heading font-extrabold text-xl sm:text-2xl lg:text-4xl text-ink">
-                Nepal&apos;s Trusted Superfoods & Himalayan Nutrition Brand
+      {/* 🏔️ About NaturesMud Nepal (naturesmud.com) — Animated Brand Authority & Regional Knowledge */}
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#F8F5EE] via-[#F4EFE6] to-[#FAF7F2] border-t border-ink/10 text-ink relative overflow-hidden">
+        {/* Soft background ambient glows */}
+        <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none animate-float-slow" />
+        <div className="absolute bottom-0 -right-32 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none animate-float-slower" />
+
+        <div className="container-nm relative z-10">
+          <div className="max-w-5xl mx-auto space-y-8 sm:space-y-10">
+            {/* Header Badge & Title */}
+            <ScrollReveal direction="up" distance={25} className="text-center space-y-3 max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-[#3A6B35]/25 shadow-2xs backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                </span>
+                <span className="text-xs font-extrabold uppercase tracking-widest text-[#3A6B35] font-sans">
+                  About NaturesMud Nepal (naturesmud.com)
+                </span>
+              </div>
+
+              <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-ink tracking-tight leading-snug">
+                Nepal&apos;s Trusted Superfoods &{' '}
+                <span className="bg-gradient-to-r from-primary via-emerald-700 to-teal-800 bg-clip-text text-transparent">
+                  Himalayan Nutrition Brand
+                </span>
               </h2>
-              <p className="text-sm sm:text-base text-ink/75 leading-relaxed">
-                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition brand.
+
+              <p className="text-sm sm:text-base text-ink/75 leading-relaxed font-sans max-w-2xl mx-auto">
+                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition pioneer dedicated to 100% single-origin authenticity.
               </p>
+            </ScrollReveal>
+
+            {/* 4 Interactive 3D Bento Glass Cards with Framer Motion hover */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {/* Card 1 */}
+              <motion.div
+                whileHover={{ y: -6, scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="group relative bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-ink/8 hover:border-amber-400/50 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 flex flex-col justify-between overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-2xl bg-amber-100/80 border border-amber-300/50 flex items-center justify-center text-amber-700 shadow-2xs group-hover:scale-110 transition-transform">
+                    <Sparkles className="w-5 h-5 text-amber-600 animate-pulse" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
+                    100% Natural Dehydrated Powders in 100g Glass Jars
+                  </h3>
+                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
+                    Our bestselling product line includes pure{' '}
+                    <Link href="/products/sweet-potato-powder" className="text-primary font-bold hover:underline">Sweet Potato Powder</Link>,{' '}
+                    <Link href="/products/dates-powder" className="text-primary font-bold hover:underline">Dates Powder</Link>,{' '}
+                    <Link href="/products/beetroot-powder" className="text-primary font-bold hover:underline">Beetroot Powder</Link>, and{' '}
+                    <Link href="/products/carrot-powder" className="text-primary font-bold hover:underline">Carrot Powder</Link>. Each jar is gently dehydrated below 42°C with <strong className="text-emerald-800">0 additives and 0 preservatives</strong>.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    &lt; 42°C Cold Dry
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    UV Amber Glass
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
+                    0 Preservatives
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Card 2 */}
+              <motion.div
+                whileHover={{ y: -6, scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="group relative bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-ink/8 hover:border-emerald-400/50 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 flex flex-col justify-between overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-2xl bg-emerald-100/80 border border-emerald-300/50 flex items-center justify-center text-emerald-700 shadow-2xs group-hover:scale-110 transition-transform">
+                    <Sprout className="w-5 h-5 text-emerald-700" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
+                    Direct Fair-Trade Partnership with 180+ Nepali Farms
+                  </h3>
+                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
+                    NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts (Terai, Midland Hills & High Himalayas). By eliminating middlemen, our farm partners receive <strong className="text-emerald-800">+35% above-market fair-trade wages</strong>.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    180+ Farm Co-ops
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    0 Middlemen
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
+                    +35% Fair Income
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Card 3 */}
+              <motion.div
+                whileHover={{ y: -6, scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="group relative bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-ink/8 hover:border-rose-400/50 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 flex flex-col justify-between overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-rose-400/10 rounded-full blur-2xl group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-2xl bg-rose-100/80 border border-rose-300/50 flex items-center justify-center text-rose-700 shadow-2xs group-hover:scale-110 transition-transform">
+                    <Baby className="w-5 h-5 text-rose-600" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
+                    Safe Baby Weaning & Pediatric Nutrition
+                  </h3>
+                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
+                    Trusted by thousands of Nepali mothers and recommended by pediatricians for baby food weaning (6+ months). 100% lab-verified with zero chemical additives, zero added salt, and zero artificial coloring.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
+                  <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-[10px] font-bold text-rose-800 border border-rose-200">
+                    Pediatrician Approved
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    Lab Verified
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
+                    Zero Artificial Dyes
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Card 4 */}
+              <motion.div
+                whileHover={{ y: -6, scale: 1.015 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="group relative bg-white/95 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-ink/8 hover:border-teal-400/50 shadow-sm hover:shadow-xl transition-all duration-300 space-y-3 flex flex-col justify-between overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-400/10 rounded-full blur-2xl group-hover:opacity-100 transition-opacity pointer-events-none" />
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-2xl bg-teal-100/80 border border-teal-300/50 flex items-center justify-center text-teal-700 shadow-2xs group-hover:scale-110 transition-transform">
+                    <Truck className="w-5 h-5 text-teal-700" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
+                    Express Delivery Across All 7 Provinces of Nepal
+                  </h3>
+                  <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
+                    Kathmandu Valley delivery within 24 hours. Doorstep courier to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Nepalgunj, and beyond. Free express shipping on orders over Rs. 3,000.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-[10px] font-bold text-amber-800 border border-amber-200">
+                    ⚡ 24h Valley Delivery
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
+                    All 77 Districts
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
+                    Free &gt; Rs. 3,000
+                  </span>
+                </div>
+              </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 text-sm text-ink/80 leading-relaxed">
-              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-gold-600" />
-                  100% Natural Dehydrated Powders in 100g Glass Jars
-                </h3>
-                <p className="text-xs sm:text-sm">
-                  Our bestselling product line includes pure <Link href="/products/sweet-potato-powder" className="text-primary font-semibold hover:underline">Sweet Potato Powder</Link>, <Link href="/products/dates-powder" className="text-primary font-semibold hover:underline">Dates Powder</Link>, <Link href="/products/beetroot-powder" className="text-primary font-semibold hover:underline">Beetroot Powder</Link>, and <Link href="/products/carrot-powder" className="text-primary font-semibold hover:underline">Carrot Powder</Link>. Each jar is gently dehydrated below 42°C with <strong>0 additives and 0 preservatives</strong>.
-                </p>
-              </div>
-
-              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
-                  <Sprout className="w-4 h-4 text-primary" />
-                  Direct Fair-Trade Partnership with 180+ Nepali Farms
-                </h3>
-                <p className="text-xs sm:text-sm">
-                  NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts. By eliminating middlemen, our farmers receive +35% above-market compensation.
-                </p>
-              </div>
-
-              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
-                  <Baby className="w-4 h-4 text-rose-500" />
-                  Safe Baby Weaning & Pediatric Nutrition
-                </h3>
-                <p className="text-xs sm:text-sm">
-                  Trusted by thousands of Nepali mothers and pediatricians. 100% lab-verified with zero chemical additives or artificial colors.
-                </p>
-              </div>
-
-              <div className="bg-white p-4 sm:p-6 rounded-2xl border border-ink/5 shadow-2xs space-y-3">
-                <h3 className="font-heading font-bold text-sm sm:text-base text-ink flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-primary" />
-                  Express Delivery Across All 7 Provinces of Nepal
-                </h3>
-                <p className="text-xs sm:text-sm">
-                  Kathmandu Valley delivery within 24 hours. Nationwide courier to Pokhara, Chitwan, Butwal, Biratnagar, and beyond. Free shipping on orders over Rs. 3,000.
-                </p>
-              </div>
-            </div>
-
+            {/* Popular Searches Animated Floating Pill Cloud */}
             <div className="text-center pt-2">
-              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-ink/70">
-                <span className="font-bold text-ink">Popular Searches:</span>
-                <Link href="/products?category=powders" className="hover:text-primary underline">Sweet Potato Powder Nepal</Link>
-                <span>•</span>
-                <Link href="/products/dates-powder" className="hover:text-primary underline">Dates Powder</Link>
-                <span>•</span>
-                <Link href="/products/beetroot-powder" className="hover:text-primary underline">Beetroot Powder</Link>
-                <span>•</span>
-                <Link href="/catalog" className="hover:text-primary underline font-bold text-primary">View Catalog</Link>
+              <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-semibold text-ink/75 p-3 rounded-2xl bg-white/70 border border-ink/5 shadow-2xs backdrop-blur-xs">
+                <span className="font-extrabold text-ink flex items-center gap-1">
+                  <Search className="w-3.5 h-3.5 text-primary" />
+                  Popular Searches:
+                </span>
+                <Link href="/products?category=powders" className="hover:text-primary hover:underline transition-colors">Sweet Potato Powder Nepal</Link>
+                <span className="text-ink/30">•</span>
+                <Link href="/products/dates-powder" className="hover:text-primary hover:underline transition-colors">Dates Powder</Link>
+                <span className="text-ink/30">•</span>
+                <Link href="/products/beetroot-powder" className="hover:text-primary hover:underline transition-colors">Beetroot Powder</Link>
+                <span className="text-ink/30">•</span>
+                <Link href="/products/banana-powder" className="hover:text-primary hover:underline transition-colors">Banana Powder</Link>
+                <span className="text-ink/30">•</span>
+                <Link href="/catalog" className="hover:text-primary hover:underline font-extrabold text-primary flex items-center gap-1">
+                  <span>View Master Catalog</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust section — 100% Natural hanging like pendulum */}
-      <ScrollReveal direction="up" distance={20}>
-        <section className="bg-white py-8 sm:py-10 overflow-hidden w-full max-w-full">
-          <div className="container-nm flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-            {['0 Additives · 0 Preservatives', 'From Local Farms', '100% Natural', 'Pure Himalayan', 'Fair Trade'].map((trust) => (
-              <span
-                key={trust}
-                className={`flex items-center gap-2 text-ink/50 font-heading text-xs sm:text-sm ${
-                  trust === '100% Natural' ? 'pendulum-hang text-primary font-semibold' : ''
-                }`}
-                style={trust === '100% Natural' ? { marginTop: '26px' } : undefined}
-              >
-                <BadgeCheck className={`w-4 h-4 ${trust === '100% Natural' ? 'text-gold-600' : 'text-primary'}`} />
-                {trust === '100% Natural' && (
-                  <span className="animated-leaf">
-                    <Leaf className="w-4 h-4 text-primary" />
-                  </span>
-                )}
-                {trust}
-              </span>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
+      {/* 🌿 Continuous Animated Trust Marquee Strip:
+          "0 Additives · 0 Preservatives / From Local Farms / 100% Natural / Pure Himalayan / Fair Trade / Free Delivery / 0 Additives / Quality Assured" */}
+      <section className="bg-white py-6 sm:py-8 border-y border-ink/6 overflow-hidden w-full relative">
+        {/* Soft edge gradient fades for infinite glide aesthetic */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
+
+        <div className="flex overflow-hidden select-none">
+          {/* Continuous looping track with Framer Motion */}
+          <motion.div
+            className="flex items-center gap-4 sm:gap-6 shrink-0"
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{
+              repeat: Infinity,
+              ease: 'linear',
+              duration: 24,
+            }}
+          >
+            {[
+              { label: '0 Additives · 0 Preservatives', icon: Sparkles, iconColor: 'text-emerald-600', highlight: true },
+              { label: 'From Local Farms', icon: Sprout, iconColor: 'text-primary' },
+              { label: '100% Natural', icon: Leaf, iconColor: 'text-emerald-600', isPendulum: true },
+              { label: 'Pure Himalayan', icon: Flag, iconColor: 'text-amber-600' },
+              { label: 'Fair Trade', icon: Heart, iconColor: 'text-rose-500' },
+              { label: 'Free Delivery', icon: Truck, iconColor: 'text-teal-600' },
+              { label: '0 Additives', icon: ShieldCheck, iconColor: 'text-primary' },
+              { label: 'Quality Assured', icon: Award, iconColor: 'text-gold-600', isGold: true },
+              // Duplicate once for infinite seamless loop
+              { label: '0 Additives · 0 Preservatives', icon: Sparkles, iconColor: 'text-emerald-600', highlight: true },
+              { label: 'From Local Farms', icon: Sprout, iconColor: 'text-primary' },
+              { label: '100% Natural', icon: Leaf, iconColor: 'text-emerald-600', isPendulum: true },
+              { label: 'Pure Himalayan', icon: Flag, iconColor: 'text-amber-600' },
+              { label: 'Fair Trade', icon: Heart, iconColor: 'text-rose-500' },
+              { label: 'Free Delivery', icon: Truck, iconColor: 'text-teal-600' },
+              { label: '0 Additives', icon: ShieldCheck, iconColor: 'text-primary' },
+              { label: 'Quality Assured', icon: Award, iconColor: 'text-gold-600', isGold: true },
+            ].map((badge, bIdx) => {
+              const BadgeIcon = badge.icon;
+              return (
+                <div
+                  key={bIdx}
+                  className={`inline-flex items-center gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border shadow-2xs text-xs sm:text-sm font-heading whitespace-nowrap transition-transform duration-300 hover:scale-105 ${
+                    badge.highlight
+                      ? 'bg-emerald-50/90 border-emerald-300/80 text-emerald-900 font-bold'
+                      : badge.isGold
+                      ? 'bg-amber-50/90 border-amber-300/80 text-amber-950 font-bold'
+                      : 'bg-cream-50/80 border-ink/8 text-ink/80 font-semibold hover:bg-white'
+                  }`}
+                >
+                  <BadgeIcon className={`w-4 h-4 shrink-0 ${badge.iconColor} ${badge.highlight ? 'animate-pulse' : ''}`} />
+                  {badge.isPendulum && (
+                    <span className="animated-leaf">
+                      <Leaf className="w-3.5 h-3.5 text-primary" />
+                    </span>
+                  )}
+                  <span>{badge.label}</span>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }

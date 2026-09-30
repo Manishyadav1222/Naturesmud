@@ -240,7 +240,7 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     name: 'Roasted Cashews',
     subname: 'Premium Harvest Slow-Roasted Golden Cashews',
     slug: 'roasted-cashewnuts',
-    image: '/products/posters/cashews-tropical-leaves-2k.jpg',
+    image: '/products/nm-cashew-new-jar.jpg',
     price: 750,
     originalPrice: 750,
     weight: '150g',
@@ -421,6 +421,40 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     bgTint: 'rgba(63, 98, 18, 0.08)',
     overlayFrom: 'rgba(63,98,18,0.30)',
     overlayTo: 'rgba(20,35,5,0.85)',
+  },
+  {
+    id: 'premium-pistachio',
+    name: 'Premium Pistachio',
+    subname: 'Roasted & Salted — Rich in Vitamin B6, Antioxidants & Heart-Healthy Fats',
+    slug: 'premium-pistachio-roasted-salted',
+    image: '/products/nm-pistachio-jar.jpg',
+    price: 1250,
+    originalPrice: 1400,
+    weight: '200g',
+    badge: '🍃 100% Natural',
+    primary: '#3D6B1A',
+    secondary: '#2D5012',
+    accent: '#A8D663',
+    bgTint: 'rgba(61, 107, 26, 0.08)',
+    overlayFrom: 'rgba(61,107,26,0.32)',
+    overlayTo: 'rgba(15,35,5,0.88)',
+  },
+  {
+    id: 'premium-cashew-new',
+    name: 'Premium Cashew',
+    subname: 'Naturesmud Signature — Buttery Whole W240 Grade Cashews',
+    slug: 'premium-cashewnuts',
+    image: '/products/nm-cashew-new-jar.jpg',
+    price: 750,
+    originalPrice: 750,
+    weight: '200g',
+    badge: '👑 Jumbo W240 Grade',
+    primary: '#C2410C',
+    secondary: '#9A3412',
+    accent: '#FBBF24',
+    bgTint: 'rgba(194, 65, 12, 0.08)',
+    overlayFrom: 'rgba(194,65,12,0.32)',
+    overlayTo: 'rgba(50,15,0,0.88)',
   },
 ];
 
@@ -718,25 +752,64 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
             </Link>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2.5 lg:gap-3.5 pt-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-[#EAE3D6] shadow-2xs">
-              <div className="flex items-center text-[#7A5230]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-[#7A5230] text-[#7A5230]" />
+          {/* Animated Customer Proof & Live Trust Capsule */}
+          <div className="flex flex-wrap items-center gap-2.5 lg:gap-3.5 pt-1 w-full">
+            {/* 1. Avatars + Rating pill with micro-animations */}
+            <div className="group inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-[#EAE3D6] shadow-2xs hover:shadow-md hover:border-amber-300/60 transition-all duration-300 cursor-default">
+              {/* Floating overlapping customer avatars */}
+              <div className="flex -space-x-2">
+                {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
+                  <span
+                    key={idx}
+                    className="relative inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-amber-50 to-emerald-50 border-2 border-white shadow-2xs text-xs select-none transition-transform duration-300 hover:scale-125 hover:z-20 animate-float"
+                    style={{
+                      animationDelay: `${idx * 0.4}s`,
+                      animationDuration: '3s',
+                    }}
+                  >
+                    {emoji}
+                    {idx === 0 && (
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 ring-1 ring-white animate-pulse" />
+                    )}
+                  </span>
                 ))}
               </div>
-              <span className="text-xs font-bold text-[#242220]">4.9 / 5</span>
-              <span className="text-[11px] text-[#242220]/70 font-medium">· 25,000+ Happy Nepalis</span>
+
+              {/* Stars & Score */}
+              <div className="flex items-center gap-1.5 pl-0.5">
+                <div className="flex items-center text-amber-500">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 drop-shadow-xs" />
+                  ))}
+                </div>
+                <span className="text-xs font-heading font-extrabold text-[#242220]">4.9 / 5</span>
+                <span className="inline-flex items-center gap-1 text-[11px] text-[#242220]/75 font-semibold font-sans">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                  25,000+ Happy Nepalis
+                </span>
+              </div>
             </div>
 
-            <span className="inline-flex items-center gap-1.5 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 text-xs font-bold text-emerald-800 shadow-2xs">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-              100% Nepali Origin
+            {/* 2. ⚡ 24h Valley Delivery with electric pulse badge */}
+            <span className="group inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-50 via-emerald-50 to-teal-50 px-3.5 py-2 rounded-full border border-amber-200/70 hover:border-emerald-400 text-xs font-bold text-emerald-900 shadow-2xs hover:shadow-xs transition-all duration-300 cursor-default">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              <span className="text-amber-600 font-black">⚡</span>
+              <span className="font-heading font-bold">24h Valley Delivery</span>
             </span>
 
-            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-full border border-[#EAE3D6] text-xs font-semibold text-[#242220] shadow-2xs">
-              <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
-              24h Valley Delivery
+            {/* 3. 100% Nepali Origin */}
+            <span className="group inline-flex items-center gap-1.5 bg-white/95 px-3.5 py-2 rounded-full border border-emerald-200/80 hover:border-emerald-400 text-xs font-bold text-emerald-800 shadow-2xs hover:shadow-xs transition-all duration-300 cursor-default">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 group-hover:scale-110 transition-transform" />
+              <span>100% Nepali Origin</span>
+            </span>
+
+            {/* 4. Free Shipping > Rs. 3,000 */}
+            <span className="group inline-flex items-center gap-1.5 bg-white/95 px-3.5 py-2 rounded-full border border-[#EAE3D6] hover:border-primary/40 text-xs font-semibold text-[#242220] shadow-2xs hover:shadow-xs transition-all duration-300 cursor-default">
+              <Truck className="w-3.5 h-3.5 text-[#1A3826] group-hover:translate-x-0.5 transition-transform" />
+              <span>Free Shipping &gt; Rs. 3,000</span>
             </span>
           </div>
 
@@ -800,14 +873,22 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                     />
 
                     {/* Top Badge Strip */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                    <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-1.5 z-10">
                       <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/95 backdrop-blur-md text-stone-900 shadow-sm border border-white/40 flex items-center gap-1.5">
                         <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                         {poster.badge}
                       </span>
-                      <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
-                        <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
-                        <span>0 Additives</span>
+                      <div className="flex items-center gap-1.5">
+                        {poster.originalPrice && poster.originalPrice > poster.price && (
+                          <div className="px-2.5 py-1 rounded-full bg-rose-600 text-white text-[9px] font-black uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20 animate-pulse">
+                            <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                            <span>SAVE Rs. {poster.originalPrice - poster.price}</span>
+                          </div>
+                        )}
+                        <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
+                          <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                          <span>0 Additives</span>
+                        </div>
                       </div>
                     </div>
 
@@ -847,11 +928,12 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                         <button
                           type="button"
                           onClick={handleQuickAdd}
-                          className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer relative overflow-hidden group/dbtn"
                           style={{
                             background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
                           }}
                         >
+                          <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/dbtn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                           {addedItem === poster.id ? (
                             <>
                               <Check className="w-4 h-4 animate-bounce" />
@@ -867,10 +949,11 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
 
                         <Link
                           href={`/products/${poster.slug}`}
-                          className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
-                          aria-label="View Details"
+                          className="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-900 font-heading font-extrabold text-xs active:scale-95 transition-all flex items-center justify-center gap-1 shadow-md"
+                          aria-label="Buy Now"
                         >
-                          <ArrowRight className="w-4 h-4" />
+                          <span>Buy</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                       </div>
                     </div>
@@ -1013,14 +1096,22 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                     }}
                   />
 
-                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-1.5 z-10">
                     <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-white/95 backdrop-blur-md text-stone-900 shadow-sm border border-white/40 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                       {poster.badge}
                     </span>
-                    <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
-                      <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
-                      <span>0 Additives</span>
+                    <div className="flex items-center gap-1.5">
+                      {poster.originalPrice && poster.originalPrice > poster.price && (
+                        <div className="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[9px] font-black uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20 animate-pulse">
+                          <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                          <span>SAVE Rs. {poster.originalPrice - poster.price}</span>
+                        </div>
+                      )}
+                      <div className="px-2.5 py-1 rounded-full bg-emerald-600/90 text-white text-[9px] font-bold shadow-sm flex items-center gap-1 backdrop-blur-xs border border-white/20">
+                        <Flame className="w-2.5 h-2.5 text-amber-300 fill-amber-300" />
+                        <span>0 Additives</span>
+                      </div>
                     </div>
                   </div>
 
@@ -1219,40 +1310,51 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
             <div className="flex items-center gap-2.5">
               <div className="flex -space-x-2">
                 {['👩‍🍼', '🧔', '🏃‍♂️', '👵'].map((emoji, idx) => (
-                  <div
+                  <span
                     key={idx}
-                    className="w-7 h-7 rounded-full bg-[#FAF7F2] border-2 border-white flex items-center justify-center text-xs shadow-2xs"
+                    className="relative inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-amber-50 to-emerald-50 border-2 border-white shadow-2xs text-xs select-none animate-float"
+                    style={{
+                      animationDelay: `${idx * 0.3}s`,
+                      animationDuration: '3s',
+                    }}
                   >
                     {emoji}
-                  </div>
+                    {idx === 0 && (
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-500 ring-1 ring-white animate-pulse" />
+                    )}
+                  </span>
                 ))}
               </div>
               <div className="text-[11px] leading-tight font-sans text-left">
-                <div className="flex items-center text-[#7A5230]">
+                <div className="flex items-center text-amber-500">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-[#7A5230] text-[#7A5230]" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 drop-shadow-xs" />
                   ))}
-                  <span className="font-bold text-[#242220] ml-1.5">4.9 / 5</span>
+                  <span className="font-heading font-extrabold text-[#242220] ml-1.5">4.9 / 5</span>
                 </div>
-                <span className="text-[#242220]/70 font-medium">25,000+ Happy Nepalis</span>
+                <div className="flex items-center gap-1 text-[#242220]/75 font-semibold mt-0.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
+                  <span>25,000+ Happy Nepalis</span>
+                </div>
               </div>
             </div>
 
-            <div className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs bg-emerald-50 text-emerald-800 border-emerald-200/80 flex-shrink-0">
-              ⚡ 24h Valley Delivery
+            <div className="inline-flex items-center gap-1.5 text-[10px] font-heading font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-full border shadow-2xs bg-gradient-to-r from-amber-50 to-emerald-50 text-emerald-900 border-amber-200/80 flex-shrink-0">
+              <span className="text-amber-500 font-black animate-pulse">⚡</span>
+              <span>24h Valley Delivery</span>
             </div>
           </div>
 
           <div className="flex items-center justify-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#1A3826]" />
+            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-full border border-emerald-200/80 text-[10px] font-bold text-emerald-800 whitespace-nowrap flex-shrink-0 font-sans shadow-2xs">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               100% Nepali Origin
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
+            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans shadow-2xs">
               <Truck className="w-3.5 h-3.5 text-[#1A3826]" />
               Free Shipping &gt; Rs. 3,000
             </span>
-            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-2.5 py-1 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans">
+            <span className="inline-flex items-center gap-1.5 bg-[#FAF7F2] px-3 py-1.5 rounded-full border border-[#EAE3D6] text-[10px] font-semibold text-[#242220]/85 whitespace-nowrap flex-shrink-0 font-sans shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-[#7A5230]" />
               0 Additives
             </span>
