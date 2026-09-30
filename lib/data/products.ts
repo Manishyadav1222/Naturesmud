@@ -1354,9 +1354,9 @@ export const products: Product[] = [
     "compareAtPrice": 750,
     "rating": 4.9,
     "reviewCount": 53,
-    "image": "/products/nm-cashew-jar1.jpeg",
+    "image": "/products/nm-cashew-new-jar.jpg",
     "images": [
-      "/products/nm-cashew-jar1.jpeg",
+      "/products/nm-cashew-new-jar.jpg",
       "/products/nm-cashew-jar2.jpeg",
       "/products/authentic-cashewnuts-roasted.jpg",
       "/products/cashewnuts-roasted.jpg"
@@ -1425,9 +1425,9 @@ export const products: Product[] = [
     "compareAtPrice": 750,
     "rating": 4.8,
     "reviewCount": 39,
-    "image": "/products/nm-cashew-jar1.jpeg",
+    "image": "/products/nm-cashew-new-jar.jpg",
     "images": [
-      "/products/nm-cashew-jar1.jpeg",
+      "/products/nm-cashew-new-jar.jpg",
       "/products/posters/cashews-cream-bg-2k.jpg",
       "/products/posters/cashews-tropical-leaves-2k.jpg",
       "/products/nm-cashew-jar2.jpeg",
@@ -2285,6 +2285,85 @@ export const products: Product[] = [
     "tags": [
       "flaxseed-crackers"
     ]
+  },
+  {
+    "id": "200",
+    "dbId": 200,
+    "slug": "premium-pistachio-roasted-salted",
+    "name": "Premium Pistachio Roasted & Salted",
+    "category": "Nuts",
+    "categorySlug": "nuts",
+    "price": 1250,
+    "compareAtPrice": 1400,
+    "rating": 4.9,
+    "reviewCount": 31,
+    "image": "/products/nm-pistachio-jar.jpg",
+    "images": [
+      "/products/nm-pistachio-jar.jpg",
+      "/products/pistachios.jpg"
+    ],
+    "description": "Handpicked premium Afghan & Himalayan pistachios, slow-roasted to a perfect golden crunch and lightly seasoned with pure Himalayan pink salt. Naturally rich in Vitamin B6, potassium, antioxidants, and heart-healthy monounsaturated fats. Each kernel is carefully shelled-open for freshness and packed in an airtight glass jar to preserve crispness.",
+    "shortDescription": "Crunchy roasted & salted pistachios packed with antioxidants, Vitamin B6 & healthy fats in a 200g Glass Jar.",
+    "badges": [
+      "popular",
+      "bestseller"
+    ],
+    "stock": 50,
+    "weight": "200 GM",
+    "packing": "Glass Jar",
+    "mrp": 1400,
+    "ingredients": [
+      "100% Premium Pistachio Nuts (Roasted)",
+      "Himalayan Pink Salt (trace)"
+    ],
+    "benefits": [
+      "Rich in Vitamin B6 for nerve function and immune health",
+      "High in potassium and antioxidants for heart wellness",
+      "One of the lowest-calorie nuts with the highest protein content",
+      "Natural lutein and zeaxanthin for sharp eye health",
+      "Slow-roasted without oils — crispy, light, and wholesome"
+    ],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "562 kcal / 100g"
+      },
+      {
+        "label": "Protein",
+        "value": "20.6g"
+      },
+      {
+        "label": "Healthy Fats",
+        "value": "45.3g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "10.6g"
+      },
+      {
+        "label": "Potassium",
+        "value": "1025mg"
+      },
+      {
+        "label": "Vitamin B6",
+        "value": "85% DV"
+      }
+    ],
+    "usage": "Snack straight from the jar, sprinkle over yogurt, desserts, or Middle Eastern rice dishes. Perfect as a trail mix base.",
+    "storage": "Store in an airtight glass jar in a cool, dry place away from moisture and direct sunlight.",
+    "isFeatured": true,
+    "isBestSeller": true,
+    "tags": [
+      "pistachio",
+      "pistachios",
+      "roasted-nuts",
+      "salted-nuts",
+      "nuts",
+      "healthy-snack",
+      "pista",
+      "antioxidant",
+      "heart-health"
+    ]
   }
 ];
 
@@ -2406,8 +2485,35 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
     nutrition: Array.isArray(raw.nutrition) ? raw.nutrition : (local?.nutrition || []),
     usage: raw.usage || local?.usage || '',
     storage: raw.storage || local?.storage || '',
-    isFeatured: Boolean(raw.isFeatured ?? raw.is_featured ?? local?.isFeatured),
+    isFeatured: (raw.isFeatured !== undefined || raw.is_featured !== undefined)
+      ? Boolean(
+          raw.isFeatured === true ||
+          raw.isFeatured === 1 ||
+          raw.isFeatured === '1' ||
+          raw.isFeatured === 'true' ||
+          raw.is_featured === true ||
+          raw.is_featured === 1 ||
+          raw.is_featured === '1' ||
+          raw.is_featured === 'true'
+        )
+      : Boolean(local?.isFeatured),
     isBestSeller: Boolean(raw.isBestSeller ?? raw.is_bestseller ?? local?.isBestSeller),
+    isActive: (raw.isActive !== undefined || raw.is_active !== undefined || raw.status !== undefined)
+      ? (
+          raw.isActive !== undefined
+            ? Boolean(raw.isActive === true || raw.isActive === 1 || raw.isActive === '1' || raw.isActive === 'true')
+            : raw.is_active !== undefined
+            ? (Number(raw.is_active) === 1 || raw.is_active === true || raw.is_active === '1')
+            : String(raw.status).trim().toUpperCase() === 'ACTIVE'
+        )
+      : true,
+    isPublished: (raw.isPublished !== undefined || raw.is_active !== undefined)
+      ? (
+          raw.isPublished !== undefined
+            ? Boolean(raw.isPublished === true || raw.isPublished === 1 || raw.isPublished === '1' || raw.isPublished === 'true')
+            : (Number(raw.is_active) === 1 || raw.is_active === true || raw.is_active === '1')
+        )
+      : true,
     tags: Array.isArray(raw.tags) ? raw.tags : (local?.tags || []),
   };
 }
