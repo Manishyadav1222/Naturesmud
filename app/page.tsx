@@ -52,11 +52,44 @@ import MobileCategorySection from '@/components/MobileCategorySection';
 import MobileHeroSection from '@/components/MobileHeroSection';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
+const PRIORITY_FEATURED_SLUGS = [
+  'freeze-dried-avocado-powder',
+  'strawberry-powder',
+  'roasted-cashewnuts',
+  'virgin-coconut-oil-180ml',
+  'dates-powder',
+  'moringa-leaf-powder',
+  'dehydrated-mango',
+  'dry-figs-anjeer',
+];
+
 export default function HomePage() {
   const { openSearch } = useUIStore();
   const [dynamicProducts, setDynamicProducts] = useState<Product[]>([]);
-  const [featuredProducts, setFeaturedProducts] = useState<Product[]>(staticProducts.filter((p) => p.isFeatured).slice(0, 4));
-  const [trendingProducts, setTrendingProducts] = useState<Product[]>(staticProducts.slice(0, 3));
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>(() => {
+    return [...staticProducts.filter((p) => p.isFeatured)]
+      .sort((a, b) => {
+        const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
+        const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
+        if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+        if (aIdx !== -1) return -1;
+        if (bIdx !== -1) return 1;
+        return 0;
+      })
+      .slice(0, 8);
+  });
+  const [trendingProducts, setTrendingProducts] = useState<Product[]>(() => {
+    return [...staticProducts]
+      .sort((a, b) => {
+        const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
+        const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
+        if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+        if (aIdx !== -1) return -1;
+        if (bIdx !== -1) return 1;
+        return 0;
+      })
+      .slice(0, 6);
+  });
   const [latestPosts, setLatestPosts] = useState<any[]>(staticBlogPosts.slice(0, 3));
 
   useEffect(() => {
@@ -72,8 +105,28 @@ export default function HomePage() {
             .map((p: any) => normalizeProduct(p))
             .filter((p: any) => p.isActive !== false);
           setDynamicProducts(apiProducts);
-          setFeaturedProducts(apiProducts.filter((p: any) => p.isFeatured).slice(0, 8));
-          setTrendingProducts(apiProducts.slice(0, 4));
+
+          const sortedFeatured = apiProducts
+            .filter((p: any) => p.isFeatured)
+            .sort((a: Product, b: Product) => {
+              const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
+              const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
+              if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+              if (aIdx !== -1) return -1;
+              if (bIdx !== -1) return 1;
+              return 0;
+            });
+          setFeaturedProducts(sortedFeatured.slice(0, 8));
+
+          const sortedTrending = [...apiProducts].sort((a: Product, b: Product) => {
+            const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
+            const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
+            if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
+            if (aIdx !== -1) return -1;
+            if (bIdx !== -1) return 1;
+            return 0;
+          });
+          setTrendingProducts(sortedTrending.slice(0, 6));
         }
         if (blogsRes.data && Array.isArray(blogsRes.data.data)) {
           const apiBlogs = blogsRes.data.data.map((p: any) => ({

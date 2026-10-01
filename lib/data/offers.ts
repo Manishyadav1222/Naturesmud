@@ -157,7 +157,7 @@ export const initialFestivalOffers: FestivalOffer[] = [
         productId: '14',
         name: 'Premium Cashewnut (250 GM)',
         weight: '250 GM',
-        image: '/products/cashewnuts.jpg',
+        image: '/products/nm-cashew-new-jar.jpg',
         price: 600,
       },
       {

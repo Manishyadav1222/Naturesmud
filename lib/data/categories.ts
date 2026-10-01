@@ -14,7 +14,7 @@ export const categories: Category[] = [
     slug: 'powders',
     name: 'Powders',
     description: 'Pure dehydrated superfoods with 0 additives — Avocado, Banana, Strawberry, Moringa, Sweet Potato & Beetroot',
-    image: '/products/banana-powder.jpg',
+    image: '/products/strawberry-powder.jpg',
     productCount: 8,
   },
   {
@@ -22,7 +22,7 @@ export const categories: Category[] = [
     slug: 'nuts',
     name: 'Nuts',
     description: 'Premium whole cashews, almonds, pistachios, macadamias & energy trail mix',
-    image: '/products/authentic-almonds.jpg',
+    image: '/products/nm-roasted-cashew-new.jpg',
     productCount: 7,
   },
   {
