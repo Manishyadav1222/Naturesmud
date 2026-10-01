@@ -158,7 +158,7 @@ export const products: Product[] = [
     "category": "Powders",
     "categorySlug": "powders",
     "price": 790,
-    "compareAtPrice": 900,
+    "compareAtPrice": 790,
     "rating": 5,
     "reviewCount": 24,
     "image": "/products/avocado-powder.jpg",
@@ -177,9 +177,9 @@ export const products: Product[] = [
       "nepal"
     ],
     "stock": 50,
-    "weight": "100 GM",
+    "weight": "80 GM",
     "packing": "Standup Ziplock Pouch",
-    "mrp": 900,
+    "mrp": 790,
     "ingredients": [
       "100% Pure Freeze-Dried Fresh Himalayan Avocados"
     ],
@@ -233,8 +233,8 @@ export const products: Product[] = [
     "name": "Pure Natural Strawberry Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 620,
-    "compareAtPrice": 750,
+    "price": 1395,
+    "compareAtPrice": 1395,
     "rating": 4.9,
     "reviewCount": 31,
     "image": "/products/strawberry-powder.jpg",
@@ -251,9 +251,9 @@ export const products: Product[] = [
       "featured"
     ],
     "stock": 50,
-    "weight": "200 GM",
+    "weight": "80 GM",
     "packing": "Glass Jar",
-    "mrp": 750,
+    "mrp": 1395,
     "ingredients": [
       "100% Pure Whole Natural Strawberries"
     ],
@@ -1425,9 +1425,9 @@ export const products: Product[] = [
     "compareAtPrice": 750,
     "rating": 4.8,
     "reviewCount": 39,
-    "image": "/products/nm-cashew-new-jar.jpg",
+    "image": "/products/nm-roasted-cashew-new.jpg",
     "images": [
-      "/products/nm-cashew-new-jar.jpg",
+      "/products/nm-roasted-cashew-new.jpg",
       "/products/posters/cashews-cream-bg-2k.jpg",
       "/products/posters/cashews-tropical-leaves-2k.jpg",
       "/products/nm-cashew-jar2.jpeg",

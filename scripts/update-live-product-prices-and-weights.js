@@ -45,6 +45,21 @@ async function updateRemoteProducts() {
   );
   console.log('✅ Updated premium-cashewnuts images array in remote database');
 
+  // 2c. Roasted Cashew product images
+  const roastedCashewImages = JSON.stringify([
+    '/products/nm-roasted-cashew-new.jpg',
+    '/products/posters/cashews-cream-bg-2k.jpg',
+    '/products/posters/cashews-tropical-leaves-2k.jpg',
+    '/products/nm-cashew-new-jar.jpg',
+    '/products/authentic-cashewnuts-roasted.jpg',
+    '/products/cashewnuts-roasted.jpg'
+  ]);
+  await conn.query(
+    'UPDATE products SET images = ? WHERE slug IN (?, ?)',
+    [roastedCashewImages, 'roasted-cashewnuts', 'cashewnuts-roasted']
+  );
+  console.log('✅ Updated roasted-cashewnuts images array in remote database');
+
   // 3. Dehydrated Papaya
   await conn.query(`
     UPDATE products 
@@ -72,11 +87,53 @@ async function updateRemoteProducts() {
   `);
   console.log('✅ Updated pure-himalayan-black-salt-bire-noon: 200 GM');
 
-  // Verify
+  // 6. Freeze-Dried Avocado Powder (Price: 790, Weight: 80 GM)
+  await conn.query(`
+    UPDATE products 
+    SET price = 790.00,
+        compare_at_price = 790.00,
+        weight = 80.00,
+        unit = 'GM',
+        is_active = 1,
+        stock_quantity = 50,
+        sku = 'NM-AVOCADO-80G',
+        short_description = 'Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats in an 80 GM Standup Ziplock Pouch.'
+    WHERE slug IN ('freeze-dried-avocado-powder', 'avocado-powder')
+  `);
+  console.log('✅ Updated freeze-dried-avocado-powder: Rs. 790 (80 GM)');
+
+  // 7. Pure Natural Strawberry Powder (Price: 1395, Weight: 80 GM)
+  await conn.query(`
+    UPDATE products 
+    SET price = 1395.00,
+        compare_at_price = 1395.00,
+        weight = 80.00,
+        unit = 'GM',
+        is_active = 1,
+        stock_quantity = 50,
+        sku = 'NM-STRAWBERRY-80G',
+        meta_title = 'Pure Natural Strawberry Powder (80g Jar) | Nature\\'s Mud Nepal',
+        short_description = 'Pure Goodness from Strawberries for a brighter, healthier tomorrow. High Vitamin C & anthocyanin antioxidants in an 80 GM Glass Jar.'
+    WHERE slug IN ('strawberry-powder', 'pure-strawberry-powder')
+  `);
+  console.log('✅ Updated strawberry-powder: Rs. 1395 (80 GM)');
+
+  // Verify all updated products
   const [rows] = await conn.query(`
     SELECT id, slug, name, price, compare_at_price, weight, unit 
     FROM products 
-    WHERE slug IN ('virgin-coconut-oil-500ml', 'virgin-coconut-oil-180ml', 'dehydrated-papaya', 'himalayan-pink-salt', 'pure-himalayan-black-salt-bire-noon')
+    WHERE slug IN (
+      'virgin-coconut-oil-500ml',
+      'virgin-coconut-oil-180ml',
+      'dehydrated-papaya',
+      'himalayan-pink-salt',
+      'pure-himalayan-black-salt-bire-noon',
+      'freeze-dried-avocado-powder',
+      'avocado-powder',
+      'strawberry-powder',
+      'roasted-cashewnuts',
+      'premium-cashewnuts'
+    )
   `);
   console.log('\n--- VERIFICATION FROM REMOTE DATABASE ---');
   console.table(rows);

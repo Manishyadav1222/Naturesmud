@@ -47,7 +47,10 @@ async function uploadAssets() {
       { local: 'public/images/posters/authenticity-on-every-table.jpg', remote: '/naturesmud.shop/public/images/posters/authenticity-on-every-table.jpg' },
       { local: 'public/products/nm-cashew-new-jar.jpg', remote: '/naturesmud.shop/public/products/nm-cashew-new-jar.jpg' },
       { local: 'public/products/cashewnuts.jpg', remote: '/naturesmud.shop/public/products/cashewnuts.jpg' },
-      { local: 'public/products/coconut-oil.jpg', remote: '/naturesmud.shop/public/products/coconut-oil.jpg' }
+      { local: 'public/products/coconut-oil.jpg', remote: '/naturesmud.shop/public/products/coconut-oil.jpg' },
+      { local: 'public/products/nm-roasted-cashew-new.jpg', remote: '/naturesmud.shop/public/products/nm-roasted-cashew-new.jpg' },
+      { local: 'public/products/roasted-cashews.jpeg', remote: '/naturesmud.shop/public/products/roasted-cashews.jpeg' },
+      { local: 'public/products/authentic-cashewnuts-roasted.jpg', remote: '/naturesmud.shop/public/products/authentic-cashewnuts-roasted.jpg' }
     ];
 
     console.log('Uploading updated PDFs, posters, and cover assets...');

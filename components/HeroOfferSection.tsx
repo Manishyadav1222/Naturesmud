@@ -93,8 +93,8 @@ export const specializedOffers: SpecializedCombo[] = [
     categoryIcon: '✨',
     categoryLabel: 'Beauty',
     discountPercentage: 10,
-    originalPrice: 1920,
-    offerPrice: 1720,
+    originalPrice: 2695,
+    offerPrice: 2425,
     couponCode: 'BEAUTY10',
     tag: 'Collagen & Hair Care',
     items: [
@@ -115,9 +115,9 @@ export const specializedOffers: SpecializedCombo[] = [
       {
         productId: 'strawberry-powder',
         name: 'Strawberry Powder',
-        weight: '200 GM',
+        weight: '80 GM',
         image: '/products/strawberry-powder.jpg',
-        price: 620,
+        price: 1395,
       },
     ],
     highlights: [

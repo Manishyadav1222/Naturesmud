@@ -55,9 +55,12 @@ interface CatalogSectionDef {
 
 function getDisplayWeight(w?: string, slug?: string): string {
   if (slug === 'virgin-coconut-oil-180ml') return '180 GM';
+  if (slug === 'freeze-dried-avocado-powder') return '80 GM';
+  if (slug === 'strawberry-powder') return '80 GM';
   if (!w) return '100 GM';
   const str = String(w).trim();
   if (str.toLowerCase().includes('180')) return '180 GM';
+  if (str.toLowerCase().includes('80')) return '80 GM';
   if (/^\d+(\.\d+)?$/.test(str)) {
     const num = Math.round(Number(str));
     return slug && slug.includes('oil') && !slug.includes('180') ? `${num} ML` : `${num} GM`;
@@ -86,7 +89,7 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     heroImage: '/products/authentic-dehydrated-mango.jpg',
     heroImageAlt: 'NaturesMud Dried Fruits & Berries Collection',
     accentColor: '#8E2800',
-    productIds: ['dried-blueberries', 'dried-cranberries'],
+    productIds: ['dried-blueberries', 'dried-cranberries', 'dry-figs-anjeer'],
   },
   {
     id: 'powders-salts',
@@ -97,7 +100,18 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
     heroImage: '/products/sweet-potato-powder-100g.jpg',
     heroImageAlt: 'NaturesMud Signature Powders & Himalayan Salts Collection',
     accentColor: '#3A6B35',
-    productIds: ['dates-powder', 'beetroot-powder', 'carrot-powder', 'sweet-potato-powder', 'himalayan-pink-salt', 'pure-himalayan-black-salt-bire-noon'],
+    productIds: [
+      'freeze-dried-avocado-powder',
+      'strawberry-powder',
+      'banana-powder',
+      'moringa-leaf-powder',
+      'dates-powder',
+      'beetroot-powder',
+      'carrot-powder',
+      'sweet-potato-powder',
+      'himalayan-pink-salt',
+      'pure-himalayan-black-salt-bire-noon'
+    ],
   },
   {
     id: 'nuts-mixes',

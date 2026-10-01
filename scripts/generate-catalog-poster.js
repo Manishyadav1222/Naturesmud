@@ -307,7 +307,7 @@ async function createPoster() {
       <text x="20" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">8</text>
       <text x="45" y="22" class="title" font-size="13.5" font-weight="bold" fill="#143020">Freeze-Dried Avocado Powder</text>
       <text x="45" y="39" class="sans" font-size="9.5" fill="#666">100% Hass avocado, potassium, monounsaturated omega fats</text>
-      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">80 GM</text>
       <text x="460" y="31" class="sans" font-size="10.5" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 790</text>
     </g>
@@ -319,9 +319,9 @@ async function createPoster() {
       <text x="20" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">9</text>
       <text x="45" y="22" class="title" font-size="13.5" font-weight="bold" fill="#143020">Pure Natural Strawberry Powder</text>
       <text x="45" y="39" class="sans" font-size="9.5" fill="#666">100% real strawberries, ellagic acid, rich in vitamin C</text>
-      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 GM</text>
+      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">80 GM</text>
       <text x="460" y="31" class="sans" font-size="10.5" fill="#555">Glass Jar</text>
-      <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 620</text>
+      <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 1,395</text>
     </g>
 
     <!-- 10: Banana -->

@@ -246,7 +246,7 @@ const products = [
     pack: 'Aroma-Lock Glass Jar',
     price: 750,
     mrp: 750,
-    image: 'public/products/authentic-cashewnuts-roasted.jpg',
+    image: 'public/products/nm-roasted-cashew-new.jpg',
     origin: 'Small-Batch Himalayan Roastery',
     benefit: 'Crunchy Protein Snack (0 Oil, 0 Salt)',
     ingredients: '100% Dry-Roasted Whole Cashews',
