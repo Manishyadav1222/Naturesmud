@@ -44,21 +44,34 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function CatalogPage() {
-  let allProducts: Product[] = localProducts.map((p) => normalizeProduct(p));
+  const productsMap = new Map<string, Product>();
 
+  // 1. Seed with all local products to guarantee all 34 products exist
+  localProducts.forEach((p) => {
+    const norm = normalizeProduct(p);
+    productsMap.set(norm.slug, norm);
+  });
+
+  // 2. Fetch latest live database products and overlay real-time prices/weights
   try {
     const res = await api.get('/products', { params: { per_page: 100 } });
     if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
-      const dbProducts = res.data.data
+      res.data.data
         .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)
-        .map((p: any) => normalizeProduct(p));
-      if (dbProducts.length > 0) {
-        allProducts = dbProducts;
-      }
+        .forEach((p: any) => {
+          const norm = normalizeProduct(p);
+          const existing = productsMap.get(norm.slug);
+          // Keep authentic image if remote DB has placeholder
+          if (existing && existing.image && (!norm.image || norm.image.includes('placeholder'))) {
+            norm.image = existing.image;
+          }
+          productsMap.set(norm.slug, norm);
+        });
     }
   } catch (error) {
-    allProducts = localProducts.map((p) => normalizeProduct(p));
+    // Graceful fallback to local products
   }
 
+  const allProducts = Array.from(productsMap.values());
   return <CatalogClient initialProducts={allProducts} categories={categories} />;
 }
