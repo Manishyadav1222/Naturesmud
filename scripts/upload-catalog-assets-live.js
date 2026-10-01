@@ -44,8 +44,10 @@ async function uploadAssets() {
       { local: 'public/images/hero-banner.jpg', remote: '/naturesmud.shop/public/images/hero-banner.jpg' },
       { local: 'public/images/posters/naturesmud_superfood_product_lineup_2k_202608150734.jpeg', remote: '/naturesmud.shop/public/images/posters/naturesmud_superfood_product_lineup_2k_202608150734.jpeg' },
       { local: 'public/images/posters/product_lineup_on_wooden_surface_202608200719.jpeg', remote: '/naturesmud.shop/public/images/posters/product_lineup_on_wooden_surface_202608200719.jpeg' },
-      { local: 'public/images/posters/product_lineup_display_on_pedestal_202608200719.jpeg', remote: '/naturesmud.shop/public/images/posters/product_lineup_display_on_pedestal_202608200719.jpeg' },
-      { local: 'public/images/posters/authenticity-on-every-table.jpg', remote: '/naturesmud.shop/public/images/posters/authenticity-on-every-table.jpg' }
+      { local: 'public/images/posters/authenticity-on-every-table.jpg', remote: '/naturesmud.shop/public/images/posters/authenticity-on-every-table.jpg' },
+      { local: 'public/products/nm-cashew-new-jar.jpg', remote: '/naturesmud.shop/public/products/nm-cashew-new-jar.jpg' },
+      { local: 'public/products/cashewnuts.jpg', remote: '/naturesmud.shop/public/products/cashewnuts.jpg' },
+      { local: 'public/products/coconut-oil.jpg', remote: '/naturesmud.shop/public/products/coconut-oil.jpg' }
     ];
 
     console.log('Uploading updated PDFs, posters, and cover assets...');

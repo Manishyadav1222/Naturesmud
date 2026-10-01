@@ -20,15 +20,30 @@ async function updateRemoteProducts() {
   `);
   console.log('✅ Updated virgin-coconut-oil-500ml: Rs. 1750 (500ml)');
 
-  // 2. Coconut Oil 200ml (was 180ml)
+  // 2. Coconut Oil 180 GM (was 200ml)
   await conn.query(`
     UPDATE products 
-    SET price = 650.00, compare_at_price = 650.00, weight = 200.00, unit = 'ML',
-        name = 'Cold-Pressed Extra Virgin Coconut Oil (200ml)',
-        short_description = 'Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 200ml Glass Bottle.'
+    SET price = 650.00, compare_at_price = 650.00, weight = 180.00, unit = 'GM',
+        name = 'Cold-Pressed Extra Virgin Coconut Oil (180 GM)',
+        short_description = 'Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 GM Glass Bottle.'
     WHERE slug = 'virgin-coconut-oil-180ml'
   `);
-  console.log('✅ Updated virgin-coconut-oil-180ml: Rs. 650 (200ml)');
+  console.log('✅ Updated virgin-coconut-oil-180ml: Rs. 650 (180 GM)');
+
+  // 2b. Cashew product images
+  const cashewImages = JSON.stringify([
+    '/products/nm-cashew-new-jar.jpg',
+    '/products/posters/cashews-cream-bg-2k.jpg',
+    '/products/posters/cashews-tropical-leaves-2k.jpg',
+    '/products/nm-cashew-jar2.jpeg',
+    '/products/authentic-cashewnuts-roasted.jpg',
+    '/products/cashewnuts-roasted.jpg'
+  ]);
+  await conn.query(
+    'UPDATE products SET images = ? WHERE slug IN (?, ?)',
+    [cashewImages, 'premium-cashewnuts', 'cashew-nuts']
+  );
+  console.log('✅ Updated premium-cashewnuts images array in remote database');
 
   // 3. Dehydrated Papaya
   await conn.query(`
