@@ -90,18 +90,20 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             onError={() => setImgSrc('/products/naturesmud-all-products-100g.jpg')}
             className={classNames(
               'object-cover transition-all duration-700',
-              secondaryImg ? 'group-hover:opacity-0 group-hover:scale-105' : 'group-hover:scale-105'
+              secondaryImg
+                ? 'max-lg:opacity-0 lg:opacity-100 lg:group-hover:opacity-0 lg:group-hover:scale-105'
+                : 'opacity-100 group-hover:scale-105'
             )}
           />
 
-          {/* Secondary Photo on Hover */}
+          {/* Secondary Photo (Primary on Mobile/Tablet, Hover on Desktop) */}
           {secondaryImg && (
             <Image
               src={secondaryImg}
               alt={`${product.name} alternate view`}
               fill
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-700"
+              className="object-cover max-lg:opacity-100 max-lg:scale-100 lg:opacity-0 lg:group-hover:opacity-100 lg:scale-95 lg:group-hover:scale-100 transition-all duration-700"
             />
           )}
 

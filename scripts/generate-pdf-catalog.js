@@ -68,7 +68,7 @@ const masterProducts = [
   // 3. Nuts & Kernels
   { sn: 16, id: 'raw-himalayan-almonds', name: 'Raw Himalayan Almonds', sub: 'Unroasted mountain almonds with vitamin E', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/nm-almond-jar.jpeg', tag: 'Vitamin E & Magnesium' },
   { sn: 17, id: 'roasted-almonds', name: 'Roasted Himalayan Almonds', sub: 'Lightly salted with Himalayan pink salt', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/almonds.jpg', tag: 'Artisan Salted Crunch' },
-  { sn: 18, id: 'premium-cashewnuts', name: 'Premium Jumbo Cashew Nuts', sub: 'Raw whole creamy kernels rich in copper', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/cashewnuts.jpg', tag: 'Creamy Plant Energy' },
+  { sn: 18, id: 'premium-cashewnuts', name: 'Premium Jumbo Cashew Nuts', sub: 'Raw whole creamy kernels rich in copper', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/nm-cashew-new-jar.jpg', tag: 'Creamy Plant Energy' },
   { sn: 19, id: 'roasted-cashewnuts', name: 'Roasted Himalayan Cashew Nuts', sub: 'Slow-roasted to golden crisp perfection', cat: 'Nuts & Kernels', qty: '150 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 750, img: 'public/products/roasted-cashews.jpeg', tag: 'Crisp Artisan Batch' },
   { sn: 20, id: 'premium-pistachios', name: 'Premium Roasted Pistachios', sub: 'In-shell California pistachios with lutein', cat: 'Nuts & Kernels', qty: '200 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 820, img: 'public/products/pistachios.jpg', tag: 'Lutein & Heart Omegas' },
   { sn: 21, id: 'pumpkin-seeds', name: 'Raw Himalayan Pumpkin Seeds', sub: 'Green pepitas dense in restorative zinc', cat: 'Nuts & Kernels', qty: '300 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 650, img: 'public/products/pumpkin-seeds.jpg', tag: 'Zinc & Restorative Tryptophan' },
@@ -79,7 +79,7 @@ const masterProducts = [
   { sn: 24, id: 'chia-seeds', name: 'Organic Raw Chia Seeds', sub: 'Soluble mucilage fiber & plant omega-3 ALA', cat: 'Minerals & Elixirs', qty: '300 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 495, img: 'public/products/chia-seeds.jpg', tag: 'Plant Omega-3 ALA' },
   { sn: 25, id: 'himalayan-pink-salt', name: 'Himalayan Pink Rock Salt', sub: 'Unrefined ancient rock salt with 84 minerals', cat: 'Minerals & Elixirs', qty: '200 GM', pack: 'Sealed Glass Jar', life: '24 Months', mrp: 250, img: 'public/products/pink-salt.jpg', tag: '84 Trace Electrolytes' },
   { sn: 26, id: 'pure-himalayan-black-salt-bire-noon', name: 'Himalayan Black Salt (Bire Noon)', sub: 'Volcanic rock salt for digestive agni stimulation', cat: 'Minerals & Elixirs', qty: '200 GM', pack: 'Sealed Glass Jar', life: '24 Months', mrp: 220, img: 'public/products/black-salt.jpg', tag: 'Ayurvedic Digestive Agni' },
-  { sn: 27, id: 'virgin-coconut-oil-180ml', name: 'Cold-Pressed Virgin Coconut Oil', sub: 'Fresh unrefined extra virgin oil with MCTs', cat: 'Minerals & Elixirs', qty: '200 ML', pack: 'Sealed Glass Bottle', life: '18 Months', mrp: 650, img: 'public/products/coconut-oil.jpg', tag: 'Lauric Acid & Clean MCTs' },
+  { sn: 27, id: 'virgin-coconut-oil-180ml', name: 'Cold-Pressed Virgin Coconut Oil', sub: 'Fresh unrefined extra virgin oil with MCTs', cat: 'Minerals & Elixirs', qty: '180 GM', pack: 'Sealed Glass Bottle', life: '18 Months', mrp: 650, img: 'public/products/coconut-oil.jpg', tag: 'Lauric Acid & Clean MCTs' },
   { sn: 28, id: 'virgin-coconut-oil-500ml', name: 'Cold-Pressed Virgin Coconut Oil', sub: 'Family size pure cold-pressed unrefined oil', cat: 'Minerals & Elixirs', qty: '500 ML', pack: 'Sealed Glass Bottle', life: '18 Months', mrp: 1750, img: 'public/products/coconut-oil-product.jpg', tag: 'Pure Cold-Pressed Culinary' },
   { sn: 29, id: 'makhana-fox-nuts', name: 'Roasted Makhana (Fox Nuts)', sub: 'Crunchy popped lotus seeds, light & mineral-rich', cat: 'Minerals & Elixirs', qty: '50 GM', pack: 'Sealed Glass Jar', life: '12 Months', mrp: 390, img: 'public/products/nm-makhana-jar.jpeg', tag: 'Low Calorie Super Snack' }
 ];
@@ -824,7 +824,7 @@ async function generateMagazinePDF() {
     '• Every food grade standup pouch and sealed glass jar features tamper-evident holographic sealing and a batch-specific QR traceability code.\n' +
     '• Storage Guidance: Keep dried fruits, whole nuts, and micro-milled powders in a cool, dark pantry below 24°C. Reseal airtight after every opening.\n' +
     '• Special Dietary Notes: 100% Gluten-Free, Dairy-Free, Non-GMO, Vegan, and naturally free from artificial coloring, sulfur dioxide, and synthetic bleaches.\n' +
-    '• For institutional orders, restaurant supplies, gym pantries, or customized festive gift hampers, contact wholesale@naturesmud.shop.',
+    '• For institutional orders, restaurant supplies, gym pantries, or customized festive gift hampers, contact wholesale@naturesmud.com.',
     tblX + 15,
     vBoxY + 26,
     { width: tblW - 30, lineGap: 2.5 }
@@ -871,7 +871,7 @@ async function generateMagazinePDF() {
   doc.roundedRect(35, oColY, oColW, 115, 6).fill('#132B1E');
   doc.lineWidth(0.8).strokeColor(C_GOLD).roundedRect(35, oColY, oColW, 115, 6).stroke();
   doc.fillColor(C_GOLD).font('Helvetica-Bold').fontSize(10).text('OFFICIAL STORE', 45, oColY + 12);
-  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(12).text('naturesmud.shop', 45, oColY + 28);
+  doc.fillColor(C_WHITE).font('Helvetica-Bold').fontSize(12).text('naturesmud.com', 45, oColY + 28);
   doc.fillColor(C_GOLD_LIGHT).font('Helvetica').fontSize(8).text(
     '• Browse all 29 products\n• Live inventory status\n• eSewa, Khalti, Card & COD\n• Instant order confirmation SMS',
     45,
@@ -957,7 +957,7 @@ async function generateMagazinePDF() {
     'Nature\'s Mud partners with supermarkets, organic grocery chains, corporate banks, wellness spas, yoga retreats, and hospitality resorts across Nepal and international export markets.\n\n' +
     '• Custom Corporate Hampers: Handcrafted wooden and velvet gift boxes for Dashain, Tihar, New Year, and AGMs.\n' +
     '• Bulk Commercial Supplies: 5kg, 10kg, and 25kg vacuum-sealed packs for bakeries, juice bars, and cafes.\n' +
-    '• Direct B2B Inquiries: Call +977 9713888002  |  Email: wholesale@naturesmud.shop  |  info@naturesmud.shop',
+    '• Direct B2B Inquiries: Call +977 9713888002  |  Email: wholesale@naturesmud.com  |  info@naturesmud.com',
     50,
     wsY + 30,
     { width: retW - 30, lineGap: 3 }

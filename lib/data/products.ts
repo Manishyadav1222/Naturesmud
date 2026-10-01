@@ -1913,7 +1913,7 @@ export const products: Product[] = [
     "id": "153",
     "dbId": 153,
     "slug": "virgin-coconut-oil-180ml",
-    "name": "Cold-Pressed Extra Virgin Coconut Oil (200ml)",
+    "name": "Cold-Pressed Extra Virgin Coconut Oil (180 GM)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 650,
@@ -1926,12 +1926,12 @@ export const products: Product[] = [
       "/products/coconut-oil-product.jpg"
     ],
     "description": "Compact handy glass jar of 100% raw cold-pressed extra virgin coconut oil. Perfectly sized for daily facial skincare, Ayurvedic morning oil pulling, desk moisturizer, travel, and infant skin nourishing.",
-    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 200ml Glass Bottle.",
+    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 GM Glass Bottle.",
     "badges": [
       "cold-pressed"
     ],
     "stock": 50,
-    "weight": "200 ML",
+    "weight": "180 GM",
     "packing": "Glass Bottle",
     "mrp": 650,
     "ingredients": [

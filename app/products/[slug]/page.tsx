@@ -63,12 +63,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       product.categorySlug || 'pure-superfoods',
     ],
     alternates: {
-      canonical: `https://naturesmud.shop/products/${product.slug}`,
+      canonical: `https://naturesmud.com/products/${product.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `https://naturesmud.shop/products/${product.slug}`,
+      url: `https://naturesmud.com/products/${product.slug}`,
       siteName: 'NaturesMud (naturesmud.com)',
       images: [
         {

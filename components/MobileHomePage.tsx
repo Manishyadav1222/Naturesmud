@@ -594,7 +594,7 @@ export default function MobileHomePage() {
               <Link href={`/products/${prod.slug}`} className="block">
                 <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-cream-100 mb-2">
                   <Image
-                    src={resolveImageUrl(prod.image)}
+                    src={resolveImageUrl((Array.isArray(prod.images) && prod.images.length > 1 && prod.images[1]) ? prod.images[1] : prod.image)}
                     alt={prod.name}
                     fill
                     className="object-cover"

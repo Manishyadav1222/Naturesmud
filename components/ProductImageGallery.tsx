@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Leaf, ChevronLeft, ChevronRight, Maximize2, X, Sparkles, ShieldCheck } from 'lucide-react';
@@ -28,6 +28,12 @@ export default function ProductImageGallery({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
   const [currentImg, setCurrentImg] = useState(() => galleryList[0]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024 && galleryList.length > 1) {
+      setActiveIndex(1);
+    }
+  }, [galleryList.length]);
 
   const activeImage = galleryList[activeIndex] || galleryList[0];
 

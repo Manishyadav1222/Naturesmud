@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     "naturesmud catalog",
   ],
   alternates: {
-    canonical: 'https://naturesmud.shop/catalog',
+    canonical: 'https://naturesmud.com/catalog',
   },
   openGraph: {
     title: "Official Product Catalog & Price List 2026 | NaturesMud Nepal",
     description:
       "Browse certified single-origin pure superfoods, dehydrated fruits, mountain nuts, and cold-pressed virgin oils from NaturesMud Nepal. Download the complete master catalog.",
-    url: 'https://naturesmud.shop/catalog',
-    siteName: 'NaturesMud (naturesmud.shop)',
+    url: 'https://naturesmud.com/catalog',
+    siteName: 'NaturesMud (naturesmud.com)',
     images: [
       {
         url: '/products/naturesmud-all-products-100g.jpg',

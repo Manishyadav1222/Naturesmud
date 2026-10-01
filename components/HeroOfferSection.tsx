@@ -108,7 +108,7 @@ export const specializedOffers: SpecializedCombo[] = [
       {
         productId: 'virgin-coconut-oil-180ml',
         name: 'Extra Virgin Coconut Oil',
-        weight: '200 ML',
+        weight: '180 GM',
         image: '/products/coconut-oil.jpg',
         price: 650,
       },

@@ -188,7 +188,7 @@ const products = [
   {
     category: 'Powders & Oils',
     name: 'Cold-Pressed Extra Virgin Coconut Oil',
-    weight: '200 ML',
+    weight: '180 GM',
     pack: 'Food-Grade Glass Bottle',
     price: 650,
     mrp: 650,
@@ -233,7 +233,7 @@ const products = [
     pack: 'Aroma-Lock Glass Jar',
     price: 750,
     mrp: 750,
-    image: 'public/products/cashewnuts.jpg',
+    image: 'public/products/nm-cashew-new-jar.jpg',
     origin: 'Single-Origin Hand-Graded',
     benefit: 'Monounsaturated Fats, Copper & Protein',
     ingredients: '100% Raw Whole W240 Cashews',
@@ -449,7 +449,7 @@ async function generateMasterCatalogPDF() {
     // Bottom Running Footer Bar
     doc.rect(margin, pageHeight - 30, contentWidth, 0.8).fill('#D8D0C2');
     doc.fillColor(C_MUTED).font('Helvetica').fontSize(7.5).text(
-      "Nature's Mud Nepal  |  Samakhushi, Kathmandu  |  Order WhatsApp: +977-9713888002  |  www.naturesmud.shop",
+      "Nature's Mud Nepal  |  Samakhushi, Kathmandu  |  Order WhatsApp: +977-9713888002  |  www.naturesmud.com",
       margin,
       pageHeight - 22,
       { width: contentWidth - 85 }
@@ -596,13 +596,13 @@ async function generateMasterCatalogPDF() {
     { align: 'center', width: pageWidth }
   );
   doc.fillColor(C_CHAMPAGNE).font('Helvetica').fontSize(8).text(
-    'Direct Delivery & WhatsApp Support: +977-9713888002  |  info@naturesmud.shop',
+    'Direct Delivery & WhatsApp Support: +977-9713888002  |  info@naturesmud.com',
     0,
     ribbonY + 50,
     { align: 'center', width: pageWidth }
   );
   doc.fillColor('#9AB8AB').font('Helvetica').fontSize(7.5).text(
-    'Official Online Store: https://naturesmud.shop  -  Volume 2026 Master Edition',
+    'Official Online Store: https://naturesmud.com  -  Volume 2026 Master Edition',
     0,
     ribbonY + 64,
     { align: 'center', width: pageWidth }
@@ -1195,7 +1195,7 @@ async function generateMasterCatalogPDF() {
   const orderWays = [
     {
       step: '1. Official Webstore 24/7',
-      desc: 'Visit https://naturesmud.shop - browse complete products, add to cart, and enjoy seamless instant digital checkout.'
+      desc: 'Visit https://naturesmud.com - browse complete products, add to cart, and enjoy seamless instant digital checkout.'
     },
     {
       step: '2. WhatsApp Direct Ordering Desk',
@@ -1248,8 +1248,8 @@ async function generateMasterCatalogPDF() {
   const contactRows = [
     { label: 'Headquarters & Logistics Hub:', val: 'Samakhushi, Gongabu Chowk, Kathmandu, Nepal' },
     { label: 'Customer Care & WhatsApp Support:', val: '+977-9713888002' },
-    { label: 'Official Support Email:', val: 'info@naturesmud.shop  |  naturesmudnepal@gmail.com' },
-    { label: 'Official Online Webstore:', val: 'https://naturesmud.shop' },
+    { label: 'Official Support Email:', val: 'info@naturesmud.com  |  naturesmudnepal@gmail.com' },
+    { label: 'Official Online Webstore:', val: 'https://naturesmud.com' },
     { label: 'Social Channels:', val: 'Instagram: @naturesmud  |  Facebook: facebook.com/naturesmud' }
   ];
 

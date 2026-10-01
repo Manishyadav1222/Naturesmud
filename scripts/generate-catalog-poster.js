@@ -38,7 +38,7 @@ async function createPoster() {
   const imgDates = await getBase64Img('public/products/dates-powder-100g.jpg', 220);
 
   const imgAlmonds = await getBase64Img('public/products/almonds.jpg', 220);
-  const imgCashews = await getBase64Img('public/products/cashewnuts.jpg', 220);
+  const imgCashews = await getBase64Img('public/products/nm-cashew-new-jar.jpg', 220);
   const imgPistachios = await getBase64Img('public/products/pistachios.jpg', 220);
   const imgPumpkin = await getBase64Img('public/products/pumpkin-seeds.jpg', 220);
 
@@ -631,14 +631,14 @@ async function createPoster() {
       <text x="655" y="34" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 220</text>
     </g>
 
-    <!-- 27: Coconut Oil 200ml -->
+    <!-- 27: Coconut Oil 180gm -->
     <g transform="translate(20, 504)">
       <rect x="0" y="0" width="670" height="58" fill="#FFFFFF" stroke="#F0EBE0" />
       <circle cx="20" cy="29" r="11" fill="#FAF5E8" />
       <text x="20" y="33" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">27</text>
       <text x="45" y="23" class="title" font-size="13.5" font-weight="bold" fill="#143020">Cold-Pressed Virgin Coconut Oil</text>
       <text x="45" y="42" class="sans" font-size="9.5" fill="#666">Fresh raw unrefined extra virgin oil with lauric acid &amp; clean MCTs</text>
-      <text x="375" y="32" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 ML</text>
+      <text x="375" y="32" class="sans" font-size="11.5" font-weight="bold" fill="#333">180 GM</text>
       <text x="460" y="32" class="sans" font-size="10.5" fill="#555">Glass Bottle</text>
       <text x="655" y="34" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 650</text>
     </g>
@@ -706,7 +706,7 @@ async function createPoster() {
     <g transform="translate(24, 68)">
       <rect x="0" y="0" width="455" height="188" rx="8" fill="#FBF8F1" stroke="#E0D5C1" />
       <text x="20" y="30" class="title" font-size="16" font-weight="bold" fill="#143020">Official Online Store</text>
-      <text x="20" y="52" class="sans" font-size="15" font-weight="bold" fill="#C5A059">https://naturesmud.shop</text>
+      <text x="20" y="52" class="sans" font-size="15" font-weight="bold" fill="#C5A059">https://naturesmud.com</text>
       <text x="20" y="76" class="sans" font-size="10.5" fill="#444">• Complete collection of all 29 active products</text>
       <text x="20" y="96" class="sans" font-size="10.5" fill="#444">• Instant checkout via eSewa, Khalti, Card &amp; COD</text>
       <text x="20" y="116" class="sans" font-size="10.5" fill="#444">• Live batch lab certificates &amp; nutritional specs</text>
@@ -760,7 +760,7 @@ async function createPoster() {
       • Bulk institutional commercial packaging (5 KG, 10 KG, 25 KG) for organic grocers, bakeries, juice bars, and cafes.
     </text>
     <text x="36" y="141" class="sans" font-size="11" fill="#FFFFFF" opacity="0.95">
-      • Direct B2B Wholesale Contact: Phone: +977 9713888002  |  Email: wholesale@naturesmud.shop  |  info@naturesmud.shop
+      • Direct B2B Wholesale Contact: Phone: +977 9713888002  |  Email: wholesale@naturesmud.com  |  info@naturesmud.com
     </text>
 
     <!-- Bottom Ribbon -->

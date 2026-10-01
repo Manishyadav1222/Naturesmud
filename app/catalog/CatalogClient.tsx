@@ -54,11 +54,13 @@ interface CatalogSectionDef {
 }
 
 function getDisplayWeight(w?: string, slug?: string): string {
+  if (slug === 'virgin-coconut-oil-180ml') return '180 GM';
   if (!w) return '100 GM';
   const str = String(w).trim();
+  if (str.toLowerCase().includes('180')) return '180 GM';
   if (/^\d+(\.\d+)?$/.test(str)) {
     const num = Math.round(Number(str));
-    return slug && slug.includes('oil') ? `${num} ML` : `${num} GM`;
+    return slug && slug.includes('oil') && !slug.includes('180') ? `${num} ML` : `${num} GM`;
   }
   return str;
 }
@@ -145,6 +147,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'mrp'>('default');
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
+  const [isPosterZoomed, setIsPosterZoomed] = useState(false);
   const [isMagazineModalOpen, setIsMagazineModalOpen] = useState(false);
   const [isCoverModalOpen, setIsCoverModalOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -1194,41 +1197,85 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
             onClick={() => setIsPosterModalOpen(false)}
           >
             <div
-              className="relative max-w-4xl max-h-[90vh] w-full bg-[#1B3D2F] rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+              className={`relative ${isPosterZoomed ? 'max-w-7xl max-h-[96vh]' : 'max-w-5xl max-h-[90vh]'} w-full bg-[#1B3D2F] rounded-2xl overflow-hidden shadow-2xl flex flex-col transition-all duration-300`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="p-4 bg-[#142E23] text-white flex items-center justify-between border-b border-[#C9982A]/30">
-                <div className="flex items-center gap-2">
+              <div className="p-3.5 sm:p-4 bg-[#142E23] text-white flex items-center justify-between border-b border-[#C9982A]/30">
+                <div className="flex items-center gap-2.5">
                   <Leaf className="w-4 h-4 text-[#C9982A]" />
-                  <span className="font-heading font-bold text-sm">
-                    NaturesMud Official 2026 Master Product Catalog Flyer
-                  </span>
+                  <div>
+                    <span className="font-heading font-bold text-sm sm:text-base block">
+                      Nature&apos;s Mud 2026 Master Product Catalog Flyer
+                    </span>
+                    <span className="text-[11px] text-white/70 hidden sm:inline">
+                      Official Certified Spec Sheet &bull; All 29 Single-Origin Himalayan Products
+                    </span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsPosterZoomed((z) => !z)}
+                    className="p-1.5 px-3 rounded-lg bg-[#C9982A]/20 hover:bg-[#C9982A]/30 text-[#F4E8C1] border border-[#C9982A]/40 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    title={isPosterZoomed ? 'Fit to Screen' : 'Zoom 100%'}
+                  >
+                    <ZoomIn className="w-3.5 h-3.5 text-[#C9982A]" />
+                    <span className="hidden xs:inline">{isPosterZoomed ? 'Fit Screen' : 'Zoom In'}</span>
+                  </button>
                   <a
                     href="/official-product-catalog.jpg"
-                    download="Nature_Mud_Product_Catalog_2026.jpg"
-                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 px-3 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                    title="Open full resolution in new tab"
                   >
-                    <Download className="w-3.5 h-3.5" /> Save
+                    <ExternalLink className="w-3.5 h-3.5 text-[#C9982A]" />
+                    <span className="hidden sm:inline">Full Tab</span>
+                  </a>
+                  <a
+                    href="/official-product-catalog.jpg"
+                    download="Natures_Mud_Master_Catalog_Flyer_2026.jpg"
+                    className="p-1.5 px-3 rounded-lg bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5" /> Save High-Res
                   </a>
                   <button
-                    onClick={() => setIsPosterModalOpen(false)}
-                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                    onClick={() => {
+                      setIsPosterModalOpen(false);
+                      setIsPosterZoomed(false);
+                    }}
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-red-500/30 hover:text-red-300 text-white transition-colors cursor-pointer"
+                    aria-label="Close flyer modal"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-              {/* Modal Image Body with scroll */}
-              <div className="overflow-y-auto p-4 flex items-center justify-center bg-black/40">
+              {/* Modal Image Body with scroll & zoom */}
+              <div className="overflow-y-auto overflow-x-auto p-2 sm:p-4 flex items-center justify-center bg-black/50">
                 <img
                   src="/official-product-catalog.jpg"
                   alt="NaturesMud Official Master Product Catalog 2026"
-                  className="max-h-[80vh] w-auto object-contain rounded-lg shadow-xl"
+                  className={`${isPosterZoomed ? 'w-full max-w-none' : 'max-h-[80vh] w-auto'} object-contain rounded-lg shadow-xl cursor-zoom-in transition-all`}
+                  onClick={() => setIsPosterZoomed((z) => !z)}
                 />
+              </div>
+
+              {/* Modal Footer with quick wholesale note */}
+              <div className="p-2.5 sm:p-3 bg-[#0E1F18] border-t border-[#C9982A]/20 flex flex-wrap items-center justify-between text-xs text-white/80">
+                <span className="text-[11px] text-[#F4E8C1]">
+                  Official B2B Spec Flyer &bull; Click image to toggle zoom
+                </span>
+                <a
+                  href={`https://wa.me/9779713888002?text=Hello%20Nature's%20Mud!%20I%20have%20reviewed%20the%20Master%20Flyer%20Poster.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#25D366] hover:underline font-semibold flex items-center gap-1"
+                >
+                  <MessageCircle className="w-3.5 h-3.5" /> WhatsApp Wholesale Support
+                </a>
               </div>
             </div>
           </motion.div>
