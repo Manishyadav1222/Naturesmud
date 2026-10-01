@@ -11,9 +11,13 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $cacheKey = 'products_v1_' . md5(serialize($request->all()));
-        
-        $products = Cache::remember($cacheKey, 10, function () use ($request) {
+        $bypassCache = $request->has('nocache') ||
+                       $request->has('_t') ||
+                       $request->has('t') ||
+                       $request->has('refresh') ||
+                       $request->header('Cache-Control') === 'no-cache';
+
+        $queryFn = function () use ($request) {
             return Product::query()
                 ->select([
                     'id', 'category_id', 'name', 'slug', 'sku', 'short_description',
@@ -38,7 +42,15 @@ class ProductController extends Controller
                 }, fn ($q) => $q->orderByDesc('sold_count'))
                 ->where('is_active', true)
                 ->paginate($request->per_page ?? 40);
-        });
+        };
+
+        if ($bypassCache) {
+            $products = $queryFn();
+        } else {
+            $params = $request->except(['_t', 't', 'nocache', 'refresh']);
+            $cacheKey = 'products_v1_' . md5(serialize($params));
+            $products = Cache::remember($cacheKey, 3, $queryFn);
+        }
 
         return response()->json($products);
     }

@@ -70,7 +70,7 @@ const mapProduct = (p: any) => {
     cost: Number(p.cost_price || 0),
     stock: Number(p.stock_quantity || 0),
     lowStockThreshold: Number(p.low_stock_threshold || 0),
-    status: Number(p.is_active) === 1 ? 'ACTIVE' : 'ARCHIVED',
+    status: Number(p.is_active) === 1 ? 'ACTIVE' : 'DRAFT',
     unit: p.unit || 'PC',
     weight: p.weight != null ? Number(p.weight) : null,
     length: p.length != null ? Number(p.length) : null,

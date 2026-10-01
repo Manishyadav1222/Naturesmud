@@ -6,7 +6,7 @@ import { masterBlogCatalog } from '@/lib/data/blogs-database';
 import { categories } from '@/lib/data/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
+  const baseUrl = siteConfig.url || 'https://naturesmud.com';
   const now = new Date();
 
   // 1. Core Static Pages

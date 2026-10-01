@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Truck, Leaf, ShieldCheck, ArrowRight, Sparkles, Send } from 'lucide-react';
 import { footerLinks, siteConfig } from '@/lib/site';
+import Logo from './Logo';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -73,14 +74,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-10">
           {/* Brand & Contacts */}
           <div className="lg:col-span-2 space-y-3 sm:space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2 group">
-              <span className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-primary to-primary-700 text-white shadow-glow">
-                <Leaf className="w-4 h-4 sm:w-5 sm:h-5" />
-              </span>
-              <span className="font-heading font-bold text-white text-xl sm:text-2xl tracking-tight">
-                Natures<span className="text-gradient">Mud</span>
-              </span>
-            </Link>
+            <div className="pt-1">
+              <Logo href="/" variant="white" size="xl" className="inline-flex" />
+            </div>
             <p className="text-xs sm:text-sm text-white/60 leading-relaxed max-w-sm">
               100% natural dehydrated fruit & vegetable powders, wild honey, and mountain nuts from Nepal.
             </p>

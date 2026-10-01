@@ -120,7 +120,12 @@ export default function AdminProductDetailPage() {
     if (!product || !canManageProducts) return;
     try {
       const newStatus = product.status === 'ACTIVE' ? 'DRAFT' : 'ACTIVE';
-      const res = await api.put<{ data: ProductDetail }>(`/products/${product.id}`, { status: newStatus });
+      const isAct = newStatus === 'ACTIVE';
+      const res = await api.put<{ data: ProductDetail }>(`/products/${product.id}`, {
+        status: newStatus,
+        isActive: isAct,
+        isPublished: isAct,
+      });
       setProduct(res.data);
     } catch (err) {
       if (err instanceof ApiClientError) {

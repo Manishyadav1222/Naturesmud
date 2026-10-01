@@ -25,7 +25,7 @@ export default async function ProductsPage({
   let allProducts: Product[] = localProducts.map((p) => normalizeProduct(p));
 
   try {
-    const params: Record<string, string | number> = { per_page: 100 };
+    const params: Record<string, string | number> = { per_page: 100, _t: Date.now() };
     if (category) params.category = category;
     if (sort) {
       if (sort === 'price-asc') params.sort = 'price_asc';

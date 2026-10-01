@@ -41,6 +41,8 @@ import {
   AlertCircle,
   RefreshCw,
   Trash2,
+  Banknote,
+  Clock,
 } from 'lucide-react';
 import { products } from '@/lib/data/products';
 import { resolveImageUrl } from '@/lib/utils';
@@ -139,12 +141,26 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 const PAYMENT_STYLES: Record<string, string> = {
-  PAID: 'bg-emerald-50 text-emerald-800 border-emerald-200 font-bold',
+  PAID: 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
+  CONFIRMED_AFTER_DELIVERY: 'bg-emerald-100 text-emerald-950 border-emerald-400 font-black shadow-2xs',
+  CONFIRMED_DELIVERY: 'bg-emerald-100 text-emerald-950 border-emerald-400 font-black',
   UNPAID: 'bg-rose-50 text-rose-700 border-rose-200',
   PENDING: 'bg-amber-50 text-amber-700 border-amber-200',
   REFUNDED: 'bg-blue-50 text-blue-700 border-blue-200',
   FAILED: 'bg-rose-50 text-rose-700 border-rose-200',
 };
+
+const PAYMENT_METHOD_OPTIONS = [
+  { value: 'cod', label: '💵 COD (Cash on Delivery)' },
+  { value: 'online_pay', label: '💳 Online Pay (FonePay / Card / QR)' },
+];
+
+const PAYMENT_STATUS_OPTIONS = [
+  { value: 'UNPAID', label: '⏳ Unpaid / Pending' },
+  { value: 'PAID', label: '💳 Paid (Online Pay Advance)' },
+  { value: 'CONFIRMED_AFTER_DELIVERY', label: '✅ Confirmed' },
+  { value: 'REFUNDED', label: '↩️ Refunded' },
+];
 
 const STATUS_OPTIONS = [
   { value: 'PENDING', label: 'Pending' },
@@ -368,6 +384,69 @@ export default function AdminOrderDetailPage() {
     }
   };
 
+  const handleUpdatePayment = async (updates: {
+    paymentStatus?: string;
+    paymentMethod?: string;
+    status?: string;
+    comment?: string;
+  }) => {
+    if (!order || !canManageOrders) return;
+    try {
+      setIsUpdating(true);
+      setError(null);
+      await api.patch(`/orders/${order.id}/payment`, updates);
+      setOrder((prev) => (prev ? {
+        ...prev,
+        paymentStatus: updates.paymentStatus || prev.paymentStatus,
+        paymentMethod: updates.paymentMethod || prev.paymentMethod,
+        status: updates.status || prev.status,
+      } : prev));
+      setWaFeedback({
+        type: 'success',
+        message: updates.paymentStatus === 'CONFIRMED_AFTER_DELIVERY'
+          ? '✅ Confirmed! (Order marked Delivered)'
+          : updates.paymentStatus === 'PAID'
+          ? '💳 Payment marked as Paid (Online Pay)!'
+          : updates.paymentMethod
+          ? `💵 Payment method updated to ${updates.paymentMethod.toUpperCase()}!`
+          : 'Payment details updated successfully!',
+      });
+      fetchOrder();
+    } catch (err: any) {
+      setError(err.message || 'Failed to update payment');
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  // 1-click Quick Action: Confirmed after the deliver
+  const handleConfirmAfterDelivery = async () => {
+    await handleUpdatePayment({
+      paymentStatus: 'CONFIRMED_AFTER_DELIVERY',
+      paymentMethod: 'cod',
+      status: 'DELIVERED',
+      comment: 'Payment confirmed after delivery (COD received upon courier delivery).',
+    });
+  };
+
+  // 1-click Quick Action: Mark Online Pay (Paid)
+  const handleMarkOnlinePayPaid = async () => {
+    await handleUpdatePayment({
+      paymentStatus: 'PAID',
+      paymentMethod: 'online_pay',
+      status: order?.status === 'PENDING' ? 'READY' : order?.status,
+      comment: 'Payment verified and approved via Online Pay.',
+    });
+  };
+
+  // 1-click Quick Action: Set as COD
+  const handleSetAsCOD = async () => {
+    await handleUpdatePayment({
+      paymentMethod: 'cod',
+      comment: 'Payment method set to Cash on Delivery (COD).',
+    });
+  };
+
   const handleCancelOrder = async () => {
     if (!order) return;
     try {
@@ -577,15 +656,16 @@ export default function AdminOrderDetailPage() {
       )}
 
       {/* Status & Payment Action Banner */}
-      <Card className="border-l-4 border-l-[#2D5A27] bg-white">
+      <Card className="border-l-4 border-l-[#2D5A27] bg-white shadow-sm">
         <CardContent className="p-6">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
+            {/* Left: Order Status */}
             <div className="flex items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2D5A27]/10 shrink-0">
                 {STATUS_ICONS[order.status] || <Package className="h-6 w-6 text-[#2D5A27]" />}
               </div>
               <div>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Order Status</p>
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Order Status</p>
                 <div className="mt-1 flex items-center gap-3">
                   <span className="text-lg font-black text-gray-900">{order.status}</span>
                   {canManageOrders && !isCancelled && !isReturned && (
@@ -601,30 +681,94 @@ export default function AdminOrderDetailPage() {
               </div>
             </div>
 
-            {/* Payment Status & Fast Approval Action */}
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="text-left sm:text-right">
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Payment Status</p>
+            {/* Middle: Payment Choices (COD, Online Pay, Confirmed after delivery) */}
+            <div className="flex flex-wrap items-center gap-5 border-t xl:border-t-0 xl:border-l border-gray-100 pt-4 xl:pt-0 xl:pl-6">
+              <div>
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Payment Method</p>
                 <div className="mt-1 flex items-center gap-2">
-                  <Badge className={PAYMENT_STYLES[order.paymentStatus] || 'bg-gray-100 text-gray-700'}>
-                    {order.paymentStatus}
-                  </Badge>
-                  <span className="text-xs font-bold text-gray-700 uppercase">{order.paymentMethod}</span>
+                  <span className={`text-xs font-extrabold px-2.5 py-1 rounded-lg border ${
+                    (order.paymentMethod || '').toLowerCase() === 'cod'
+                      ? 'bg-amber-50 text-amber-900 border-amber-300'
+                      : 'bg-emerald-50 text-emerald-900 border-emerald-300'
+                  }`}>
+                    {(order.paymentMethod || '').toLowerCase() === 'cod' ? '💵 COD' : '💳 Online Pay'}
+                  </span>
+                  {canManageOrders && (
+                    <Select
+                      value={(order.paymentMethod || 'cod').toLowerCase()}
+                      onChange={(e) => handleUpdatePayment({ paymentMethod: e.target.value })}
+                      options={PAYMENT_METHOD_OPTIONS}
+                      className="w-44 text-xs font-bold"
+                      disabled={isUpdating}
+                    />
+                  )}
                 </div>
               </div>
 
-              {order.paymentStatus !== 'PAID' && order.receiptImage && canManageOrders && (
-                <Button
-                  size="sm"
-                  onClick={handleApprovePayment}
-                  disabled={isUpdating}
-                  className="bg-[#2D5A27] hover:bg-[#23471e] text-white font-bold text-xs flex items-center gap-1.5 shadow-sm"
-                >
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Verify Payment & Mark Ready</span>
-                </Button>
-              )}
+              <div>
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Payment Status</p>
+                <div className="mt-1 flex items-center gap-2">
+                  <Badge className={PAYMENT_STYLES[order.paymentStatus] || 'bg-gray-100 text-gray-700'}>
+                    {order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY' ? '✅ Confirmed' : order.paymentStatus}
+                  </Badge>
+                  {canManageOrders && (
+                    <Select
+                      value={order.paymentStatus}
+                      onChange={(e) => handleUpdatePayment({ paymentStatus: e.target.value })}
+                      options={PAYMENT_STATUS_OPTIONS}
+                      className="w-52 text-xs font-bold"
+                      disabled={isUpdating}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
+
+            {/* Right: Quick Action Buttons */}
+            {canManageOrders && (
+              <div className="flex flex-wrap items-center gap-2 border-t xl:border-t-0 border-gray-100 pt-4 xl:pt-0">
+                {order.paymentStatus !== 'CONFIRMED_AFTER_DELIVERY' && (
+                  <Button
+                    size="sm"
+                    onClick={handleConfirmAfterDelivery}
+                    disabled={isUpdating}
+                    className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm cursor-pointer"
+                    title="Mark that customer paid cash upon receiving delivery"
+                  >
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>✅ Confirmed</span>
+                  </Button>
+                )}
+
+                {order.paymentStatus !== 'PAID' && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={handleMarkOnlinePayPaid}
+                    disabled={isUpdating}
+                    className="border-emerald-300 text-emerald-800 hover:bg-emerald-50 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+                    title="Mark Online Pay Advance Received"
+                  >
+                    <CreditCard className="w-4 h-4 text-emerald-600" />
+                    <span>Online Pay (Paid)</span>
+                  </Button>
+                )}
+
+                {(order.paymentMethod || '').toLowerCase() !== 'cod' && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={handleSetAsCOD}
+                    disabled={isUpdating}
+                    className="text-gray-600 hover:text-gray-900 font-bold text-xs flex items-center gap-1 cursor-pointer"
+                    title="Switch Payment Method to Cash on Delivery (COD)"
+                  >
+                    <Banknote className="w-3.5 h-3.5 text-gray-500" />
+                    <span>Set as COD</span>
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -778,8 +922,145 @@ export default function AdminOrderDetailPage() {
           </Card>
         </div>
 
-        {/* Right 4 Cols: WhatsApp Audit, Customer, Shipping & History */}
+        {/* Right 4 Cols: Payment Choice & Verification, WhatsApp Audit, Customer, Shipping & History */}
         <div className="lg:col-span-4 space-y-6">
+          {/* Payment & Collection Choice Card */}
+          <Card className="border border-emerald-300 bg-white shadow-sm overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 pb-3 border-b border-emerald-200">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-xs font-bold text-emerald-950 flex items-center gap-1.5 font-heading uppercase tracking-wider">
+                  <CreditCard className="w-3.5 h-3.5 text-[#2D5A27]" />
+                  Payment & Collection
+                </CardTitle>
+                <Badge className={PAYMENT_STYLES[order.paymentStatus] || 'bg-gray-100 text-gray-700'}>
+                  {order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY' ? '✅ Confirmed' : order.paymentStatus}
+                </Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="p-4 space-y-3.5 text-xs">
+              {/* Payment Method Toggle: COD vs Online Pay */}
+              <div className="space-y-1.5">
+                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Payment Method:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleUpdatePayment({ paymentMethod: 'cod' })}
+                    disabled={isUpdating || !canManageOrders}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      (order.paymentMethod || '').toLowerCase() === 'cod'
+                        ? 'border-amber-400 bg-amber-50 text-amber-950 font-bold shadow-2xs ring-1 ring-amber-300'
+                        : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <Banknote className="w-3.5 h-3.5 text-amber-600" />
+                      <span>COD</span>
+                    </div>
+                    <p className="text-[10px] text-gray-500 font-normal mt-0.5">Cash on Delivery</p>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleUpdatePayment({ paymentMethod: 'online_pay' })}
+                    disabled={isUpdating || !canManageOrders}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      (order.paymentMethod || '').toLowerCase() !== 'cod'
+                        ? 'border-emerald-400 bg-emerald-50 text-emerald-950 font-bold shadow-2xs ring-1 ring-emerald-300'
+                        : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 font-bold">
+                      <CreditCard className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>Online Pay</span>
+                    </div>
+                    <p className="text-[10px] text-gray-500 font-normal mt-0.5">FonePay / QR / Card</p>
+                  </button>
+                </div>
+              </div>
+
+              {/* Payment Status Choices: Unpaid, Online Pay, Confirmed */}
+              <div className="space-y-1.5 pt-2 border-t border-gray-100">
+                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Payment Choices & Status:</p>
+                <div className="space-y-2">
+                  {/* Choice 1: Confirmed */}
+                  <button
+                    type="button"
+                    onClick={handleConfirmAfterDelivery}
+                    disabled={isUpdating || !canManageOrders}
+                    className={`w-full p-2.5 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
+                      order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY'
+                        ? 'border-emerald-600 bg-emerald-50/90 text-emerald-950 font-bold shadow-xs ring-2 ring-emerald-500/20'
+                        : 'border-gray-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/30 text-gray-700'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className={`w-4 h-4 shrink-0 ${order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY' ? 'text-emerald-700' : 'text-gray-400'}`} />
+                      <div>
+                        <p className="text-xs font-bold leading-tight text-gray-900">✅ Confirmed</p>
+                        <p className="text-[10px] text-gray-500 font-normal">Cash collected upon successful delivery</p>
+                      </div>
+                    </div>
+                    {order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY' ? (
+                      <span className="text-[10px] font-black text-emerald-800 bg-emerald-200/80 px-2 py-0.5 rounded-full shrink-0">ACTIVE</span>
+                    ) : (
+                      <span className="text-[10px] text-emerald-700 font-bold shrink-0">Select</span>
+                    )}
+                  </button>
+
+                  {/* Choice 2: Online Pay (Paid) */}
+                  <button
+                    type="button"
+                    onClick={handleMarkOnlinePayPaid}
+                    disabled={isUpdating || !canManageOrders}
+                    className={`w-full p-2.5 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
+                      order.paymentStatus === 'PAID'
+                        ? 'border-teal-600 bg-teal-50/90 text-teal-950 font-bold shadow-xs ring-2 ring-teal-500/20'
+                        : 'border-gray-200 bg-white hover:border-teal-300 hover:bg-teal-50/30 text-gray-700'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <CreditCard className={`w-4 h-4 shrink-0 ${order.paymentStatus === 'PAID' ? 'text-teal-700' : 'text-gray-400'}`} />
+                      <div>
+                        <p className="text-xs font-bold leading-tight text-gray-900">Online Pay (Paid)</p>
+                        <p className="text-[10px] text-gray-500 font-normal">Verified digital payment / advance</p>
+                      </div>
+                    </div>
+                    {order.paymentStatus === 'PAID' ? (
+                      <span className="text-[10px] font-black text-teal-800 bg-teal-200/80 px-2 py-0.5 rounded-full shrink-0">PAID</span>
+                    ) : (
+                      <span className="text-[10px] text-teal-700 font-bold shrink-0">Select</span>
+                    )}
+                  </button>
+
+                  {/* Choice 3: COD Unpaid / Pending */}
+                  <button
+                    type="button"
+                    onClick={() => handleUpdatePayment({ paymentStatus: 'UNPAID', paymentMethod: 'cod' })}
+                    disabled={isUpdating || !canManageOrders}
+                    className={`w-full p-2.5 rounded-xl border text-left flex items-center justify-between transition-all cursor-pointer ${
+                      order.paymentStatus === 'UNPAID' || order.paymentStatus === 'PENDING'
+                        ? 'border-amber-500 bg-amber-50/90 text-amber-950 font-bold shadow-xs ring-2 ring-amber-400/20'
+                        : 'border-gray-200 bg-white hover:border-amber-300 hover:bg-amber-50/30 text-gray-700'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <Clock className={`w-4 h-4 shrink-0 ${(order.paymentStatus === 'UNPAID' || order.paymentStatus === 'PENDING') ? 'text-amber-600' : 'text-gray-400'}`} />
+                      <div>
+                        <p className="text-xs font-bold leading-tight text-gray-900">COD (Unpaid / Pending)</p>
+                        <p className="text-[10px] text-gray-500 font-normal">Cash pending collection at doorstep</p>
+                      </div>
+                    </div>
+                    {(order.paymentStatus === 'UNPAID' || order.paymentStatus === 'PENDING') ? (
+                      <span className="text-[10px] font-black text-amber-800 bg-amber-200/80 px-2 py-0.5 rounded-full shrink-0">PENDING</span>
+                    ) : (
+                      <span className="text-[10px] text-amber-700 font-bold shrink-0">Select</span>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Official WhatsApp Business Platform Delivery Status & Audit Log */}
           <Card className="border border-emerald-300 bg-gradient-to-br from-emerald-50/40 via-white to-emerald-50/20 overflow-hidden shadow-md">
             <CardHeader className="bg-emerald-100/60 pb-3 border-b border-emerald-200">

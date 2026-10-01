@@ -86,6 +86,7 @@ class LaravelDbService {
     search?: string;
     status?: string;
     paymentStatus?: string;
+    paymentMethod?: string;
     sortBy?: string;
     sortOrder?: string;
   }) {
@@ -95,6 +96,7 @@ class LaravelDbService {
       search = '',
       status = '',
       paymentStatus = '',
+      paymentMethod = '',
       sortBy = 'created_at',
       sortOrder = 'desc',
     } = params;
@@ -114,13 +116,30 @@ class LaravelDbService {
     }
 
     if (status) {
-      conditions.push('status = ?');
+      conditions.push('o.status = ?');
       paramsArr.push(status.toLowerCase());
     }
 
     if (paymentStatus) {
-      conditions.push('payment_status = ?');
-      paramsArr.push(paymentStatus.toLowerCase());
+      const ps = paymentStatus.toLowerCase();
+      if (ps === 'confirmed_after_delivery' || ps === 'confirmed_delivery' || ps === 'paid_on_delivery') {
+        conditions.push("(o.payment_status = 'confirmed_after_delivery' OR o.payment_status = 'confirmed_delivery' OR o.payment_status = 'paid_on_delivery')");
+      } else {
+        conditions.push('o.payment_status = ?');
+        paramsArr.push(ps);
+      }
+    }
+
+    if (paymentMethod) {
+      const pm = paymentMethod.toLowerCase();
+      if (pm === 'cod') {
+        conditions.push("(o.payment_method = 'cod' OR o.payment_method IS NULL OR o.payment_method = '')");
+      } else if (pm === 'online_pay' || pm === 'online') {
+        conditions.push("(o.payment_method != 'cod' AND o.payment_method IS NOT NULL AND o.payment_method != '')");
+      } else {
+        conditions.push('o.payment_method = ?');
+        paramsArr.push(pm);
+      }
     }
 
     const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
@@ -279,8 +298,24 @@ class LaravelDbService {
       paramsArr.push(value);
     };
 
-    if (data.status !== undefined) setField('status', data.status);
-    if (data.paymentStatus !== undefined) setField('payment_status', data.paymentStatus);
+    if (data.status !== undefined) {
+      const st = String(data.status).toLowerCase();
+      setField('status', st);
+      if (st === 'delivered') setField('delivered_at', new Date());
+      if (st === 'shipped') setField('shipped_at', new Date());
+      if (st === 'cancelled') setField('cancelled_at', new Date());
+    }
+    if (data.paymentStatus !== undefined || data.payment_status !== undefined) {
+      const ps = String(data.paymentStatus ?? data.payment_status).toLowerCase();
+      setField('payment_status', ps);
+      if (ps === 'paid' || ps === 'confirmed_after_delivery') {
+        setField('paid_at', new Date());
+      }
+    }
+    if (data.paymentMethod !== undefined || data.payment_method !== undefined) {
+      const pm = String(data.paymentMethod ?? data.payment_method).toLowerCase();
+      setField('payment_method', pm);
+    }
     if (data.shippingName !== undefined) setField('shipping_name', data.shippingName);
     if (data.shippingPhone !== undefined) setField('shipping_phone', data.shippingPhone);
     if (data.shippingEmail !== undefined) setField('shipping_email', data.shippingEmail);
@@ -1008,8 +1043,28 @@ class LaravelDbService {
         .replace(/^_+|_+$/g, '')
         .slice(0, 24)}-${Date.now().toString().slice(-5)}`;
 
-    const isActiveFlag =
-      String(status).toUpperCase() === 'ACTIVE' || isActive === true || isPublished === true ? 1 : 0;
+    let isActiveFlag = 0;
+    if (data.isActive !== undefined || data.isPublished !== undefined) {
+      const hasActive = data.isActive !== undefined;
+      const hasPublished = data.isPublished !== undefined;
+      const actBool = hasActive ? Boolean(data.isActive === true || data.isActive === 1 || data.isActive === '1' || data.isActive === 'true') : true;
+      const pubBool = hasPublished ? Boolean(data.isPublished === true || data.isPublished === 1 || data.isPublished === '1' || data.isPublished === 'true') : true;
+      if (hasActive && hasPublished) {
+        isActiveFlag = (actBool && pubBool) ? 1 : 0;
+      } else if (hasActive) {
+        isActiveFlag = actBool ? 1 : 0;
+      } else {
+        isActiveFlag = pubBool ? 1 : 0;
+      }
+    } else if (data.status !== undefined) {
+      const s = String(data.status).trim().toUpperCase();
+      isActiveFlag = (s === 'ACTIVE' || s === '1' || s === 'PUBLISHED') ? 1 : 0;
+    } else {
+      isActiveFlag = isActive !== false ? 1 : 0;
+    }
+
+    const featVal = data.isFeatured !== undefined ? data.isFeatured : (data.is_featured !== undefined ? data.is_featured : isFeatured);
+    const isFeaturedFlag = (featVal === true || featVal === 1 || featVal === '1' || featVal === 'true') ? 1 : 0;
 
     const [result] = await pool.query(
       `INSERT INTO products (
@@ -1032,12 +1087,15 @@ class LaravelDbService {
         parseInt(stock, 10) || 0,
         parseInt(lowStockThreshold, 10) || 5,
         isActiveFlag,
-        isFeatured ? 1 : 0,
+        isFeaturedFlag,
         weight != null && weight !== '' ? parseFloat(weight) : null,
         unit || 'PC',
         JSON.stringify(finalImages),
       ]
     );
+
+    // Invalidate product caches immediately
+    await pool.query("DELETE FROM cache WHERE `key` LIKE '%product%' OR `key` LIKE '%related%'").catch(() => {});
 
     const insertId = Number((result as any).insertId);
     return this.getProductById(String(insertId));
@@ -1072,7 +1130,11 @@ class LaravelDbService {
     if (data.weight !== undefined) {
       setField('weight', data.weight != null && data.weight !== '' ? parseFloat(data.weight) : null);
     }
-    if (data.isFeatured !== undefined) setField('is_featured', data.isFeatured ? 1 : 0);
+    if (data.isFeatured !== undefined || data.is_featured !== undefined) {
+      const featVal = data.isFeatured !== undefined ? data.isFeatured : data.is_featured;
+      const isFeat = featVal === true || featVal === 1 || featVal === '1' || featVal === 'true';
+      setField('is_featured', isFeat ? 1 : 0);
+    }
     if (data.isBestSeller !== undefined || data.is_best_seller !== undefined) {
       setField('is_best_seller', (data.isBestSeller ?? data.is_best_seller) ? 1 : 0);
     }
@@ -1118,14 +1180,32 @@ class LaravelDbService {
     if (data.metaDescription !== undefined) setField('meta_description', data.metaDescription);
 
     // status / isActive / isPublished all map onto the single is_active column
-    if (data.status !== undefined) {
-      const status = String(data.status).toUpperCase();
-      if (status === 'ACTIVE') setField('is_active', 1);
-      else if (status === 'DRAFT' || status === 'ARCHIVED' || status === 'INACTIVE') setField('is_active', 0);
-    } else if (data.isActive !== undefined) {
-      setField('is_active', data.isActive ? 1 : 0);
-    } else if (data.isPublished !== undefined) {
-      setField('is_active', data.isPublished ? 1 : 0);
+    // Priority: If explicit boolean flags isActive / isPublished are passed, evaluate them directly.
+    let activeVal: number | undefined = undefined;
+    if (data.isActive !== undefined || data.isPublished !== undefined) {
+      const hasActive = data.isActive !== undefined;
+      const hasPublished = data.isPublished !== undefined;
+      const actBool = hasActive ? Boolean(data.isActive === true || data.isActive === 1 || data.isActive === '1' || data.isActive === 'true') : true;
+      const pubBool = hasPublished ? Boolean(data.isPublished === true || data.isPublished === 1 || data.isPublished === '1' || data.isPublished === 'true') : true;
+
+      if (hasActive && hasPublished) {
+        activeVal = (actBool && pubBool) ? 1 : 0;
+      } else if (hasActive) {
+        activeVal = actBool ? 1 : 0;
+      } else {
+        activeVal = pubBool ? 1 : 0;
+      }
+    } else if (data.status !== undefined) {
+      const statusStr = String(data.status).trim().toUpperCase();
+      if (statusStr === 'ACTIVE' || statusStr === '1' || statusStr === 'PUBLISHED') {
+        activeVal = 1;
+      } else if (['DRAFT', 'ARCHIVED', 'INACTIVE', '0', 'UNPUBLISHED'].includes(statusStr)) {
+        activeVal = 0;
+      }
+    }
+
+    if (activeVal !== undefined) {
+      setField('is_active', activeVal);
     }
 
     if (fields.length === 0) return existing;
@@ -1138,6 +1218,9 @@ class LaravelDbService {
       [...paramsArr, existing.id]
     );
 
+    // Invalidate product caches immediately so changes reflect on storefront instantly
+    await pool.query("DELETE FROM cache WHERE `key` LIKE '%product%' OR `key` LIKE '%related%'").catch(() => {});
+
     return this.getProductById(String(existing.id));
   }
 
@@ -1146,6 +1229,7 @@ class LaravelDbService {
     if (!existing) return false;
 
     await pool.query(`DELETE FROM products WHERE id = ?`, [existing.id]);
+    await pool.query("DELETE FROM cache WHERE `key` LIKE '%product%' OR `key` LIKE '%related%'").catch(() => {});
     return true;
   }
 
@@ -1155,6 +1239,7 @@ class LaravelDbService {
       `DELETE FROM products WHERE id IN (${ids.map(() => '?').join(',')})`,
       ids
     );
+    await pool.query("DELETE FROM cache WHERE `key` LIKE '%product%' OR `key` LIKE '%related%'").catch(() => {});
     return { deleted: Number((result as any).affectedRows || 0) };
   }
 

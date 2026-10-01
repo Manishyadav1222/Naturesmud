@@ -71,15 +71,18 @@ const STATUS_STYLES: Record<string, string> = {
 };
 
 const PAYMENT_STATUS_STYLES: Record<string, string> = {
-  PAID: 'bg-lime-50 text-lime-700 border-lime-200',
-  UNPAID: 'bg-red-50 text-red-700 border-red-200',
+  PAID: 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
+  CONFIRMED_AFTER_DELIVERY: 'bg-emerald-100 text-emerald-950 border-emerald-400 font-black shadow-2xs',
+  CONFIRMED_DELIVERY: 'bg-emerald-100 text-emerald-950 border-emerald-400 font-black',
+  UNPAID: 'bg-amber-50 text-amber-800 border-amber-200',
+  PENDING: 'bg-amber-50 text-amber-800 border-amber-200',
   REFUNDED: 'bg-blue-50 text-blue-700 border-blue-200',
   PARTIALLY_REFUNDED: 'bg-accent-50 text-accent-700 border-accent-200',
   FAILED: 'bg-red-50 text-red-700 border-red-200',
 };
 
 const ORDER_STATUSES = ['PENDING', 'CONFIRMED', 'PACKED', 'READY', 'SHIPPED', 'DELIVERED', 'CANCELLED', 'RETURNED'];
-const PAYMENT_STATUSES = ['PAID', 'UNPAID', 'REFUNDED', 'PARTIALLY_REFUNDED', 'FAILED'];
+const PAYMENT_STATUSES = ['PAID', 'UNPAID', 'CONFIRMED_AFTER_DELIVERY', 'REFUNDED', 'PARTIALLY_REFUNDED', 'FAILED'];
 
 const FILTER_STATUS_OPTIONS = [
   { value: 'PENDING', label: 'Pending' },
@@ -93,11 +96,22 @@ const FILTER_STATUS_OPTIONS = [
 ];
 
 const FILTER_PAYMENT_OPTIONS = [
-  { value: 'PAID', label: 'Paid' },
-  { value: 'UNPAID', label: 'Unpaid' },
+  { value: 'CONFIRMED_AFTER_DELIVERY', label: '✅ Confirmed' },
+  { value: 'PAID', label: '💳 Paid (Online Pay)' },
+  { value: 'UNPAID', label: '⏳ Unpaid / Pending' },
   { value: 'REFUNDED', label: 'Refunded' },
-  { value: 'PARTIALLY_REFUNDED', label: 'Partially Refunded' },
   { value: 'FAILED', label: 'Failed' },
+];
+
+const FILTER_PAYMENT_METHOD_OPTIONS = [
+  { value: 'cod', label: '💵 COD (Cash on Delivery)' },
+  { value: 'online_pay', label: '💳 Online Pay (FonePay/Card/QR)' },
+];
+
+const INLINE_PAYMENT_STATUS_OPTIONS = [
+  { value: 'UNPAID', label: '⏳ Unpaid' },
+  { value: 'PAID', label: '💳 Paid (Online)' },
+  { value: 'CONFIRMED_AFTER_DELIVERY', label: '✅ Confirmed' },
 ];
 
 export default function AdminOrdersPage() {
@@ -109,6 +123,7 @@ export default function AdminOrdersPage() {
     search: '',
     status: '',
     paymentStatus: '',
+    paymentMethod: '',
     sortBy: 'createdAt',
     sortOrder: 'desc',
   });
@@ -171,6 +186,7 @@ export default function AdminOrdersPage() {
       if (debouncedSearch) params.set('search', debouncedSearch);
       if (filters.status) params.set('status', filters.status);
       if (filters.paymentStatus) params.set('paymentStatus', filters.paymentStatus);
+      if (filters.paymentMethod) params.set('paymentMethod', filters.paymentMethod);
 
       const res = await api.get<OrdersResponse>(`/orders?${params.toString()}`);
       
@@ -202,7 +218,7 @@ export default function AdminOrdersPage() {
       if (!silent) setIsLoading(false);
       setIsLiveSyncing(false);
     }
-  }, [pagination.page, pagination.limit, debouncedSearch, filters.status, filters.paymentStatus, filters.sortBy, filters.sortOrder, canViewOrders]);
+  }, [pagination.page, pagination.limit, debouncedSearch, filters.status, filters.paymentStatus, filters.paymentMethod, filters.sortBy, filters.sortOrder, canViewOrders]);
 
   // Initial load & whenever filters/pages change
   useEffect(() => {
@@ -389,7 +405,7 @@ export default function AdminOrdersPage() {
       {/* Filters */}
       <Card>
         <CardContent className="pt-6">
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
             <div className="lg:col-span-2 relative">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input
@@ -406,6 +422,12 @@ export default function AdminOrdersPage() {
               placeholder="All Order Statuses"
             />
             <Select
+              value={filters.paymentMethod}
+              onChange={(e) => setFilters(prev => ({ ...prev, paymentMethod: e.target.value, page: 1 }))}
+              options={FILTER_PAYMENT_METHOD_OPTIONS}
+              placeholder="All Payment Methods"
+            />
+            <Select
               value={filters.paymentStatus}
               onChange={(e) => setFilters(prev => ({ ...prev, paymentStatus: e.target.value, page: 1 }))}
               options={FILTER_PAYMENT_OPTIONS}
@@ -419,7 +441,7 @@ export default function AdminOrdersPage() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setFilters({ search: '', status: '', paymentStatus: '', sortBy: 'createdAt', sortOrder: 'desc' })}
+              onClick={() => setFilters({ search: '', status: '', paymentStatus: '', paymentMethod: '', sortBy: 'createdAt', sortOrder: 'desc' })}
             >
               <RefreshCw className="h-4 w-4" />
               Reset Filters
@@ -595,10 +617,53 @@ export default function AdminOrdersPage() {
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <Badge className={PAYMENT_STATUS_STYLES[order.paymentStatus] || 'bg-gray-50 text-gray-700 border-gray-200'}>
-                            {order.paymentStatus}
-                          </Badge>
-                          <p className="mt-1 text-xs text-gray-400">{order.paymentMethod}</p>
+                          <div className="space-y-1.5">
+                            <div className="flex items-center gap-1.5">
+                              {/* Payment Method Badge */}
+                              <span className={`text-[10px] font-black px-2 py-0.5 rounded-md border ${
+                                (order.paymentMethod || '').toLowerCase() === 'cod'
+                                  ? 'bg-amber-50 text-amber-900 border-amber-300'
+                                  : 'bg-emerald-50 text-emerald-900 border-emerald-300'
+                              }`}>
+                                {(order.paymentMethod || '').toLowerCase() === 'cod' ? '💵 COD' : '💳 Online Pay'}
+                              </span>
+
+                              {/* Payment Status Badge */}
+                              <Badge className={PAYMENT_STATUS_STYLES[order.paymentStatus] || 'bg-gray-50 text-gray-700 border-gray-200'}>
+                                {order.paymentStatus === 'CONFIRMED_AFTER_DELIVERY' ? '✅ Confirmed' : order.paymentStatus}
+                              </Badge>
+                            </div>
+
+                            {/* Fast Inline Payment Selector for Admins */}
+                            {canManageOrders && (
+                              <Select
+                                value={order.paymentStatus}
+                                onChange={async (e) => {
+                                  const newStatus = e.target.value;
+                                  try {
+                                    await api.patch(`/orders/${order.id}/payment`, {
+                                      paymentStatus: newStatus,
+                                      status: newStatus === 'CONFIRMED_AFTER_DELIVERY' ? 'DELIVERED' : undefined,
+                                    });
+                                    setOrders(prev => prev.map(o => o.id === order.id ? {
+                                      ...o,
+                                      paymentStatus: newStatus,
+                                      status: newStatus === 'CONFIRMED_AFTER_DELIVERY' ? 'DELIVERED' : o.status,
+                                    } : o));
+                                    toast.success(
+                                      newStatus === 'CONFIRMED_AFTER_DELIVERY'
+                                        ? `Order #${order.orderNumber}: ✅ Confirmed!`
+                                        : `Order #${order.orderNumber}: Payment updated to ${newStatus}`
+                                    );
+                                  } catch (err: any) {
+                                    toast.error(err.message || 'Failed to update payment');
+                                  }
+                                }}
+                                options={INLINE_PAYMENT_STATUS_OPTIONS}
+                                className="text-[11px] w-44 py-0.5 h-7 font-bold bg-white"
+                              />
+                            )}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right">
                           <div className="flex items-center justify-end gap-1.5">

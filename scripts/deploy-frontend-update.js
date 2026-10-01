@@ -158,10 +158,13 @@ async function main() {
   console.log('🚀 NATURE\'S MUD FRONTEND UPDATE PIPELINE');
   console.log('====================================================\n');
 
-  // 1. Compile fresh build
-  console.log('[1/5] 🏗️ Compiling fresh Next.js production build...');
-  execSync('npm run build', { stdio: 'inherit' });
   const buildIdPath = path.join(config.rootDir, '.next', 'BUILD_ID');
+  if (process.argv.includes('--rebuild') || !fs.existsSync(buildIdPath)) {
+    console.log('[1/5] 🏗️ Compiling fresh Next.js production build...');
+    execSync('npm run build', { stdio: 'inherit' });
+  } else {
+    console.log('[1/5] ⚡ Reusing existing fresh Next.js production build...');
+  }
   const localBuildId = fs.readFileSync(buildIdPath, 'utf8').trim();
   console.log('✅ Local Build Ready. BUILD_ID:', localBuildId);
 
@@ -189,11 +192,42 @@ async function main() {
     path.join(stagingDir, 'next.config.mjs')
   );
 
+  // Also include public directory with brand icons, manifest, and logos (lightweight)
+  console.log('  -> Staging public brand assets (favicons, icons, logos, manifest)...');
+  const publicStagingDir = path.join(stagingDir, 'public');
+  fs.mkdirSync(publicStagingDir, { recursive: true });
+
+  const brandFiles = [
+    'favicon.ico',
+    'icon.png',
+    'apple-touch-icon.png',
+    'apple-icon.png',
+    'apple-touch-icon-precomposed.png',
+    'site.webmanifest',
+    'naturesmud-og-image.jpg',
+    'logo.png',
+    'logo-white.png',
+    'logo-transparent.png',
+    'icon-16x16.png',
+    'icon-32x32.png',
+    'icon-48x48.png',
+    'icon-96x96.png',
+    'icon-192x192.png',
+    'icon-512x512.png',
+    'naturesmud-brand-logo.png'
+  ];
+  for (const f of brandFiles) {
+    const srcF = path.join(config.rootDir, 'public', f);
+    if (fs.existsSync(srcF)) {
+      fs.copyFileSync(srcF, path.join(publicStagingDir, f));
+    }
+  }
+
   const outZip = path.join(config.rootDir, 'deploy_frontend_update.zip');
   if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
 
   console.log('  -> Compressing staged files using tar/zip...');
-  execSync(`tar -a -c -f "${outZip}" -C "${stagingDir}" .next next.config.mjs`, { stdio: 'inherit' });
+  execSync(`tar -a -c -f "${outZip}" -C "${stagingDir}" .next next.config.mjs public`, { stdio: 'inherit' });
   const stats = fs.statSync(outZip);
   console.log(`✅ Build package created: ${(stats.size / 1024 / 1024).toFixed(2)} MB`);
 
@@ -226,20 +260,28 @@ async function main() {
   // Wait 4 seconds for Passenger reload
   await new Promise(r => setTimeout(r, 4000));
 
-  https.get('https://naturesmud.shop/admin/login', (res) => {
-    let body = '';
-    res.on('data', d => body += d);
-    res.on('end', () => {
-      const m = body.match(/<!--([a-zA-Z0-9_-]+)-->/);
-      console.log(`Live Status: ${res.statusCode}`);
-      console.log(`Live Build ID: ${m ? m[1] : 'unknown'}`);
-      if (m && m[1] === localBuildId) {
-        console.log('✅ LIVE BUILD ID MATCHES LOCAL BUILD ID EXACTLY!');
-      } else {
-        console.log(`Note: Build ID is ${m ? m[1] : 'unknown'} (local is ${localBuildId})`);
-      }
+  function verifyUrl(url) {
+    return new Promise(resolve => {
+      https.get(url, (res) => {
+        let len = 0;
+        res.on('data', d => len += d.length);
+        res.on('end', () => {
+          console.log(`[HTTP ${res.statusCode}] ${url} (${len} bytes, type: ${res.headers['content-type']})`);
+          resolve(res.statusCode);
+        });
+      }).on('error', err => {
+        console.error(`Error ${url}:`, err.message);
+        resolve(500);
+      });
     });
-  });
+  }
+
+  await verifyUrl('https://naturesmud.com');
+  await verifyUrl('https://naturesmud.com/favicon.ico');
+  await verifyUrl('https://naturesmud.com/icon-48x48.png');
+  await verifyUrl('https://naturesmud.com/icon-192x192.png');
+  await verifyUrl('https://naturesmud.com/site.webmanifest');
+  await verifyUrl('https://naturesmud.com/naturesmud-og-image.jpg');
 }
 
 main().catch(console.error);

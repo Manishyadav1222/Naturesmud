@@ -105,7 +105,7 @@ export default function SearchOverlay() {
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search products, categories, recipes..."
+                  placeholder="Search products on naturesmud.com & naturesmud.shop..."
                   className="flex-1 text-lg outline-none placeholder-gray-400"
                   aria-label="Search products"
                 />

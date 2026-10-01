@@ -167,8 +167,18 @@ export default function AdminProductsPage() {
     if (!canManageProducts) return;
     try {
       const newStatus = product.status === 'ACTIVE' ? 'DRAFT' : 'ACTIVE';
-      await api.put(`/products/${product.id}`, { status: newStatus });
-      setProducts(prev => prev.map(p => p.id === product.id ? { ...p, status: newStatus } : p));
+      const isAct = newStatus === 'ACTIVE';
+      await api.put(`/products/${product.id}`, {
+        status: newStatus,
+        isActive: isAct,
+        isPublished: isAct,
+      });
+      setProducts(prev => prev.map(p => p.id === product.id ? {
+        ...p,
+        status: newStatus,
+        isActive: isAct,
+        isPublished: isAct,
+      } : p));
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);
@@ -179,8 +189,9 @@ export default function AdminProductsPage() {
   const handleToggleFeatured = async (product: Product) => {
     if (!canManageProducts) return;
     try {
-      await api.put(`/products/${product.id}`, { isFeatured: !product.isFeatured });
-      setProducts(prev => prev.map(p => p.id === product.id ? { ...p, isFeatured: !p.isFeatured } : p));
+      const newFeatured = !product.isFeatured;
+      await api.put(`/products/${product.id}`, { isFeatured: newFeatured });
+      setProducts(prev => prev.map(p => p.id === product.id ? { ...p, isFeatured: newFeatured } : p));
     } catch (err) {
       if (err instanceof ApiClientError) {
         setError(err.message);

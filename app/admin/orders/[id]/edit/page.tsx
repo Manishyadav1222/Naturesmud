@@ -23,11 +23,16 @@ const STATUS_OPTIONS = [
   { value: 'RETURNED', label: 'Returned' },
 ];
 
+const PAYMENT_METHOD_OPTIONS = [
+  { value: 'cod', label: '💵 COD (Cash on Delivery)' },
+  { value: 'online_pay', label: '💳 Online Pay (FonePay / Card / QR)' },
+];
+
 const PAYMENT_STATUS_OPTIONS = [
-  { value: 'UNPAID', label: 'Unpaid' },
-  { value: 'PAID', label: 'Paid' },
-  { value: 'REFUNDED', label: 'Refunded' },
-  { value: 'PARTIAL', label: 'Partial' },
+  { value: 'UNPAID', label: '⏳ Unpaid / Pending' },
+  { value: 'PAID', label: '💳 Paid (Online Pay Advance)' },
+  { value: 'CONFIRMED_AFTER_DELIVERY', label: '✅ Confirmed' },
+  { value: 'REFUNDED', label: '↩️ Refunded' },
 ];
 
 export default function AdminOrderEditPage() {
@@ -42,6 +47,7 @@ export default function AdminOrderEditPage() {
   
   const [formData, setFormData] = useState({
     status: '',
+    paymentMethod: 'cod',
     paymentStatus: '',
     shippingName: '',
     shippingEmail: '',
@@ -61,6 +67,7 @@ export default function AdminOrderEditPage() {
       const o = res.data;
       setFormData({
         status: o.status || 'PENDING',
+        paymentMethod: (o.paymentMethod || 'cod').toLowerCase(),
         paymentStatus: o.paymentStatus || 'UNPAID',
         shippingName: o.shippingAddress?.fullName || '',
         shippingEmail: o.customer?.email || '',
@@ -180,10 +187,14 @@ export default function AdminOrderEditPage() {
           <CardTitle>Order Details</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Order Status</label>
               <Select name="status" value={formData.status} onChange={handleChange} options={STATUS_OPTIONS} />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">Payment Method</label>
+              <Select name="paymentMethod" value={formData.paymentMethod} onChange={handleChange} options={PAYMENT_METHOD_OPTIONS} />
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-gray-700">Payment Status</label>

@@ -22,11 +22,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} (naturesmud.com) — ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name} (naturesmud.com)`,
+    default: 'naturesmud.com · naturesmud.shop',
+    template: '%s | naturesmud.com',
   },
+  applicationName: 'naturesmud.com',
   description:
-    "NaturesMud Nepal (naturesmud.com) — 0 Additives · 0 Preservatives · pure Himalayan naturally dehydrated superfood powders (Sweet Potato, Beetroot, Dates, Carrot), wild honey, shilajit, organic seeds & nuts. Direct from 180+ farms across Nepal.",
+    "naturesmud.com · naturesmud.shop — 0 Additives · 0 Preservatives · pure Himalayan naturally dehydrated superfood powders (Sweet Potato, Beetroot, Dates, Carrot), wild honey, shilajit, organic seeds & nuts.",
   keywords: [
     'naturesmud',
     'naturesmud.com',
@@ -51,35 +52,51 @@ export const metadata: Metadata = {
     'chia seeds Nepal',
   ],
   alternates: {
-    canonical: 'https://naturesmud.shop',
+    canonical: 'https://naturesmud.com',
     languages: {
-      'en-US': 'https://naturesmud.shop',
-      'ne-NP': 'https://naturesmud.shop',
+      'en-US': 'https://naturesmud.com',
+      'ne-NP': 'https://naturesmud.com',
     },
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: siteConfig.url,
-    siteName: 'NaturesMud (naturesmud.com)',
-    title: `${siteConfig.name} (naturesmud.com) — ${siteConfig.tagline}`,
+    siteName: 'naturesmud.com · naturesmud.shop',
+    title: 'naturesmud.com · naturesmud.shop',
     description:
-      'Official website of NaturesMud Nepal (naturesmud.com). 0 Additives · 0 Preservatives — pure Himalayan organic superfoods, naturally dehydrated fruit powders, nuts & seeds delivered nationwide.',
+      'naturesmud.com & naturesmud.shop — Pure Himalayan organic superfoods, naturally dehydrated fruit powders, nuts & seeds delivered nationwide.',
     images: [
       {
-        url: '/products/naturesmud-all-products-100g.jpg',
+        url: '/naturesmud-og-image.jpg',
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} (naturesmud.com) Himalayan Organic Superfoods`,
+        alt: 'naturesmud.com · naturesmud.shop',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} (naturesmud.com) — ${siteConfig.tagline}`,
+    title: 'naturesmud.com · naturesmud.shop',
     description:
-      'NaturesMud Nepal (naturesmud.com) delivers premium naturally dehydrated fruits, organic powders, and mountain nuts across Nepal. 0 Additives · 0 Preservatives.',
-    images: ['/products/naturesmud-all-products-100g.jpg'],
+      'naturesmud.com & naturesmud.shop — Pure Himalayan organic superfoods, naturally dehydrated fruit powders, nuts & seeds delivered nationwide.',
+    images: ['/naturesmud-og-image.jpg'],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -135,8 +152,8 @@ const jsonLd = {
         'नेचर्स मड',
       ],
       url: siteConfig.url,
-      logo: `${siteConfig.url}/products/naturesmud-all-products-100g.jpg`,
-      image: `${siteConfig.url}/products/naturesmud-all-products-100g.jpg`,
+      logo: 'https://naturesmud.com/icon-512x512.png',
+      image: 'https://naturesmud.com/icon-512x512.png',
       description: siteConfig.description,
       telephone: siteConfig.phone,
       email: siteConfig.email,
@@ -166,11 +183,19 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${siteConfig.url}/#website`,
       url: siteConfig.url,
-      name: siteConfig.name,
-      alternateName: ['naturesmud', 'naturesmud.com', 'Natures Mud', 'Nature Mud', 'NaturesMud'],
-      description: siteConfig.description,
+      name: 'naturesmud.com',
+      alternateName: ['naturesmud.shop', 'naturesmud.com · naturesmud.shop', 'NaturesMud'],
+      description: 'naturesmud.com · naturesmud.shop',
       publisher: {
         '@id': `${siteConfig.url}/#organization`,
+        '@type': 'Organization',
+        name: 'naturesmud.com',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://naturesmud.com/icon-512x512.png',
+          width: 512,
+          height: 512,
+        },
       },
       potentialAction: {
         '@type': 'SearchAction',
@@ -249,6 +274,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/icon-96x96.png" type="image/png" sizes="96x96" />
+        <link rel="icon" href="/icon-192x192.png" type="image/png" sizes="192x192" />
+        <link rel="icon" href="/icon-512x512.png" type="image/png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

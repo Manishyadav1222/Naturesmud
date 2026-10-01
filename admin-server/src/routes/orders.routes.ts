@@ -17,7 +17,7 @@ router.get('/new', requireMinRole('VIEWER'), (_req, res) => {
 // GET /api/admin/orders - List orders with filters
 router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {
   try {
-    const { page, limit, search, status, paymentStatus, sortBy, sortOrder } = req.query;
+    const { page, limit, search, status, paymentStatus, paymentMethod, sortBy, sortOrder } = req.query;
     let result;
     try {
       result = await laravelDb.getOrders({
@@ -26,6 +26,7 @@ router.get('/', requireMinRole('VIEWER'), async (req, res, next) => {
         search: search?.toString(),
         status: status?.toString(),
         paymentStatus: paymentStatus?.toString(),
+        paymentMethod: paymentMethod?.toString(),
         sortBy: sortBy?.toString(),
         sortOrder: sortOrder?.toString(),
       });
@@ -158,24 +159,68 @@ router.get('/:id', requireMinRole('VIEWER'), async (req, res, next) => {
   }
 });
 
-// PATCH /api/admin/orders/:id/payment - Approve/Verify payment
+// PATCH /api/admin/orders/:id/payment - Approve/Verify payment or update payment choices (COD, Online Pay, Confirmed after delivery)
 router.patch('/:id/payment', requireMinRole('ADMIN'), async (req, res, next) => {
   try {
-    const { paymentStatus, status } = req.body;
+    const { paymentStatus, paymentMethod, status, comment } = req.body;
     const orderId = req.params.id;
 
+    const normPayStatus = paymentStatus ? String(paymentStatus).toLowerCase() : null;
+    const normPayMethod = paymentMethod ? String(paymentMethod).toLowerCase() : null;
+    const normOrderStatus = status ? String(status).toLowerCase() : null;
+
+    const updates: string[] = ['updated_at = NOW()'];
+    const params: any[] = [];
+
+    if (normPayStatus) {
+      updates.push('payment_status = ?');
+      params.push(normPayStatus);
+      if (normPayStatus === 'paid' || normPayStatus === 'confirmed_after_delivery') {
+        updates.push('paid_at = COALESCE(paid_at, NOW())');
+      }
+    }
+
+    if (normPayMethod) {
+      updates.push('payment_method = ?');
+      params.push(normPayMethod);
+    }
+
+    if (normOrderStatus) {
+      updates.push('status = ?');
+      params.push(normOrderStatus);
+      if (normOrderStatus === 'delivered') {
+        updates.push('delivered_at = COALESCE(delivered_at, NOW())');
+      }
+    }
+
+    params.push(orderId);
+
     await pool.query(
-      `UPDATE orders SET payment_status = ?, status = COALESCE(?, status), paid_at = NOW(), updated_at = NOW() WHERE id = ?`,
-      [paymentStatus || 'paid', status || 'processing', orderId]
+      `UPDATE orders SET ${updates.join(', ')} WHERE id = ?`,
+      params
     );
 
+    let historyNote = comment;
+    if (!historyNote) {
+      if (normPayStatus === 'confirmed_after_delivery') {
+        historyNote = 'Payment confirmed after delivery (COD received).';
+      } else if (normPayStatus === 'paid') {
+        historyNote = `Payment marked as Paid (${normPayMethod === 'cod' ? 'COD' : 'Online Pay'}).`;
+      } else if (normPayMethod) {
+        historyNote = `Payment method set to ${normPayMethod.toUpperCase()}.`;
+      } else {
+        historyNote = `Payment status updated to ${paymentStatus || 'updated'}.`;
+      }
+    }
+
+    const historyStatus = normOrderStatus || 'confirmed';
     await pool.query(
       `INSERT INTO order_status_histories (order_id, status, note, created_at, updated_at)
        VALUES (?, ?, ?, NOW(), NOW())`,
-      [orderId, status || 'processing', `Payment approved by Admin (${paymentStatus || 'paid'}). Order is ready to dispatch.`]
+      [orderId, historyStatus, historyNote]
     );
 
-    res.json({ success: true, message: 'Payment status updated successfully.' });
+    res.json({ success: true, message: 'Payment details updated successfully.' });
   } catch (err) {
     next(err);
   }

@@ -26,6 +26,8 @@ export interface Product {
   storage: string;
   isFeatured: boolean;
   isBestSeller: boolean;
+  isActive?: boolean;
+  isPublished?: boolean;
   tags: string[];
 }
 

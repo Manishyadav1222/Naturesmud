@@ -194,7 +194,7 @@ export default function MobileHomePage() {
         >
           <div className="flex items-center gap-2.5 text-ink/50 text-xs font-sans">
             <Search className="w-4 h-4 text-primary" />
-            <span>Search 50+ Himalayan superfoods, powders...</span>
+            <span>Search on naturesmud.com &amp; naturesmud.shop...</span>
           </div>
           <span className="text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary px-2 py-0.5 rounded-md">
             Find

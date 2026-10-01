@@ -367,7 +367,7 @@ export default function Header() {
                   className="w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium bg-primary/5 text-primary border border-primary/20 transition-all duration-200"
                 >
                   <span className="flex items-center gap-2.5">
-                    <Search className="w-4 h-4 text-primary" /> Search Superfoods &amp; Recipes
+                    <Search className="w-4 h-4 text-primary" /> Search naturesmud.com &amp; naturesmud.shop
                   </span>
                   <kbd className="text-[10px] bg-white border border-primary/20 rounded px-1.5 py-0.5 text-primary font-mono">
                     Tap

@@ -348,20 +348,23 @@ export default function AboutPage() {
 
             {/* Hero Image Showcase */}
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-stone-900 group">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-stone-900 group">
                 <Image
-                  src="/products/naturesmud-all-products-100g.jpg"
-                  alt="NaturesMud 100g authentic pure product lineup from Nepal"
+                  src="/images/posters/authenticity-on-every-table.jpg"
+                  alt="Authenticity On Every Table - NaturesMud Pure Collection"
                   fill
                   priority
+                  unoptimized
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-6 text-white">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#D9A441]">
-                    {isEn ? '100g Pure Food Collection' : '१०० ग्राम शुद्ध खाद्य सङ्ग्रह'}
+                    {isEn ? 'Authenticity On Every Table' : 'प्रत्येक भान्सामा शुद्धता र प्रामाणिकता'}
                   </span>
                   <p className="text-sm font-medium text-white/90 mt-1">
-                    Sweet Potato · Dates Powder · Beetroot · Blueberries
+                    {isEn
+                      ? 'Wild Blueberries · Beetroot · Apple · Dates Powder · Pink Salt · Coconut Oil'
+                      : 'ब्लुबेरी · चुकन्दर · स्याउ · खजुर · गुलाबी नुन · भर्जिन नरिवल तेल'}
                   </p>
                 </div>
               </div>
@@ -703,11 +706,11 @@ export default function AboutPage() {
           <p className="text-emerald-100 text-base max-w-2xl mx-auto leading-relaxed">
             {isEn ? (
               <>
-                Free express shipping on all orders over <strong>Rs. 10,000</strong> across Nepal. 100% natural, 0% added sugar, 0% preservatives.
+                Free express shipping on all orders over <strong>Rs. 3,000</strong> across Nepal. 100% natural, 0% added sugar, 0% preservatives.
               </>
             ) : (
               <>
-                नेपालभर <strong>रु. १०,०००</strong> भन्दा माथिका सबै अर्डरमा निःशुल्क एक्सप्रेस डेलिभरी। १००% शुद्ध, ०% चिनी, ०% केमिकल।
+                नेपालभर <strong>रु. ३,०००</strong> भन्दा माथिका सबै अर्डरमा निःशुल्क एक्सप्रेस डेलिभरी। १००% शुद्ध, ०% चिनी, ०% केमिकल।
               </>
             )}
           </p>

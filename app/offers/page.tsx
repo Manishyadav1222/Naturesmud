@@ -242,6 +242,46 @@ export default function FestivalOffersPage() {
         {/* 4 Core Animated Trust Features Strip */}
         <FeaturesStrip className="my-0 shadow-xs" />
 
+        {/* Master Showcase Banner: Authenticity On Every Table */}
+        <section className="py-6 container-nm px-4">
+          <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#C9982A]/30 bg-stone-900 aspect-[16/8] sm:aspect-[21/9] flex items-end">
+            <Image
+              src="/images/posters/authenticity-on-every-table.jpg"
+              alt="Authenticity On Every Table - NaturesMud Himalayan Collection"
+              fill
+              priority
+              unoptimized
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white z-10">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#EBC164]">
+                🏔️ Authenticity On Every Table
+              </span>
+              <h2 className="font-heading font-extrabold text-xl sm:text-3xl text-white mt-1">
+                Pure Himalayan Whole Food Collection
+              </h2>
+              <p className="text-xs sm:text-sm text-white/90 max-w-2xl mt-1 hidden sm:block">
+                Wild Blueberries · Himalayan Beetroot · Crisp Dehydrated Apple · Pure Dates Powder · Ancient Pink Salt · Cold-Pressed Virgin Coconut Oil
+              </p>
+              <div className="mt-3 flex items-center gap-3">
+                <Link
+                  href="/catalog"
+                  className="px-5 py-2.5 rounded-xl bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] font-bold text-xs sm:text-sm shadow-md transition-all inline-flex items-center gap-2 cursor-pointer"
+                >
+                  <span>Explore Master Catalog</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/our-story"
+                  className="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all cursor-pointer"
+                >
+                  Our Farmer Roots
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Offers Grid Section */}
         <section className="py-12 lg:py-16 container-nm px-4">
           {/* Category Filter Pills */}

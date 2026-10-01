@@ -27,11 +27,16 @@ async function deploy() {
     // 1. Deploy Laravel Backend files
     console.log('\n[1/3] Deploying Laravel backend changes...');
     const orderControllerLocal = path.join(config.rootDir, 'backend', 'app', 'Http', 'Controllers', 'Api', 'OrderController.php');
+    const productControllerLocal = path.join(config.rootDir, 'backend', 'app', 'Http', 'Controllers', 'Api', 'ProductController.php');
     const apiRoutesLocal = path.join(config.rootDir, 'backend', 'routes', 'api.php');
 
     console.log('  -> Uploading OrderController.php to /api.naturesmud.shop/app/Http/Controllers/Api/ ...');
     await client.uploadFrom(orderControllerLocal, '/api.naturesmud.shop/app/Http/Controllers/Api/OrderController.php');
     console.log('  ✅ OrderController.php uploaded!');
+
+    console.log('  -> Uploading ProductController.php to /api.naturesmud.shop/app/Http/Controllers/Api/ ...');
+    await client.uploadFrom(productControllerLocal, '/api.naturesmud.shop/app/Http/Controllers/Api/ProductController.php');
+    console.log('  ✅ ProductController.php uploaded!');
 
     console.log('  -> Uploading routes/api.php to /api.naturesmud.shop/routes/ ...');
     await client.uploadFrom(apiRoutesLocal, '/api.naturesmud.shop/routes/api.php');
@@ -41,6 +46,7 @@ async function deploy() {
     console.log('\n[2/3] Deploying Admin server compiled files...');
     const laravelDbJs = path.join(config.rootDir, 'admin-server', 'dist', 'services', 'laravelDb.js');
     const ordersRoutesJs = path.join(config.rootDir, 'admin-server', 'dist', 'routes', 'orders.routes.js');
+    const productsRoutesJs = path.join(config.rootDir, 'admin-server', 'dist', 'routes', 'products.routes.js');
 
     console.log('  -> Uploading dist/services/laravelDb.js to /admin-api.naturesmud.shop/dist/services/ ...');
     await client.uploadFrom(laravelDbJs, '/admin-api.naturesmud.shop/dist/services/laravelDb.js');
@@ -49,6 +55,10 @@ async function deploy() {
     console.log('  -> Uploading dist/routes/orders.routes.js to /admin-api.naturesmud.shop/dist/routes/ ...');
     await client.uploadFrom(ordersRoutesJs, '/admin-api.naturesmud.shop/dist/routes/orders.routes.js');
     console.log('  ✅ orders.routes.js uploaded!');
+
+    console.log('  -> Uploading dist/routes/products.routes.js to /admin-api.naturesmud.shop/dist/routes/ ...');
+    await client.uploadFrom(productsRoutesJs, '/admin-api.naturesmud.shop/dist/routes/products.routes.js');
+    console.log('  ✅ products.routes.js uploaded!');
 
     // 3. Restart passenger app for admin-api
     console.log('\n[3/3] Triggering Passenger restart for admin-api...');

@@ -146,6 +146,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
   const [sortBy, setSortBy] = useState<'default' | 'price-asc' | 'price-desc' | 'mrp'>('default');
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
   const [isMagazineModalOpen, setIsMagazineModalOpen] = useState(false);
+  const [isCoverModalOpen, setIsCoverModalOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [addedSlug, setAddedSlug] = useState<string | null>(null);
 
@@ -385,6 +386,78 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
         </div>
       </header>
 
+      {/* ── TOP HERO PUBLICATION BANNER: AUTHENTICITY ON EVERY TABLE ── */}
+      <section className="bg-gradient-to-b from-[#142E23] via-[#1B3D2F] to-[#12281E] border-b border-[#C9982A]/30 py-8 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9982A]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-white/5 backdrop-blur-md rounded-3xl border border-[#C9982A]/40 p-6 sm:p-8 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Column: Image container with zoom */}
+              <div className="lg:col-span-6 relative">
+                <div
+                  onClick={() => setIsCoverModalOpen(true)}
+                  className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C9982A]/50 bg-stone-900 group cursor-pointer"
+                >
+                  <img
+                    src="/images/posters/authenticity-on-every-table.jpg"
+                    alt="Authenticity On Every Table - Nature's Mud 2026 Master Magazine Cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 bg-[#1B3D2F]/95 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xl flex items-center gap-2 transition-opacity">
+                      <Maximize2 className="w-4 h-4 text-[#C9982A]" /> Zoom Cover Photo
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Narrative & Action buttons */}
+              <div className="lg:col-span-6 space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9982A] text-[#1B3D2F] text-xs font-extrabold uppercase tracking-wider">
+                    <Leaf className="w-3.5 h-3.5" /> 2026 Master Magazine Cover
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-emerald-300 text-xs font-semibold border border-white/15">
+                    8-Page Edition
+                  </span>
+                </div>
+
+                <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white leading-tight">
+                  Authenticity On Every Table
+                </h2>
+
+                <p className="text-sm sm:text-base text-white/85 leading-relaxed">
+                  Our pure Himalayan whole food collection on the family table: Wild Dried Blueberries, Beetroot Powder, Crisp Dehydrated Apple, Pure Dates Powder, Ancient Pink Salt &amp; Cold-Pressed Virgin Coconut Oil.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <button
+                    onClick={() => setIsMagazineModalOpen(true)}
+                    className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D9A441] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] font-heading font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-xl transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <BookOpen className="w-4 h-4" /> Read 8-Page Magazine Online
+                  </button>
+                  <button
+                    onClick={() => handleDownloadMagazine()}
+                    disabled={isDownloading}
+                    className="px-5 py-3 rounded-xl bg-white/15 hover:bg-white/25 text-white border border-white/20 font-heading font-bold text-xs sm:text-sm transition-all flex items-center gap-2 cursor-pointer disabled:opacity-70"
+                  >
+                    <Download className={`w-4 h-4 text-[#C9982A] ${isDownloading ? 'animate-bounce' : ''}`} />
+                    {isDownloading ? 'Downloading...' : 'Save Magazine PDF'}
+                  </button>
+                  <button
+                    onClick={() => setIsCoverModalOpen(true)}
+                    className="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white/90 text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <ZoomIn className="w-4 h-4 text-[#C9982A]" /> Zoom Cover
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── VIEW TABS & FILTER BAR ── */}
       <section className="sticky top-16 lg:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
@@ -408,7 +481,7 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                   : 'text-gray-700 hover:text-gray-900'
               }`}
             >
-              <Eye className="w-3.5 h-3.5 text-[#C9982A]" /> Official Flyer Poster
+              <BookOpen className="w-3.5 h-3.5 text-[#C9982A]" /> Magazine &amp; Flyer
             </button>
             <button
               onClick={() => setActiveTab('table')}
@@ -763,67 +836,165 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
         )}
 
         {/* ========================================================= */}
-        {/* TAB 2: OFFICIAL FLYER POSTER VIEWER & DOWNLOAD           */}
+        {/* TAB 2: OFFICIAL MAGAZINE & FLYER POSTER SHOWCASE         */}
         {/* ========================================================= */}
         {activeTab === 'poster' && (
-          <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-10 shadow-sm text-center">
-            <div className="max-w-2xl mx-auto mb-6">
-              <span className="inline-block px-3 py-1 rounded-full bg-[#C9982A]/20 text-[#8B6B1B] text-xs font-bold uppercase tracking-wider mb-2">
-                Official Printable Flyer
-              </span>
-              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-gray-900">
-                NaturesMud 2026 Master Product Flyer
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 mt-2">
-                Click the preview below to inspect in high definition, or download the original high-res poster and
-                official master catalog.
-              </p>
+          <div className="space-y-8">
+            {/* Top Intro Banner */}
+            <div className="bg-gradient-to-r from-[#142E23] via-[#1B3D2F] to-[#12281E] rounded-3xl p-6 sm:p-8 text-white border border-[#C9982A]/30 shadow-xl text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-[#C9982A]/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="max-w-2xl mx-auto relative z-10">
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#C9982A]/20 border border-[#C9982A]/40 text-[#F4E8C1] text-xs font-bold uppercase tracking-wider mb-3">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C9982A]" /> Official 2026 Master Publications
+                </span>
+                <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+                  Magazine Cover &amp; Master Product Flyer
+                </h2>
+                <p className="text-xs sm:text-sm text-emerald-100/80 mt-2.5 max-w-xl mx-auto leading-relaxed">
+                  View the official 8-page luxury magazine edition showcasing our authentic Himalayan superfoods lineup, or inspect the comprehensive single-sheet master product flyer.
+                </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
-                <button
-                  onClick={() => setIsPosterModalOpen(true)}
-                  className="px-5 py-2.5 rounded-xl bg-[#1B3D2F] hover:bg-[#2D5A27] text-white text-xs sm:text-sm font-heading font-bold shadow-sm transition-all flex items-center gap-2"
-                >
-                  <ZoomIn className="w-4 h-4 text-[#C9982A]" /> Zoom / Fullscreen Preview
-                </button>
-                <a
-                  href="/official-product-catalog.jpg"
-                  download="Natures_Mud_Official_Product_Catalog.jpg"
-                  className="px-5 py-2.5 rounded-xl bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] text-xs sm:text-sm font-heading font-bold shadow-sm transition-all flex items-center gap-2"
-                >
-                  <Download className="w-4 h-4" /> Download Poster
-                </a>
-                <button
-                  onClick={() => setIsMagazineModalOpen(true)}
-                  className="px-5 py-2.5 rounded-xl bg-[#1B3D2F] hover:bg-[#25523F] text-white text-xs sm:text-sm font-heading font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer"
-                >
-                  <BookOpen className="w-4 h-4 text-[#C9982A]" /> Read Magazine
-                </button>
-                <button
-                  onClick={() => handleDownloadMagazine()}
-                  disabled={isDownloading}
-                  className="px-5 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-200 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 disabled:opacity-70 cursor-pointer"
-                >
-                  <Download className={`w-4 h-4 text-[#1B3D2F] ${isDownloading ? 'animate-bounce' : ''}`} />
-                  {isDownloading ? 'Downloading...' : 'Magazine PDF'}
-                </button>
+                <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+                  <button
+                    onClick={() => setIsMagazineModalOpen(true)}
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D9A441] hover:from-[#B88720] hover:to-[#C9982A] text-[#1B3D2F] text-xs sm:text-sm font-heading font-extrabold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <BookOpen className="w-4 h-4" /> Read 8-Page Magazine Online
+                  </button>
+                  <button
+                    onClick={() => handleDownloadMagazine()}
+                    disabled={isDownloading}
+                    className="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white border border-white/25 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 disabled:opacity-70 cursor-pointer"
+                  >
+                    <Download className={`w-4 h-4 text-[#C9982A] ${isDownloading ? 'animate-bounce' : ''}`} />
+                    {isDownloading ? 'Preparing PDF...' : 'Download Magazine PDF (8 Pages)'}
+                  </button>
+                  <button
+                    onClick={() => setIsPosterModalOpen(true)}
+                    className="px-5 py-2.5 rounded-xl bg-[#0E1F18]/80 hover:bg-[#0E1F18] text-white border border-[#C9982A]/40 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer"
+                  >
+                    <Eye className="w-4 h-4 text-[#C9982A]" /> View Master Flyer
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Flyer Image Container */}
-            <div
-              onClick={() => setIsPosterModalOpen(true)}
-              className="relative max-w-2xl mx-auto rounded-2xl overflow-hidden border-2 border-[#C9982A]/40 shadow-2xl cursor-pointer group bg-[#F8F5EE]"
-            >
-              <img
-                src="/official-product-catalog.jpg"
-                alt="NaturesMud Official Product Catalog 2026"
-                className="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                <span className="opacity-0 group-hover:opacity-100 bg-[#1B3D2F]/90 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xl flex items-center gap-2 transition-opacity">
-                  <Maximize2 className="w-4 h-4 text-[#C9982A]" /> Click to Open Fullscreen
-                </span>
+            {/* Showcase Grid: Magazine Cover & Printable Flyer */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              {/* CARD 1: OFFICIAL 2026 MAGAZINE COVER */}
+              <div className="bg-white rounded-3xl border-2 border-[#C9982A]/30 p-6 sm:p-7 shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1B3D2F] text-[#F4E8C1] text-xs font-bold uppercase tracking-wider">
+                      <Leaf className="w-3.5 h-3.5 text-[#C9982A]" /> Authenticity On Every Table
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                      Master Magazine Cover
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-gray-900">
+                    Authenticity On Every Table
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1.5 leading-relaxed">
+                    Featuring our pure Himalayan collection on the family table: Wild Dried Blueberries, Beetroot Powder, Dehydrated Apple, Dates Powder, Himalayan Pink Salt &amp; Virgin Coconut Oil.
+                  </p>
+
+                  {/* Magazine Cover Image Container */}
+                  <div
+                    onClick={() => setIsCoverModalOpen(true)}
+                    className="relative mt-5 rounded-2xl overflow-hidden border border-gray-200 shadow-lg cursor-pointer group bg-[#FBF9F4] aspect-[16/9] flex items-center justify-center"
+                  >
+                    <img
+                      src="/images/posters/authenticity-on-every-table.jpg"
+                      alt="Authenticity On Every Table - Nature's Mud 2026 Magazine Cover"
+                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 bg-[#1B3D2F]/95 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xl flex items-center gap-2 transition-opacity">
+                        <Maximize2 className="w-4 h-4 text-[#C9982A]" /> Zoom Cover Photo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 1 Actions */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-5 pt-4 border-t border-gray-100">
+                  <button
+                    onClick={() => setIsCoverModalOpen(true)}
+                    className="px-3 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <ZoomIn className="w-3.5 h-3.5 text-[#1B3D2F]" /> Zoom Cover
+                  </button>
+                  <button
+                    onClick={() => setIsMagazineModalOpen(true)}
+                    className="px-3 py-2.5 rounded-xl bg-[#1B3D2F] hover:bg-[#25523F] text-white text-xs font-bold shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <BookOpen className="w-3.5 h-3.5 text-[#C9982A]" /> Read Online
+                  </button>
+                  <button
+                    onClick={() => handleDownloadMagazine()}
+                    disabled={isDownloading}
+                    className="px-3 py-2.5 rounded-xl bg-gradient-to-r from-[#C9982A] to-[#D9A441] hover:brightness-105 text-[#1B3D2F] text-xs font-bold shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-70"
+                  >
+                    <Download className="w-3.5 h-3.5" /> PDF Edition
+                  </button>
+                </div>
+              </div>
+
+              {/* CARD 2: OFFICIAL 2026 MASTER PRODUCT FLYER */}
+              <div className="bg-white rounded-3xl border border-gray-200 p-6 sm:p-7 shadow-xl hover:shadow-2xl transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#F4EFE6] text-[#8B6B1B] text-xs font-bold uppercase tracking-wider">
+                      <Layers className="w-3.5 h-3.5 text-[#C9982A]" /> Master Product Flyer
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold">
+                      Printable Poster
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-gray-900">
+                    NaturesMud 2026 Product Flyer
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1.5 leading-relaxed">
+                    Single-sheet master catalog flyer with complete product specifications, active retail prices, grammages, and verified customer benefits for wholesale and retail display.
+                  </p>
+
+                  {/* Flyer Image Container */}
+                  <div
+                    onClick={() => setIsPosterModalOpen(true)}
+                    className="relative mt-5 rounded-2xl overflow-hidden border border-gray-200 shadow-lg cursor-pointer group bg-[#F8F5EE] aspect-[4/4] sm:aspect-[4/3] flex items-center justify-center"
+                  >
+                    <img
+                      src="/official-product-catalog.jpg"
+                      alt="NaturesMud Official Product Catalog 2026"
+                      className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 bg-[#1B3D2F]/95 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-xl flex items-center gap-2 transition-opacity">
+                        <Maximize2 className="w-4 h-4 text-[#C9982A]" /> Zoom Flyer Poster
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2 Actions */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-gray-100">
+                  <button
+                    onClick={() => setIsPosterModalOpen(true)}
+                    className="px-4 py-2.5 rounded-xl bg-[#1B3D2F] hover:bg-[#25523F] text-white text-xs font-bold shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <ZoomIn className="w-3.5 h-3.5 text-[#C9982A]" /> Zoom Fullscreen
+                  </button>
+                  <a
+                    href="/official-product-catalog.jpg"
+                    download="Natures_Mud_Official_Product_Catalog.jpg"
+                    className="px-4 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold border border-gray-200 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[#1B3D2F]" /> Download Poster JPG
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1063,6 +1234,68 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ── FULLSCREEN MAGAZINE COVER MODAL ── */}
+      <AnimatePresence>
+        {isCoverModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+            onClick={() => setIsCoverModalOpen(false)}
+          >
+            <div
+              className="relative max-w-4xl max-h-[90vh] w-full bg-[#1B3D2F] rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="p-4 bg-[#142E23] text-white flex items-center justify-between border-b border-[#C9982A]/30">
+                <div className="flex items-center gap-2">
+                  <Leaf className="w-4 h-4 text-[#C9982A]" />
+                  <span className="font-heading font-bold text-sm">
+                    Nature&apos;s Mud 2026 Master Magazine Cover
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setIsCoverModalOpen(false);
+                      setIsMagazineModalOpen(true);
+                    }}
+                    className="p-1.5 px-3 rounded-lg bg-[#C9982A] hover:bg-[#B88720] text-[#1B3D2F] text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" /> Read 8-Page Magazine
+                  </button>
+                  <a
+                    href="/images/posters/magazine-cover.jpg"
+                    download="Natures_Mud_Magazine_Cover_2026.jpg"
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1 transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5" /> Save Cover
+                  </a>
+                  <button
+                    onClick={() => setIsCoverModalOpen(false)}
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal Image Body with scroll */}
+              <div className="overflow-y-auto p-4 flex items-center justify-center bg-black/40">
+                <img
+                  src="/images/posters/authenticity-on-every-table.jpg"
+                  alt="Nature's Mud 2026 Master Magazine Cover"
+                  className="max-h-[80vh] w-auto object-contain rounded-lg shadow-xl"
+                />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── INTERACTIVE LUXURY MAGAZINE READER MODAL ── */}
       <AnimatePresence>
         {isMagazineModalOpen && (

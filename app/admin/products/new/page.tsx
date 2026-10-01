@@ -103,14 +103,14 @@ export default function AdminProductCreatePage() {
     lowStockThreshold: '5',
     categoryId: '',
     brandId: '',
-    status: 'DRAFT',
+    status: 'ACTIVE',
     unit: 'PC',
     weight: '',
     length: '',
     width: '',
     height: '',
     isFeatured: false,
-    isPublished: false,
+    isPublished: true,
     isActive: true,
     barcode: '',
   });
@@ -140,7 +140,25 @@ export default function AdminProductCreatePage() {
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      setFormData(prev => {
+        const next = { ...prev, [name]: checked };
+        if (name === 'isPublished') {
+          if (checked) {
+            next.isActive = true;
+            next.status = 'ACTIVE';
+          } else {
+            next.status = 'DRAFT';
+          }
+        } else if (name === 'isActive') {
+          if (!checked) {
+            next.isPublished = false;
+            next.status = 'DRAFT';
+          } else {
+            next.status = next.isPublished ? 'ACTIVE' : 'DRAFT';
+          }
+        }
+        return next;
+      });
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
@@ -216,6 +234,9 @@ export default function AdminProductCreatePage() {
         uploadedImages[0].isPrimary = true;
       }
 
+      const isEffectiveActive = Boolean(formData.isPublished && formData.isActive);
+      const effectiveStatus = isEffectiveActive ? 'ACTIVE' : 'DRAFT';
+
       const productData = {
         name: formData.name,
         slug: formData.slug || undefined,
@@ -225,11 +246,11 @@ export default function AdminProductCreatePage() {
         price: parseFloat(formData.price) || 0,
         compareAtPrice: formData.compareAtPrice ? parseFloat(formData.compareAtPrice) : null,
         cost: parseFloat(formData.cost) || 0,
-        stock: parseInt(formData.stock) || 0,
-        lowStockThreshold: parseInt(formData.lowStockThreshold) || 5,
+        stock: parseInt(formData.stock, 10) || 0,
+        lowStockThreshold: parseInt(formData.lowStockThreshold, 10) || 5,
         categoryId: formData.categoryId || null,
         brandId: formData.brandId || null,
-        status: formData.status,
+        status: effectiveStatus,
         unit: formData.unit,
         weight: formData.weight ? parseFloat(formData.weight) : null,
         dimensions: {
@@ -237,9 +258,9 @@ export default function AdminProductCreatePage() {
           width: formData.width ? parseFloat(formData.width) : null,
           height: formData.height ? parseFloat(formData.height) : null,
         },
-        isFeatured: formData.isFeatured,
-        isPublished: formData.isPublished,
-        isActive: formData.isActive,
+        isFeatured: Boolean(formData.isFeatured),
+        isPublished: Boolean(formData.isPublished),
+        isActive: isEffectiveActive,
         barcode: formData.barcode || null,
         images: uploadedImages,
       };
