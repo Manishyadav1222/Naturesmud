@@ -164,9 +164,8 @@ export const products: Product[] = [
     "image": "/products/avocado-powder.jpg",
     "images": [
       "/products/avocado-powder.jpg",
-      "/products/posters/avocado-powder-scene-1.jpg",
-      "/products/posters/avocado-powder-display-2k.jpg",
-      "/products/posters/avocado-powder-photoshoot-2k.jpg",
+      "/products/avocado-powder-square.jpg",
+      "/products/nm-avocado-powder-new.jpg",
       "/products/freeze-dried-avocado-powder.jpg"
     ],
     "description": "Proudly harvested and crafted in Nepal! Nature's Mud Freeze Dried Avocado Powder preserves the rich buttery texture and heart-healthy monounsaturated fats of fresh avocados. Processed with advanced gentle freeze-drying technology to preserve raw cellular nutrients, natural potassium, Vitamin E, and dietary fiber. 100% natural, no sugar, no preservatives.",
@@ -178,7 +177,7 @@ export const products: Product[] = [
     ],
     "stock": 50,
     "weight": "80 GM",
-    "packing": "Standup Ziplock Pouch",
+    "packing": "Glass Jar",
     "mrp": 790,
     "ingredients": [
       "100% Pure Freeze-Dried Fresh Himalayan Avocados"
@@ -240,9 +239,8 @@ export const products: Product[] = [
     "image": "/products/strawberry-powder.jpg",
     "images": [
       "/products/strawberry-powder.jpg",
-      "/products/posters/strawberry-powder-berries-2k.jpg",
-      "/products/posters/strawberry-powder-roses-2k.jpg",
-      "/products/posters/strawberry-powder-photoshoot-2k.jpg"
+      "/products/strawberry-powder-square.jpg",
+      "/products/nm-strawberry-powder-new.jpg"
     ],
     "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Strawberry Powder delivers pure goodness from ripe strawberries gently dehydrated at low temperatures to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
     "shortDescription": "Pure Goodness from Strawberries for a brighter, healthier tomorrow. High Vitamin C & anthocyanin antioxidants.",

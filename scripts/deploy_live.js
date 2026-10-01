@@ -66,30 +66,73 @@ async function main() {
   client.timeout = 180000;
   client.ftp.verbose = false;
 
-  await client.access({
-    host: config.host,
-    user: config.username,
-    password: config.password,
-    secure: false
-  });
+  async function connectFtp() {
+    if (!client.closed) {
+      try { client.close(); } catch(e) {}
+    }
+    await client.access({
+      host: config.host,
+      user: config.username,
+      password: config.password,
+      secure: false
+    });
+  }
+
+  async function safeUpload(localPath, remotePath) {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      try {
+        if (client.closed) await connectFtp();
+        await client.ensureDir(path.posix.dirname(remotePath));
+        await client.uploadFrom(localPath, remotePath);
+        return;
+      } catch (err) {
+        console.warn(`  ⚠️ Retry ${attempt}/3 for ${remotePath}: ${err.message}`);
+        try { client.close(); } catch(e) {}
+        await new Promise(r => setTimeout(r, 2000));
+        await connectFtp();
+      }
+    }
+    throw new Error(`Failed to upload ${remotePath} after 3 attempts`);
+  }
+
+  await connectFtp();
   console.log('✅ FTP Connected!');
 
   console.log('  -> Uploading frontend-build-update.zip to /naturesmud.shop/ ...');
-  await client.uploadFrom(zipPath, '/naturesmud.shop/frontend-build-update.zip');
+  await safeUpload(zipPath, '/naturesmud.shop/frontend-build-update.zip');
   console.log('✅ Zip Upload completed!');
 
-  // Upload magazine catalog PDFs directly to public directory
-  const pdfs = [
+  // Upload catalog PDFs and product images directly to public directory
+  const directAssets = [
     'Nature_Mud_Product_Catalog.pdf',
     'catalog.pdf',
-    'Nature_Mud_Magazine_Catalog.pdf'
+    'Nature_Mud_Magazine_Catalog.pdf',
+    'official-product-catalog.jpg',
+    'images/official-product-catalog.jpg',
+    'products/strawberry-powder.jpg',
+    'products/nm-strawberry-powder-new.jpg',
+    'products/strawberry-powder-square.jpg',
+    'products/avocado-powder.jpg',
+    'products/freeze-dried-avocado-powder.jpg',
+    'products/nm-avocado-powder-new.jpg',
+    'products/avocado-powder-square.jpg',
+    'products/posters/strawberry-powder-photoshoot-2k.jpg',
+    'products/posters/strawberry-powder-berries-2k.jpg',
+    'products/posters/strawberry-powder-roses-2k.jpg',
+    'products/posters/avocado-powder-photoshoot-2k.jpg',
+    'products/posters/avocado-powder-scene-1.jpg',
+    'products/posters/avocado-powder-display-2k.jpg',
+    'products/nm-roasted-cashew-new.jpg',
+    'products/cashewnuts-roasted.jpg',
+    'products/authentic-cashewnuts-roasted.jpg'
   ];
-  for (const pdf of pdfs) {
-    const localPdfPath = path.join(config.rootDir, 'public', pdf);
-    if (fs.existsSync(localPdfPath)) {
-      console.log(`  -> Uploading ${pdf} (${(fs.statSync(localPdfPath).size / 1024 / 1024).toFixed(2)} MB) to /naturesmud.shop/public/ ...`);
-      await client.uploadFrom(localPdfPath, `/naturesmud.shop/public/${pdf}`);
-      console.log(`  ✅ ${pdf} uploaded successfully!`);
+  for (const asset of directAssets) {
+    const localAssetPath = path.join(config.rootDir, 'public', asset);
+    if (fs.existsSync(localAssetPath)) {
+      const remotePath = `/naturesmud.shop/public/${asset}`;
+      console.log(`  -> Uploading ${asset} (${(fs.statSync(localAssetPath).size / 1024).toFixed(1)} KB) to ${remotePath} ...`);
+      await safeUpload(localAssetPath, remotePath);
+      console.log(`  ✅ ${asset} uploaded successfully!`);
     }
   }
 
