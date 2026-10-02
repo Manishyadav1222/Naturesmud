@@ -94,43 +94,51 @@ async function main() {
   await safeUpload(zipPath, '/naturesmud.shop/frontend-build-update.zip');
   console.log('✅ Build zip uploaded!');
 
-  // Upload new images to BOTH root public and standalone public
+  // Upload new images to root public, standalone public, and public_html
   const targetImages = [
     // Almonds
+    'products/nm-almond-jar-v2.jpg',
     'products/nm-almond-jar.jpeg',
     'products/almonds.jpg',
     'products/almonds.jpeg',
     'products/almonds-2.jpg',
     'products/authentic-almonds.jpg',
     'products/almond-jar.jpeg',
+    'products/posters/almonds-explosion-2k-v2.jpg',
     'products/posters/almonds-explosion-2k.jpg',
     'products/posters/almonds-surrounded-2k.jpg',
     // Avocado
+    'products/avocado-powder-v2.jpg',
     'products/avocado-powder.jpg',
     'products/freeze-dried-avocado-powder.jpg',
     'products/nm-avocado-powder-new.jpg',
     'products/avocado-powder-square.jpg',
-    // Strawberry
-    'products/strawberry-powder.jpg',
-    'products/nm-strawberry-powder-new.jpg',
-    'products/strawberry-powder-square.jpg',
-    'products/posters/strawberry-powder-photoshoot-2k.jpg',
-    'products/posters/strawberry-powder-berries-2k.jpg',
-    'products/posters/strawberry-powder-roses-2k.jpg',
+    'products/posters/avocado-powder-display-2k-v2.jpg',
     'products/posters/avocado-powder-photoshoot-2k.jpg',
     'products/posters/avocado-powder-scene-1.jpg',
     'products/posters/avocado-powder-display-2k.jpg',
+    // Strawberry
+    'products/strawberry-powder-v2.jpg',
+    'products/strawberry-powder.jpg',
+    'products/nm-strawberry-powder-new.jpg',
+    'products/strawberry-powder-square.jpg',
+    'products/posters/strawberry-powder-berries-2k-v2.jpg',
+    'products/posters/strawberry-powder-photoshoot-2k.jpg',
+    'products/posters/strawberry-powder-berries-2k.jpg',
+    'products/posters/strawberry-powder-roses-2k.jpg',
+    // Dehydrated fruits
     'products/authentic-dehydrated-mango.jpg',
     'products/nm-mango-pouch.jpeg',
     'products/dehydrated-mango.jpg'
   ];
 
-  console.log('  -> Syncing new images to /public/ and /.next/standalone/public/ ...');
+  console.log('  -> Syncing new images to /public/, /.next/standalone/public/ & /public_html/ ...');
   for (const relPath of targetImages) {
     const local = path.join(config.rootDir, 'public', relPath);
     if (fs.existsSync(local)) {
       await safeUpload(local, `/naturesmud.shop/public/${relPath}`);
       await safeUpload(local, `/naturesmud.shop/.next/standalone/public/${relPath}`);
+      await safeUpload(local, `/public_html/${relPath}`);
       console.log(`     ✅ Synced ${relPath} (${(fs.statSync(local).size / 1024).toFixed(1)} KB)`);
     }
   }
@@ -188,12 +196,13 @@ try {
     $pdo = new PDO('mysql:host=localhost;dbname=kathma13_natures_mud;charset=utf8mb4', 'kathma13_muduser', '2*5Qt7iSrB7-Uz');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Make almond products featured and use correct image
-    $pdo->exec("UPDATE products SET image = '/products/nm-almond-jar.jpeg', is_featured = 1 WHERE slug IN ('roasted-almonds', 'raw-himalayan-almonds')");
-    // Make avocado & strawberry featured
-    $pdo->exec("UPDATE products SET is_featured = 1 WHERE slug IN ('freeze-dried-avocado-powder', 'strawberry-powder')");
+    // Make almond products featured and use v2 images
+    $pdo->exec("UPDATE products SET images = '[\"/products/nm-almond-jar-v2.jpg\", \"/products/nm-almond-jar.jpeg\"]', is_featured = 1, is_best_seller = 1 WHERE slug IN ('roasted-almonds', 'raw-himalayan-almonds')");
+    // Make avocado & strawberry featured with v2 images
+    $pdo->exec("UPDATE products SET images = '[\"/products/avocado-powder-v2.jpg\", \"/products/avocado-powder.jpg\"]', is_featured = 1, is_best_seller = 1 WHERE slug = 'freeze-dried-avocado-powder'");
+    $pdo->exec("UPDATE products SET images = '[\"/products/strawberry-powder-v2.jpg\", \"/products/strawberry-powder.jpg\"]', is_featured = 1, is_best_seller = 1 WHERE slug = 'strawberry-powder'");
     // Unfeature dry figs
-    $pdo->exec("UPDATE products SET is_featured = 0 WHERE slug = 'dry-figs-anjeer'");
+    $pdo->exec("UPDATE products SET is_featured = 0, is_best_seller = 0 WHERE slug = 'dry-figs-anjeer'");
 
     $results['db_updated'] = true;
 } catch (Exception $e) {
@@ -201,27 +210,15 @@ try {
     $results['db_error'] = $e->getMessage();
 }
 
-// 5. Permissions
-function chmod_r($path) {
-    if (!is_dir($path)) return;
-    $dir = new DirectoryIterator($path);
-    foreach ($dir as $item) {
-        if ($item->isDot()) continue;
-        if ($item->isDir()) {
-            @chmod($item->getPathname(), 0755);
-            chmod_r($item->getPathname());
-        } else {
-            @chmod($item->getPathname(), 0644);
-        }
-    }
-}
-chmod_r($destDir . '/.next');
-
-// 6. Restart Passenger
+// 5. Restart Passenger & kill old next-server
 $restartFile = $destDir . '/tmp/restart.txt';
 @mkdir(dirname($restartFile), 0755, true);
 file_put_contents($restartFile, date('Y-m-d H:i:s'));
 @chmod($restartFile, 0644);
+
+$pkillOut = [];
+exec("pkill -9 -f next-server 2>&1", $pkillOut);
+$results['pkill_output'] = $pkillOut;
 
 // Check standalone BUILD_ID
 $buildIdFile = $standaloneDir . '/.next/BUILD_ID';
@@ -269,33 +266,26 @@ echo json_encode([
   console.log('  -> Waiting 7 seconds for Phusion Passenger to spawn new Node workers...');
   await new Promise(r => setTimeout(r, 7000));
 
-  const verifyAvo = await new Promise(r => {
-    https.get('https://naturesmud.shop/products/avocado-powder.jpg', { rejectUnauthorized: false }, res => {
+  const verifyAvoV2 = await new Promise(r => {
+    https.get('https://naturesmud.shop/products/avocado-powder-v2.jpg', { rejectUnauthorized: false }, res => {
       r({ status: res.statusCode, size: Number(res.headers['content-length'] || 0) });
     });
   });
-  console.log(`  -> Avocado Powder Image: status=${verifyAvo.status}, size=${verifyAvo.size} bytes (Expected: 245400) ${verifyAvo.size === 245400 ? '✅ MATCH' : '❌ MISMATCH'}`);
+  console.log(`  -> Avocado Powder V2 Image: status=${verifyAvoV2.status}, size=${verifyAvoV2.size} bytes (Expected: 245400) ${verifyAvoV2.size === 245400 ? '✅ MATCH' : '❌ MISMATCH'}`);
 
-  const verifyStraw = await new Promise(r => {
-    https.get('https://naturesmud.shop/products/strawberry-powder.jpg', { rejectUnauthorized: false }, res => {
+  const verifyStrawV2 = await new Promise(r => {
+    https.get('https://naturesmud.shop/products/strawberry-powder-v2.jpg', { rejectUnauthorized: false }, res => {
       r({ status: res.statusCode, size: Number(res.headers['content-length'] || 0) });
     });
   });
-  console.log(`  -> Strawberry Powder Image: status=${verifyStraw.status}, size=${verifyStraw.size} bytes (Expected: 242460) ${verifyStraw.size === 242460 ? '✅ MATCH' : '❌ MISMATCH'}`);
+  console.log(`  -> Strawberry Powder V2 Image: status=${verifyStrawV2.status}, size=${verifyStrawV2.size} bytes (Expected: 242460) ${verifyStrawV2.size === 242460 ? '✅ MATCH' : '❌ MISMATCH'}`);
 
-  const verifyAlmond = await new Promise(r => {
-    https.get('https://naturesmud.shop/products/nm-almond-jar.jpeg', { rejectUnauthorized: false }, res => {
+  const verifyAlmondV2 = await new Promise(r => {
+    https.get('https://naturesmud.shop/products/nm-almond-jar-v2.jpg', { rejectUnauthorized: false }, res => {
       r({ status: res.statusCode, size: Number(res.headers['content-length'] || 0) });
     });
   });
-  console.log(`  -> Almond Jar Image: status=${verifyAlmond.status}, size=${verifyAlmond.size} bytes (Expected: 174020) ${verifyAlmond.size === 174020 ? '✅ MATCH' : '❌ MISMATCH'}`);
-
-  const verifyAlmondExplosion = await new Promise(r => {
-    https.get('https://naturesmud.shop/products/posters/almonds-explosion-2k.jpg', { rejectUnauthorized: false }, res => {
-      r({ status: res.statusCode, size: Number(res.headers['content-length'] || 0) });
-    });
-  });
-  console.log(`  -> Almond Poster Image: status=${verifyAlmondExplosion.status}, size=${verifyAlmondExplosion.size} bytes (Expected: 174020) ${verifyAlmondExplosion.size === 174020 ? '✅ MATCH' : '❌ MISMATCH'}`);
+  console.log(`  -> Almond Jar V2 Image: status=${verifyAlmondV2.status}, size=${verifyAlmondV2.size} bytes (Expected: 174020) ${verifyAlmondV2.size === 174020 ? '✅ MATCH' : '❌ MISMATCH'}`);
 
   const homepageHtml = await new Promise(r => {
     https.get('https://naturesmud.shop/', { rejectUnauthorized: false }, res => {

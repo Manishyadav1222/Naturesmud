@@ -67,7 +67,7 @@ export const festivalCombos: FestivalCombo[] = [
         productId: '18',
         name: 'Raw Mountain Almonds',
         weight: '200g',
-        image: '/products/almonds.jpg',
+        image: '/products/nm-almond-jar-v2.jpg',
         price: 600,
       },
       {
@@ -87,15 +87,15 @@ export const festivalCombos: FestivalCombo[] = [
   },
   {
     id: 'festival-superfood-launch',
-    title: 'Himalayan Superfood Trio: Avocado, Strawberry & Anjeer',
-    subtitle: 'Freeze-Dried Avocado, Strawberry Powder & Premium Dry Figs',
+    title: 'Himalayan Superfood Trio: Avocado, Strawberry & Almonds',
+    subtitle: 'Freeze-Dried Avocado, Strawberry Powder & Crunchy Roasted Almonds',
     festivalLabel: '✨ Superfood Nutrition Trio · Festival Edition',
     badge: '10% OFF · Superfoods',
     categoryIcon: '🌟',
     categoryLabel: 'Superfoods',
     discountPercentage: 10,
-    originalPrice: 3035,
-    offerPrice: 2730,
+    originalPrice: 2935,
+    offerPrice: 2640,
     couponCode: 'SUPERFOOD10',
     tag: 'Festival Trending',
     items: [
@@ -103,28 +103,28 @@ export const festivalCombos: FestivalCombo[] = [
         productId: 'freeze-dried-avocado-powder',
         name: 'Avocado Powder',
         weight: '80g',
-        image: '/products/avocado-powder.jpg',
+        image: '/products/avocado-powder-v2.jpg',
         price: 790,
       },
       {
         productId: 'strawberry-powder',
         name: 'Strawberry Powder',
         weight: '80g',
-        image: '/products/strawberry-powder.jpg',
+        image: '/products/strawberry-powder-v2.jpg',
         price: 1395,
       },
       {
-        productId: 'dry-figs-anjeer',
-        name: 'Dry Figs Anjeer',
+        productId: 'roasted-almonds',
+        name: 'Roasted Almonds',
         weight: '200g',
-        image: '/products/dry-figs-anjeer.jpg',
-        price: 850,
+        image: '/products/roasted-almonds-v2.jpg',
+        price: 750,
       },
     ],
     highlights: [
       'Freeze-Dried Avocado — 100% Nepal Origin',
       'Pure Strawberry Powder — Zero Added Sugar',
-      'Sun-Dried Mountain Figs Rich in Iron & Fiber',
+      'Crispy Roasted Mountain Almonds Rich in Vitamin E & Protein',
       'Premium Gift-Ready Foil Pouches & Glass Jars',
     ],
   },
@@ -152,8 +152,8 @@ export const festivalCombos: FestivalCombo[] = [
       {
         productId: '17',
         name: 'Roasted Almonds',
-        weight: '100g',
-        image: '/products/almonds-2.jpg',
+        weight: '200g',
+        image: '/products/roasted-almonds-v2.jpg',
         price: 600,
       },
       {
@@ -431,7 +431,7 @@ export default function FestivalCombosSection() {
 
                       {/* Plus connector */}
                       {i < currentCombo.items.length - 1 && (
-                        <div className="hidden sm:flex absolute -right-1.5 top-1/2 -translate-y-1/2 z-10 w-3 h-3 rounded-full bg-red-600 text-white items-center justify-center text-[8px] font-bold">
+                        <div className="flex absolute -right-2 sm:-right-2.5 top-1/2 -translate-y-1/2 z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-red-600 text-white items-center justify-center text-[8px] sm:text-[9px] font-black shadow-xs pointer-events-none">
                           +
                         </div>
                       )}
@@ -441,7 +441,7 @@ export default function FestivalCombosSection() {
               </div>
 
               {/* Highlights */}
-              <div className="hidden sm:grid grid-cols-2 gap-1 py-0.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 py-0.5">
                 {currentCombo.highlights.slice(0, 2).map((hl, i) => (
                   <div key={i} className="flex items-center gap-1 text-[11px] text-amber-900">
                     <CheckCircle2 className="w-3 h-3 text-red-600 shrink-0" />

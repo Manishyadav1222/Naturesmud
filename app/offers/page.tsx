@@ -373,26 +373,36 @@ export default function FestivalOffersPage() {
                       <p className="text-xs sm:text-sm text-gray-600 mt-1">{offer.subtitle}</p>
                     </div>
 
-                    {/* Products Grid inside Combo */}
-                    <div className="space-y-2 pt-2">
-                      <div className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <Layers className="w-3.5 h-3.5 text-[#2D5A27]" />
-                        <span>Included in this Bundle ({offer.items.length} Premium Items):</span>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                        {offer.items.map((item, idx) => (
+                    {/* Products Grid inside Combo styled like the picture */}
+                    <div className="p-3 sm:p-4 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-50/70 via-[#FFFDF7] to-amber-50/70 border border-amber-200/60 shadow-xs">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                        {offer.items.slice(0, 3).map((item, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center gap-2.5 p-2 rounded-xl bg-[#FAF7F2] border border-gray-200/80 hover:bg-white transition-colors"
+                            className="group/item relative flex flex-col items-center text-center p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-amber-100 shadow-2xs hover:border-amber-300 transition-all"
                           >
-                            <div className="w-10 h-10 rounded-lg relative overflow-hidden shrink-0 border border-gray-200">
-                              <Image src={item.image} alt={item.name} fill className="object-cover" />
+                            <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl overflow-hidden mb-1.5 bg-amber-50/50">
+                              <Image
+                                src={item.image || '/products/superfood-mix.jpg'}
+                                alt={item.name}
+                                fill
+                                sizes="(max-width: 640px) 60px, 90px"
+                                className="object-cover transition-transform duration-300 group-hover/item:scale-105"
+                              />
                             </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="text-xs font-bold text-gray-900 truncate">{item.name}</p>
-                              <p className="text-[11px] text-gray-500 font-semibold">{item.weight}</p>
-                            </div>
+                            <p className="text-[11px] sm:text-xs md:text-sm font-bold text-ink leading-tight line-clamp-1 w-full">
+                              {item.name.replace(/\s*\(\d+\s*GM\)/i, '')}
+                            </p>
+                            <p className="text-[10px] sm:text-xs text-amber-800 font-mono mt-0.5">
+                              {item.weight || 'Full Pack'}
+                            </p>
+
+                            {/* Red plus connector between items */}
+                            {idx < 2 && (
+                              <div className="flex absolute -right-2 sm:-right-3 top-1/2 -translate-y-1/2 z-10 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-red-600 text-white items-center justify-center text-[9px] sm:text-[10px] font-black shadow-xs pointer-events-none">
+                                +
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>

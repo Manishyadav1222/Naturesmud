@@ -239,6 +239,27 @@ export default function ReelsSection() {
     }
   };
 
+  // Continuous smooth auto-movement from right to left
+  useEffect(() => {
+    let animId: number;
+    const speed = 0.8; // Smooth continuous movement
+
+    const step = () => {
+      const el = scrollContainerRef.current;
+      if (el && !isHoveredStream && !isDraggingRef.current && playingReelId === null) {
+        el.scrollLeft += speed;
+        const loopWidth = el.scrollWidth / 3;
+        if (loopWidth > 0 && el.scrollLeft >= loopWidth * 2) {
+          el.scrollLeft -= loopWidth;
+        }
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animId);
+  }, [isHoveredStream, playingReelId]);
+
 
   const handleReelHover = useCallback((uniqueKey: string, reelId: number) => {
     if (isDraggingRef.current) return;
@@ -387,7 +408,11 @@ export default function ReelsSection() {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUpOrLeave}
-          onMouseLeave={handleMouseUpOrLeave}
+          onMouseLeave={() => {
+            handleMouseUpOrLeave();
+            setIsHoveredStream(false);
+          }}
+          onMouseEnter={() => setIsHoveredStream(true)}
           className={`w-full relative overflow-x-auto overflow-y-hidden py-3 px-4 sm:px-8 touch-pan-y touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
             isDraggingState ? 'cursor-grabbing select-none' : 'cursor-grab'
           }`}
@@ -397,7 +422,7 @@ export default function ReelsSection() {
           }}
         >
           <div className="flex gap-4 sm:gap-5 w-max">
-            {reels.map((reel, index) => {
+            {[...reels, ...reels, ...reels].map((reel, index) => {
               const uniqueKey = `stream-${reel.id}-${index}`;
               const isThisPlaying = playingReelId === reel.id;
 

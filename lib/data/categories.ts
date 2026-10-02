@@ -14,7 +14,7 @@ export const categories: Category[] = [
     slug: 'powders',
     name: 'Powders',
     description: 'Pure dehydrated superfoods with 0 additives — Avocado, Banana, Strawberry, Moringa, Sweet Potato & Beetroot',
-    image: '/products/strawberry-powder.jpg',
+    image: '/products/strawberry-powder-v2.jpg',
     productCount: 8,
   },
   {

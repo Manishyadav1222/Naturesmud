@@ -66,7 +66,7 @@ export const specializedOffers: SpecializedCombo[] = [
         productId: 'raw-himalayan-almonds',
         name: 'Raw Almonds',
         weight: '200 GM',
-        image: '/products/almonds.jpg',
+        image: '/products/nm-almond-jar-v2.jpg',
         price: 750,
       },
       {
@@ -116,7 +116,7 @@ export const specializedOffers: SpecializedCombo[] = [
         productId: 'strawberry-powder',
         name: 'Strawberry Powder',
         weight: '80 GM',
-        image: '/products/strawberry-powder.jpg',
+        image: '/products/strawberry-powder-v2.jpg',
         price: 1395,
       },
     ],
@@ -511,7 +511,7 @@ export default function HeroOfferSection() {
 
                       {/* Plus connector between images */}
                       {i < currentOffer.items.length - 1 && (
-                        <div className="hidden sm:flex absolute -right-1.5 top-1/2 -translate-y-1/2 z-10 w-3 h-3 rounded-full bg-red-600 text-white items-center justify-center text-[8px] font-bold">
+                        <div className="flex absolute -right-2 sm:-right-2.5 top-1/2 -translate-y-1/2 z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-red-600 text-white items-center justify-center text-[8px] sm:text-[9px] font-black shadow-xs pointer-events-none">
                           +
                         </div>
                       )}
@@ -521,7 +521,7 @@ export default function HeroOfferSection() {
               </div>
 
               {/* Highlights checklist */}
-              <div className="hidden sm:grid grid-cols-2 gap-1 py-0.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 py-0.5">
                 {currentOffer.highlights.slice(0, 2).map((hl, i) => (
                   <div key={i} className="flex items-center gap-1 text-[11px] text-amber-900">
                     <CheckCircle2 className="w-3 h-3 text-red-600 shrink-0" />

@@ -161,12 +161,10 @@ export const products: Product[] = [
     "compareAtPrice": 790,
     "rating": 5,
     "reviewCount": 24,
-    "image": "/products/avocado-powder.jpg",
+    "image": "/products/avocado-powder-v2.jpg",
     "images": [
-      "/products/avocado-powder.jpg",
-      "/products/avocado-powder-square.jpg",
-      "/products/nm-avocado-powder-new.jpg",
-      "/products/freeze-dried-avocado-powder.jpg"
+      "/products/avocado-powder-v2.jpg",
+      "/products/avocado-powder-v2.jpg"
     ],
     "description": "Proudly harvested and crafted in Nepal! Nature's Mud Freeze Dried Avocado Powder preserves the rich buttery texture and heart-healthy monounsaturated fats of fresh avocados. Processed with advanced gentle freeze-drying technology to preserve raw cellular nutrients, natural potassium, Vitamin E, and dietary fiber. 100% natural, no sugar, no preservatives.",
     "shortDescription": "Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats.",
@@ -236,11 +234,10 @@ export const products: Product[] = [
     "compareAtPrice": 1395,
     "rating": 4.9,
     "reviewCount": 31,
-    "image": "/products/strawberry-powder.jpg",
+    "image": "/products/strawberry-powder-v2.jpg",
     "images": [
-      "/products/strawberry-powder.jpg",
-      "/products/strawberry-powder-square.jpg",
-      "/products/nm-strawberry-powder-new.jpg"
+      "/products/strawberry-powder-v2.jpg",
+      "/products/strawberry-powder-v2.jpg"
     ],
     "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Freeze Dried Strawberry Powder delivers real fruit lasting goodness from ripe strawberries to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
     "shortDescription": "100% Freeze Dried Strawberry Powder with Real Fruit Lasting Goodness. Zero added sugar, rich in Vitamin C & antioxidants.",
@@ -1491,14 +1488,10 @@ export const products: Product[] = [
     "compareAtPrice": 750,
     "rating": 4.9,
     "reviewCount": 66,
-    "image": "/products/nm-almond-jar.jpeg",
+    "image": "/products/roasted-almonds-v2.jpg",
     "images": [
-      "/products/nm-almond-jar.jpeg",
-      "/products/posters/almonds-explosion-2k.jpg",
-      "/products/posters/almonds-surrounded-2k.jpg",
-      "/products/authentic-almonds.jpg",
-      "/products/almonds.jpg",
-      "/products/almonds-2.jpg"
+      "/products/roasted-almonds-v2.jpg",
+      "/products/roasted-almonds-v2.jpg"
     ],
     "description": "Crispy slow-roasted mountain almonds sealed in a glass jar for maximum crunch and flavor. Exceptionally rich in Vitamin E, plant protein, dietary fiber, and heart-protective monounsaturated fatty acids.",
     "shortDescription": "Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar.",
@@ -1564,11 +1557,10 @@ export const products: Product[] = [
     "compareAtPrice": 750,
     "rating": 4.9,
     "reviewCount": 59,
-    "image": "/products/nm-almond-jar.jpeg",
+    "image": "/products/nm-almond-jar-v2.jpg",
     "images": [
-      "/products/nm-almond-jar.jpeg",
-      "/products/authentic-almonds.jpg",
-      "/products/almonds.jpg"
+      "/products/nm-almond-jar-v2.jpg",
+      "/products/nm-almond-jar-v2.jpg"
     ],
     "description": "Unpasteurized, premium raw almonds harvested from pristine mountain orchards. Ideal for soaking overnight (badam pani) to activate live digestive enzymes, making fresh almond milk, and fueling daily cognitive memory.",
     "shortDescription": "Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar.",
