@@ -41,11 +41,11 @@ export default function FestivalOffersPage() {
 
   const [soloProducts, setSoloProducts] = useState<Product[]>(() => {
     const prioritySlugs = [
-      'dates-powder',
       'freeze-dried-avocado-powder',
+      'strawberry-powder',
+      'dates-powder',
       'banana-powder',
       'moringa-leaf-powder',
-      'strawberry-powder',
       'pure-mountain-himalayan-shilajit-resin',
       'pumpkin-seeds',
       'dehydrated-mango',
@@ -97,11 +97,11 @@ export default function FestivalOffersPage() {
           const prods = json.data || json.products || (Array.isArray(json) ? json : null);
           if (Array.isArray(prods) && prods.length > 0) {
             const prioritySlugs = [
-              'dates-powder',
               'freeze-dried-avocado-powder',
+              'strawberry-powder',
+              'dates-powder',
               'banana-powder',
               'moringa-leaf-powder',
-              'strawberry-powder',
               'pure-mountain-himalayan-shilajit-resin',
               'pumpkin-seeds',
               'dehydrated-mango',

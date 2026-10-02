@@ -52,7 +52,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
   },
   {
     slug: 'strawberry-powder',
-    name: 'Pure Strawberry Powder',
+    name: 'Freeze Dried Strawberry Powder',
     subheading: '100% Real Fruit · High Vitamin C & Anthocyanins',
     weight: '80 GM',
     packing: 'Glass Jar',
@@ -62,7 +62,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     reviews: 31,
     category: 'Powders',
     image: '/products/strawberry-powder.jpg',
-    description: 'Gently dehydrated whole strawberries packed with natural Vitamin C, anthocyanins, and 0 added sugar.',
+    description: '100% real fruit freeze-dried whole strawberries packed with natural Vitamin C, anthocyanins, and 0 added sugar.',
     badge: '🍓 100% Real Fruit',
     theme: {
       primary: '#9F1239',

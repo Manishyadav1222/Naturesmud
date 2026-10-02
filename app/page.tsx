@@ -53,14 +53,16 @@ import MobileHeroSection from '@/components/MobileHeroSection';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
 
 const PRIORITY_FEATURED_SLUGS = [
+  'raw-himalayan-almonds',
+  'roasted-almonds',
   'freeze-dried-avocado-powder',
   'strawberry-powder',
+  'dehydrated-mango',
   'roasted-cashewnuts',
   'virgin-coconut-oil-180ml',
   'dates-powder',
   'moringa-leaf-powder',
-  'dehydrated-mango',
-  'dry-figs-anjeer',
+  'makhana-fox-nuts',
 ];
 
 export default function HomePage() {

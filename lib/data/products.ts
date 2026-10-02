@@ -229,7 +229,7 @@ export const products: Product[] = [
     "id": "171",
     "dbId": 171,
     "slug": "strawberry-powder",
-    "name": "Pure Natural Strawberry Powder",
+    "name": "Freeze Dried Strawberry Powder",
     "category": "Powders",
     "categorySlug": "powders",
     "price": 1395,
@@ -242,8 +242,8 @@ export const products: Product[] = [
       "/products/strawberry-powder-square.jpg",
       "/products/nm-strawberry-powder-new.jpg"
     ],
-    "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Strawberry Powder delivers pure goodness from ripe strawberries gently dehydrated at low temperatures to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
-    "shortDescription": "Pure Goodness from Strawberries for a brighter, healthier tomorrow. High Vitamin C & anthocyanin antioxidants.",
+    "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Freeze Dried Strawberry Powder delivers real fruit lasting goodness from ripe strawberries to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
+    "shortDescription": "100% Freeze Dried Strawberry Powder with Real Fruit Lasting Goodness. Zero added sugar, rich in Vitamin C & antioxidants.",
     "badges": [
       "new",
       "featured"
@@ -361,8 +361,8 @@ export const products: Product[] = [
     ],
     "usage": "Eat 2-3 dried figs directly as a premium snack, or soak overnight in water and consume in the morning for optimal gut health.",
     "storage": "Store in an airtight jar in a cool, dry place or refrigerate for maximum freshness.",
-    "isFeatured": true,
-    "isBestSeller": true,
+    "isFeatured": false,
+    "isBestSeller": false,
     "tags": [
       "figs",
       "anjeer",
@@ -1613,8 +1613,8 @@ export const products: Product[] = [
     ],
     "usage": "Soak 6–8 almonds overnight in water, peel in the morning, and consume before breakfast.",
     "storage": "Keep sealed in a cool, dark cupboard.",
-    "isFeatured": false,
-    "isBestSeller": false,
+    "isFeatured": true,
+    "isBestSeller": true,
     "tags": [
       "raw-almonds",
       "almonds",

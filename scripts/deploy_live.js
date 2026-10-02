@@ -124,7 +124,10 @@ async function main() {
     'products/posters/avocado-powder-display-2k.jpg',
     'products/nm-roasted-cashew-new.jpg',
     'products/cashewnuts-roasted.jpg',
-    'products/authentic-cashewnuts-roasted.jpg'
+    'products/authentic-cashewnuts-roasted.jpg',
+    'products/authentic-dehydrated-mango.jpg',
+    'products/nm-mango-pouch.jpeg',
+    'products/dehydrated-mango.jpg'
   ];
   for (const asset of directAssets) {
     const localAssetPath = path.join(config.rootDir, 'public', asset);

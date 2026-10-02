@@ -5,8 +5,8 @@ export const categories: Category[] = [
     id: 'c1',
     slug: 'dried-fruits',
     name: 'Dried Fruits',
-    description: 'Naturally sweet sun-dried figs (anjeer), mango, pineapple, apple, papaya & wild berries',
-    image: '/products/dry-figs-anjeer.jpg',
+    description: 'Naturally sweet sun-dried mango, pineapple, apple, papaya & wild berries',
+    image: '/products/authentic-dehydrated-mango.jpg',
     productCount: 9,
   },
   {

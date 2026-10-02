@@ -22,6 +22,14 @@ try {
   // Ignore if dotenv is unavailable
 }
 
+// Check if standalone build exists (preferred for cPanel / LiteSpeed / Docker)
+const standalonePath = path.resolve(__dirname, '.next/standalone/server.js');
+if (fs.existsSync(standalonePath)) {
+  process.env.NODE_ENV = 'production';
+  require(standalonePath);
+  return;
+}
+
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = '0.0.0.0';
 const port = parseInt(process.env.PORT, 10) || 3000;
