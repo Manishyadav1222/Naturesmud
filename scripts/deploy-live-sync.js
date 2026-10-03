@@ -312,8 +312,8 @@ async function main() {
     }
   }
 
-  // Guarantee direct overwrite of 8-page catalog PDFs
-  const catalogPdfs = ['Nature_Mud_Product_Catalog.pdf', 'catalog.pdf', 'Nature_Mud_Magazine_Catalog.pdf'];
+  // Guarantee direct overwrite of 8-page catalog PDFs & llms.txt
+  const catalogPdfs = ['Nature_Mud_Product_Catalog.pdf', 'catalog.pdf', 'Nature_Mud_Magazine_Catalog.pdf', 'llms.txt'];
   for (const pdf of catalogPdfs) {
     const localPdf = path.join(config.rootDir, 'public', pdf);
     if (fs.existsSync(localPdf)) {
@@ -335,7 +335,7 @@ async function main() {
     await uploadFile(envProdPath, `${config.homeDir}/naturesmud.shop`, '.env');
     await uploadFile(envProdPath, `${config.homeDir}/naturesmud.shop`, '.env.production');
   }
-  console.log('✅ Archive, server.js, next.config.mjs, .env & fresh 8-page catalog PDFs uploaded and verified!');
+  console.log('✅ Archive, server.js, next.config.mjs, .env, llms.txt & fresh 8-page catalog PDFs uploaded and verified!');
 
   // 5. Server-side Native Fast Permission Fix & Passenger Restart
   console.log('\n[5/6] 🔒 Applying server permissions (0755/0644) and restarting Passenger...');
@@ -519,14 +519,23 @@ echo json_encode([
   
   const testEndpoints = [
     'https://naturesmud.shop/',
+    'https://naturesmud.shop/products',
+    'https://naturesmud.shop/products/dates-powder',
+    'https://naturesmud.shop/products/sweet-potato-powder',
+    'https://naturesmud.shop/products/raw-himalayan-almonds',
+    'https://naturesmud.shop/offers',
+    'https://naturesmud.shop/blog',
+    'https://naturesmud.shop/recipes',
     'https://naturesmud.shop/catalog',
     'https://naturesmud.shop/catalog.pdf',
     'https://naturesmud.shop/Nature_Mud_Product_Catalog.pdf',
-    'https://naturesmud.shop/products',
     'https://naturesmud.shop/cart',
     'https://naturesmud.shop/checkout',
     'https://naturesmud.shop/wishlist',
-    'https://api.naturesmud.shop/api/v1/products'
+    'https://naturesmud.shop/sitemap.xml',
+    'https://naturesmud.shop/robots.txt',
+    'https://naturesmud.shop/llms.txt',
+    'https://api.naturesmud.shop/api/v1/products?per_page=100'
   ];
 
   for (const url of testEndpoints) {
