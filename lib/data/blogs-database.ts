@@ -3229,214 +3229,6 @@ export const allBlogPosts: ExtendedBlogPost[] = [
 ],
     tags: ["natural sweeteners Nepal","sugar free sweetener Kathmandu","dates powder vs honey","organic food Nepal","healthy sweeteners"]
   },
-
-// -------------------------------------------------------------
-  // VIRAL NEWS: COULD ANOTHER FLOOD HAPPEN?
-  // -------------------------------------------------------------
-  {
-    id: 'news-glacial-lake-threat-2026',
-    slug: 'could-another-flood-happen-nepal-new-glacial-lake-explained',
-    title: 'Could Another Flood Happen in Nepal? The Terrifying Reality of New Glacial Lakes',
-    excerpt: 'As the Himalayas warm at an unprecedented rate, new and unstable glacial lakes are forming. Discover why scientists are warning that the August 2026 flood might not be an isolated event.',
-    image: '/images/blog/nepal-glacial-lake-threat-2026.jpg',
-    category: 'News & Environment',
-    author: "NaturesMud Editorial Team",
-    date: '2026-08-29',
-    readTime: 5,
-    featured: true,
-    tags: ['Nepal Flood', 'Climate Change', 'GLOF', 'Himalayas', 'Environment'],
-    metaDescription: 'An in-depth explanation of why new glacial lakes are forming in Nepal and the ongoing threat of future Glacial Lake Outburst Floods (GLOFs) following the August 2026 disaster.',
-    keyTakeaways: [
-      'Rapid glacial melting due to climate change is creating dozens of new, highly unstable lakes high in the Himalayas.',
-      'Unlike traditional lakes, these are held back by fragile walls of loose rock and ice (moraines).',
-      'The Bhotekoshi and Trishuli valleys remain at extreme risk for secondary outburst floods.',
-      'Early warning systems and glacial monitoring are now critical survival tools for downstream communities.'
-    ],
-    faqs: [
-      {
-        question: 'What is a Glacial Lake Outburst Flood (GLOF)?',
-        answer: 'A GLOF occurs when the dam containing a glacial lake fails. This dam can consist of glacier ice or a terminal moraine. Failure can happen due to erosion, a buildup of water pressure, an avalanche of rock or heavy snow, an earthquake, or massive displacement of water in a glacial lake when a large portion of an adjacent glacier collapses into it.'
-      },
-      {
-        question: 'Is it safe to travel to the affected regions?',
-        answer: 'Currently, travel to the upper Trishuli and Bhotekoshi corridors is highly restricted. Authorities advise against all non-essential travel until geological assessments confirm the stability of remaining glacial structures.'
-      }
-    ],
-    content: [
-      "The dust from the devastating August 2026 glacier avalanche has barely settled in the Trishuli and Bhotekoshi basins, but a chilling question is already echoing through the halls of government and the homes of downstream residents: *Could this happen again?*",
-      "The uncomfortable and terrifying answer is yes. In fact, according to glaciologists and climate scientists monitoring the Himalayas, the conditions that triggered the recent catastrophe are not anomalies—they are becoming the new normal.",
-      "### The Birth of High-Altitude Time Bombs",
-      "To understand the threat, we must look at how the Himalayas are responding to a warming planet. As temperatures rise, glaciers retreat. But they don't just disappear; they leave behind massive depressions filled with meltwater. These are glacial lakes.",
-      "Unlike natural lakes in the lowlands, which are held in place by solid bedrock, these high-altitude lakes are often dammed by 'moraines'—fragile, loose walls of rocks, dirt, and ice pushed forward by the glacier centuries ago. These moraine dams were never designed to hold back millions of cubic meters of water.",
-      "### The Trigger Mechanism",
-      "A glacial lake doesn't just slowly leak; it catastrophically bursts. This is known as a Glacial Lake Outburst Flood (GLOF). The trigger can be terrifyingly simple.",
-      "As seen in the August 2026 event, an overhanging serac (a massive block of glacial ice) or a rockfall from a destabilized mountainside can plummet into the lake. This creates a massive displacement wave—a localized tsunami—that crashes over the fragile moraine dam, instantly eroding it and releasing the entire lake into the valley below.",
-      "### Why Nepal is Ground Zero",
-      "The International Centre for Integrated Mountain Development (ICIMOD) has been mapping these lakes using satellite imagery. Their findings are alarming. There are over 3,000 glacial lakes in the Hindu Kush Himalayas, and several dozen in Nepal alone have been classified as 'potentially dangerous.'",
-      "The valleys of the Bhotekoshi, Trishuli, and Arun rivers are particularly steep, meaning that when a GLOF occurs, the water achieves terrifying velocity, picking up boulders and trees, turning into a destructive slurry of debris that annihilates everything in its path.",
-      "### Living in the Shadow of the Ice",
-      "For communities living downstream, the threat is existential. The recent disaster proved that when these lakes burst, the warning time is measured in minutes, not hours. Moving forward, the conversation in Nepal must shift from mere reaction to proactive adaptation.",
-      "Lowering the water levels of the most dangerous lakes—a massive and expensive engineering challenge—must become a national priority. Furthermore, robust, automated early warning systems equipped with seismic and water-level sensors must be installed across all high-risk high-altitude catchments. We can no longer stop the glaciers from melting, but with proper investment and respect for the changing geography, we can stop the melting from catching us by surprise."
-    ]
-  },
-  // -------------------------------------------------------------
-  // VIRAL NEWS: HYDROPOWER CRISIS
-  // -------------------------------------------------------------
-  {
-    id: 'news-hydropower-crisis-2026',
-    slug: 'nepal-hydropower-crisis-after-flood-which-projects-damaged',
-    title: 'Nepal Hydropower Crisis: The $4 Billion Question After the August Flood',
-    excerpt: "With 14 projects damaged and 431 MW wiped from the grid in minutes, the August 2026 flood has exposed a critical vulnerability in Nepal's hydropower-driven economic strategy.",
-    image: '/images/blog/nepal-hydropower-damage-2026.jpg',
-    category: 'News & Economy',
-    author: "NaturesMud Editorial Team",
-    date: '2026-08-29',
-    readTime: 6,
-    featured: true,
-    metaDescription: 'A detailed breakdown of the 14 hydropower projects damaged in the August 2026 Nepal flood, the economic impact, and what it means for the national grid and NEPSE.',
-    keyTakeaways: [
-      '14 hydropower projects in the Trishuli and Bhotekoshi corridors sustained major damage.',
-      'Over 431 MW of electricity generation capacity has been instantly disconnected.',
-      'Major affected projects include Rasuwagadhi, Chilime, Sanjen Khola, and Upper Trishuli-1.',
-      'The disaster forces a re-evaluation of risk models for future Run-of-River (RoR) projects.'
-    ],
-    faqs: [
-      {
-        question: 'Which is the largest hydropower project damaged?',
-        answer: 'Upper Trishuli-1 (216 MW), which was under construction, and the operational Rasuwagadhi (111 MW) are among the largest projects severely impacted by the debris flow.'
-      },
-      {
-        question: 'Will this affect electricity bills in Nepal?',
-        answer: 'While immediate tariff hikes are unlikely, the sudden need to import expensive power from India to cover the 431 MW shortfall will place significant financial strain on the Nepal Electricity Authority (NEA).'
-      }
-    ],
-    content: [
-      "For the past decade, the story of Nepal's economic ascent has been written in concrete and turbines. Hydropower was not just an energy strategy; it was our national ticket to prosperity. But in the space of a single afternoon on August 26, 2026, the raging waters of the Lhende Khola rewrote that narrative.",
-      "The staggering loss of 14 hydropower projects to a catastrophic glacier avalanche has triggered an unprecedented crisis in Nepal’s energy sector, wiping out over 431 Megawatts (MW) of capacity and sending shockwaves through the Nepal Stock Exchange (NEPSE).",
-      "### The Casualties of the Corridor",
-      "The Trishuli and Bhotekoshi river basins are some of the most heavily capitalized stretches of water in South Asia. When the wall of mud, ice, and boulders roared down the valley, it did not discriminate between operational plants and those under construction.",
-      "**Major Projects Affected:**",
-      "- **Rasuwagadhi (111 MW):** The flagship project, which had recently celebrated major milestones, saw its headworks completely submerged and heavily damaged by boulders.",
-      "- **Upper Trishuli-1 (216 MW):** One of the largest Foreign Direct Investment (FDI) projects in the country, currently under construction, sustained catastrophic damage to its access roads and tunneling infrastructure.",
-      "- **Chilime and Sanjen Khola:** Both sustained significant damage to transmission infrastructure and switchyards, effectively isolating them from the national grid.",
-      "- **Devighat and Trishuli:** Older, established downstream projects were forced to shut down immediately as sediment loads overwhelmed their desanding basins.",
-      "### The Financial Shockwave",
-      "The immediate physical damage is estimated in the tens of billions of rupees, but the secondary economic effects are far more severe. The sudden loss of 431 MW—a significant percentage of Nepal's total domestic generation capacity during the wet season—has completely derailed the nation's energy export plans for 2026.",
-      "Instead of earning revenue by exporting surplus power to India, the Nepal Electricity Authority (NEA) is now forced into a defensive posture. To prevent rolling blackouts in major industrial corridors and the Kathmandu Valley, the NEA has had to drastically increase expensive power imports via the Dhalkebar-Muzaffarpur cross-border transmission line.",
-      "On the NEPSE, the hydropower sub-index saw immediate volatility. Retail investors, who have heavily backed hydropower Initial Public Offerings (IPOs) in recent years, are now confronting the harsh reality of environmental risk.",
-      "### The Flaw in the Run-of-River Model",
-      "Beyond the immediate financial pain, the August disaster has exposed a fundamental flaw in how Nepal builds its dams. The vast majority of our projects are Run-of-River (RoR). They rely on the natural flow of the river rather than large reservoirs. While cheaper to build and less environmentally disruptive in terms of flooding valleys, RoR projects are sitting ducks for Glacial Lake Outburst Floods (GLOFs) and massive sediment flows.",
-      "When a river suddenly turns into a slurry of mud and rocks, RoR headworks are easily overwhelmed. The turbines cannot process the abrasive sediment, and the entire plant must be shut down, or worse, gets physically destroyed by the debris.",
-      "### Rebuilding with Reality in Mind",
-      "The recovery will take years. For projects under construction like Upper Trishuli-1, timelines will be pushed back significantly. For operational plants, the complex task of dredging headworks and repairing precision turbines awaits.",
-      "However, the most important rebuilding must happen in our risk models. Investors, banks, and the NEA can no longer treat '100-year flood' events as rare anomalies in the Himalayas. Climate change has aggressively accelerated the timeline. Future hydropower development in Nepal must mandate extreme-event resilience, massive sediment management capabilities, and comprehensive upstream early warning systems. The 'white gold' of the Himalayas is still there, but extracting it just became far more dangerous, and far more expensive."
-    ]
-  },
-  // -------------------------------------------------------------
-  // VIRAL NEWS: GYIRONG PORT DISASTER
-  // -------------------------------------------------------------
-  {
-    id: 'news-gyirong-port-disaster-2026',
-    slug: 'what-happened-gyirong-port-nepal-china-border-disaster-explained',
-    title: 'What Happened at Gyirong Port? The Nepal–China Border Disaster Explained',
-    excerpt: "The August 2026 flood didn't just destroy hydropower; it wiped out the Kerung border crossing. Explore the geopolitical and economic fallout of the Gyirong Port destruction.",
-    image: '/images/blog/nepal-glacier-avalanche-2026.jpg',
-    category: 'News & Economy',
-    author: "NaturesMud Editorial Team",
-    date: '2026-08-29',
-    readTime: 4,
-    featured: true,
-    metaDescription: 'A comprehensive explanation of the destruction at the Gyirong Port (Kerung) Nepal-China border crossing caused by the August 2026 glacier avalanche and flood.',
-    keyTakeaways: [
-      'The Gyirong Port customs and immigration complex was severely damaged by the August flood.',
-      'Hundreds of transport trucks remain stranded, disrupting billions of rupees in bilateral trade.',
-      'The disaster highlights the extreme vulnerability of Himalayan trade corridors to climate events.',
-      'Reconstruction will require significant bilateral coordination between Kathmandu and Beijing.'
-    ],
-    faqs: [
-      {
-        question: 'Is the Kerung border crossing completely closed?',
-        answer: 'Yes. All commercial and civilian movement through the Gyirong/Kerung port has been suspended indefinitely due to the destruction of the main bridge and severe damage to customs infrastructure.'
-      },
-      {
-        question: 'Will this cause a shortage of Chinese goods in Nepal?',
-        answer: 'While immediate shortages of fast-moving consumer goods and electronics are expected, traders are attempting to reroute shipments through the Tatopani border crossing or via sea freight to Kolkata, though this will significantly increase costs and transit times.'
-      }
-    ],
-    content: [
-      "While the national spotlight following the August 26 glacier avalanche has understandably focused on the staggering loss of hydropower infrastructure and the tragic human casualties, another silent catastrophe unfolded at the very edge of the map.",
-      "Gyirong Port, the vital terrestrial artery connecting Nepal to the Tibet Autonomous Region of China, was practically wiped off the map by the raging waters of the Lhende Khola. The destruction of this border crossing is not just a localized tragedy; it is a massive geopolitical and economic bottleneck.",
-      "### The Gateway Washed Away",
-      "Gyirong Port (known locally as the Kerung border) is arguably Nepal’s most important northern trade route. Since the devastating 2015 earthquake damaged the traditional Tatopani crossing, Kerung had absorbed the vast majority of bilateral overland trade.",
-      "When the glacial floodwaters surged down the steep valley, they transformed the narrow border gorge into a violently churning blender of mud and boulders. The modern customs facilities, immigration offices, and the vital friendship bridge connecting the two nations sustained catastrophic damage. Viral videos circulating on social media showed a terrifying scene: massive, fully loaded transport trucks being tossed like toys into the brown rapids.",
-      "### The Economic Chokepoint",
-      "The immediate economic fallout is severe. At the time of the disaster, hundreds of cargo containers were staged at the border, filled with everything from ready-made garments and festive goods intended for the upcoming Dashain festival, to critical telecommunications equipment and electric vehicles.",
-      "These goods are now either destroyed, buried under feet of glacial silt, or stranded indefinitely. For Nepalese traders, many of whom operate on tight margins and high-interest credit, this delay is financially ruinous. The loss of goods and the immediate suspension of trade mean billions of rupees in lost revenue and customs duties for the national exchequer.",
-      "### The Challenge of Himalayan Trade",
-      "The destruction of Gyirong Port highlights a stark reality of Nepal's geopolitical geography. Our efforts to diversify trade and reduce reliance on southern transit routes are entirely dependent on threading infrastructure through some of the most geologically unstable terrain on the planet.",
-      "The Himalayas are young, steep, and increasingly fragile due to climate change. Building a modern trade corridor in a V-shaped river valley directly beneath unstable glacial lakes is a massive gamble. The August 2026 disaster proved that the house often wins.",
-      "### What Happens Next?",
-      "Rebuilding Gyirong Port will require more than just pouring new concrete. It demands intense bilateral coordination between Kathmandu and Beijing. China has historically been highly efficient at rebuilding infrastructure on its side of the border, but the trans-boundary nature of this disaster means that a synchronized effort is required.",
-      "In the short term, traders are scrambling to reroute incoming shipments through the Tatopani border or face the agonizingly slow and expensive prospect of re-shipping via the ocean to Kolkata and trucking overland through India. In the long term, the disaster at Gyirong Port is a harsh reminder that in the Himalayas, nature ultimately dictates the terms of trade."
-    ]
-  },
-  // -------------------------------------------------------------
-  // VIRAL NEWS: AUGUST 2026 NEPAL GLACIER AVALANCHE
-  // -------------------------------------------------------------
-  {
-    id: 'news-glacier-avalanche-2026',
-    slug: 'august-2026-nepal-glacier-avalanche-bhotekoshi-trishuli-flood',
-    title: 'The August 2026 Nepal Glacier Avalanche: A Wake-Up Call for Our Himalayan Rivers',
-    excerpt: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
-    image: '/images/blog/nepal-glacier-avalanche-2026.jpg', // Placeholder for news image
-    category: 'News & Environment',
-    author: "NaturesMud Editorial Team",
-    date: '2026-08-29',
-    readTime: 6,
-    featured: true,
-    metaDescription: 'An in-depth look at the devastating August 2026 Nepal glacier avalanche in the Bhotekoshi and Trishuli basins, its impact on hydropower, and what scientists know so far.',
-    keyTakeaways: [
-      'An ice-and-rock avalanche created a temporary barrier lake that burst, flooding the Bhotekoshi and Trishuli basins.',
-      'At least 14 hydropower projects were damaged, disconnecting over 431 MW of electricity from the national grid.',
-      'The disaster destroyed the Gyirong Port border complex, severely impacting Nepal-China trade.',
-      'Authorities have declared the Rasuwa, Nuwakot, and Dhading districts disaster crisis zones.'
-    ],
-    faqs: [
-      {
-        question: 'Was this a Glacial Lake Outburst Flood (GLOF)?',
-        answer: 'Technically, scientists currently classify the trigger as an ice-and-rock avalanche that created a temporary barrier lake, which then burst. While similar in consequence to a classic GLOF, the mechanics of this disaster were much more sudden.'
-      },
-      {
-        question: "Are Kathmandu's power supplies affected?",
-        answer: 'Yes. The loss of over 431 MW from the national grid has forced the NEA to manage power distribution carefully, leading to localized outages and an increased reliance on energy imports from India.'
-      }
-    ],
-    content: [
-      "The roar didn’t sound like water. Villagers in Rasuwa later described it as the earth tearing itself apart—a deep, grinding thunder that vibrated through the soles of their feet before the river even came into view. By the time the dark wall of mud, ice, and splintered pine trees violently surged down the Lhende Khola, there was no time to run.",
-      "On August 26, 2026, a catastrophic event forever altered the geography of the Bhotekoshi and Trishuli river basins. The August 2026 Nepal glacier avalanche was not just another monsoon tragedy; it was a brutal demonstration of how rapidly warming high-altitude environments can cascade into downstream devastation.",
-      "### What happened?",
-      "The disaster began high above the snowline, far from human settlement. An immense section of a glacier—comprising millions of tons of ice and rock—fractured and collapsed. The sheer force of this avalanche striking the earth registered on seismographs across the region as a 5.2-magnitude earthquake.",
-      "This avalanche did not just stop on the mountain. It plummeted into the Lhende Khola, creating a massive, unstable natural dam. Within hours, the immense pressure of the blocked glacial meltwater and monsoon runoff caused this temporary barrier to catastrophically fail. The resulting outburst flood sent a deadly slurry of debris rocketing downstream, wiping out entire settlements, severing the Pasang Lhamu Highway, and annihilating the Gyirong Port border complex.",
-      "### What we know so far",
-      "The scale of the destruction across the Rasuwa, Nuwakot, and Dhading districts is staggering. Search and rescue operations—hampered by washed-out roads and continuous heavy rain—are ongoing in some of the most unforgiving terrain in the Himalayas. While official figures are being continuously updated by the Ministry of Home Affairs, hundreds are confirmed dead, with estimates of 1,000 to 2,500 individuals still missing.",
-      "![Damaged Hydropower Plant](/images/blog/nepal-hydropower-damage-2026.jpg)",
-      "We also know the immediate physical toll on the nation's infrastructure. Preliminary assessments by the Nepal Electricity Authority (NEA) confirm that at least 14 hydropower projects have sustained major damage. Projects including Rasuwagadhi, Chilime, Sanjen Khola, Upper Trishuli-1, Trishuli, and Devighat have been severely compromised. Over 431 Megawatts (MW) of electricity have been suddenly disconnected from the national grid.",
-      "### What remains uncertain",
-      "While scientists at the International Centre for Integrated Mountain Development (ICIMOD) have identified the ice-and-rock avalanche as the primary trigger, the underlying mechanics are still under intense investigation. Did unprecedented summer heatwaves create a hidden network of meltwater lubricating the base of the glacier? Or was there a localized seismic event that triggered the initial collapse? Geologists and glaciologists are currently analyzing satellite imagery to answer these questions.",
-      "The exact economic toll also remains entirely unquantified. Assessing the structural integrity of partially buried hydropower tunnels and transmission lines will take months, if not years. Additionally, the stability of other glacial lakes in the upper Trishuli catchment is highly uncertain, keeping downstream communities on high alert for secondary outburst floods.",
-      "### Why it matters",
-      "For decades, the narrative of Nepal’s economic future has been deeply tied to the \\\"white gold\\\" of its rivers. Hydropower has been positioned as our ticket to prosperity and clean energy export. However, this disaster exposes a critical vulnerability: we are building multi-billion rupee infrastructure in the exact path of climate-induced geographical violence.",
-      "The Trishuli corridor is one of the most heavily dammed river stretches in the country. When a single avalanche can knock 14 power plants offline and instantly cripple a significant percentage of the national power supply, the resilience of our entire energy strategy is called into question.",
-      "### Nepal-specific impact",
-      "Beyond the macroeconomic shock to the energy sector, the human cost is deeply localized and agonizing. The destruction of the Gyirong Port border complex chokes a vital artery for Nepal-China trade, threatening the livelihoods of thousands of truck drivers, traders, and local hoteliers who depend on the Kerung border route.",
-      "Furthermore, the affected districts—Rasuwa, Nuwakot, and Dhading—are predominantly agricultural. The floods didn't just take homes; they scoured away topsoil, buried terraced fields in sterile glacial silt, and destroyed the suspension bridges that connect isolated villages to markets and schools. An estimated 17,000 children in these areas are currently in urgent need of humanitarian assistance.",
-      "### What happens next",
-      "Authorities have declared the affected regions disaster crisis zones for a three-month period. The immediate priority remains search, rescue, and the provision of emergency shelter and medical aid to displaced families before the onset of winter.",
-      "For the government and the NEA, a massive logistical nightmare has just begun. Rebuilding the transmission lines and access roads will require unprecedented coordination. But the bigger, more difficult conversation must happen among policymakers, environmentalists, and investors. The August 2026 Nepal glacier avalanche must force a re-evaluation of how risk is calculated for Himalayan infrastructure. Early warning systems, which failed or were non-existent in the upper reaches of the Lhende Khola, must become mandatory, non-negotiable components of any future river basin development.",
-      "### Sources / reporting notes",
-      "This article was compiled using preliminary damage reports from the Nepal Electricity Authority (NEA), initial geological assessments provided by the International Centre for Integrated Mountain Development (ICIMOD), and field reports from local authorities in Rasuwa and Nuwakot districts. Casualty figures and MW loss estimates are accurate as of late August 2026 but are subject to revision as search and rescue operations continue."
-    ]
-  },
   // -------------------------------------------------------------
   // RAKSHA BANDHAN FESTIVE SPECIALS (2026-08-27 to 2026-08-24)
   // -------------------------------------------------------------
@@ -4607,14 +4399,21 @@ const rawCatalog: ExtendedBlogPost[] = topicBlueprints.map((item, idx) => {
 
 export const masterBlogCatalog: ExtendedBlogPost[] = [
   ...allBlogPosts,
-  ...rawCatalog.filter(r => !allBlogPosts.some(a => a.slug === r.slug))
 ];
 
 export function getBlogPostBySlug(slug: string): ExtendedBlogPost | undefined {
-  return masterBlogCatalog.find((b) => b.slug === slug || b.id === slug);
+  return (
+    allBlogPosts.find((b) => b.slug === slug || b.id === slug) ||
+    rawCatalog.find((b) => b.slug === slug || b.id === slug)
+  );
+}
+
+export function isAutoGeneratedBlogStub(slug: string): boolean {
+  return !allBlogPosts.some((b) => b.slug === slug || b.id === slug);
 }
 
 export function getBlogPostsByCategory(category: string): ExtendedBlogPost[] {
   if (category === 'ALL' || !category) return masterBlogCatalog;
   return masterBlogCatalog.filter((b) => b.category.toLowerCase() === category.toLowerCase());
 }
+

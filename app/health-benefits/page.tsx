@@ -2,8 +2,20 @@ import Link from 'next/link';
 import { Heart, Brain, Zap, Shield, Leaf, Moon } from 'lucide-react';
 
 export const metadata = {
-  title: 'Health Benefits | NaturesMud',
-  description: 'Discover the health benefits of pure superfoods, nuts, seeds, and healthy whole foods from NaturesMud with 0 additives and 0 preservatives.',
+  title: 'Health Benefits of Himalayan Superfoods, Powders, Nuts & Seeds',
+  description:
+    'Discover the nutritional benefits of NaturesMud pure superfood powders, naturally dehydrated fruits, mountain nuts, seeds, and cold-pressed coconut oil with 0 additives and 0 preservatives.',
+  alternates: {
+    canonical: 'https://naturesmud.shop/health-benefits',
+  },
+  openGraph: {
+    title: 'Health Benefits of Himalayan Superfoods, Powders, Nuts & Seeds | NaturesMud Nepal',
+    description:
+      'Nutritional guide to heart health, brain function, natural energy, immunity, and digestive wellness with pure Nepali whole foods.',
+    url: 'https://naturesmud.shop/health-benefits',
+    siteName: 'NaturesMud Nepal',
+    type: 'website',
+  },
 };
 
 const benefits = [

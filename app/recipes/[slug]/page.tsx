@@ -41,14 +41,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!recipe) return {};
 
+  const baseUrl = 'https://naturesmud.shop';
+  const canonicalUrl = `${baseUrl}/recipes/${recipe.slug}`;
+  const imgUrl = recipe.image?.startsWith('http') ? recipe.image : `${baseUrl}${recipe.image || '/products/superfood-mix.jpg'}`;
+
   return {
-    title: `${recipe.title} | NaturesMud Pure Recipes Nepal`,
-    description: recipe.excerpt,
-    keywords: recipe.tags?.join(', ') || 'healthy recipes nepal, baby food recipe, organic recipes',
+    title: `${recipe.title} — Healthy Recipe`,
+    description: `${recipe.excerpt} Easy ${recipe.prepTime + recipe.cookTime}-minute healthy recipe crafted with NaturesMud pure Himalayan superfoods in Nepal.`,
+    keywords: recipe.tags?.join(', ') || 'healthy recipes nepal, baby food recipe, superfood recipes kathmandu',
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: recipe.title,
+      title: `${recipe.title} | NaturesMud Pure Recipes Nepal`,
       description: recipe.excerpt,
-      images: [recipe.image],
+      url: canonicalUrl,
+      siteName: 'NaturesMud Nepal',
+      images: [imgUrl],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${recipe.title} | NaturesMud Pure Recipes Nepal`,
+      description: recipe.excerpt,
+      images: [imgUrl],
     },
   };
 }
@@ -84,7 +100,25 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
 
   if (!recipe) notFound();
 
-  const relatedProducts = products.slice(0, 3);
+  const recipeText = `${recipe.title} ${recipe.excerpt} ${(recipe.ingredients || []).join(' ')}`.toLowerCase();
+  const matchedProducts = products.filter((p) => {
+    const words = p.name
+      .toLowerCase()
+      .replace(/pure|organic|himalayan|premium|natural|freeze|dried|dehydrated/g, '')
+      .split(/\s+/)
+      .filter((w) => w.length >= 4);
+    return words.some((w) => recipeText.includes(w));
+  });
+  const relatedProducts =
+    matchedProducts.length >= 2
+      ? matchedProducts.slice(0, 3)
+      : [...matchedProducts, ...products.filter((p) => !matchedProducts.includes(p))].slice(0, 3);
+
+  const baseUrl = 'https://naturesmud.shop';
+  const canonicalUrl = `${baseUrl}/recipes/${recipe.slug}`;
+  const imgUrl = recipe.image?.startsWith('http')
+    ? recipe.image
+    : `${baseUrl}${recipe.image || '/products/naturesmud-all-products-100g.jpg'}`;
 
   return (
     <>
@@ -186,9 +220,9 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
             <div>
               <div className="bg-[#F8F4EC] rounded-3xl p-6 sticky top-24 border border-gray-100 space-y-4">
                 <h3 className="font-heading font-bold text-lg text-dark flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-gold-600" /> Recommended Products
+                  <Sparkles className="w-4 h-4 text-gold-600" /> Shop Recipe Ingredients
                 </h3>
-                <p className="text-xs text-gray-500">Crafted with 100% Pure Himalayan Wholesomeness:</p>
+                <p className="text-xs text-gray-500">100% Pure Himalayan Whole-Food Ingredients:</p>
                 <div className="space-y-4 pt-2">
                   {relatedProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
@@ -200,30 +234,49 @@ export default async function RecipeDetailPage({ params }: { params: Promise<{ s
         </div>
       </section>
 
-      {/* JSON-LD Recipe Schema for Google Rich Search Cards */}
+      {/* JSON-LD Recipe & BreadcrumbList Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Recipe',
-            name: recipe.title,
-            description: recipe.excerpt,
-            image: [recipe.image],
-            author: {
-              '@type': 'Organization',
-              name: 'NaturesMud Culinary Team',
-            },
-            prepTime: `PT${recipe.prepTime}M`,
-            cookTime: `PT${recipe.cookTime}M`,
-            recipeYield: `${recipe.servings} servings`,
-            recipeCategory: recipe.category,
-            recipeIngredient: recipe.ingredients,
-            recipeInstructions: recipe.instructions.map((step, idx) => ({
-              '@type': 'HowToStep',
-              text: step,
-              position: idx + 1,
-            })),
+            '@graph': [
+              {
+                '@type': 'Recipe',
+                '@id': `${canonicalUrl}#recipe`,
+                name: recipe.title,
+                description: recipe.excerpt,
+                image: [imgUrl],
+                author: {
+                  '@type': 'Organization',
+                  '@id': `${baseUrl}/#organization`,
+                  name: 'NaturesMud',
+                },
+                prepTime: `PT${recipe.prepTime}M`,
+                cookTime: `PT${recipe.cookTime}M`,
+                totalTime: `PT${Number(recipe.prepTime || 10) + Number(recipe.cookTime || 10)}M`,
+                recipeYield: `${recipe.servings} servings`,
+                recipeCategory: recipe.category,
+                recipeCuisine: 'Nepali / Himalayan',
+                keywords: Array.isArray(recipe.tags) ? recipe.tags.join(', ') : 'healthy recipe nepal, superfood recipe',
+                recipeIngredient: recipe.ingredients,
+                recipeInstructions: recipe.instructions.map((step, idx) => ({
+                  '@type': 'HowToStep',
+                  name: `Step ${idx + 1}`,
+                  text: step,
+                  position: idx + 1,
+                })),
+              },
+              {
+                '@type': 'BreadcrumbList',
+                '@id': `${canonicalUrl}#breadcrumb`,
+                itemListElement: [
+                  { '@type': 'ListItem', position: 1, name: 'Home', item: baseUrl },
+                  { '@type': 'ListItem', position: 2, name: 'Recipes', item: `${baseUrl}/recipes` },
+                  { '@type': 'ListItem', position: 3, name: recipe.title, item: canonicalUrl },
+                ],
+              },
+            ],
           }),
         }}
       />

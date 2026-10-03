@@ -13,6 +13,10 @@ import { api } from '@/lib/api';
 import { Product } from '@/lib/types';
 import FeaturesStrip from '@/components/FeaturesStrip';
 
+import { siteConfig } from '@/lib/site';
+import { recipes } from '@/lib/data/recipes';
+import { masterBlogCatalog } from '@/lib/data/blogs-database';
+
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -40,14 +44,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   if (!product) {
     return {
-      title: "Product Not Found | NaturesMud (naturesmud.com)",
-      description: 'The requested superfood product is not available.',
+      title: 'Product Not Found',
+      description: 'The requested NaturesMud superfood product is not available.',
+      robots: { index: false, follow: true },
     };
   }
 
-  const title = `${product.name} (${product.weight || '100g'}) | NaturesMud (naturesmud.com) Nepal`;
-  const description = `${product.shortDescription || product.description || ''} Buy 100% pure food ${product.name} with 0 additives and 0 preservatives online across Nepal. Sourced with integrity from NaturesMud.`;
+  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
+  const weightLabel = product.weight || '100g';
+  const title = `${product.name} (${weightLabel}) — Price in Nepal Rs. ${product.price}`;
+  const description = `${product.shortDescription || product.description || ''} Buy 100% pure ${product.name} (${weightLabel}) at Rs. ${product.price} in Nepal with 0 additives & 0 preservatives. Fast delivery in Kathmandu, Lalitpur, Bhaktapur, Pokhara, Chitwan & nationwide from NaturesMud.`;
   const img = product.image || (Array.isArray(product.images) && product.images[0]) || '/products/naturesmud-all-products-100g.jpg';
+  const canonicalUrl = `${baseUrl}/products/${product.slug}`;
 
   return {
     title,
@@ -55,36 +63,37 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     keywords: [
       product.name,
       `${product.name} Nepal`,
-      `${product.name} price Nepal`,
-      'naturesmud',
-      'naturesmud.com',
+      `${product.name} price in Nepal`,
+      `buy ${product.name} Kathmandu`,
+      `pure ${product.name} Nepal`,
       'NaturesMud',
-      'pure food Nepal',
-      product.categorySlug || 'pure-superfoods',
+      'NaturesMud Nepal',
+      product.categorySlug || 'superfoods-nepal',
+      ...(product.tags || []),
     ],
     alternates: {
-      canonical: `https://naturesmud.com/products/${product.slug}`,
+      canonical: canonicalUrl,
     },
     openGraph: {
-      title,
+      title: `${title} | NaturesMud Nepal`,
       description,
-      url: `https://naturesmud.com/products/${product.slug}`,
-      siteName: 'NaturesMud (naturesmud.com)',
+      url: canonicalUrl,
+      siteName: 'NaturesMud Nepal',
       images: [
         {
-          url: img,
+          url: img.startsWith('http') ? img : `${baseUrl}${img}`,
           width: 800,
           height: 800,
-          alt: `${product.name} - NaturesMud Himalayan Superfoods`,
+          alt: `${product.name} (${weightLabel}) — NaturesMud Pure Himalayan Superfoods Nepal`,
         },
       ],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${title} | NaturesMud Nepal`,
       description,
-      images: [img],
+      images: [img.startsWith('http') ? img : `${baseUrl}${img}`],
     },
   };
 }
@@ -448,10 +457,62 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <ProductReviews productId={product.id} />
         </div>
 
-        {/* Related */}
+        {/* Product-Specific FAQs & Nepal Buying Guide */}
+        <div className="mt-16 border-t border-gray-100 pt-10">
+          <h2 className="font-heading font-bold text-xl sm:text-2xl text-[#2B2B2B] mb-6">
+            Frequently Asked Questions About {product.name} in Nepal
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                q: `What are the exact ingredients in NaturesMud ${product.name}?`,
+                a:
+                  Array.isArray(product.ingredients) && product.ingredients.length > 0
+                    ? `NaturesMud ${product.name} (${product.weight || '100g'}) contains: ${product.ingredients.join(', ')}. It is 100% pure whole food with 0 artificial additives, 0 preservatives, and 0 added refined sugar.`
+                    : `NaturesMud ${product.name} (${product.weight || '100g'}) is crafted from 100% pure whole-food ingredients with 0 artificial additives, 0 preservatives, and 0 added refined sugar.`,
+              },
+              {
+                q: `How do I use ${product.name} in daily meals or recipes?`,
+                a:
+                  product.usage ||
+                  `Enjoy ${product.name} directly as a clean, nutrient-dense whole food snack, or mix into warm milk, porridge, smoothies, yogurt bowls, and traditional Nepali kitchen recipes.`,
+              },
+              {
+                q: `How should ${product.name} be stored in Nepal's climate and monsoon humidity?`,
+                a:
+                  product.storage ||
+                  `Store ${product.name} in its tightly sealed ${product.packing || 'airtight container'} in a cool, dry cupboard away from direct sunlight and moisture. Always use a dry spoon to preserve freshness during monsoon humidity.`,
+              },
+              {
+                q: `What is the price of ${product.name} in Nepal and where do you deliver?`,
+                a: `NaturesMud ${product.name} (${product.weight || '100g'}) is priced at Rs. ${product.price} in Nepal. We offer fast 24–48 hour delivery across Kathmandu, Lalitpur, and Bhaktapur, plus express nationwide courier delivery to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Hetauda, Nepalgunj, Surkhet, and all 77 districts (Free shipping on orders over Rs. ${siteConfig.freeShippingThreshold.toLocaleString()}).`,
+              },
+            ].map((faq, idx) => (
+              <div
+                key={idx}
+                className="bg-[#FAF7F2] rounded-2xl p-5 border border-stone-200/80"
+              >
+                <h3 className="font-heading font-bold text-base text-[#1A3826] mb-2">
+                  {faq.q}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Related Products */}
         {related.length > 0 && (
           <div className="mt-16">
-            <h2 className="font-heading font-bold text-xl sm:text-2xl mb-6">You May Also Like</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="font-heading font-bold text-xl sm:text-2xl">You May Also Like</h2>
+              <Link
+                href={`/products?category=${product.categorySlug || product.category}`}
+                className="text-sm font-semibold text-[#3A6B35] hover:underline"
+              >
+                View All {categoryName || 'Products'} →
+              </Link>
+            </div>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
               {related.map((p, i) => (
                 <ProductCard key={p.id || p.slug} product={p} index={i} />
@@ -459,50 +520,236 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </div>
           </div>
         )}
+
+        {/* Topical Cluster Internal Links: Related Recipes & Nutrition Guides */}
+        {(() => {
+          const nameKeywords = product.name
+            .toLowerCase()
+            .replace(/pure|organic|himalayan|premium|natural|freeze|dried|dehydrated/g, '')
+            .split(/\s+/)
+            .filter((w) => w.length >= 4);
+
+          const matchedRecipes = recipes
+            .filter((r) => {
+              const hay = `${r.title} ${r.excerpt} ${(r.ingredients || []).join(' ')}`.toLowerCase();
+              return nameKeywords.some((kw) => hay.includes(kw));
+            })
+            .slice(0, 3);
+
+          const matchedBlogs = masterBlogCatalog
+            .filter((b) => {
+              if (b.featuredProductSlug === product.slug) return true;
+              const hay = `${b.title} ${b.excerpt} ${(b.tags || []).join(' ')}`.toLowerCase();
+              return nameKeywords.some((kw) => hay.includes(kw));
+            })
+            .slice(0, 3);
+
+          if (matchedRecipes.length === 0 && matchedBlogs.length === 0) return null;
+
+          return (
+            <div className="mt-16 border-t border-gray-100 pt-10">
+              <h2 className="font-heading font-bold text-xl sm:text-2xl text-[#2B2B2B] mb-6">
+                Recipes &amp; Nutrition Guides Using {product.name}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {matchedRecipes.length > 0 && (
+                  <div className="bg-[#F8F4EC] rounded-2xl p-6 border border-stone-200/70">
+                    <h3 className="font-heading font-bold text-lg text-[#1A3826] mb-3">
+                      Healthy Kitchen &amp; Baby Weaning Recipes
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {matchedRecipes.map((r) => (
+                        <li key={r.slug}>
+                          <Link
+                            href={`/recipes/${r.slug}`}
+                            className="text-sm font-medium text-[#2B2B2B] hover:text-[#3A6B35] hover:underline flex items-center justify-between gap-2"
+                          >
+                            <span>{r.title}</span>
+                            <span className="text-xs text-gray-500 shrink-0">{r.prepTime + r.cookTime} min</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href="/recipes"
+                      className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#3A6B35] hover:underline"
+                    >
+                      Explore All Superfood Recipes →
+                    </Link>
+                  </div>
+                )}
+                {matchedBlogs.length > 0 && (
+                  <div className="bg-[#F8F4EC] rounded-2xl p-6 border border-stone-200/70">
+                    <h3 className="font-heading font-bold text-lg text-[#1A3826] mb-3">
+                      Deep-Dive Nutrition &amp; Sourcing Guides
+                    </h3>
+                    <ul className="space-y-2.5">
+                      {matchedBlogs.map((b) => (
+                        <li key={b.slug}>
+                          <Link
+                            href={`/blog/${b.slug}`}
+                            className="text-sm font-medium text-[#2B2B2B] hover:text-[#3A6B35] hover:underline block"
+                          >
+                            {b.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href="/blog"
+                      className="inline-block mt-4 text-xs font-bold uppercase tracking-wider text-[#3A6B35] hover:underline"
+                    >
+                      Read All Nutrition Articles →
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })()}
       </div>
 
-      {/* Schema.org Product & Breadcrumb JSON-LD for Google Rich Snippets */}
+      {/* Schema.org Product, BreadcrumbList & FAQPage JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Product',
-            name: product.name,
-            image: productImages.map((img) =>
-              img.startsWith('http') ? img : `https://naturesmud.shop${img}`
-            ),
-            description: product.description || product.shortDescription,
-            sku: `NM-${product.slug.toUpperCase()}`,
-            brand: {
-              '@type': 'Brand',
-              name: 'NaturesMud',
-              alternateName: ['naturesmud', 'naturesmud.com', 'NaturesMud Nepal'],
-            },
-            offers: {
-              '@type': 'Offer',
-              url: `https://naturesmud.shop/products/${product.slug}`,
-              priceCurrency: 'NPR',
-              price: product.price,
-              priceValidUntil: '2028-12-31',
-              itemCondition: 'https://schema.org/NewCondition',
-              availability:
-                product.stock > 0
-                  ? 'https://schema.org/InStock'
-                  : 'https://schema.org/OutOfStock',
-              seller: {
-                '@type': 'Organization',
-                name: 'NaturesMud Nepal',
-                url: 'https://naturesmud.shop',
+            '@graph': [
+              {
+                '@type': 'Product',
+                '@id': `${siteConfig.url}/products/${product.slug}#product`,
+                name: product.name,
+                image: productImages.map((img) =>
+                  img.startsWith('http') ? img : `${siteConfig.url}${img}`
+                ),
+                description: product.description || product.shortDescription,
+                sku: `NM-${product.slug.toUpperCase()}`,
+                category: categoryName || product.category || 'Superfoods',
+                brand: {
+                  '@type': 'Brand',
+                  '@id': `${siteConfig.url}/#organization`,
+                  name: 'NaturesMud',
+                },
+                offers: {
+                  '@type': 'Offer',
+                  '@id': `${siteConfig.url}/products/${product.slug}#offer`,
+                  url: `${siteConfig.url}/products/${product.slug}`,
+                  priceCurrency: 'NPR',
+                  price: product.price,
+                  priceValidUntil: '2027-12-31',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  availability:
+                    product.stock > 0
+                      ? 'https://schema.org/InStock'
+                      : 'https://schema.org/OutOfStock',
+                  seller: {
+                    '@type': 'Organization',
+                    '@id': `${siteConfig.url}/#organization`,
+                    name: 'NaturesMud',
+                    url: siteConfig.url,
+                  },
+                  shippingDetails: {
+                    '@type': 'OfferShippingDetails',
+                    shippingDestination: {
+                      '@type': 'DefinedRegion',
+                      addressCountry: 'NP',
+                    },
+                    shippingRate: {
+                      '@type': 'MonetaryAmount',
+                      value: product.price >= siteConfig.freeShippingThreshold ? 0 : 100,
+                      currency: 'NPR',
+                    },
+                  },
+                },
               },
-            },
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: product.rating || 4.9,
-              reviewCount: product.reviewCount || 18,
-              bestRating: 5,
-              worstRating: 1,
-            },
+              {
+                '@type': 'BreadcrumbList',
+                '@id': `${siteConfig.url}/products/${product.slug}#breadcrumb`,
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: siteConfig.url,
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Products',
+                    item: `${siteConfig.url}/products`,
+                  },
+                  ...(categoryName
+                    ? [
+                        {
+                          '@type': 'ListItem',
+                          position: 3,
+                          name: categoryName,
+                          item: `${siteConfig.url}/products?category=${product.categorySlug || product.category}`,
+                        },
+                        {
+                          '@type': 'ListItem',
+                          position: 4,
+                          name: product.name,
+                          item: `${siteConfig.url}/products/${product.slug}`,
+                        },
+                      ]
+                    : [
+                        {
+                          '@type': 'ListItem',
+                          position: 3,
+                          name: product.name,
+                          item: `${siteConfig.url}/products/${product.slug}`,
+                        },
+                      ]),
+                ],
+              },
+              {
+                '@type': 'FAQPage',
+                '@id': `${siteConfig.url}/products/${product.slug}#faq`,
+                mainEntity: [
+                  {
+                    '@type': 'Question',
+                    name: `What are the exact ingredients in NaturesMud ${product.name}?`,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text:
+                        Array.isArray(product.ingredients) && product.ingredients.length > 0
+                          ? `NaturesMud ${product.name} (${product.weight || '100g'}) contains: ${product.ingredients.join(', ')}. It is 100% pure whole food with 0 artificial additives, 0 preservatives, and 0 added refined sugar.`
+                          : `NaturesMud ${product.name} (${product.weight || '100g'}) is crafted from 100% pure whole-food ingredients with 0 artificial additives, 0 preservatives, and 0 added refined sugar.`,
+                    },
+                  },
+                  {
+                    '@type': 'Question',
+                    name: `How do I use ${product.name} in daily meals or recipes?`,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text:
+                        product.usage ||
+                        `Enjoy ${product.name} directly as a clean, nutrient-dense whole food snack, or mix into warm milk, porridge, smoothies, yogurt bowls, and traditional Nepali kitchen recipes.`,
+                    },
+                  },
+                  {
+                    '@type': 'Question',
+                    name: `How should ${product.name} be stored in Nepal's climate and monsoon humidity?`,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text:
+                        product.storage ||
+                        `Store ${product.name} in its tightly sealed ${product.packing || 'airtight container'} in a cool, dry cupboard away from direct sunlight and moisture.`,
+                    },
+                  },
+                  {
+                    '@type': 'Question',
+                    name: `What is the price of ${product.name} in Nepal and where do you deliver?`,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: `NaturesMud ${product.name} (${product.weight || '100g'}) is priced at Rs. ${product.price} in Nepal. We offer fast 24–48 hour delivery across Kathmandu, Lalitpur, and Bhaktapur, plus nationwide courier delivery across Nepal.`,
+                    },
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />

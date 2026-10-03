@@ -1,8 +1,12 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Shipping Policy | Nature\'s Mud',
-  description: 'Shipping information, delivery times, and costs for Nature\'s Mud orders across Nepal.',
+  title: 'Shipping & Delivery Policy Across Nepal (Kathmandu, Pokhara & All 77 Districts)',
+  description:
+    'Shipping information, delivery times, Cash on Delivery (COD), and free delivery over Rs. 3,000 for NaturesMud orders across Kathmandu Valley, Pokhara, Chitwan, Butwal, Biratnagar & all of Nepal.',
+  alternates: {
+    canonical: 'https://naturesmud.shop/shipping-policy',
+  },
 };
 
 const zones = [

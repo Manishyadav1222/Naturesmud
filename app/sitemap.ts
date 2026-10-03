@@ -6,19 +6,21 @@ import { masterBlogCatalog } from '@/lib/data/blogs-database';
 import { categories } from '@/lib/data/categories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url || 'https://naturesmud.com';
+  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
   const now = new Date();
 
   // 1. Core Static Pages
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}`, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
     { url: `${baseUrl}/products`, lastModified: now, changeFrequency: 'daily', priority: 0.95 },
-    { url: `${baseUrl}/recipes`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${baseUrl}/offers`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/catalog`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/offers`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/recipes`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/health-benefits`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${baseUrl}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/wholesale`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${baseUrl}/become-distributor`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${baseUrl}/shipping-policy`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },

@@ -56,6 +56,60 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/our-story',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/products/premium-coconut-oil',
+        destination: '/products/virgin-coconut-oil-500ml',
+        permanent: true,
+      },
+      {
+        source: '/products/flaxseed-crackers',
+        destination: '/products/flax-seeds',
+        permanent: true,
+      },
+      {
+        source: '/products/pure-shilajit-resin',
+        destination: '/products/pure-mountain-himalayan-shilajit-resin',
+        permanent: true,
+      },
+      {
+        source: '/products/raw-himalayan-almonds',
+        destination: '/products/raw-almonds-200g',
+        permanent: true,
+      },
+      {
+        source: '/products/raw-honey',
+        destination: '/products/pure-mountain-himalayan-shilajit-resin',
+        permanent: true,
+      },
+      {
+        source: '/blog/could-another-flood-happen-nepal-new-glacial-lake-explained',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/nepal-hydropower-crisis-after-flood-which-projects-damaged',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/what-happened-gyirong-port-nepal-china-border-disaster-explained',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blog/august-2026-nepal-glacier-avalanche-bhotekoshi-trishuli-flood',
+        destination: '/blog',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     const backendUrl = process.env.INTERNAL_API_URL || 'https://api.naturesmud.shop/api';
     return [

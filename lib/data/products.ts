@@ -2177,103 +2177,67 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "8",
-    "slug": "premium-coconut-oil",
-    "name": "Raw Pumpkin Seeds",
-    "categorySlug": "seeds-mix",
-    "price": 650,
-    "compareAtPrice": 650,
-    "rating": 5,
-    "reviewCount": 18,
-    "image": "/products/pumpkin-seeds.jpg",
-    "images": [
-      "/products/pumpkin-seeds.jpg",
-      "/products/pumpkin-seeds-2.jpg",
-      "/products/pumpkin-seeds-product-shot.jpg"
-    ],
-    "description": "Raw AAA-grade dark-green pumpkin seed kernels (pepitas). One of the richest dietary sources of natural bioavailable Zinc, Magnesium, Tryptophan, and antioxidants for deep sleep, prostate health, and immune defense.",
-    "shortDescription": "Raw zinc and magnesium rich pepitas for immune strength, sleep quality & hormone balance in a 300g Plastic Jar.",
-    "badges": [
-      "organic",
-      "bestseller"
-    ],
-    "stock": 50,
-    "weight": "300.00",
-    "ingredients": [
-      "Premium Coconut Oil"
-    ],
-    "benefits": [
-      "100% Natural",
-      "Rich in nutrients",
-      "No artificial colors",
-      "No added sugar"
-    ],
-    "nutrition": [
-      {
-        "label": "Energy",
-        "value": "350 kcal"
-      },
-      {
-        "label": "Protein",
-        "value": "4g"
-      }
-    ],
-    "storage": "Keep in an airtight container away from direct sunlight.",
-    "isFeatured": true,
-    "category": "Seeds",
-    "usage": "Add 1-2 teaspoons to warm water, milk, smoothies, or recipes.",
-    "isBestSeller": false,
-    "tags": [
-      "premium-coconut-oil"
-    ]
-  },
-  {
     "id": "18",
-    "slug": "flaxseed-crackers",
-    "name": "Raw Almond",
-    "categorySlug": "superfood-powders",
+    "dbId": 18,
+    "slug": "flax-seeds",
+    "name": "Organic Flax Seeds (Alash)",
+    "category": "Seeds",
+    "categorySlug": "seeds",
     "price": 570,
     "compareAtPrice": 600,
-    "rating": 5,
+    "mrp": 600,
+    "rating": 4.9,
     "reviewCount": 18,
     "image": "/products/flax-seeds.jpg",
     "images": [
       "/products/flax-seeds.jpg"
     ],
-    "description": "Whole raw brown flax seeds loaded with dietary soluble and insoluble fiber.",
-    "shortDescription": "Whole raw flax seeds packed with lignans, alpha-linolenic acid (Omega-3) & fiber.",
+    "description": "Whole raw brown Himalayan flax seeds (Alash / आलस) naturally rich in plant-based Omega-3 alpha-linolenic acid (ALA), dietary lignans, and soluble & insoluble prebiotic fiber. Ideal for roasting and grinding into traditional Nepali Alash ko Chhop, stirring into morning oatmeal, smoothies, roti dough, and supporting healthy digestion and heart wellness.",
+    "shortDescription": "Whole raw brown flax seeds (Alash) packed with plant Omega-3 (ALA), lignans & dietary fiber in a 200g Glass Jar.",
     "badges": [
-      "organic",
-      "bestseller"
+      "organic"
     ],
     "stock": 50,
-    "weight": "200.00",
+    "weight": "200 GM",
+    "packing": "Glass Jar",
     "ingredients": [
-      "Flaxseed Crackers"
+      "100% Pure Whole Brown Flax Seeds (Linum usitatissimum)"
     ],
     "benefits": [
-      "100% Natural",
-      "Rich in nutrients",
-      "No artificial colors",
-      "No added sugar"
+      "Rich plant source of Omega-3 Alpha-Linolenic Acid (ALA) for heart and brain support",
+      "High in natural dietary lignans and antioxidant polyphenols",
+      "Soluble and insoluble mucilage fiber supports gentle, regular digestion",
+      "Zero additives, zero preservatives, unroasted whole seeds"
     ],
     "nutrition": [
       {
-        "label": "Energy",
-        "value": "350 kcal"
+        "label": "Calories",
+        "value": "534 kcal / 100g"
       },
       {
         "label": "Protein",
-        "value": "4g"
+        "value": "18.3g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "27.3g"
+      },
+      {
+        "label": "Omega-3 (ALA)",
+        "value": "22.8g"
       }
     ],
-    "storage": "Keep in an airtight container away from direct sunlight.",
+    "storage": "Keep sealed in an airtight glass jar in a cool, dry cupboard away from direct sunlight.",
+    "usage": "Lightly dry-roast and grind for maximum nutrient absorption. Add 1–2 tablespoons daily to warm water, yogurt, oatmeal, smoothies, or traditional Nepali Alash ko achar.",
     "isFeatured": false,
-    "category": "Powders",
-    "usage": "Add 1-2 teaspoons to warm water, milk, smoothies, or recipes.",
     "isBestSeller": false,
     "tags": [
-      "flaxseed-crackers"
+      "flax-seeds",
+      "alash",
+      "omega-3",
+      "seeds",
+      "fiber",
+      "digestion"
     ]
   },
   {

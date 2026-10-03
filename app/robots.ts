@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = siteConfig.url || 'https://naturesmud.com';
+  const baseUrl = siteConfig.url || 'https://naturesmud.shop';
 
   return {
     rules: [
@@ -13,13 +13,21 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/admin',
           '/api/admin/',
-          '/account/orders/',
+          '/account/',
+          '/account',
+          '/cart',
+          '/checkout',
+          '/wishlist',
+          '/login',
+          '/register',
+          '/dashboard',
         ],
       },
       {
         userAgent: [
           'GPTBot',
           'ChatGPT-User',
+          'OAI-SearchBot',
           'Google-Extended',
           'PerplexityBot',
           'ClaudeBot',
@@ -27,7 +35,7 @@ export default function robots(): MetadataRoute.Robots {
           'cohere-ai',
         ],
         allow: '/',
-        disallow: ['/admin/', '/api/admin/'],
+        disallow: ['/admin/', '/api/admin/', '/cart', '/checkout', '/account/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

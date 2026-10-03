@@ -2,8 +2,20 @@ import Link from 'next/link';
 import { Package, Truck, BadgePercent, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Wholesale | NaturesMud',
-  description: 'Partner with NaturesMud for wholesale pure food products with 0 additives and 0 preservatives. Consistent supply across Nepal.',
+  title: 'Wholesale Superfoods, Dehydrated Fruits & Nuts Supplier in Nepal',
+  description:
+    'Partner with NaturesMud for bulk & wholesale pure dehydrated fruits, superfood powders, nuts, seeds & virgin coconut oil for cafes, hotels, bakeries, gyms, and retail stores across Nepal.',
+  alternates: {
+    canonical: 'https://naturesmud.shop/wholesale',
+  },
+  openGraph: {
+    title: 'Wholesale Superfoods, Dehydrated Fruits & Nuts Supplier in Nepal | NaturesMud',
+    description:
+      'Bulk & B2B supply of 0-additive dehydrated fruits, superfood powders, nuts & seeds for cafes, hotels, bakeries & stores across Nepal.',
+    url: 'https://naturesmud.shop/wholesale',
+    siteName: 'NaturesMud Nepal',
+    type: 'website',
+  },
 };
 
 const benefits = [

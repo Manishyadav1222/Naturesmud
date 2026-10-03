@@ -6,9 +6,22 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: "Evidence-Based Nutrition & Himalayan Health Blogs | NaturesMud Nepal",
-  description: "Comprehensive scientific guides on infant weaning, 0-additive living, Ayurvedic longevity, and Himalayan superfoods.",
-  keywords: "dates powder baby food, sweet potato powder weaning, himalayan shilajit resin, organic nepal superfoods, nutrition blogs kathmandu",
+  title: 'Himalayan Superfood, Baby Weaning & Clean Nutrition Blog',
+  description:
+    'Read practical guides on infant weaning (6m+), natural sugar-free sweetening with dates powder, freeze-dried avocado & strawberry powders, moringa benefits, and monsoon food storage in Nepal.',
+  keywords:
+    'dates powder baby food nepal, sweet potato powder weaning nepal, avocado powder benefits, moringa powder nepal, healthy snacks kathmandu, naturesmud blog',
+  alternates: {
+    canonical: 'https://naturesmud.shop/blog',
+  },
+  openGraph: {
+    title: 'Himalayan Superfood, Baby Weaning & Clean Nutrition Blog | NaturesMud Nepal',
+    description:
+      'Practical guides on infant weaning, natural sweeteners, dehydrated fruits, superfood powders, and healthy living across Nepal.',
+    url: 'https://naturesmud.shop/blog',
+    siteName: 'NaturesMud Nepal',
+    type: 'website',
+  },
 };
 
 export default async function BlogPage() {

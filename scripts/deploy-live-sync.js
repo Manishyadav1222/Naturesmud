@@ -200,6 +200,17 @@ function chmod_r($path) {
 chmod($dir, 0755);
 chmod_r($dir);
 
+// Ensure .htaccess has canonical 301 redirect to https://naturesmud.shop while preserving Passenger config
+$htaccessPath = $dir . '/.htaccess';
+if (file_exists($htaccessPath)) {
+    $htContent = file_get_contents($htaccessPath);
+    if (strpos($htContent, 'naturesmud.com') === false) {
+        $redirectBlock = "<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTP_HOST} ^(www\\.)?naturesmud\\.com$ [NC,OR]\nRewriteCond %{HTTP_HOST} ^www\\.naturesmud\\.shop$ [NC]\nRewriteRule ^(.*)$ https://naturesmud.shop/$1 [L,R=301]\n</IfModule>\n\n";
+        file_put_contents($htaccessPath, $redirectBlock . $htContent);
+        chmod($htaccessPath, 0644);
+    }
+}
+
 // Create tmp/restart.txt to restart LiteSpeed / Passenger Node app
 if (!file_exists($dir . '/tmp')) {
     mkdir($dir . '/tmp', 0755, true);
@@ -208,7 +219,7 @@ file_put_contents($dir . '/tmp/restart.txt', time());
 
 echo json_encode([
     'success' => true,
-    'message' => 'Permissions recursively updated to 0755 (dirs) / 0644 (files)',
+    'message' => 'Permissions recursively updated to 0755 (dirs) / 0644 (files) & canonical .htaccess verified',
     'restarted_via' => 'tmp/restart.txt'
 ], JSON_PRETTY_PRINT);
 `;
@@ -463,6 +474,9 @@ foreach ($catalog as $p) {
         $upsertCount++;
     }
 }
+
+// Remove corrupted legacy duplicate slugs from MySQL
+$pdo->exec("DELETE FROM products WHERE slug IN ('premium-coconut-oil', 'flaxseed-crackers')");
 
 echo json_encode([
     'success' => true,

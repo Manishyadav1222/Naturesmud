@@ -2,8 +2,20 @@ import Link from 'next/link';
 import { Handshake, TrendingUp, MapPin, Award, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Become a Distributor | Nature\'s Mud',
-  description: 'Join Nature\'s Mud as an official distributor. Grow your business with Nepal\'s premium organic food brand.',
+  title: 'Become a Retail Distributor in Nepal — Partner with NaturesMud',
+  description:
+    'Join NaturesMud as an official retail distributor or pharmacy/baby-store stockist across Kathmandu, Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Hetauda, Nepalgunj & Surkhet.',
+  alternates: {
+    canonical: 'https://naturesmud.shop/become-distributor',
+  },
+  openGraph: {
+    title: 'Become a Retail Distributor in Nepal | NaturesMud',
+    description:
+      'Partner with NaturesMud to distribute pure Himalayan superfoods, baby weaning powders & dehydrated fruits in your city.',
+    url: 'https://naturesmud.shop/become-distributor',
+    siteName: 'NaturesMud Nepal',
+    type: 'website',
+  },
 };
 
 const steps = [

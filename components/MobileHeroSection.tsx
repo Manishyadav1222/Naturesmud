@@ -744,7 +744,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
             </Link>
 
             <Link
-              href="/our-story"
+              href="/about"
               className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#7A5230]/40 bg-white/95 hover:bg-white text-[#7A5230] px-5 lg:px-7 py-3 lg:py-3.5 text-sm lg:text-base font-semibold tracking-wide shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:scale-[0.98] transition-all font-sans cursor-pointer"
             >
               <Leaf className="w-4 h-4 text-[#7A5230] transition-transform duration-300 group-hover:rotate-45" />

@@ -75,7 +75,7 @@ const regionsData = [
     locationsNp: 'काभ्रे · सिन्धुपाल्चोक · पाल्पा · इलाम',
     primaryProducts: [
       { nameEn: 'Pure Himalayan Beetroot Powder (100g)', nameNp: 'हिमाली चुकन्दर पाउडर (१००g)', image: '/products/beetroot-powder-100g.jpg', slug: 'beetroot-powder' },
-      { nameEn: 'Cold-Pressed Virgin Coconut Oil', nameNp: 'भर्जिन नरिवल तेल', image: '/products/coconut-oil.jpg', slug: 'premium-coconut-oil' },
+      { nameEn: 'Cold-Pressed Virgin Coconut Oil', nameNp: 'भर्जिन नरिवल तेल', image: '/products/coconut-oil.jpg', slug: 'virgin-coconut-oil-500ml' },
       { nameEn: 'Organic Flax Seeds (100g)', nameNp: 'अर्ग्यानिक आलस दाना (१००g)', image: '/products/flax-seeds.jpg', slug: 'flax-seeds' },
       { nameEn: 'Organic Chia Seeds (100g)', nameNp: 'अर्ग्यानिक चिया सिड्स (१००g)', image: '/products/chia-seeds.jpg', slug: 'chia-seeds' },
     ],
@@ -110,8 +110,8 @@ const regionsData = [
     locationsNp: 'मुस्ताङ · जुम्ला · मनाङ · डोल्पा',
     primaryProducts: [
       { nameEn: 'Dehydrated Himalayan Apple Rings', nameNp: 'हिमाली स्याउको सुकुटी', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
-      { nameEn: 'Pure Mustang Wild Cliff Honey', nameNp: 'मुस्ताङ भिर मह', image: '/products/authentic-cliff-honey.jpg', slug: 'raw-honey' },
-      { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
+      { nameEn: 'Pure Mountain Himalayan Shilajit Resin', nameNp: 'शुद्ध हिमाली शिलाजीत', image: '/products/pure-shilajit.jpg', slug: 'pure-mountain-himalayan-shilajit-resin' },
+      { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-almonds-200g' },
       { nameEn: 'Ancient Himalayan Pink Rock Salt', nameNp: 'शुद्ध हिमाली बिरे नुन / सिधे नुन', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
     farmerCountEn: '75+ Indigenous Foragers & Harvesters',

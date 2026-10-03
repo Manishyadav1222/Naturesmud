@@ -6,9 +6,22 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata = {
-  title: 'Healthy Himalayan Recipes & Superfood Cooking | Nature\'s Mud Nepal',
-  description: '100+ delicious, nutrient-dense recipes crafted with Nature\'s Mud organic sweet potato powder, dates powder, raw mountain honey, chia seeds, and dried fruits.',
-  keywords: 'healthy recipes nepal, baby food recipe nepal, sweet potato powder pancakes, chia seed pudding kathmandu, clean breakfast recipes',
+  title: 'Healthy Superfood, Baby Porridge & Smoothie Recipes in Nepal',
+  description:
+    'Explore 100+ easy, nutrient-dense recipes crafted with NaturesMud pure sweet potato powder, dates powder, banana powder, avocado powder, chia seeds, and dehydrated fruits.',
+  keywords:
+    'healthy recipes nepal, baby food recipe nepal, sweet potato powder porridge, dates powder kheer, chia seed pudding kathmandu, naturesmud recipes',
+  alternates: {
+    canonical: 'https://naturesmud.shop/recipes',
+  },
+  openGraph: {
+    title: 'Healthy Superfood, Baby Porridge & Smoothie Recipes | NaturesMud Nepal',
+    description:
+      '100+ easy, wholesome recipes for baby weaning, pre-workout smoothies, and sugar-free Nepali desserts using NaturesMud superfoods.',
+    url: 'https://naturesmud.shop/recipes',
+    siteName: 'NaturesMud Nepal',
+    type: 'website',
+  },
 };
 
 export default async function RecipesPage() {

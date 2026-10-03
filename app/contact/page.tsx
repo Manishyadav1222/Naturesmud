@@ -110,8 +110,8 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <Mail className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
-                      <p className="font-bold text-gray-900">info@naturesmud.com</p>
-                      <p className="text-xs text-gray-500">Wholesale & Partnership Inquiries</p>
+                      <p className="font-bold text-gray-900">info@naturesmud.shop</p>
+                      <p className="text-xs text-gray-500">Wholesale &amp; Partnership Inquiries</p>
                     </div>
                   </div>
                 </div>

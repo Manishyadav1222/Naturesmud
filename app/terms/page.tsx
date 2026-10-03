@@ -1,20 +1,23 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms & Conditions | Nature\'s Mud',
-  description: 'Terms and conditions for using Nature\'s Mud website and services.',
+  title: 'Terms & Conditions',
+  description: 'Terms and conditions for using the NaturesMud Nepal website and ordering services.',
+  alternates: {
+    canonical: 'https://naturesmud.shop/terms',
+  },
 };
 
 const sections = [
-  { title: '1. Acceptance of Terms', content: 'By accessing and using the Nature\'s Mud website, you accept and agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.' },
+  { title: '1. Acceptance of Terms', content: 'By accessing and using the NaturesMud website (https://naturesmud.shop), you accept and agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.' },
   { title: '2. Products & Pricing', content: 'All product descriptions, images, and pricing are subject to change without notice. We reserve the right to modify or discontinue products at any time. Prices are listed in Nepalese Rupees (NPR) and include applicable taxes unless stated otherwise.' },
-  { title: '3. Orders & Payment', content: 'All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order. Payment must be received in full before order processing. We accept eSewa, Khalti, FonePay, Stripe, and Cash on Delivery.' },
-  { title: '4. Shipping & Delivery', content: 'We aim to deliver within 2-5 business days within Kathmandu Valley and 3-7 business days for other regions. Delivery times are estimates and not guaranteed. Risk of loss passes to you upon delivery.' },
+  { title: '3. Orders & Payment', content: 'All orders are subject to acceptance and availability. We reserve the right to refuse or cancel any order. We accept eSewa, Khalti, FonePay QR, and Cash on Delivery (COD).' },
+  { title: '4. Shipping & Delivery', content: 'We aim to deliver within 1-2 business days within Kathmandu Valley and 2-5 business days for other regions in Nepal. Delivery times are estimates and not guaranteed. Risk of loss passes to you upon delivery.' },
   { title: '5. Returns & Refunds', content: 'Please refer to our Return Policy for details on returns, exchanges, and refunds. Products must be returned in their original condition within 7 days of delivery.' },
-  { title: '6. Intellectual Property', content: 'All content on this website, including text, graphics, logos, images, and software, is the property of Nature\'s Mud and protected by copyright laws. You may not reproduce or use any content without our written permission.' },
-  { title: '7. Limitation of Liability', content: 'Nature\'s Mud shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our website or products. Our total liability shall not exceed the amount paid for the products.' },
+  { title: '6. Intellectual Property', content: 'All content on this website, including text, graphics, logos, images, and software, is the property of NaturesMud and protected by copyright laws. You may not reproduce or use any content without our written permission.' },
+  { title: '7. Limitation of Liability', content: 'NaturesMud shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our website or products. Our total liability shall not exceed the amount paid for the products.' },
   { title: '8. Governing Law', content: 'These terms are governed by the laws of Nepal. Any disputes shall be subject to the exclusive jurisdiction of the courts of Kathmandu, Nepal.' },
-  { title: '9. Contact', content: 'For questions about these terms, contact us at support@naturesmud.com or +977 971-3888002.' },
+  { title: '9. Contact', content: 'For questions about these terms, contact us at info@naturesmud.shop or +977-9713888002.' },
 ];
 
 export default function TermsPage() {

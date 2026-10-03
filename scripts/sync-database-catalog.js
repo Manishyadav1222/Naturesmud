@@ -121,8 +121,17 @@ $productsList = json_decode($rawJson, true);
 $activeSlugs = [];
 $upsertCount = 0;
 
-// Remove dried-figs or old mismatched records
-$pdo->exec("DELETE FROM products WHERE slug = 'dried-figs' OR id = 160");
+// Remove dried-figs or old mismatched records and off-topic blog posts
+$pdo->exec("DELETE FROM products WHERE slug IN ('dried-figs', 'premium-coconut-oil', 'flaxseed-crackers') OR id = 160");
+try {
+    $pdo->exec("DELETE FROM blogs WHERE slug IN (
+        'could-another-flood-happen-nepal-new-glacial-lake-explained',
+        'nepal-hydropower-crisis-after-flood-which-projects-damaged',
+        'what-happened-gyirong-port-nepal-china-border-disaster-explained',
+        'august-2026-nepal-glacier-avalanche-bhotekoshi-trishuli-flood'
+    )");
+} catch (Exception $e) {}
+
 
 foreach ($productsList as $p) {
     $slug = $p['slug'];
