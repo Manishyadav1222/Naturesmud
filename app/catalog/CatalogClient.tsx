@@ -805,12 +805,6 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                                 </span>
                               </div>
 
-                              <div className="absolute top-2 right-2">
-                                <span className="bg-black/75 backdrop-blur-sm text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm font-mono">
-                                  {getDisplayWeight(prod.weight, prod.slug)}
-                                </span>
-                              </div>
-
                               <div className="absolute bottom-2 left-2">
                                 <span className="bg-white/90 backdrop-blur-sm text-[#1B3D2F] text-[10px] font-bold px-2 py-0.5 rounded border border-gray-200 shadow-sm">
                                   {prod.packing || 'Glass Jar'}

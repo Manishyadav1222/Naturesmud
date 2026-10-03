@@ -595,7 +595,7 @@ export default function HeroProductShowcase() {
         >
           <div className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/95 text-ink shadow-md sm:shadow-lg border border-ink/5 flex items-center gap-1.5 text-[10px] sm:text-xs font-bold">
             <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
-            <span>{current.weight} {current.packing.includes('Glass') ? 'Glass Jar' : 'Pouch'}</span>
+            <span>{current.packing.includes('Glass') ? 'Airtight Glass Jar' : 'Standup Ziplock Pouch'}</span>
           </div>
         </motion.div>
 

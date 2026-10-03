@@ -87,21 +87,18 @@ export default function GoldenSignatureShowcase() {
                 <span className="px-3 py-1 rounded-full text-[10px] font-heading font-extrabold uppercase tracking-wider bg-[#2C1802] text-white">
                   {item.tag}
                 </span>
-                <span className="text-xs font-mono font-bold text-[#6B4B1B] bg-white/80 px-2.5 py-1 rounded-full border border-amber-200/60 shadow-2xs">
-                  {item.weight}
-                </span>
               </div>
 
               {/* Product Image Stage */}
               <Link
                 href={`/products/${item.slug}`}
-                className="relative block w-full aspect-square my-2 rounded-2xl overflow-hidden bg-white/60 p-4 group-hover:bg-white transition-colors duration-300"
+                className="relative block w-full aspect-square my-2 rounded-2xl overflow-hidden bg-white/60 group-hover:bg-white transition-colors duration-300"
               >
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </Link>
 

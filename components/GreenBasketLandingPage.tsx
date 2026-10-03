@@ -667,10 +667,7 @@ export default function GreenBasketLandingPage() {
                   className="group bg-white rounded-3xl p-3.5 sm:p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-xl hover:shadow-2xl border border-slate-100 relative"
                 >
                   {/* Top Wishlist Heart */}
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase">
-                      {product.weight || '100 GM'}
-                    </span>
+                  <div className="flex justify-end items-start mb-2">
                     <button
                       onClick={(e) => handleToggleWishlist(product.id, e)}
                       aria-label="Wishlist"
@@ -692,7 +689,7 @@ export default function GreenBasketLandingPage() {
                         alt={product.name}
                         fill
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
 

@@ -206,9 +206,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </p>
         </div>
 
-        {/* Price, Weight & Action Buttons */}
+        {/* Price & Action Buttons */}
         <div className="mt-3 pt-2.5 border-t border-ink/8">
-          {/* Price & Weight Row */}
+          {/* Price Row */}
           <div className="flex items-center justify-between gap-2 mb-2.5">
             <div className="flex items-baseline gap-1.5">
               <span className="font-heading font-black text-[#143020] text-base sm:text-lg">
@@ -220,10 +220,6 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                 </span>
               )}
             </div>
-
-            <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#7A5230] bg-[#FAF5EB] px-2 py-0.5 rounded-md border border-[#E8DEC9]">
-              {displayWeight}
-            </span>
           </div>
 
           {/* Action Buttons: ADD & BUY NOW */}

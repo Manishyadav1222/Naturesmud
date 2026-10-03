@@ -900,7 +900,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                             {poster.name}
                           </h3>
                           <p className="text-[11px] sm:text-xs text-white/90 line-clamp-1 font-medium font-sans mt-0.5">
-                            {poster.subname} · <span className="font-bold text-amber-300">{poster.weight}</span>
+                            {poster.subname}
                           </p>
                         </div>
                         <div className="flex flex-col items-end flex-shrink-0">
@@ -1122,7 +1122,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                           {poster.name}
                         </h3>
                         <p className="text-[11px] text-white/90 line-clamp-1 font-medium font-sans mt-0.5">
-                          {poster.subname} · <span className="font-bold text-amber-300">{poster.weight}</span>
+                          {poster.subname}
                         </p>
                       </div>
                       <div className="flex flex-col items-end flex-shrink-0">

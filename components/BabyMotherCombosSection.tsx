@@ -410,24 +410,27 @@ export default function FestivalCombosSection() {
               </div>
 
               {/* Product Thumbnails */}
-              <div className="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-amber-50 via-white to-amber-50 border border-amber-200/50 shadow-sm">
-                <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+              <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-amber-50 via-white to-amber-50 border border-amber-200/50 shadow-sm">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {currentCombo.items.map((item, i) => (
                     <div
                       key={item.productId}
-                      className="group/item relative flex flex-col items-center text-center p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white border border-amber-100 shadow-sm transition-all hover:border-amber-300"
+                      className="group/item relative flex flex-col items-center text-center rounded-lg sm:rounded-xl bg-white border border-amber-100 shadow-sm transition-all hover:border-amber-300 overflow-hidden"
                     >
-                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden mb-1 bg-amber-50">
+                      <div className="relative w-full aspect-square sm:aspect-[4/3] overflow-hidden bg-amber-50/40">
                         <Image
                           src={item.image || '/products/superfood-mix.jpg'}
                           alt={item.name}
                           fill
-                          sizes="48px"
-                          className="object-cover transition-transform duration-300 group-hover/item:scale-105"
+                          sizes="(max-width: 640px) 33vw, 180px"
+                          className="object-cover object-center transition-transform duration-500 group-hover/item:scale-105"
                         />
                       </div>
-                      <p className="text-[10px] sm:text-[11px] font-bold text-red-900 leading-tight line-clamp-1">{item.name}</p>
-                      <p className="text-[9px] text-amber-700 font-mono mt-0.5">{item.weight}</p>
+                      <div className="w-full px-1.5 py-1.5 sm:px-2 sm:py-2 bg-white">
+                        <p className="text-[10px] sm:text-xs font-bold text-red-900 leading-tight line-clamp-1">
+                          {item.name.replace(/\s*\(\d+\s*GM\)/i, '')}
+                        </p>
+                      </div>
 
                       {/* Plus connector */}
                       {i < currentCombo.items.length - 1 && (

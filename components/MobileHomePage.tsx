@@ -334,7 +334,7 @@ export default function MobileHomePage() {
             </motion.h2>
           </AnimatePresence>
           <p className="text-xs text-white/75 font-medium mb-5 text-center">
-            {currentHero.subheading} · {currentHero.weight}
+            {currentHero.subheading}
           </p>
 
           {/* Central 3D Product Image Circle — FULLY CENTERED */}

@@ -48,12 +48,13 @@ export function buildOfferItem(
     return {
       productId: slug,
       ...fallback,
+      name: fallback.name.replace(/\s*\(\d+\s*GM\)/i, ''),
     };
   }
   const weight = product.weight || fallback.weight;
   return {
     productId: product.slug,
-    name: `${product.name} (${weight})`,
+    name: product.official_label_name || product.name,
     weight,
     image: product.images?.[0] || fallback.image,
     price: Number(product.price),

@@ -226,11 +226,6 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   {formatPrice(product.compareAtPrice)}
                 </span>
               )}
-              {product.weight && (
-                <span className="text-sm text-gray-500">
-                  / {/^[0-9]+(\.[0-9]+)?$/.test(product.weight.trim()) ? `${parseFloat(product.weight)} GM` : product.weight}
-                </span>
-              )}
             </div>
 
             {/* Stock status */}

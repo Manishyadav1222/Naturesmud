@@ -293,32 +293,31 @@ export default function CampaignCombosShowcaseSection() {
               </div>
 
               {/* 3 Horizontal Products Box connected by red plus (+) signs */}
-              <div className="p-3 sm:p-4 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-50/70 via-[#FFFDF7] to-amber-50/70 border border-amber-200/60 shadow-xs">
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="p-2.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-50/70 via-[#FFFDF7] to-amber-50/70 border border-amber-200/60 shadow-xs">
+                <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
                   {currentOffer.items.slice(0, 3).map((item, i) => (
                     <div
                       key={item.productId || i}
-                      className="group/item relative flex flex-col items-center text-center p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-amber-100 shadow-2xs hover:border-amber-300 transition-all"
+                      className="group/item relative flex flex-col items-center text-center rounded-xl sm:rounded-2xl bg-white border border-amber-100 shadow-2xs hover:border-amber-300 transition-all overflow-hidden"
                     >
-                      <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl overflow-hidden mb-1.5 bg-amber-50/50">
+                      <div className="relative w-full aspect-square sm:aspect-[4/3] overflow-hidden bg-amber-50/40">
                         <Image
                           src={item.image || '/products/superfood-mix.jpg'}
-                          alt={item.name}
+                          alt={item.name.replace(/\s*\(\d+\s*GM\)/i, '')}
                           fill
-                          sizes="(max-width: 640px) 60px, 90px"
-                          className="object-cover transition-transform duration-300 group-hover/item:scale-105"
+                          sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 240px"
+                          className="object-cover object-center transition-transform duration-500 group-hover/item:scale-105"
                         />
                       </div>
-                      <p className="text-[11px] sm:text-xs md:text-sm font-bold text-ink leading-tight line-clamp-1 w-full">
-                        {item.name.replace(/\s*\(\d+\s*GM\)/i, '')}
-                      </p>
-                      <p className="text-[10px] sm:text-xs text-amber-800 font-mono mt-0.5">
-                        {item.weight || 'Full Pack'}
-                      </p>
+                      <div className="w-full px-2 py-2 sm:px-3 sm:py-2.5 bg-white">
+                        <p className="text-[11px] sm:text-xs md:text-sm font-bold text-ink leading-tight line-clamp-1 w-full">
+                          {item.name.replace(/\s*\(\d+\s*GM\)/i, '')}
+                        </p>
+                      </div>
 
                       {/* Red plus connector between items */}
                       {i < 2 && (
-                        <div className="flex absolute -right-2 sm:-right-3 top-1/2 -translate-y-1/2 z-10 w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full bg-red-600 text-white items-center justify-center text-[9px] sm:text-[10px] font-black shadow-xs pointer-events-none">
+                        <div className="flex absolute -right-2 sm:-right-3 top-1/2 -translate-y-1/2 z-10 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-red-600 text-white items-center justify-center text-[9px] sm:text-[11px] font-black shadow-xs pointer-events-none">
                           +
                         </div>
                       )}
