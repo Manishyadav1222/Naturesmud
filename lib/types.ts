@@ -2,7 +2,11 @@ export interface Product {
   id: string;
   dbId?: number;
   slug: string;
+  sku?: string;
   name: string;
+  official_label_name?: string;
+  seo_title?: string;
+  meta_description?: string;
   category: string;
   categorySlug: string;
   price: number;
@@ -15,6 +19,7 @@ export interface Product {
   shortDescription: string;
   badges: ('new' | 'sale' | 'bestseller' | 'organic' | 'natural-sweetener' | 'superfood' | 'popular' | 'raw' | 'cold-pressed' | string)[];
   stock: number;
+  inStock?: boolean;
   weight: string;
   packing?: string;
   basePrice?: number;

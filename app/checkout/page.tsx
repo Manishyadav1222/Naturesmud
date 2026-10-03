@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -35,6 +35,8 @@ import { useCartStore, resolveCartProduct } from '@/lib/store/cart-store';
 import { useOrderStore } from '@/lib/store/order-store';
 import { formatPrice } from '@/lib/utils';
 import { ordersApi, resolveBackendProductId } from '@/lib/orders-api';
+import { validateCouponCode } from '@/lib/coupons';
+import { trackEcommerceEvent } from '@/lib/analytics';
 import OrderInvoice from '@/components/OrderInvoice';
 
 const VALLEY_CITIES = [
@@ -148,11 +150,21 @@ export default function CheckoutPage() {
 
   const discount = useMemo(() => {
     if (!appliedCoupon || subtotal === 0) return 0;
-    if (appliedCoupon.type === 'percentage') {
-      return Math.round((subtotal * appliedCoupon.value) / 100);
-    }
-    return Math.min(appliedCoupon.value, subtotal);
+    const check = validateCouponCode(appliedCoupon.code, subtotal);
+    if (!check.valid) return 0;
+    return check.discountAmount;
   }, [appliedCoupon, subtotal]);
+
+  // Revalidate applied coupon when cart subtotal changes
+  useEffect(() => {
+    if (!appliedCoupon || placed) return;
+    const check = validateCouponCode(appliedCoupon.code, subtotal);
+    if (!check.valid) {
+      setAppliedCoupon(null);
+      setCouponSuccess(null);
+      setCouponError(check.message);
+    }
+  }, [subtotal, appliedCoupon, placed]);
 
   // Delivery rules: Inside Valley Rs. 100, Outside Valley Rs. 200 (Free over Rs. 3,000)
   const freeShippingThreshold = 3000;
@@ -265,9 +277,38 @@ export default function CheckoutPage() {
     setReceiptUrl(null);
   };
 
+  const submittingRef = useRef(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submittingRef.current || placing) return;
     setError(null);
+
+    const cleanName = form.name.trim();
+    const cleanPhone = form.phone.replace(/[\s-]/g, '');
+    const cleanEmail = form.email.trim();
+    const cleanAddress = form.address.trim();
+    const cleanCity = form.city.trim();
+
+    if (cleanName.length < 2) {
+      setError('Please enter your full name (at least 2 characters).');
+      return;
+    }
+
+    if (!/^(?:\+?977)?(?:9[78]\d{8}|01\d{7})$/.test(cleanPhone)) {
+      setError('Please enter a valid 10-digit Nepal mobile number (e.g. 98XXXXXXXX or 97XXXXXXXX).');
+      return;
+    }
+
+    if (cleanEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+      setError('Please enter a valid email address or leave it blank.');
+      return;
+    }
+
+    if (cleanAddress.length < 3 || cleanCity.length < 2) {
+      setError('Please enter a complete delivery street address and city.');
+      return;
+    }
 
     // Validate Outside Valley Payment
     if (!isValley && paymentMethod === 'cod') {
@@ -280,6 +321,7 @@ export default function CheckoutPage() {
       return;
     }
 
+    submittingRef.current = true;
     setPlacing(true);
     try {
       const resolvedItems: { product_id: number; quantity: number }[] = [];
@@ -423,11 +465,27 @@ export default function CheckoutPage() {
         // Non-blocking
       }
 
+      trackEcommerceEvent('purchase', {
+        transaction_id: order.order_number,
+        value: finalRecordedTotal,
+        shipping,
+        discount,
+        coupon: appliedCoupon?.code || undefined,
+        payment_type: paymentMethod,
+        items: orderItems.map((it) => ({
+          item_id: it.name,
+          item_name: it.name,
+          price: it.price,
+          quantity: it.quantity,
+        })),
+      });
+
       clearCart();
       setPlaced(true);
     } catch (err: any) {
       setError(err.message || 'Failed to place order. Please try again.');
     } finally {
+      submittingRef.current = false;
       setPlacing(false);
     }
   };

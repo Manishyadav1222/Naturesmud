@@ -305,7 +305,7 @@ export default function HeroOfferSection() {
     useCartStore.getState().addItem(
       {
         id: currentOffer.id,
-        slug: currentOffer.items[0]?.productId || currentOffer.id,
+        slug: currentOffer.id,
         name: currentOffer.title,
         price: currentOffer.offerPrice,
         compareAtPrice: currentOffer.originalPrice,
@@ -324,7 +324,7 @@ export default function HeroOfferSection() {
     useCartStore.getState().addItem(
       {
         id: currentOffer.id,
-        slug: currentOffer.items[0]?.productId || currentOffer.id,
+        slug: currentOffer.id,
         name: currentOffer.title,
         price: currentOffer.offerPrice,
         compareAtPrice: currentOffer.originalPrice,

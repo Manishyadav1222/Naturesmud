@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { CartItem, CartProductSnapshot, Product } from '@/lib/types';
 import { getProductById, getProductBySlug } from '@/lib/data/products';
+import { initialFestivalOffers } from '@/lib/data/offers';
+import { trackEcommerceEvent } from '@/lib/analytics';
 
 export interface ResolvedCartProduct {
   id: string | number;
@@ -12,13 +14,63 @@ export interface ResolvedCartProduct {
   image: string;
   weight?: string;
   category?: string;
+  stock?: number;
+}
+
+function findOfferByIdOrSlug(idOrSlug: string) {
+  const key = String(idOrSlug || '').trim();
+  if (!key) return undefined;
+  return initialFestivalOffers.find((o) => o.id === key);
 }
 
 export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
-  // 1. Prioritize live dynamic product snapshot (from live API / DB)
+  const rawSlug = String(item.product?.slug || item.productId || '');
+  const rawId = String(item.product?.id || item.productId || '');
+
+  // 1. Check if item is an official Combo / Festival Bundle
+  const matchedOffer = findOfferByIdOrSlug(rawId) || findOfferByIdOrSlug(rawSlug);
+  if (matchedOffer) {
+    const isFestival = Boolean(matchedOffer.isFestival);
+    return {
+      id: matchedOffer.id,
+      slug: matchedOffer.id,
+      name: matchedOffer.title,
+      price: matchedOffer.offerPrice,
+      compareAtPrice: matchedOffer.originalPrice,
+      image: matchedOffer.items[0]?.image || '/products/superfood-mix.jpg',
+      weight: isFestival ? 'Festival Gift Bundle' : '3-Product Combo Box',
+      category: isFestival ? 'Festival Combos' : 'Specialized Combos',
+      stock: 99,
+    };
+  }
+
+  // 2. Check canonical product catalog (enforces authoritative price & stock, preventing stale localStorage prices)
+  const found =
+    getProductBySlug(rawSlug) ||
+    getProductById(rawId) ||
+    getProductById(item.productId);
+
+  if (found) {
+    return {
+      id: found.id,
+      slug: found.slug,
+      name: found.name,
+      price: typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0'),
+      compareAtPrice: found.compareAtPrice,
+      image: found.image || '/products/sweet-potato-powder.jpg',
+      weight: found.weight || '100 GM',
+      category: found.category || 'Organic',
+      stock: typeof found.stock === 'number' ? found.stock : 99,
+    };
+  }
+
+  // 3. Fallback to dynamic snapshot if custom/admin-only item
   let snapPrice = 0;
   if (item.product && typeof item.product.price !== 'undefined') {
-    snapPrice = typeof item.product.price === 'number' ? item.product.price : parseFloat(String(item.product.price) || '0');
+    snapPrice =
+      typeof item.product.price === 'number'
+        ? item.product.price
+        : parseFloat(String(item.product.price) || '0');
   }
 
   if (item.product && item.product.name && snapPrice > 0) {
@@ -36,29 +88,17 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
       name: item.product.name,
       price: snapPrice,
       compareAtPrice: item.product.compareAtPrice,
-      image: item.product.image || (Array.isArray(item.product.images) ? item.product.images[0] : '/products/sweet-potato-powder.jpg'),
+      image:
+        item.product.image ||
+        (Array.isArray(item.product.images)
+          ? item.product.images[0]
+          : '/products/sweet-potato-powder.jpg'),
       weight: cleanWeight,
-      category: typeof item.product.category === 'object' ? item.product.category?.name : (item.product.category || 'Organic'),
-    };
-  }
-
-  // 2. Fall back to static catalog if snapshot is missing
-  const slug = item.product?.slug || item.productId;
-  const found =
-    getProductBySlug(slug) ||
-    getProductById(item.productId) ||
-    (item.product?.id ? getProductById(String(item.product.id)) : undefined);
-
-  if (found) {
-    return {
-      id: found.id,
-      slug: found.slug,
-      name: found.name,
-      price: typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0'),
-      compareAtPrice: found.compareAtPrice,
-      image: found.image || '/products/sweet-potato-powder.jpg',
-      weight: found.weight || '100 GM',
-      category: found.category || 'Organic',
+      category:
+        typeof item.product.category === 'object'
+          ? item.product.category?.name
+          : item.product.category || 'Organic',
+      stock: 99,
     };
   }
 
@@ -70,6 +110,7 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
     image: '/products/sweet-potato-powder.jpg',
     weight: '100 GM',
     category: 'Organic',
+    stock: 0,
   };
 }
 
@@ -93,34 +134,95 @@ export const useCartStore = create<CartState>()(
       isDrawerOpen: false,
 
       addItem: (productOrId, quantity = 1, snapshot) => {
+        const safeQty = Math.max(1, Math.floor(Number(quantity) || 1));
         const { items } = get();
         let productId: string;
         let productSnapshot: CartProductSnapshot | undefined;
+        let maxStock = 99;
 
         if (typeof productOrId === 'object' && productOrId !== null) {
-          const rawSlugOrId = String(productOrId.slug || productOrId.id || '');
-          const found = getProductBySlug(rawSlugOrId) || getProductById(rawSlugOrId);
-          productId = rawSlugOrId || (found ? found.slug : '');
+          const rawId = String(productOrId.id || '');
+          const rawSlug = String(productOrId.slug || rawId || '');
+          const matchedOffer = findOfferByIdOrSlug(rawId) || findOfferByIdOrSlug(rawSlug);
+          const found = !matchedOffer
+            ? getProductBySlug(rawSlug) || getProductById(rawId)
+            : undefined;
 
-          const rawPrice = typeof productOrId.price === 'number' ? productOrId.price : parseFloat(productOrId.price || '0');
-          // Prioritize live price if provided, otherwise fallback to catalog
-          const canonicalPrice = !isNaN(rawPrice) && rawPrice > 0 ? rawPrice : (found ? found.price : 0);
-          const canonicalWeight = productOrId.weight ? String(productOrId.weight) : (found ? found.weight : '100 GM');
+          if (found && (found.inStock === false || (typeof found.stock === 'number' && found.stock <= 0))) {
+            return;
+          }
+          if (found && typeof found.stock === 'number' && found.stock > 0) {
+            maxStock = Math.min(99, found.stock);
+          }
+
+          productId = matchedOffer
+            ? matchedOffer.id
+            : found
+              ? found.slug
+              : rawSlug || rawId;
+
+          const rawPrice =
+            typeof productOrId.price === 'number'
+              ? productOrId.price
+              : parseFloat(productOrId.price || '0');
+          const canonicalPrice = matchedOffer
+            ? matchedOffer.offerPrice
+            : found
+              ? found.price
+              : !isNaN(rawPrice) && rawPrice > 0
+                ? rawPrice
+                : 0;
+          const canonicalWeight = productOrId.weight
+            ? String(productOrId.weight)
+            : found
+              ? found.weight
+              : '100 GM';
 
           productSnapshot = {
-            id: String(productOrId.id || found?.id || productId),
-            slug: productOrId.slug || found?.slug || productId,
-            name: productOrId.name || found?.name || 'Organic Product',
+            id: String(matchedOffer?.id || found?.id || productOrId.id || productId),
+            slug: matchedOffer?.id || found?.slug || productOrId.slug || productId,
+            name: matchedOffer?.title || found?.name || productOrId.name || 'Organic Product',
             price: canonicalPrice,
-            compareAtPrice: productOrId.compareAtPrice ?? found?.compareAtPrice,
-            image: productOrId.image || (Array.isArray(productOrId.images) ? productOrId.images[0] : found?.image) || '/products/cranberries.jpg',
+            compareAtPrice:
+              matchedOffer?.originalPrice ?? found?.compareAtPrice ?? productOrId.compareAtPrice,
+            image:
+              productOrId.image ||
+              (Array.isArray(productOrId.images) ? productOrId.images[0] : found?.image) ||
+              '/products/cranberries.jpg',
             weight: canonicalWeight,
-            category: typeof productOrId.category === 'object' ? productOrId.category?.name : (productOrId.category || 'Organic'),
+            category:
+              typeof productOrId.category === 'object'
+                ? productOrId.category?.name
+                : productOrId.category || found?.category || 'Organic',
           };
         } else {
-          productId = String(productOrId);
-          const found = getProductBySlug(productId) || getProductById(productId);
-          if (found) {
+          const rawKey = String(productOrId);
+          const matchedOffer = findOfferByIdOrSlug(rawKey);
+          const found = !matchedOffer
+            ? getProductBySlug(rawKey) || getProductById(rawKey)
+            : undefined;
+
+          if (found && (found.inStock === false || (typeof found.stock === 'number' && found.stock <= 0))) {
+            return;
+          }
+          if (found && typeof found.stock === 'number' && found.stock > 0) {
+            maxStock = Math.min(99, found.stock);
+          }
+
+          productId = matchedOffer ? matchedOffer.id : found ? found.slug : rawKey;
+
+          if (matchedOffer) {
+            productSnapshot = {
+              id: matchedOffer.id,
+              slug: matchedOffer.id,
+              name: matchedOffer.title,
+              price: matchedOffer.offerPrice,
+              compareAtPrice: matchedOffer.originalPrice,
+              image: matchedOffer.items[0]?.image || '/products/superfood-mix.jpg',
+              weight: 'Combo Bundle',
+              category: 'Specialized Combos',
+            };
+          } else if (found) {
             productSnapshot = {
               id: found.id,
               slug: found.slug,
@@ -147,26 +249,70 @@ export const useCartStore = create<CartState>()(
         }
 
         const existingIndex = items.findIndex(
-          (item) => item.productId === productId || (item.product && item.product.slug === productId)
+          (item) =>
+            item.productId === productId ||
+            (item.product && item.product.slug === productId)
         );
 
         if (existingIndex > -1) {
           const updated = [...items];
           updated[existingIndex] = {
             ...updated[existingIndex],
-            quantity: Math.min(updated[existingIndex].quantity + quantity, 99),
+            quantity: Math.min(updated[existingIndex].quantity + safeQty, maxStock),
             product: productSnapshot || updated[existingIndex].product,
           };
           set({ items: updated });
         } else {
           set({
-            items: [...items, { productId, quantity, product: productSnapshot }],
+            items: [
+              ...items,
+              {
+                productId,
+                quantity: Math.min(safeQty, maxStock),
+                product: productSnapshot,
+              },
+            ],
+          });
+        }
+        if (productSnapshot) {
+          trackEcommerceEvent('add_to_cart', {
+            value: (Number(productSnapshot.price) || 0) * safeQty,
+            items: [
+              {
+                item_id: String(productSnapshot.slug || productId),
+                item_name: productSnapshot.name,
+                item_category: String(productSnapshot.category || 'Organic'),
+                price: Number(productSnapshot.price) || 0,
+                quantity: safeQty,
+              },
+            ],
           });
         }
         set({ isDrawerOpen: true });
       },
 
       removeItem: (productId) => {
+        const target = get().items.find(
+          (item) =>
+            item.productId === productId ||
+            item.product?.slug === productId ||
+            item.product?.id === productId
+        );
+        if (target) {
+          const resolved = resolveCartProduct(target);
+          trackEcommerceEvent('remove_from_cart', {
+            value: resolved.price * target.quantity,
+            items: [
+              {
+                item_id: resolved.slug,
+                item_name: resolved.name,
+                item_category: resolved.category,
+                price: resolved.price,
+                quantity: target.quantity,
+              },
+            ],
+          });
+        }
         set({
           items: get().items.filter(
             (item) =>
@@ -178,18 +324,24 @@ export const useCartStore = create<CartState>()(
       },
 
       updateQuantity: (productId, quantity) => {
-        if (quantity <= 0) {
+        const cleanQty = Math.floor(Number(quantity) || 0);
+        if (cleanQty <= 0) {
           get().removeItem(productId);
           return;
         }
         set({
-          items: get().items.map((item) =>
-            item.productId === productId ||
-            item.product?.slug === productId ||
-            item.product?.id === productId
-              ? { ...item, quantity }
-              : item
-          ),
+          items: get().items.map((item) => {
+            if (
+              item.productId === productId ||
+              item.product?.slug === productId ||
+              item.product?.id === productId
+            ) {
+              const resolved = resolveCartProduct(item);
+              const maxAllowed = Math.min(99, resolved.stock && resolved.stock > 0 ? resolved.stock : 99);
+              return { ...item, quantity: Math.min(cleanQty, maxAllowed) };
+            }
+            return item;
+          }),
         });
       },
 
@@ -200,9 +352,13 @@ export const useCartStore = create<CartState>()(
       getSubtotal: () => {
         return get().items.reduce((total, item) => {
           const product = resolveCartProduct(item);
-          const itemPrice = typeof product.price === 'number' && !isNaN(product.price) ? product.price : 0;
-          const qty = typeof item.quantity === 'number' && !isNaN(item.quantity) && item.quantity > 0 ? item.quantity : 1;
-          return total + (itemPrice * qty);
+          const itemPrice =
+            typeof product.price === 'number' && !isNaN(product.price) ? product.price : 0;
+          const qty =
+            typeof item.quantity === 'number' && !isNaN(item.quantity) && item.quantity > 0
+              ? item.quantity
+              : 1;
+          return total + itemPrice * qty;
         }, 0);
       },
 

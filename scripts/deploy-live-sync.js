@@ -439,6 +439,14 @@ foreach ($catalog as $p) {
 
     $images = $p['images'] ?? (isset($p['image']) ? [$p['image']] : []);
     $imagesJson = json_encode($images);
+    $officialName = $p['official_label_name'] ?? $p['name'];
+    $ingredientsJson = json_encode($p['ingredients'] ?? []);
+    $benefitsJson = json_encode($p['benefits'] ?? []);
+    $nutritionJson = json_encode($p['nutrition'] ?? []);
+    $usageText = $p['usage'] ?? '';
+    $storageText = $p['storage'] ?? '';
+    $metaTitle = $p['seo_title'] ?? ($officialName . ' | NaturesMud Nepal');
+    $metaDesc = $p['meta_description'] ?? ($p['shortDescription'] ?? '');
 
     $stmt = $pdo->prepare("SELECT id FROM products WHERE slug = :slug LIMIT 1");
     $stmt->execute(['slug' => $slug]);
@@ -450,16 +458,18 @@ foreach ($catalog as $p) {
             category_id, name, slug, sku, description, short_description,
             price, compare_at_price, cost_price, stock_quantity, low_stock_threshold,
             is_active, is_featured, is_best_seller, is_new, weight, unit,
-            images, created_at, updated_at
+            images, ingredients, benefits, nutrition_facts, usage_instructions, storage_instructions,
+            meta_title, meta_description, created_at, updated_at
         ) VALUES (
             :category_id, :name, :slug, :sku, :description, :short_description,
             :price, :compare_at_price, :cost_price, 100, 5,
             1, 1, 0, 1, :weight, :unit,
-            :images, NOW(), NOW()
+            :images, :ingredients, :benefits, :nutrition_facts, :usage_instructions, :storage_instructions,
+            :meta_title, :meta_description, NOW(), NOW()
         )");
         $stmt->execute([
             'category_id' => $catId,
-            'name' => $p['name'],
+            'name' => $officialName,
             'slug' => $slug,
             'sku' => $sku,
             'description' => $p['description'] ?? '',
@@ -469,16 +479,52 @@ foreach ($catalog as $p) {
             'cost_price' => round($price * 0.65, 2),
             'weight' => $weightNum,
             'unit' => $unit,
-            'images' => $imagesJson
+            'images' => $imagesJson,
+            'ingredients' => $ingredientsJson,
+            'benefits' => $benefitsJson,
+            'nutrition_facts' => $nutritionJson,
+            'usage_instructions' => $usageText,
+            'storage_instructions' => $storageText,
+            'meta_title' => $metaTitle,
+            'meta_description' => $metaDesc
         ]);
         $upsertCount++;
     } else {
-        $upd = $pdo->prepare("UPDATE products SET is_active = 1, price = :price, compare_at_price = :compare_at_price, weight = :weight, unit = :unit, updated_at = NOW() WHERE id = :id");
+        $upd = $pdo->prepare("UPDATE products SET
+            name = :name,
+            description = :description,
+            short_description = :short_description,
+            is_active = 1,
+            price = :price,
+            compare_at_price = :compare_at_price,
+            weight = :weight,
+            unit = :unit,
+            images = :images,
+            ingredients = :ingredients,
+            benefits = :benefits,
+            nutrition_facts = :nutrition_facts,
+            usage_instructions = :usage_instructions,
+            storage_instructions = :storage_instructions,
+            meta_title = :meta_title,
+            meta_description = :meta_description,
+            updated_at = NOW()
+            WHERE id = :id");
         $upd->execute([
+            'name' => $officialName,
+            'description' => $p['description'] ?? '',
+            'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
             'price' => $price,
             'compare_at_price' => $mrp,
             'weight' => $weightNum,
             'unit' => $unit,
+            'images' => $imagesJson,
+            'ingredients' => $ingredientsJson,
+            'benefits' => $benefitsJson,
+            'nutrition_facts' => $nutritionJson,
+            'usage_instructions' => $usageText,
+            'storage_instructions' => $storageText,
+            'meta_title' => $metaTitle,
+            'meta_description' => $metaDesc,
             'id' => $row['id']
         ]);
         $upsertCount++;

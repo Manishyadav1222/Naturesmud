@@ -17,6 +17,7 @@ import {
   Download,
 } from 'lucide-react';
 import { ordersApi, type Order } from '@/lib/orders-api';
+import { useOrderStore } from '@/lib/store/order-store';
 import { formatPrice } from '@/lib/utils';
 import OrderInvoice from '@/components/OrderInvoice';
 
@@ -43,23 +44,71 @@ function TrackOrderContent() {
       const data = await ordersApi.getByNumber(cleanNum);
       if (data) {
         setOrder(data);
-      } else {
-        setError('Order not found. Please verify your order number.');
+        return;
       }
     } catch {
-      // Check demo/sessionStorage fallback
-      try {
-        const stored = sessionStorage.getItem(`order_${cleanNum}`);
-        if (stored) {
-          setOrder(JSON.parse(stored));
-        } else {
-          setError('Order not found. Please verify your order number or contact WhatsApp support.');
-        }
-      } catch {
-        setError('Order not found. Please check the order number and try again.');
-      }
+      // Fall through to local/session storage lookup
     } finally {
       setLoading(false);
+    }
+
+    try {
+      const stored = sessionStorage.getItem(`order_${cleanNum}`);
+      if (stored) {
+        setOrder(JSON.parse(stored));
+        return;
+      }
+
+      const localMatch = useOrderStore
+        .getState()
+        .orders.find((o) => o.orderNumber.toUpperCase() === cleanNum.toUpperCase());
+
+      if (localMatch) {
+        const mappedItems = (localMatch.items || []).map((it, idx) => ({
+          id: idx + 1,
+          product_id: idx + 1,
+          product_name: it.name,
+          product_sku: `SKU-${String(idx + 1).padStart(4, '0')}`,
+          quantity: it.quantity,
+          unit_price: String(it.price || 0),
+          line_total: String((it.price || 0) * it.quantity),
+        }));
+        const computedSub = mappedItems.reduce(
+          (acc, it) => acc + Number(it.line_total || 0),
+          0
+        );
+        const isValley = localMatch.deliveryRegion !== 'outside_valley';
+        const computedShip =
+          computedSub >= 3000 ? 0 : isValley ? 100 : 200;
+
+        setOrder({
+          id: 1,
+          order_number: localMatch.orderNumber,
+          status: localMatch.status || 'pending',
+          payment_status: localMatch.paymentMethod === 'fonepay' ? 'paid' : 'unpaid',
+          payment_method: localMatch.paymentMethod || 'cod',
+          subtotal: String(computedSub || localMatch.total),
+          discount: '0',
+          shipping_fee: String(computedShip),
+          tax: '0',
+          total: String(localMatch.total),
+          coupon_code: null,
+          shipping_name: localMatch.shippingName || localMatch.customerName || 'Valued Customer',
+          shipping_phone: localMatch.customerPhone || '',
+          shipping_email: localMatch.customerEmail || null,
+          shipping_address: localMatch.shippingAddress || '',
+          shipping_city: localMatch.shippingCity || 'Kathmandu',
+          shipping_zone: null,
+          notes: null,
+          created_at: localMatch.createdAt,
+          items: mappedItems,
+        });
+        return;
+      }
+
+      setError('Order not found. Please verify your order number or contact WhatsApp support.');
+    } catch {
+      setError('Order not found. Please check the order number and try again.');
     }
   }, []);
 

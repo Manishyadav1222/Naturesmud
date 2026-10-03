@@ -1,5 +1,6 @@
 import { api } from './api';
 import { products, getProductById } from '@/lib/data/products';
+import { validateCouponCode } from '@/lib/coupons';
 
 export interface OrderItemType {
   id: number;
@@ -80,8 +81,13 @@ function localProductId(p: { id: string }): number {
 }
 
 function findLocalProductById(id: number) {
-  const idx = id - LOCAL_ID_OFFSET;
-  return idx >= 0 && idx < products.length ? products[idx] : undefined;
+  if (id >= LOCAL_ID_OFFSET) {
+    const idx = id - LOCAL_ID_OFFSET;
+    return idx >= 0 && idx < products.length ? products[idx] : undefined;
+  }
+  const byDbId = getProductById(`p${id}`);
+  if (byDbId) return byDbId;
+  return id >= 1 && id <= products.length ? products[id - 1] : undefined;
 }
 
 const PRODUCT_MAP_CACHE_TTL_MS = 60_000; // 1 minute
@@ -242,8 +248,12 @@ export const ordersApi = {
           const product = findLocalProductById(item.product_id);
           return sum + (product?.price ?? 0) * item.quantity;
         }, 0);
-        const shippingFee = subtotal >= 3000 ? 0 : 100;
-        const total = subtotal + shippingFee;
+        const discountAmount = payload.coupon_code
+          ? validateCouponCode(payload.coupon_code, subtotal).discountAmount
+          : 0;
+        const baseShipping = payload.is_valley === false ? 200 : 100;
+        const shippingFee = subtotal >= 3000 ? 0 : baseShipping;
+        const total = Math.max(0, subtotal - discountAmount + shippingFee);
         const now = new Date().toISOString();
         const order: Order = {
           id: Math.floor(Math.random() * 100000) + 1,
@@ -252,7 +262,7 @@ export const ordersApi = {
           payment_status: 'unpaid',
           payment_method: payload.payment_method,
           subtotal: subtotal.toString(),
-          discount: '0',
+          discount: discountAmount.toString(),
           shipping_fee: shippingFee.toString(),
           tax: '0',
           total: total.toString(),

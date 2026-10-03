@@ -140,6 +140,15 @@ foreach ($productsList as $p) {
     $catId = $catMap[$catSlug] ?? 1;
 
     $imagesJson = json_encode($p['images'] ?? [$p['image']]);
+    $officialName = $p['official_label_name'] ?? $p['name'];
+    $ingredientsJson = json_encode($p['ingredients'] ?? []);
+    $benefitsJson = json_encode($p['benefits'] ?? []);
+    $nutritionJson = json_encode($p['nutrition'] ?? []);
+    $usageText = $p['usage'] ?? '';
+    $storageText = $p['storage'] ?? '';
+    $metaTitle = $p['seo_title'] ?? ($officialName . ' | NaturesMud Nepal');
+    $metaDesc = $p['meta_description'] ?? ($p['shortDescription'] ?? '');
+
     $price = (float)$p['price'];
     $mrp = (float)($p['mrp'] ?? $p['compareAtPrice'] ?? $price);
     $weightStr = (string)($p['weight'] ?? '100');
@@ -153,23 +162,59 @@ foreach ($productsList as $p) {
     $row = $existing->fetch();
 
     if ($row) {
-        // Ensure canonical catalog product is active in MySQL
-        $upd = $pdo->prepare("UPDATE products SET is_active = 1 WHERE id = :id");
-        $upd->execute(['id' => $row['id']]);
+        // Ensure canonical catalog product is active and fully synchronized in MySQL
+        $upd = $pdo->prepare("UPDATE products SET
+            name = :name,
+            description = :description,
+            short_description = :short_description,
+            is_active = 1,
+            price = :price,
+            compare_at_price = :compare_at_price,
+            weight = :weight,
+            unit = :unit,
+            images = :images,
+            ingredients = :ingredients,
+            benefits = :benefits,
+            nutrition_facts = :nutrition_facts,
+            usage_instructions = :usage_instructions,
+            storage_instructions = :storage_instructions,
+            meta_title = :meta_title,
+            meta_description = :meta_description,
+            updated_at = NOW()
+            WHERE id = :id");
+        $upd->execute([
+            'name' => $officialName,
+            'description' => $p['description'] ?? '',
+            'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'images' => $imagesJson,
+            'ingredients' => $ingredientsJson,
+            'benefits' => $benefitsJson,
+            'nutrition_facts' => $nutritionJson,
+            'usage_instructions' => $usageText,
+            'storage_instructions' => $storageText,
+            'meta_title' => $metaTitle,
+            'meta_description' => $metaDesc,
+            'id' => $row['id']
+        ]);
         try {
             $updDel = $pdo->prepare("UPDATE products SET deleted_at = NULL WHERE id = :id");
             $updDel->execute(['id' => $row['id']]);
         } catch (Exception $e) {}
+        $upsertCount++;
     } else {
         $stmt = $pdo->prepare("INSERT INTO products 
-            (name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 
+            (name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, ingredients, benefits, nutrition_facts, usage_instructions, storage_instructions, meta_title, meta_description, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 
             VALUES 
-            (:name, :slug, :category_id, :sku, :price, :compare_at_price, :cost_price, :stock_quantity, :weight, :unit, :images, :short_description, :description, 1, 1, 1, 4.9, 50, NOW(), NOW())");
+            (:name, :slug, :category_id, :sku, :price, :compare_at_price, :cost_price, :stock_quantity, :weight, :unit, :images, :ingredients, :benefits, :nutrition_facts, :usage_instructions, :storage_instructions, :meta_title, :meta_description, :short_description, :description, 1, 1, 1, 4.9, 50, NOW(), NOW())");
         $stmt->execute([
-            'name' => $p['name'],
+            'name' => $officialName,
             'slug' => $slug,
             'category_id' => $catId,
-            'sku' => 'NM-' . strtoupper(str_replace('-', '_', $slug)),
+            'sku' => $p['sku'] ?? ('NM-' . strtoupper(str_replace('-', '_', $slug))),
             'price' => $price,
             'compare_at_price' => $mrp,
             'cost_price' => round($price * 0.6, 2),
@@ -177,6 +222,13 @@ foreach ($productsList as $p) {
             'weight' => $weightNum,
             'unit' => $unit,
             'images' => $imagesJson,
+            'ingredients' => $ingredientsJson,
+            'benefits' => $benefitsJson,
+            'nutrition_facts' => $nutritionJson,
+            'usage_instructions' => $usageText,
+            'storage_instructions' => $storageText,
+            'meta_title' => $metaTitle,
+            'meta_description' => $metaDesc,
             'short_description' => $p['shortDescription'] ?? $p['description'],
             'description' => $p['description']
         ]);

@@ -258,7 +258,7 @@ export default function FestivalCombosSection() {
     useCartStore.getState().addItem(
       {
         id: currentCombo.id,
-        slug: currentCombo.items[0]?.productId || currentCombo.id,
+        slug: currentCombo.id,
         name: currentCombo.title,
         price: currentCombo.offerPrice,
         compareAtPrice: currentCombo.originalPrice,
@@ -277,7 +277,7 @@ export default function FestivalCombosSection() {
     useCartStore.getState().addItem(
       {
         id: currentCombo.id,
-        slug: currentCombo.items[0]?.productId || currentCombo.id,
+        slug: currentCombo.id,
         name: currentCombo.title,
         price: currentCombo.offerPrice,
         compareAtPrice: currentCombo.originalPrice,

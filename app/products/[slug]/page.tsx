@@ -51,9 +51,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const baseUrl = siteConfig.url || 'https://naturesmud.shop';
+  const officialName = product.official_label_name || product.name;
   const weightLabel = product.weight || '100g';
-  const title = `${product.name} (${weightLabel}) — Price in Nepal Rs. ${product.price}`;
-  const description = `${product.shortDescription || product.description || ''} Buy 100% pure ${product.name} (${weightLabel}) at Rs. ${product.price} in Nepal with 0 additives & 0 preservatives. Fast delivery in Kathmandu, Lalitpur, Bhaktapur, Pokhara, Chitwan & nationwide from NaturesMud.`;
+  const title = product.seo_title || `${officialName} (${weightLabel}) — Price in Nepal Rs. ${product.price}`;
+  const description = product.meta_description || `${product.shortDescription || product.description || ''} Buy 100% pure ${officialName} (${weightLabel}) at Rs. ${product.price} in Nepal with 0 additives & 0 preservatives. Fast delivery in Kathmandu, Lalitpur, Bhaktapur, Pokhara, Chitwan & nationwide from NaturesMud.`;
   const img = product.image || (Array.isArray(product.images) && product.images[0]) || '/products/naturesmud-all-products-100g.jpg';
   const canonicalUrl = `${baseUrl}/products/${product.slug}`;
 
@@ -61,11 +62,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title,
     description,
     keywords: [
-      product.name,
-      `${product.name} Nepal`,
-      `${product.name} price in Nepal`,
-      `buy ${product.name} Kathmandu`,
-      `pure ${product.name} Nepal`,
+      officialName,
+      `${officialName} Nepal`,
+      `${officialName} price in Nepal`,
+      `buy ${officialName} Kathmandu`,
+      `pure ${officialName} Nepal`,
       'NaturesMud',
       'NaturesMud Nepal',
       product.categorySlug || 'superfoods-nepal',
@@ -75,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${title} | NaturesMud Nepal`,
+      title,
       description,
       url: canonicalUrl,
       siteName: 'NaturesMud Nepal',
@@ -84,14 +85,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: img.startsWith('http') ? img : `${baseUrl}${img}`,
           width: 800,
           height: 800,
-          alt: `${product.name} (${weightLabel}) — NaturesMud Pure Himalayan Superfoods Nepal`,
+          alt: `${officialName} (${weightLabel}) — NaturesMud Pure Himalayan Superfoods Nepal`,
         },
       ],
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | NaturesMud Nepal`,
+      title,
       description,
       images: [img.startsWith('http') ? img : `${baseUrl}${img}`],
     },
@@ -382,7 +383,11 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             },
           };
 
-          const matchedVideo = productVideoMap[product.slug] || productVideoMap['sweet-potato-powder'];
+          const matchedVideo = productVideoMap[product.slug] || {
+            videoUrl: '/videos/naturesmud-product-reel.mp4',
+            title: `How NaturesMud ${product.official_label_name || product.name} Is Crafted in Nepal`,
+            desc: `${product.shortDescription || `100% pure single-ingredient ${product.official_label_name || product.name} (${product.weight || '100g'})`} — packed fresh with zero artificial additives or preservatives.`,
+          };
 
           return (
             <div className="mt-16 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden relative">
@@ -624,18 +629,39 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               {
                 '@type': 'Product',
                 '@id': `${siteConfig.url}/products/${product.slug}#product`,
-                name: product.name,
+                name: product.official_label_name || product.name,
                 image: productImages.map((img) =>
                   img.startsWith('http') ? img : `${siteConfig.url}${img}`
                 ),
                 description: product.description || product.shortDescription,
                 sku: `NM-${product.slug.toUpperCase()}`,
+                mpn: `NM-${product.id || product.slug.toUpperCase()}`,
                 category: categoryName || product.category || 'Superfoods',
                 brand: {
                   '@type': 'Brand',
                   '@id': `${siteConfig.url}/#organization`,
                   name: 'NaturesMud',
                 },
+                ...(product.weight
+                  ? {
+                      weight: {
+                        '@type': 'QuantitativeValue',
+                        value: parseFloat(product.weight) || 100,
+                        unitText: product.weight.replace(/[0-9.\s]/g, '') || 'GM',
+                      },
+                    }
+                  : {}),
+                ...(product.reviewCount && product.reviewCount > 0
+                  ? {
+                      aggregateRating: {
+                        '@type': 'AggregateRating',
+                        ratingValue: product.rating || 4.9,
+                        reviewCount: product.reviewCount,
+                        bestRating: 5,
+                        worstRating: 1,
+                      },
+                    }
+                  : {}),
                 offers: {
                   '@type': 'Offer',
                   '@id': `${siteConfig.url}/products/${product.slug}#offer`,
@@ -653,6 +679,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     '@id': `${siteConfig.url}/#organization`,
                     name: 'NaturesMud',
                     url: siteConfig.url,
+                  },
+                  hasMerchantReturnPolicy: {
+                    '@type': 'MerchantReturnPolicy',
+                    applicableCountry: 'NP',
+                    returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                    merchantReturnDays: 7,
+                    returnMethod: 'https://schema.org/ReturnByMail',
+                    returnFees: 'https://schema.org/FreeReturn',
                   },
                   shippingDetails: {
                     '@type': 'OfferShippingDetails',

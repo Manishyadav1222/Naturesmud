@@ -1,66 +1,64 @@
 # NaturesMud Nepal (https://naturesmud.shop/)
 
-> NaturesMud is a Nepal-focused natural foods, dehydrated fruits, whole-food powders, mountain nuts, seeds, cold-pressed oils, and Himalayan salts ecommerce brand headquartered in Kathmandu, Nepal.
+> NaturesMud is a Nepal-focused natural foods, dehydrated fruits, whole-food powders, mountain nuts, seeds, cold-pressed oils, and Himalayan salts ecommerce brand headquartered in Gaurighat, Kathmandu, Nepal.
 
 ## Brand & Operational Facts
 - **Official Website**: https://naturesmud.shop/
+- **First-Party Product Entity Graph (JSON-LD)**: https://naturesmud.shop/api/entities/products
+- **Google Merchant Product Feed (XML / JSON)**: https://naturesmud.shop/api/merchant-feed | https://naturesmud.shop/api/merchant-feed?format=json
 - **Primary Market**: Nepal (Kathmandu, Lalitpur, Bhaktapur, Pokhara, Chitwan, Butwal, Biratnagar, Dharan, Hetauda, Nepalgunj, Surkhet, and all 77 districts)
-- **Customer Support / WhatsApp Order Desk**: +977-9713888002 | info@naturesmud.shop
+- **Customer Support / WhatsApp Order Desk**: +977-9713888002 | naturesmud@gmail.com
 - **Direct Sourcing Network**: 280+ smallholder farming families across Nepal's Terai, Midland Hills, and High Himalayas
 - **Processing Standard**: Low-temperature dehydration (<42°C) and freeze-drying; 0% refined sugar, 0% artificial preservatives, 0% synthetic dyes
-- **Packaging**: Reusable UV-protective glass jars and food-grade sealed pouches
+- **Packaging**: Reusable UV-protective glass jars and food-grade sealed standup pouches
 - **Shipping Policy**:
   - **Free Delivery Across Nepal**: Orders of Rs. 3,000 or above
-  - **Kathmandu Valley (Kathmandu, Lalitpur, Bhaktapur)**: Rs. 100 standard (within 24 hours)
-  - **Outside Valley (All 7 Provinces / 77 Districts)**: Rs. 150–Rs. 200 courier delivery (2–4 business days)
+  - **Kathmandu Valley (Kathmandu, Lalitpur, Bhaktapur)**: Rs. 100 standard (within 24–48 hours)
+  - **Outside Valley (All 7 Provinces / 77 Districts)**: Rs. 200 courier delivery (2–4 business days)
 - **Payment Methods**: Cash on Delivery (COD), Fonepay QR, eSewa, Khalti, ConnectIPS / Mobile Banking
 
-## Canonical Product Catalog (33 Active Products — Prices in NPR)
+## Canonical Product Catalog (33 Active First-Party Products — Official Label Names & Prices in NPR)
 
 ### 1. Whole-Food & Baby Weaning Powders (`https://naturesmud.shop/products?category=powders`)
-- **Sweet Potato Powder** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/sweet-potato-powder` — 100% dehydrated sweet potato powder for infant weaning (`लिटो`, 6M+) and smoothies.
+- **Sweet Potato Powder** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/sweet-potato-powder` — 100% dehydrated Nepali sweet potato powder (`सखरखण्ड पाउडर`) for infant weaning (`लिटो`, 6M+) and smoothies.
 - **Dates Powder** (`100 GM`, Rs. 400): `https://naturesmud.shop/products/dates-powder` — 100% pure whole dehydrated dates powder (`खजुर पाउडर`), natural unrefined sweetener for porridge (8M+), milk, and baking.
-- **Beetroot Powder** (`100 GM`, Rs. 430): `https://naturesmud.shop/products/beetroot-powder` — Cold-dehydrated red beetroot powder (`चुकन्दर पाउडर`) rich in natural dietary nitrates.
-- **Raw Banana Powder** (`100 GM`, Rs. 450): `https://naturesmud.shop/products/banana-powder` — Dehydrated green banana powder (`केरा पाउडर`) rich in prebiotic resistant starch for infant weaning (6M+) and gut health.
+- **Beetroot Powder** (`100 GM`, Rs. 430): `https://naturesmud.shop/products/beetroot-powder` — Cold-dehydrated red beetroot powder (`चुकन्दर पाउडर`) rich in natural dietary nitrates and betalains.
+- **Banana Powder** (`100 GM`, Rs. 590): `https://naturesmud.shop/products/banana-powder` — 100% pure sun-dried Himalayan banana powder (`केरा पाउडर`) rich in potassium and fiber for baby weaning and smoothies.
 - **Carrot Powder** (`100 GM`, Rs. 490): `https://naturesmud.shop/products/carrot-powder` — Dehydrated sweet carrot powder (`गाजर पाउडर`) rich in natural beta-carotene (Provitamin A).
-- **Moringa Leaf Powder** (`100 GM`, Rs. 690): `https://naturesmud.shop/products/moringa-leaf-powder` — Shade-dried Himalayan moringa leaf powder (`शीतलचिनी पाउडर`).
-- **Freeze-Dried Avocado Powder** (`100 GM`, Rs. 1,450): `https://naturesmud.shop/products/freeze-dried-avocado-powder` — 100% pure Hass avocado powder (`एभोकाडो पाउडर`) rich in healthy monounsaturated fats.
-- **Freeze-Dried Strawberry Powder** (`80 GM`, Rs. 1,395): `https://naturesmud.shop/products/strawberry-powder` — Pure freeze-dried strawberry powder (`स्ट्रबेरी पाउडर`) rich in natural Vitamin C and antioxidants.
+- **Moringa Leaf Powder** (`100 GM`, Rs. 690): `https://naturesmud.shop/products/moringa-leaf-powder` — Shade-dried Himalayan moringa leaf powder (`शीतलचिनी / मोरिङ्गा पाउडर`) rich in iron, calcium, and antioxidants.
+- **Freeze Dried Avocado Powder** (`80 GM`, Rs. 790): `https://naturesmud.shop/products/freeze-dried-avocado-powder` — Single-origin Nepali mountain avocado powder (`एभोकाडो पाउडर`) rich in healthy monounsaturated fats.
+- **Freeze Dried Strawberry Powder** (`80 GM`, Rs. 1,395): `https://naturesmud.shop/products/strawberry-powder` — Pure freeze-dried strawberry powder (`स्ट्रबेरी पाउडर`) rich in natural Vitamin C and polyphenols.
 
 ### 2. Dehydrated Fruits & Berries (`https://naturesmud.shop/products?category=dried-fruits`)
-- **Dehydrated Mango Strips** (`100 GM`, Rs. 650): `https://naturesmud.shop/products/dehydrated-mango`
-- **Dehydrated Apple Rings** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/dehydrated-apple`
-- **Dehydrated Pineapple** (`80 GM`, Rs. 590): `https://naturesmud.shop/products/dehydrated-pineapple`
-- **Dehydrated Papaya** (`90 GM`, Rs. 395): `https://naturesmud.shop/products/dehydrated-papaya`
-- **Dehydrated Kiwi Slices** (`100 GM`, Rs. 690): `https://naturesmud.shop/products/dehydrated-kiwi`
-- **Dehydrated Dragon Fruit** (`80 GM`, Rs. 750): `https://naturesmud.shop/products/dehydrated-dragon-fruit`
-- **Toasted Dehydrated Coconut Chips** (`135 GM`, Rs. 450): `https://naturesmud.shop/products/dehydrated-coconut-chips`
-- **Dried Wild Blueberries** (`100 GM`, Rs. 650): `https://naturesmud.shop/products/dried-blueberries`
-- **Dried Sliced Cranberries** (`125 GM`, Rs. 480): `https://naturesmud.shop/products/dried-cranberries`
-- **Premium Dried Dates (Khajoor)** (`200 GM`, Rs. 380): `https://naturesmud.shop/products/dried-dates-khajoor`
-- **Dried Figs (Anjeer)** (`150 GM`, Rs. 790): `https://naturesmud.shop/products/dry-figs-anjeer`
+- **Dehydrated Mango** (`100 GM`, Rs. 595): `https://naturesmud.shop/products/dehydrated-mango` — Naturally sweet sun-dried Nepali mango slices (`सुकेको आँप`) with 0 added sugar.
+- **Dehydrated Pineapple** (`100 GM`, Rs. 495): `https://naturesmud.shop/products/dehydrated-pineapple` — Tangy-sweet dehydrated pineapple rings (`सुकेको भुइँकटहर`) rich in natural bromelain enzyme.
+- **Dehydrated Apple** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/dehydrated-apple` — Crisp unsulfured Himalayan apple rings (`स्याउको सुकुटी`) from Jumla & Mustang rich in pectin fiber.
+- **Dehydrated Coconut Chips** (`100 GM`, Rs. 475): `https://naturesmud.shop/products/dehydrated-coconut-chips` — Crunchy whole coconut flakes (`सुकेको नरिवल`) rich in clean MCT fats.
+- **Dehydrated Papaya** (`90 GM`, Rs. 395): `https://naturesmud.shop/products/dehydrated-papaya` — Enzyme-rich dehydrated papaya spears (`सुकेको मेवा`) with active papain.
+- **Dried Blueberries** (`100 GM`, Rs. 650): `https://naturesmud.shop/products/dried-blueberries` — Whole dried blueberries (`ब्लुबेरी`) rich in anthocyanins for focus and eye health.
+- **Dried Cranberries** (`100 GM`, Rs. 415): `https://naturesmud.shop/products/dried-cranberries` — Whole ruby dried cranberries (`क्र्यानबेरी`) rich in Type-A proanthocyanidins (PACs).
+- **Dry Figs (Anjeer)** (`200 GM`, Rs. 850): `https://naturesmud.shop/products/dry-figs-anjeer` — Plump sun-dried figs (`अन्जीर`) rich in soluble fiber, iron, and calcium.
 
 ### 3. Mountain Nuts & Trail Mixes (`https://naturesmud.shop/products?category=nuts`)
-- **Raw Himalayan Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/raw-himalayan-almonds`
-- **Roasted Himalayan Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-almonds`
-- **Premium Cashew Nuts** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/premium-cashewnuts`
-- **Roasted Himalayan Cashew Nuts** (`150 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-cashewnuts`
-- **Premium Roasted Pistachios** (`200 GM`, Rs. 880): `https://naturesmud.shop/products/premium-pistachios`
-- **Premium Pistachio Roasted & Salted** (`200 GM`, Rs. 880): `https://naturesmud.shop/products/premium-pistachio-roasted-salted`
-- **Premium Australian Macadamia Nuts** (`200 GM`, Rs. 1,250): `https://naturesmud.shop/products/macadamia-nuts`
-- **Roasted Himalayan Makhana (Fox Nuts)** (`50 GM`, Rs. 390): `https://naturesmud.shop/products/makhana-fox-nuts`
-- **Mix Dry Nuts (Superfood Trail Mix)** (`300 GM`, Rs. 690): `https://naturesmud.shop/products/superfood-trail-mix`
+- **Raw Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/raw-himalayan-almonds` — Unpasteurized raw whole almonds (`काँचो बदाम`) ideal for overnight soaking.
+- **Roasted Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-almonds` — Oil-free slow-roasted crunchy almonds (`भुटेको बदाम`) rich in Vitamin E.
+- **Premium Cashew Nuts** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/premium-cashewnuts` — Whole jumbo W240 cashew nuts (`काजु`) rich in magnesium and copper.
+- **Roasted Cashew Nuts** (`150 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-cashewnuts` — Dry-roasted crunchy cashew nuts (`भुटेको काजु`) with zero added oil.
+- **Premium Roasted Pistachios** (`200 GM`, Rs. 880): `https://naturesmud.shop/products/premium-pistachios` — Naturally opened whole pistachios (`पिस्ता`) rich in lutein and Vitamin B6.
+- **Premium Pistachio Roasted & Salted** (`200 GM`, Rs. 1,250): `https://naturesmud.shop/products/premium-pistachio-roasted-salted` — Slow-roasted pistachios lightly seasoned with Himalayan pink salt.
+- **Macadamia Nuts** (`200 GM`, Rs. 1,100): `https://naturesmud.shop/products/macadamia-nuts` — Gourmet whole macadamia nut kernels rich in Omega-7 palmitoleic acid.
+- **Superfood Trail Mix (Nuts & Seeds)** (`200 GM`, Rs. 790): `https://naturesmud.shop/products/superfood-trail-mix` — Energy-dense blend of almonds, cashews, pumpkin seeds, chia seeds, blueberries, and cranberries.
 
 ### 4. Superfood Seeds, Oils, Salts & Shilajit (`https://naturesmud.shop/products?category=seeds`)
-- **Organic Black Chia Seeds** (`300 GM`, Rs. 495): `https://naturesmud.shop/products/chia-seeds`
-- **Raw Green Pumpkin Seeds (Pepitas)** (`300 GM`, Rs. 650): `https://naturesmud.shop/products/pumpkin-seeds`
-- **Raw Hulled Sunflower Seeds** (`300 GM`, Rs. 450): `https://naturesmud.shop/products/sunflower-seeds`
-- **Organic Brown Flax Seeds (Alash)** (`300 GM`, Rs. 350): `https://naturesmud.shop/products/flax-seeds`
-- **Cold-Pressed Extra Virgin Coconut Oil (500ml)** (`500 ML`, Rs. 1,750): `https://naturesmud.shop/products/virgin-coconut-oil-500ml`
-- **Cold-Pressed Extra Virgin Coconut Oil (180 GM)** (`180 GM`, Rs. 650): `https://naturesmud.shop/products/virgin-coconut-oil-180ml`
-- **Himalayan Pink Salt** (`200 GM`, Rs. 250): `https://naturesmud.shop/products/himalayan-pink-salt`
-- **Pure Himalayan Black Salt (Bire Noon)** (`200 GM`, Rs. 220): `https://naturesmud.shop/products/pure-himalayan-black-salt-bire-noon`
-- **Pure Mountain Himalayan Shilajit Resin** (`20 GM`, Rs. 1,995): `https://naturesmud.shop/products/pure-mountain-himalayan-shilajit-resin`
+- **Makhana (Fox Nuts)** (`50 GM`, Rs. 390): `https://naturesmud.shop/products/makhana-fox-nuts` — Crunchy puffed lotus seeds (`मखाना`) rich in calcium and plant protein.
+- **Chia Seeds** (`300 GM`, Rs. 495): `https://naturesmud.shop/products/chia-seeds` — 100% natural raw unroasted black chia seeds (`चिया सिड्स`) rich in plant Omega-3 ALA and soluble fiber.
+- **Pumpkin Seeds** (`300 GM`, Rs. 650): `https://naturesmud.shop/products/pumpkin-seeds` — Raw AAA green pumpkin seed kernels (`फर्सीको बिया`) rich in zinc, magnesium, and tryptophan.
+- **Flax Seeds (Alash)** (`200 GM`, Rs. 570): `https://naturesmud.shop/products/flax-seeds` — Whole brown flax seeds (`आलस`) rich in plant Omega-3 ALA and dietary lignans.
+- **Extra Virgin Coconut Oil (500ml)** (`500 ML`, Rs. 1,750): `https://naturesmud.shop/products/virgin-coconut-oil-500ml` — Cold-pressed unrefined extra virgin coconut oil (`नरिवलको तेल`) with 50%+ Lauric Acid for baby massage, cooking, and hair.
+- **Extra Virgin Coconut Oil (180ml)** (`180 GM`, Rs. 650): `https://naturesmud.shop/products/virgin-coconut-oil-180ml` — Compact cold-pressed unrefined extra virgin coconut oil jar for skincare, baby massage, and oil pulling.
+- **Himalayan Pink Salt** (`200 GM`, Rs. 250): `https://naturesmud.shop/products/himalayan-pink-salt` — Unrefined pink rock salt (`सिधे नुन`) with 84+ bioavailable trace minerals.
+- **Himalayan Black Salt (Bire Noon)** (`200 GM`, Rs. 220): `https://naturesmud.shop/products/pure-himalayan-black-salt-bire-noon` — Authentic volcanic black salt (`बिरे नुन / काला नमक`) for Ayurvedic digestion.
+- **Pure Himalayan Shilajit Resin** (`20 GM`, Rs. 1,995): `https://naturesmud.shop/products/pure-mountain-himalayan-shilajit-resin` — Gold-grade high-altitude Himalayan shilajit resin (`शिलाजीत`) with >75% fulvic acid and 84+ trace minerals.
 
 ## Key Hub URLs
 - **All Products**: https://naturesmud.shop/products
