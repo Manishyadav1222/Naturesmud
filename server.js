@@ -1,10 +1,12 @@
 // ============================================================
 // Production entry point for cPanel Phusion Passenger / Node.js
 // ============================================================
+process.env.UV_THREADPOOL_SIZE = process.env.UV_THREADPOOL_SIZE || '2';
+process.env.NODE_ENV = 'production';
+
 const { createServer } = require('http');
 const { parse } = require('url');
 const next = require('next');
-
 const fs = require('fs');
 const path = require('path');
 
@@ -22,23 +24,14 @@ try {
   // Ignore if dotenv is unavailable
 }
 
-// Check if standalone build exists (preferred for cPanel / LiteSpeed / Docker)
-const standalonePath = path.resolve(__dirname, '.next/standalone/server.js');
-if (fs.existsSync(standalonePath)) {
-  process.env.NODE_ENV = 'production';
-  require(standalonePath);
-  return;
-}
+const dev = false;
+const port = process.env.PORT || 3000;
 
-const dev = process.env.NODE_ENV !== 'production';
-const hostname = '0.0.0.0';
-const port = parseInt(process.env.PORT, 10) || 3000;
-
-const app = next({ dev, hostname, port });
+const app = next({ dev, dir: __dirname });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  createServer(async (req, res) => {
+  const server = createServer(async (req, res) => {
     try {
       const parsedUrl = parse(req.url, true);
       await handle(req, res, parsedUrl);
@@ -47,12 +40,31 @@ app.prepare().then(() => {
       res.statusCode = 500;
       res.end('Internal Server Error');
     }
-  })
-    .once('error', (err) => {
-      console.error(err);
-      process.exit(1);
-    })
-    .listen(port, () => {
-      console.log(`> Nature's Mud Next.js ready on port ${port}`);
-    });
+  });
+
+  server.once('error', (err) => {
+    console.error('Server error:', err);
+    process.exit(1);
+  });
+
+  server.listen(port, () => {
+    console.log(`> Nature's Mud Next.js ready on port ${port}`);
+  });
+
+  // Graceful shutdown to prevent orphaned zombie processes
+  const shutdown = (signal) => {
+    console.log(`Received ${signal}, shutting down Next.js server...`);
+    setTimeout(() => process.exit(0), 2000).unref();
+    try {
+      server.close(() => process.exit(0));
+    } catch (e) {
+      process.exit(0);
+    }
+  };
+
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  process.on('SIGINT', () => shutdown('SIGINT'));
+}).catch(err => {
+  console.error('Error during app.prepare():', err);
+  process.exit(1);
 });
