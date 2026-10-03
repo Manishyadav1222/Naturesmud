@@ -977,7 +977,7 @@ export default function GreenBasketLandingPage() {
               </div>
               <div className="px-2.5 py-1 rounded bg-emerald-900 border border-emerald-700 text-lime-400 font-bold text-[10px] flex items-center gap-1">
                 <ShieldCheck className="w-2.5 h-2.5" />
-                <span>McAfee SECURE</span>
+                <span>100% AUTHENTIC</span>
               </div>
             </div>
           </div>

@@ -18,8 +18,8 @@ export default function AdminSettingsPage() {
   const [settings, setSettings] = useState({
     storeName: 'NaturesMud',
     tagline: 'Pure Food · Real Nature · 0 Additives · 0 Preservatives',
-    supportEmail: 'support@naturesmud.com',
-    supportPhone: '+977-1-5550123',
+    supportEmail: 'info@naturesmud.shop',
+    supportPhone: '+977-9713888002',
     address: 'Kathmandu, Nepal',
     whatsapp: '+977-9713888002',
     facebook: 'https://facebook.com/naturesmud',

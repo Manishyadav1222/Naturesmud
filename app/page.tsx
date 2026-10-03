@@ -181,7 +181,7 @@ export default function HomePage() {
 
   const stats = [
     { icon: Users, label: 'Happy Customers', value: '25,000+' },
-    { icon: Sprout, label: 'Partner Farms', value: '180+' },
+    { icon: Sprout, label: 'Farmer Families', value: '280+' },
     { icon: PackageCheck, label: 'Products Delivered', value: '150+' },
     { icon: Star, label: 'Average Rating', value: '4.9/5' },
   ];
@@ -338,9 +338,9 @@ export default function HomePage() {
                     <Sparkles className="w-4 h-4" />
                     Only clean, only pure
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Immunity Shield Superfood Mix</h3>
-                  <p className="text-white/80 text-xs sm:text-sm">Moringa, Ashwagandha, Amla & more — your daily immunity ritual.</p>
-                  <Link href="/products/immunity-shield-superfood-mix" className="btn-gold mt-2 sm:mt-4 inline-flex items-center gap-2 text-sm">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Himalayan Superfood Trail Mix</h3>
+                  <p className="text-white/80 text-xs sm:text-sm">Raw nuts, seeds & mountain berries — your daily clean energy ritual.</p>
+                  <Link href="/products/superfood-trail-mix" className="btn-gold mt-2 sm:mt-4 inline-flex items-center gap-2 text-sm">
                     Shop Now
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -642,7 +642,7 @@ export default function HomePage() {
                     <Sprout className="w-5 h-5 text-emerald-700" />
                   </div>
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
-                    Direct Fair-Trade Partnership with 180+ Nepali Farms
+                    Direct Fair-Trade Partnership with 280+ Farmer Families
                   </h3>
                   <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
                     NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts (Terai, Midland Hills & High Himalayas). By eliminating middlemen, our farm partners receive <strong className="text-emerald-800">+35% above-market fair-trade wages</strong>.
@@ -650,7 +650,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
                   <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
-                    180+ Farm Co-ops
+                    280+ Farmer Families
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
                     0 Middlemen
@@ -673,18 +673,18 @@ export default function HomePage() {
                     <Baby className="w-5 h-5 text-rose-600" />
                   </div>
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
-                    Safe Baby Weaning & Pediatric Nutrition
+                    Safe Baby Weaning & Whole-Food Nutrition
                   </h3>
                   <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
-                    Trusted by thousands of Nepali mothers and recommended by pediatricians for baby food weaning (6+ months). 100% lab-verified with zero chemical additives, zero added salt, and zero artificial coloring.
+                    Trusted by thousands of Nepali mothers for baby food weaning (6+ months) alongside pediatric guidance. 100% single-ingredient whole-food powders with zero chemical additives, zero added salt, and zero artificial coloring.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
                   <span className="px-2.5 py-0.5 rounded-full bg-rose-50 text-[10px] font-bold text-rose-800 border border-rose-200">
-                    Pediatrician Approved
+                    Parent-Trusted (6M+)
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
-                    Lab Verified
+                    100% Single-Ingredient
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
                     Zero Artificial Dyes

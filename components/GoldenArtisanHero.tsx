@@ -80,7 +80,7 @@ export default function GoldenArtisanHero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-lg text-[#4A2E05] max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed"
             >
-              Naturally dehydrated organic fruits, wild cliff shilajit, raw honey, and wholefood superfood powders sourced directly from 180+ small Himalayan family farms.
+              Naturally dehydrated organic fruits, wild cliff shilajit, cold-pressed oils, and wholefood superfood powders sourced directly from 280+ smallholder Nepali family farms.
             </motion.p>
 
             {/* Action Buttons */}

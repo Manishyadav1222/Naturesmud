@@ -817,7 +817,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
             {[
               { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
               { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
-              { value: '180+', label: 'Farm Partners', highlight: false, icon: Sprout },
+              { value: '280+', label: 'Farmer Families', highlight: false, icon: Sprout },
               { value: '4.9★', label: 'Customer Rating', highlight: true, icon: Award },
             ].map((stat) => (
               <div

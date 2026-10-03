@@ -194,7 +194,7 @@ export default function MobileHomePage() {
         >
           <div className="flex items-center gap-2.5 text-ink/50 text-xs font-sans">
             <Search className="w-4 h-4 text-primary" />
-            <span>Search on naturesmud.com &amp; naturesmud.shop...</span>
+            <span>Search pure Himalayan foods on naturesmud.shop...</span>
           </div>
           <span className="text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary px-2 py-0.5 rounded-md">
             Find
@@ -502,7 +502,7 @@ export default function MobileHomePage() {
         <div className="flex items-center justify-start gap-2 overflow-x-auto no-scrollbar pb-1 w-full">
           {[
             { icon: ShieldCheck, text: '100% Nepali Origin', color: 'text-primary' },
-            { icon: Truck, text: 'Free Delivery > Rs. 10,000', color: 'text-primary' },
+            { icon: Truck, text: 'Free Delivery > Rs. 3,000', color: 'text-primary' },
             { icon: Sparkles, text: '0 Additives or Preservatives', color: 'text-amber-600' },
             { icon: Star, text: '4.9★ (25,000+ Happy Nepalis)', color: 'text-amber-500' },
           ].map((item, i) => {
@@ -528,7 +528,7 @@ export default function MobileHomePage() {
           <div className="flex items-center justify-between pb-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-bold">
               <Baby className="w-3 h-3" />
-              Pediatrician Recommended
+              Parent-Trusted (6M+)
             </span>
             <Link href="/products?category=baby-care" className="text-xs font-bold text-rose-700 flex items-center gap-1">
               <span>View All</span>
@@ -537,15 +537,15 @@ export default function MobileHomePage() {
           </div>
 
           <h3 className="font-heading font-extrabold text-base text-ink">
-            Baby Weaning & Pediatric Superfood Powders
+            Baby Weaning & Whole-Food Superfood Powders
           </h3>
           <p className="text-xs text-ink/70 mt-0.5">
-            Sweet Potato, Dates & Beetroot Powders for infant porridge (लुटो) & toddlers. 0% refined sugar.
+            Sweet Potato, Dates & Beetroot Powders for infant porridge (लिटो) & toddlers. 0% refined sugar.
           </p>
 
           <div className="grid grid-cols-2 gap-2 mt-3 w-full">
             {[
-              { name: 'Sweet Potato Powder', slug: 'sweet-potato-powder', price: 420, img: '/products/sweet-potato-powder-100g.jpg' },
+              { name: 'Sweet Potato Powder', slug: 'sweet-potato-powder', price: 510, img: '/products/sweet-potato-powder-100g.jpg' },
               { name: 'Dates Powder Sweetener', slug: 'dates-powder', price: 400, img: '/products/dates-powder-100g.jpg' },
             ].map((prod) => (
               <Link

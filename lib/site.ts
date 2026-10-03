@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: 'NaturesMud',
+  legalName: 'NaturesMud Nepal',
   alternateNames: ['NaturesMud Nepal', "Nature's Mud", 'Nature Mud', 'naturesmud', 'नेचर्स मड'],
   tagline: 'Pure Food · Real Nature · 0 Additives · 0 Preservatives',
   description:
@@ -14,11 +15,14 @@ export const siteConfig = {
   whatsappMessage: 'Hello NaturesMud Nepal! I would like to order pure superfoods & naturally dehydrated fruits.',
   email: 'info@naturesmud.shop',
   secondaryEmail: 'info@naturesmud.shop',
-  address: 'Kathmandu, Nepal',
+  supportEmail: 'info@naturesmud.shop',
+  privacyEmail: 'info@naturesmud.shop',
+  address: 'Baneshwor, Kathmandu 44600, Nepal',
+  businessHours: 'Sunday – Friday: 9:00 AM – 6:00 PM NPT',
   locationDetails: {
-    headquarters: 'Kathmandu, Nepal',
+    headquarters: 'Baneshwor, Kathmandu 44600, Nepal',
     outlets: [
-      'Kids Kottage — Arya Complex, Kathmandu (Ph: 9802323451)',
+      'Kids Kottage — Arya Complex, Kathmandu (Partner Outlet Ph: 9802323451)',
       'Kids Kottage — Kupondol, Lalitpur & Kapan, Kathmandu',
       'Zero to Ten — Chabahil, Kathmandu',
       'Kids Kottage — Surkhet',
@@ -28,11 +32,31 @@ export const siteConfig = {
   },
   social: {
     facebook: 'https://www.facebook.com/profile.php?id=61589084257990',
-    instagram: 'https://instagram.com/naturesmud',
+    instagram: 'https://www.instagram.com/naturesmud_official/',
     tiktok: 'https://www.tiktok.com/@naturesmud',
     youtube: 'https://youtube.com/@naturesmud',
   },
   freeShippingThreshold: 3000,
+  shipping: {
+    freeThreshold: 3000,
+    insideValleyFee: 100,
+    majorCitiesFee: 150,
+    outsideValleyFee: 200,
+    insideValleyEta: '24–48 hours (1–2 business days)',
+    majorCitiesEta: '2–4 business days',
+    remoteRegionsEta: '3–7 business days',
+  },
+  metrics: {
+    familiesServed: '25,000+',
+    verifiedOrders: '3,840+',
+    farmerFamiliesTotal: '280+',
+    farmerBreakdown: {
+      terai: '110+ Smallholder Farming Families (Chitwan, Jhapa, Nawalpur, Sarlahi)',
+      hilly: '95+ Organic Hill Collectives (Kavre, Sindhupalchok, Palpa, Ilam)',
+      himalaya: '75+ Indigenous Alpine Harvesters (Mustang, Jumla, Manang, Dolpa)',
+    },
+    ecologicalBelts: 3,
+  },
   currency: 'Rs.',
 };
 

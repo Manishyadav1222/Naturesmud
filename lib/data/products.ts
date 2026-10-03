@@ -404,7 +404,28 @@ export const products: Product[] = [
       "Low in calories and high in protein",
       "Great source of antioxidants"
     ],
-    "nutrition": [],
+    "nutrition": [
+      {
+        "label": "Calories",
+        "value": "347 kcal / 100g"
+      },
+      {
+        "label": "Protein",
+        "value": "9.7g"
+      },
+      {
+        "label": "Carbohydrates",
+        "value": "76.9g"
+      },
+      {
+        "label": "Dietary Fiber",
+        "value": "14.5g"
+      },
+      {
+        "label": "Total Fat",
+        "value": "0.1g"
+      }
+    ],
     "usage": "Roast lightly with a pinch of pink salt for a perfect evening snack.",
     "storage": "Store in an airtight container to maintain crispness.",
     "isFeatured": true,
@@ -937,7 +958,7 @@ export const products: Product[] = [
       "1:1 Natural replacement for refined white sugar in recipes",
       "Natural source of iron (2.5mg/100g) to combat fatigue and anemia",
       "Rich in potassium and magnesium for muscle & nerve health",
-      "Pediatrician recommended natural sweetener for babies 8m+",
+      "Parent-trusted natural whole-food sweetener for weaning porridge (8M+)",
       "Zero preservatives, 100% vegan and unbleached"
     ],
     "nutrition": [
@@ -1623,8 +1644,8 @@ export const products: Product[] = [
     "name": "Premium Roasted Pistachios",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 820,
-    "compareAtPrice": 820,
+    "price": 880,
+    "compareAtPrice": 999,
     "rating": 4.9,
     "reviewCount": 44,
     "image": "/products/pistachios.jpg",
@@ -1639,7 +1660,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
-    "mrp": 820,
+    "mrp": 999,
     "ingredients": [
       "100% Premium Naturally Opened Whole Pistachios"
     ],
@@ -1992,7 +2013,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
-    "mrp": 440,
+    "mrp": 550,
     "ingredients": [
       "100% Dehydrated Organic Carrots (Daucus carota)"
     ],
@@ -2062,7 +2083,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
-    "mrp": 420,
+    "mrp": 600,
     "ingredients": [
       "100% Pure Dehydrated Nepali Sweet Potato (Ipomoea batatas)"
     ],
@@ -2471,6 +2492,146 @@ export function normalizeProduct(raw: any, fallback?: Product | null): Product {
     tags: Array.isArray(raw.tags) ? raw.tags : (local?.tags || []),
   };
 }
+
+/**
+ * Bilingual (English + Nepali Devanagari + Romanized Nepali) and singular/plural synonym map
+ * so users searching "date powder", "खजुर पाउडर", "khajur", "sakharkhanda", "bire nun", "lito", etc.
+ * always find the exact matching NaturesMud products.
+ */
+export const PRODUCT_SEARCH_SYNONYMS: Record<string, string[]> = {
+  'dates-powder': ['date powder', 'dates powder', 'date sweetener', 'khajur', 'khajoor', 'khajur powder', 'खजुर', 'खजुर पाउडर', 'baby sweetener', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'dried-dates-khajoor': ['date', 'dates', 'dry dates', 'khajur', 'khajoor', 'chhuwara', 'खजुर', 'छोकडा'],
+  'sweet-potato-powder': ['sweet potato', 'sweet potato powder', 'sakharkhanda', 'shakarkandi', 'सखरखण्ड', 'सखरखण्ड पाउडर', 'baby porridge', 'weaning', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'carrot-powder': ['carrot', 'carrots', 'carrot powder', 'gajar', 'gajar powder', 'गाजर', 'गाजर पाउडर', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'banana-powder': ['banana', 'bananas', 'banana powder', 'kera', 'kera powder', 'केरा', 'केरा पाउडर', 'baby food', 'weaning', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'beetroot-powder': ['beetroot', 'beet', 'beets', 'beetroot powder', 'chukandar', 'चुकन्दर', 'चुकन्दर पाउडर', 'nitric oxide', 'stamina'],
+  'moringa-leaf-powder': ['moringa', 'moringa powder', 'sitalchini', 'shitalchini', 'drumstick leaf', 'शीतलचिनी', 'मोरिङ्गा', 'सजिवन'],
+  'freeze-dried-avocado-powder': ['avocado', 'avocados', 'avocado powder', 'guacamole', 'एभोकाडो', 'घिउ फल'],
+  'strawberry-powder': ['strawberry', 'strawberries', 'strawberry powder', 'स्ट्रबेरी', 'स्ट्रबेरी पाउडर'],
+  'raw-himalayan-almonds': ['almond', 'almonds', 'raw almond', 'raw almonds', 'badam', 'kagaji badam', 'बदाम', 'कागजी बदाम'],
+  'roasted-almonds': ['almond', 'almonds', 'roasted almond', 'roasted almonds', 'salted almonds', 'badam', 'भुटेको बदाम', 'बदाम'],
+  'premium-cashewnuts': ['cashew', 'cashews', 'cashewnut', 'cashewnuts', 'raw cashew', 'kaju', 'काजु'],
+  'roasted-cashewnuts': ['cashew', 'cashews', 'roasted cashew', 'roasted cashews', 'salted cashew', 'kaju', 'भुटेको काजु', 'काजु'],
+  'premium-pistachios': ['pistachio', 'pistachios', 'pista', 'पिस्ता'],
+  'premium-pistachio-roasted-salted': ['pistachio', 'pistachios', 'salted pistachio', 'roasted pistachio', 'pista', 'पिस्ता'],
+  'dry-figs-anjeer': ['fig', 'figs', 'dry fig', 'dry figs', 'dried figs', 'anjeer', 'anjir', 'अन्जीर'],
+  'makhana-fox-nuts': ['makhana', 'fox nut', 'fox nuts', 'lotus seed', 'lotus seeds', 'phool makhana', 'मखाना', 'फक्स नट्स'],
+  'flax-seeds': ['flax', 'flax seed', 'flax seeds', 'flaxseed', 'alash', 'alas', 'alsi', 'आलस', 'आलसको बिया'],
+  'chia-seeds': ['chia', 'chia seed', 'chia seeds', 'black chia', 'sabja', 'चिया सिड्स', 'चिया बिया'],
+  'pumpkin-seeds': ['pumpkin', 'pumpkin seed', 'pumpkin seeds', 'pepita', 'pepitas', 'farsi', 'फर्सीको बिया'],
+  'sunflower-seeds': ['sunflower', 'sunflower seed', 'sunflower seeds', 'सूर्यमुखी बिया'],
+  'pure-himalayan-black-salt-bire-noon': ['black salt', 'bire nun', 'bire noon', 'kala namak', 'बिरे नुन', 'काला नमक'],
+  'himalayan-pink-salt': ['pink salt', 'rock salt', 'himalayan salt', 'sidhe nun', 'sendha namak', 'सिधे नुन', 'गुलाबी नुन'],
+  'pure-mountain-himalayan-shilajit-resin': ['shilajit', 'silajit', 'shilajeet', 'resin', 'fulvic acid', 'शिलाजीत', 'हिमाली शिलाजीत'],
+  'virgin-coconut-oil-500ml': ['coconut oil', 'virgin coconut oil', 'cold pressed oil', 'nariwal tel', 'नरिवलको तेल', 'नरिवल तेल'],
+  'virgin-coconut-oil-180ml': ['coconut oil', 'virgin coconut oil', 'nariwal tel', 'नरिवलको तेल'],
+  'dehydrated-coconut-chips': ['coconut', 'coconut chip', 'coconut chips', 'coconut flakes', 'khopra', 'नरिवल', 'सुकेको नरिवल'],
+  'dehydrated-mango': ['mango', 'mangoes', 'dried mango', 'dehydrated mango', 'aap', 'आँप', 'सुकेको आँप'],
+  'dehydrated-apple': ['apple', 'apples', 'dried apple', 'dehydrated apple', 'apple rings', 'syau', 'स्याउ', 'स्याउको सुकुटी'],
+  'dehydrated-papaya': ['papaya', 'dried papaya', 'dehydrated papaya', 'mewa', 'मेवा'],
+  'dehydrated-pineapple': ['pineapple', 'dried pineapple', 'dehydrated pineapple', 'bhuikatahar', 'भुइँकटहर'],
+  'dehydrated-kiwi': ['kiwi', 'dried kiwi', 'dehydrated kiwi', 'किवी'],
+  'dehydrated-dragon-fruit': ['dragon fruit', 'pitaya', 'dried dragon fruit', 'ड्रागन फ्रुट', 'सिउडी'],
+  'dried-blueberries': ['blueberry', 'blueberries', 'dried blueberry', 'dried blueberries', 'ब्लुबेरी'],
+  'dried-cranberries': ['cranberry', 'cranberries', 'dried cranberry', 'dried cranberries', 'क्र्यानबेरी'],
+  'superfood-trail-mix': ['trail mix', 'mix dry nuts', 'mixed nuts', 'dry fruits mix', 'superfood mix', 'immunity mix', 'मिक्स ड्राई फ्रुट्स'],
+};
+
+function normalizeSearchToken(token: string): string {
+  const lower = token.toLowerCase().trim();
+  if (lower.endsWith('ies') && lower.length > 4) {
+    return `${lower.slice(0, -3)}y`;
+  }
+  if (lower.endsWith('oes') && lower.length > 4) {
+    return lower.slice(0, -2);
+  }
+  if (lower.endsWith('s') && !lower.endsWith('ss') && lower.length > 3) {
+    return lower.slice(0, -1);
+  }
+  return lower;
+}
+
+export function searchProductsCatalog(catalog: Product[], rawQuery: string): Product[] {
+  const query = rawQuery.trim().toLowerCase();
+  if (!query) return [];
+
+  const queryTokens = query
+    .split(/[\s,.-]+/)
+    .map(normalizeSearchToken)
+    .filter(Boolean);
+
+  const scored: { product: Product; score: number }[] = [];
+
+  for (const product of catalog) {
+    let score = 0;
+    const nameLower = (product.name || '').toLowerCase();
+    const slugLower = (product.slug || '').toLowerCase();
+    const catLower = (product.category || '').toLowerCase();
+    const descLower = `${product.shortDescription || ''} ${product.description || ''}`.toLowerCase();
+    const tagsLower = (product.tags || []).map((t) => t.toLowerCase());
+    const synonyms = PRODUCT_SEARCH_SYNONYMS[product.slug] || [];
+
+    // 1. Exact or substring match in product name or slug
+    if (nameLower === query || slugLower === query) {
+      score += 100;
+    } else if (nameLower.includes(query)) {
+      score += 75;
+    }
+
+    // 2. Exact or substring match in bilingual/synonym dictionary
+    for (const syn of synonyms) {
+      const synLower = syn.toLowerCase();
+      if (synLower === query) {
+        score += 90;
+      } else if (synLower.includes(query) || query.includes(synLower)) {
+        score += 60;
+      }
+    }
+
+    // 3. Token-level singular/plural normalized matching
+    if (queryTokens.length > 0) {
+      const searchableCorpus = [
+        nameLower,
+        slugLower.replace(/-/g, ' '),
+        catLower,
+        ...tagsLower,
+        ...synonyms.map((s) => s.toLowerCase()),
+      ].join(' ');
+      const corpusTokens = searchableCorpus
+        .split(/[\s,.-]+/)
+        .map(normalizeSearchToken)
+        .filter(Boolean);
+
+      const matchedTokens = queryTokens.filter((qt) =>
+        corpusTokens.some((ct) => ct === qt || ct.includes(qt) || qt.includes(ct))
+      );
+
+      if (matchedTokens.length === queryTokens.length) {
+        score += 55;
+      } else if (matchedTokens.length > 0 && queryTokens.length > 1) {
+        score += matchedTokens.length * 15;
+      }
+    }
+
+    // 4. Category / Tag / Description fallback
+    if (score === 0) {
+      if (catLower.includes(query) || tagsLower.some((t) => t.includes(query))) {
+        score += 35;
+      } else if (descLower.includes(query)) {
+        score += 15;
+      }
+    }
+
+    if (score > 0) {
+      scored.push({ product, score });
+    }
+  }
+
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.product);
+}
+
 
 
 

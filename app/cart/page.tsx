@@ -181,7 +181,7 @@ export default function CartPage() {
               </Link>
 
               <div className="mt-6 space-y-2 text-xs text-gray-500 border-t border-gray-200 pt-4">
-                <p className="flex items-center gap-2"><Truck className="w-4 h-4 text-[#3A6B35]" /> Free delivery over Rs. 10,000</p>
+                <p className="flex items-center gap-2"><Truck className="w-4 h-4 text-[#3A6B35]" /> Free delivery over {formatPrice(FREE_SHIPPING_THRESHOLD)}</p>
                 <p className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#3A6B35]" /> Secure payment with eSewa, Khalti & more</p>
               </div>
             </div>

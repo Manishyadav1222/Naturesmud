@@ -90,7 +90,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const activeTitle = (lang === 'np' && tr?.titleNp) ? tr.titleNp : post.title;
   const activeExcerpt = (lang === 'np' && tr?.excerptNp) ? tr.excerptNp : post.excerpt;
   const activeCategory = (lang === 'np' && tr?.categoryNp) ? tr.categoryNp : (post.category || 'Superfoods & Wellness');
-  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "NaturesMud Clinical Council");
+  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "NaturesMud Nutrition & Research Team");
   const activeDate = (lang === 'np' && tr?.dateNp) ? tr.dateNp : (post.date || 'Recent');
   const activeContent: string[] = Array.isArray(post.content) ? post.content : [post.content || ''];
   const activeTags: string[] = (lang === 'np' && tr?.tagsNp) ? tr.tagsNp : (post.tags || ['organic nepal', 'himalayan nutrition', 'wellness']);
@@ -164,16 +164,16 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       return {
         slug: 'beetroot-powder',
         name: 'Pure Himalayan Beetroot Powder (100g)',
-        price: 380,
+        price: 430,
         image: '/products/beetroot-powder-100g.jpg',
-        description: 'Delivers natural dietary nitrates for a 230% nitric oxide boost, blood oxygenation, and stamina.'
+        description: 'Delivers natural dietary nitrates for nitric oxide support, blood oxygenation, and stamina.'
       };
     }
     if (slug.includes('sweet-potato') || slug.includes('baby') || slug.includes('pregnancy') || slug.includes('weaning')) {
       return {
         slug: 'sweet-potato-powder',
         name: 'Organic Sweet Potato Powder (100g)',
-        price: 408,
+        price: 510,
         image: '/products/sweet-potato-powder-100g.jpg',
         description: 'Gentle, vitamin A-rich complex carbs ideal for baby weaning, gut soothing, and maternal nutrition.'
       };
@@ -182,25 +182,25 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       return {
         slug: 'dates-powder',
         name: 'Natural Dates Powder Sweetener (100g)',
-        price: 280,
+        price: 400,
         image: '/products/dates-powder-100g.jpg',
         description: '100% pure low-glycemic dried dates sweetener to replace refined sugar in tea, oats, and desserts.'
       };
     }
-    if (slug.includes('honey') || slug.includes('cough') || slug.includes('monsoon') || slug.includes('immunity')) {
+    if (slug.includes('moringa') || slug.includes('cough') || slug.includes('monsoon') || slug.includes('immunity')) {
       return {
-        slug: 'raw-honey',
-        name: 'Pure Raw Himalayan Mountain Honey (500g)',
-        price: 950,
-        image: '/products/sweet-potato-powder-100g.jpg',
-        description: 'Unpasteurized mountain honey rich in active enzymes, living pollen, and natural antimicrobial defense.'
+        slug: 'moringa-leaf-powder',
+        name: 'Pure Himalayan Moringa Leaf Powder (100g)',
+        price: 690,
+        image: '/products/moringa-leaf-powder.jpg',
+        description: 'Shade-dried mountain moringa leaves rich in 90+ natural phytonutrients, iron, and antioxidants.'
       };
     }
     if (slug.includes('chia') || slug.includes('pumpkin') || slug.includes('seeds')) {
       return {
         slug: 'chia-seeds',
         name: 'Premium Black Chia Seeds (300g)',
-        price: 396,
+        price: 495,
         image: '/products/chia-seeds.jpg',
         description: 'Dense plant-based Omega-3 ALA, complete protein, and soothing soluble prebiotic fiber.'
       };
@@ -209,19 +209,19 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       return {
         slug: 'raw-himalayan-almonds',
         name: 'Raw Himalayan Mountain Almonds (200g)',
-        price: 600,
-        image: '/products/almonds-2.jpg',
+        price: 750,
+        image: '/products/nm-almond-jar-v2.jpg',
         description: 'Hand-selected whole mountain almonds rich in alpha-tocopherol (Vitamin E) and bioavailable magnesium.'
       };
     }
 
     // Default signature bundle
     return {
-      slug: 'himalayan-superfood-lineup-pack',
-      name: 'NaturesMud Himalayan Superfood Collection (5-Jar Starter Kit)',
-      price: 1450,
-      image: post.image || '/products/naturesmud-all-products-100g.jpg',
-      description: 'Includes pure Himalayan superfoods in reusable glass jars with free festive greeting card.'
+      slug: 'superfood-trail-mix',
+      name: 'NaturesMud Mix Dry Nuts Superfood Trail Mix (300g)',
+      price: 690,
+      image: post.image || '/products/superfood-mix.jpg',
+      description: 'Includes pure Himalayan superfoods in reusable glass jars with 0 additives and 0 preservatives.'
     };
   })();
 
@@ -401,7 +401,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
             </span>
             <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Medically Reviewed & Fact-Checked</span>
+              <span>Editorial Research &amp; Nutrition Guide</span>
             </span>
           </div>
 

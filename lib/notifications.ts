@@ -66,7 +66,7 @@ export function buildNotification(payload: NotificationPayload): {
         sms: `Payment Verified: Rs. ${payload.amount?.toLocaleString()} for ${brandName} order #${orderNum}. Thank you!`,
         email: {
           subject: `Payment Successful for Order #${orderNum} — ${brandName}`,
-          body: `Namaste ${customer},\n\nYour payment of Rs. ${payload.amount?.toLocaleString()} for order #${orderNum} has been successfully verified.\n\nThank you for supporting 180+ smallholder mountain farming families across Nepal!`,
+          body: `Namaste ${customer},\n\nYour payment of Rs. ${payload.amount?.toLocaleString()} for order #${orderNum} has been successfully verified.\n\nThank you for supporting 280+ smallholder mountain farming families across Nepal!`,
         },
         whatsappText: `*💳 Payment Verified: Order #${orderNum}*\n\nYour payment of *Rs. ${payload.amount?.toLocaleString()}* has been verified. Thank you!`,
       };

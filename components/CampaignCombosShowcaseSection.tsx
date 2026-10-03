@@ -13,12 +13,12 @@ import {
   Truck,
   Zap,
 } from 'lucide-react';
-import { initialFestivalOffers, FestivalOffer } from '@/lib/data/offers';
+import { initialFestivalOffers, FestivalOffer, getActiveCampaignOffers } from '@/lib/data/offers';
 import { useCartStore } from '@/lib/store/cart-store';
 
 export default function CampaignCombosShowcaseSection() {
   const router = useRouter();
-  const [offers, setOffers] = useState<FestivalOffer[]>(initialFestivalOffers);
+  const [offers, setOffers] = useState<FestivalOffer[]>(() => getActiveCampaignOffers(initialFestivalOffers));
   const [activeId, setActiveId] = useState(initialFestivalOffers[0].id);
   const [isHovered, setIsHovered] = useState(false);
   const [addedId, setAddedId] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export default function CampaignCombosShowcaseSection() {
         if (res.ok) {
           const json = await res.json();
           if (json.data && Array.isArray(json.data) && json.data.length > 0) {
-            const activeOffers = json.data.filter((o: any) => o.isActive !== false);
+            const activeOffers = getActiveCampaignOffers(json.data);
             if (activeOffers.length > 0) {
               setOffers(activeOffers);
             }

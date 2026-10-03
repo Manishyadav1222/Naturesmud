@@ -69,6 +69,21 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/products/virgin-coconut-oil',
+        destination: '/products/virgin-coconut-oil-500ml',
+        permanent: true,
+      },
+      {
+        source: '/products/cashewnuts',
+        destination: '/products/premium-cashewnuts',
+        permanent: true,
+      },
+      {
+        source: '/products/premium-cashewnut',
+        destination: '/products/premium-cashewnuts',
+        permanent: true,
+      },
+      {
         source: '/products/flaxseed-crackers',
         destination: '/products/flax-seeds',
         permanent: true,
@@ -79,8 +94,83 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products/raw-himalayan-almonds',
-        destination: '/products/raw-almonds-200g',
+        source: '/products/raw-almonds-200g',
+        destination: '/products/raw-himalayan-almonds',
+        permanent: true,
+      },
+      {
+        source: '/products/almonds',
+        destination: '/products/raw-himalayan-almonds',
+        permanent: true,
+      },
+      {
+        source: '/products/pink-salt',
+        destination: '/products/himalayan-pink-salt',
+        permanent: true,
+      },
+      {
+        source: '/products/black-salt',
+        destination: '/products/pure-himalayan-black-salt-bire-noon',
+        permanent: true,
+      },
+      {
+        source: '/products/dates-powder-100g',
+        destination: '/products/dates-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/sweet-potato-powder-100g',
+        destination: '/products/sweet-potato-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/beetroot-powder-100g',
+        destination: '/products/beetroot-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/carrot-powder-100g',
+        destination: '/products/carrot-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/dried-blueberries-100g',
+        destination: '/products/dried-blueberries',
+        permanent: true,
+      },
+      {
+        source: '/products/blueberries',
+        destination: '/products/dried-blueberries',
+        permanent: true,
+      },
+      {
+        source: '/products/dried-cranberry-100g',
+        destination: '/products/dried-cranberries',
+        permanent: true,
+      },
+      {
+        source: '/products/dried-figs-200g',
+        destination: '/products/dry-figs-anjeer',
+        permanent: true,
+      },
+      {
+        source: '/products/cashewnuts-roasted',
+        destination: '/products/roasted-cashewnuts',
+        permanent: true,
+      },
+      {
+        source: '/products/black-chia-seeds',
+        destination: '/products/chia-seeds',
+        permanent: true,
+      },
+      {
+        source: '/products/walnuts',
+        destination: '/products/superfood-trail-mix',
+        permanent: true,
+      },
+      {
+        source: '/products/immunity-shield-superfood-mix',
+        destination: '/products/superfood-trail-mix',
         permanent: true,
       },
       {

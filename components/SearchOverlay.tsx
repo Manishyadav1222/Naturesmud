@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Search, X, TrendingUp, Sparkles, Leaf } from 'lucide-react';
 import { useUIStore } from '@/lib/store/ui-store';
-import { products as localProducts, normalizeProduct } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct, searchProductsCatalog } from '@/lib/data/products';
 import { formatPrice, resolveImageUrl } from '@/lib/utils';
 import { Product } from '@/lib/types';
 
@@ -25,7 +25,7 @@ export default function SearchOverlay() {
         if (!res.ok) throw new Error('fetch failed');
         const json = await res.json();
         if (json?.data && Array.isArray(json.data) && json.data.length > 0 && !cancelled) {
-          setLiveProducts(json.data);
+          setLiveProducts(json.data.map((p: any) => normalizeProduct(p)));
         }
       } catch {
         // Gracefully fall back to local static catalog on network error
@@ -48,7 +48,7 @@ export default function SearchOverlay() {
         if (!res.ok) throw new Error('fetch failed');
         const json = await res.json();
         if (json?.data && Array.isArray(json.data) && json.data.length > 0 && !cancelled) {
-          setLiveProducts(json.data);
+          setLiveProducts(json.data.map((p: any) => normalizeProduct(p)));
         }
       } catch {
         // Keep existing live data or fall back to local
@@ -63,21 +63,9 @@ export default function SearchOverlay() {
     ? liveProducts
     : localProducts.map((p) => normalizeProduct(p));
 
-  const results = query
-    ? catalog.filter((p) => {
-        const catStr =
-          typeof p.category === 'object' && p.category !== null
-            ? ((p.category as any)?.name || '')
-            : (p.category || '');
-        return (
-          p.name.toLowerCase().includes(query.toLowerCase()) ||
-          catStr.toLowerCase().includes(query.toLowerCase()) ||
-          (Array.isArray(p.tags) && p.tags.some((t) => t.toLowerCase().includes(query.toLowerCase())))
-        );
-      })
-    : [];
+  const results = query ? searchProductsCatalog(catalog, query) : [];
 
-  const trendingSearches = ['honey', 'almonds', 'chia', 'moringa', 'turmeric'];
+  const trendingSearches = ['dates powder', 'avocado', 'beetroot', 'almonds', 'chia', 'shilajit', 'खजुर पाउडर'];
 
   return (
     <AnimatePresence>
@@ -105,7 +93,7 @@ export default function SearchOverlay() {
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search products on naturesmud.com & naturesmud.shop..."
+                  placeholder="Search pure foods (e.g. Dates Powder, खजुर, Avocado, Almonds)..."
                   className="flex-1 text-lg outline-none placeholder-gray-400"
                   aria-label="Search products"
                 />

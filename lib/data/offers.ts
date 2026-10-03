@@ -1,3 +1,7 @@
+import { getProductBySlug } from '@/lib/data/products';
+
+export type CampaignLifecycleState = 'SCHEDULED' | 'ACTIVE' | 'EXPIRING' | 'EXPIRED' | 'ARCHIVED';
+
 export interface OfferItem {
   productId: string;
   name: string;
@@ -26,11 +30,102 @@ export interface FestivalOffer {
   highlights: string[];
   isFestival: boolean;
   isActive?: boolean;
+  isEvergreen?: boolean;
+  lifecycleState?: CampaignLifecycleState;
   themeColor?: 'gold' | 'emerald' | 'amber' | 'crimson' | 'purple' | 'red';
 }
 
+/**
+ * Resolves an OfferItem directly from the canonical product catalog (`lib/data/products.ts`)
+ * so bundle item prices, weights, and slugs never drift from the product catalog.
+ */
+export function buildOfferItem(
+  slug: string,
+  fallback: { name: string; weight: string; image: string; price: number }
+): OfferItem {
+  const product = getProductBySlug(slug);
+  if (!product) {
+    return {
+      productId: slug,
+      ...fallback,
+    };
+  }
+  const weight = product.weight || fallback.weight;
+  return {
+    productId: product.slug,
+    name: `${product.name} (${weight})`,
+    weight,
+    image: product.images?.[0] || fallback.image,
+    price: Number(product.price),
+  };
+}
+
+function createBundleOffer(config: Omit<FestivalOffer, 'originalPrice' | 'offerPrice'> & { customOfferPrice?: number }): FestivalOffer {
+  const originalPrice = config.items.reduce((sum, item) => sum + Number(item.price || 0), 0);
+  const computedOfferPrice =
+    config.customOfferPrice ?? Math.round(originalPrice * (1 - config.discountPercentage / 100));
+  return {
+    ...config,
+    originalPrice,
+    offerPrice: computedOfferPrice,
+  };
+}
+
+/**
+ * Evaluates the lifecycle state of a promotional or seasonal campaign.
+ */
+export function getCampaignLifecycleState(
+  offer: FestivalOffer,
+  now: Date = new Date()
+): CampaignLifecycleState {
+  if (offer.isActive === false) return 'ARCHIVED';
+  if (offer.isEvergreen) return 'ACTIVE';
+
+  const nowMs = now.getTime();
+  if (offer.startDate) {
+    const startMs = new Date(`${offer.startDate}T00:00:00+05:45`).getTime();
+    if (!Number.isNaN(startMs) && nowMs < startMs) {
+      return 'SCHEDULED';
+    }
+  }
+
+  const endReference = offer.endDate
+    ? new Date(`${offer.endDate}T23:59:59+05:45`).getTime()
+    : offer.endsAt
+      ? new Date(offer.endsAt).getTime()
+      : NaN;
+
+  if (!Number.isNaN(endReference)) {
+    if (nowMs > endReference) {
+      return 'EXPIRED';
+    }
+    const hoursRemaining = (endReference - nowMs) / (1000 * 60 * 60);
+    if (hoursRemaining <= 72) {
+      return 'EXPIRING';
+    }
+  }
+
+  return 'ACTIVE';
+}
+
+/**
+ * Filters a list of offers so that only ACTIVE or EXPIRING campaigns (or evergreen bundles)
+ * are shown on public storefront surfaces.
+ */
+export function getActiveCampaignOffers(
+  offers: FestivalOffer[],
+  now: Date = new Date()
+): FestivalOffer[] {
+  return offers
+    .map((offer) => ({
+      ...offer,
+      lifecycleState: getCampaignLifecycleState(offer, now),
+    }))
+    .filter((offer) => offer.lifecycleState === 'ACTIVE' || offer.lifecycleState === 'EXPIRING');
+}
+
 export const initialFestivalOffers: FestivalOffer[] = [
-  {
+  createBundleOffer({
     id: 'offer-new-himalayan-superfoods',
     title: 'Himalayan Superfood Trio: Avocado, Strawberry & Almonds',
     subtitle: '100% Pure Freeze Dried Avocado, Pure Strawberry Powder & Roasted Himalayan Almonds',
@@ -39,36 +134,32 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '🌿',
     categoryLabel: 'New Superfoods',
     discountPercentage: 10,
-    originalPrice: 2935,
-    offerPrice: 2640,
+    customOfferPrice: 2640,
     couponCode: 'SUPERFOOD10',
     startDate: '2026-09-01',
-    endDate: '2026-10-31',
-    endsAt: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Trending New Launch',
     themeColor: 'emerald',
     items: [
-      {
-        productId: 'freeze-dried-avocado-powder',
+      buildOfferItem('freeze-dried-avocado-powder', {
         name: 'Freeze Dried Avocado Powder (80 GM)',
         weight: '80 GM',
         image: '/products/avocado-powder-v2.jpg',
         price: 790,
-      },
-      {
-        productId: 'strawberry-powder',
+      }),
+      buildOfferItem('strawberry-powder', {
         name: 'Pure Strawberry Powder (80 GM)',
         weight: '80 GM',
         image: '/products/strawberry-powder-v2.jpg',
         price: 1395,
-      },
-      {
-        productId: 'roasted-almonds',
+      }),
+      buildOfferItem('roasted-almonds', {
         name: 'Roasted Himalayan Almonds (200 GM)',
         weight: '200 GM',
         image: '/products/roasted-almonds-v2.jpg',
         price: 750,
-      },
+      }),
     ],
     highlights: [
       'Authentic Product of Nepal 🇳🇵 Freeze-Dried Avocado',
@@ -78,8 +169,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: true,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-festive-himalayan-wellness',
     title: 'Himalayan Festival Celebration & Wellness Box',
     subtitle: 'Sun-Dried Apples, Raw Mountain Almonds & Dates Powder Sweetener',
@@ -88,36 +180,31 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '🇳🇵',
     categoryLabel: 'Festival Combo',
     discountPercentage: 5,
-    originalPrice: 1408,
-    offerPrice: 1338,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Festive Best Choice',
     themeColor: 'gold',
     items: [
-      {
-        productId: '3',
-        name: 'Premium Dehydrated Apple (100 GM)',
+      buildOfferItem('dehydrated-apple', {
+        name: 'Dehydrated Apple (100 GM)',
         weight: '100 GM',
         image: '/products/dehydrated-apple.jpg',
-        price: 408,
-      },
-      {
-        productId: '18',
-        name: 'Raw Almond (200 GM)',
+        price: 510,
+      }),
+      buildOfferItem('raw-himalayan-almonds', {
+        name: 'Raw Himalayan Almonds (200 GM)',
         weight: '200 GM',
         image: '/products/nm-almond-jar-v2.jpg',
-        price: 600,
-      },
-      {
-        productId: '8',
+        price: 750,
+      }),
+      buildOfferItem('dates-powder', {
         name: 'Dates Powder (100 GM)',
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
-      },
+      }),
     ],
     highlights: [
       '100% Preservative-Free Sacred Gifting',
@@ -127,8 +214,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: true,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-gym',
     title: 'Himalayan Gym & Workout Muscle Pack',
     subtitle: 'Premium Cashews, Zinc-Rich Pumpkin Seeds & Chia Omega-3',
@@ -137,36 +225,31 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '🏋️‍♂️',
     categoryLabel: 'Gym & Workout',
     discountPercentage: 5,
-    originalPrice: 1745,
-    offerPrice: 1658,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Athletes #1 Pick',
     themeColor: 'emerald',
     items: [
-      {
-        productId: '14',
-        name: 'Premium Cashewnut (250 GM)',
-        weight: '250 GM',
+      buildOfferItem('premium-cashewnuts', {
+        name: 'Premium Cashew Nuts (200 GM)',
+        weight: '200 GM',
         image: '/products/nm-cashew-new-jar.jpg',
-        price: 600,
-      },
-      {
-        productId: '13',
+        price: 750,
+      }),
+      buildOfferItem('pumpkin-seeds', {
         name: 'Pumpkin Seeds (300 GM)',
         weight: '300 GM',
         image: '/products/pumpkin-seeds.jpg',
         price: 650,
-      },
-      {
-        productId: '12',
-        name: 'Chia Seeds (300 GM)',
+      }),
+      buildOfferItem('chia-seeds', {
+        name: 'Organic Chia Seeds (300 GM)',
         weight: '300 GM',
         image: '/products/chia-seeds.jpg',
         price: 495,
-      },
+      }),
     ],
     highlights: [
       'High Plant Protein & Zinc for Muscle Repair',
@@ -175,8 +258,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: false,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-morning',
     title: 'Daily Morning Diet & Cleanse Kit',
     subtitle: 'Metabolism Kickstart with Dates Powder, Chia Seeds & Pink Salt',
@@ -185,36 +269,31 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '🌅',
     categoryLabel: 'Morning Diet',
     discountPercentage: 5,
-    originalPrice: 1075,
-    offerPrice: 1021,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Morning Ritual',
     themeColor: 'amber',
     items: [
-      {
-        productId: '8',
+      buildOfferItem('dates-powder', {
         name: 'Dates Powder (100 GM)',
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
-      },
-      {
-        productId: '12',
-        name: 'Chia Seeds (300 GM)',
+      }),
+      buildOfferItem('chia-seeds', {
+        name: 'Organic Chia Seeds (300 GM)',
         weight: '300 GM',
         image: '/products/chia-seeds.jpg',
         price: 495,
-      },
-      {
-        productId: '10',
-        name: 'Himalayan Pink Salt (100 GM)',
-        weight: '100 GM',
+      }),
+      buildOfferItem('himalayan-pink-salt', {
+        name: 'Himalayan Pink Salt (200 GM)',
+        weight: '200 GM',
         image: '/products/pink-salt.jpg',
-        price: 180,
-      },
+        price: 250,
+      }),
     ],
     highlights: [
       'Warm Water Morning Detox Electrolytes',
@@ -223,8 +302,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: false,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-health',
     title: 'Maha Daily Health & Immunity Shield',
     subtitle: 'Mix Dry Nuts, Roasted Almonds & Beetroot Powder',
@@ -233,36 +313,31 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '🧘',
     categoryLabel: 'Health & Vitality',
     discountPercentage: 5,
-    originalPrice: 1486,
-    offerPrice: 1412,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Family Favorite',
     themeColor: 'gold',
     items: [
-      {
-        productId: '20',
+      buildOfferItem('superfood-trail-mix', {
         name: 'Mix Dry Nuts (300 GM)',
         weight: '300 GM',
         image: '/products/superfood-mix.jpg',
-        price: 552,
-      },
-      {
-        productId: '17',
-        name: 'Roasted Almond (200 GM)',
+        price: 690,
+      }),
+      buildOfferItem('roasted-almonds', {
+        name: 'Roasted Almonds (200 GM)',
         weight: '200 GM',
         image: '/products/roasted-almonds-v2.jpg',
-        price: 600,
-      },
-      {
-        productId: '9',
+        price: 750,
+      }),
+      buildOfferItem('beetroot-powder', {
         name: 'Beetroot Powder (100 GM)',
         weight: '100 GM',
         image: '/products/beetroot-powder-100g.jpg',
-        price: 334,
-      },
+        price: 430,
+      }),
     ],
     highlights: [
       'Full Daily Spectrum of Minerals & Vitamins',
@@ -271,8 +346,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: false,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-focus',
     title: 'Brain Focus & Clean Energy Snack Box',
     subtitle: 'Dried Blueberries, Dried Cranberries & Pumpkin Seeds',
@@ -281,36 +357,31 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '⚡',
     categoryLabel: 'Focus & Study',
     discountPercentage: 5,
-    originalPrice: 1632,
-    offerPrice: 1550,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
     tag: 'Zero Crash Snacking',
     themeColor: 'crimson',
     items: [
-      {
-        productId: '6',
+      buildOfferItem('dried-blueberries', {
         name: 'Dried Blueberries (100 GM)',
         weight: '100 GM',
         image: '/products/dried-blueberries-100g.jpg',
         price: 650,
-      },
-      {
-        productId: '7',
-        name: 'Dried Cranberry (100 GM)',
+      }),
+      buildOfferItem('dried-cranberries', {
+        name: 'Dried Cranberries (100 GM)',
         weight: '100 GM',
         image: '/products/cranberries.jpg',
-        price: 332,
-      },
-      {
-        productId: '13',
+        price: 560,
+      }),
+      buildOfferItem('pumpkin-seeds', {
         name: 'Pumpkin Seeds (300 GM)',
         weight: '300 GM',
         image: '/products/pumpkin-seeds.jpg',
         price: 650,
-      },
+      }),
     ],
     highlights: [
       'Anthocyanins for Neural Focus & Memory Recall',
@@ -319,8 +390,9 @@ export const initialFestivalOffers: FestivalOffer[] = [
     ],
     isFestival: false,
     isActive: true,
-  },
-  {
+    isEvergreen: true,
+  }),
+  createBundleOffer({
     id: 'offer-babycare',
     title: 'Pure Infant & Toddler Superfood Starter',
     subtitle: 'Sweet Potato, Carrot & Dates Powders Pure Porridge Mix',
@@ -329,43 +401,39 @@ export const initialFestivalOffers: FestivalOffer[] = [
     categoryIcon: '👶',
     categoryLabel: 'Baby Care',
     discountPercentage: 5,
-    originalPrice: 1400,
-    offerPrice: 1330,
     couponCode: 'STORE5 (Auto-Applied)',
     startDate: '2026-09-01',
-    endDate: '2026-09-30',
-    endsAt: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
-    tag: 'Pediatric Approved',
+    endDate: '2026-12-31',
+    endsAt: '2026-12-31T23:59:59+05:45',
+    tag: '100% Pure Whole Food',
     themeColor: 'purple',
     items: [
-      {
-        productId: '25',
+      buildOfferItem('sweet-potato-powder', {
         name: 'Sweet Potato Powder (100 GM)',
         weight: '100 GM',
         image: '/products/sweet-potato-powder-100g.jpg',
-        price: 510,
-      },
-      {
-        productId: '24',
+        price: 420,
+      }),
+      buildOfferItem('carrot-powder', {
         name: 'Carrot Powder (100 GM)',
         weight: '100 GM',
         image: '/products/carrot-powder-100g.jpg',
-        price: 490,
-      },
-      {
-        productId: '8',
+        price: 440,
+      }),
+      buildOfferItem('dates-powder', {
         name: 'Dates Powder (100 GM)',
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
-      },
+      }),
     ],
     highlights: [
-      'Precooked Gentle Porridge for 6+ Month Infants',
+      'Gentle Whole-Food Powders for 6+ Month Weaning (Consult Pediatrician)',
       '100% Plant-Based Sweetness with Zero Cane Sugar',
       'Rich in Beta-Carotene Vitamin A & Dietary Fiber',
     ],
     isFestival: false,
     isActive: true,
-  },
+    isEvergreen: true,
+  }),
 ];

@@ -136,8 +136,8 @@ export const specializedOffers: SpecializedCombo[] = [
     categoryIcon: '🧠',
     categoryLabel: 'Memory',
     discountPercentage: 10,
-    originalPrice: 2060,
-    offerPrice: 1850,
+    originalPrice: 2280,
+    offerPrice: 2052,
     couponCode: 'FOCUS10',
     tag: 'Focus & Brain Shield',
     items: [
@@ -146,14 +146,14 @@ export const specializedOffers: SpecializedCombo[] = [
         name: 'Roasted Pistachios',
         weight: '200 GM',
         image: '/products/pistachios.jpg',
-        price: 820,
+        price: 880,
       },
       {
         productId: 'roasted-cashewnuts',
         name: 'Roasted Cashews',
-        weight: '200 GM',
+        weight: '150 GM',
         image: '/products/nm-roasted-cashew-new.jpg',
-        price: 590,
+        price: 750,
       },
       {
         productId: 'dried-blueberries',

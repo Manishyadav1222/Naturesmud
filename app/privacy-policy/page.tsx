@@ -41,7 +41,7 @@ const sections = [
     title: '5. Your Rights',
     content: [
       'You have the right to access, correct, or delete your personal information. You may also request a copy of the data we hold about you.',
-      'To exercise these rights, contact us at privacy@naturesmud.com. We will respond to your request within 30 days.',
+      'To exercise these rights, contact us at info@naturesmud.shop. We will respond to your request within 30 days.',
     ],
   },
   {
@@ -54,7 +54,7 @@ const sections = [
   {
     title: '7. Contact Us',
     content: [
-      'If you have questions about this Privacy Policy or our data practices, please contact us at privacy@naturesmud.com or call +977 971-3888002.',
+      'If you have questions about this Privacy Policy or our data practices, please contact us at info@naturesmud.shop or call +977-9713888002.',
     ],
   },
 ];

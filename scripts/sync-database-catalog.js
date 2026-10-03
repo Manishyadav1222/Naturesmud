@@ -153,8 +153,13 @@ foreach ($productsList as $p) {
     $row = $existing->fetch();
 
     if ($row) {
-        // Product already exists in database - DO NOT OVERWRITE admin edits!
-        // Admin edits must be preserved forever.
+        // Ensure canonical catalog product is active in MySQL
+        $upd = $pdo->prepare("UPDATE products SET is_active = 1 WHERE id = :id");
+        $upd->execute(['id' => $row['id']]);
+        try {
+            $updDel = $pdo->prepare("UPDATE products SET deleted_at = NULL WHERE id = :id");
+            $updDel->execute(['id' => $row['id']]);
+        } catch (Exception $e) {}
     } else {
         $stmt = $pdo->prepare("INSERT INTO products 
             (name, slug, category_id, sku, price, compare_at_price, cost_price, stock_quantity, weight, unit, images, short_description, description, is_active, is_featured, is_best_seller, rating_avg, rating_count, created_at, updated_at) 

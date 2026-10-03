@@ -472,6 +472,16 @@ foreach ($catalog as $p) {
             'images' => $imagesJson
         ]);
         $upsertCount++;
+    } else {
+        $upd = $pdo->prepare("UPDATE products SET is_active = 1, price = :price, compare_at_price = :compare_at_price, weight = :weight, unit = :unit, updated_at = NOW() WHERE id = :id");
+        $upd->execute([
+            'price' => $price,
+            'compare_at_price' => $mrp,
+            'weight' => $weightNum,
+            'unit' => $unit,
+            'id' => $row['id']
+        ]);
+        $upsertCount++;
     }
 }
 

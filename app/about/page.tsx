@@ -111,7 +111,7 @@ const regionsData = [
     primaryProducts: [
       { nameEn: 'Dehydrated Himalayan Apple Rings', nameNp: 'हिमाली स्याउको सुकुटी', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
       { nameEn: 'Pure Mountain Himalayan Shilajit Resin', nameNp: 'शुद्ध हिमाली शिलाजीत', image: '/products/pure-shilajit.jpg', slug: 'pure-mountain-himalayan-shilajit-resin' },
-      { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-almonds-200g' },
+      { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
       { nameEn: 'Ancient Himalayan Pink Rock Salt', nameNp: 'शुद्ध हिमाली बिरे नुन / सिधे नुन', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
     farmerCountEn: '75+ Indigenous Foragers & Harvesters',

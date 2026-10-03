@@ -299,8 +299,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             {nutrition.length > 0 && (
               <div className="mt-8 border border-gray-200 rounded-2xl overflow-hidden">
                 <div className="bg-[#3A6B35] text-white px-6 py-3">
-                  <h2 className="font-heading font-semibold">Nutrition Facts</h2>
-                  <p className="text-xs text-white/70">Per 100g serving</p>
+                  <h2 className="font-heading font-semibold">Nutrition Facts (Reference Basis: Per 100g Dry Weight)</h2>
+                  <p className="text-xs text-white/85">
+                    Values per 100g dry ingredient · Typical single serving is 5g–10g (1–2 tsp) for powders or 25g–30g for nuts &amp; dried fruits
+                  </p>
                 </div>
                 <table className="w-full text-sm">
                   <tbody>
@@ -312,6 +314,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     ))}
                   </tbody>
                 </table>
+                <div className="bg-[#FAF8F5] px-6 py-3 border-t border-gray-100 text-[11px] text-gray-500 leading-relaxed">
+                  * Reference values represent approximate natural nutrient composition per 100g of dehydrated whole-food ingredient. A single culinary or porridge serving of powder (5g–10g) provides approximately 5%–10% of the 100g values listed above. Natural agricultural values vary by harvest season. When introducing solid foods to infants (6M+), start with 1/2–1 teaspoon and consult your pediatrician.
+                </div>
               </div>
             )}
           </div>
@@ -350,10 +355,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               title: 'Slow Dry-Roasted Himalayan Almonds',
               desc: 'Crunchy mountain almonds seasoned with pure pink rock salt.',
             },
-            'raw-honey': {
+            'pure-mountain-himalayan-shilajit-resin': {
               videoUrl: '/videos/coconut-oil-ad.mp4',
-              title: 'Mustang Wild Cliff Honey Extraction',
-              desc: '100% raw, unheated wild cliff honey harvested from high alpine cliffs.',
+              title: 'Pure Himalayan Shilajit & Superfood Extraction',
+              desc: '100% pure high-altitude Himalayan superfoods harvested sustainably from mountain regions.',
             },
             'dehydrated-papaya': {
               videoUrl: '/videos/apple.mp4',

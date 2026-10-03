@@ -47,7 +47,7 @@ export default async function BlogPage() {
           : 'Recent',
         rawDate: p.published_at || p.created_at || '',
         readTime: Number(p.read_time || 10),
-        author: p.author?.name || p.author || "NaturesMud Clinical Council",
+        author: p.author?.name || p.author || "NaturesMud Nutrition & Research Team",
         featured: p.is_featured === true || (p.slug && p.slug.startsWith('healthy-raksha-bandhan')),
         isFeatured: p.is_featured === true,
       }));

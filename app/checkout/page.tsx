@@ -1417,7 +1417,7 @@ export default function CheckoutPage() {
                 <p className="flex items-center justify-center gap-1 font-semibold text-emerald-800">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" /> 100% Secure Himalayan Nutrition Checkout
                 </p>
-                <p>Questions? Call/WhatsApp: +977 9802323451</p>
+                <p>Questions? Call/WhatsApp: +977-9713888002</p>
               </div>
             </div>
           </div>

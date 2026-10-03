@@ -24,7 +24,7 @@ import {
   Star,
   Zap,
 } from 'lucide-react';
-import { initialFestivalOffers, FestivalOffer } from '@/lib/data/offers';
+import { initialFestivalOffers, FestivalOffer, getActiveCampaignOffers } from '@/lib/data/offers';
 import { useCartStore } from '@/lib/store/cart-store';
 import FeaturesStrip from '@/components/FeaturesStrip';
 import { ProductCard } from '@/components/ProductCard';
@@ -33,7 +33,7 @@ import { Product } from '@/lib/types';
 
 export default function FestivalOffersPage() {
   const router = useRouter();
-  const [offers, setOffers] = useState<FestivalOffer[]>(initialFestivalOffers);
+  const [offers, setOffers] = useState<FestivalOffer[]>(() => getActiveCampaignOffers(initialFestivalOffers));
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [addedId, setAddedId] = useState<string | null>(null);
@@ -77,7 +77,7 @@ export default function FestivalOffersPage() {
         if (res.ok) {
           const json = await res.json();
           if (json.data && Array.isArray(json.data) && json.data.length > 0) {
-            const activeOnly = json.data.filter((o: any) => o.isActive !== false);
+            const activeOnly = getActiveCampaignOffers(json.data);
             if (activeOnly.length > 0) setOffers(activeOnly);
           }
         }

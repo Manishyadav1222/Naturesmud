@@ -87,17 +87,17 @@ const regionsData = [
     badgeColor: 'bg-blue-100 text-blue-900 border-blue-300',
     primaryProducts: [
       { name: 'Dehydrated Himalayan Apple Rings', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
-      { name: 'Pure Mustang Wild Cliff Honey', image: '/products/authentic-cliff-honey.jpg', slug: 'raw-honey' },
+      { name: 'Pure Mountain Himalayan Shilajit Resin', image: '/products/pure-shilajit.jpg', slug: 'pure-mountain-himalayan-shilajit-resin' },
       { name: 'Raw Himalayan Mountain Almonds (200g)', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
       { name: 'Ancient Himalayan Pink Rock Salt', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
     farmerCount: '75+ Indigenous Foragers & Harvesters',
     impactStory:
-      'At 3,000 meters altitude in Mustang, Jumla, and Dolpa, nature thrives in its purest state. Here, wild bees harvest multi-floral nectar from high-altitude flora on vertical cliffs, and mountain orchards yield crisp, pectin-rich apples. We supply safety ropes and fair forward contracts to indigenous foragers.',
+      'At 3,000 meters altitude in Mustang, Jumla, and Dolpa, nature thrives in its purest state. Here, high-altitude rock crevices yield mineral-rich Shilajit resin, and mountain orchards produce crisp, pectin-rich apples. We supply safety gear and fair forward contracts to indigenous foragers.',
     farmerQuote:
-      '"Foraging wild honey from cliff hives is our ancestral tradition. NaturesMud tests every batch for purity and ensures we receive respectful livelihood compensation without middlemen."',
+      '"Harvesting high-altitude Shilajit and mountain fruits is our ancestral tradition. NaturesMud tests every batch for purity and ensures we receive respectful livelihood compensation without middlemen."',
     farmerName: 'Pasang Norbu Gurung',
-    farmerRole: 'Mustang Wild Cliff Honey Harvesters Collective',
+    farmerRole: 'Mustang High-Altitude Harvesters Collective',
     stats: [
       { label: 'Altitude Range', value: '3,000m – 3,800m' },
       { label: 'Middlemen Eliminated', value: '100% Direct' },
@@ -152,7 +152,7 @@ const tenNepaliProducts = [
     slug: 'dates-powder',
     badge: 'Healthy Natural Sweetener',
     howCollected:
-      'Carefully selected whole premium dates, gently dehydrated and micro-milled with zero refined sugar. Pediatrician recommended as a wholesome 1:1 replacement for white sugar in baby porridge, kheer, and milk.',
+      'Carefully selected whole premium dates, gently dehydrated and micro-milled with zero refined sugar. Widely used by Nepali families as a wholesome 1:1 replacement for white sugar in baby porridge, kheer, and milk.',
     keyTrait: '0 Refined Sugar · Iron & Potassium Rich',
   },
   {
@@ -193,15 +193,15 @@ const tenNepaliProducts = [
   },
   {
     id: 8,
-    name: 'Pure Mustang Wild Cliff Honey',
-    place: 'Mustang Annapurna Foothills',
-    altitude: '3,000m – 3,500m Altitude',
-    image: '/products/authentic-cliff-honey.jpg',
-    slug: 'raw-honey',
-    badge: 'Sacred High Cliff Nectar',
+    name: 'Pure Mountain Himalayan Shilajit Resin (20g)',
+    place: 'Dolpa & Mustang High-Altitude Cliffs',
+    altitude: '3,000m – 3,800m Altitude',
+    image: '/products/pure-shilajit.jpg',
+    slug: 'pure-mountain-himalayan-shilajit-resin',
+    badge: 'Sacred High Cliff Resin',
     howCollected:
-      'Harvested sustainably once a year by ancestral Gurung honey hunters using rope ladders on vertical cliffs. Never pasteurized or micro-filtered, preserving live bee pollen, propolis, and bio-active enzymes.',
-    keyTrait: 'Raw & Unheated · High Altitude Flora',
+      'Sustainably collected from high-altitude Himalayan rock strata by indigenous mountain harvesters. Purified using traditional spring water filtration without harsh solvents, preserving natural fulvic acid and 84+ trace ionic minerals.',
+    keyTrait: 'Fulvic Acid Rich · High Altitude Resin',
   },
   {
     id: 9,

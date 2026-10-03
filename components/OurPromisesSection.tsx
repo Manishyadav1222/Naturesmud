@@ -51,19 +51,19 @@ export default function OurPromisesSection() {
         { label: '0 Preservatives', value: 'Guaranteed', icon: Award },
       ],
       points: [
-        'Lab-verified for safety, mineral density, and microbiological purity',
+        'Strict quality-controlled small-batch dehydration for safety and hygiene',
         'Gently dehydrated below 42°C to lock in delicate antioxidants & enzymes',
         '0 Chemical additives, 0 synthetic preservatives, and zero artificial dyes',
       ],
-      interactivePill: '🧪 Lab Verified Batch #NM-2026',
-      modalTitle: 'Official Lab Purity Verification Certificate',
-      modalSubtitle: 'Batch #NM-2026 · Third-Party ISO-Certified Testing',
+      interactivePill: '🌿 100% Pure Whole-Food Standard',
+      modalTitle: 'NaturesMud Quality & Purity Standards',
+      modalSubtitle: 'Small-Batch Low-Temperature Dehydration (<42°C)',
     },
     {
       id: 'fairtrade' as const,
       number: '02',
       tag: 'Direct Provenance',
-      title: '180+ Smallholder Nepali Farms',
+      title: '280+ Smallholder Farmer Families',
       subtitle: 'Direct Fair-Trade Across Terai, Midland Hills & Himalayan Peaks.',
       icon: Sprout,
       color: 'from-amber-500/20 via-gold/15 to-amber-600/10',
@@ -73,7 +73,7 @@ export default function OurPromisesSection() {
       glowColor: 'from-amber-500/25 via-gold/20 to-amber-700/10',
       image: '/products/walnuts.jpg',
       metrics: [
-        { label: 'Farm Partners', value: '180+ Farms', icon: Users },
+        { label: 'Farm Partners', value: '280+ Families', icon: Users },
         { label: 'Middlemen Cut', value: '0%', icon: ShieldCheck },
         { label: 'Women-Led Co-ops', value: '68%', icon: Heart },
       ],
@@ -83,7 +83,7 @@ export default function OurPromisesSection() {
         'Supporting regenerative agriculture across all ecological belts of Nepal',
       ],
       interactivePill: '🏔️ Direct Sourced from Terai, Hills & Himalayas',
-      modalTitle: '180+ Smallholder Mountain Farm Provenance',
+      modalTitle: '280+ Smallholder Mountain Farm Provenance',
       modalSubtitle: 'Seed-to-Shelf Traceability Map · Nepal',
     },
     {
@@ -408,30 +408,30 @@ export default function OurPromisesSection() {
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 space-y-2">
                     <div className="text-xs font-bold text-emerald-900 flex items-center justify-between">
-                      <span>Lab Test Results (Batch #NM-2026)</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-600 text-white font-black">PASSED</span>
+                      <span>Whole-Food Processing Specifications</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-600 text-white font-black">100% PURE</span>
                     </div>
                     <div className="grid grid-cols-2 gap-2 text-xs pt-1">
                       <div className="bg-white p-2.5 rounded-xl border border-emerald-100">
-                        <span className="text-[10px] text-ink/60 block">Heavy Metals (Lead/Mercury)</span>
-                        <strong className="text-emerald-700 font-bold">Undetected (0.00 ppm)</strong>
+                        <span className="text-[10px] text-ink/60 block">Ingredient Standard</span>
+                        <strong className="text-emerald-700 font-bold">100% Single-Origin Whole Food</strong>
                       </div>
                       <div className="bg-white p-2.5 rounded-xl border border-emerald-100">
                         <span className="text-[10px] text-ink/60 block">Dehydration Temperature</span>
-                        <strong className="text-emerald-700 font-bold">&lt; 42°C Raw Grade</strong>
+                        <strong className="text-emerald-700 font-bold">&lt; 42°C Gently Dried</strong>
                       </div>
                       <div className="bg-white p-2.5 rounded-xl border border-emerald-100">
                         <span className="text-[10px] text-ink/60 block">Chemical Preservatives</span>
                         <strong className="text-emerald-700 font-bold">0.0% (Zero Added)</strong>
                       </div>
                       <div className="bg-white p-2.5 rounded-xl border border-emerald-100">
-                        <span className="text-[10px] text-ink/60 block">Moisture Content</span>
-                        <strong className="text-emerald-700 font-bold">3.2% (Extended Shelf)</strong>
+                        <span className="text-[10px] text-ink/60 block">Refined Sugar / Fillers</span>
+                        <strong className="text-emerald-700 font-bold">0.0% (Zero Added)</strong>
                       </div>
                     </div>
                   </div>
                   <p className="text-xs text-ink/75 leading-relaxed">
-                    Every batch of NaturesMud products is individually serialized and tested before packaging in our UV-blocking amber glass jars.
+                    Every batch of NaturesMud products is prepared in hygienic small batches and sealed in airtight glass jars or food-grade pouches.
                   </p>
                 </div>
               )}
@@ -441,7 +441,7 @@ export default function OurPromisesSection() {
                   <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 space-y-2.5">
                     <div className="text-xs font-bold text-amber-900 flex items-center justify-between">
                       <span>Farmer Provenance Network</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-black">180+ FARMS</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-black">280+ FAMILIES</span>
                     </div>
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-amber-100">

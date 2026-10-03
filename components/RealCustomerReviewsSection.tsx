@@ -60,7 +60,7 @@ const initialRealReviews: CustomerReview[] = [
     date: 'Yesterday',
     title: 'Purest date powder and baby porridge in Nepal!',
     content:
-      'We started our 7-month-old on the Sprouted Ragi & Oats porridge and Date Powder sweetener. She finishes the whole bowl without fuss! Zero chemicals or added sugar. Truly pediatrician grade.',
+      'We started our 7-month-old on the Sweet Potato Powder & Oats porridge with Dates Powder sweetener. She finishes the whole bowl without fuss! Zero chemicals or added sugar. Truly pure whole-food quality.',
     category: 'baby-mother',
     categoryLabel: 'Baby & Mother Care',
     verifiedBuyer: true,

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { categories } from '@/lib/data/categories';
-import { products as localProducts, normalizeProduct } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct, searchProductsCatalog } from '@/lib/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductSortSelect } from '@/components/ProductSortSelect';
 import { api } from '@/lib/api';
@@ -146,9 +146,10 @@ export async function generateMetadata({
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; sort?: string }>;
+  searchParams: Promise<{ category?: string; sort?: string; q?: string; search?: string }>;
 }) {
-  const { category, sort } = await searchParams;
+  const { category, sort, q, search } = await searchParams;
+  const searchQuery = (q || search || '').trim();
   const baseUrl = siteConfig.url || 'https://naturesmud.shop';
 
   let allProducts: Product[] = localProducts.map((p) => normalizeProduct(p));
@@ -179,6 +180,9 @@ export default async function ProductsPage({
     filtered = filtered.filter(
       (p) => p.categorySlug === category || p.category?.toLowerCase() === category.toLowerCase()
     );
+  }
+  if (searchQuery) {
+    filtered = searchProductsCatalog(filtered, searchQuery);
   }
 
   if (sort === 'price-asc') filtered = [...filtered].sort((a, b) => a.price - b.price);
