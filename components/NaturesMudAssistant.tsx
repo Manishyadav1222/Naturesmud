@@ -21,7 +21,7 @@ import {
   RefreshCw,
   HelpCircle,
 } from 'lucide-react';
-import { useCartStore } from '@/lib/store/cart-store';
+import { useCartStore, resolveCartProduct } from '@/lib/store/cart-store';
 import { searchAssistantKnowledge, AssistantSearchResult } from '@/lib/assistant/search-engine';
 import { Product } from '@/lib/types';
 
@@ -41,6 +41,7 @@ interface Message {
 }
 
 const DEFAULT_SUGGESTIONS = [
+  '🛒 What is in my cart & what is my bill total?',
   '👶 Which powders are best for baby weaning lito?',
   '🚚 What are the delivery charges inside & outside Kathmandu?',
   '🍯 What is Dates Powder and how does it replace sugar?',
@@ -56,6 +57,7 @@ export default function NaturesMudAssistant() {
   const [isTyping, setIsTyping] = useState(false);
   const [addedItemSlug, setAddedItemSlug] = useState<string | null>(null);
 
+  const items = useCartStore((s) => s.items);
   const addItem = useCartStore((s) => s.addItem);
   const openDrawer = useCartStore((s) => s.openDrawer);
   const chatBottomRef = useRef<HTMLDivElement>(null);
@@ -85,9 +87,22 @@ export default function NaturesMudAssistant() {
     }
   }, [messages, isOpen, isTyping]);
 
+  // Broadcast modal state to prevent floating button collisions (e.g. WhatsApp, BackToTop)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('naturesmud-assistant-toggle', { detail: { isOpen } }));
+    }
+  }, [isOpen]);
+
   const handleSend = (textToSend?: string) => {
     const query = (textToSend || input).trim();
     if (!query) return;
+
+    // Auto-detect bilingual script preference
+    const hasDevanagari = /[\u0900-\u097F]/.test(query);
+    const hasNepaliTokens = /\b(kati|kasari|chahiyo|kasto|ko|dhulo|mulya|nun|lito|nepal|hamro|bill|kart)\b/i.test(query);
+    const isQueryNepali = hasDevanagari || hasNepaliTokens;
+    const currentIsEn = isQueryNepali ? false : isEn;
 
     const userMsg: Message = {
       id: `user-${Date.now()}`,
@@ -100,7 +115,63 @@ export default function NaturesMudAssistant() {
     setInput('');
     setIsTyping(true);
 
-    // Instant local semantic / BM25 search (<150ms simulated realistic typing)
+    // 1. Live Cart & Bill Query Interception
+    const isCartQuery = /\b(cart|basket|bill|checkout|total|subtotal|how much to pay|कार्ट|बिल|खर्च|कति भयो)\b/i.test(query);
+    if (isCartQuery) {
+      setTimeout(() => {
+        const cartState = useCartStore.getState();
+        const cartItems = cartState.items;
+        const subtotal = cartState.getSubtotal();
+        const isFreeDelivery = subtotal >= 3000;
+        const shippingFee = subtotal === 0 ? 0 : (isFreeDelivery ? 0 : 100);
+        const total = subtotal + shippingFee;
+
+        let replyText = '';
+        let action: Message['action'] = undefined;
+
+        if (cartItems.length > 0) {
+          const itemsList = cartItems
+            .map((it, idx) => {
+              const p = resolveCartProduct(it);
+              return `${idx + 1}. ${p.name} (x${it.quantity}) — Rs. ${p.price * it.quantity}`;
+            })
+            .join('\n');
+
+          replyText = currentIsEn
+            ? `🛒 Current Cart Summary:\n\n${itemsList}\n\n• Subtotal: Rs. ${subtotal}\n• Delivery: ${isFreeDelivery ? 'FREE (Over Rs. 3,000)' : 'Rs. 100 Valley / Rs. 150 Major Cities'}\n• Total: Rs. ${total}`
+            : `🛒 तपाईंको कार्टको विवरण:\n\n${itemsList}\n\n• जम्मा रकम: रु ${subtotal}\n• डेलिभरी: ${isFreeDelivery ? 'निःशुल्क (रू ३,००० भन्दा माथि)' : 'उपत्यका रु १०० / बाहिर रु १५०'}\n• कुल तिर्नुपर्ने: रु ${total}`;
+
+          action = {
+            type: 'link',
+            label: currentIsEn ? `Proceed to Secure Checkout (Rs. ${total})` : `चेकआउट गर्नुहोस् (रु ${total})`,
+            url: '/checkout',
+          };
+        } else {
+          replyText = currentIsEn
+            ? "Your shopping cart is currently empty! Feel free to ask about any of our 32 pure Himalayan superfood powders, dried fruits, or seeds to add them to your order."
+            : 'तपाईंको कार्ट अहिले खाली छ! हाम्रा ३२ वटा शुद्ध हिमाली सुपरफुड पाउडर वा सुकेका फलफूलहरू बारे सोध्नुहोस्, म उपयुक्त छनौट गर्न मद्दत गर्नेछु।';
+          action = {
+            type: 'link',
+            label: currentIsEn ? 'Browse 32 Products Catalog' : '३२ वटा उत्पादनहरू हेर्नुहोस्',
+            url: '/catalog',
+          };
+        }
+
+        const botMsg: Message = {
+          id: `bot-${Date.now()}`,
+          sender: 'assistant',
+          text: replyText,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          action,
+        };
+
+        setMessages((prev) => [...prev, botMsg]);
+        setIsTyping(false);
+      }, 200);
+      return;
+    }
+
+    // 2. Local semantic / BM25 search
     setTimeout(() => {
       const searchResults = searchAssistantKnowledge(query);
 
@@ -111,13 +182,13 @@ export default function NaturesMudAssistant() {
 
       if (searchResults.length > 0) {
         const topResult = searchResults[0];
-        replyText = isEn ? topResult.item.answerEn : topResult.item.answerNp;
+        replyText = currentIsEn ? topResult.item.answerEn : topResult.item.answerNp;
         isPediatric = topResult.item.category === 'baby' || query.toLowerCase().includes('baby') || query.includes('बच्चा') || query.includes('lito');
         matchedProduct = topResult.matchedProduct;
         action = topResult.item.suggestedAction;
       } else {
         // Fallback with human concierge
-        replyText = isEn
+        replyText = currentIsEn
           ? "Thank you for asking. For specific custom orders, festival hampers, or medical health questions, our Baneshwor human team is happy to help you directly on WhatsApp (+977-9713888002)."
           : 'धन्यवाद। तपाईंको विशिष्ट प्रश्न वा अर्डरको लागि हाम्रो बानेश्वर टिमसँग सिधै WhatsApp (+९७७-९७१३८८८००२) मा कुराकानी गर्न सक्नुहुन्छ।';
         action = {
@@ -152,7 +223,7 @@ export default function NaturesMudAssistant() {
   return (
     <>
       {/* ── 1. Floating Chat Trigger Button ── */}
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="fixed bottom-20 right-3 sm:bottom-6 sm:right-6 z-40">
         {!isOpen && (
           <button
             type="button"
@@ -201,7 +272,16 @@ export default function NaturesMudAssistant() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                onClick={() => openDrawer()}
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#D9A441]/20 hover:bg-[#D9A441]/35 text-[#D9A441] border border-[#D9A441]/30 transition-colors flex items-center gap-1 cursor-pointer"
+                title="View active shopping cart"
+              >
+                <ShoppingBag className="w-3 h-3 text-[#D9A441]" />
+                <span>Cart ({items.length})</span>
+              </button>
               <button
                 type="button"
                 onClick={() => setLang(lang === 'en' ? 'np' : 'en')}
