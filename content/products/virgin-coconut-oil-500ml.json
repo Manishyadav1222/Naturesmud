@@ -1,0 +1,80 @@
+{
+  "slug": "virgin-coconut-oil-500ml",
+  "seoTitle": "Extra Virgin Coconut Oil 500ml Price in Nepal | NaturesMud",
+  "metaDescription": "Buy Extra Virgin Coconut Oil (500 ML) at Rs. 1,750 in Nepal. 100% cold-pressed unrefined oil for cooking, baby massage, hair & oil pulling. Fast delivery.",
+  "nepaliNameDevanagari": "भर्जिन नरिवलको तेल (५०० ml)",
+  "nepaliNameRoman": "Cold-Pressed Extra Virgin Nariwal ko Tel (500 ML Family Jar)",
+  "originBelt": "Cold-Pressed from Fresh Mature Coconut Milk (0% Heat / 0% Hexane)",
+  "shelfLife": "18 months in a cool cupboard away from direct sunlight",
+  "whatItIs": "NaturesMud Extra Virgin Coconut Oil (500 ML Family Value Jar) is cold-extracted from fresh, mature white coconut milk without heat, chemical hexane solvents, bleaching, or deodorizing. Crystal-clear above 24°C and snow-white when solidified in cooler Kathmandu winters, it retains ~50% natural Lauric Acid and Medium-Chain Triglycerides (MCTs) with a delicate, fresh coconut aroma.",
+  "nepaliKitchenUses": [
+    "Clean Everyday Cooking, Baking & Bulletproof Coffee: Use 1 teaspoon to 1 tablespoon for sautéing vegetables, frying eggs/pancakes, or blending into morning black coffee for MCT energy.",
+    "Gentle Baby Massage (तेल मालिस) & Skin Care: Warm a small spoonful between your palms for daily infant skin massage, diaper-area soothing, and cradle-cap care.",
+    "Morning Ayurvedic Oil Pulling (Gandusha): Swish 1 tablespoon in your mouth for 5–10 minutes on an empty stomach before brushing, then spit into a bin and rinse with warm water.",
+    "Deep Hair & Scalp Conditioning: Massage slightly warmed oil into scalp and hair lengths 1 hour before washing."
+  ],
+  "whoItSuits": "The economical 500 ML family jar suits households using virgin coconut oil daily across kitchen cooking, baby massage, oil pulling, and hair/skin care.",
+  "monsoonStorage": "Always use a clean, dry spoon so water droplets do not enter the jar. Note that pure virgin coconut oil naturally solidifies into a snow-white butter below 24°C (winter) and melts crystal-clear above 25°C (summer)—this phase change is the hallmark of unrefined purity.",
+  "comparisonTitle": "NaturesMud Cold-Pressed Extra Virgin Coconut Oil vs Refined / Copra Hair Oil",
+  "comparisonRows": [
+    {
+      "feature": "Extraction Source",
+      "naturesMud": "Cold-pressed from fresh white coconut milk (Edible & cosmetic grade)",
+      "typicalMarket": "Expeller-pressed from smoke-dried copra, then bleached & deodorized"
+    },
+    {
+      "feature": "Chemical Solvents & Mineral Oil",
+      "naturesMud": "0% Hexane, 0% Paraffin/Mineral Oil, 0% Synthetic Perfume",
+      "typicalMarket": "Commercial hair oils often contain 50%+ liquid paraffin (mineral oil)"
+    },
+    {
+      "feature": "Size Value Comparison",
+      "naturesMud": "500 ML Family Jar at Rs. 1,750 (Rs. 350 / 100ml)",
+      "typicalMarket": "180 ML Trial Jar at Rs. 650 (Rs. 361 / 100ml)"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Extra Virgin Coconut Oil (500ml) in Nepal?",
+      "a": "NaturesMud Extra Virgin Coconut Oil (500 ML Family Jar) costs Rs. 1,750 in Nepal (Rs. 350 per 100ml). We also offer a 180 ML jar at Rs. 650 for travel or trial."
+    },
+    {
+      "q": "Is this Coconut Oil edible for cooking as well as safe for baby massage?",
+      "a": "Yes! Because it is 100% pure cold-pressed food-grade Extra Virgin Coconut Oil with 0 additives or perfumes, you can use the exact same jar for cooking, oil pulling, baby massage, and hair care."
+    },
+    {
+      "q": "Why did my Coconut Oil turn solid white in winter?",
+      "a": "Pure unrefined coconut oil has a natural melting point of 24°C (76°F). In cool Kathmandu weather it solidifies into a soft white butter, and in warm weather it turns crystal-clear liquid. Place the jar in a bowl of warm water for 5 minutes if you prefer it liquid in winter."
+    },
+    {
+      "q": "Can I add a drop of Virgin Coconut Oil to my baby’s lito/jaulo?",
+      "a": "Yes, many parents stir 1/4 to 1/2 teaspoon of food-grade Virgin Coconut Oil or cow ghee into warm baby porridge for healthy fats (from 6 months, as advised by your pediatrician)."
+    },
+    {
+      "q": "Should I choose the 500 ML jar or the 180 ML jar?",
+      "a": "Choose the 500 ML jar (Rs. 1,750) for daily family cooking, baby massage, or oil pulling (better per-100ml value). Choose the 180 ML jar (Rs. 650) for travel, skincare table use, or first-time trial."
+    }
+  ],
+  "complementarySlugs": [
+    "dehydrated-coconut-chips",
+    "chia-seeds",
+    "banana-powder"
+  ],
+  "variantGroupTitle": "Select Jar Size (D12 Pack Size Selector)",
+  "variants": [
+    {
+      "slug": "virgin-coconut-oil-180ml",
+      "label": "180 ML Trial / Travel Jar",
+      "weight": "180 ML",
+      "price": 650,
+      "badge": "Rs. 361 / 100ml · Compact Size"
+    },
+    {
+      "slug": "virgin-coconut-oil-500ml",
+      "label": "500 ML Family Value Jar",
+      "weight": "500 ML",
+      "price": 1750,
+      "badge": "Rs. 350 / 100ml · Best Value"
+    }
+  ]
+}

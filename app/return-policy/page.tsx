@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Return, Exchange & Refund Policy',
+  title: 'Return, Exchange & Refund Policy | NaturesMud',
   description:
-    '7-day return, replacement, and refund policy for NaturesMud pure food products across Nepal.',
+    'NaturesMud Nepal 7-day return, exchange & refund policy. Simple replacements for damaged or incorrect items with fast customer support across Nepal.',
   alternates: {
     canonical: 'https://naturesmud.shop/return-policy',
   },

@@ -100,6 +100,13 @@ async function uploadFile(localPath, remoteDir, remoteFileName, maxRetries = 4) 
         ftpDir = ftpDir.substring(config.homeDir.length);
       }
       const remotePath = ftpDir + '/' + remoteFileName;
+      if (remoteFileName.includes('/')) {
+        const remoteParentDir = path.posix.dirname(remotePath);
+        if (remoteParentDir && remoteParentDir !== '/' && remoteParentDir !== '.') {
+          await client.ensureDir(remoteParentDir);
+          await client.cd('/');
+        }
+      }
       console.log(`  [FTP] Uploading ${remoteFileName} (${(fs.statSync(localPath).size / 1024 / 1024).toFixed(2)} MB, attempt ${attempt}/${maxRetries})...`);
       await client.uploadFrom(localPath, remotePath);
       console.log(`  [FTP] Successfully uploaded ${remoteFileName}!`);
@@ -229,10 +236,11 @@ async function main() {
   console.log('🚀 NATURE\'S MUD MASTER LIVE DEPLOY & PERSISTENCE PIPELINE');
   console.log('====================================================');
 
-  // 1. Sync database (Products, Catalog)
-  console.log('\n[1/6] 📊 Syncing Catalog to MySQL database...');
+  // 1. Sync database (Products, Catalog, Blogs, Recipes)
+  console.log('\n[1/6] 📊 Syncing Catalog, Blogs & Recipes to MySQL database...');
   try {
     execSync('node scripts/sync-database-catalog.js', { stdio: 'inherit' });
+    execSync('node scripts/sync-database-blogs.js', { stdio: 'inherit' });
     console.log('✅ Database synchronized successfully!');
   } catch (err) {
     console.error('⚠️ Database sync error:', err.message);
@@ -286,12 +294,18 @@ async function main() {
   const stats = fs.statSync(outZip);
   console.log(`✅ Build package created (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
 
-  // Ensure fresh 8-page catalog PDF
-  console.log('\n[3.5/6] 📄 Generating fresh 8-Page Master Magazine Catalog PDF...');
-  try {
-    execSync('node scripts/generate-magazine-pdf.js', { cwd: config.rootDir, stdio: 'inherit' });
-  } catch (e) {
-    console.warn('PDF generation notice:', e.message);
+  // Ensure fresh 8-page catalog PDF, shopping/marketplace feeds, Phase 7 & Phase 9 packs
+  if (!process.argv.includes('--fast')) {
+    console.log('\n[3.5/6] 📄 Generating fresh 8-Page Master Magazine Catalog PDF, Poster Flyer, Shopping Feeds, Phase 7 & Phase 9 Packs...');
+    try {
+      execSync('node scripts/generate-pdf-catalog.js', { cwd: config.rootDir, stdio: 'inherit' });
+      execSync('node scripts/generate-catalog-poster.js', { cwd: config.rootDir, stdio: 'inherit' });
+      execSync('node scripts/generate-shopping-feeds.mjs', { cwd: config.rootDir, stdio: 'inherit' });
+      execSync('node scripts/generate-phase7-packs.mjs', { cwd: config.rootDir, stdio: 'inherit' });
+      execSync('node scripts/generate-phase9-measurement-pack.mjs', { cwd: config.rootDir, stdio: 'inherit' });
+    } catch (e) {
+      console.warn('PDF/Feed generation notice:', e.message);
+    }
   }
 
   // 4. Remote cleanup & upload
@@ -312,12 +326,40 @@ async function main() {
     }
   }
 
-  // Guarantee direct overwrite of 8-page catalog PDFs & llms.txt
-  const catalogPdfs = ['Nature_Mud_Product_Catalog.pdf', 'catalog.pdf', 'Nature_Mud_Magazine_Catalog.pdf', 'llms.txt'];
-  for (const pdf of catalogPdfs) {
-    const localPdf = path.join(config.rootDir, 'public', pdf);
-    if (fs.existsSync(localPdf)) {
-      await uploadFile(localPdf, `${config.homeDir}/naturesmud.shop/public`, pdf);
+  // Guarantee direct overwrite of 8-page catalog PDFs, llms.txt, keyword_map.csv, shopping feeds, Phase 7 & Phase 9 packs
+  if (!process.argv.includes('--fast')) {
+    const catalogPdfs = [
+      'Nature_Mud_Product_Catalog.pdf',
+      'catalog.pdf',
+      'Nature_Mud_Magazine_Catalog.pdf',
+      'llms.txt',
+      'keyword_map.csv',
+      'merchant-feed.xml',
+      'meta-catalog-feed.xml',
+      'meta-catalog-feed.csv',
+      'daraz-top-10-listings.csv',
+      'daraz-top-10-listings.json',
+      'daraz-all-32-sku-listings.csv',
+      'daraz-all-32-sku-listings.json',
+      'keyword_map.json',
+      'gbp-optimization-pack.json',
+      'video-scripts-32-skus.json',
+      'video-scripts-32-skus.csv',
+      'offsite-authority-outreach-pack.json',
+      'weekly-rank-tracker-60-queries.csv',
+      'weekly-rank-tracker-60-queries.json',
+      'ai-citation-tracker-25-prompts.csv',
+      'ai-citation-tracker-25-prompts.json',
+      'phase9-measurement-pack.json',
+      'products/nm-pistachio-jar.jpg',
+      'images/posters/dashain-offer-poster.jpg',
+      'images/dashain-offer.jpg',
+    ];
+    for (const pdf of catalogPdfs) {
+      const localPdf = path.join(config.rootDir, 'public', pdf);
+      if (fs.existsSync(localPdf)) {
+        await uploadFile(localPdf, `${config.homeDir}/naturesmud.shop/public`, pdf);
+      }
     }
   }
 
@@ -490,15 +532,27 @@ foreach ($catalog as $p) {
         ]);
         $upsertCount++;
     } else {
+        $revStmt = $pdo->prepare("SELECT COUNT(*) as cnt, COALESCE(AVG(rating), 0) as avg_r FROM reviews WHERE product_id = :pid AND is_approved = 1 AND body IS NOT NULL AND TRIM(body) != ''");
+        $revStmt->execute(['pid' => $row['id']]);
+        $revStats = $revStmt->fetch();
+        $ratingCount = intval($revStats['cnt'] ?? 0);
+        $ratingAvg = $ratingCount > 0 ? round(floatval($revStats['avg_r']), 1) : 0;
+        $isFeatured = !empty($p['isFeatured']) ? 1 : 0;
+        $isBestSeller = !empty($p['isBestseller']) ? 1 : 0;
         $upd = $pdo->prepare("UPDATE products SET
             name = :name,
+            category_id = :category_id,
             description = :description,
             short_description = :short_description,
             is_active = 1,
+            is_featured = :is_featured,
+            is_best_seller = :is_best_seller,
             price = :price,
             compare_at_price = :compare_at_price,
             weight = :weight,
             unit = :unit,
+            rating_avg = :rating_avg,
+            rating_count = :rating_count,
             images = :images,
             ingredients = :ingredients,
             benefits = :benefits,
@@ -511,12 +565,17 @@ foreach ($catalog as $p) {
             WHERE id = :id");
         $upd->execute([
             'name' => $officialName,
+            'category_id' => $catId,
             'description' => $p['description'] ?? '',
             'short_description' => $p['shortDescription'] ?? $p['description'] ?? '',
+            'is_featured' => $isFeatured,
+            'is_best_seller' => $isBestSeller,
             'price' => $price,
             'compare_at_price' => $mrp,
             'weight' => $weightNum,
             'unit' => $unit,
+            'rating_avg' => $ratingAvg,
+            'rating_count' => $ratingCount,
             'images' => $imagesJson,
             'ingredients' => $ingredientsJson,
             'benefits' => $benefitsJson,
@@ -531,8 +590,9 @@ foreach ($catalog as $p) {
     }
 }
 
-// Remove corrupted legacy duplicate slugs from MySQL
+// Remove corrupted legacy duplicate slugs from MySQL and deactivate consolidated premium-pistachios
 $pdo->exec("DELETE FROM products WHERE slug IN ('premium-coconut-oil', 'flaxseed-crackers')");
+$pdo->exec("UPDATE products SET is_active = 0 WHERE slug IN ('premium-pistachios')");
 
 echo json_encode([
     'success' => true,

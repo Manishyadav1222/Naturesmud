@@ -59,6 +59,10 @@ jest.mock('lucide-react', () => ({
   Leaf: () => <svg data-testid="leaf" />,
   BadgeCheck: () => <svg data-testid="badge-check" />,
   Zap: () => <svg data-testid="zap" />,
+  Check: () => <svg data-testid="check" />,
+  Sparkles: () => <svg data-testid="sparkles" />,
+  Gift: () => <svg data-testid="gift" />,
+  Truck: () => <svg data-testid="truck" />,
 }));
 
 jest.mock('@/lib/utils', () => ({
@@ -124,17 +128,18 @@ describe('ProductCard Component', () => {
     expect(screen.getByText(/Bestseller/i)).toBeInTheDocument();
   });
 
-  it('displays organic badge', () => {
+  it('displays pure badge', () => {
     render(<ProductCard product={mockProduct} />);
     
-    expect(screen.getByText('Organic')).toBeInTheDocument();
+    expect(screen.getByText(/100% Pure/i)).toBeInTheDocument();
   });
 
-  it('shows rating stars', () => {
+  it('shows rating score and reviews', () => {
     render(<ProductCard product={mockProduct} />);
     
-    const stars = screen.getAllByTestId('star');
-    expect(stars).toHaveLength(5);
+    expect(screen.getByText('4.5')).toBeInTheDocument();
+    expect(screen.getByText(/10 reviews/i)).toBeInTheDocument();
+    expect(screen.getAllByTestId('star')).toHaveLength(1);
   });
 
   it('displays weight badge', () => {

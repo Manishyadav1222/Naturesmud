@@ -12,6 +12,30 @@ export interface CouponRule {
 }
 
 export const COUPON_REGISTRY: Record<string, CouponRule> = {
+  SUPERFOOD10: {
+    code: 'SUPERFOOD10',
+    type: 'percent',
+    value: 10,
+    minOrderAmount: 0,
+    maxDiscountAmount: 5000,
+    active: true,
+    startDate: '2026-01-01T00:00:00+05:45',
+    endDate: '2027-12-31T23:59:59+05:45',
+    description: '10% off Himalayan Superfood orders',
+    stackable: false,
+  },
+  CLEAN11: {
+    code: 'CLEAN11',
+    type: 'percent',
+    value: 11,
+    minOrderAmount: 1000,
+    maxDiscountAmount: 2500,
+    active: true,
+    startDate: '2026-01-01T00:00:00+05:45',
+    endDate: '2027-12-31T23:59:59+05:45',
+    description: '11% off Clean Greens & Natural Sweetener orders',
+    stackable: false,
+  },
   WELCOME5: {
     code: 'WELCOME5',
     type: 'percent',
@@ -28,12 +52,12 @@ export const COUPON_REGISTRY: Record<string, CouponRule> = {
     code: 'STORE5',
     type: 'percent',
     value: 5,
-    minOrderAmount: 1000,
+    minOrderAmount: 0,
     maxDiscountAmount: 1500,
     active: true,
     startDate: '2026-01-01T00:00:00+05:45',
     endDate: '2027-12-31T23:59:59+05:45',
-    description: '5% storewide discount on orders of Rs. 1,000 or more',
+    description: '5% storewide discount on all orders',
     stackable: false,
   },
   ENERGY11: {

@@ -793,7 +793,7 @@ export default function AccountPage() {
                 <p className="font-semibold text-dark mb-1 flex items-center gap-1.5">
                   <Star className="w-3.5 h-3.5 text-gold" /> Demo credentials
                 </p>
-                <p>Email: <code className="bg-white px-1.5 py-0.5 rounded">customer@naturesmud.com</code></p>
+                <p>Email: <code className="bg-white px-1.5 py-0.5 rounded">info@naturesmud.shop</code></p>
                 <p>Password: <code className="bg-white px-1.5 py-0.5 rounded">password</code></p>
                 <p className="mt-1.5 text-gray-400">(Or continue instantly with Google / Meta above)</p>
               </div>

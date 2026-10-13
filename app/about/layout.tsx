@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Story, Himalayan Sourcing & Direct Farmer Partnerships in Nepal',
+  title: 'Our Story & Farmer Sourcing in Nepal | NaturesMud',
   description:
-    'Learn how NaturesMud partners directly with smallholder farming communities across Nepal’s Terai, Hilly, and Himalayan regions to craft 100% pure dehydrated fruits, superfood powders, mountain nuts & seeds with 0 additives and 0 preservatives.',
+    'Discover NaturesMud Nepal. Direct farmer sourcing across Terai & Himalayan belts for 100% pure dehydrated fruits, superfood powders & nuts. 0 additives.',
   alternates: {
     canonical: 'https://naturesmud.shop/about',
   },
   openGraph: {
-    title: 'Our Story & Direct Farmer Sourcing in Nepal | NaturesMud',
+    title: 'Our Story & Farmer Sourcing in Nepal | NaturesMud',
     description:
-      'Discover NaturesMud’s 0-additive, 0-preservative whole-food mission and direct sourcing across Nepal’s Terai, Hilly & Himalayan regions.',
+      'Discover NaturesMud Nepal. Direct farmer sourcing across Terai & Himalayan belts for 100% pure dehydrated fruits, superfood powders & nuts. 0 additives.',
     url: 'https://naturesmud.shop/about',
     siteName: 'NaturesMud Nepal',
     type: 'website',

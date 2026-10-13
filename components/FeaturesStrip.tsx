@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Truck, ShieldCheck, Recycle, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Truck, ShieldCheck, Gift, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 
 interface FeaturesStripProps {
@@ -14,44 +14,44 @@ export default function FeaturesStrip({ className = '', variant = 'light' }: Fea
 
   const features = [
     {
+      icon: Sparkles,
+      badge: '🎉 Valid Till Dashain End',
+      badgeColor: 'bg-red-500/15 text-red-800 border-red-500/30',
+      title: 'Dashain Blessings & Health',
+      desc: 'Celebrate with 100% Pure Himalayan Superfoods, Nuts & Oils',
+      accentColor: 'from-red-600 to-amber-600',
+      iconBg: 'bg-amber-100 text-red-800',
+      animation: 'star-glow'
+    },
+    {
       icon: Truck,
       badge: '🇳🇵 All 77 Districts',
       badgeColor: 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20',
-      title: 'Free Shipping Over Rs. 3,000',
+      title: 'Free Delivery Over Rs. 3,000',
       desc: 'On all orders across Nepal · 24-48 hr Express Delivery',
       accentColor: 'from-emerald-500 to-teal-700',
       iconBg: 'bg-emerald-100 text-emerald-800',
       animation: 'truck-run'
     },
     {
-      icon: ShieldCheck,
-      badge: '✨ Lab Tested Purity',
-      badgeColor: 'bg-amber-500/10 text-amber-700 border-amber-500/20',
-      title: '0 Additives · 0 Preservatives',
-      desc: '100% Pure Himalayan Wholesomeness · Zero Cane Sugar',
-      accentColor: 'from-amber-500 to-yellow-700',
-      iconBg: 'bg-amber-100 text-amber-800',
+      icon: Gift,
+      badge: '🎁 Dashain Bonus Gift',
+      badgeColor: 'bg-rose-500/15 text-rose-800 border-rose-500/30',
+      title: 'Free Delivery + Pink Salt Free > 5,000',
+      desc: 'Orders over Rs. 5,000+ get Free Delivery & Free Himalayan Pink Salt!',
+      accentColor: 'from-rose-500 to-pink-700',
+      iconBg: 'bg-rose-100 text-rose-800',
       animation: 'shield-pulse'
     },
     {
-      icon: Recycle,
-      badge: '♻️ Zero Plastic',
-      badgeColor: 'bg-lime-500/10 text-lime-700 border-lime-500/20',
-      title: 'Earth-Friendly Packaging',
-      desc: 'Recyclable amber glass jars & biodegradable pouches',
-      accentColor: 'from-lime-500 to-green-700',
-      iconBg: 'bg-lime-100 text-lime-800',
+      icon: ShieldCheck,
+      badge: '✨ 100% Whole Food',
+      badgeColor: 'bg-amber-500/10 text-amber-700 border-amber-500/20',
+      title: '0 Additives · 0 Preservatives',
+      desc: 'Pure Single-Ingredient Foods · Zero Cane Sugar',
+      accentColor: 'from-amber-500 to-yellow-700',
+      iconBg: 'bg-amber-100 text-amber-800',
       animation: 'leaf-spin'
-    },
-    {
-      icon: Sparkles,
-      badge: '🏔️ Direct Mountain Sourcing',
-      badgeColor: 'bg-rose-500/10 text-rose-700 border-rose-500/20',
-      title: 'Farm Fresh Daily',
-      desc: 'Direct ethical sourcing from farmers, no middlemen',
-      accentColor: 'from-rose-500 to-pink-700',
-      iconBg: 'bg-rose-100 text-rose-800',
-      animation: 'star-glow'
     },
   ];
 

@@ -49,7 +49,7 @@ export default function Footer() {
           {[
             { icon: Truck, title: 'Free Delivery', text: 'Over Rs. 3,000', accent: 'from-primary-500/20 to-primary-600/20 text-primary-300' },
             { icon: Leaf, title: '0 Additives', text: 'Pure Himalayan', accent: 'from-secondary-500/20 to-secondary-600/20 text-secondary-300' },
-            { icon: ShieldCheck, title: 'Quality Assured', text: 'Tested & Verified', accent: 'from-gold-500/20 to-gold-600/20 text-gold-300' },
+            { icon: ShieldCheck, title: 'Small-Batch', text: 'Hygienic Sealed', accent: 'from-gold-500/20 to-gold-600/20 text-gold-300' },
           ].map((item) => (
             <div
               key={item.title}
@@ -78,7 +78,7 @@ export default function Footer() {
               <Logo href="/" variant="white" size="xl" className="inline-flex" />
             </div>
             <p className="text-xs sm:text-sm text-white/60 leading-relaxed max-w-sm">
-              100% natural dehydrated fruit & vegetable powders, wild honey, and mountain nuts from Nepal.
+              100% natural dehydrated fruits, freeze-dried &amp; solar-dried superfood powders, mountain nuts, seeds, cold-pressed virgin coconut oil, and Himalayan salts across Nepal.
             </p>
 
             {/* Compact Contact Info */}

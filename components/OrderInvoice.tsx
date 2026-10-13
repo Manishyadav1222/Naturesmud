@@ -306,7 +306,7 @@ export default function OrderInvoice({ order, onClose, isModal = false }: OrderI
                           {/^\d+(\.00)?$/.test(String(item.weight).trim()) ? `${parseFloat(String(item.weight))} GM` : item.weight}
                         </p>
                       )}
-                      <p className="text-[10px] text-emerald-700 font-medium">100% Organic · Chemical Free</p>
+                      <p className="text-[10px] text-emerald-700 font-medium">100% Pure · 0% Preservatives</p>
                     </td>
                     <td className="py-3.5 text-center font-bold text-gray-800">{qty}</td>
                     <td className="py-3.5 text-right text-gray-600 font-mono">{formatPrice(price)}</td>

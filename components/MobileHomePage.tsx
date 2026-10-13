@@ -209,7 +209,7 @@ export default function MobileHomePage() {
         {STORY_CATEGORIES.map((cat) => (
           <Link
             key={cat.slug}
-            href={cat.slug === 'offers' ? '/offers' : `/products?category=${cat.slug}`}
+            href={cat.slug === 'offers' ? '/offers' : `/category/${cat.slug}`}
             className="flex flex-col items-center flex-shrink-0 group text-center"
           >
             {/* Story Avatar Bubble with Gradient Ring */}
@@ -504,7 +504,7 @@ export default function MobileHomePage() {
             { icon: ShieldCheck, text: '100% Nepali Origin', color: 'text-primary' },
             { icon: Truck, text: 'Free Delivery > Rs. 3,000', color: 'text-primary' },
             { icon: Sparkles, text: '0 Additives or Preservatives', color: 'text-amber-600' },
-            { icon: Star, text: '4.9★ (25,000+ Happy Nepalis)', color: 'text-amber-500' },
+            { icon: Star, text: '32 Whole-Food SKUs', color: 'text-amber-500' },
           ].map((item, i) => {
             const Icon = item.icon;
             return (
@@ -530,7 +530,7 @@ export default function MobileHomePage() {
               <Baby className="w-3 h-3" />
               Parent-Trusted (6M+)
             </span>
-            <Link href="/products?category=baby-care" className="text-xs font-bold text-rose-700 flex items-center gap-1">
+            <Link href="/category/powders" className="text-xs font-bold text-rose-700 flex items-center gap-1">
               <span>View All</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </Link>

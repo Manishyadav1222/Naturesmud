@@ -14,6 +14,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
+import { buildOfferItem } from '@/lib/data/offers';
 
 export interface SpecializedComboItem {
   productId: string;
@@ -44,7 +45,7 @@ export const specializedOffers: SpecializedCombo[] = [
   {
     id: 'combo-mountain-vitality-energy',
     title: 'Mountain Vitality & Athletic Energy Trio',
-    subtitle: 'Pure Himalayan Shilajit, Raw Mountain Almonds & Black Chia Seeds',
+    subtitle: 'Pure Himalayan Shilajit Resin, Raw Almonds & Chia Seeds',
     festivalLabel: '⚡ Peak Energy & Stamina',
     badge: '11% OFF · Peak Stamina',
     categoryIcon: '⚡',
@@ -55,31 +56,28 @@ export const specializedOffers: SpecializedCombo[] = [
     couponCode: 'ENERGY11',
     tag: 'Athletes & Fitness',
     items: [
-      {
-        productId: 'pure-mountain-himalayan-shilajit-resin',
-        name: 'Himalayan Shilajit',
+      buildOfferItem('pure-mountain-himalayan-shilajit-resin', {
+        name: 'Pure Himalayan Shilajit Resin',
         weight: '20 GM',
         image: '/products/shilajit.jpg',
         price: 1995,
-      },
-      {
-        productId: 'raw-himalayan-almonds',
+      }),
+      buildOfferItem('raw-himalayan-almonds', {
         name: 'Raw Almonds',
         weight: '200 GM',
         image: '/products/nm-almond-jar-v2.jpg',
         price: 750,
-      },
-      {
-        productId: 'chia-seeds',
-        name: 'Black Chia Seeds',
+      }),
+      buildOfferItem('chia-seeds', {
+        name: 'Chia Seeds',
         weight: '300 GM',
         image: '/products/chia-seeds.jpg',
         price: 495,
-      },
+      }),
     ],
     highlights: [
-      '84+ ionic minerals & 75% Fulvic Acid for ATP cellular stamina',
-      'Cold-cleaned raw mountain almonds for rapid muscle recovery',
+      'Traditional purified Himalayan shilajit resin with trace minerals',
+      'Cold-cleaned raw mountain almonds for daily nutrition',
       'Hydrophilic plant Omega-3 ALA for long-lasting hydration',
       '100% natural, unadulterated Himalayan high-altitude harvest',
     ],
@@ -87,7 +85,7 @@ export const specializedOffers: SpecializedCombo[] = [
   {
     id: 'combo-himalayan-skin-hair-beauty',
     title: 'Himalayan Glow, Hair & Skin Beauty Trio',
-    subtitle: 'Zinc-Rich Pumpkin Seeds, Virgin Coconut Oil & Strawberry Powder',
+    subtitle: 'Pumpkin Seeds, Extra Virgin Coconut Oil (180ml) & Freeze Dried Strawberry Powder',
     festivalLabel: '✨ Natural Radiance & Glow',
     badge: '10% OFF · Pure Beauty',
     categoryIcon: '✨',
@@ -98,27 +96,24 @@ export const specializedOffers: SpecializedCombo[] = [
     couponCode: 'BEAUTY10',
     tag: 'Collagen & Hair Care',
     items: [
-      {
-        productId: 'pumpkin-seeds',
-        name: 'Raw Pumpkin Seeds',
+      buildOfferItem('pumpkin-seeds', {
+        name: 'Pumpkin Seeds',
         weight: '300 GM',
         image: '/products/pumpkin-seeds.jpg',
         price: 650,
-      },
-      {
-        productId: 'virgin-coconut-oil-180ml',
-        name: 'Extra Virgin Coconut Oil',
-        weight: '180 GM',
+      }),
+      buildOfferItem('virgin-coconut-oil-180ml', {
+        name: 'Extra Virgin Coconut Oil (180ml)',
+        weight: '180 ML',
         image: '/products/coconut-oil.jpg',
         price: 650,
-      },
-      {
-        productId: 'strawberry-powder',
-        name: 'Strawberry Powder',
+      }),
+      buildOfferItem('strawberry-powder', {
+        name: 'Freeze Dried Strawberry Powder',
         weight: '80 GM',
         image: '/products/strawberry-powder-v2.jpg',
         price: 1395,
-      },
+      }),
     ],
     highlights: [
       'Natural bioavailable Zinc & Magnesium for lustrous hair & strong nails',
@@ -130,38 +125,35 @@ export const specializedOffers: SpecializedCombo[] = [
   {
     id: 'combo-cognitive-brain-memory',
     title: 'Cognitive Memory & Sharp Focus Trio',
-    subtitle: 'Roasted Pistachios, Roasted Himalayan Cashews & Wild Blueberries',
+    subtitle: 'Premium Pistachio Roasted & Salted, Roasted Cashew Nuts & Dried Blueberries',
     festivalLabel: '🧠 Mental Clarity & Focus',
     badge: '10% OFF · Brain Food',
     categoryIcon: '🧠',
     categoryLabel: 'Memory',
     discountPercentage: 10,
-    originalPrice: 2280,
-    offerPrice: 2052,
+    originalPrice: 2650,
+    offerPrice: 2385,
     couponCode: 'FOCUS10',
     tag: 'Focus & Brain Shield',
     items: [
-      {
-        productId: 'premium-pistachios',
-        name: 'Roasted Pistachios',
+      buildOfferItem('premium-pistachio-roasted-salted', {
+        name: 'Premium Pistachio Roasted & Salted',
         weight: '200 GM',
-        image: '/products/pistachios.jpg',
-        price: 880,
-      },
-      {
-        productId: 'roasted-cashewnuts',
-        name: 'Roasted Cashews',
+        image: '/products/nm-pistachio-jar.jpg',
+        price: 1250,
+      }),
+      buildOfferItem('roasted-cashewnuts', {
+        name: 'Roasted Cashew Nuts',
         weight: '150 GM',
         image: '/products/nm-roasted-cashew-new.jpg',
         price: 750,
-      },
-      {
-        productId: 'dried-blueberries',
+      }),
+      buildOfferItem('dried-blueberries', {
         name: 'Dried Blueberries',
         weight: '100 GM',
         image: '/products/dried-blueberries-100g.jpg',
         price: 650,
-      },
+      }),
     ],
     highlights: [
       'High in Vitamin B6, Lutein & neuroprotective antioxidants',
@@ -173,7 +165,7 @@ export const specializedOffers: SpecializedCombo[] = [
   {
     id: 'combo-ayurvedic-digestion-gut',
     title: 'Ayurvedic Digestion & Gut Health Trio',
-    subtitle: 'Dehydrated Papaya, Bire Noon Black Salt & Himalayan Pink Salt',
+    subtitle: 'Dehydrated Papaya, Himalayan Black Salt (Bire Noon) & Himalayan Pink Salt',
     festivalLabel: '🌿 Gut Cleanse & Digestion',
     badge: '10% OFF · Ayurvedic Tonic',
     categoryIcon: '🌿',
@@ -184,27 +176,24 @@ export const specializedOffers: SpecializedCombo[] = [
     couponCode: 'GUTHEALTH10',
     tag: 'Metabolism & Hydration',
     items: [
-      {
-        productId: 'dehydrated-papaya',
+      buildOfferItem('dehydrated-papaya', {
         name: 'Dehydrated Papaya',
         weight: '90 GM',
         image: '/products/nm-papaya-flat.jpeg',
         price: 395,
-      },
-      {
-        productId: 'pure-himalayan-black-salt-bire-noon',
-        name: 'Bire Noon Black Salt',
+      }),
+      buildOfferItem('pure-himalayan-black-salt-bire-noon', {
+        name: 'Himalayan Black Salt (Bire Noon)',
         weight: '200 GM',
         image: '/products/black-salt.jpg',
         price: 220,
-      },
-      {
-        productId: 'himalayan-pink-salt',
-        name: 'Fine Pink Salt',
+      }),
+      buildOfferItem('himalayan-pink-salt', {
+        name: 'Himalayan Pink Salt',
         weight: '200 GM',
         image: '/products/pink-salt.jpg',
         price: 250,
-      },
+      }),
     ],
     highlights: [
       'Active papain enzymes to smoothly break down heavy festive meals',
@@ -215,45 +204,42 @@ export const specializedOffers: SpecializedCombo[] = [
   },
   {
     id: 'combo-metabolic-sugar-detox',
-    title: 'Metabolic Cleanse & Sugar Detox Trio',
-    subtitle: 'Pure Dates Powder, Organic Moringa Leaf Powder & Roasted Makhana',
-    festivalLabel: '🥗 Metabolic Cleanse & Snacks',
-    badge: '11% OFF · Sugar Detox',
+    title: 'Clean Greens & Natural Sweetener Trio',
+    subtitle: 'Dates Powder, Moringa Leaf Powder & Makhana (Fox Nuts)',
+    festivalLabel: '🥗 Clean Greens & Snacks',
+    badge: '11% OFF · Zero White Sugar',
     categoryIcon: '🥗',
-    categoryLabel: 'Detox',
+    categoryLabel: 'Clean Eating',
     discountPercentage: 11,
     originalPrice: 1480,
     offerPrice: 1320,
-    couponCode: 'DETOX11',
-    tag: 'Diabetic-Friendly & Guilt-Free',
+    couponCode: 'CLEAN11',
+    tag: 'Zero Added Cane Sugar',
     items: [
-      {
-        productId: 'dates-powder',
-        name: 'Pure Dates Powder',
+      buildOfferItem('dates-powder', {
+        name: 'Dates Powder',
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
-      },
-      {
-        productId: 'moringa-leaf-powder',
+      }),
+      buildOfferItem('moringa-leaf-powder', {
         name: 'Moringa Leaf Powder',
         weight: '100 GM',
         image: '/products/moringa-leaf-powder.jpg',
         price: 690,
-      },
-      {
-        productId: 'makhana-fox-nuts',
-        name: 'Roasted Makhana',
+      }),
+      buildOfferItem('makhana-fox-nuts', {
+        name: 'Makhana (Fox Nuts)',
         weight: '50 GM',
         image: '/products/nm-makhana-jar.jpeg',
         price: 390,
-      },
+      }),
     ],
     highlights: [
-      'Low-glycemic whole-food fruit sweetener — perfect sugar alternative',
+      'Whole-fruit dates powder — 100% natural alternative to refined sugar',
       '90+ natural nutrients & 46 antioxidants in shade-dried moringa',
       'Light, crunchy popped water lily seeds with zero trans-fats',
-      'Supports steady blood glucose balance & natural liver detoxification',
+      '100% whole-food ingredients with zero artificial additives',
     ],
   },
 ];
@@ -265,14 +251,6 @@ export default function HeroOfferSection() {
   const [isAdded, setIsAdded] = useState(false);
   const openDrawer = useCartStore((s) => s.openDrawer);
 
-  // Time remaining state
-  const [timeLeft, setTimeLeft] = useState({
-    days: 4,
-    hours: 18,
-    minutes: 36,
-    seconds: 45,
-  });
-
   // Auto-cycle through offer tabs every 4.5s unless hovered
   useEffect(() => {
     if (isHovered) return;
@@ -283,21 +261,6 @@ export default function HeroOfferSection() {
 
     return () => clearInterval(interval);
   }, [isHovered]);
-
-  // Live countdown timer ticker
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: 59, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return prev;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   const currentOffer = specializedOffers[activeIdx] || specializedOffers[0];
 
@@ -382,7 +345,7 @@ export default function HeroOfferSection() {
           />
         </div>
 
-        {/* Header Row: Category Ribbon & Countdown */}
+        {/* Header Row: Category Ribbon & Controls */}
         <div className="relative z-10 flex items-center justify-between gap-2 pb-2.5 border-b border-amber-200/60 pt-0.5">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-red-600/10 via-amber-400/10 to-yellow-400/10 border border-red-300/40">
             <Sparkles className="w-3 h-3 text-red-600" />
@@ -410,15 +373,9 @@ export default function HeroOfferSection() {
               </button>
             </div>
 
-            {/* Countdown Clock */}
-            <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-red-800 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">
-              <Timer className="w-3 h-3 text-red-600 animate-pulse" />
-              <span className="font-bold">
-                {timeLeft.days}d {String(timeLeft.hours).padStart(2, '0')}h:
-                {String(timeLeft.minutes).padStart(2, '0')}m:
-                {String(timeLeft.seconds).padStart(2, '0')}s
-              </span>
-            </div>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-red-800 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full">
+              3-Jar Value Pack
+            </span>
           </div>
         </div>
 
@@ -476,7 +433,7 @@ export default function HeroOfferSection() {
                     </span>
                   </div>
                   <span className="text-[9px] sm:text-[10px] font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-300 shrink-0">
-                    🗓️ Oct 2–20, 2026
+                    🇳🇵 Direct Nepal Delivery
                   </span>
                 </div>
                 <h3 className="font-heading font-extrabold text-base sm:text-lg text-red-900 mt-1 leading-snug">

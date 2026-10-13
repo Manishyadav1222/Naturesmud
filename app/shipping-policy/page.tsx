@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Shipping & Delivery Policy Across Nepal (Kathmandu, Pokhara & All 77 Districts)',
+  title: 'Shipping & Delivery Policy in Nepal | NaturesMud',
   description:
-    'Shipping information, delivery times, Cash on Delivery (COD), and free delivery over Rs. 3,000 for NaturesMud orders across Kathmandu Valley, Pokhara, Chitwan, Butwal, Biratnagar & all of Nepal.',
+    'NaturesMud Nepal shipping policy: 24-48h Kathmandu delivery (Rs. 100), 2-5 days across all 77 districts (Rs. 150). Free delivery on orders over Rs. 3,000.',
   alternates: {
     canonical: 'https://naturesmud.shop/shipping-policy',
   },

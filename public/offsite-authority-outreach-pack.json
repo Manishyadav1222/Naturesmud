@@ -1,0 +1,118 @@
+{
+  "brandNapStandard": {
+    "name": "NaturesMud Nepal",
+    "address": "Baneshwor, Kathmandu 44600, Nepal",
+    "phone": "+977-9713888002",
+    "email": "info@naturesmud.shop",
+    "website": "https://naturesmud.shop",
+    "hours": "Sunday – Friday: 9:00 AM – 6:00 PM NPT"
+  },
+  "nepalCitationsAndDirectories": [
+    {
+      "priority": 1,
+      "platform": "Google Business Profile (Google Maps)",
+      "url": "https://business.google.com",
+      "category": "Natural Goods Store / Health Food Store",
+      "napMatchRequired": "NaturesMud Nepal | Baneshwor, Kathmandu 44600, Nepal | +977-9713888002",
+      "actionItem": "Claim/verify Baneshwor pin, upload 32 GBP product cards from /gbp-optimization-pack.json, post 8 Q&A pairs."
+    },
+    {
+      "priority": 2,
+      "platform": "Bing Places for Business",
+      "url": "https://www.bingplaces.com",
+      "category": "Health Food Store",
+      "napMatchRequired": "NaturesMud Nepal | Baneshwor, Kathmandu 44600, Nepal | +977-9713888002",
+      "actionItem": "Import directly from verified Google Business Profile so ChatGPT Search & Copilot resolve local entity."
+    },
+    {
+      "priority": 3,
+      "platform": "Apple Business Connect (Apple Maps)",
+      "url": "https://businessconnect.apple.com",
+      "category": "Health Market / Specialty Food",
+      "napMatchRequired": "NaturesMud Nepal | Baneshwor, Kathmandu 44600, Nepal | +977-9713888002",
+      "actionItem": "Register Baneshwor location pin for iPhone Siri / Apple Maps local queries in Kathmandu."
+    },
+    {
+      "priority": 4,
+      "platform": "NepalYP (Nepal Yellow Pages)",
+      "url": "https://www.nepalyp.com",
+      "category": "Food Manufacturing & Natural Food Store Kathmandu",
+      "napMatchRequired": "NaturesMud Nepal | Baneshwor, Kathmandu 44600, Nepal | +977-9713888002",
+      "actionItem": "Submit business profile with canonical link to https://naturesmud.shop and /locations."
+    },
+    {
+      "priority": 5,
+      "platform": "Khojnu.com & Bhetincha.com Nepal Directories",
+      "url": "https://khojnu.com",
+      "category": "Organic & Health Food Suppliers in Kathmandu",
+      "napMatchRequired": "NaturesMud Nepal | Baneshwor, Kathmandu 44600, Nepal | +977-9713888002",
+      "actionItem": "List Baneshwor HQ + 6 category hub descriptions."
+    },
+    {
+      "priority": 6,
+      "platform": "Daraz Nepal Official Brand Store",
+      "url": "https://www.daraz.com.np",
+      "category": "Groceries & Mother/Baby",
+      "napMatchRequired": "NaturesMud",
+      "actionItem": "Upload the Top 10 SKUs from /daraz-top-10-listings.csv to capture Daraz internal searches."
+    }
+  ],
+  "collaboratorOutreachTemplates": [
+    {
+      "segment": "Pediatric Nutritionists & Registered Dietitians in Nepal",
+      "targetContent": "Single-Ingredient Weaning Powders (Dates Powder, Sweet Potato Powder, Carrot Powder, Banana Powder)",
+      "complianceRule": "Strictly factual ingredient review only; always include \"from 6 months, as advised by your pediatrician\"; zero disease/cure claims.",
+      "messageTemplate": "Namaste [Name] ji, we at NaturesMud Nepal (Baneshwor, Kathmandu) prepare 100% single-ingredient dehydrated fruit and vegetable powders (Dates Powder, Sweet Potato Powder, Carrot Powder, Banana Powder) in glass jars with 0% added sugar, 0% salt, and 0% preservatives. We would love to send you a complimentary tasting & inspection box from our Baneshwor hub so you can examine the ingredient purity and texture firsthand. No scripted claims—just your honest professional feedback."
+    },
+    {
+      "segment": "Nepali Mom & Baby Weaning Creators (TikTok / Instagram)",
+      "targetContent": "5-Minute Homemade Lito / Jaulo / Smoothie Bowl Recipes",
+      "complianceRule": "Must show real spoon texture & preparation; include \"from 6 months, as advised by your pediatrician\"; no fabricated health claims.",
+      "messageTemplate": "Namaste [Creator Name] ji! Loved your recent video on homemade baby food in Nepal. We make 100% pure single-ingredient Dates Powder (Khajoor ko Dhulo), Sweet Potato Powder, and Carrot Powder in glass jars right here in Kathmandu (0% refined sugar or preservatives). May we send your family a complimentary NaturesMud Weaning Starter Box to try in your kitchen?"
+    },
+    {
+      "segment": "Kathmandu Fitness, Marathon & Gym Coaches",
+      "targetContent": "Beetroot Powder Pre-Workout, Chia Seeds, Pumpkin Seeds & Mix Dry Nuts",
+      "complianceRule": "Focus on natural whole-food nutrition, dietary nitrates, and plant protein; no medical claims.",
+      "messageTemplate": "Namaste [Coach Name]! Many runners and lifters in Kathmandu use our 100% pure Beetroot Powder (Rs. 430 / 100 GM glass jar), Chia Seeds, and Pumpkin Seeds as a clean whole-food pre-workout and recovery topping. We would love to send you a complimentary NaturesMud Athlete Pack from our Baneshwor hub to test in your daily shakes."
+    }
+  ],
+  "brandSerpOwnershipChecklist": [
+    {
+      "surface": "1. Official Domain (naturesmud.shop)",
+      "targetQuery": "naturesmud / natures mud nepal",
+      "status": "LIVE & VERIFIED",
+      "url": "https://naturesmud.shop"
+    },
+    {
+      "surface": "2. Official Category & Location Sitelinks (/category/*, /locations, /about, /contact)",
+      "targetQuery": "naturesmud products / naturesmud kathmandu location",
+      "status": "LIVE & VERIFIED",
+      "url": "https://naturesmud.shop/locations"
+    },
+    {
+      "surface": "3. Official Instagram (@naturesmud.np)",
+      "targetQuery": "naturesmud instagram",
+      "status": "LINKED IN SCHEMA sameAs",
+      "url": "https://www.instagram.com/naturesmud.np"
+    },
+    {
+      "surface": "4. Official Facebook Page (facebook.com/naturesmud)",
+      "targetQuery": "naturesmud facebook",
+      "status": "LINKED IN SCHEMA sameAs",
+      "url": "https://www.facebook.com/naturesmud"
+    },
+    {
+      "surface": "5. Official TikTok (@naturesmud.np)",
+      "targetQuery": "naturesmud tiktok",
+      "status": "LINKED IN SCHEMA sameAs",
+      "url": "https://www.tiktok.com/@naturesmud.np"
+    },
+    {
+      "surface": "6. Official YouTube (@naturesmud)",
+      "targetQuery": "naturesmud youtube",
+      "status": "LINKED IN SCHEMA sameAs",
+      "url": "https://www.youtube.com/@naturesmud"
+    }
+  ]
+}

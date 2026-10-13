@@ -139,7 +139,7 @@ export default function ArtisanEditorialHero() {
                 Products Menu
               </Link>
               <Link
-                href="/our-story"
+                href="/about"
                 className="px-7 py-3 rounded-full bg-[#E4D5C3] hover:bg-[#D8C7B3] text-[#2C1704] font-medium text-sm sm:text-base shadow-2xs transition-all duration-200 active:scale-95"
               >
                 Our Ritual

@@ -1,0 +1,80 @@
+{
+  "slug": "himalayan-pink-salt",
+  "seoTitle": "Himalayan Pink Salt Price in Nepal | 200g | NaturesMud",
+  "metaDescription": "Buy Himalayan Pink Salt / Sindhe Noon (200 GM) at Rs. 250 in Nepal. Unrefined rock salt with natural trace minerals & 0 anti-caking chemicals. Fast.",
+  "nepaliNameDevanagari": "हिमाली गुलाबी नुन (सिधे नुन / सेन्धा नमक)",
+  "nepaliNameRoman": "Sindhe Noon / Sendha Namak (Himalayan Pink Rock Salt)",
+  "originBelt": "Ancient Himalayan Pre-Cambrian Salt Beds",
+  "shelfLife": "24+ months when kept dry in its airtight glass jar",
+  "whatItIs": "NaturesMud Himalayan Pink Salt (known in Nepali households as Sindhe Noon / सिधे नुन) is unrefined crystalline rock salt crushed into fine culinary granules. Unlike heavily bleached industrial table salt treated with chemical anti-caking agents (such as sodium ferrocyanide or aluminum silicate), our Pink Salt is 100% unbleached and naturally tinted pink by trace iron, potassium, calcium, and magnesium minerals.",
+  "nepaliKitchenUses": [
+    "Everyday Dal, Tarkari & Soup Seasoning: Use in place of refined white salt in daily Nepali dal, vegetable tarkari, and curries for a cleaner, rounder mineral taste.",
+    "Morning Lemon-Electrolyte Hydration: Dissolve 1/4 teaspoon in a glass of lukewarm lemon water first thing in the morning or after sweating on treks/runs.",
+    "Fasting (Vrat / Ekadashi) Meals: Because Sindhe Noon is pure rock salt, it is the traditional salt used for Ekadashi, Teej, and Navratri fasting dishes like roasted Makhana and आलू फ्राई.",
+    "Warm Gargle & Steam Rinse: Dissolve 1/2 teaspoon in a cup of warm water for a soothing traditional salt-water throat gargle during seasonal weather changes."
+  ],
+  "whoItSuits": "Suits every Nepali kitchen upgrading from bleached refined salt, fasting (vrat) observers, athletes/trekkers making homemade electrolyte water, and clean-eating households.",
+  "monsoonStorage": "Salt naturally draws moisture from humid monsoon air. Keep the glass jar lid tightly closed and store away from stove steam; adding a few dry raw rice grains inside a salt shaker also keeps it free-flowing.",
+  "comparisonTitle": "NaturesMud Himalayan Pink Salt vs Refined Industrial Table Salt",
+  "comparisonRows": [
+    {
+      "feature": "Refining & Bleaching",
+      "naturesMud": "100% Unrefined, Unbleached Natural Rock Salt",
+      "typicalMarket": "Chemically refined at high heat & bleached white"
+    },
+    {
+      "feature": "Anti-Caking Chemicals",
+      "naturesMud": "0% Anti-Caking Agents (Zero ferrocyanide / silicate)",
+      "typicalMarket": "Contains synthetic free-flow chemicals"
+    },
+    {
+      "feature": "Mineral Profile",
+      "naturesMud": "Sodium chloride + natural trace iron, potassium, calcium & magnesium",
+      "typicalMarket": "Stripped of natural trace minerals"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Himalayan Pink Salt (सिधे नुन) in Nepal?",
+      "a": "NaturesMud Himalayan Pink Salt (200 GM Glass Jar) costs Rs. 250 in Nepal (Rs. 125 per 100g). We deliver across Kathmandu Valley and all 77 districts."
+    },
+    {
+      "q": "What is the difference between Sindhe Noon (Pink Salt) and Bire Noon (Black Salt)?",
+      "a": "Sindhe Noon (Pink Salt) has a clean, mild salty taste ideal for everyday cooking and fasting (vrat), while Bire Noon (Black Salt) is kiln-fired with herbs and has a tangy, sulfurous aroma best for fruit salads, nimbu pani, and chutneys."
+    },
+    {
+      "q": "Does Himalayan Pink Salt contain naturally occurring iodine?",
+      "a": "Unrefined Pink Rock Salt contains only trace natural iodine—it is not artificially iodized like commercial packet salt. If your doctor recommends iodized salt for thyroid/pregnancy needs, follow your doctor’s advice."
+    },
+    {
+      "q": "Can I use this Pink Salt during Ekadashi or Navratri fasting?",
+      "a": "Yes, Sindhe Noon (Sendha Namak) is the authentic rock salt traditionally permitted during Hindu fasting days."
+    },
+    {
+      "q": "Is it fine grain or coarse crystals?",
+      "a": "It is finely ground for effortless dissolving in daily cooking, salads, and lemon water."
+    }
+  ],
+  "complementarySlugs": [
+    "pure-himalayan-black-salt-bire-noon",
+    "makhana-fox-nuts",
+    "chia-seeds"
+  ],
+  "variantGroupTitle": "Choose Himalayan Salt Type",
+  "variants": [
+    {
+      "slug": "himalayan-pink-salt",
+      "label": "Himalayan Pink Salt (Sindhe Noon)",
+      "weight": "200 GM",
+      "price": 250,
+      "badge": "Everyday Cooking & Fasting"
+    },
+    {
+      "slug": "pure-himalayan-black-salt-bire-noon",
+      "label": "Himalayan Black Salt (Bire Noon)",
+      "weight": "200 GM",
+      "price": 220,
+      "badge": "Fruit Salad, Nimbu Pani & Chutney"
+    }
+  ]
+}

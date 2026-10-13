@@ -1,0 +1,80 @@
+{
+  "slug": "roasted-almonds",
+  "seoTitle": "Roasted Almonds Price in Nepal | 200g Jar | NaturesMud",
+  "metaDescription": "Buy Roasted Almonds / Badam (200 GM) at Rs. 750 in Nepal. Slow dry-roasted crunchy almonds with Himalayan pink salt, 0 oil frying. Fast Nepal delivery.",
+  "nepaliNameDevanagari": "रोस्टेड बदाम (भुटेको बदाम)",
+  "nepaliNameRoman": "Bhuteko Badam (Oil-Free Dry-Roasted Almonds)",
+  "originBelt": "Small-Batch Dry-Roasted in Kathmandu",
+  "shelfLife": "9–12 months in its airtight glass jar",
+  "whatItIs": "NaturesMud Roasted Almonds (200 GM Glass Jar) are plump, whole sweet almonds slow dry-roasted without a drop of cooking oil and lightly seasoned with pure Himalayan Pink Salt. Dry-roasting transforms the dense raw kernel into a crisp, aromatic snack while preserving natural Vitamin E, plant protein, magnesium, and monounsaturated fats.",
+  "nepaliKitchenUses": [
+    "4 PM Office Desk & Study Snack: Keep the glass jar on your work desk and eat 8–10 crunchy Roasted Almonds instead of biscuits or fried namkeen.",
+    "Pre-Gym & Trekking Pocket Fuel: Pair a handful of Roasted Almonds with 2 slices of Dehydrated Mango or Dried Cranberries before a workout or hike.",
+    "Chopped Oatmeal & Ice-Cream Crunch: Coarsely chop 4–5 roasted almonds over morning porridge, dahi, or desserts.",
+    "Festive Bhai Tika & Gift Hamper Staple: Ready to serve straight from the glass jar during Tihar and family celebrations."
+  ],
+  "whoItSuits": "Perfect for professionals, students, trekkers, and anyone who prefers the deep, nutty crunch of roasted almonds ready to eat straight from the jar.",
+  "monsoonStorage": "Keep the glass jar tightly closed after taking a handful so monsoon humidity does not soften the roasted crunch.",
+  "comparisonTitle": "NaturesMud Dry-Roasted Almonds vs Oil-Fried Packet Almonds",
+  "comparisonRows": [
+    {
+      "feature": "Roasting Process",
+      "naturesMud": "Slow Oil-Free Dry Roasting (0% added vegetable/palm oil)",
+      "typicalMarket": "Fried in refined palm oil with artificial smoke flavor"
+    },
+    {
+      "feature": "Seasoning",
+      "naturesMud": "Lightly seasoned with pure Himalayan Pink Salt",
+      "typicalMarket": "Heavy refined sodium and MSG flavour enhancers"
+    },
+    {
+      "feature": "Kernel Quality",
+      "naturesMud": "100% Sweet Whole Kernels (Zero bitter kernels)",
+      "typicalMarket": "Mixed sizes with chipped skins"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Roasted Almonds (रोस्टेड बदाम) in Nepal?",
+      "a": "NaturesMud Roasted Almonds (200 GM Glass Jar) costs Rs. 750 in Nepal (Rs. 375 per 100g). We deliver within 24–48 hours in Kathmandu Valley and across all 77 districts."
+    },
+    {
+      "q": "Should I buy Raw Almonds or Roasted Almonds?",
+      "a": "Buy Raw Almonds (Rs. 750 / 200 GM) if you want to soak them overnight in water (भिजाएको बदाम) and peel the skin in the morning, or grind them for baby food. Buy Roasted Almonds (Rs. 750 / 200 GM) if you want a crunchy, ready-to-eat snack straight from the jar."
+    },
+    {
+      "q": "Are these almonds roasted in oil?",
+      "a": "No—they are 100% dry-roasted in hot air without any oil, butter, or ghee."
+    },
+    {
+      "q": "How many Roasted Almonds should I eat per day?",
+      "a": "A healthy daily portion is 8 to 12 almonds (about 15g–20g) per day."
+    },
+    {
+      "q": "How do I keep them crunchy during the rainy season?",
+      "a": "Always close the airtight glass jar lid immediately after taking your portion and store away from kitchen steam."
+    }
+  ],
+  "complementarySlugs": [
+    "raw-himalayan-almonds",
+    "roasted-cashewnuts",
+    "dried-blueberries"
+  ],
+  "variantGroupTitle": "Choose Almond Style",
+  "variants": [
+    {
+      "slug": "raw-himalayan-almonds",
+      "label": "Raw Almonds (Unroasted)",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Best for Overnight Soaking & Baby Paste"
+    },
+    {
+      "slug": "roasted-almonds",
+      "label": "Roasted Almonds (Dry-Roasted)",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Best for Crunchy Desk & Tea-Time Snacking"
+    }
+  ]
+}

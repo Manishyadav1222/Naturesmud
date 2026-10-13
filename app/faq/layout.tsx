@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { faqs } from '@/lib/data/content';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions — Baby Weaning Powders, Superfoods & Nepal Delivery',
+  title: {
+    absolute: 'Frequently Asked Questions | Baby Food & Superfoods Nepal',
+  },
   description:
-    'Answers to common questions about NaturesMud baby weaning powders (6m+), natural dates powder sweetener, dehydrated fruits, storage in Nepal humidity, Cash on Delivery (COD), and nationwide shipping.',
+    'Answers on NaturesMud baby weaning powders (6m+), dates powder, dehydrated fruits, monsoon storage, unit prices, and Cash on Delivery across Nepal.',
   alternates: {
     canonical: 'https://naturesmud.shop/faq',
   },

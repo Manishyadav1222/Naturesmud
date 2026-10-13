@@ -63,35 +63,35 @@ export default function OurPromisesSection() {
       id: 'fairtrade' as const,
       number: '02',
       tag: 'Direct Provenance',
-      title: '280+ Smallholder Farmer Families',
-      subtitle: 'Direct Fair-Trade Across Terai, Midland Hills & Himalayan Peaks.',
+      title: 'Sourced Across 3 Ecological Belts',
+      subtitle: 'Direct Grower Networks Across Terai, Midland Hills & Himalayan Peaks.',
       icon: Sprout,
       color: 'from-amber-500/20 via-gold/15 to-amber-600/10',
       accentColor: 'text-amber-700',
       badgeBg: 'bg-amber-100 text-amber-900 border-amber-300/60',
       borderColor: 'group-hover:border-amber-500/50',
       glowColor: 'from-amber-500/25 via-gold/20 to-amber-700/10',
-      image: '/products/walnuts.jpg',
+      image: '/products/nm-almond-jar-v2.jpg',
       metrics: [
-        { label: 'Farm Partners', value: '280+ Families', icon: Users },
-        { label: 'Middlemen Cut', value: '0%', icon: ShieldCheck },
-        { label: 'Women-Led Co-ops', value: '68%', icon: Heart },
+        { label: 'Growing Belts', value: '3 Regions', icon: Users },
+        { label: 'Sourcing', value: 'Direct', icon: ShieldCheck },
+        { label: 'Nepal Origin', value: 'Authentic', icon: Heart },
       ],
       points: [
-        'Direct fair-wage contracts with smallholder cooperatives across Nepal',
-        'Full seed-to-shelf traceability: know exactly which region grew your food',
-        'Supporting regenerative agriculture across all ecological belts of Nepal',
+        'Direct sourcing from smallholder growers and collectives across Nepal',
+        'Regional crop selection matched to Terai, Hilly, and Alpine microclimates',
+        'Supporting local agricultural communities across Nepal’s 3 ecological belts',
       ],
       interactivePill: '🏔️ Direct Sourced from Terai, Hills & Himalayas',
-      modalTitle: '280+ Smallholder Mountain Farm Provenance',
-      modalSubtitle: 'Seed-to-Shelf Traceability Map · Nepal',
+      modalTitle: 'Nepal 3-Belt Agricultural Provenance',
+      modalSubtitle: 'Regional Sourcing Map · Terai, Hills & Himalayas',
     },
     {
       id: 'sustainability' as const,
       number: '03',
       tag: 'Earth-Friendly',
-      title: 'Zero-Plastic Circular Lifecycle',
-      subtitle: 'Amber Glass, Natural Jute & Biodegradable Packaging.',
+      title: 'Reusable Glass & Clean Packaging',
+      subtitle: 'Airtight Glass Jars & Moisture-Barrier Food-Grade Pouches.',
       icon: Recycle,
       color: 'from-primary/20 via-lime-500/15 to-primary-700/10',
       accentColor: 'text-primary-700',
@@ -100,18 +100,18 @@ export default function OurPromisesSection() {
       glowColor: 'from-primary/25 via-lime-500/20 to-primary-700/10',
       image: '/products/pumpkin-seeds.jpg',
       metrics: [
-        { label: 'Plastic Eliminated', value: '50K+ Jars', icon: Globe },
-        { label: 'Recyclable Glass', value: '100%', icon: Recycle },
-        { label: 'Seed Paper Tags', value: 'Plantable', icon: Leaf },
+        { label: 'Glass Jars', value: 'Reusable', icon: Globe },
+        { label: 'Recyclable', value: '100%', icon: Recycle },
+        { label: 'Airtight Seal', value: 'Freshness', icon: Leaf },
       ],
       points: [
-        'UV-blocking recyclable amber glass jars keep delicate superfoods fresh',
-        'Biodegradable natural jute outer sacks handmade by local artisans',
-        'Circular Jar Return Program: Get Rs. 50 off when returning empty jars',
+        'Airtight recyclable glass jars keep delicate superfood powders and nuts fresh',
+        'Moisture-barrier standup pouches protect dehydrated fruit slices during monsoon humidity',
+        'Designed for kitchen reuse to store spices, seeds, and dry pantry staples',
       ],
-      interactivePill: '🌱 Earth-Friendly & Reusable Packaging',
-      modalTitle: 'Circular Packaging & Jar Return Program',
-      modalSubtitle: 'Zero-Plastic Philosophy · Earn Rs. 50 per Returned Jar',
+      interactivePill: '🌱 Reusable & Airtight Kitchen Packaging',
+      modalTitle: 'Reusable Glass Jar & Airtight Packaging Standard',
+      modalSubtitle: 'Built for Nepal’s Climate & Kitchen Reuse',
     },
   ];
 
@@ -336,7 +336,7 @@ export default function OurPromisesSection() {
 
                 <div className="flex flex-col sm:flex-row lg:flex-col items-stretch w-full sm:w-auto gap-3">
                   <Link
-                    href="/our-story"
+                    href="/about"
                     className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-gold-400 via-gold to-gold-500 text-[#173a1d] font-heading font-extrabold text-sm shadow-[0_4px_16px_rgba(217,164,65,0.4)] hover:shadow-[0_8px_24px_rgba(217,164,65,0.6)] hover:scale-[1.02] active:scale-98 transition-all duration-300 overflow-hidden"
                   >
                     <span className="absolute inset-0 bg-white/30 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
@@ -440,30 +440,26 @@ export default function OurPromisesSection() {
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80 space-y-2.5">
                     <div className="text-xs font-bold text-amber-900 flex items-center justify-between">
-                      <span>Farmer Provenance Network</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-black">280+ FAMILIES</span>
+                      <span>Regional Crop Network</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-600 text-white font-black">3 BELTS</span>
                     </div>
                     <div className="space-y-2 text-xs">
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-amber-100">
-                        <span className="font-semibold text-ink">Mustang High-Altitude Belt</span>
-                        <span className="text-amber-800 font-bold">Organic Apples & Walnuts</span>
+                        <span className="font-semibold text-ink">Mustang &amp; Jumla Alpine Belt</span>
+                        <span className="text-amber-800 font-bold">Dehydrated Apples, Almonds &amp; Shilajit</span>
                       </div>
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-amber-100">
-                        <span className="font-semibold text-ink">Jumla Mountain Valley</span>
-                        <span className="text-amber-800 font-bold">Sun-Dried Beans & Shilajit</span>
+                        <span className="font-semibold text-ink">Midland Hills (Kavre, Sindhupalchok)</span>
+                        <span className="text-amber-800 font-bold">Beetroot, Avocado, Strawberry &amp; Seeds</span>
                       </div>
                       <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-amber-100">
-                        <span className="font-semibold text-ink">Midland Hills (Kavre, Dhading)</span>
-                        <span className="text-amber-800 font-bold">Beetroot, Sweet Potato & Carrots</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 rounded-xl bg-white border border-amber-100">
-                        <span className="font-semibold text-ink">Terai Organic Co-ops</span>
-                        <span className="text-amber-800 font-bold">Moringa Leaf & Herbal Extracts</span>
+                        <span className="font-semibold text-ink">Terai Agricultural Belt</span>
+                        <span className="text-amber-800 font-bold">Sweet Potato, Carrot, Moringa, Mango &amp; Banana</span>
                       </div>
                     </div>
                   </div>
                   <p className="text-xs text-ink/75 leading-relaxed">
-                    We eliminate middlemen entirely, ensuring smallholder cooperatives receive +35% above standard local market rates.
+                    We partner with regional growers across Nepal&apos;s three ecological belts to select crops at peak seasonal ripeness.
                   </p>
                 </div>
               )}
@@ -472,21 +468,21 @@ export default function OurPromisesSection() {
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-primary-50/70 border border-primary-200/80 space-y-2.5">
                     <div className="text-xs font-bold text-primary-900 flex items-center justify-between">
-                      <span>Circular Jar Return Program</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary text-white font-black">EARN RS. 50</span>
+                      <span>Airtight Packaging Standards</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary text-white font-black">REUSABLE</span>
                     </div>
                     <div className="space-y-2 text-xs">
                       <div className="p-2.5 rounded-xl bg-white border border-primary-100">
-                        <strong className="block text-primary font-bold">1. Keep Your Amber Glass Jars</strong>
-                        <span className="text-ink/70 text-[11px]">UV-protected glass keeps spices, honey, or superfoods fresh indefinitely.</span>
+                        <strong className="block text-primary font-bold">1. Reusable Airtight Glass Jars</strong>
+                        <span className="text-ink/70 text-[11px]">Heavy-duty glass jars protect powders, nuts, seeds, and salts from moisture and oxidation.</span>
                       </div>
                       <div className="p-2.5 rounded-xl bg-white border border-primary-100">
-                        <strong className="block text-primary font-bold">2. Return 5+ Jars on Your Next Delivery</strong>
-                        <span className="text-ink/70 text-[11px]">Our delivery rider collects empty clean jars at your doorstep.</span>
+                        <strong className="block text-primary font-bold">2. Resealable Standup Ziplock Pouches</strong>
+                        <span className="text-ink/70 text-[11px]">Food-grade barrier pouches keep dehydrated fruit slices fresh on treks, at school, or at work.</span>
                       </div>
                       <div className="p-2.5 rounded-xl bg-white border border-primary-100">
-                        <strong className="block text-primary font-bold">3. Receive Rs. 50 Discount per Jar</strong>
-                        <span className="text-ink/70 text-[11px]">Direct store credit applied instantly to your account or order.</span>
+                        <strong className="block text-primary font-bold">3. Built for Kitchen Reuse</strong>
+                        <span className="text-ink/70 text-[11px]">Every glass jar can be washed and reused indefinitely in your kitchen pantry.</span>
                       </div>
                     </div>
                   </div>
@@ -503,7 +499,7 @@ export default function OurPromisesSection() {
                   Close
                 </button>
                 <Link
-                  href="/our-story"
+                  href="/about"
                   onClick={() => setSelectedModal(null)}
                   className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-primary-700 transition-colors"
                 >

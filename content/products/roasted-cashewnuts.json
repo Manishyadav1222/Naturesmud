@@ -1,0 +1,80 @@
+{
+  "slug": "roasted-cashewnuts",
+  "seoTitle": "Roasted Cashew Nuts Price in Nepal | 150g Jar | NaturesMud",
+  "metaDescription": "Buy Roasted Cashew Nuts (150 GM) at Rs. 750 in Nepal. Slow dry-roasted whole cashews seasoned with Himalayan pink salt, 0 oil frying. Fast Nepal delivery.",
+  "nepaliNameDevanagari": "रोस्टेड काजु (भुटेको काजु)",
+  "nepaliNameRoman": "Bhuteko Kaju (Dry-Roasted & Lightly Salted Cashews)",
+  "originBelt": "Small-Batch Dry-Roasted in Kathmandu with Himalayan Pink Salt",
+  "shelfLife": "9 months in its airtight glass jar",
+  "whatItIs": "NaturesMud Roasted Cashew Nuts (150 GM Glass Jar) are plump whole cashew kernels slow dry-roasted in small batches without a single drop of refined palm or vegetable oil, then lightly dusted with pure Himalayan Pink Salt. Because moisture is driven out during slow roasting, each kernel has a deep golden crunch and rich nutty aroma.",
+  "nepaliKitchenUses": [
+    "Ready-to-Eat Tea-Time & Office Snack: Enjoy 6–8 crunchy roasted cashews straight from the glass jar alongside afternoon chiya or black coffee.",
+    "Hospitality & Guest Serving Tray: Serve to guests during Dashain, Tihar, family gatherings, or evening get-togethers without any kitchen prep.",
+    "Crunchy Salad & Pulao Topper: Scatter whole or halved roasted cashews over vegetable pulao, fried rice, or noodle bowls right before serving.",
+    "Trekking & Travel Energy Jar: Pack in your car or rucksack for instant protein and healthy monounsaturated fats on the road."
+  ],
+  "whoItSuits": "Designed for snack lovers who want a crispy, savory roasted cashew without unhealthy deep-frying in palm oil, as well as festive gift buyers.",
+  "monsoonStorage": "Roasted nuts pull moisture from humid air faster than raw nuts. Close the glass jar lid tightly immediately after serving to keep the cashews crisp.",
+  "comparisonTitle": "NaturesMud Dry-Roasted Cashews vs Commercial Oil-Fried Salted Cashews",
+  "comparisonRows": [
+    {
+      "feature": "Roasting Method",
+      "naturesMud": "100% Oil-Free Slow Dry Roasting",
+      "typicalMarket": "Deep-fried in reused palmolein or cottonseed oil"
+    },
+    {
+      "feature": "Salt Used",
+      "naturesMud": "Lightly dusted with unrefined Himalayan Pink Salt",
+      "typicalMarket": "Coated in heavy refined white salt & maltodextrin"
+    },
+    {
+      "feature": "Aftertaste",
+      "naturesMud": "Clean, sweet-nutty crunch with zero greasy fingers",
+      "typicalMarket": "Greasy oil film and rancid aftertaste"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Roasted Cashew Nuts (रोस्टेड काजु) in Nepal?",
+      "a": "NaturesMud Roasted Cashew Nuts (150 GM Glass Jar) costs Rs. 750 in Nepal (Rs. 500 per 100g). We deliver within 24–48 hours in Kathmandu Valley and across Nepal."
+    },
+    {
+      "q": "Why is the Roasted Cashew jar 150 GM while Raw Cashews are 200 GM at Rs. 750?",
+      "a": "Slow dry-roasting removes natural kernel moisture and requires small-batch artisanal roasting and hand-grading of whole unbroken kernels, yielding 150 GM of ready-to-eat roasted cashews."
+    },
+    {
+      "q": "Are these cashews fried in oil or butter?",
+      "a": "No! They are 100% dry-roasted without any oil, butter, or ghee—so they are never greasy."
+    },
+    {
+      "q": "What kind of salt is used on these cashews?",
+      "a": "We use only a light dusting of pure unrefined Himalayan Pink Salt (Sindhe Noon)."
+    },
+    {
+      "q": "Should I choose Raw or Roasted Cashews for baby food?",
+      "a": "For babies (6M+), choose our Raw Whole Cashew Nuts (200 GM) since they have 0% added salt. Choose Roasted Cashew Nuts (150 GM) for adult and family snacking."
+    }
+  ],
+  "complementarySlugs": [
+    "premium-cashewnuts",
+    "roasted-almonds",
+    "premium-pistachio-roasted-salted"
+  ],
+  "variantGroupTitle": "Choose Cashew Style",
+  "variants": [
+    {
+      "slug": "premium-cashewnuts",
+      "label": "Raw Whole Cashew Nuts",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Raw & Unsalted (Cooking / Baby Paste / Snacking)"
+    },
+    {
+      "slug": "roasted-cashewnuts",
+      "label": "Roasted Cashew Nuts",
+      "weight": "150 GM",
+      "price": 750,
+      "badge": "Dry-Roasted with Pink Salt (Ready Snack)"
+    }
+  ]
+}

@@ -96,22 +96,29 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
-                      <p className="font-bold text-gray-900">Kathmandu, Nepal</p>
-                      <p className="text-xs text-gray-500">Kathmandu Sourcing Hub, Nepal</p>
+                      <p className="font-bold text-gray-900">Baneshwor, Kathmandu 44600, Nepal</p>
+                      <p className="text-xs text-gray-500">Main Dispatch &amp; Quality Inspection Hub</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
                       <p className="font-bold text-gray-900">+977-9713888002</p>
-                      <p className="text-xs text-gray-500">Direct Orders & Customer Care (Sun–Fri, 9am–7pm)</p>
+                      <p className="text-xs text-gray-500">Phone &amp; WhatsApp Orders</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Clock className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-gray-900">Sunday – Friday: 9:00 AM – 6:00 PM NPT</p>
+                      <p className="text-xs text-gray-500">Saturday: Closed (Online &amp; WhatsApp queue open 24/7)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="w-4 h-4 text-[#2D5A27] shrink-0 mt-1" />
                     <div>
                       <p className="font-bold text-gray-900">info@naturesmud.shop</p>
-                      <p className="text-xs text-gray-500">Wholesale &amp; Partnership Inquiries</p>
+                      <p className="text-xs text-gray-500">Customer Care, Wholesale &amp; Partnership Inquiries</p>
                     </div>
                   </div>
                 </div>
@@ -173,6 +180,42 @@ export default function ContactPage() {
                   <MessageCircle className="w-4 h-4" />
                   <span>Chat on WhatsApp Directly</span>
                 </button>
+              </div>
+
+              {/* Business Identity & Regulatory Transparency Card */}
+              <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-4">
+                <h3 className="font-heading font-black text-lg text-gray-900 flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-[#2D5A27]" /> Business Identity &amp; Policies
+                </h3>
+                <dl className="space-y-2.5 text-xs text-gray-700">
+                  <div className="flex justify-between gap-2 py-1.5 border-b border-gray-100">
+                    <dt className="font-bold text-gray-500">Brand Name</dt>
+                    <dd className="font-bold text-gray-900 text-right">NaturesMud Nepal</dd>
+                  </div>
+                  <div className="flex justify-between gap-2 py-1.5 border-b border-gray-100">
+                    <dt className="font-bold text-gray-500">Dispatch Hub</dt>
+                    <dd className="font-bold text-gray-900 text-right">Baneshwor, Kathmandu 44600</dd>
+                  </div>
+                  <div className="flex justify-between gap-2 py-1.5 border-b border-gray-100">
+                    <dt className="font-bold text-gray-500">PAN / VAT Registration</dt>
+                    <dd className="font-semibold text-amber-800 text-right">Available on printed invoice (Pending web upload)</dd>
+                  </div>
+                  <div className="flex justify-between gap-2 py-1.5 border-b border-gray-100">
+                    <dt className="font-bold text-gray-500">DFTQC Food License</dt>
+                    <dd className="font-semibold text-amber-800 text-right">Pending certificate scan upload</dd>
+                  </div>
+                </dl>
+                <div className="grid grid-cols-2 gap-2 pt-1 text-xs font-bold">
+                  <Link href="/returns" className="p-2.5 rounded-xl bg-[#FAF7F2] hover:bg-emerald-50 text-[#1E3A18] border border-gray-200 text-center transition-colors">
+                    7-Day Return Policy
+                  </Link>
+                  <Link href="/shipping" className="p-2.5 rounded-xl bg-[#FAF7F2] hover:bg-emerald-50 text-[#1E3A18] border border-gray-200 text-center transition-colors">
+                    Shipping &amp; COD Rates
+                  </Link>
+                  <Link href="/about#quality-ledger" className="p-2.5 rounded-xl bg-[#FAF7F2] hover:bg-emerald-50 text-[#1E3A18] border border-gray-200 text-center transition-colors col-span-2">
+                    Quality &amp; Claims Transparency Ledger →
+                  </Link>
+                </div>
               </div>
 
               {/* Retail Showcases Across Nepal */}
@@ -338,10 +381,10 @@ export default function ContactPage() {
                 <div className="p-4 border-b border-gray-100 flex items-center justify-between">
                   <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
                     <MapPin className="w-4 h-4 text-[#2D5A27]" />
-                    <span>Location: Kathmandu, Nepal</span>
+                    <span>Location: Baneshwor, Kathmandu 44600, Nepal</span>
                   </div>
                   <a
-                    href="https://maps.google.com/?q=Gongabu+Chowk+Kathmandu+Nepal"
+                    href="https://maps.google.com/?q=Baneshwor+Kathmandu+44600+Nepal"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-[#2D5A27] hover:underline flex items-center gap-1"
@@ -351,8 +394,8 @@ export default function ContactPage() {
                 </div>
                 <div className="h-64 w-full bg-gray-100">
                   <iframe
-                    title="NaturesMud Kathmandu Location"
-                    src="https://maps.google.com/maps?q=Gongabu%20Chowk,%20Kathmandu,%20Nepal&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    title="NaturesMud Baneshwor Kathmandu Location"
+                    src="https://maps.google.com/maps?q=Baneshwor,%20Kathmandu%2044600,%20Nepal&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

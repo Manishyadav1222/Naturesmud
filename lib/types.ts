@@ -34,6 +34,24 @@ export interface Product {
   isActive?: boolean;
   isPublished?: boolean;
   tags: string[];
+  origin_belt?: string;
+  drying_process?: string;
+  baby_guidance?: string;
+  proof_block?: {
+    batch_label?: string;
+    dftqc_registration?: string;
+    pan_vat?: string;
+    lab_report?: string;
+  } | null;
+  variantGroup?: string;
+  variantTitle?: string;
+  variants?: {
+    slug: string;
+    label: string;
+    weight: string;
+    price: number;
+    active: boolean;
+  }[];
 }
 
 export interface Category {

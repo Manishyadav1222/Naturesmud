@@ -1,0 +1,80 @@
+{
+  "slug": "raw-himalayan-almonds",
+  "seoTitle": "Raw Almonds Price in Nepal | 200g Glass Jar | NaturesMud",
+  "metaDescription": "Buy Raw Almonds / Badam (200 GM) at Rs. 750 in Nepal. Unroasted sweet whole almonds for overnight soaking, kids, badam milk & gifting. Fast Nepal delivery.",
+  "nepaliNameDevanagari": "काँचो बदाम (प्रिमियम आलमण्ड)",
+  "nepaliNameRoman": "Kancho Badam (100% Raw Unroasted Sweet Almonds)",
+  "originBelt": "Hand-Graded Whole Sweet Almond Kernels (Packed in Kathmandu)",
+  "shelfLife": "12 months in its airtight glass jar",
+  "whatItIs": "NaturesMud Raw Almonds (200 GM Glass Jar) are 100% unroasted, unsalted, whole sweet almond kernels packed in an airtight glass jar. Because they are completely raw and unpasteurized by chemical steam, they swell plumply when soaked overnight in water—making them the gold standard for morning soaked badam, homemade almond milk, and baby nut powder.",
+  "nepaliKitchenUses": [
+    "Morning Soaked Badam Ritual (भिजाएको बदाम): Soak 5–8 Raw Almonds in clean water overnight. In the morning, slip off the brown skin and eat on an empty stomach for Vitamin E, magnesium, and plant protein.",
+    "Warm Saffron-Badam Doodh for Kids & Elders: Blanch 6 soaked almonds, grind into a smooth paste with a splash of milk, and simmer in 1 cup of milk with Dates Powder and cardamom.",
+    "Homemade Baby Badam Powder (6M+): Dry-roast gently at home and grind into a fine powder to stir into infant lito, jaulo, or suji kheer (from 6 months, as advised by your pediatrician).",
+    "Homemade Almond Butter & Halwa: Roast and blend into 100% pure almond butter or traditional badam ko halwa."
+  ],
+  "whoItSuits": "Essential for students, children, pregnant/nursing mothers, elders practicing the morning soaked-almond habit, and parents making homemade baby nut powder.",
+  "monsoonStorage": "Keep the glass jar tightly sealed in a cool, dark cupboard. During hot and humid monsoon months, storing raw nuts in the refrigerator keeps their natural Vitamin E oils fresh for over a year.",
+  "comparisonTitle": "NaturesMud Raw Almonds vs Loose Open-Sack Market Badam",
+  "comparisonRows": [
+    {
+      "feature": "Sweet Kernel Guarantee",
+      "naturesMud": "100% Sweet Almond Variety (Non-bitter, uniform whole kernels)",
+      "typicalMarket": "Often contains shriveled, chipped, or bitter kernels"
+    },
+    {
+      "feature": "Soaking Performance",
+      "naturesMud": "Raw & unheated — plumps up crisp and white when soaked overnight",
+      "typicalMarket": "Old warehouse stock often turns soggy or smells stale"
+    },
+    {
+      "feature": "Packaging Hygiene",
+      "naturesMud": "Sealed 200 GM Airtight Glass Jar",
+      "typicalMarket": "Sold from open gunny sacks exposed to dust & humidity"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Raw Almonds (काँचो बदाम / Badam) in Nepal?",
+      "a": "NaturesMud Raw Almonds (200 GM Glass Jar) costs Rs. 750 in Nepal (Rs. 375 per 100g). We deliver within 24–48 hours in Kathmandu Valley and across all 77 districts."
+    },
+    {
+      "q": "Why do Nepali families soak Raw Almonds overnight and peel the skin?",
+      "a": "Brown almond skin contains natural tannins and phytic acid. Soaking Raw Almonds in water for 8 hours softens the kernel and makes it easy to slip off the skin so nutrients are easier to digest."
+    },
+    {
+      "q": "How many Raw Almonds are in one 200 GM jar?",
+      "a": "One 200 GM jar contains approximately 160 to 180 whole almond kernels—enough for about 25 to 30 days at 6 almonds per day."
+    },
+    {
+      "q": "Can I use these Raw Almonds for a 6-month+ baby?",
+      "a": "Yes! Never give whole nuts to babies or young toddlers (choking hazard). Instead, soak and grind into a smooth paste, or dry-roast and mill into a fine powder to stir into baby lito (from 6 months, as advised by your pediatrician)."
+    },
+    {
+      "q": "What is the difference between Raw Almonds and Roasted Almonds?",
+      "a": "Raw Almonds are unheated and unsalted (best for overnight soaking, peeling, and cooking), while Roasted Almonds are slow dry-roasted with a touch of Himalayan Pink Salt for crunchy ready-to-eat snacking."
+    }
+  ],
+  "complementarySlugs": [
+    "roasted-almonds",
+    "premium-cashewnuts",
+    "dry-figs-anjeer"
+  ],
+  "variantGroupTitle": "Choose Almond Style",
+  "variants": [
+    {
+      "slug": "raw-himalayan-almonds",
+      "label": "Raw Almonds (Unroasted)",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Best for Overnight Soaking & Baby Paste"
+    },
+    {
+      "slug": "roasted-almonds",
+      "label": "Roasted Almonds (Dry-Roasted)",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Best for Crunchy Desk & Tea-Time Snacking"
+    }
+  ]
+}

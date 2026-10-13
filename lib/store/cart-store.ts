@@ -44,27 +44,12 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
     };
   }
 
-  // 2. Check canonical product catalog (enforces authoritative price & stock, preventing stale localStorage prices)
+  // 2. Check dynamic snapshot + canonical product catalog
   const found =
     getProductBySlug(rawSlug) ||
     getProductById(rawId) ||
     getProductById(item.productId);
 
-  if (found) {
-    return {
-      id: found.id,
-      slug: found.slug,
-      name: found.name,
-      price: typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0'),
-      compareAtPrice: found.compareAtPrice,
-      image: found.image || '/products/sweet-potato-powder.jpg',
-      weight: found.weight || '100 GM',
-      category: found.category || 'Organic',
-      stock: typeof found.stock === 'number' ? found.stock : 99,
-    };
-  }
-
-  // 3. Fallback to dynamic snapshot if custom/admin-only item
   let snapPrice = 0;
   if (item.product && typeof item.product.price !== 'undefined') {
     snapPrice =
@@ -73,15 +58,43 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
         : parseFloat(String(item.product.price) || '0');
   }
 
-  if (item.product && item.product.name && snapPrice > 0) {
-    const rawWeight = item.product.weight;
-    let cleanWeight = '100 GM';
-    if (rawWeight && !/^\d+(\.00)?$/.test(String(rawWeight).trim())) {
-      cleanWeight = String(rawWeight);
+  let cleanSnapWeight = '';
+  if (item.product?.weight) {
+    const rawWeight = String(item.product.weight).trim();
+    if (rawWeight && !/^\d+(\.00)?$/.test(rawWeight)) {
+      cleanSnapWeight = rawWeight;
     } else if (rawWeight) {
-      cleanWeight = `${parseFloat(String(rawWeight))} GM`;
+      cleanSnapWeight = `${parseFloat(rawWeight)} GM`;
     }
+  }
 
+  if (found) {
+    const foundPrice =
+      typeof found.price === 'number' ? found.price : parseFloat(String(found.price) || '0');
+    return {
+      id: found.id,
+      slug: found.slug,
+      name: item.product?.name || found.name,
+      price: snapPrice > 0 ? snapPrice : foundPrice,
+      compareAtPrice: item.product?.compareAtPrice ?? found.compareAtPrice,
+      image:
+        item.product?.image ||
+        (Array.isArray(item.product?.images) ? item.product.images[0] : undefined) ||
+        found.image ||
+        '/products/sweet-potato-powder.jpg',
+      weight: cleanSnapWeight || found.weight || '100 GM',
+      category:
+        (typeof item.product?.category === 'object'
+          ? item.product.category?.name
+          : item.product?.category) ||
+        found.category ||
+        'Organic',
+      stock: typeof found.stock === 'number' ? found.stock : 99,
+    };
+  }
+
+  // 3. Fallback to dynamic snapshot if custom/admin-only item
+  if (item.product && item.product.name && snapPrice > 0) {
     return {
       id: item.product.id || item.productId,
       slug: item.product.slug || item.productId,
@@ -93,7 +106,7 @@ export function resolveCartProduct(item: CartItem): ResolvedCartProduct {
         (Array.isArray(item.product.images)
           ? item.product.images[0]
           : '/products/sweet-potato-powder.jpg'),
-      weight: cleanWeight,
+      weight: cleanSnapWeight || '100 GM',
       category:
         typeof item.product.category === 'object'
           ? item.product.category?.name
@@ -167,10 +180,10 @@ export const useCartStore = create<CartState>()(
               : parseFloat(productOrId.price || '0');
           const canonicalPrice = matchedOffer
             ? matchedOffer.offerPrice
-            : found
-              ? found.price
-              : !isNaN(rawPrice) && rawPrice > 0
-                ? rawPrice
+            : !isNaN(rawPrice) && rawPrice > 0
+              ? rawPrice
+              : found
+                ? found.price
                 : 0;
           const canonicalWeight = productOrId.weight
             ? String(productOrId.weight)
@@ -181,10 +194,10 @@ export const useCartStore = create<CartState>()(
           productSnapshot = {
             id: String(matchedOffer?.id || found?.id || productOrId.id || productId),
             slug: matchedOffer?.id || found?.slug || productOrId.slug || productId,
-            name: matchedOffer?.title || found?.name || productOrId.name || 'Organic Product',
+            name: matchedOffer?.title || productOrId.name || found?.name || 'Organic Product',
             price: canonicalPrice,
             compareAtPrice:
-              matchedOffer?.originalPrice ?? found?.compareAtPrice ?? productOrId.compareAtPrice,
+              matchedOffer?.originalPrice ?? productOrId.compareAtPrice ?? found?.compareAtPrice,
             image:
               productOrId.image ||
               (Array.isArray(productOrId.images) ? productOrId.images[0] : found?.image) ||

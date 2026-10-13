@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact NaturesMud Nepal — Kathmandu Hub, Retail Partner Showrooms & Direct Orders',
+  title: 'Contact NaturesMud Nepal | Kathmandu Hub & Orders',
   description:
-    'Contact NaturesMud Nepal at +977-9713888002 or info@naturesmud.shop. Find our Kathmandu headquarters and retail partner outlets in Kathmandu, Lalitpur, Pokhara, Hetauda & Surkhet.',
+    'Contact NaturesMud Nepal at +977-9713888002 or info@naturesmud.shop. Kathmandu hub, WhatsApp orders & partner outlets across Kathmandu & Pokhara.',
   alternates: {
     canonical: 'https://naturesmud.shop/contact',
   },
   openGraph: {
-    title: 'Contact NaturesMud Nepal — Kathmandu Hub & Retail Outlets',
+    title: 'Contact NaturesMud Nepal | Kathmandu Hub & Orders',
     description:
-      'Order via WhatsApp (+977-9713888002), visit partner outlets in Kathmandu, Lalitpur, Pokhara, Hetauda & Surkhet, or inquire about wholesale.',
+      'Contact NaturesMud Nepal at +977-9713888002 or info@naturesmud.shop. Kathmandu hub, WhatsApp orders & partner outlets across Kathmandu & Pokhara.',
     url: 'https://naturesmud.shop/contact',
     siteName: 'NaturesMud Nepal',
     type: 'website',

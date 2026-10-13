@@ -283,10 +283,10 @@ export default function GreenBasketLandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                {/* Organic Badge */}
+                {/* Purity Badge */}
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-700/50 text-lime-300 text-xs font-bold uppercase tracking-wider mb-6">
                   <Leaf className="w-4 h-4 text-lime-400" />
-                  <span>100% Organic & Single-Origin</span>
+                  <span>100% Pure &amp; Single-Origin</span>
                 </div>
 
                 {/* Big Headline */}
@@ -301,7 +301,7 @@ export default function GreenBasketLandingPage() {
 
                 {/* Subtitle */}
                 <p className="text-emerald-100/80 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                  100% organic fruits, vegetables, sun-dehydrated Himalayan snacks & superfoods delivered fresh to your
+                  100% pure whole fruits, vegetables, gently dehydrated Himalayan snacks &amp; superfoods delivered fresh to your
                   door.
                 </p>
 
@@ -328,9 +328,9 @@ export default function GreenBasketLandingPage() {
                   <div className="flex flex-col items-center lg:items-start">
                     <div className="flex items-center gap-1.5 text-lime-400 font-bold text-xs sm:text-sm">
                       <Leaf className="w-4 h-4" />
-                      <span>100% Organic</span>
+                      <span>100% Pure</span>
                     </div>
-                    <span className="text-[11px] text-emerald-300/70 mt-0.5">Pure & Natural</span>
+                    <span className="text-[11px] text-emerald-300/70 mt-0.5">0% Preservatives</span>
                   </div>
 
                   <div className="flex flex-col items-center lg:items-start">

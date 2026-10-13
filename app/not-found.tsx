@@ -47,10 +47,12 @@ export default function NotFound() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[
-              { name: 'Superfood Powders', href: '/products?category=powders' },
-              { name: 'Dehydrated Fruits', href: '/products?category=dried-fruits' },
-              { name: 'Mountain Nuts & Seeds', href: '/products?category=nuts-seeds' },
-              { name: 'Festival Offers', href: '/offers' },
+              { name: 'Superfood Powders', href: '/category/powders' },
+              { name: 'Dehydrated Fruits', href: '/category/dried-fruits' },
+              { name: 'Mountain Nuts', href: '/category/nuts' },
+              { name: 'Organic Seeds', href: '/category/seeds' },
+              { name: 'Cold-Pressed Oils', href: '/category/oils' },
+              { name: 'Salts & Shilajit', href: '/category/salts-spices' },
             ].map((cat) => (
               <Link
                 key={cat.name}

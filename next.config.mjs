@@ -5,7 +5,7 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   images: {
-    // ✅ Remove unoptimized:true — re-enable WebP conversion and responsive sizing for LCP
+    unoptimized: true,
     remotePatterns: [
       // ✅ Only allow known trusted image sources (prevents SSRF abuse)
       { protocol: 'https', hostname: 'naturesmud.shop' },
@@ -61,6 +61,26 @@ const nextConfig = {
       {
         source: '/our-story',
         destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/shipping',
+        destination: '/shipping-policy',
+        permanent: true,
+      },
+      {
+        source: '/returns',
+        destination: '/return-policy',
+        permanent: true,
+      },
+      {
+        source: '/privacy',
+        destination: '/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/return-refund-policy',
+        destination: '/return-policy',
         permanent: true,
       },
       {
@@ -164,8 +184,28 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products/walnuts',
-        destination: '/products/superfood-trail-mix',
+        source: '/products/premium-pistachios',
+        destination: '/products/premium-pistachio-roasted-salted',
+        permanent: true,
+      },
+      {
+        source: '/products/dehydrated-banana',
+        destination: '/products/banana-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/dehydrated-strawberries',
+        destination: '/products/strawberry-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/blueberry',
+        destination: '/products/dried-blueberries',
+        permanent: true,
+      },
+      {
+        source: '/products/raw-cashewnuts',
+        destination: '/products/premium-cashewnuts',
         permanent: true,
       },
       {
@@ -174,8 +214,38 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/products/raw-honey',
-        destination: '/products/pure-mountain-himalayan-shilajit-resin',
+        source: '/products/fox-nuts-makhana',
+        destination: '/products/makhana-fox-nuts',
+        permanent: true,
+      },
+      {
+        source: '/products/barley-grass-powder',
+        destination: '/products/moringa-leaf-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/sunflower-seeds',
+        destination: '/products/pumpkin-seeds',
+        permanent: true,
+      },
+      {
+        source: '/products/dried-apricots',
+        destination: '/products/dry-figs-anjeer',
+        permanent: true,
+      },
+      {
+        source: '/products/golden-raisins-kismis',
+        destination: '/products/dates-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/dried-dates-khajoor',
+        destination: '/products/dates-powder',
+        permanent: true,
+      },
+      {
+        source: '/products/pure-natural-yellow-mustard-oil',
+        destination: '/products/virgin-coconut-oil-500ml',
         permanent: true,
       },
       {
@@ -203,6 +273,30 @@ const nextConfig = {
   async rewrites() {
     const backendUrl = process.env.INTERNAL_API_URL || 'https://api.naturesmud.shop/api';
     return [
+      {
+        source: '/category/:slug',
+        destination: '/products?category=:slug',
+      },
+      {
+        source: '/merchant-feed.xml',
+        destination: '/api/merchant-feed?format=xml',
+      },
+      {
+        source: '/meta-catalog-feed.xml',
+        destination: '/api/merchant-feed?format=meta_xml',
+      },
+      {
+        source: '/meta-catalog-feed.csv',
+        destination: '/api/merchant-feed?format=meta_csv',
+      },
+      {
+        source: '/daraz-top-10-listings.csv',
+        destination: '/api/merchant-feed?format=daraz_csv',
+      },
+      {
+        source: '/daraz-top-10-listings.json',
+        destination: '/api/merchant-feed?format=daraz_json',
+      },
       {
         source: '/api/v1/:path*',
         destination: `${backendUrl.replace(/\/api\/?$/, '')}/api/v1/:path*`,

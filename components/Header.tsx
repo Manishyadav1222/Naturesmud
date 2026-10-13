@@ -29,6 +29,8 @@ import { classNames } from '@/lib/utils';
 import { Logo } from './Logo';
 import { OrdersHeaderWidget } from './OrdersHeaderWidget';
 
+import { isDashainOfferActive } from '@/lib/data/dashain-offer';
+
 const MotionLink = motion.create(Link);
 
 const navLinks = [
@@ -58,6 +60,7 @@ export default function Header() {
   const cartTotal = useCartStore((s) => s.getItemCount());
   const wishlistCount = useWishlistStore((s) => s.items.length);
   const openSearch = useUIStore((s) => s.openSearch);
+  const openDashainModal = useUIStore((s) => s.openDashainModal);
 
   useEffect(() => {
     setMounted(true);
@@ -86,6 +89,62 @@ export default function Header() {
 
   return (
     <>
+      {/* ── Top Announcement Bar (Dynamic Festival Auto-Expiry) ── */}
+      {isDashainOfferActive() ? (
+        <div className="relative z-50 bg-gradient-to-r from-[#5a0b0b] via-[#8b1515] to-[#1a3826] text-white border-b border-amber-400/30 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-3 sm:px-6 py-1.5 sm:py-2 flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400 text-[#4a0808] font-black text-[10px] uppercase tracking-wider shadow-sm animate-pulse">
+                🎉 Dashain Offer
+              </span>
+              <span className="font-extrabold text-amber-200 dashain-glow-text">
+                🚚 Free Delivery Over Rs. 3,000
+              </span>
+              <span className="hidden md:inline text-white/40">|</span>
+              <span className="hidden md:inline font-bold text-rose-200 dashain-glow-text">
+                🎁 Free Delivery + Free Pink Salt Over Rs. 5,000+
+              </span>
+            </div>
+            <div className="flex items-center gap-2 ml-auto">
+              <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-wider text-amber-300/90 bg-black/25 px-2 py-0.5 rounded-full border border-amber-400/30">
+                Valid Till Dashain End
+              </span>
+              <button
+                type="button"
+                onClick={openDashainModal}
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 text-[#4a0808] font-black text-[10px] uppercase tracking-wider hover:brightness-110 transition-all shadow-sm cursor-pointer"
+              >
+                View Poster ✨
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="relative z-50 bg-gradient-to-r from-[#1A3826] via-[#234832] to-[#142D1E] text-white border-b border-emerald-400/30 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-3 sm:px-6 py-1.5 sm:py-2 flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-400 text-[#0d2818] font-black text-[10px] uppercase tracking-wider shadow-sm">
+                🚚 Nepal Delivery
+              </span>
+              <span className="font-extrabold text-amber-200">
+                Free Delivery Across Nepal Over Rs. 3,000
+              </span>
+              <span className="hidden md:inline text-white/40">|</span>
+              <span className="hidden md:inline font-bold text-emerald-100">
+                🏔️ 100% Single-Origin Superfoods &amp; Dehydrated Fruits
+              </span>
+            </div>
+            <div className="flex items-center gap-2 ml-auto">
+              <Link
+                href="/offers"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 text-[#4a0808] font-black text-[10px] uppercase tracking-wider hover:brightness-110 transition-all shadow-sm cursor-pointer"
+              >
+                View Offers ✨
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
 
       <header
         className={classNames(
@@ -110,7 +169,7 @@ export default function Header() {
           >
             <Logo asLink={false} />
             <span className="hidden xl:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-gold/15 text-gold-800 rounded-full border border-gold/30">
-              <Leaf className="w-2.5 h-2.5 text-primary" /> 100% Organic
+              <Leaf className="w-2.5 h-2.5 text-primary" /> 0% Preservatives
             </span>
           </MotionLink>
 
@@ -182,7 +241,7 @@ export default function Header() {
                               {featuredCategories.map((cat) => (
                                 <Link
                                   key={cat.slug}
-                                  href={`/products?category=${cat.slug}`}
+                                  href={`/category/${cat.slug}`}
                                   className="flex items-center gap-3 p-2.5 rounded-2xl bg-cream-50 hover:bg-cream-100 transition-all group"
                                 >
                                   <div className="w-12 h-12 rounded-xl overflow-hidden relative shrink-0 bg-cream-100">
@@ -206,7 +265,7 @@ export default function Header() {
 
                             <div className="pt-3 border-t border-ink/5 flex items-center justify-between text-[11px] text-ink/60 bg-cream-50/50 -mx-5 -mb-5 px-5 py-3">
                               <span className="flex items-center gap-1">
-                                <ShieldCheck className="w-3.5 h-3.5 text-primary" /> 100% Lab Certified
+                                <ShieldCheck className="w-3.5 h-3.5 text-primary" /> 0% Added Sugar &amp; Preservatives
                               </span>
                               <span className="flex items-center gap-1">
                                 <Award className="w-3.5 h-3.5 text-gold-600" /> Nepal Origin
@@ -367,7 +426,7 @@ export default function Header() {
                   className="w-full text-left flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium bg-primary/5 text-primary border border-primary/20 transition-all duration-200"
                 >
                   <span className="flex items-center gap-2.5">
-                    <Search className="w-4 h-4 text-primary" /> Search naturesmud.com &amp; naturesmud.shop
+                    <Search className="w-4 h-4 text-primary" /> Search NaturesMud Nepal
                   </span>
                   <kbd className="text-[10px] bg-white border border-primary/20 rounded px-1.5 py-0.5 text-primary font-mono">
                     Tap

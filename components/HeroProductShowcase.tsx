@@ -18,13 +18,13 @@ import {
   Award,
   Zap,
 } from 'lucide-react';
-import { products } from '@/lib/data/products';
+import { products, getProductBySlug } from '@/lib/data/products';
 import { resolveImageUrl, formatPrice, calculateDiscount } from '@/lib/utils';
 import { useUIStore } from '@/lib/store/ui-store';
 import { useCartStore } from '@/lib/store/cart-store';
 
 // Flagship Products for the Hero Infinite Looping Animation Showcase
-export const HERO_SHOWCASE_PRODUCTS = [
+const RAW_HERO_SHOWCASE_PRODUCTS = [
   {
     slug: 'freeze-dried-avocado-powder',
     name: 'Freeze Dried Avocado Powder',
@@ -32,7 +32,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '80 GM',
     packing: 'Glass Jar',
     price: 790,
-    compareAtPrice: 790,
+    compareAtPrice: 890,
     rating: 5.0,
     reviews: 24,
     category: 'Powders',
@@ -57,7 +57,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '80 GM',
     packing: 'Glass Jar',
     price: 1395,
-    compareAtPrice: 1395,
+    compareAtPrice: 1550,
     rating: 4.9,
     reviews: 31,
     category: 'Powders',
@@ -77,14 +77,14 @@ export const HERO_SHOWCASE_PRODUCTS = [
   },
   {
     slug: 'roasted-cashewnuts',
-    name: 'Artisanal Roasted Cashews',
+    name: 'Roasted Cashew Nuts',
     subheading: 'Artisan Dry-Roasted Golden Mountain Crunch',
-    weight: '200 GM',
+    weight: '150 GM',
     packing: 'Glass Jar',
-    price: 590,
-    compareAtPrice: 650,
+    price: 750,
+    compareAtPrice: 850,
     rating: 4.9,
-    reviews: 48,
+    reviews: 52,
     category: 'Nuts & Kernels',
     image: '/products/nm-roasted-cashew-new.jpg',
     description: 'Crisp oven-roasted whole cashews seasoned with pristine pink salt. Rich in copper, magnesium & clean energy.',
@@ -107,7 +107,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '100 GM',
     packing: 'Standup Ziplock Pouch',
     price: 595,
-    compareAtPrice: 650,
+    compareAtPrice: 595,
     rating: 4.9,
     reviews: 68,
     category: 'Dried Fruits',
@@ -157,7 +157,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '100 GM',
     packing: 'Standup Ziplock Pouch',
     price: 510,
-    compareAtPrice: 580,
+    compareAtPrice: 600,
     rating: 4.8,
     reviews: 42,
     category: 'Dried Fruits',
@@ -181,8 +181,8 @@ export const HERO_SHOWCASE_PRODUCTS = [
     subheading: 'Keto-Friendly MCT Crunchy Flakes',
     weight: '100 GM',
     packing: 'Standup Ziplock Pouch',
-    price: 495,
-    compareAtPrice: 550,
+    price: 475,
+    compareAtPrice: 500,
     rating: 4.8,
     reviews: 36,
     category: 'Dried Fruits',
@@ -207,7 +207,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '100 GM',
     packing: 'Glass Jar',
     price: 650,
-    compareAtPrice: 720,
+    compareAtPrice: 750,
     rating: 5.0,
     reviews: 78,
     category: 'Dried Fruits',
@@ -232,7 +232,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '100 GM',
     packing: 'Glass Jar',
     price: 400,
-    compareAtPrice: 400,
+    compareAtPrice: 450,
     rating: 4.9,
     reviews: 84,
     category: 'Powders',
@@ -257,7 +257,7 @@ export const HERO_SHOWCASE_PRODUCTS = [
     weight: '100 GM',
     packing: 'Glass Jar',
     price: 430,
-    compareAtPrice: 490,
+    compareAtPrice: 500,
     rating: 4.9,
     reviews: 62,
     category: 'Powders',
@@ -327,12 +327,12 @@ export const HERO_SHOWCASE_PRODUCTS = [
   },
   {
     slug: 'chia-seeds',
-    name: 'Organic Chia Seeds',
+    name: 'Chia Seeds',
     subheading: 'Plant Omega-3 & Soluble Fiber',
     weight: '300 GM',
     packing: 'Plastic Jar',
     price: 495,
-    compareAtPrice: 560,
+    compareAtPrice: 550,
     rating: 4.9,
     reviews: 65,
     category: 'Seeds',
@@ -352,12 +352,12 @@ export const HERO_SHOWCASE_PRODUCTS = [
   },
   {
     slug: 'pumpkin-seeds',
-    name: 'Raw Pumpkin Seeds',
+    name: 'Pumpkin Seeds',
     subheading: 'AAA-Grade Zinc & Magnesium',
     weight: '300 GM',
     packing: 'Plastic Jar',
     price: 650,
-    compareAtPrice: 650,
+    compareAtPrice: 750,
     rating: 4.9,
     reviews: 57,
     category: 'Seeds',
@@ -376,6 +376,20 @@ export const HERO_SHOWCASE_PRODUCTS = [
     },
   },
 ];
+
+export const HERO_SHOWCASE_PRODUCTS = RAW_HERO_SHOWCASE_PRODUCTS.map((item) => {
+  const canonical = getProductBySlug(item.slug);
+  if (!canonical) return { ...item, rating: 0, reviews: 0 };
+  return {
+    ...item,
+    name: canonical.official_label_name || canonical.name,
+    weight: canonical.weight || item.weight,
+    price: Number(canonical.price),
+    compareAtPrice: Number(canonical.compareAtPrice || canonical.price),
+    rating: Number(canonical.rating || 0),
+    reviews: Number(canonical.reviewCount || 0),
+  };
+});
 
 export default function HeroProductShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -664,16 +678,22 @@ export default function HeroProductShowcase() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-ink/10 hover:shadow-[0_20px_50px_rgba(0,0,0,0.16)] transition-all duration-300"
           >
-            {/* Top row: Badge + Rating */}
+            {/* Top row: Badge + Rating / Purity Badge */}
             <div className="flex items-center justify-between gap-2 pb-1">
               <span className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${current.theme.badgeBg}`}>
                 {current.badge}
               </span>
-              <div className="flex items-center gap-1 text-amber-500 flex-shrink-0">
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span className="text-xs font-bold text-ink">{current.rating}</span>
-                <span className="text-[10px] text-ink/50">({current.reviews})</span>
-              </div>
+              {current.reviews > 0 ? (
+                <div className="flex items-center gap-1 text-amber-500 flex-shrink-0">
+                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  <span className="text-xs font-bold text-ink">{current.rating}</span>
+                  <span className="text-[10px] text-ink/50">({current.reviews})</span>
+                </div>
+              ) : (
+                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  100% Whole Food
+                </span>
+              )}
             </div>
 
             {/* Product Name & Subheading */}

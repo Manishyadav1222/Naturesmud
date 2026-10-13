@@ -1,0 +1,80 @@
+{
+  "slug": "premium-cashewnuts",
+  "seoTitle": "Premium Cashew Nuts Price in Nepal | 200g Jar | NaturesMud",
+  "metaDescription": "Buy Premium Cashew Nuts / Kaju (200 GM) at Rs. 750 in Nepal. Whole raw white W240/W320 cashews for snacking, kheer, baby paste & gifting. Fast delivery.",
+  "nepaliNameDevanagari": "काजु (प्रिमियम काँचो काजु)",
+  "nepaliNameRoman": "Kaju (Whole Raw White Cashew Kernels)",
+  "originBelt": "Hand-Graded Whole Ivory Cashew Kernels (Packed in Kathmandu)",
+  "shelfLife": "9–12 months in its airtight glass jar",
+  "whatItIs": "NaturesMud Premium Cashew Nuts (200 GM Glass Jar) are whole, ivory-white raw cashew kernels (W240/W320 grade) selected for their plump size, creamy texture, and natural mild sweetness. Unfried, unsalted, and unbleached, they are versatile for both raw snacking and traditional Nepali cooking, kheer, and baby nut pastes.",
+  "nepaliKitchenUses": [
+    "Everyday Clean Snacking & Soaking: Enjoy 6–8 whole raw cashews with morning tea, or soak for 2 hours to blend into creamy dairy-free cashew milk.",
+    "Festive Kheer, Halwa & Pulao: Lightly golden-roast in a spoon of cow ghee for rice kheer, gajar halwa, suji halwa, and celebratory pulao.",
+    "Homemade Baby Nut Powder (6M+): Dry-roast gently and grind with Raw Almonds and Makhana into a fine powder to enrich baby lito/jaulo (from 6 months, as advised by your pediatrician).",
+    "Rich Paneer & Vegetable Gravy Base: Soak 8–10 cashews in warm water for 15 minutes and blend into a silky paste for shahi paneer or mushroom curry."
+  ],
+  "whoItSuits": "Ideal for families who prefer unsalted, unroasted whole cashews for versatile kitchen cooking, baby food preparation, puja/festive offerings, and clean snacking.",
+  "monsoonStorage": "Whole cashews absorb moisture quickly in humid monsoon weather. Always screw the glass jar lid shut tightly after use, and store in a cool cupboard or refrigerator.",
+  "comparisonTitle": "NaturesMud Premium Raw Cashews (200 GM) vs Loose Market Kaju",
+  "comparisonRows": [
+    {
+      "feature": "Kernel Grade",
+      "naturesMud": "Whole, unbroken W240/W320 ivory kernels",
+      "typicalMarket": "Mixed broken splits, scorched pieces & stale stock"
+    },
+    {
+      "feature": "Chemical Bleaching",
+      "naturesMud": "0% Chlorine / Sulphur Bleaching (Natural warm ivory)",
+      "typicalMarket": "Sometimes chemically whitened to mask age"
+    },
+    {
+      "feature": "Packaging",
+      "naturesMud": "Airtight 200 GM Glass Jar locking in crunch",
+      "typicalMarket": "Thin plastic bags prone to weevil insects & humidity"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Premium Cashew Nuts (काजु / Kaju) in Nepal?",
+      "a": "NaturesMud Premium Cashew Nuts (200 GM Glass Jar) is priced at Rs. 750 in Nepal (Rs. 375 per 100g). We deliver in 24–48 hours in Kathmandu Valley and across all 77 districts."
+    },
+    {
+      "q": "What is the difference between Premium Cashew Nuts (200 GM) and Roasted Cashew Nuts (150 GM)?",
+      "a": "Premium Cashew Nuts (200 GM, Rs. 750) are raw, unsalted whole white cashews ideal for cooking, kheer, baby nut powder, and raw snacking. Roasted Cashew Nuts (150 GM, Rs. 750) are slow dry-roasted and lightly seasoned with Himalayan Pink Salt for ready-to-eat crunchy snacking."
+    },
+    {
+      "q": "Can I use these cashews to make baby lito powder?",
+      "a": "Yes! Because these are 100% raw and unsalted, they are the right choice for dry-roasting at home and grinding into nut powder for babies (from 6 months, as advised by your pediatrician; introduce tree nuts carefully)."
+    },
+    {
+      "q": "Are these whole cashews or broken pieces?",
+      "a": "Every jar contains hand-sorted whole cashew kernels."
+    },
+    {
+      "q": "Do you offer bulk or gift hampers for Dashain, Tihar, and Bhai Tika?",
+      "a": "Yes, our glass-jar cashews, almonds, pistachios, and figs are a top choice for Bhai Tika masala and corporate gift hampers."
+    }
+  ],
+  "complementarySlugs": [
+    "raw-himalayan-almonds",
+    "premium-pistachio-roasted-salted",
+    "dry-figs-anjeer"
+  ],
+  "variantGroupTitle": "Choose Cashew Style",
+  "variants": [
+    {
+      "slug": "premium-cashewnuts",
+      "label": "Raw Whole Cashew Nuts",
+      "weight": "200 GM",
+      "price": 750,
+      "badge": "Raw & Unsalted (Cooking / Baby Paste / Snacking)"
+    },
+    {
+      "slug": "roasted-cashewnuts",
+      "label": "Roasted Cashew Nuts",
+      "weight": "150 GM",
+      "price": 750,
+      "badge": "Dry-Roasted with Pink Salt (Ready Snack)"
+    }
+  ]
+}

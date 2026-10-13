@@ -4,14 +4,13 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { products as staticProducts, normalizeProduct } from '@/lib/data/products';
+import { products as staticProducts } from '@/lib/data/products';
 import { categories } from '@/lib/data/categories';
-import { masterBlogCatalog as staticBlogPosts } from '@/lib/data/blogs-database';
+import { HOME_LATEST_BLOG_SUMMARIES } from '@/lib/data/blog-summaries';
 import { ProductCard } from '@/components/ProductCard';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import ReelsSection from '@/components/ReelsSection';
 import { useUIStore } from '@/lib/store/ui-store';
-import { api } from '@/lib/api';
 import { Product } from '@/lib/types';
 import {
   Leaf,
@@ -51,6 +50,7 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import MobileCategorySection from '@/components/MobileCategorySection';
 import MobileHeroSection from '@/components/MobileHeroSection';
 import ProductRecommendationQuiz from '@/components/ProductRecommendationQuiz';
+import DashainOfferShowcaseSection from '@/components/DashainOfferShowcaseSection';
 
 const PRIORITY_FEATURED_SLUGS = [
   'raw-himalayan-almonds',
@@ -67,7 +67,7 @@ const PRIORITY_FEATURED_SLUGS = [
 
 export default function HomePage() {
   const { openSearch } = useUIStore();
-  const [dynamicProducts, setDynamicProducts] = useState<Product[]>([]);
+  const [dynamicProducts, setDynamicProducts] = useState<Product[]>(staticProducts);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>(() => {
     return [...staticProducts.filter((p) => p.isFeatured)]
       .sort((a, b) => {
@@ -92,25 +92,23 @@ export default function HomePage() {
       })
       .slice(0, 6);
   });
-  const [latestPosts, setLatestPosts] = useState<any[]>(staticBlogPosts.slice(0, 3));
+  const [latestPosts] = useState(HOME_LATEST_BLOG_SUMMARIES);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const [productsRes, blogsRes, featuredBlogsRes] = await Promise.all([
-          api.get('/products', { params: { per_page: 100, _t: Date.now() } }),
-          api.get('/blogs', { params: { per_page: 50, _t: Date.now() } }),
-          api.get('/blogs', { params: { featured: true, per_page: 4, _t: Date.now() } })
-        ]);
-        if (productsRes.data && productsRes.data.data) {
-          const apiProducts = productsRes.data.data
-            .map((p: any) => normalizeProduct(p))
-            .filter((p: any) => p.isActive !== false);
-          setDynamicProducts(apiProducts);
-
-          const sortedFeatured = apiProducts
-            .filter((p: any) => p.isFeatured)
-            .sort((a: Product, b: Product) => {
+    let active = true;
+    fetch(`/api/products?limit=100&_t=${Date.now()}`, { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (!active || !json) return;
+        const list: Product[] = Array.isArray(json.data)
+          ? json.data
+          : Array.isArray(json)
+          ? json
+          : [];
+        if (list.length > 0) {
+          setDynamicProducts(list);
+          const sortByPriority = (arr: Product[]) =>
+            [...arr].sort((a, b) => {
               const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
               const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
               if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
@@ -118,72 +116,22 @@ export default function HomePage() {
               if (bIdx !== -1) return 1;
               return 0;
             });
-          setFeaturedProducts(sortedFeatured.slice(0, 8));
-
-          const sortedTrending = [...apiProducts].sort((a: Product, b: Product) => {
-            const aIdx = PRIORITY_FEATURED_SLUGS.indexOf(a.slug);
-            const bIdx = PRIORITY_FEATURED_SLUGS.indexOf(b.slug);
-            if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-            if (aIdx !== -1) return -1;
-            if (bIdx !== -1) return 1;
-            return 0;
-          });
-          setTrendingProducts(sortedTrending.slice(0, 6));
+          const featuredList = sortByPriority(list.filter((p) => p.isFeatured));
+          setFeaturedProducts((featuredList.length > 0 ? featuredList : sortByPriority(list)).slice(0, 8));
+          setTrendingProducts(sortByPriority(list).slice(0, 6));
         }
-        if (blogsRes.data && Array.isArray(blogsRes.data.data)) {
-          const apiBlogs = blogsRes.data.data.map((p: any) => ({
-            id: String(p.id),
-            title: p.title,
-            slug: p.slug,
-            excerpt: p.excerpt || p.short_description || '',
-            category: p.category || 'Nutrition',
-            image: p.featured_image || p.image || '/products/sweet-potato-powder-100g.jpg',
-            date: p.published_at
-              ? new Date(p.published_at).toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric',
-                  year: 'numeric',
-                })
-              : 'Recent',
-            rawDate: p.published_at || p.created_at || '',
-            readTime: Number(p.read_time || 7),
-            author: p.author?.name || p.author || "NaturesMud Council",
-          }));
-          const merged = new Map<string, any>();
-          for (const s of staticBlogPosts) {
-            if (s.slug) merged.set(s.slug, s);
-          }
-          for (const a of apiBlogs) {
-            if (a.slug) {
-              const local = merged.get(a.slug);
-              merged.set(a.slug, {
-                ...local,
-                ...a,
-                title: a.title || local?.title,
-                excerpt: a.excerpt || local?.excerpt,
-                image: a.image || local?.image,
-                category: a.category || local?.category,
-                author: a.author || local?.author,
-              });
-            }
-          }
-          const allPosts = Array.from(merged.values());
-          allPosts.sort((a, b) => new Date(b.date || b.rawDate || 0).getTime() - new Date(a.date || a.rawDate || 0).getTime());
-          setLatestPosts(allPosts.slice(0, 3));
-        }
-        // Featured blogs would be handled by the featuredBlogsRes if needed
-      } catch (error) {
-        console.warn('Failed to fetch dynamic data for homepage, falling back to static data.');
-      }
-    }
-    fetchData();
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
   }, []);
 
   const stats = [
-    { icon: Users, label: 'Happy Customers', value: '25,000+' },
-    { icon: Sprout, label: 'Farmer Families', value: '280+' },
-    { icon: PackageCheck, label: 'Products Delivered', value: '150+' },
-    { icon: Star, label: 'Average Rating', value: '4.9/5' },
+    { icon: PackageCheck, label: 'Active Products', value: '32' },
+    { icon: Sprout, label: 'Ecological Belts', value: '3 Belts' },
+    { icon: ShieldCheck, label: 'Added Sugar & Preservatives', value: '0%' },
+    { icon: Truck, label: 'Delivery Coverage', value: '77 Districts' },
   ];
 
   const categoriesWithImages = categories.slice(0, 4);
@@ -192,6 +140,11 @@ export default function HomePage() {
     <main className="w-full max-w-full">
       {/* 🏔️ Unified Responsive Hero Section (Mobile, Tablet & Laptop with 3-Second Interactive Product Poster Cards, Dynamic Color Shifts & Kinetic Statements) */}
       <MobileHeroSection dynamicProducts={dynamicProducts} />
+
+      {/* 🎉 Grand Dashain Offer Showcase Section (Static Poster + Glowing Text + 3 Offer Tiers + All Products) */}
+      <ErrorBoundary name="Dashain Offer Showcase">
+        <DashainOfferShowcaseSection products={dynamicProducts} />
+      </ErrorBoundary>
 
       {/* 🌿 Shop by Category (Interactive 6-Category Bento Grid across Mobile, Tablet & Laptop) */}
       <MobileCategorySection />
@@ -338,8 +291,8 @@ export default function HomePage() {
                     <Sparkles className="w-4 h-4" />
                     Only clean, only pure
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Himalayan Superfood Trail Mix</h3>
-                  <p className="text-white/80 text-xs sm:text-sm">Raw nuts, seeds & mountain berries — your daily clean energy ritual.</p>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Superfood Trail Mix (Nuts &amp; Seeds)</h3>
+                  <p className="text-white/80 text-xs sm:text-sm">Raw nuts, seeds &amp; mountain berries — your daily clean energy ritual.</p>
                   <Link href="/products/superfood-trail-mix" className="btn-gold mt-2 sm:mt-4 inline-flex items-center gap-2 text-sm">
                     Shop Now
                     <ArrowRight className="w-4 h-4" />
@@ -411,9 +364,9 @@ export default function HomePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
               {[
                 { src: '/products/nm-pistachio-jar.jpg', label: 'Premium Pistachio Roasted & Salted', likes: 487, tag: 'Pistachio' },
-                { src: '/products/nm-cashew-new-jar.jpg', label: 'Naturesmud Premium Cashew', likes: 612, tag: 'Cashew' },
-                { src: '/products/authentic-dehydrated-mango.jpg', label: 'Tarai Sun-Ripened Mango', likes: 678, tag: 'Mango' },
-                { src: '/products/almonds-2.jpg', label: 'Roasted Himalayan Almonds', likes: 819, tag: 'Almonds' },
+                { src: '/products/nm-cashew-new-jar.jpg', label: 'Premium Cashew Nuts', likes: 612, tag: 'Cashew' },
+                { src: '/products/authentic-dehydrated-mango.jpg', label: 'Dehydrated Mango', likes: 678, tag: 'Mango' },
+                { src: '/products/almonds-2.jpg', label: 'Roasted Almonds', likes: 819, tag: 'Almonds' },
               ].map((item, i) => (
                 <Link
                   key={i}
@@ -483,7 +436,6 @@ export default function HomePage() {
                       src={post.image || '/products/naturesmud-all-products-100g.jpg'}
                       alt={post.title}
                       fill
-                      priority={idx === 0}
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-108"
                     />
@@ -561,7 +513,7 @@ export default function HomePage() {
         </section>
       </ScrollReveal>
 
-      {/* 🏔️ About NaturesMud Nepal (naturesmud.com) — Animated Brand Authority & Regional Knowledge */}
+      {/* 🏔️ About NaturesMud Nepal — Animated Brand Authority & Regional Knowledge */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#F8F5EE] via-[#F4EFE6] to-[#FAF7F2] border-t border-ink/10 text-ink relative overflow-hidden">
         {/* Soft background ambient glows */}
         <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none animate-float-slow" />
@@ -577,7 +529,7 @@ export default function HomePage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
                 </span>
                 <span className="text-xs font-extrabold uppercase tracking-widest text-[#3A6B35] font-sans">
-                  About NaturesMud Nepal (naturesmud.com)
+                  About NaturesMud Nepal
                 </span>
               </div>
 
@@ -589,7 +541,7 @@ export default function HomePage() {
               </h2>
 
               <p className="text-sm sm:text-base text-ink/75 leading-relaxed font-sans max-w-2xl mx-auto">
-                Welcome to <strong>NaturesMud</strong> (also known online as <strong>naturesmud.com</strong> or <strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition pioneer dedicated to 100% single-origin authenticity.
+                Welcome to <strong>NaturesMud Nepal</strong> (<strong>naturesmud.shop</strong>), Nepal&apos;s premier Himalayan nutrition pioneer dedicated to 100% single-origin authenticity.
               </p>
             </ScrollReveal>
 
@@ -642,21 +594,21 @@ export default function HomePage() {
                     <Sprout className="w-5 h-5 text-emerald-700" />
                   </div>
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
-                    Direct Fair-Trade Partnership with 280+ Farmer Families
+                    Direct Sourcing Across Nepal&apos;s 3 Ecological Belts
                   </h3>
                   <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
-                    NaturesMud sources directly from smallholder farmers across Nepal&apos;s 3 ecological belts (Terai, Midland Hills & High Himalayas). By eliminating middlemen, our farm partners receive <strong className="text-emerald-800">+35% above-market fair-trade wages</strong>.
+                    NaturesMud sources directly from smallholder growers across Nepal&apos;s 3 ecological belts (Terai, Midland Hills &amp; High Himalayas), working with local farming communities to bring fresh harvests straight to your kitchen.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
                   <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
-                    280+ Farmer Families
+                    Terai · Hills · Himalayas
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-cream-50 text-[10px] font-bold text-ink/70 border border-ink/5">
-                    0 Middlemen
+                    Direct Grower Network
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[10px] font-bold text-emerald-800 border border-emerald-200">
-                    +35% Fair Income
+                    Small-Batch Packed
                   </span>
                 </div>
               </motion.div>
@@ -673,10 +625,10 @@ export default function HomePage() {
                     <Baby className="w-5 h-5 text-rose-600" />
                   </div>
                   <h3 className="font-heading font-extrabold text-base sm:text-lg text-ink group-hover:text-primary transition-colors leading-snug">
-                    Safe Baby Weaning & Whole-Food Nutrition
+                    Gentle Baby Weaning &amp; Whole-Food Nutrition
                   </h3>
                   <p className="text-xs sm:text-sm text-ink/75 leading-relaxed font-sans">
-                    Trusted by thousands of Nepali mothers for baby food weaning (6+ months) alongside pediatric guidance. 100% single-ingredient whole-food powders with zero chemical additives, zero added salt, and zero artificial coloring.
+                    Prepared for family kitchens and infant weaning from 6 months, as advised by your pediatrician. 100% single-ingredient whole-food powders with zero chemical additives, zero added salt, and zero artificial coloring.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-ink/6">
@@ -731,7 +683,7 @@ export default function HomePage() {
                   <Search className="w-3.5 h-3.5 text-primary" />
                   Popular Searches:
                 </span>
-                <Link href="/products?category=powders" className="hover:text-primary hover:underline transition-colors">Sweet Potato Powder Nepal</Link>
+                <Link href="/category/powders" className="hover:text-primary hover:underline transition-colors">Sweet Potato Powder Nepal</Link>
                 <span className="text-ink/30">•</span>
                 <Link href="/products/dates-powder" className="hover:text-primary hover:underline transition-colors">Dates Powder</Link>
                 <span className="text-ink/30">•</span>

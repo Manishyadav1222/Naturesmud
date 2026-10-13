@@ -1,0 +1,80 @@
+{
+  "slug": "virgin-coconut-oil-180ml",
+  "seoTitle": "Extra Virgin Coconut Oil 180ml Price in Nepal | NaturesMud",
+  "metaDescription": "Buy Extra Virgin Coconut Oil (180 ML) at Rs. 650 in Nepal. Cold-pressed unrefined coconut oil for baby massage, skin, hair & keto coffee. Fast delivery.",
+  "nepaliNameDevanagari": "भर्जिन नरिवलको तेल (१८० ml)",
+  "nepaliNameRoman": "Cold-Pressed Extra Virgin Nariwal ko Tel (180 ML Compact Jar)",
+  "originBelt": "Cold-Pressed from Fresh Mature Coconut Milk (0% Heat / 0% Hexane)",
+  "shelfLife": "18 months in a cool cupboard away from direct sunlight",
+  "whatItIs": "NaturesMud Extra Virgin Coconut Oil (180 ML Compact Jar) contains the exact same 100% cold-pressed, unrefined virgin coconut oil extracted from fresh coconut milk—packed in a convenient 180 ML jar ideal for baby massage tables, vanity/skincare use, travel bags, or first-time tasting before upgrading to the 500 ML family jar.",
+  "nepaliKitchenUses": [
+    "Daily Baby Massage & Nursery Table Jar: Keep this compact 180 ML jar solely in the bedroom/nursery for hygienic daily baby skin massage and moisturizing.",
+    "Natural Makeup Remover & Night Moisturizer: Warm 3–4 drops between fingertips to dissolve waterproof makeup and nourish dry winter skin in Kathmandu.",
+    "Morning Oil Pulling & Lip Care: Swish 1 teaspoon for morning oral hygiene or dab onto chapped lips.",
+    "Travel-Size Keto Coffee & Cooking Oil: Easy to pack for trips, treks, or hostel kitchens."
+  ],
+  "whoItSuits": "Perfect for new parents wanting a dedicated nursery jar for baby massage, individuals using virgin coconut oil for skin/hair care, travelers, and first-time buyers.",
+  "monsoonStorage": "Keep the lid tightly closed and use a clean, dry spoon so bathroom or kitchen humidity does not enter the oil.",
+  "comparisonTitle": "NaturesMud 180 ML Compact Jar vs 500 ML Family Jar",
+  "comparisonRows": [
+    {
+      "feature": "Oil Purity",
+      "naturesMud": "100% Cold-Pressed Extra Virgin Coconut Oil (Identical purity in both jars)",
+      "typicalMarket": "Commercial small bottles often mix mineral oil & synthetic fragrance"
+    },
+    {
+      "feature": "Best Use Case",
+      "naturesMud": "180 ML (Rs. 650) for Baby Nursery, Skincare Vanity & Travel",
+      "typicalMarket": "500 ML (Rs. 1,750) for Daily Kitchen Cooking & Family Use"
+    },
+    {
+      "feature": "Additives",
+      "naturesMud": "0% Preservatives, 0% Bleaching, 0% Paraffin",
+      "typicalMarket": "Refined, bleached, deodorized (RBD) copra oil"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Extra Virgin Coconut Oil (180ml) in Nepal?",
+      "a": "NaturesMud Extra Virgin Coconut Oil (180 ML Jar) is priced at Rs. 650 in Nepal (Rs. 361 per 100ml). Need a larger size? Switch to our 500 ML Family Jar (Rs. 1,750) using the size selector above."
+    },
+    {
+      "q": "Is the oil inside the 180 ML jar the exact same as the 500 ML jar?",
+      "a": "Yes! Both jars contain the exact same 100% cold-pressed, food-grade Extra Virgin Coconut Oil. Many families buy the 500 ML jar for the kitchen and the 180 ML jar for the baby massage/dressing table."
+    },
+    {
+      "q": "Is it safe for newborn and infant skin massage?",
+      "a": "Yes, because it is cold-pressed from fresh coconut milk with 0% mineral oil, 0% hexane, and 0% artificial perfume, it is gentle for baby skin massage."
+    },
+    {
+      "q": "Can I eat or cook with this 180 ML jar?",
+      "a": "Absolutely—it is 100% culinary food-grade Extra Virgin Coconut Oil."
+    },
+    {
+      "q": "Why does it solidify in cold weather?",
+      "a": "Unrefined virgin coconut oil naturally solidifies below 24°C and melts above 25°C without losing any nutritional value."
+    }
+  ],
+  "complementarySlugs": [
+    "virgin-coconut-oil-500ml",
+    "banana-powder",
+    "sweet-potato-powder"
+  ],
+  "variantGroupTitle": "Select Jar Size (D12 Pack Size Selector)",
+  "variants": [
+    {
+      "slug": "virgin-coconut-oil-180ml",
+      "label": "180 ML Trial / Travel Jar",
+      "weight": "180 ML",
+      "price": 650,
+      "badge": "Rs. 361 / 100ml · Compact Size"
+    },
+    {
+      "slug": "virgin-coconut-oil-500ml",
+      "label": "500 ML Family Value Jar",
+      "weight": "500 ML",
+      "price": 1750,
+      "badge": "Rs. 350 / 100ml · Best Value"
+    }
+  ]
+}

@@ -33,11 +33,11 @@ export class NotificationService {
       const config = getWhatsAppConfig();
       const recipient = formatWhatsAppRecipient(options?.recipientOverride || order.customerPhone);
       const text = [
-        `*💳 Payment Verified — Nature's Mud Nepal*`,
+        `*💳 Payment Verified — NaturesMud Nepal*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `Namaste ${order.customerName}!`,
         `Your payment of *Rs. ${Number(order.total).toLocaleString()}* for order *#${order.orderNumber}* has been verified.`,
-        `Our mountain co-op team is preparing your fresh harvest for dispatch. 🙏`,
+        `Our Kathmandu team is preparing your fresh harvest for dispatch. 🙏`,
       ].join('\n');
 
       return this.sendCustomMessage(order.orderNumber, recipient, 'PAYMENT_CONFIRMATION', text);
@@ -53,19 +53,19 @@ export class NotificationService {
     ): Promise<SendWhatsAppResult> {
       const recipient = formatWhatsAppRecipient(options?.recipientOverride || order.customerPhone);
       const text = [
-        `*🚚 Order Dispatched — Nature's Mud Nepal*`,
+        `*🚚 Order Dispatched — NaturesMud Nepal*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `Namaste ${order.customerName}!`,
         `Your order *#${order.orderNumber}* has been dispatched.`,
         `Courier / Tracking: ${trackingInfo || 'Kathmandu Valley Express 24h'}`,
-        `Track live here: https://naturesmud.shop/track-order?orderId=${order.orderNumber}`,
+        `Track live here: https://naturesmud.shop/track-order?number=${encodeURIComponent(order.orderNumber)}`,
       ].join('\n');
 
       return this.sendCustomMessage(order.orderNumber, recipient, 'ORDER_SHIPPED', text);
     },
 
     /**
-     * Sends order delivered WhatsApp message
+     * Sends order delivered WhatsApp message with Order-Tied Review Link
      */
     async sendOrderDelivered(
       order: InvoiceOrderInput,
@@ -73,11 +73,14 @@ export class NotificationService {
     ): Promise<SendWhatsAppResult> {
       const recipient = formatWhatsAppRecipient(options?.recipientOverride || order.customerPhone);
       const text = [
-        `*🏠 Order Delivered — Nature's Mud Nepal*`,
+        `*🏠 Order Delivered — NaturesMud Nepal*`,
         `━━━━━━━━━━━━━━━━━━━━`,
         `Namaste ${order.customerName}!`,
         `Your order *#${order.orderNumber}* has been safely delivered.`,
-        `Enjoy your 100% pure Himalayan superfoods! 🌿`,
+        `Enjoy your 100% pure whole-food superfoods! 🌿`,
+        ``,
+        `⭐ *Share Your Photo Review (Order #${order.orderNumber}):*`,
+        `https://naturesmud.shop/track-order?number=${encodeURIComponent(order.orderNumber)}#review-items`,
       ].join('\n');
 
       return this.sendCustomMessage(order.orderNumber, recipient, 'ORDER_DELIVERED', text);

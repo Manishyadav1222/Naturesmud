@@ -8,6 +8,7 @@
  * This route always returns JSON, even on connection failure.
  */
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 
 // The real admin server URL (server-side only — never exposed to browser)
 const ADMIN_SERVER =
@@ -58,6 +59,19 @@ async function proxyRequest(req: NextRequest, params: { path: string[] }) {
     });
 
     clearTimeout(timer);
+
+    // Whenever an admin mutation succeeds (POST, PUT, PATCH, DELETE), invalidate Next.js router/page cache
+    // so product prices, weights, stock, banners, and categories update in real time across the entire frontend.
+    if (req.method !== 'GET' && req.method !== 'HEAD' && upstream.ok) {
+      try {
+        revalidatePath('/', 'layout');
+        revalidatePath('/products', 'page');
+        revalidatePath('/catalog', 'page');
+        revalidatePath('/offers', 'page');
+      } catch {
+        // Non-fatal if revalidation fails in edge/dev contexts
+      }
+    }
 
     const responseHeaders = new Headers();
     for (const [key, value] of upstream.headers.entries()) {

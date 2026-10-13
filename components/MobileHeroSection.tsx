@@ -27,7 +27,8 @@ import {
 import { useCartStore } from '@/lib/store/cart-store';
 import { useUIStore } from '@/lib/store/ui-store';
 import { formatPrice } from '@/lib/utils';
-import { products } from '@/lib/data/products';
+import { products, getProductBySlug } from '@/lib/data/products';
+import { isDashainOfferActive } from '@/lib/data/dashain-offer';
 
 export interface MobileHeroPoster {
   id: string;
@@ -47,17 +48,34 @@ export interface MobileHeroPoster {
   overlayTo: string;
 }
 
-export const MOBILE_POSTERS: MobileHeroPoster[] = [
+const RAW_MOBILE_POSTERS: MobileHeroPoster[] = [
   {
-    id: 'raw-himalayan-almonds',
-    name: 'Himalayan Almonds',
-    subname: 'Naturesmud Premium Almonds – 100% Raw, Unroasted & Handpicked',
+    id: 'dashain-offer-2026',
+    name: 'Dashain Blessings & Health Offer',
+    subname: 'Free Delivery Over Rs. 3,000 · Free Delivery & Free Pink Salt Over Rs. 5,000+',
+    slug: 'dashain-offer',
+    image: '/images/posters/dashain-offer-poster.jpg',
+    price: 3000,
+    originalPrice: 3500,
+    weight: 'All 32 Products',
+    badge: '🎉 Dashain Festive Offer',
+    primary: '#7F1D1D',
+    secondary: '#5A0B0B',
+    accent: '#FDE047',
+    bgTint: 'rgba(127, 29, 29, 0.10)',
+    overlayFrom: 'rgba(127,29,29,0.35)',
+    overlayTo: 'rgba(40,5,5,0.88)',
+  },
+  {
+    id: '2',
+    name: 'Raw Himalayan Almonds',
+    subname: 'Naturesmud Premium Almonds – 100% Raw, Unroasted & Cold-Shelled',
     slug: 'raw-himalayan-almonds',
     image: '/products/nm-almond-jar-v2.jpg',
     price: 750,
-    originalPrice: 750,
-    weight: '200g',
-    badge: '🏔️ Himalayan Origin',
+    originalPrice: 850,
+    weight: '200 GM',
+    badge: '🏔️ Whole Mountain Almonds',
     primary: '#92400E',
     secondary: '#78350F',
     accent: '#FCD34D',
@@ -66,14 +84,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(40,15,0,0.85)',
   },
   {
-    id: 'freeze-dried-avocado-powder',
+    id: '165',
     name: 'Freeze Dried Avocado Powder',
     subname: 'Product of Nepal 🇳🇵 – Slow Freeze-Dried Real Fruit Goodness',
     slug: 'freeze-dried-avocado-powder',
     image: '/products/avocado-powder-v2.jpg',
     price: 790,
-    originalPrice: 790,
-    weight: '80g',
+    originalPrice: 890,
+    weight: '80 GM',
     badge: '🇳🇵 Product of Nepal',
     primary: '#3F6212',
     secondary: '#365314',
@@ -83,14 +101,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(20,35,5,0.88)',
   },
   {
-    id: 'strawberry-powder',
+    id: '166',
     name: 'Freeze Dried Strawberry Powder',
     subname: 'Pure Goodness from Strawberries – Real Fruit Lasting Goodness',
     slug: 'strawberry-powder',
     image: '/products/strawberry-powder-v2.jpg',
     price: 1395,
-    originalPrice: 1395,
-    weight: '80g',
+    originalPrice: 1550,
+    weight: '80 GM',
     badge: '🍓 100% Real Fruit',
     primary: '#9F1239',
     secondary: '#881337',
@@ -100,14 +118,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(40,5,15,0.88)',
   },
   {
-    id: 'premium-harvest-cashew',
-    name: 'Roasted Cashews',
+    id: '161',
+    name: 'Roasted Cashew Nuts',
     subname: 'Artisanal Himalayan Dry-Roasted Golden Cashews',
     slug: 'roasted-cashewnuts',
     image: '/products/nm-roasted-cashew-new.jpg',
-    price: 590,
-    originalPrice: 650,
-    weight: '200g',
+    price: 750,
+    originalPrice: 850,
+    weight: '200 GM',
     badge: '⭐ Golden Roasted',
     primary: '#92400E',
     secondary: '#78350F',
@@ -117,15 +135,15 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(45,20,0,0.88)',
   },
   {
-    id: 'banana-powder',
-    name: 'Pure Banana Powder',
-    subname: '100% Natural Himalayan Banana Powder – Rich in Potassium & Energy',
+    id: '167',
+    name: 'Banana Powder',
+    subname: 'Naturally Ripened Chitwan & Nawalpur Bananas – Gentle Weaning Food',
     slug: 'banana-powder',
     image: '/products/posters/banana-powder-ad-2k.jpg',
-    price: 450,
-    originalPrice: 550,
-    weight: '100g',
-    badge: '⚡ Energy Booster',
+    price: 650,
+    originalPrice: 750,
+    weight: '100 GM',
+    badge: '🍌 Product of Nepal',
     primary: '#D97706',
     secondary: '#B45309',
     accent: '#FDE047',
@@ -134,15 +152,15 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(45,20,0,0.88)',
   },
   {
-    id: 'moringa-leaf-powder',
+    id: '168',
     name: 'Moringa Leaf Powder',
-    subname: 'Pure Himalayan Leaf Powder – 90+ Nutrients & 46 Antioxidants',
+    subname: 'Nutrient-Dense Terai & Mid-Hills Moringa – 90+ Nutrients',
     slug: 'moringa-leaf-powder',
     image: '/products/posters/moringa-leaf-advertising-2k.jpg',
-    price: 550,
-    originalPrice: 650,
-    weight: '200g',
-    badge: '🌿 Pure Real Better',
+    price: 690,
+    originalPrice: 790,
+    weight: '200 GM',
+    badge: '🌿 Terai & Mid-Hills',
     primary: '#166534',
     secondary: '#14532D',
     accent: '#4ADE80',
@@ -151,14 +169,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(5,30,15,0.90)',
   },
   {
-    id: 'dehydrated-mango',
+    id: '182',
     name: 'Dehydrated Mango',
     subname: 'Sun-Dried Sweet Mango Slices – 0% Added Sugar',
     slug: 'dehydrated-mango',
     image: '/products/authentic-dehydrated-mango.jpg',
     price: 595,
-    originalPrice: 650,
-    weight: '100g',
+    originalPrice: 595,
+    weight: '100 GM',
     badge: '🥭 Sun-Dried Gold',
     primary: '#D97706',
     secondary: '#B45309',
@@ -168,14 +186,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,20,0,0.85)',
   },
   {
-    id: 'makhana-fox-nuts',
+    id: '169',
     name: 'Makhana (Fox Nuts)',
     subname: 'Lightweight Puffed Lotus Seeds – High Calcium & Protein',
     slug: 'makhana-fox-nuts',
     image: '/products/posters/makhana-fox-nuts-surrounded-2k.jpg',
-    price: 250,
-    originalPrice: 250,
-    weight: '60g',
+    price: 390,
+    originalPrice: 450,
+    weight: '50 GM',
     badge: 'New Superfood',
     primary: '#B45309',
     secondary: '#92400E',
@@ -185,14 +203,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(40,15,0,0.85)',
   },
   {
-    id: 'sweet-vibes',
+    id: '4',
     name: 'Sweet Potato Powder',
     subname: 'Sun-Dried Sweet Potato Powder – High Vitamin A',
     slug: 'sweet-potato-powder',
     image: '/products/sweet-potato-powder-100g.jpg',
-    price: 420,
-    originalPrice: 450,
-    weight: '100g',
+    price: 510,
+    originalPrice: 600,
+    weight: '100 GM',
     badge: 'Baby-Safe Weaning',
     primary: '#BE185D',
     secondary: '#9D174D',
@@ -202,14 +220,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(60,0,30,0.80)',
   },
   {
-    id: 'roasted-himalayan-almonds',
-    name: 'Roasted Himalayan Almonds',
+    id: '17',
+    name: 'Roasted Almonds',
     subname: 'Crispy Mountain Almonds – Pure Vitamin E & Protein',
     slug: 'roasted-almonds',
     image: '/products/nm-almond-jar-v2.jpg',
     price: 750,
-    originalPrice: 750,
-    weight: '200g',
+    originalPrice: 850,
+    weight: '200 GM',
     badge: 'Vitamin E Rich',
     primary: '#92400E',
     secondary: '#78350F',
@@ -219,14 +237,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(40,15,0,0.85)',
   },
   {
-    id: 'earth-ritual-beetroot',
+    id: '3',
     name: 'Beetroot Powder',
     subname: "Earth's Ritual 100% Pure Red Beetroot Powder",
     slug: 'beetroot-powder',
     image: '/products/posters/beetroot-powder-explosion-2k.jpg',
     price: 430,
-    originalPrice: 430,
-    weight: '100g',
+    originalPrice: 500,
+    weight: '100 GM',
     badge: "Earth's Ritual",
     primary: '#9F1239',
     secondary: '#881337',
@@ -236,14 +254,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,5,20,0.85)',
   },
   {
-    id: 'chia-power',
+    id: '11',
     name: 'Chia Seeds',
     subname: 'Himalayan High-Altitude Organic Chia Seeds',
     slug: 'chia-seeds',
     image: '/products/posters/chia-seeds-flowers-2k.jpg',
     price: 495,
-    originalPrice: 495,
-    weight: '300g',
+    originalPrice: 550,
+    weight: '300 GM',
     badge: 'Omega-3 Power',
     primary: '#1E293B',
     secondary: '#0F172A',
@@ -253,14 +271,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(5,10,20,0.90)',
   },
   {
-    id: 'blueberry-orchard',
+    id: '13',
     name: 'Dried Blueberries',
     subname: 'Whole Sun-Dried Wild Himalayan Blueberries',
     slug: 'dried-blueberries',
     image: '/products/posters/blueberries-surrounded-2k.jpg',
     price: 650,
-    originalPrice: 650,
-    weight: '100g',
+    originalPrice: 750,
+    weight: '100 GM',
     badge: 'Anthocyanins',
     primary: '#1E1B4B',
     secondary: '#0F0E2A',
@@ -270,14 +288,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(5,5,20,0.90)',
   },
   {
-    id: 'mountain-apple-crisp',
+    id: '1',
     name: 'Dehydrated Apple',
     subname: 'Naturally Nutritious Himalayan Orchard Apple Rings',
     slug: 'dehydrated-apple',
     image: '/products/authentic-dehydrated-apple.jpg',
     price: 510,
-    originalPrice: 510,
-    weight: '100g',
+    originalPrice: 600,
+    weight: '100 GM',
     badge: 'Mountain Crisp',
     primary: '#15803D',
     secondary: '#166534',
@@ -287,14 +305,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(10,40,15,0.85)',
   },
   {
-    id: 'dehydrated-pineapple',
+    id: '18',
     name: 'Dehydrated Pineapple',
     subname: 'Sun-Dried Pineapple Rings – High in Bromelain',
     slug: 'dehydrated-pineapple',
     image: '/products/authentic-dehydrated-pineapple.jpg',
     price: 495,
-    originalPrice: 495,
-    weight: '100g',
+    originalPrice: 550,
+    weight: '100 GM',
     badge: 'Enzyme Rich',
     primary: '#EAB308',
     secondary: '#CA8A04',
@@ -304,14 +322,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(60,30,0,0.85)',
   },
   {
-    id: 'papaya-splash',
+    id: '8',
     name: 'Dehydrated Papaya',
     subname: 'Solar-Dehydrated Sweet Papaya Slices',
     slug: 'dehydrated-papaya',
     image: '/products/posters/papaya-pouch-fruit-2k.jpg',
-    price: 395,
-    originalPrice: 395,
-    weight: '90g',
+    price: 450,
+    originalPrice: 450,
+    weight: '80 GM',
     badge: 'Digestive Enzymes',
     primary: '#EA580C',
     secondary: '#C2410C',
@@ -321,14 +339,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,15,0,0.85)',
   },
   {
-    id: 'ruby-cranberries-delight',
-    name: 'Dried Cranberry',
+    id: '7',
+    name: 'Dried Cranberries',
     subname: 'Ruby Himalayan Mountain Berries – Urinary & Cell Defense',
     slug: 'dried-cranberries',
     image: '/products/posters/cranberries-juice-splash-2k.jpg',
     price: 415,
-    originalPrice: 415,
-    weight: '100g',
+    originalPrice: 500,
+    weight: '100 GM',
     badge: 'Ruby Berries',
     primary: '#881337',
     secondary: '#701A75',
@@ -338,14 +356,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(30,0,15,0.88)',
   },
   {
-    id: 'carrot-powder',
+    id: '5',
     name: 'Carrot Powder',
     subname: 'Pure Himalayan Carrot Powder – Beta-Carotene Rich',
     slug: 'carrot-powder',
     image: '/products/posters/carrot-powder-explosion-2k.jpg',
-    price: 440,
-    originalPrice: 440,
-    weight: '100g',
+    price: 490,
+    originalPrice: 550,
+    weight: '100 GM',
     badge: 'Eye Health',
     primary: '#EA580C',
     secondary: '#C2410C',
@@ -355,14 +373,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,15,0,0.85)',
   },
   {
-    id: 'dates-powder',
+    id: '6',
     name: 'Dates Powder',
     subname: 'Natural Unrefined Dates Powder Sweetener',
     slug: 'dates-powder',
     image: '/products/posters/dates-powder-on-wood-2k.jpg',
     price: 400,
-    originalPrice: 400,
-    weight: '100g',
+    originalPrice: 450,
+    weight: '100 GM',
     badge: '0% White Sugar',
     primary: '#78350F',
     secondary: '#451A03',
@@ -372,14 +390,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(30,10,0,0.85)',
   },
   {
-    id: 'himalayan-pink-salt',
+    id: '10',
     name: 'Himalayan Pink Salt',
     subname: 'Ancient 84+ Trace Minerals Rock Salt',
     slug: 'himalayan-pink-salt',
     image: '/products/posters/pink-salt-crystals-roses-2k.jpg',
     price: 250,
-    originalPrice: 250,
-    weight: '200g',
+    originalPrice: 300,
+    weight: '200 GM',
     badge: '84+ Minerals',
     primary: '#BE185D',
     secondary: '#9D174D',
@@ -389,15 +407,15 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,0,25,0.85)',
   },
   {
-    id: 'shilajit-resin',
-    name: 'Pure Shilajit Resin',
-    subname: 'Authentic Grade-A Himalayan Shilajit – 84+ Minerals',
+    id: '40',
+    name: 'Pure Mountain Himalayan Shilajit Resin',
+    subname: 'Purified High-Altitude Himalayan Shilajit – 20 GM Glass Jar',
     slug: 'pure-mountain-himalayan-shilajit-resin',
     image: '/products/shilajit.jpg',
     price: 1995,
     originalPrice: 1995,
-    weight: '20g',
-    badge: 'Grade-A Resin',
+    weight: '20 GM',
+    badge: 'Purified Resin',
     primary: '#1C1917',
     secondary: '#0C0A09',
     accent: '#D4AF37',
@@ -406,14 +424,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(0,0,0,0.92)',
   },
   {
-    id: 'pure-pumpkin-seeds',
+    id: '22',
     name: 'Pumpkin Seeds',
     subname: 'Raw & Unroasted AAA-Grade Himalayan Pepitas',
     slug: 'pumpkin-seeds',
     image: '/products/posters/pumpkin-seeds-ad-2k.jpg',
     price: 650,
-    originalPrice: 650,
-    weight: '300g',
+    originalPrice: 750,
+    weight: '300 GM',
     badge: 'Zinc & Magnesium',
     primary: '#3F6212',
     secondary: '#365314',
@@ -423,14 +441,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(20,35,5,0.85)',
   },
   {
-    id: 'premium-pistachio',
-    name: 'Premium Pistachio',
+    id: '176',
+    name: 'Premium Pistachio Roasted & Salted',
     subname: 'Roasted & Salted — Rich in Vitamin B6, Antioxidants & Heart-Healthy Fats',
     slug: 'premium-pistachio-roasted-salted',
     image: '/products/nm-pistachio-jar.jpg',
     price: 1250,
     originalPrice: 1400,
-    weight: '200g',
+    weight: '200 GM',
     badge: '🍃 100% Natural',
     primary: '#3D6B1A',
     secondary: '#2D5012',
@@ -440,14 +458,14 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(15,35,5,0.88)',
   },
   {
-    id: 'premium-cashew-new',
-    name: 'Premium Cashew',
+    id: '14',
+    name: 'Premium Cashew Nuts',
     subname: 'Naturesmud Signature — Buttery Whole W240 Grade Cashews',
     slug: 'premium-cashewnuts',
     image: '/products/nm-cashew-new-jar.jpg',
     price: 750,
-    originalPrice: 750,
-    weight: '200g',
+    originalPrice: 850,
+    weight: '200 GM',
     badge: '👑 Jumbo W240 Grade',
     primary: '#C2410C',
     secondary: '#9A3412',
@@ -457,6 +475,27 @@ export const MOBILE_POSTERS: MobileHeroPoster[] = [
     overlayTo: 'rgba(50,15,0,0.88)',
   },
 ];
+
+export const MOBILE_POSTERS: MobileHeroPoster[] = RAW_MOBILE_POSTERS.filter((poster) => {
+  if (poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer') {
+    return isDashainOfferActive();
+  }
+  return true;
+}).map((poster) => {
+  if (poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer') {
+    return poster;
+  }
+  const canonical = getProductBySlug(poster.slug);
+  if (!canonical) return poster;
+  return {
+    ...poster,
+    id: canonical.id,
+    name: canonical.official_label_name || canonical.name,
+    price: Number(canonical.price),
+    originalPrice: Number(canonical.compareAtPrice || canonical.price),
+    weight: canonical.weight || poster.weight,
+  };
+});
 
 export const ANIMATED_STATEMENTS = [
   {
@@ -484,10 +523,10 @@ export const ANIMATED_STATEMENTS = [
     icon: Zap,
   },
   {
-    badge: 'HOLISTIC WELLNESS & LAB TESTED',
+    badge: 'WHOLE-FOOD FAMILY NUTRITION',
     title: 'Gentle Whole Foods for Family',
-    highlight: 'From 6m Babies to Athletes',
-    sub: 'Clean nutrition tailored for baby first solids, maternal nourishment, student focus, and workout recovery.',
+    highlight: 'Single-Ingredient Purity',
+    sub: 'Clean nutrition suitable for weaning from 6 months (as advised by your pediatrician), maternal nourishment, student focus, and active lifestyles.',
     color: 'from-purple-700 via-indigo-700 to-blue-800',
     icon: Award,
   },
@@ -509,24 +548,13 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [addedItem, setAddedItem] = useState<string | null>(null);
-  const [liveProducts, setLiveProducts] = useState<any[]>(dynamicProducts || []);
+  const [liveProducts, setLiveProducts] = useState<any[]>(
+    dynamicProducts && dynamicProducts.length > 0 ? dynamicProducts : products
+  );
 
   useEffect(() => {
     if (dynamicProducts && dynamicProducts.length > 0) {
       setLiveProducts(dynamicProducts);
-    }
-  }, [dynamicProducts]);
-
-  useEffect(() => {
-    if (!dynamicProducts || dynamicProducts.length === 0) {
-      fetch('/api/products?per_page=100')
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.data && Array.isArray(data.data) && data.data.length > 0) {
-            setLiveProducts(data.data);
-          }
-        })
-        .catch(() => {});
     }
   }, [dynamicProducts]);
 
@@ -559,11 +587,11 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
     (p) => p.slug === currentPoster.slug || p.id === currentPoster.id
   );
 
-  // 2-second auto-transition across laptop, tablet & mobile viewports
+  // 4.5-second auto-transition across laptop, tablet & mobile viewports
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % posters.length);
-    }, 2000);
+    }, 4500);
     return () => clearInterval(interval);
   }, [activeIdx, posters.length]);
 
@@ -782,10 +810,10 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                     <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 drop-shadow-xs" />
                   ))}
                 </div>
-                <span className="text-xs font-heading font-extrabold text-[#242220]">4.9 / 5</span>
+                <span className="text-xs font-heading font-extrabold text-[#242220]">100% Pure</span>
                 <span className="inline-flex items-center gap-1 text-[11px] text-[#242220]/75 font-semibold font-sans">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                  25,000+ Happy Nepalis
+                  32 Whole-Food SKUs
                 </span>
               </div>
             </div>
@@ -815,10 +843,10 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 lg:gap-3 pt-1 w-full max-w-xl">
             {[
-              { value: '25,000+', label: 'Happy Customers', highlight: true, icon: Users },
-              { value: '100%', label: '0 Additives', highlight: false, icon: Sparkles },
-              { value: '280+', label: 'Farmer Families', highlight: false, icon: Sprout },
-              { value: '4.9★', label: 'Customer Rating', highlight: true, icon: Award },
+              { value: '32 SKUs', label: 'Whole-Food Range', highlight: true, icon: Users },
+              { value: '0%', label: 'Additives & Sugar', highlight: false, icon: Sparkles },
+              { value: '3 Belts', label: 'Terai · Hills · Peaks', highlight: false, icon: Sprout },
+              { value: '77 Districts', label: 'Nepal Delivery', highlight: true, icon: Award },
             ].map((stat) => (
               <div
                 key={stat.label}
@@ -846,19 +874,34 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
             <div className="relative w-full aspect-[4/5] md:aspect-[3/4.2] md:min-h-[530px] lg:min-h-0 lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/90 bg-stone-900 group">
               {posters.map((poster, idx) => {
                 const isCurrent = activeIdx === idx;
+                const shouldRenderImage =
+                  isCurrent || idx === (activeIdx + 1) % posters.length;
+                if (!shouldRenderImage) return null;
                 return (
                   <div
                     key={poster.id}
                     className={`absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer ${
                       isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                     }`}
-                    onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
+                    onClick={() => {
+                      if (poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer') {
+                        const el = document.getElementById('dashain-mega-offer');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        else window.location.href = '/offers';
+                      } else {
+                        openQuickView(matchedCatalogProduct?.id || poster.slug);
+                      }
+                    }}
                   >
                     <Image
                       src={poster.image}
-                      alt={poster.name}
+                      alt={
+                        poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer'
+                          ? 'NaturesMud Dashain Blessings & Health Festival Offer Poster - Free Delivery & Gift'
+                          : `${poster.name} - 100% Pure NaturesMud Nepal`
+                      }
                       fill
-                      priority={idx < 2}
+                      priority={idx === 0}
                       sizes="(max-width: 1024px) 50vw, 450px"
                       className="object-cover object-center transition-transform duration-700 ease-out"
                       style={{ filter: 'saturate(1.18)' }}
@@ -925,36 +968,48 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
 
                       {/* Action Row */}
                       <div className="flex items-center gap-2 pt-0.5">
-                        <button
-                          type="button"
-                          onClick={handleQuickAdd}
-                          className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer relative overflow-hidden group/dbtn"
-                          style={{
-                            background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
-                          }}
-                        >
-                          <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/dbtn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
-                          {addedItem === poster.id ? (
-                            <>
-                              <Check className="w-4 h-4 animate-bounce" />
-                              <span>Added to Cart!</span>
-                            </>
-                          ) : (
-                            <>
-                              <ShoppingBag className="w-3.5 h-3.5" />
-                              <span>Quick Add · <strong className="font-black text-amber-200">Rs. {poster.price}</strong></span>
-                            </>
-                          )}
-                        </button>
+                        {poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer' ? (
+                          <Link
+                            href="/offers"
+                            className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-[#4a0808] shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer relative overflow-hidden bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:brightness-110"
+                          >
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Explore Festival Offers &rarr;</span>
+                          </Link>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              onClick={handleQuickAdd}
+                              className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer relative overflow-hidden group/dbtn"
+                              style={{
+                                background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
+                              }}
+                            >
+                              <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover/dbtn:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
+                              {addedItem === poster.id ? (
+                                <>
+                                  <Check className="w-4 h-4 animate-bounce" />
+                                  <span>Added to Cart!</span>
+                                </>
+                              ) : (
+                                <>
+                                  <ShoppingBag className="w-3.5 h-3.5" />
+                                  <span>Quick Add · <strong className="font-black text-amber-200">Rs. {poster.price}</strong></span>
+                                </>
+                              )}
+                            </button>
 
-                        <Link
-                          href={`/products/${poster.slug}`}
-                          className="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-900 font-heading font-extrabold text-xs active:scale-95 transition-all flex items-center justify-center gap-1 shadow-md"
-                          aria-label="Buy Now"
-                        >
-                          <span>Buy</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                            <Link
+                              href={`/products/${poster.slug}`}
+                              className="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-stone-900 font-heading font-extrabold text-xs active:scale-95 transition-all flex items-center justify-center gap-1 shadow-md"
+                              aria-label={`Buy ${poster.name}`}
+                            >
+                              <span>Buy</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1022,9 +1077,9 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
           </span>
         </div>
 
-        {/* 2. Editorial Master Headline */}
+        {/* 2. Editorial Master Headline (use div role="presentation" so page has strictly 1 H1) */}
         <div className="space-y-1.5 w-full px-2">
-          <h1 className="text-[28px] xs:text-[32px] sm:text-[38px] leading-[1.22] font-normal tracking-[-0.02em] font-heading text-[#1C2820] space-y-1.5">
+          <div role="presentation" className="text-[28px] xs:text-[32px] sm:text-[38px] leading-[1.22] font-normal tracking-[-0.02em] font-heading text-[#1C2820] space-y-1.5">
             <span className="block font-serif italic text-[#1C2820] font-normal pb-0.5">
               Grown in Nepal.
             </span>
@@ -1047,7 +1102,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                 />
               </svg>
             </span>
-          </h1>
+          </div>
 
           {/* Provenance Tags */}
           <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2 text-[10px] sm:text-[11px] font-semibold text-[#7A5230] uppercase tracking-wider font-sans">
@@ -1071,6 +1126,9 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
           <div className="relative w-full aspect-[4/5] xs:aspect-[1/1.18] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/80 bg-stone-900 group">
             {posters.map((poster, idx) => {
               const isCurrent = activeIdx === idx;
+              const shouldRenderImage =
+                isCurrent || idx === (activeIdx + 1) % posters.length;
+              if (!shouldRenderImage) return null;
               return (
                 <div
                   key={poster.id}
@@ -1083,7 +1141,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                     src={poster.image}
                     alt={poster.name}
                     fill
-                    priority={idx < 2}
+                    priority={false}
                     sizes="(max-width: 768px) 90vw, 380px"
                     className="object-cover object-center transition-transform duration-700 ease-out"
                     style={{ filter: 'saturate(1.18)' }}
@@ -1296,7 +1354,7 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
           </Link>
 
           <Link
-            href="/our-story"
+            href="/about"
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-[#7A5230]/40 bg-white/95 hover:bg-white text-[#7A5230] px-5 py-3.5 text-sm font-semibold tracking-wide shadow-2xs active:scale-[0.98] transition-all font-sans"
           >
             <Leaf className="w-4 h-4 text-[#7A5230]" />
@@ -1327,14 +1385,11 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
               </div>
               <div className="text-[11px] leading-tight font-sans text-left">
                 <div className="flex items-center text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400 drop-shadow-xs" />
-                  ))}
-                  <span className="font-heading font-extrabold text-[#242220] ml-1.5">4.9 / 5</span>
+                  <span className="font-heading font-extrabold text-[#242220]">100% Pure Whole Food</span>
                 </div>
                 <div className="flex items-center gap-1 text-[#242220]/75 font-semibold mt-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block" />
-                  <span>25,000+ Happy Nepalis</span>
+                  <span>0% Additives · 0% Sugar</span>
                 </div>
               </div>
             </div>

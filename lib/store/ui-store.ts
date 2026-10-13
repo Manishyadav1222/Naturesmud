@@ -5,6 +5,7 @@ interface UIState {
   searchQuery: string;
   isAccountMenuOpen: boolean;
   isMobileMenuOpen: boolean;
+  isDashainModalOpen: boolean;
   recentlyViewed: string[];
   quickViewProductId: string | null;
   openSearch: (initialQuery?: string | unknown) => void;
@@ -14,6 +15,8 @@ interface UIState {
   closeAccountMenu: () => void;
   toggleMobileMenu: () => void;
   closeMobileMenu: () => void;
+  openDashainModal: () => void;
+  closeDashainModal: () => void;
   openQuickView: (productId: string) => void;
   closeQuickView: () => void;
   addRecentlyViewed: (productId: string) => void;
@@ -24,6 +27,7 @@ export const useUIStore = create<UIState>((set, get) => ({
   searchQuery: '',
   isAccountMenuOpen: false,
   isMobileMenuOpen: false,
+  isDashainModalOpen: true,
   recentlyViewed: [],
   quickViewProductId: null,
 
@@ -38,10 +42,12 @@ export const useUIStore = create<UIState>((set, get) => ({
   closeAccountMenu: () => set({ isAccountMenuOpen: false }),
   toggleMobileMenu: () => set({ isMobileMenuOpen: !get().isMobileMenuOpen }),
   closeMobileMenu: () => set({ isMobileMenuOpen: false }),
+  openDashainModal: () => set({ isDashainModalOpen: true }),
+  closeDashainModal: () => set({ isDashainModalOpen: false }),
   openQuickView: (productId) => set({ quickViewProductId: productId }),
   closeQuickView: () => set({ quickViewProductId: null }),
 
-  addRecentlyViewed: (productId) => {
+  addRecentlyViewed: (productId: string) => {
     const { recentlyViewed } = get();
     set({
       recentlyViewed: [productId, ...recentlyViewed.filter((id) => id !== productId)].slice(0, 8),

@@ -195,7 +195,7 @@ async function createPoster() {
       <text x="45" y="44" class="sans" font-size="10" fill="#666">Tangy-sweet rings with active digestive bromelain enzyme</text>
       <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">100 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Standup Pouch</text>
-      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 495</text>
+      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 590</text>
     </g>
 
     <!-- Row 3: Apple -->
@@ -229,9 +229,9 @@ async function createPoster() {
       <text x="20" y="34" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">5</text>
       <text x="45" y="25" class="title" font-size="14" font-weight="bold" fill="#143020">Dehydrated Papaya Slices</text>
       <text x="45" y="44" class="sans" font-size="10" fill="#666">Solar-dehydrated below 42°C to retain papain digestive enzymes</text>
-      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">90 GM</text>
+      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">80 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Standup Pouch</text>
-      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 395</text>
+      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 450</text>
     </g>
 
     <!-- Row 6: Blueberries -->
@@ -333,7 +333,7 @@ async function createPoster() {
       <text x="45" y="39" class="sans" font-size="9.5" fill="#666">High resistant starch prebiotic fiber for gut microbiome</text>
       <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
       <text x="460" y="31" class="sans" font-size="10.5" fill="#555">Glass Jar</text>
-      <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 590</text>
+      <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 650</text>
     </g>
 
     <!-- 11: Moringa -->
@@ -343,7 +343,7 @@ async function createPoster() {
       <text x="20" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">11</text>
       <text x="45" y="22" class="title" font-size="13.5" font-weight="bold" fill="#143020">Organic Moringa Leaf Powder</text>
       <text x="45" y="39" class="sans" font-size="9.5" fill="#666">90+ essential nutrients, plant protein, chlorophyll vitality</text>
-      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">200 GM</text>
       <text x="460" y="31" class="sans" font-size="10.5" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 690</text>
     </g>
@@ -391,7 +391,7 @@ async function createPoster() {
       <text x="20" y="31" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">15</text>
       <text x="45" y="22" class="title" font-size="13.5" font-weight="bold" fill="#143020">Organic Carrot Powder</text>
       <text x="45" y="39" class="sans" font-size="9.5" fill="#666">Beta-Carotene (Pro-Vitamin A) for ocular health and smooth skin</text>
-      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">100 GM</text>
+      <text x="375" y="31" class="sans" font-size="11.5" font-weight="bold" fill="#333">80 GM</text>
       <text x="460" y="31" class="sans" font-size="10.5" fill="#555">Glass Jar</text>
       <text x="655" y="32" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 490</text>
     </g>
@@ -488,7 +488,7 @@ async function createPoster() {
       <text x="20" y="34" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">18</text>
       <text x="45" y="25" class="title" font-size="14" font-weight="bold" fill="#143020">Premium Jumbo Cashew Nuts</text>
       <text x="45" y="44" class="sans" font-size="10" fill="#666">Raw, sweet creamy whole kernels, rich in copper and plant protein</text>
-      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">200 GM</text>
+      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">150 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Glass Jar</text>
       <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 750</text>
     </g>
@@ -500,7 +500,7 @@ async function createPoster() {
       <text x="20" y="34" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">19</text>
       <text x="45" y="25" class="title" font-size="14" font-weight="bold" fill="#143020">Roasted Himalayan Cashew Nuts</text>
       <text x="45" y="44" class="sans" font-size="10" fill="#666">Crisp golden roasted kernels with trace minerals, oil-free</text>
-      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">150 GM</text>
+      <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">200 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Glass Jar</text>
       <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 750</text>
     </g>
@@ -514,7 +514,7 @@ async function createPoster() {
       <text x="45" y="44" class="sans" font-size="10" fill="#666">In-shell lightly salted pistachios rich in lutein and eye antioxidants</text>
       <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">200 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Glass Jar</text>
-      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 820</text>
+      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 895</text>
     </g>
 
     <!-- 21: Pumpkin Seeds -->
@@ -538,7 +538,7 @@ async function createPoster() {
       <text x="45" y="44" class="sans" font-size="10" fill="#666">Sun-cured whole tender figs rich in bioavailable calcium &amp; gut fiber</text>
       <text x="375" y="34" class="sans" font-size="12" font-weight="bold" fill="#333">200 GM</text>
       <text x="460" y="34" class="sans" font-size="11" fill="#555">Glass Jar</text>
-      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 850</text>
+      <text x="655" y="35" text-anchor="end" class="title" font-size="16" font-weight="bold" fill="#143020">Rs. 690</text>
     </g>
   </g>
 
@@ -631,14 +631,14 @@ async function createPoster() {
       <text x="655" y="34" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 220</text>
     </g>
 
-    <!-- 27: Coconut Oil 180gm -->
+    <!-- 27: Coconut Oil 180ml -->
     <g transform="translate(20, 504)">
       <rect x="0" y="0" width="670" height="58" fill="#FFFFFF" stroke="#F0EBE0" />
       <circle cx="20" cy="29" r="11" fill="#FAF5E8" />
       <text x="20" y="33" text-anchor="middle" class="sans" font-size="11" font-weight="bold" fill="#143020">27</text>
       <text x="45" y="23" class="title" font-size="13.5" font-weight="bold" fill="#143020">Cold-Pressed Virgin Coconut Oil</text>
       <text x="45" y="42" class="sans" font-size="9.5" fill="#666">Fresh raw unrefined extra virgin oil with lauric acid &amp; clean MCTs</text>
-      <text x="375" y="32" class="sans" font-size="11.5" font-weight="bold" fill="#333">180 GM</text>
+      <text x="375" y="32" class="sans" font-size="11.5" font-weight="bold" fill="#333">180 ML</text>
       <text x="460" y="32" class="sans" font-size="10.5" fill="#555">Glass Bottle</text>
       <text x="655" y="34" text-anchor="end" class="title" font-size="15.5" font-weight="bold" fill="#143020">Rs. 650</text>
     </g>
@@ -809,17 +809,17 @@ async function createPoster() {
 </svg>
 `;
 
-  // Render SVG to Buffer with Sharp and save to JPG files
+  // Render SVG to Buffer with Sharp in Ultra-High Definition (Full HD / 4K print-ready)
   const svgBuf = Buffer.from(svg.trim());
-  const jpgBuf = await sharp(svgBuf)
-    .jpeg({ quality: 92, chromaSubsampling: '4:4:4' })
+  const jpgBuf = await sharp(svgBuf, { density: 144 })
+    .jpeg({ quality: 95, chromaSubsampling: '4:4:4' })
     .toBuffer();
 
   fs.writeFileSync(outJpg1, jpgBuf);
-  console.log('✅ Generated Master Poster 1 at:', outJpg1, `(${(jpgBuf.length / 1024).toFixed(1)} KB)`);
+  console.log('✅ Generated Ultra HD Master Poster 1 at:', outJpg1, `(${(jpgBuf.length / (1024 * 1024)).toFixed(2)} MB)`);
 
   fs.writeFileSync(outJpg2, jpgBuf);
-  console.log('✅ Generated Master Poster 2 at:', outJpg2, `(${(jpgBuf.length / 1024).toFixed(1)} KB)`);
+  console.log('✅ Generated Ultra HD Master Poster 2 at:', outJpg2, `(${(jpgBuf.length / (1024 * 1024)).toFixed(2)} MB)`);
 }
 
 createPoster().catch((err) => {

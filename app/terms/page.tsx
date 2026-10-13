@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms & Conditions',
-  description: 'Terms and conditions for using the NaturesMud Nepal website and ordering services.',
+  title: 'Terms & Conditions | NaturesMud Nepal',
+  description:
+    'Review terms and conditions for ordering pure dehydrated fruits, superfood powders and nuts from NaturesMud Nepal. Fair pricing, COD, and dispute terms.',
   alternates: {
     canonical: 'https://naturesmud.shop/terms',
   },

@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-10-13T11:08:32.884Z",
+  "phase": "Phase 9 — Measure (Search Console, Bing Webmaster, GA4 Ecommerce, Microsoft Clarity, 60-Query Rank Sheet, 25-Prompt AI Tracker, 30/60/90-Day Targets)",
+  "canonicalDomain": "https://naturesmud.shop",
+  "webmasterAndFeedSubmissions": {
+    "googleSearchConsole": {
+      "propertyType": "Domain Property (naturesmud.shop) + URL Prefix (https://naturesmud.shop/)",
+      "verificationMethod": "DNS TXT record or NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION meta tag in app/layout.tsx",
+      "sitemapToSubmit": "https://naturesmud.shop/sitemap.xml",
+      "sitemapUrlCount": 99,
+      "priorityInspectionUrls": [
+        "https://naturesmud.shop/",
+        "https://naturesmud.shop/products",
+        "https://naturesmud.shop/category/powders",
+        "https://naturesmud.shop/category/dried-fruits",
+        "https://naturesmud.shop/category/nuts",
+        "https://naturesmud.shop/category/seeds",
+        "https://naturesmud.shop/category/oils",
+        "https://naturesmud.shop/category/salts-spices",
+        "https://naturesmud.shop/products/dates-powder",
+        "https://naturesmud.shop/products/sweet-potato-powder",
+        "https://naturesmud.shop/products/banana-powder",
+        "https://naturesmud.shop/products/beetroot-powder",
+        "https://naturesmud.shop/products/moringa-leaf-powder",
+        "https://naturesmud.shop/blog/baby-food-nepal-6-months-chart-weaning-guide",
+        "https://naturesmud.shop/blog/dry-fruits-price-in-nepal-per-100g-1kg-comparison-guide"
+      ]
+    },
+    "bingWebmasterTools": {
+      "verificationMethod": "Import from Google Search Console OR NEXT_PUBLIC_BING_VERIFICATION (msvalidate.01) meta tag in app/layout.tsx",
+      "sitemapToSubmit": "https://naturesmud.shop/sitemap.xml",
+      "aiGroundingImportance": "Powers ChatGPT Search, Microsoft Copilot, and DuckDuckGo indexation for Nepal queries"
+    },
+    "aiAndShoppingFeeds": {
+      "llmsTxtUrl": "https://naturesmud.shop/llms.txt",
+      "entitiesJsonLdUrl": "https://naturesmud.shop/api/entities/products",
+      "googleMerchantXmlFeedUrl": "https://naturesmud.shop/merchant-feed.xml",
+      "metaCatalogXmlFeedUrl": "https://naturesmud.shop/meta-catalog-feed.xml",
+      "metaCatalogCsvFeedUrl": "https://naturesmud.shop/meta-catalog-feed.csv"
+    }
+  },
+  "analyticsAndHeatmapSetup": {
+    "ga4": {
+      "envVar": "NEXT_PUBLIC_GA_MEASUREMENT_ID",
+      "currency": "NPR",
+      "implementedEvents": [
+        {
+          "event": "view_item",
+          "triggerLocation": "components/ProductViewTracker.tsx on /products/[slug]",
+          "parameters": [
+            "currency (NPR)",
+            "value",
+            "items[item_id, item_name, item_category, item_variant, price, quantity]"
+          ]
+        },
+        {
+          "event": "add_to_cart",
+          "triggerLocation": "lib/store/cart-store.ts (addItem)",
+          "parameters": [
+            "currency (NPR)",
+            "value",
+            "items[item_id, item_name, price, quantity]"
+          ]
+        },
+        {
+          "event": "remove_from_cart",
+          "triggerLocation": "lib/store/cart-store.ts (removeItem)",
+          "parameters": [
+            "currency (NPR)",
+            "items[item_id]"
+          ]
+        },
+        {
+          "event": "begin_checkout",
+          "triggerLocation": "app/checkout/page.tsx (mount with non-empty cart)",
+          "parameters": [
+            "currency (NPR)",
+            "value",
+            "items[item_id, item_name, item_category, price, quantity]"
+          ]
+        },
+        {
+          "event": "coupon_apply",
+          "triggerLocation": "app/checkout/page.tsx (handleApplyCoupon)",
+          "parameters": [
+            "currency (NPR)",
+            "coupon",
+            "discount_amount",
+            "value"
+          ]
+        },
+        {
+          "event": "purchase",
+          "triggerLocation": "app/checkout/page.tsx (handleSubmit success, deduplicated via sessionStorage nm_tracked_purchase_${order_number})",
+          "parameters": [
+            "currency (NPR)",
+            "transaction_id",
+            "value",
+            "shipping",
+            "discount",
+            "coupon",
+            "payment_type",
+            "items"
+          ]
+        },
+        {
+          "event": "whatsapp_click",
+          "triggerLocation": "components/AnalyticsTracker.tsx (global delegated listener on all wa.me / api.whatsapp.com links)",
+          "parameters": [
+            "currency (NPR)",
+            "link_url",
+            "link_text",
+            "page_path"
+          ]
+        }
+      ]
+    },
+    "microsoftClarity": {
+      "envVar": "NEXT_PUBLIC_CLARITY_PROJECT_ID",
+      "loaderComponent": "components/AnalyticsTracker.tsx",
+      "customTagsForwarded": [
+        "view_item",
+        "add_to_cart",
+        "begin_checkout",
+        "coupon_apply",
+        "purchase",
+        "whatsapp_click",
+        "transaction_id"
+      ],
+      "weeklyReviewFocus": [
+        "Mobile rage clicks & dead clicks on /products/[slug] and /checkout",
+        "Scroll depth on 12 pillar guides (/blog/[slug]) and recipe cards (/recipes/[slug])",
+        "Checkout drop-off between Inside Valley COD vs Outside Valley FonePay QR receipt upload"
+      ]
+    }
+  },
+  "baselineAnd30_60_90DayTargets": {
+    "methodologyNote": "Record a clean 14-day baseline in Google Search Console, Bing Webmaster Tools, GA4, and GBP immediately after sitemap submission. The 30/60/90-day figures below are operational measurement targets benchmarked against the 2-week baseline (not guaranteed ranking promises).",
+    "kpis": [
+      {
+        "metric": "Indexed Canonical Pages (Google Search Console)",
+        "twoWeekBaselineProtocol": "Record valid indexed URLs out of 99 canonical sitemap URLs after Day 14",
+        "day30Target": "80 - 90 indexed canonical pages (100% of 32 SKUs + 6 category hubs + top pillars)",
+        "day60Target": "92 - 99 indexed canonical pages (all 32 SKUs, 28 blogs, 18 recipes, 11 city hubs)",
+        "day90Target": "99/99 canonical URLs indexed with 0 duplicate/redirect/404 coverage errors"
+      },
+      {
+        "metric": "Search Console Impressions (28-Day Rolling, Nepal)",
+        "twoWeekBaselineProtocol": "Multiply 14-day post-indexation impressions by 2x for 28-day baseline (B_imp)",
+        "day30Target": "1.5x - 2.0x over 2-week baseline pace as all 32 Product & 6 Category schemas enter SERPs",
+        "day60Target": "3.0x - 4.0x over baseline pace driven by baby weaning, powder, and dry-fruit comparison clusters",
+        "day90Target": "5.0x - 7.0x over baseline pace across English + Roman Nepali + Devanagari queries"
+      },
+      {
+        "metric": "Search Console Organic Clicks (28-Day Rolling, Nepal)",
+        "twoWeekBaselineProtocol": "Record 14-day organic clicks + baseline CTR% (B_clicks)",
+        "day30Target": "1.5x over baseline pace with >= 3.5% average CTR from NPR price & stock rich snippets",
+        "day60Target": "2.5x - 3.5x over baseline pace with >= 4.2% average CTR across product & recipe pages",
+        "day90Target": "4.5x - 6.0x over baseline pace with >= 4.8% average CTR"
+      },
+      {
+        "metric": "Tracked Queries in Top-3 / Top-10 (out of 60 Nepal Mobile Queries)",
+        "twoWeekBaselineProtocol": "Log initial positions for all 60 queries in weekly-rank-tracker-60-queries.csv on Day 1 & Day 14",
+        "day30Target": "5 - 8 queries in Top-3 (brand + rare SKUs: Avocado, Strawberry, Sweet Potato, Dates Powder) | 18+ in Top-10",
+        "day60Target": "12 - 18 queries in Top-3 (baby weaning cluster + core powders & dehydrated fruits) | 32+ in Top-10",
+        "day90Target": "22 - 30 queries in Top-3 across product, category & baby/gift/fitness buckets | 45+ in Top-10"
+      },
+      {
+        "metric": "Monthly Organic Website + WhatsApp-Assisted Orders (GA4 purchase + whatsapp_click)",
+        "twoWeekBaselineProtocol": "Record 14-day organic checkout purchases + organic product-page WhatsApp order clicks",
+        "day30Target": "+25% to +40% lift over 2-week baseline run-rate",
+        "day60Target": "+60% to +90% lift over baseline run-rate (assisted by blog/recipe -> product internal funnels)",
+        "day90Target": "+120% to +180% lift over baseline run-rate"
+      },
+      {
+        "metric": "Verified Order-Tied Customer Reviews Collected (with Photo & City Tag)",
+        "twoWeekBaselineProtocol": "Count verified reviews via /track-order WhatsApp review flow during first 14 days",
+        "day30Target": "15 - 25 new verified order-tied reviews across top 10 bestseller SKUs",
+        "day60Target": "40 - 60 cumulative verified reviews covering at least 20 of 32 canonical SKUs",
+        "day90Target": "80 - 110+ cumulative verified reviews covering all 32 SKUs (unlocking organic AggregateRating on every SKU)"
+      },
+      {
+        "metric": "Google Business Profile (GBP) Monthly Actions (Calls, Website Clicks, Direction/Delivery Inquiries)",
+        "twoWeekBaselineProtocol": "Record 14-day GBP Insights interactions after uploading the 32 GBP products from gbp-optimization-pack.json",
+        "day30Target": "32/32 GBP products live + 4 weekly posts published -> +30% GBP website & WhatsApp/call actions",
+        "day60Target": "8 weekly posts + 10 seeded Q&As + 20 GBP photo reviews -> +75% GBP actions",
+        "day90Target": "12 weekly posts + 40+ GBP reviews -> +150% GBP actions & Page-1 Local Pack presence in Kathmandu Valley"
+      },
+      {
+        "metric": "AI Answer Engine Citation & Price/Weight Accuracy (25 Prompts across 4 AI Engines)",
+        "twoWeekBaselineProtocol": "Run all 25 prompts in ai-citation-tracker-25-prompts.csv on Day 14 to record initial citation rate",
+        "day30Target": "100% price/weight accuracy whenever NaturesMud is cited (0 stale Rs. 599/499 powder hallucinations); cited on >= 8/25 prompts",
+        "day60Target": "Cited with accurate NPR price & weight on >= 14/25 buying & how-to prompts",
+        "day90Target": "Cited with accurate NPR price, weight & canonical URL on >= 19/25 prompts across ChatGPT, Perplexity, Gemini & Google AI Mode"
+      }
+    ]
+  },
+  "summaryCounts": {
+    "weeklyRankQueriesTotal": 60,
+    "productSkuQueries": 32,
+    "categoryClusterQueries": 15,
+    "babyGiftFitnessQueries": 13,
+    "aiCitationPromptsTotal": 25
+  }
+}

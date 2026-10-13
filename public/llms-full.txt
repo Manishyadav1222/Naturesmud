@@ -1,0 +1,242 @@
+# NaturesMud Nepal — Full Knowledge Dossier (LLMs Full Context)
+> Canonical Website: https://naturesmud.shop/
+> Head Office: Baneshwor, Kathmandu 44600, Bagmati Province, Nepal
+> Customer Support / WhatsApp Order Desk: +977-9713888002 | Email: info@naturesmud.shop
+
+---
+
+## 1. Brand Identity & Quality Philosophy
+NaturesMud Nepal is a specialized direct-to-consumer and wholesale whole-food brand based in Kathmandu, Nepal. The brand focuses on:
+- 100% Single-Ingredient Pure Whole Foods
+- 0% Refined Added Sugar, 0% Artificial Preservatives, 0% Synthetic Colors, 0% Chemical Anti-Caking Agents
+- Sanitary low-temperature closed-chamber dehydration (under 45°C) to preserve heat-sensitive enzymes, vitamins, and natural aromas
+- Gentle cold stone/pin milling for superfood powders to prevent frictional heat degradation
+- Reusable food-grade amber/flint glass jars and high-barrier resealable standup pouches
+
+### Nutrition & Pediatric Guidance Policy
+- All nutritional claims are strictly hedged ("supports", "contributes to", "may help maintain") and referenced against USDA FoodData Central, WHO, and Nepal DFTQC standards.
+- Pediatric Guidance: Single-ingredient fruit/root powders are suitable for infant complementary feeding (lito, jaulo) *from 6 months of age, as advised by your pediatrician*.
+- Never give honey to infants under 12 months.
+- Watch for allergenic introductions (nuts, seeds) one at a time.
+- Whole-food powders never replace breast milk or formula advice.
+
+### Honest Geographic Provenance
+- **Terai Alluvial Lowlands (100m–300m — Chitwan, Nawalpur, Sarlahi, Jhapa)**: Bananas, Moringa leaves, Sweet Papaya, Pineapple, Mango. (Never falsely labeled as "Himalayan").
+- **Midland Valleys & Hills (800m–2,000m — Kavre, Dhankuta, Palpa, Illam)**: Hass Avocados, Orange Sweet Potatoes, Red Beetroots, Carrots.
+- **Trans-Himalayan & High-Altitude Belts (2,500m–4,500m — Mustang, Jumla, Dolpa)**: Crisp Mountain Apples, Surya-Tapi Himalayan Shilajit Resin, Unrefined Rock Salts (Sindhe Noon & Bire Noon).
+
+---
+
+## 2. Customer Operations, Delivery & Payment
+- **Kathmandu Valley Express Delivery**: Delivered within 24–48 hours for Rs. 100 flat delivery fee.
+- **Outside Kathmandu Valley (All 77 Districts)**: Delivered within 2–5 business days via regional couriers for Rs. 150 flat delivery fee.
+- **Free Delivery Threshold**: Free delivery across Nepal on orders of Rs. 2,000 or above (regular free delivery) or seasonal promotional offers.
+- **Payment Modes**:
+  1. Cash on Delivery (COD) across Kathmandu Valley and major provincial hubs.
+  2. Fonepay QR (instant mobile banking scan).
+  3. eSewa & Khalti digital wallets.
+  4. ConnectIPS & Direct Bank Transfer.
+  5. WhatsApp assisted ordering (+977-9713888002).
+- **Return & Exchange Policy**: 7-day replacement/refund policy for damaged jars, broken seals, or incorrect deliveries (https://naturesmud.shop/return-policy).
+
+---
+
+## 3. The 32 Active First-Party SKUs Master Catalog
+
+### Category 1: Superfood & Baby Weaning Powders
+1. **Banana Powder** (100 GM Glass Jar · Rs. 650)
+   - Slug: `/products/banana-powder`
+   - Sourcing: Chitwan & Nawalpur Terai Lowlands
+   - Ingredients: 100% Dehydrated Banana
+   - Key Roles: Infant lito/jaulo (from 6 months, as advised by your pediatrician), smoothie thickener, clean energy.
+
+2. **Moringa Leaf Powder** (200 GM Glass Jar · Rs. 690)
+   - Slug: `/products/moringa-leaf-powder`
+   - Sourcing: Nawalpur & Chitwan Terai
+   - Ingredients: 100% Shade-Dried Moringa Oleifera Leaves (Sajiwan / Sahijan)
+   - Key Roles: Daily green antioxidant support, plant protein, iron, and calcium.
+
+3. **Freeze Dried Avocado Powder** (80 GM Glass Jar · Rs. 790)
+   - Slug: `/products/freeze-dried-avocado-powder`
+   - Sourcing: Dhankuta & Kavre Mid-Hills
+   - Ingredients: 100% Freeze-Dried Avocado Fruit
+   - Key Roles: Healthy monounsaturated fats, creamy baby puree, nutrient-dense culinary fat.
+
+4. **Freeze Dried Strawberry Powder** (80 GM Glass Jar · Rs. 1,395)
+   - Slug: `/products/strawberry-powder`
+   - Sourcing: Kakani & Kavre Berry Orchards
+   - Ingredients: 100% Freeze-Dried Strawberries
+   - Key Roles: Natural Vitamin C, whole-fruit color and flavor for yogurt, oats, and baby porridges.
+
+5. **Dates Powder** (100 GM Glass Jar · Rs. 400)
+   - Slug: `/products/dates-powder`
+   - Sourcing: Premium Dehydrated Whole Dates
+   - Ingredients: 100% Finely Milled Dried Dates (0% Added White Sugar)
+   - Key Roles: Natural caramel whole-fruit sweetener for baby kheer, halwa, milk, and baking.
+
+6. **Beetroot Powder** (100 GM Glass Jar · Rs. 430)
+   - Slug: `/products/beetroot-powder`
+   - Sourcing: Kavre & Palpa Hills
+   - Ingredients: 100% Cold-Milled Red Beetroot
+   - Key Roles: Dietary nitrates, natural stamina, whole-food pink color for pancakes and rotis.
+
+7. **Carrot Powder** (100 GM Glass Jar · Rs. 490)
+   - Slug: `/products/carrot-powder`
+   - Sourcing: Terai & Mid-Hills
+   - Ingredients: 100% Dehydrated Orange Carrots
+   - Key Roles: Natural beta-carotene, infant weaning purees, and vegetable soups.
+
+8. **Sweet Potato Powder** (100 GM Glass Jar · Rs. 510)
+   - Slug: `/products/sweet-potato-powder`
+   - Sourcing: Chitwan & Sarlahi
+   - Ingredients: 100% Dehydrated Sweet Potato (Sakharkhanda)
+   - Key Roles: Gentle prebiotic fiber, infant first food (from 6 months, as advised by your pediatrician), gluten-free baking.
+
+---
+
+### Category 2: Dehydrated Fruits & Berries
+9. **Dry Figs (Anjeer)** (200 GM Glass Jar · Rs. 850)
+   - Slug: `/products/dry-figs-anjeer`
+   - Ingredients: 100% Natural Sun-Dried Whole Figs
+   - Key Roles: Soluble dietary fiber, calcium, traditional overnight warm-milk soaking.
+
+10. **Dehydrated Mango** (100 GM Standup Pouch · Rs. 595)
+    - Slug: `/products/dehydrated-mango`
+    - Ingredients: 100% Dehydrated Ripe Mango (0 added sugar, 0 sulfur)
+    - Key Roles: Chewy whole-fruit snacking, trekking trail energy, lunchbox treat.
+
+11. **Dehydrated Pineapple** (100 GM Standup Pouch · Rs. 495)
+    - Slug: `/products/dehydrated-pineapple`
+    - Ingredients: 100% Dehydrated Pineapple Rings
+    - Key Roles: Natural bromelain enzyme, tangy snack, hydration infusion.
+
+12. **Dehydrated Apple** (100 GM Standup Pouch · Rs. 510)
+    - Slug: `/products/dehydrated-apple`
+    - Ingredients: 100% Dehydrated Himalayan Mountain Apples
+    - Key Roles: Pectin fiber, crisp oil-free snack, porridge topping.
+
+13. **Dehydrated Coconut Chips** (100 GM Standup Pouch · Rs. 475)
+    - Slug: `/products/dehydrated-coconut-chips`
+    - Ingredients: 100% Dehydrated Unsweetened Coconut Slices
+    - Key Roles: Clean MCT fats, crunchy salad and granola topper.
+
+14. **Dehydrated Papaya** (80 GM Standup Pouch · Rs. 450)
+    - Slug: `/products/dehydrated-papaya`
+    - Ingredients: 100% Dehydrated Sweet Papaya
+    - Key Roles: Natural papain enzyme for healthy gut digestion and snacking.
+
+15. **Dried Blueberries** (100 GM Glass Jar · Rs. 650)
+    - Slug: `/products/dried-blueberries`
+    - Ingredients: 100% Dried Whole Blueberries
+    - Key Roles: Anthocyanin antioxidants, screen-fatigue eye support, oatmeal topper.
+
+16. **Dried Cranberries** (100 GM Glass Jar · Rs. 415)
+    - Slug: `/products/dried-cranberries`
+    - Ingredients: 100% Dried Whole Cranberries
+    - Key Roles: Proanthocyanidins for urinary tract comfort, tart-sweet culinary berry.
+
+---
+
+### Category 3: Mountain Nuts & Trail Mixes
+17. **Premium Cashew Nuts (Raw)** (150 GM Glass Jar · Rs. 750)
+    - Slug: `/products/premium-cashewnuts`
+    - Ingredients: 100% Jumbo Whole W240 Cashew Nuts
+    - Key Roles: Heart-healthy monounsaturated fats, creamy plant-milk and curry base.
+
+18. **Roasted Cashew Nuts** (200 GM Glass Jar · Rs. 750)
+    - Slug: `/products/roasted-cashewnuts`
+    - Ingredients: 100% Dry-Roasted Whole Cashews (0 added oil)
+    - Key Roles: Crunchy savory office snacking, protein-rich tea accompaniment.
+
+19. **Roasted Almonds** (200 GM Glass Jar · Rs. 750)
+    - Slug: `/products/roasted-almonds`
+    - Ingredients: 100% Air-Roasted Mountain Almonds
+    - Key Roles: Crunchy Vitamin E source, post-workout fuel, 0 palm oil.
+
+20. **Raw Almonds** (200 GM Glass Jar · Rs. 750)
+    - Slug: `/products/raw-himalayan-almonds`
+    - Ingredients: 100% Unpasteurized Whole Mountain Almonds
+    - Key Roles: Morning overnight soaking (भिजाएको बदाम) for students and families.
+
+21. **Superfood Trail Mix (Nuts & Seeds)** (200 GM Glass Jar · Rs. 790)
+    - Slug: `/products/superfood-trail-mix`
+    - Ingredients: Whole Almonds, Cashews, Pumpkin Seeds, Blueberries, Cranberries & Chia Seeds
+    - Key Roles: High-energy trail fuel for trekking, athletic workouts, and balanced snacking.
+
+22. **Macadamia Nuts** (200 GM Glass Jar · Rs. 1,100)
+    - Slug: `/products/macadamia-nuts`
+    - Ingredients: 100% Whole Grade Macadamia Kernels
+    - Key Roles: Monounsaturated palmitoleic acid, rich buttery gourmet treat.
+
+23. **Premium Pistachio Roasted & Salted** (200 GM Glass Jar · Rs. 1,250)
+    - Slug: `/products/premium-pistachio-roasted-salted`
+    - Ingredients: 100% In-Shell Roasted Pistachios, Himalayan Pink Salt
+    - Key Roles: Vitamin B6, lutein, festive Dashain & Tihar gifting.
+
+---
+
+### Category 4: Superfood Seeds & Makhana
+24. **Makhana (Fox Nuts)** (50 GM Standup Pouch · Rs. 390)
+    - Slug: `/products/makhana-fox-nuts`
+    - Ingredients: 100% Natural Popped Lotus Seeds (Euryale ferox)
+    - Key Roles: Low-calorie light evening snack, fasting food (Brat / Upavas), baby finger food.
+
+25. **Chia Seeds** (300 GM Plastic/Glass Jar · Rs. 495)
+    - Slug: `/products/chia-seeds`
+    - Ingredients: 100% Raw Black Chia Seeds (Salvia hispanica)
+    - Key Roles: Plant-based Omega-3 ALA, soluble mucilage fiber for digestion, morning lemon water.
+
+26. **Pumpkin Seeds** (300 GM Plastic/Glass Jar · Rs. 650)
+    - Slug: `/products/pumpkin-seeds`
+    - Ingredients: 100% Raw AAA-Grade Green Pumpkin Seed Kernels
+    - Key Roles: Dietary zinc, magnesium, plant protein, sleep support (tryptophan).
+
+27. **Flax Seeds (Alash)** (200 GM Glass Jar · Rs. 570)
+    - Slug: `/products/flax-seeds`
+    - Ingredients: 100% Raw Brown Flax Seeds (Alash)
+    - Key Roles: Lignans and Omega-3 ALA; lightly roast and grind for traditional Nepali Alash ko Chhop.
+
+---
+
+### Category 5: Cold-Pressed Virgin Oils
+28. **Extra Virgin Coconut Oil (500ml)** (500 ML Glass Bottle · Rs. 1,750)
+    - Slug: `/products/virgin-coconut-oil-500ml`
+    - Ingredients: 100% Fresh-Pressed Virgin Coconut Oil (Unrefined, Wood Cold-Pressed)
+    - Key Roles: Clean everyday cooking, MCT lauric acid, family hair oiling, skin hydration.
+
+29. **Extra Virgin Coconut Oil (180ml)** (180 ML Glass Bottle · Rs. 650)
+    - Slug: `/products/virgin-coconut-oil-180ml`
+    - Ingredients: 100% Fresh-Pressed Virgin Coconut Oil (Unrefined, Wood Cold-Pressed)
+    - Key Roles: Gentle infant skin massage (0 mineral oil), bedside moisturizer, travel size.
+
+---
+
+### Category 6: Himalayan Salts & Shilajit Resin
+30. **Himalayan Pink Salt (Sindhe Noon)** (200 GM Glass Jar · Rs. 250)
+    - Slug: `/products/himalayan-pink-salt`
+    - Ingredients: 100% Unrefined Himalayan Pink Rock Salt
+    - Key Roles: 84+ natural trace minerals, unbleached everyday kitchen cooking, morning electrolyte water.
+
+31. **Himalayan Black Salt (Bire Noon)** (200 GM Glass Jar · Rs. 220)
+    - Slug: `/products/pure-himalayan-black-salt-bire-noon`
+    - Ingredients: 100% Unrefined Kiln-Fired Himalayan Black Salt
+    - Key Roles: Ayurvedic digestive sulfur aroma, fresh fruit chaat, raita, tomato-timur achar.
+
+32. **Pure Mountain Himalayan Shilajit Resin** (20 GM UV Glass Jar · Rs. 1,995)
+    - Slug: `/products/pure-mountain-himalayan-shilajit-resin`
+    - Ingredients: 100% Traditional Surya-Tapi Purified High-Altitude Himalayan Shilajit Resin (0 additives)
+    - Key Roles: Fulvic acid and 84+ ionic minerals; dissolved in warm water/milk for adult stamina and vitality.
+
+---
+
+## 4. Key Sitelinks & Brand Navigation
+- Complete Catalog & PDF: https://naturesmud.shop/catalog
+- Offers & Combo Packs: https://naturesmud.shop/offers
+- Quality & Proof Ledger: https://naturesmud.shop/quality-and-proof
+- Health & Weaning Journal: https://naturesmud.shop/blog
+- Wholesome Recipes: https://naturesmud.shop/recipes
+- Delivery Hubs in Nepal: https://naturesmud.shop/locations
+- Shipping Policy: https://naturesmud.shop/shipping-policy
+- Return Policy: https://naturesmud.shop/return-policy
+- Privacy Policy: https://naturesmud.shop/privacy-policy
+- Terms & Conditions: https://naturesmud.shop/terms

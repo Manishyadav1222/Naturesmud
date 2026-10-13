@@ -284,6 +284,46 @@ function TrackOrderContent() {
                   })}
                 </div>
 
+                {/* Ordered Items & Order-Tied Review Links */}
+                {order.items && order.items.length > 0 && (
+                  <div id="review-items" className="bg-white rounded-2xl p-6 border border-gray-200 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-heading font-black text-sm text-gray-900 uppercase tracking-wider">
+                        Items in Order #{order.order_number}
+                      </h3>
+                      <span className="text-xs font-semibold text-[#2D5A27]">
+                        Order-Tied Review Flow
+                      </span>
+                    </div>
+                    <div className="divide-y divide-gray-100">
+                      {order.items.map((item, idx) => {
+                        const itemSlug = item.product_name
+                          .toLowerCase()
+                          .replace(/[^a-z0-9]+/g, '-')
+                          .replace(/^-|-$/g, '');
+                        return (
+                          <div key={idx} className="py-3 flex flex-wrap items-center justify-between gap-3">
+                            <div>
+                              <p className="text-sm font-bold text-gray-900">
+                                {item.product_name} <span className="text-xs font-normal text-gray-500">× {item.quantity}</span>
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                {formatPrice(Number(item.line_total || item.unit_price) || 0)}
+                              </p>
+                            </div>
+                            <Link
+                              href={`/products/${itemSlug}?orderId=${encodeURIComponent(order.order_number)}&name=${encodeURIComponent(order.shipping_name || '')}#reviews`}
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-[#2D5A27] border border-emerald-200 text-xs font-bold transition-colors"
+                            >
+                              <span>⭐ Write Photo Review</span>
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Action Buttons: Invoice & WhatsApp */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                   <a

@@ -60,14 +60,29 @@ async function updateRemoteProducts() {
   );
   console.log('✅ Updated roasted-cashewnuts images array in remote database');
 
-  // 3. Dehydrated Papaya
+  // 3. Dehydrated Papaya (Price: 450, Weight: 80 GM)
   await conn.query(`
     UPDATE products 
-    SET weight = 90.00,
-        short_description = 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a 90g Standup Ziplock Pouch.'
+    SET price = 450.00,
+        compare_at_price = 450.00,
+        weight = 80.00,
+        unit = 'G',
+        short_description = 'Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.'
     WHERE slug = 'dehydrated-papaya'
   `);
-  console.log('✅ Updated dehydrated-papaya: 90 GM');
+  console.log('✅ Updated dehydrated-papaya: Rs. 450 (80 GM)');
+
+  // 3b. Banana Powder (Price: 650, Compare At: 750, Weight: 100 GM)
+  await conn.query(`
+    UPDATE products 
+    SET price = 650.00,
+        compare_at_price = 750.00,
+        weight = 100.00,
+        unit = 'G',
+        short_description = '100% pure gently dehydrated banana powder packed with natural potassium and dietary fiber in a 100g Glass Jar.'
+    WHERE slug = 'banana-powder'
+  `);
+  console.log('✅ Updated banana-powder: Rs. 650 (100 GM)');
 
   // 4. Himalayan Pink Salt
   await conn.query(`
@@ -126,6 +141,7 @@ async function updateRemoteProducts() {
       'virgin-coconut-oil-500ml',
       'virgin-coconut-oil-180ml',
       'dehydrated-papaya',
+      'banana-powder',
       'himalayan-pink-salt',
       'pure-himalayan-black-salt-bire-noon',
       'freeze-dried-avocado-powder',

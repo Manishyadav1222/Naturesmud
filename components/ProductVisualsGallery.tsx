@@ -19,15 +19,20 @@ export default function ProductVisualsGallery({
 }: ProductVisualsGalleryProps) {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
-  if (!images || images.length <= 1) {
+  const cleanImages = Array.from(new Set((images || []).map((img) => resolveImageUrl(img))));
+
+  if (cleanImages.length <= 1) {
     return null;
   }
-
-  const cleanImages = images.map((img) => resolveImageUrl(img));
 
   const getPerspectiveLabel = (idx: number, url: string) => {
     const lower = url.toLowerCase();
     if (idx === 0) return 'Primary Authentic Angle';
+    if (lower.includes('holding-jar')) return 'Real In-Hand Jar View';
+    if (lower.includes('bicycle')) return 'Lifestyle Outdoor Showcase';
+    if (lower.includes('healthy-sweetness') || lower.includes('goodbye-sugar')) return '0% White Sugar Guide';
+    if (lower.includes('store-shelf')) return 'Retail Store Shelf View';
+    if (lower.includes('refreshing-trio')) return 'Superfood Jar Collection';
     if (lower.includes('display') || lower.includes('studio')) return 'Studio & Packaging Display';
     if (lower.includes('process') || lower.includes('creation')) return 'Artisanal Creation Journey';
     if (lower.includes('poster') || lower.includes('ad')) return 'Official Product Poster';

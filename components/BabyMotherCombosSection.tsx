@@ -15,6 +15,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
+import { buildOfferItem } from '@/lib/data/offers';
 
 export interface FestivalComboItem {
   productId: string;
@@ -45,7 +46,7 @@ export const festivalCombos: FestivalCombo[] = [
   {
     id: 'festival-himalayan-celebration',
     title: 'Himalayan Festive Celebration Box',
-    subtitle: 'Sun-Dried Apples, Raw Mountain Almonds & Dates Powder',
+    subtitle: 'Dehydrated Apple, Raw Almonds & Dates Powder',
     festivalLabel: '🎉 Dashain & Tihar Festival Special',
     badge: '5% OFF · Sacred Gift Box',
     categoryIcon: '🎁',
@@ -56,27 +57,24 @@ export const festivalCombos: FestivalCombo[] = [
     couponCode: 'STORE5',
     tag: 'Best Festival Pick',
     items: [
-      {
-        productId: 'dehydrated-apple',
+      buildOfferItem('dehydrated-apple', {
         name: 'Dehydrated Apple',
         weight: '100 GM',
         image: '/products/dehydrated-apple.jpg',
         price: 510,
-      },
-      {
-        productId: 'raw-himalayan-almonds',
-        name: 'Raw Mountain Almonds',
+      }),
+      buildOfferItem('raw-himalayan-almonds', {
+        name: 'Raw Almonds',
         weight: '200 GM',
         image: '/products/nm-almond-jar-v2.jpg',
         price: 750,
-      },
-      {
-        productId: 'dates-powder',
+      }),
+      buildOfferItem('dates-powder', {
         name: 'Dates Powder',
         weight: '100 GM',
         image: '/products/dates-powder-100g.jpg',
         price: 400,
-      },
+      }),
     ],
     highlights: [
       '100% Preservative-Free Sacred Gifting',
@@ -88,7 +86,7 @@ export const festivalCombos: FestivalCombo[] = [
   {
     id: 'festival-superfood-launch',
     title: 'Himalayan Superfood Trio: Avocado, Strawberry & Almonds',
-    subtitle: 'Freeze-Dried Avocado, Strawberry Powder & Crunchy Roasted Almonds',
+    subtitle: 'Freeze Dried Avocado Powder, Freeze Dried Strawberry Powder & Roasted Almonds',
     festivalLabel: '✨ Superfood Nutrition Trio · Festival Edition',
     badge: '10% OFF · Superfoods',
     categoryIcon: '🌟',
@@ -99,27 +97,24 @@ export const festivalCombos: FestivalCombo[] = [
     couponCode: 'SUPERFOOD10',
     tag: 'Festival Trending',
     items: [
-      {
-        productId: 'freeze-dried-avocado-powder',
-        name: 'Avocado Powder',
+      buildOfferItem('freeze-dried-avocado-powder', {
+        name: 'Freeze Dried Avocado Powder',
         weight: '80 GM',
         image: '/products/avocado-powder-v2.jpg',
         price: 790,
-      },
-      {
-        productId: 'strawberry-powder',
-        name: 'Strawberry Powder',
+      }),
+      buildOfferItem('strawberry-powder', {
+        name: 'Freeze Dried Strawberry Powder',
         weight: '80 GM',
         image: '/products/strawberry-powder-v2.jpg',
         price: 1395,
-      },
-      {
-        productId: 'roasted-almonds',
+      }),
+      buildOfferItem('roasted-almonds', {
         name: 'Roasted Almonds',
         weight: '200 GM',
         image: '/products/roasted-almonds-v2.jpg',
         price: 750,
-      },
+      }),
     ],
     highlights: [
       'Freeze-Dried Avocado — 100% Nepal Origin',
@@ -131,38 +126,35 @@ export const festivalCombos: FestivalCombo[] = [
   {
     id: 'festival-wellness-box',
     title: 'Maha Wellness & Immunity Festival Box',
-    subtitle: 'Mix Dry Nuts, Roasted Almonds & Beetroot Powder',
+    subtitle: 'Superfood Trail Mix (Nuts & Seeds), Roasted Almonds & Beetroot Powder',
     festivalLabel: '🧘 Total Health Festive Combo',
     badge: '5% OFF · Family Wellness',
     categoryIcon: '🧘',
     categoryLabel: 'Wellness',
     discountPercentage: 5,
-    originalPrice: 1870,
-    offerPrice: 1777,
+    originalPrice: 1970,
+    offerPrice: 1872,
     couponCode: 'STORE5',
     tag: 'Family Favourite',
     items: [
-      {
-        productId: 'superfood-trail-mix',
-        name: 'Mix Dry Nuts',
-        weight: '300 GM',
+      buildOfferItem('superfood-trail-mix', {
+        name: 'Superfood Trail Mix (Nuts & Seeds)',
+        weight: '200 GM',
         image: '/products/superfood-mix.jpg',
-        price: 690,
-      },
-      {
-        productId: 'roasted-almonds',
+        price: 790,
+      }),
+      buildOfferItem('roasted-almonds', {
         name: 'Roasted Almonds',
         weight: '200 GM',
         image: '/products/roasted-almonds-v2.jpg',
         price: 750,
-      },
-      {
-        productId: 'beetroot-powder',
+      }),
+      buildOfferItem('beetroot-powder', {
         name: 'Beetroot Powder',
         weight: '100 GM',
         image: '/products/beetroot-powder-100g.jpg',
         price: 430,
-      },
+      }),
     ],
     highlights: [
       'Full Mineral & Vitamin Spectrum Daily',
@@ -174,7 +166,7 @@ export const festivalCombos: FestivalCombo[] = [
   {
     id: 'festival-gym-pack',
     title: 'Festival Gym & Workout Muscle Pack',
-    subtitle: 'Premium Cashews, Zinc Pumpkin Seeds & Chia Omega-3',
+    subtitle: 'Premium Cashew Nuts, Pumpkin Seeds & Chia Seeds',
     festivalLabel: '🏋️ Festival Workout Combo',
     badge: '5% OFF · Athlete Special',
     categoryIcon: '💪',
@@ -185,31 +177,28 @@ export const festivalCombos: FestivalCombo[] = [
     couponCode: 'STORE5',
     tag: "Athletes' Festival Pick",
     items: [
-      {
-        productId: 'premium-cashewnuts',
-        name: 'Premium Cashews',
+      buildOfferItem('premium-cashewnuts', {
+        name: 'Premium Cashew Nuts',
         weight: '200 GM',
         image: '/products/nm-cashew-new-jar.jpg',
         price: 750,
-      },
-      {
-        productId: 'pumpkin-seeds',
-        name: 'Raw Pumpkin Seeds',
+      }),
+      buildOfferItem('pumpkin-seeds', {
+        name: 'Pumpkin Seeds',
         weight: '300 GM',
         image: '/products/pumpkin-seeds.jpg',
         price: 650,
-      },
-      {
-        productId: 'chia-seeds',
+      }),
+      buildOfferItem('chia-seeds', {
         name: 'Chia Seeds',
         weight: '300 GM',
         image: '/products/chia-seeds.jpg',
         price: 495,
-      },
+      }),
     ],
     highlights: [
-      'High Plant Protein & Zinc for Muscle Repair',
-      'Plant Omega-3 to Reduce Joint Inflammation',
+      'High Plant Protein & Zinc for Active Lifestyles',
+      'Plant Omega-3 ALA & Dietary Fiber',
       'Clean Pre/Post-Workout Zero Sugar Nutrition',
       'Gift-Ready Festive Pack for the Gym Lover',
     ],
@@ -222,25 +211,6 @@ export default function FestivalCombosSection() {
   const [isHovered, setIsHovered] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const openDrawer = useCartStore((s) => s.openDrawer);
-
-  // Countdown — ends at Tihar 2026 (Oct 20)
-  const [timeLeft, setTimeLeft] = useState({ days: 21, hours: 8, minutes: 30, seconds: 0 });
-
-  useEffect(() => {
-    const endDate = new Date('2026-10-20T23:59:59');
-    const tick = () => {
-      const diff = endDate.getTime() - Date.now();
-      if (diff <= 0) return;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      setTimeLeft({ days, hours, minutes, seconds });
-    };
-    tick();
-    const t = setInterval(tick, 1000);
-    return () => clearInterval(t);
-  }, []);
 
   // Auto-cycle
   useEffect(() => {
@@ -325,7 +295,7 @@ export default function FestivalCombosSection() {
           />
         </div>
 
-        {/* Header Row: Festival Ribbon & Countdown */}
+        {/* Header Row: Festival Ribbon & Controls */}
         <div className="relative z-10 flex items-center justify-between gap-2 pb-2.5 border-b border-amber-200/60 pt-0.5">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-red-600/10 via-amber-400/10 to-yellow-400/10 border border-red-300/40">
             <Sparkles className="w-3 h-3 text-red-600" />
@@ -345,13 +315,9 @@ export default function FestivalCombosSection() {
               </button>
             </div>
 
-            {/* Countdown Clock */}
-            <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-mono font-semibold text-red-800 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">
-              <Timer className="w-3 h-3 text-red-600 animate-pulse" />
-              <span className="font-bold">
-                {timeLeft.days}d {String(timeLeft.hours).padStart(2,'0')}h:{String(timeLeft.minutes).padStart(2,'0')}m:{String(timeLeft.seconds).padStart(2,'0')}s
-              </span>
-            </div>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-red-800 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded-full">
+              Gift Bundle
+            </span>
           </div>
         </div>
 
@@ -400,7 +366,7 @@ export default function FestivalCombosSection() {
                     <span className="text-[10px] text-amber-700 font-medium">🪔 {currentCombo.tag}</span>
                   </div>
                   <span className="text-[9px] sm:text-[10px] font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-300 shrink-0">
-                    🗓️ Oct 2–20, 2026
+                    🎁 Ready-to-Gift Box
                   </span>
                 </div>
                 <h3 className="font-heading font-extrabold text-base sm:text-lg text-red-900 mt-1 leading-snug">

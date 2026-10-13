@@ -1,0 +1,446 @@
+{
+  "profileIdentity": {
+    "businessName": "NaturesMud Nepal",
+    "nepaliName": "नेचर्स मड नेपाल",
+    "primaryCategory": "Natural Goods Store",
+    "additionalCategories": [
+      "Health Food Store",
+      "Baby Store",
+      "Food Products Supplier",
+      "Dry Fruit Store"
+    ],
+    "address": {
+      "streetAddress": "Baneshwor",
+      "addressLocality": "Kathmandu",
+      "addressRegion": "Bagmati Province",
+      "postalCode": "44600",
+      "addressCountry": "NP"
+    },
+    "geo": {
+      "latitude": 27.6915,
+      "longitude": 85.342
+    },
+    "phone": "+977-9713888002",
+    "whatsappUrl": "https://wa.me/9779713888002",
+    "email": "info@naturesmud.shop",
+    "websiteUrl": "https://naturesmud.shop/?utm_source=google&utm_medium=gbp&utm_campaign=gbp_profile",
+    "locationsPageUrl": "https://naturesmud.shop/locations?utm_source=google&utm_medium=gbp&utm_campaign=gbp_locations",
+    "openingHours": {
+      "Sunday": "09:00 - 18:00",
+      "Monday": "09:00 - 18:00",
+      "Tuesday": "09:00 - 18:00",
+      "Wednesday": "09:00 - 18:00",
+      "Thursday": "09:00 - 18:00",
+      "Friday": "09:00 - 18:00",
+      "Saturday": "Closed (Online & WhatsApp orders open 24/7)"
+    },
+    "serviceAreas": [
+      "Kathmandu, Nepal",
+      "Lalitpur, Nepal",
+      "Bhaktapur, Nepal",
+      "Pokhara, Nepal",
+      "Bharatpur, Chitwan, Nepal",
+      "Butwal, Nepal",
+      "Biratnagar, Nepal",
+      "Dharan, Nepal",
+      "Hetauda, Nepal",
+      "Birendranagar, Surkhet, Nepal",
+      "Nepalgunj, Nepal"
+    ],
+    "businessDescription750Chars": "NaturesMud Nepal (Baneshwor, Kathmandu 44600) is a single-ingredient natural foods brand offering 32 whole-food products across Nepal: Fruit & Vegetable Powders (Beetroot, Dates, Moringa, Carrot, Sweet Potato, Banana, Freeze-Dried Avocado & Strawberry), Dehydrated Fruits (Mango, Pineapple, Apple, Dragon Fruit, Sweet Papaya, Coconut Chips, Blueberries, Cranberries, Dry Figs & Dates), Mountain Nuts (Almonds, Cashewnuts, Pistachios, Macadamia & Mix Dry Nuts), Superfood Seeds (Chia, Pumpkin, Flax & Makhana), Cold-Pressed Coconut Oils (500 ML & 180 ML), Rosemary Leaves, Himalayan Salts & Pure Mountain Himalayan Shilajit Resin. 0% added sugar, 0% preservatives. 24-hour Kathmandu Valley delivery & nationwide COD.",
+    "attributes": [
+      "Delivery available (Same/Next-day inside Kathmandu Valley)",
+      "Nationwide Courier Delivery across all 77 Districts of Nepal",
+      "Cash on Delivery (COD) accepted",
+      "FonePay QR, eSewa & Khalti accepted",
+      "Nepali women & smallholder farmer sourcing network"
+    ]
+  },
+  "qaSeedPairs": [
+    {
+      "question": "Where is NaturesMud located in Kathmandu and how fast is delivery?",
+      "answer": "Our main quality inspection and dispatch hub is in Baneshwor, Kathmandu 44600, Nepal (+977-9713888002). Orders inside Kathmandu, Lalitpur, and Bhaktapur are delivered within 24 hours (Rs. 100 delivery fee, FREE on orders Rs. 2,000+)."
+    },
+    {
+      "question": "Which NaturesMud powders are suitable for babies starting solid food (lito / porridge)?",
+      "answer": "Our 100% single-ingredient Dates Powder (Khajoor ko Dhulo), Sweet Potato Powder, Carrot Powder, and Banana Powder contain 0% refined sugar, 0% salt, and 0% preservatives, making them ideal for homemade porridge and lito (from 6 months, as advised by your pediatrician)."
+    },
+    {
+      "question": "Can I buy NaturesMud products in retail stores in Kathmandu, Pokhara, or Surkhet?",
+      "answer": "Yes! Selected NaturesMud products are stocked at Kids Kottage (Gongabu, Kupondol, Kapan, Pokhara & Surkhet), Zero to Ten (Chabahil), and Baby Love (Hetauda). For all 32 products and fresh batch dispatch, order at naturesmud.shop."
+    },
+    {
+      "question": "Do your Dehydrated Mango, Pineapple, and Apple slices have added sugar?",
+      "answer": "No. All NaturesMud dehydrated fruits are made from 100% ripe fruit slices gently dehydrated at low temperatures with 0% added sugar, 0% artificial colors, and 0% preservatives."
+    },
+    {
+      "question": "Is NaturesMud Extra Virgin Coconut Oil packed in glass or plastic?",
+      "answer": "Both sizes of our cold-pressed coconut oil—Extra Virgin Coconut Oil (500 ML, Rs. 1,750) and Virgin Coconut Oil (180 ML, Rs. 650)—are packed in food-grade wide-mouth glass jars so they never leach plastic and are easy to scoop in winter."
+    },
+    {
+      "question": "How do I verify my NaturesMud order or leave a product review?",
+      "answer": "Every review on naturesmud.shop requires a real NaturesMud Order Number (e.g., NM-420417) from your delivery invoice or WhatsApp confirmation. We never publish unverified or synthetic ratings."
+    },
+    {
+      "question": "Do you deliver to Pokhara, Chitwan, Butwal, Biratnagar, and Dharan with Cash on Delivery?",
+      "answer": "Yes, we deliver to all 7 provinces and 77 districts of Nepal within 2–5 business days with Cash on Delivery (COD), FonePay QR, eSewa, and Khalti. Outside Valley courier fee is Rs. 150 (FREE on orders Rs. 2,000+)."
+    },
+    {
+      "question": "What is your return or replacement policy if a jar is damaged in transit?",
+      "answer": "We offer a 7-day hassle-free replacement or refund policy (/returns). Simply message us on WhatsApp at +977-9713888002 with your Order Number and a photo of the package within 7 days of delivery."
+    }
+  ],
+  "weeklyPostTemplates": [
+    {
+      "week": 1,
+      "type": "PRODUCT_SPOTLIGHT",
+      "title": "100% Pure Dates Powder (खजुरको धुलो) — Natural Sweetener for Porridge & Milk",
+      "body": "Looking for a 0% refined sugar sweetener for family porridge, smoothies, or baby lito (from 6 months, as advised by your pediatrician)? NaturesMud Dates Powder (100 GM, Rs. 400) is finely milled from 100% whole dehydrated dates in an airtight glass jar. 24h Kathmandu Valley delivery!",
+      "ctaUrl": "https://naturesmud.shop/products/dates-powder?utm_source=google&utm_medium=gbp&utm_campaign=weekly_post_w1"
+    },
+    {
+      "week": 2,
+      "type": "PRODUCT_SPOTLIGHT",
+      "title": "Beetroot Powder (चुकन्दरको धुलो) — 100 GM Glass Jar (Rs. 430)",
+      "body": "One teaspoon of NaturesMud Beetroot Powder adds vibrant ruby color and natural beetroot nutrition to your morning smoothie, lemon water, or roti dough—without peeling or staining your hands. 100% pure dehydrated beetroot, 0 fillers.",
+      "ctaUrl": "https://naturesmud.shop/products/beetroot-powder?utm_source=google&utm_medium=gbp&utm_campaign=weekly_post_w2"
+    },
+    {
+      "week": 3,
+      "type": "PRODUCT_SPOTLIGHT",
+      "title": "Cold-Pressed Extra Virgin Coconut Oil in Wide-Mouth Glass Jars (500 ML & 180 ML)",
+      "body": "Packed in hygienic glass jars so you can easily spoon out solid coconut oil during Kathmandu winters! Ideal for cooking, hair oiling, oil pulling, and gentle baby massage.",
+      "ctaUrl": "https://naturesmud.shop/products/virgin-coconut-oil-500ml?utm_source=google&utm_medium=gbp&utm_campaign=weekly_post_w3"
+    },
+    {
+      "week": 4,
+      "type": "CATEGORY_SPOTLIGHT",
+      "title": "Zero-Added-Sugar Dehydrated Fruits for School Tiffins & Office Snacking",
+      "body": "Swap fried chips and sugary candy for NaturesMud Dehydrated Mango, Pineapple, Himalayan Apple, Dragon Fruit, and Sweet Papaya. 100% real fruit, gently dehydrated in small batches.",
+      "ctaUrl": "https://naturesmud.shop/category/dried-fruits?utm_source=google&utm_medium=gbp&utm_campaign=weekly_post_w4"
+    }
+  ],
+  "productsCount": 32,
+  "products": [
+    {
+      "order": 1,
+      "productName": "Banana Powder (100 GM)",
+      "category": "Powders",
+      "priceNpr": 650,
+      "currency": "NPR",
+      "description": "Banana Powder (केराको धुलो / Kera ko Dhulo) — 100 GM packed in Glass Jar. 100% Natural & Pure Nepali Banana Powder. Natural energy booster, supports digestion and child growth. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/banana-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/banana-powder.jpg"
+    },
+    {
+      "order": 2,
+      "productName": "Moringa Leaf Powder (200 GM)",
+      "category": "Powders",
+      "priceNpr": 690,
+      "currency": "NPR",
+      "description": "Moringa Leaf Powder (शीतलचिनी (सजिवन) पातको धुलो / Shitalchini / Sajyun ko Dhulo) — 200 GM packed in Glass Jar. Pure Moringa Leaf Powder (200 GM). Shade-dried green leaf powder with 0 additives and 0 preservatives. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/moringa-leaf-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/moringa-leaf-powder.jpg"
+    },
+    {
+      "order": 3,
+      "productName": "Freeze Dried Avocado Powder (80 GM)",
+      "category": "Powders",
+      "priceNpr": 790,
+      "currency": "NPR",
+      "description": "Freeze Dried Avocado Powder (एभोकाडो पाउडर / Avocado Powder) — 80 GM packed in Glass Jar. Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/freeze-dried-avocado-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/avocado-powder-v2.jpg"
+    },
+    {
+      "order": 4,
+      "productName": "Freeze Dried Strawberry Powder (80 GM)",
+      "category": "Powders",
+      "priceNpr": 1395,
+      "currency": "NPR",
+      "description": "Freeze Dried Strawberry Powder (स्ट्रबेरी पाउडर / Strawberry Powder) — 80 GM packed in Glass Jar. 100% Freeze Dried Strawberry Powder with Real Fruit Lasting Goodness. Zero added sugar, rich in Vitamin C & antioxidants. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/strawberry-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/strawberry-powder-v2.jpg"
+    },
+    {
+      "order": 5,
+      "productName": "Dry Figs (Anjeer) (200 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 690,
+      "currency": "NPR",
+      "description": "Dry Figs (Anjeer) (सुकाएको अन्जीर / Anjeer (Dry Figs)) — 200 GM packed in Glass Jar. 100% Natural Dry Figs (Anjeer) in a 200 GM Glass Jar. Rich in dietary fiber and minerals with 0 added sugar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dry-figs-anjeer?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/dry-figs-anjeer.jpg"
+    },
+    {
+      "order": 6,
+      "productName": "Makhana (Fox Nuts) (50 GM)",
+      "category": "Seeds",
+      "priceNpr": 390,
+      "currency": "NPR",
+      "description": "Makhana (Fox Nuts) (हिमाली मखाना / Himalayan Makhana) — 50 GM packed in Glass Jar. Crunchy and lightweight Himalayan Fox Nuts (Makhana) for healthy snacking. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/makhana-fox-nuts?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-makhana-jar.jpeg"
+    },
+    {
+      "order": 7,
+      "productName": "Dehydrated Mango (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 595,
+      "currency": "NPR",
+      "description": "Dehydrated Mango (सुकाएको आँप / Sukako Aap) — 100 GM packed in Standup Ziplock Pouch. Pure naturally dried sweet mango slices with 0 additives and 0 preservatives in a Standup Ziplock Pouch. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dehydrated-mango?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-mango-pouch.jpeg"
+    },
+    {
+      "order": 8,
+      "productName": "Dehydrated Pineapple (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 590,
+      "currency": "NPR",
+      "description": "Dehydrated Pineapple (सुकाएको भुइँकटहर / Sukako Bhuikatahar) — 100 GM packed in Standup Ziplock Pouch. Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme in a Standup Ziplock Pouch. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dehydrated-pineapple?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-pineapple-design.jpeg"
+    },
+    {
+      "order": 9,
+      "productName": "Dehydrated Apple (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 510,
+      "currency": "NPR",
+      "description": "Dehydrated Apple (सुकाएको हिमाली स्याउ / Sukako Himali Syau) — 100 GM packed in Standup Ziplock Pouch. Pectin-rich crispy dehydrated apple rings with zero added sugar in a Standup Ziplock Pouch. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dehydrated-apple?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-apple-pouch.jpeg"
+    },
+    {
+      "order": 10,
+      "productName": "Dehydrated Coconut Chips (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 475,
+      "currency": "NPR",
+      "description": "Dehydrated Coconut Chips (सुकाएको नरिवल चिप्स / Nariwal Chips) — 100 GM packed in Standup Ziplock Pouch. Crunchy dehydrated coconut flakes rich in clean MCT healthy fats in a Standup Ziplock Pouch. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dehydrated-coconut-chips?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/dehydrated-coconut-chips.jpg"
+    },
+    {
+      "order": 11,
+      "productName": "Dehydrated Papaya (80 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 450,
+      "currency": "NPR",
+      "description": "Dehydrated Papaya (सुकाएको गुलियो मेवा / Sukako Mewa) — 80 GM packed in Standup Ziplock Pouch. Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dehydrated-papaya?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-papaya-flat.jpeg"
+    },
+    {
+      "order": 12,
+      "productName": "Dried Blueberries (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 650,
+      "currency": "NPR",
+      "description": "Dried Blueberries (सुकाएको ब्लुबेरी / Dried Blueberries) — 100 GM packed in Glass Jar. Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dried-blueberries?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-blueberry-jar.jpeg"
+    },
+    {
+      "order": 13,
+      "productName": "Dried Cranberries (100 GM)",
+      "category": "Dried Fruits",
+      "priceNpr": 415,
+      "currency": "NPR",
+      "description": "Dried Cranberries (सुकाएको क्र्यानबेरी / Dried Cranberries) — 100 GM packed in Glass Jar. Antioxidant-rich whole dried cranberries with natural tart-sweet flavor in a Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dried-cranberries?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-cranberry-jar.jpeg"
+    },
+    {
+      "order": 14,
+      "productName": "Dates Powder (100 GM)",
+      "category": "Powders",
+      "priceNpr": 400,
+      "currency": "NPR",
+      "description": "Dates Powder (खजुरको धुलो / Khajoor ko Dhulo) — 100 GM packed in Glass Jar. 100% unrefined natural sweetener made from whole dehydrated dates — 0% white sugar in a Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/dates-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-dates-jar.jpeg"
+    },
+    {
+      "order": 15,
+      "productName": "Beetroot Powder (100 GM)",
+      "category": "Powders",
+      "priceNpr": 430,
+      "currency": "NPR",
+      "description": "Beetroot Powder (चुकन्दरको धुलो / Chukandar ko Dhulo) — 100 GM packed in Glass Jar. 100% pure cold-milled Nepali red Beetroot Powder (100 GM Glass Jar) with 0 additives and 0 preservatives. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/beetroot-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-beetroot-jar.jpeg"
+    },
+    {
+      "order": 16,
+      "productName": "Himalayan Pink Salt (200 GM)",
+      "category": "Salts & Spices",
+      "priceNpr": 250,
+      "currency": "NPR",
+      "description": "Himalayan Pink Salt (हिमाली गुलाबी नुन (सिधे नुन) / Sidhe Noon / Pink Salt) — 200 GM packed in Glass Jar. Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/himalayan-pink-salt?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-pink-salt-jar.jpeg"
+    },
+    {
+      "order": 17,
+      "productName": "Himalayan Black Salt (Bire Noon) (200 GM)",
+      "category": "Salts & Spices",
+      "priceNpr": 220,
+      "currency": "NPR",
+      "description": "Himalayan Black Salt (Bire Noon) (हिमाली बिरे नुन / Bire Noon / Black Salt) — 200 GM packed in Glass Jar. Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/pure-himalayan-black-salt-bire-noon?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/himalayan-black-salt-digestive.jpg"
+    },
+    {
+      "order": 18,
+      "productName": "Chia Seeds (300 GM)",
+      "category": "Seeds",
+      "priceNpr": 495,
+      "currency": "NPR",
+      "description": "Chia Seeds (चिया सिड्स / Chia Seeds) — 300 GM packed in Plastic Jar. Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein in a 300g Plastic Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/chia-seeds?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-chia-display.jpeg"
+    },
+    {
+      "order": 19,
+      "productName": "Pumpkin Seeds (300 GM)",
+      "category": "Seeds",
+      "priceNpr": 650,
+      "currency": "NPR",
+      "description": "Pumpkin Seeds (फर्सीको बिया / Pharsi ko Biya) — 300 GM packed in Plastic Jar. Raw green Pumpkin Seeds (300 GM) rich in plant protein, zinc, and magnesium with 0 added salt or oil. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/pumpkin-seeds?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/pumpkin-seeds-product-shot.jpg"
+    },
+    {
+      "order": 20,
+      "productName": "Raw Cashew Nuts (150 GM)",
+      "category": "Nuts",
+      "priceNpr": 750,
+      "currency": "NPR",
+      "description": "Raw Cashew Nuts (काजु / Kaju) — 150 GM packed in Glass Jar. Jumbo whole grade cashewnuts with a rich buttery crunch and heart-healthy fats in a 150g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/premium-cashewnuts?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-cashew-new-jar.jpg"
+    },
+    {
+      "order": 21,
+      "productName": "Roasted Cashew Nuts (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 750,
+      "currency": "NPR",
+      "description": "Roasted Cashew Nuts (भुटेको काजु / Bhuteko Kaju) — 200 GM packed in Glass Jar. Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/roasted-cashewnuts?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-roasted-cashew-new.jpg"
+    },
+    {
+      "order": 22,
+      "productName": "Roasted Almonds (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 750,
+      "currency": "NPR",
+      "description": "Roasted Almonds (भुटेको बदाम / Bhuteko Badam) — 200 GM packed in Glass Jar. Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/roasted-almonds?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/roasted-almonds-v2.jpg"
+    },
+    {
+      "order": 23,
+      "productName": "Raw Almonds (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 750,
+      "currency": "NPR",
+      "description": "Raw Almonds (काँचो बदाम / Kacho Badam) — 200 GM packed in Glass Jar. Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/raw-himalayan-almonds?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-almond-jar-v2.jpg"
+    },
+    {
+      "order": 24,
+      "productName": "Superfood Trail Mix (Nuts & Seeds) (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 690,
+      "currency": "NPR",
+      "description": "Superfood Trail Mix (Nuts & Seeds) (मिक्स ड्राइ नट्स / Mix Dry Nuts) — 200 GM packed in Glass Jar. Energy-dense blend of whole almonds, cashews, pumpkin seeds, berries, and chia in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/superfood-trail-mix?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/superfood-mix.jpg"
+    },
+    {
+      "order": 25,
+      "productName": "Macadamia Nuts (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 1100,
+      "currency": "NPR",
+      "description": "Macadamia Nuts (म्याकाडामिया नट्स / Macadamia Nuts) — 200 GM packed in Glass Jar. Silky buttery macadamia nuts packed with monounsaturated palmitoleic acid in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/macadamia-nuts?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/macadamia.jpg"
+    },
+    {
+      "order": 26,
+      "productName": "Extra Virgin Coconut Oil (500ml) (500 ML)",
+      "category": "Oils",
+      "priceNpr": 1750,
+      "currency": "NPR",
+      "description": "Extra Virgin Coconut Oil (500ml) (एक्स्ट्रा भर्जिन नरिवलको तेल (५०० मिलि) / Extra Virgin Nariwal ko Tel 500ml) — 500 ML packed in Glass Bottle. Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 500ml Glass Bottle. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/virgin-coconut-oil-500ml?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/coconut-oil.jpg"
+    },
+    {
+      "order": 27,
+      "productName": "Extra Virgin Coconut Oil (180ml) (180 ML)",
+      "category": "Oils",
+      "priceNpr": 650,
+      "currency": "NPR",
+      "description": "Extra Virgin Coconut Oil (180ml) (भर्जिन नरिवलको तेल (१८० मिलि) / Virgin Nariwal ko Tel 180ml) — 180 ML packed in Glass Bottle. Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 ML Glass Bottle. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/virgin-coconut-oil-180ml?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/coconut-oil.jpg"
+    },
+    {
+      "order": 28,
+      "productName": "Carrot Powder (80 GM)",
+      "category": "Powders",
+      "priceNpr": 490,
+      "currency": "NPR",
+      "description": "Carrot Powder (गाजरको धुलो / Gajar ko Dhulo) — 80 GM packed in Glass Jar. Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 80g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/carrot-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-carrot-jar.jpeg"
+    },
+    {
+      "order": 29,
+      "productName": "Sweet Potato Powder (100 GM)",
+      "category": "Powders",
+      "priceNpr": 510,
+      "currency": "NPR",
+      "description": "Sweet Potato Powder (सखरखण्डको धुलो / Sakarkhanda ko Dhulo) — 100 GM packed in Glass Jar. 100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/sweet-potato-powder?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-sweet-potato-jar.jpeg"
+    },
+    {
+      "order": 30,
+      "productName": "Pure Himalayan Shilajit Resin (20 GM)",
+      "category": "Salts & Spices",
+      "priceNpr": 1995,
+      "currency": "NPR",
+      "description": "Pure Himalayan Shilajit Resin (शुद्ध हिमाली शिलाजीत रेजिन / Himali Shilajit Resin) — 20 GM packed in Glass Jar. Authentic purified Himalayan Shilajit resin in a 20 GM Glass Jar with 0 additives and 0 fillers. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/pure-mountain-himalayan-shilajit-resin?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-shilajit-jar.jpeg"
+    },
+    {
+      "order": 31,
+      "productName": "Flax Seeds (Alash) (200 GM)",
+      "category": "Seeds",
+      "priceNpr": 570,
+      "currency": "NPR",
+      "description": "Flax Seeds (Alash) (आलसको दाना / Alash ko Dana) — 200 GM packed in Glass Jar. Whole raw brown flax seeds (Alash) packed with plant Omega-3 (ALA), lignans & dietary fiber in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/flax-seeds?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/flax-seeds.jpg"
+    },
+    {
+      "order": 32,
+      "productName": "Premium Pistachio Roasted & Salted (200 GM)",
+      "category": "Nuts",
+      "priceNpr": 895,
+      "currency": "NPR",
+      "description": "Premium Pistachio Roasted & Salted (भुटेको नुनिलो पिस्ता / Bhuteko Pista) — 200 GM packed in Glass Jar. Crunchy roasted & salted pistachios packed with antioxidants, Vitamin B6 & healthy fats in a 200g Glass Jar. Order online at naturesmud.shop with 24h Kathmandu Valley delivery & All-Nepal COD.",
+      "landingPageUrl": "https://naturesmud.shop/products/premium-pistachio-roasted-salted?utm_source=google&utm_medium=gbp&utm_campaign=gbp_product_catalog",
+      "imageUrl": "https://naturesmud.shop/products/nm-pistachio-jar.jpg"
+    }
+  ]
+}

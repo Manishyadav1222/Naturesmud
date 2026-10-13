@@ -24,14 +24,6 @@ export default function CampaignCombosShowcaseSection() {
   const [addedId, setAddedId] = useState<string | null>(null);
   const openDrawer = useCartStore((s) => s.openDrawer);
 
-  // Time remaining state
-  const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 14,
-    minutes: 42,
-    seconds: 18,
-  });
-
   useEffect(() => {
     async function fetchAdminOffers() {
       try {
@@ -65,19 +57,6 @@ export default function CampaignCombosShowcaseSection() {
 
     return () => clearInterval(interval);
   }, [isHovered, offers]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return { days: 2, hours: 14, minutes: 42, seconds: 18 };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
 
   const currentOffer = offers.find((o) => o.id === activeId) || offers[0];
 
@@ -125,36 +104,31 @@ export default function CampaignCombosShowcaseSection() {
       <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(217,164,65,0.08)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container-nm relative z-10">
-        {/* Section Header (Clean luxury badge without numbered prefix) */}
+        {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-5 sm:mb-8">
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#7A5230] mb-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#1A3826]" />
-              <span>Special Campaigns & Bundles</span>
+              <span>Special Campaigns &amp; Bundles</span>
             </div>
             <div className="flex items-center gap-2.5">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-ink tracking-tight">
                 Himalayan Superfood Bundles
               </h2>
               <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gold/15 text-gold-800 text-[11px] font-bold font-heading border border-gold/30">
-                <Flame className="w-3 h-3 text-gold-600 animate-pulse" />
-                Flat 5% OFF
+                <Flame className="w-3 h-3 text-gold-600" />
+                Bundle Savings
               </span>
             </div>
             <p className="text-xs sm:text-sm text-ink/70 max-w-xl mt-1 leading-relaxed">
-              Curated daily wellness packs for fitness recovery, morning cleansing, total immunity, and festive celebrations.
+              Curated daily nutrition packs for active lifestyles, morning routines, family wellness, and festive gifting.
             </p>
           </div>
 
-          {/* Live countdown timer badge */}
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white shadow-2xs border border-ink/8 shrink-0 self-start sm:self-auto">
-            <Timer className="w-3.5 h-3.5 text-primary animate-pulse" />
-            <div className="text-[11px] sm:text-xs font-mono">
-              <span className="text-ink/60 mr-1">Flash Deals:</span>
-              <span className="font-bold text-ink">
-                {String(timeLeft.days).padStart(2, '0')}d:{String(timeLeft.hours).padStart(2, '0')}h:{String(timeLeft.minutes).padStart(2, '0')}m:
-                <span className="text-primary font-black">{String(timeLeft.seconds).padStart(2, '0')}s</span>
-              </span>
+            <Truck className="w-3.5 h-3.5 text-primary" />
+            <div className="text-[11px] sm:text-xs font-semibold text-ink">
+              Free Shipping on Orders Over Rs. 3,000
             </div>
           </div>
         </div>
@@ -212,7 +186,7 @@ export default function CampaignCombosShowcaseSection() {
             />
           </div>
 
-          {/* Top Header Row with Category Ribbon, Controls & Countdown */}
+          {/* Top Header Row with Category Ribbon & Controls */}
           <div className="relative z-10 flex items-center justify-between gap-2 pb-3 border-b border-amber-200/60 pt-0.5">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200/80 text-red-800">
               <Sparkles className="w-3.5 h-3.5 text-red-600" />
@@ -249,12 +223,9 @@ export default function CampaignCombosShowcaseSection() {
                 </button>
               </div>
 
-              <div className="flex items-center gap-1 text-[11px] sm:text-xs font-mono font-semibold text-red-800 bg-red-50 border border-red-200/80 px-2.5 py-0.5 rounded-full">
-                <Timer className="w-3 h-3 text-red-600 animate-pulse" />
-                <span className="font-bold">
-                  {timeLeft.days}d {String(timeLeft.hours).padStart(2, '0')}h:{String(timeLeft.minutes).padStart(2, '0')}m:{String(timeLeft.seconds).padStart(2, '0')}s
-                </span>
-              </div>
+              <span className="text-[11px] sm:text-xs font-semibold text-red-800 bg-red-50 border border-red-200/80 px-2.5 py-0.5 rounded-full">
+                3-Product Bundle
+              </span>
             </div>
           </div>
 
@@ -267,7 +238,7 @@ export default function CampaignCombosShowcaseSection() {
               transition={{ duration: 0.2 }}
               className="relative z-10 w-full pt-3 space-y-3.5"
             >
-              {/* Badge & Date Tag Row */}
+              {/* Badge & Tag Row */}
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="px-2.5 py-0.5 rounded-md bg-amber-100/90 text-amber-950 font-heading text-[10px] sm:text-xs font-extrabold uppercase tracking-wide border border-amber-300">
@@ -278,7 +249,7 @@ export default function CampaignCombosShowcaseSection() {
                   </span>
                 </div>
                 <span className="text-[10px] sm:text-xs font-bold text-amber-950 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-300">
-                  📅 Oct 2–20, 2026
+                  🇳🇵 Nationwide Delivery
                 </span>
               </div>
 

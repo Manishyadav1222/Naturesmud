@@ -27,7 +27,8 @@ import BlogLanguageSwitcher from '@/components/BlogLanguageSwitcher';
 import { blogTranslations, blogUiStrings } from '@/lib/data/blog-translations';
 import { BlogPost } from '@/lib/types';
 import { useCartStore } from '@/lib/store/cart-store';
-import { ExtendedBlogPost } from '@/lib/data/blogs-database';
+import type { ExtendedBlogPost } from '@/lib/data/blogs-database';
+import { products } from '@/lib/data/products';
 
 interface BlogPostClientProps {
   post: ExtendedBlogPost | BlogPost | any;
@@ -40,6 +41,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
   const [copiedQuoteId, setCopiedQuoteId] = useState<string | null>(null);
+  const [selectedHeroIdx, setSelectedHeroIdx] = useState(0);
   const { addItem, openDrawer } = useCartStore();
 
   const handleDownload = async (imageUrl: string, title?: string, id?: string) => {
@@ -90,7 +92,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const activeTitle = (lang === 'np' && tr?.titleNp) ? tr.titleNp : post.title;
   const activeExcerpt = (lang === 'np' && tr?.excerptNp) ? tr.excerptNp : post.excerpt;
   const activeCategory = (lang === 'np' && tr?.categoryNp) ? tr.categoryNp : (post.category || 'Superfoods & Wellness');
-  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : (post.author || "NaturesMud Nutrition & Research Team");
+  const activeAuthor = (lang === 'np' && tr?.authorNp) ? tr.authorNp : "NaturesMud Editorial & Kitchen Team";
   const activeDate = (lang === 'np' && tr?.dateNp) ? tr.dateNp : (post.date || 'Recent');
   const activeContent: string[] = Array.isArray(post.content) ? post.content : [post.content || ''];
   const activeTags: string[] = (lang === 'np' && tr?.tagsNp) ? tr.tagsNp : (post.tags || ['organic nepal', 'himalayan nutrition', 'wellness']);
@@ -114,11 +116,11 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       points.push(...contentBullets);
     } else {
       points.push(
-        "100% pure Himalayan single-origin harvest from pesticide-free cooperative farms across Nepal.",
-        "Gentle low-temperature dehydration (<42°C) preserves live enzymes, vitamins, and bioflavonoids."
+        "100% pure whole-food ingredients with zero artificial additives or preservatives.",
+        "Gentle low-temperature dehydration (<45°C) preserves natural fiber, vitamins, and minerals."
       );
     }
-    points.push("Earth-friendly, recyclable glass jar packaging with nationwide doorstep delivery across all 77 districts of Nepal.");
+    points.push("Airtight packaging with fast doorstep delivery across Kathmandu Valley and all 77 districts of Nepal.");
     return points.slice(0, 4);
   })();
 
@@ -129,139 +131,99 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     }
     return [
       {
-        question: `What makes NaturesMud Himalayan products 100% chemical-free?`,
-        answer: `NaturesMud sources exclusively from pesticide-free cooperative farms in Nepal. Our superfoods contain 0 additives, 0 preservatives, and zero artificial dyes.`
+        question: `What makes NaturesMud products 100% chemical-free?`,
+        answer: `NaturesMud products are crafted from 100% pure whole-food ingredients with 0 additives, 0 preservatives, and zero artificial dyes.`
       },
       {
-        question: `How are these superfoods processed to retain active enzymes?`,
-        answer: `All our botanical roots, superfood powders, and fruits are gently dehydrated below 42°C in controlled low-temperature chambers. This locks in heat-sensitive vitamins, live digestive enzymes, and dense antioxidant polyphenols with 0 additives and 0 preservatives.`
+        question: `How are these superfoods processed to retain nutrients?`,
+        answer: `Our botanical roots, superfood powders, and fruits are gently dehydrated below 45°C or vacuum freeze-dried with 0 additives and 0 preservatives.`
       },
       {
         question: `How should I consume and store this product daily?`,
-        answer: `Keep the airtight glass jar in a cool, dry place away from direct sunlight. Enjoy 1 to 2 teaspoons daily mixed into warm water, herbal tea, morning porridge, or family smoothies.`
+        answer: `Keep the container tightly closed in a cool, dry cupboard away from direct sunlight and always use a dry spoon.`
       },
       {
         question: `How fast is doorstep delivery across Kathmandu and nationwide?`,
-        answer: `We provide same-day or next-day express delivery across Kathmandu, Lalitpur, and Bhaktapur, and rapid 2–3 day shipping to Pokhara, Chitwan, Butwal, Biratnagar, Dharan, and all 77 districts of Nepal.`
+        answer: `We deliver within 24–48 hours across Kathmandu, Lalitpur, and Bhaktapur, and within 2–5 business days across all 77 districts of Nepal.`
       }
     ];
   })();
 
-  // Smart Featured Product Spotlight matching for high conversion
+  // Look up exact canonical product from lib/data/products.ts so label name, weight, and price are 100% exact
   const activeFeaturedProduct = (() => {
-    if (post.featuredProductName && post.featuredProductPrice) {
-      return {
-        slug: post.featuredProductSlug || 'sweet-potato-powder',
-        name: post.featuredProductName,
-        price: post.featuredProductPrice,
-        image: post.featuredProductImage || post.image || '/products/sweet-potato-powder-100g.jpg',
-        description: 'Includes 100% chemical-free Himalayan superfoods in reusable glass jars with free greeting card.'
-      };
-    }
-
-    const slug = (post.slug || '').toLowerCase();
-    if (slug.includes('beetroot')) {
-      return {
-        slug: 'beetroot-powder',
-        name: 'Pure Himalayan Beetroot Powder (100g)',
-        price: 430,
-        image: '/products/beetroot-powder-100g.jpg',
-        description: 'Delivers natural dietary nitrates for nitric oxide support, blood oxygenation, and stamina.'
-      };
-    }
-    if (slug.includes('sweet-potato') || slug.includes('baby') || slug.includes('pregnancy') || slug.includes('weaning')) {
-      return {
-        slug: 'sweet-potato-powder',
-        name: 'Organic Sweet Potato Powder (100g)',
-        price: 510,
-        image: '/products/sweet-potato-powder-100g.jpg',
-        description: 'Gentle, vitamin A-rich complex carbs ideal for baby weaning, gut soothing, and maternal nutrition.'
-      };
-    }
-    if (slug.includes('dates') || slug.includes('sugar') || slug.includes('sweetener')) {
-      return {
-        slug: 'dates-powder',
-        name: 'Natural Dates Powder Sweetener (100g)',
-        price: 400,
-        image: '/products/dates-powder-100g.jpg',
-        description: '100% pure low-glycemic dried dates sweetener to replace refined sugar in tea, oats, and desserts.'
-      };
-    }
-    if (slug.includes('moringa') || slug.includes('cough') || slug.includes('monsoon') || slug.includes('immunity')) {
-      return {
-        slug: 'moringa-leaf-powder',
-        name: 'Pure Himalayan Moringa Leaf Powder (100g)',
-        price: 690,
-        image: '/products/moringa-leaf-powder.jpg',
-        description: 'Shade-dried mountain moringa leaves rich in 90+ natural phytonutrients, iron, and antioxidants.'
-      };
-    }
-    if (slug.includes('chia') || slug.includes('pumpkin') || slug.includes('seeds')) {
-      return {
-        slug: 'chia-seeds',
-        name: 'Premium Black Chia Seeds (300g)',
-        price: 495,
-        image: '/products/chia-seeds.jpg',
-        description: 'Dense plant-based Omega-3 ALA, complete protein, and soothing soluble prebiotic fiber.'
-      };
-    }
-    if (slug.includes('almond') || slug.includes('cashew') || slug.includes('nuts')) {
-      return {
-        slug: 'raw-himalayan-almonds',
-        name: 'Raw Himalayan Mountain Almonds (200g)',
-        price: 750,
-        image: '/products/nm-almond-jar-v2.jpg',
-        description: 'Hand-selected whole mountain almonds rich in alpha-tocopherol (Vitamin E) and bioavailable magnesium.'
-      };
-    }
-
-    // Default signature bundle
+    const targetSlug = post.featuredProductSlug || 'sweet-potato-powder';
+    const found = products.find((p) => p.slug === targetSlug) || products.find((p) => p.slug === 'sweet-potato-powder')!;
     return {
-      slug: 'superfood-trail-mix',
-      name: 'NaturesMud Mix Dry Nuts Superfood Trail Mix (300g)',
-      price: 690,
-      image: post.image || '/products/superfood-mix.jpg',
-      description: 'Includes pure Himalayan superfoods in reusable glass jars with 0 additives and 0 preservatives.'
+      id: found.id,
+      slug: found.slug,
+      name: found.official_label_name || found.name,
+      price: found.price,
+      weight: found.weight,
+      image: found.image || post.featuredProductImage || '/products/sweet-potato-powder-100g.jpg',
+      images: Array.isArray(found.images) && found.images.length > 0 ? found.images : [found.image],
+      description: found.shortDescription || '100% pure whole-food ingredient with 0 additives and 0 preservatives.'
     };
   })();
 
-  const defaultWallpapers = [
-    {
-      id: 'w-1',
-      url: post.image || '/products/sweet-potato-powder-100g.jpg',
-      title: `${activeTitle} — Official HD Poster`,
-      quote: activeExcerpt,
-      aspectRatio: '4:5',
-    },
-    {
-      id: 'w-2',
-      url: '/images/blog/rakhi-gift-hampers-natures-mud.jpg',
-      title: 'Sacred Vow of Vitality — Mobile 9:16 Wallpaper',
-      quote: 'Gift the vow of lifelong vitality—pure Himalayan nourishment in eco-friendly glass jars.',
-      aspectRatio: '9:16',
-    },
-    {
-      id: 'w-3',
-      url: '/images/blog/divine-raksha-bandhan-superfoods-nepal.jpg',
-      title: 'Divine Satvik Protection — Square 1:1',
-      quote: 'Where sacred devotion meets biological stamina: nourishing our families with pure earth vitality.',
-      aspectRatio: '1:1',
-    },
-    {
-      id: 'w-4',
-      url: '/images/blog/purity-wellness-rakhi-chia-almonds.jpg',
-      title: 'Purity & Wellness Living Seeds — Poster 4:5',
-      quote: 'Pure food, real nature: 100% chemical-free Himalayan nutrition directly from pristine farms.',
-      aspectRatio: '4:5',
-    },
-    {
-      id: 'w-5',
-      url: '/images/blog/healthy-rakshabandhan-superfood-rangoli.jpg',
-      title: 'Antioxidant Festive Mandala — Wide 16:9',
-      quote: 'Celebrate with nature’s healing colors: 100% natural antioxidant-rich organic nutrition.',
-      aspectRatio: '16:9',
-    },
-  ];
+  // Build selectable gallery images for this blog post (post cover + featured product studio & lifestyle images)
+  const blogGalleryImages = (() => {
+    const raw: string[] = [];
+    if (post.image) raw.push(post.image);
+    if (Array.isArray(activeFeaturedProduct.images)) {
+      raw.push(...activeFeaturedProduct.images);
+    }
+    const slugLower = (post.slug || '').toLowerCase();
+    if (slugLower.includes('dates') || slugLower.includes('baby') || slugLower.includes('sugar')) {
+      raw.push(
+        '/images/lifestyle/dates-powder-healthy-sweetness.jpg',
+        '/images/lifestyle/dates-powder-goodbye-sugar.jpg',
+        '/images/lifestyle/dates-powder-holding-jar-1.jpg',
+        '/images/lifestyle/dates-powder-store-shelf.jpg'
+      );
+    }
+    if (slugLower.includes('beetroot')) {
+      raw.push(
+        '/images/lifestyle/beetroot-powder-ad.jpg',
+        '/images/lifestyle/beetroot-powder-pink-bicycle.jpg',
+        '/images/lifestyle/naturesmud-refreshing-trio-jars.jpg'
+      );
+    }
+    if (slugLower.includes('freeze-dried') || slugLower.includes('avocado') || slugLower.includes('strawberry')) {
+      raw.push(
+        '/images/lifestyle/avocado-powder-holding-jar.jpg',
+        '/images/lifestyle/strawberry-powder-holding-jar.jpg'
+      );
+    }
+    if (slugLower.includes('dry-fruits') || slugLower.includes('trekking') || slugLower.includes('almond') || slugLower.includes('cashew') || slugLower.includes('monsoon')) {
+      raw.push(
+        '/images/lifestyle/cashews-floating-ad.jpg',
+        '/images/lifestyle/raw-almonds-holding-jar.jpg',
+        '/images/lifestyle/pistachios-holding-jar-1.jpg',
+        '/images/lifestyle/dried-blueberries-holding-jar-1.jpg',
+        '/images/lifestyle/dried-cranberries-holding-jar-1.jpg'
+      );
+    }
+    if (slugLower.includes('chia') || slugLower.includes('seed') || slugLower.includes('pumpkin')) {
+      raw.push(
+        '/images/lifestyle/pumpkin-seeds-power-poster.jpg',
+        '/images/lifestyle/pumpkin-seeds-holding-jar-1.jpg'
+      );
+    }
+    raw.push('/images/lifestyle/naturesmud-refreshing-trio-jars.jpg');
+    return Array.from(new Set(raw.filter(Boolean))).slice(0, 8);
+  })();
+
+  const defaultWallpapers = blogGalleryImages.slice(0, 6).map((url, idx) => ({
+    id: `w-${idx + 1}`,
+    url,
+    title: idx === 0
+      ? `${activeTitle} — Official HD Visual`
+      : `${activeFeaturedProduct.name} — Lifestyle & Studio View #${idx + 1}`,
+    quote: idx === 0
+      ? activeExcerpt
+      : `${activeFeaturedProduct.name} (${activeFeaturedProduct.weight}) — 100% pure whole-food nutrition with 0 additives and 0 preservatives.`,
+    aspectRatio: idx % 2 === 0 ? '4:5' : '1:1',
+  }));
 
   const activeWallpapers = (post.wallpapers && Array.isArray(post.wallpapers) && post.wallpapers.length > 0)
     ? post.wallpapers
@@ -283,12 +245,12 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
   const handleAddToCart = () => {
     addItem(
       {
-        id: activeFeaturedProduct.slug,
+        id: activeFeaturedProduct.id,
         slug: activeFeaturedProduct.slug,
         name: activeFeaturedProduct.name,
-        price: Math.round(activeFeaturedProduct.price * 0.95),
+        price: activeFeaturedProduct.price,
         image: activeFeaturedProduct.image,
-        weight: '100g',
+        weight: activeFeaturedProduct.weight,
         category: post.category || 'Superfood',
       },
       1
@@ -429,17 +391,66 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
       {/* Article Body */}
       <article className="py-10 sm:py-14 bg-white w-full max-w-full overflow-hidden">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {/* Featured Hero Image */}
-          <div className="rounded-3xl overflow-hidden mb-8 shadow-lg border border-gray-100 relative aspect-[16/9] bg-gray-50">
-            <Image
-              src={post.image || '/products/naturesmud-all-products-100g.jpg'}
-              alt={activeTitle}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 896px"
-              className="object-cover"
-            />
+          {/* Featured Hero Image + Selectable Product & Lifestyle Thumbnails */}
+          <div className="mb-8 space-y-3">
+            <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100 relative aspect-[16/9] bg-stone-900">
+              <Image
+                src={blogGalleryImages[selectedHeroIdx] || post.image || '/products/naturesmud-all-products-100g.jpg'}
+                alt={`${activeTitle} - View ${selectedHeroIdx + 1}`}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 896px"
+                className="object-contain sm:object-cover"
+              />
+              {blogGalleryImages.length > 1 && (
+                <div className="absolute bottom-3 right-4 z-10 bg-black/65 backdrop-blur-md text-white text-xs px-3 py-1 rounded-full font-bold">
+                  View {selectedHeroIdx + 1} / {blogGalleryImages.length}
+                </div>
+              )}
+            </div>
+
+            {blogGalleryImages.length > 1 && (
+              <div className="flex items-center gap-2.5 overflow-x-auto pb-1 pt-1 scrollbar-thin">
+                {blogGalleryImages.map((imgUrl, idx) => {
+                  const isSelected = idx === selectedHeroIdx;
+                  return (
+                    <button
+                      key={`${imgUrl}-${idx}`}
+                      type="button"
+                      onClick={() => setSelectedHeroIdx(idx)}
+                      className={`relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-2xl overflow-hidden border-2 transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-[#2D5A27] ring-2 ring-[#2D5A27]/25 shadow-md scale-105'
+                          : 'border-gray-200 hover:border-gray-300 opacity-75 hover:opacity-100'
+                      }`}
+                      aria-label={`Select blog visual ${idx + 1}`}
+                    >
+                      <Image
+                        src={imgUrl}
+                        alt={`${activeTitle} thumbnail ${idx + 1}`}
+                        fill
+                        sizes="80px"
+                        className="object-cover object-center"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
+
+          {/* Native Nepali Summary Box (<div lang="ne">) */}
+          {post.nepaliSummary && (
+            <div lang="ne" className="mb-6 p-5 sm:p-6 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 shadow-2xs">
+              <div className="flex items-center gap-2 text-emerald-900 font-heading font-bold text-sm sm:text-base mb-2">
+                <Sparkles className="w-4 h-4 text-emerald-700" />
+                <span>नेपाली सारांश (Nepali Summary)</span>
+              </div>
+              <p className="text-gray-800 text-sm sm:text-base leading-relaxed">
+                {post.nepaliSummary}
+              </p>
+            </div>
+          )}
 
           {/* Key Takeaways Box (Guaranteed on every single post) */}
           <div className="mb-8 p-6 sm:p-8 rounded-3xl bg-[#FAF7F2] border-2 border-[#C9982A]/30 shadow-sm">

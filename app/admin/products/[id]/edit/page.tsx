@@ -137,6 +137,14 @@ export default function AdminProductEditPage() {
         : isAct;
       const isFeat = Boolean(p.isFeatured || p.is_featured);
 
+      const rawUnit = String(p.unit || 'G').trim().toUpperCase();
+      const normalizedUnit =
+        rawUnit === 'GM' || rawUnit === 'GRAM' || rawUnit === 'GRAMS'
+          ? 'G'
+          : ['PC', 'BOX', 'KG', 'G', 'L', 'ML'].includes(rawUnit)
+          ? rawUnit
+          : 'G';
+
       setFormData({
         name: p.name || '',
         slug: p.slug || '',
@@ -151,7 +159,7 @@ export default function AdminProductEditPage() {
         categoryId: p.categoryId || '',
         brandId: p.brandId || '',
         status: isAct && isPub ? 'ACTIVE' : 'DRAFT',
-        unit: p.unit || 'PC',
+        unit: normalizedUnit,
         weight: p.weight != null ? String(p.weight) : '',
         length: p.length != null ? String(p.length) : '',
         width: p.width != null ? String(p.width) : '',
@@ -570,7 +578,7 @@ export default function AdminProductEditPage() {
           <CardContent>
             <div className="grid gap-6 md:grid-cols-4">
               <Input
-                label="Weight (kg)"
+                label={`Weight (${formData.unit === 'G' ? 'GM' : formData.unit})`}
                 name="weight"
                 type="number"
                 step="0.01"

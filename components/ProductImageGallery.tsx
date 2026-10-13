@@ -9,6 +9,8 @@ import { resolveImageUrl } from '@/lib/utils';
 interface ProductImageGalleryProps {
   images: string[];
   productName: string;
+  weight?: string;
+  packing?: string;
   discount?: number;
   badges?: string[];
 }
@@ -16,6 +18,8 @@ interface ProductImageGalleryProps {
 export default function ProductImageGallery({
   images,
   productName,
+  weight,
+  packing,
   discount = 0,
   badges = [],
 }: ProductImageGalleryProps) {
@@ -23,19 +27,13 @@ export default function ProductImageGallery({
     ? images
     : ['/products/sweet-potato-powder-100g.jpg'];
 
-  const galleryList = rawList.map((img) => resolveImageUrl(img));
+  const galleryList = Array.from(new Set(rawList.map((img) => resolveImageUrl(img))));
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomOpen, setIsZoomOpen] = useState(false);
-  const [currentImg, setCurrentImg] = useState(() => galleryList[0]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 1024 && galleryList.length > 1) {
-      setActiveIndex(1);
-    }
-  }, [galleryList.length]);
 
   const activeImage = galleryList[activeIndex] || galleryList[0];
+  const baseAlt = `${productName}${weight ? ` ${weight}` : ''}${packing ? ` ${packing}` : ''} - NaturesMud Nepal`;
 
   const handlePrev = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -63,8 +61,9 @@ export default function ProductImageGallery({
           >
             <Image
               src={activeImage}
-              alt={`${productName} - Image ${activeIndex + 1}`}
+              alt={activeIndex === 0 ? baseAlt : `${baseAlt} (View ${activeIndex + 1})`}
               fill
+              unoptimized
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
               onError={(e: any) => {
@@ -89,7 +88,7 @@ export default function ProductImageGallery({
           )}
           {badges.includes('organic') && (
             <span className="bg-[#3A6B35] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md flex items-center gap-1">
-              <Leaf className="w-3.5 h-3.5" /> 100% Organic
+              <Leaf className="w-3.5 h-3.5" /> 100% Pure
             </span>
           )}
         </div>

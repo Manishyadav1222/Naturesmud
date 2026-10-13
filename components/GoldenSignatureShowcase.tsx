@@ -67,7 +67,7 @@ export default function GoldenSignatureShowcase() {
             Crafted by Nature, Perfected by Tradition
           </h2>
           <p className="mt-2 text-sm sm:text-base text-[#614217] font-medium">
-            Experience our top three hand-harvested organic staples cherished by over 25,000 families across Nepal.
+            Experience our top three whole-food staples crafted for families across Nepal.
           </p>
         </div>
 

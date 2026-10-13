@@ -124,7 +124,7 @@ const PERSONAS: QuizPersona[] = [
       'dehydrated-mango',
       'chia-seeds',
     ],
-    reason: 'The foundational starter kit loved by over 25,000+ happy homes across Kathmandu, Pokhara, and Nepal.',
+    reason: 'The foundational whole-food starter kit for kitchens across Kathmandu, Pokhara, and all 77 districts of Nepal.',
   },
 ];
 

@@ -12,6 +12,8 @@ import QuickViewModal from '@/components/QuickViewModal';
 import MobileBottomNav from '@/components/MobileBottomNav';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
+import DashainOfferPopup from '@/components/DashainOfferPopup';
+import NaturesMudAssistant from '@/components/NaturesMudAssistant';
 
 export default function StorefrontShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -26,6 +28,7 @@ export default function StorefrontShell({ children }: { children: React.ReactNod
   return (
     <SmoothScrollProvider>
       <div className="min-h-screen bg-[#fafaf5] flex flex-col w-full max-w-full pb-16 lg:pb-0">
+        <DashainOfferPopup />
         <ErrorBoundary name="Header">
           <Header />
         </ErrorBoundary>
@@ -39,6 +42,7 @@ export default function StorefrontShell({ children }: { children: React.ReactNod
         </ErrorBoundary>
         <BackToTopButton />
         <WhatsAppButton />
+        <NaturesMudAssistant />
         <CartDrawer />
         <SearchOverlay />
         <QuickViewModal />

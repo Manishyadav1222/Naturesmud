@@ -1,0 +1,80 @@
+{
+  "slug": "pure-himalayan-black-salt-bire-noon",
+  "seoTitle": "Himalayan Black Salt (Bire Noon) Price in Nepal | NaturesMud",
+  "metaDescription": "Buy Himalayan Black Salt / Bire Noon (200 GM) at Rs. 220 in Nepal. Authentic Ayurvedic rock salt for fruit salad, nimbu pani & chutneys. Fast Nepal.",
+  "nepaliNameDevanagari": "हिमाली बिरे नुन (काला नमक)",
+  "nepaliNameRoman": "Bire Noon / Kala Namak (Himalayan Black Salt)",
+  "originBelt": "Himalayan Rock Salt Kiln-Fired in Traditional Earthen Pots",
+  "shelfLife": "24+ months in a tightly sealed glass jar",
+  "whatItIs": "NaturesMud Himalayan Black Salt (beloved across Nepal as Bire Noon / बिरे नुन) is traditional mineral rock salt kiln-cured with natural charcoal and myrobalan seeds (harro/barro), then ground into a pinkish-purple powder. Its distinctive savory, umami aroma comes from natural iron sulfide and sulfur compounds, with 0% chemical flow-agents or synthetic additives.",
+  "nepaliKitchenUses": [
+    "Classic Nepali Fruit Chaat & Cucumber Salad: Sprinkle a pinch of Bire Noon and chili flakes over sliced cucumber (kakro), guava (amba), orange (suntala), or pomelo (bhogate).",
+    "Refreshing Nimbu Pani, Jaljeera & Mohi: Whisk 1/4 teaspoon into chilled lemon water, spiced buttermilk (mohi), or watermelon juice after meals.",
+    "Traditional Golbheda (Tomato) & Mint Achar: Season roasted tomato chutney, dhaniya-pudina achar, and chatpate for authentic Nepali street-style tang.",
+    "Vegan Egg-Style Tofu Scramble: Because natural sulfur compounds give Bire Noon an egg-like aroma, a pinch transforms turmeric-tofu scrambles."
+  ],
+  "whoItSuits": "A staple for every Nepali home kitchen, fruit-salad and achar lovers, summer beverage makers, and plant-based cooks.",
+  "monsoonStorage": "Keep the glass jar tightly sealed in a dry cupboard. Because Bire Noon contains zero chemical anti-caking agents, always use a dry spoon during humid monsoon months.",
+  "comparisonTitle": "NaturesMud Bire Noon vs Adulterated Market Black Salt",
+  "comparisonRows": [
+    {
+      "feature": "Authenticity",
+      "naturesMud": "100% Traditional Kiln-Cured Himalayan Black Rock Salt",
+      "typicalMarket": "Often common white salt dyed purple-grey with synthetic color"
+    },
+    {
+      "feature": "Aroma & Color",
+      "naturesMud": "Deep violet-grey crystals -> Grinding turns pale pinkish-grey with rich aroma",
+      "typicalMarket": "Harsh chemical smell or flat salty taste"
+    },
+    {
+      "feature": "Additives",
+      "naturesMud": "0% Anti-Caking Chemicals, 0% Artificial Dyes",
+      "typicalMarket": "Mixed with industrial flow agents"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is the price of Himalayan Black Salt (बिरे नुन / Bire Noon) in Nepal?",
+      "a": "NaturesMud Himalayan Black Salt (Bire Noon 200 GM Glass Jar) costs Rs. 220 in Nepal (Rs. 110 per 100g). We deliver across Kathmandu Valley and nationwide."
+    },
+    {
+      "q": "Why does Bire Noon look pinkish-purple when ground into powder?",
+      "a": "Whole Bire Noon rock crystals look dark violet-black, but when finely ground into powder, authentic Bire Noon naturally turns a light pinkish-purple shade."
+    },
+    {
+      "q": "Why does Bire Noon have a distinctive savory smell?",
+      "a": "Traditional kiln-curing creates natural iron sulfide and trace sulfur compounds, giving Bire Noon its signature savory aroma that pairs wonderfully with lemon, fruit, and dahi."
+    },
+    {
+      "q": "How is Bire Noon traditionally used in Nepali households?",
+      "a": "In Nepali tradition, a pinch of Bire Noon in warm lemon water, ajwain (jwano) water, or buttermilk (mohi) is enjoyed after heavy meals."
+    },
+    {
+      "q": "Does it contain any artificial coloring?",
+      "a": "No—0% artificial dye and 0% anti-caking chemicals."
+    }
+  ],
+  "complementarySlugs": [
+    "himalayan-pink-salt",
+    "makhana-fox-nuts",
+    "dehydrated-pineapple"
+  ],
+  "variantGroupTitle": "Choose Himalayan Salt Type",
+  "variants": [
+    {
+      "slug": "himalayan-pink-salt",
+      "label": "Himalayan Pink Salt (Sindhe Noon)",
+      "weight": "200 GM",
+      "price": 250,
+      "badge": "Everyday Cooking & Fasting"
+    },
+    {
+      "slug": "pure-himalayan-black-salt-bire-noon",
+      "label": "Himalayan Black Salt (Bire Noon)",
+      "weight": "200 GM",
+      "price": 220,
+      "badge": "Fruit Salad, Nimbu Pani & Chutney"
+    }
+  ]
+}

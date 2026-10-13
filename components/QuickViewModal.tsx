@@ -3,16 +3,18 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ShoppingBag, Heart, Star } from 'lucide-react';
+import { X, ShoppingBag, Heart, Star, Sparkles, Truck, Gift } from 'lucide-react';
 import { useUIStore } from '@/lib/store/ui-store';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useWishlistStore } from '@/lib/store/wishlist-store';
-import { getProductById } from '@/lib/data/products';
+import { getProductById, getProductBySlug } from '@/lib/data/products';
+import { getDashainDiscountedPrice } from '@/lib/data/dashain-offer';
 import { formatPrice, classNames, resolveImageUrl } from '@/lib/utils';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { BuyNowButton } from '@/components/BuyNowButton';
+import { Product } from '@/lib/types';
 
 import { toast } from 'sonner';
 
@@ -21,8 +23,38 @@ export default function QuickViewModal() {
   const { quickViewProductId, closeQuickView } = useUIStore();
   const addItem = useCartStore((s) => s.addItem);
   const { toggleItem, isInWishlist } = useWishlistStore();
+  const [liveProducts, setLiveProducts] = useState<Product[]>([]);
 
-  const product = quickViewProductId ? getProductById(quickViewProductId) : null;
+  useEffect(() => {
+    if (!quickViewProductId) return;
+    let active = true;
+    fetch(`/api/products?limit=100&_t=${Date.now()}`, { cache: 'no-store' })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (!active || !json) return;
+        const list = Array.isArray(json.data) ? json.data : Array.isArray(json) ? json : [];
+        if (list.length > 0) setLiveProducts(list);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [quickViewProductId]);
+
+  const staticMatch = quickViewProductId
+    ? getProductById(quickViewProductId) || getProductBySlug(quickViewProductId)
+    : null;
+  const liveMatch = quickViewProductId
+    ? liveProducts.find(
+        (p) =>
+          String(p.id) === String(quickViewProductId) ||
+          String(p.dbId) === String(quickViewProductId) ||
+          p.slug === String(quickViewProductId) ||
+          (staticMatch && p.slug === staticMatch.slug)
+      )
+    : null;
+
+  const product = liveMatch || staticMatch || null;
   const inWishlist = product ? isInWishlist(product.id) : false;
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
 
@@ -34,7 +66,7 @@ export default function QuickViewModal() {
     ? product.images
     : [product?.image || '/products/sweet-potato-powder-100g.jpg'];
 
-  const imagesList = rawImages.map((img) => resolveImageUrl(img));
+  const imagesList = rawImages.map((img: any) => resolveImageUrl(img));
 
   const currentDisplayImg = imagesList[selectedImgIndex] || imagesList[0] || resolveImageUrl(product?.image);
 
@@ -158,22 +190,37 @@ export default function QuickViewModal() {
                           <h3 id="information-heading" className="sr-only">
                             Product information
                           </h3>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-3 flex-wrap">
                             <p className="text-2xl font-bold text-gray-900">
                               {formatPrice(product.price)}
                             </p>
-                             {product.compareAtPrice && product.compareAtPrice > product.price && (
-                                <p className="text-lg text-gray-400 line-through decoration-gray-300">
-                                  {formatPrice(product.compareAtPrice)}
-                                </p>
-                              )}
+                            {product.compareAtPrice && product.compareAtPrice > product.price && (
+                              <p className="text-lg text-gray-400 line-through decoration-gray-300">
+                                {formatPrice(product.compareAtPrice)}
+                              </p>
+                            )}
                           </div>
-                          <p className="mt-4 text-base text-gray-600 line-clamp-3">
+                          <p className="mt-3 text-base text-gray-600 line-clamp-3">
                             {product.description}
                           </p>
+
+                          {/* Dashain Offer Perks Card */}
+                          <div className="mt-4 rounded-xl bg-gradient-to-r from-[#5a0b0b] via-[#7f1d1d] to-[#1a3826] p-3 text-white border border-amber-400/40 shadow-md">
+                            <p className="text-xs font-black uppercase tracking-wider text-amber-300 dashain-glow-text mb-1.5 flex items-center gap-1.5">
+                              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> Dashain Blessings &amp; Health Offer (Valid Till Dashain End)
+                            </p>
+                            <div className="space-y-1 text-xs text-amber-100/95">
+                              <p className="flex items-center gap-1.5 font-semibold">
+                                <Truck className="w-3.5 h-3.5 text-emerald-300 shrink-0" /> <strong>Free Delivery</strong> on orders over Rs. 3,000
+                              </p>
+                              <p className="flex items-center gap-1.5 font-semibold">
+                                <Gift className="w-3.5 h-3.5 text-rose-300 shrink-0" /> <strong>Free Delivery + Free Pink Salt</strong> on orders over Rs. 5,000+
+                              </p>
+                            </div>
+                          </div>
                         </section>
 
-                        <section aria-labelledby="options-heading" className="mt-8 pt-6 border-t border-gray-100">
+                        <section aria-labelledby="options-heading" className="mt-6 pt-5 border-t border-gray-100">
                           <h3 id="options-heading" className="sr-only">
                             Product options
                           </h3>

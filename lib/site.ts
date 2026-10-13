@@ -6,9 +6,9 @@ export const siteConfig = {
   description:
     'NaturesMud Nepal delivers 100% pure naturally dehydrated fruits, freeze-dried & solar-dried superfood powders (Avocado, Banana, Strawberry, Moringa, Sweet Potato, Beetroot, Dates, Carrot), mountain nuts, seeds, cold-pressed virgin coconut oil, and Himalayan salts across Kathmandu, Pokhara, Chitwan, Butwal, Biratnagar & all of Nepal. 0 Additives, 0 Preservatives, 0 Added Sugar.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://naturesmud.shop',
-  secondaryUrl: 'https://naturesmud.com',
+  secondaryUrl: 'https://naturesmud.shop',
   primaryDomain: 'naturesmud.shop',
-  mirrorDomain: 'naturesmud.com',
+  mirrorDomain: 'naturesmud.shop',
   phone: '+977-9713888002',
   secondaryPhone: '+977-9713888002',
   whatsappNumber: '9779713888002',
@@ -35,6 +35,9 @@ export const siteConfig = {
     instagram: 'https://www.instagram.com/naturesmud_official/',
     tiktok: 'https://www.tiktok.com/@naturesmud',
     youtube: 'https://youtube.com/@naturesmud',
+    daraz: 'https://www.daraz.com.np/shop/naturesmud-nepal/',
+    linkedin: 'https://www.linkedin.com/company/naturesmud-nepal/',
+    googleBusinessProfile: 'https://maps.google.com/?cid=naturesmud-nepal-baneshwor',
   },
   freeShippingThreshold: 3000,
   shipping: {
@@ -47,15 +50,11 @@ export const siteConfig = {
     remoteRegionsEta: '3–7 business days',
   },
   metrics: {
-    familiesServed: '25,000+',
-    verifiedOrders: '3,840+',
-    farmerFamiliesTotal: '280+',
-    farmerBreakdown: {
-      terai: '110+ Smallholder Farming Families (Chitwan, Jhapa, Nawalpur, Sarlahi)',
-      hilly: '95+ Organic Hill Collectives (Kavre, Sindhupalchok, Palpa, Ilam)',
-      himalaya: '75+ Indigenous Alpine Harvesters (Mustang, Jumla, Manang, Dolpa)',
-    },
+    activeProducts: 32,
+    categoriesCount: 6,
     ecologicalBelts: 3,
+    deliveryDistricts: 77,
+    retailPartnerOutlets: 6,
   },
   currency: 'Rs.',
 };
@@ -75,6 +74,7 @@ export const navLinks = [
 export const footerLinks = {
   company: [
     { label: 'Catalog', href: '/catalog' },
+    { label: 'Quality & Lab Proof', href: '/quality-and-proof' },
     { label: 'About Us & Sourcing', href: '/about' },
     { label: 'Our Himalayan Story', href: '/about#sourcing-journey' },
     { label: 'Festival Offers & Combos', href: '/offers' },
@@ -83,12 +83,12 @@ export const footerLinks = {
     { label: 'Contact & Showrooms', href: '/contact' },
   ],
   products: [
-    { label: 'Naturally Dehydrated Fruits', href: '/products?category=dried-fruits' },
-    { label: 'Organic Superfood Powders', href: '/products?category=powders' },
-    { label: 'Mountain Nuts & Cashews', href: '/products?category=nuts' },
-    { label: 'Organic Seeds (Chia & Pumpkin)', href: '/products?category=seeds' },
-    { label: 'Cold-Pressed Virgin Oils', href: '/products?category=oils' },
-    { label: 'Himalayan Rock Salts', href: '/products?category=salts-spices' },
+    { label: 'Naturally Dehydrated Fruits', href: '/category/dried-fruits' },
+    { label: 'Organic Superfood Powders', href: '/category/powders' },
+    { label: 'Mountain Nuts & Cashews', href: '/category/nuts' },
+    { label: 'Organic Seeds (Chia & Pumpkin)', href: '/category/seeds' },
+    { label: 'Cold-Pressed Virgin Oils', href: '/category/oils' },
+    { label: 'Himalayan Rock Salts', href: '/category/salts-spices' },
   ],
   support: [
     { label: 'FAQ & Help', href: '/faq' },

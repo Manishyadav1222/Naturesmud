@@ -1,0 +1,3330 @@
+[
+  {
+    "sku_index": 1,
+    "slug": "banana-powder",
+    "seller_sku": "NM-BANANA_POWDER",
+    "official_label_name": "Banana Powder",
+    "nepali_name_devanagari": "केराको धुलो",
+    "nepali_name_roman": "Kera Powder",
+    "daraz_title": "NaturesMud Banana Powder (100 GM) - Kera Powder (केराको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Mother & Baby > Feeding > Baby & Toddler Food > Cereal & Porridge",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 650,
+    "compare_at_price_npr": 750,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Terai Lowlands (Chitwan & Nawalpur)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 650,
+      "daraz_commission_9pct_npr": 59,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 107,
+      "net_estimated_payout_npr": 543,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Banana Powder (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Terai Lowlands (Chitwan & Nawalpur)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "banana powder",
+      "banana powder nepal",
+      "banana powder daraz",
+      "kera powder",
+      "केराको धुलो",
+      "naturesmud banana powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/banana-powder.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/banana-powder-ad-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/banana-powder-scene-1.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/banana-powder-scene-2.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/banana-powder.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/banana-powder"
+  },
+  {
+    "sku_index": 2,
+    "slug": "moringa-leaf-powder",
+    "seller_sku": "NM-MORINGA_LEAF_POWDER",
+    "official_label_name": "Moringa Leaf Powder",
+    "nepali_name_devanagari": "शीतलचिनी (सजिवन) पातको धुलो",
+    "nepali_name_roman": "Moringa Leaf Powder",
+    "daraz_title": "NaturesMud Moringa Leaf Powder (200 GM) - Moringa Leaf Powder (शीतलचिनी (सजिवन) पातको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Breakfast, Choco & Snacks > Superfoods & Nutritional Powders",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 690,
+    "compare_at_price_npr": 750,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Terai Lowlands & River Belts (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 690,
+      "daraz_commission_9pct_npr": 62,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 110,
+      "net_estimated_payout_npr": 580,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Moringa Leaf Powder (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Terai Lowlands & River Belts (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "moringa leaf powder",
+      "moringa leaf powder nepal",
+      "moringa leaf powder daraz",
+      "moringa leaf powder",
+      "शीतलचिनी (सजिवन) पातको धुलो",
+      "naturesmud moringa leaf powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/moringa-leaf-powder.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/moringa-leaf-advertising-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/moringa-leaf-social-template-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/moringa-powder-leaves-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/posters/moringa-powder-jar-2k.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/moringa-leaf-powder"
+  },
+  {
+    "sku_index": 3,
+    "slug": "freeze-dried-avocado-powder",
+    "seller_sku": "NM-FREEZE_DRIED_AVOCADO_POWDER",
+    "official_label_name": "Freeze Dried Avocado Powder",
+    "nepali_name_devanagari": "एभोकाडो पाउडर",
+    "nepali_name_roman": "Avocado Powder",
+    "daraz_title": "NaturesMud Freeze Dried Avocado Powder (80 GM) - Avocado Powder (एभोकाडो पाउडर) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Breakfast, Choco & Snacks > Superfoods & Nutritional Powders",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 790,
+    "compare_at_price_npr": 790,
+    "net_weight": "80 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Mid-Hills & Product of Nepal 🇳🇵",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 790,
+      "daraz_commission_9pct_npr": 71,
+      "vat_on_commission_13pct_npr": 9,
+      "payment_gateway_fee_1_5pct_npr": 12,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 122,
+      "net_estimated_payout_npr": 668,
+      "estimated_net_margin_percent": "85%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Freeze Dried Avocado Powder (80 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Mid-Hills & Product of Nepal 🇳🇵",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "freeze dried avocado powder",
+      "freeze dried avocado powder nepal",
+      "freeze dried avocado powder daraz",
+      "avocado powder",
+      "एभोकाडो पाउडर",
+      "naturesmud freeze dried avocado powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/avocado-powder-v2.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/avocado-powder-v2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/images/lifestyle/avocado-powder-holding-jar.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/avocado-powder-v2.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/avocado-powder-v2.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/freeze-dried-avocado-powder"
+  },
+  {
+    "sku_index": 4,
+    "slug": "strawberry-powder",
+    "seller_sku": "NM-STRAWBERRY_POWDER",
+    "official_label_name": "Freeze Dried Strawberry Powder",
+    "nepali_name_devanagari": "स्ट्रबेरी पाउडर",
+    "nepali_name_roman": "Freeze Dried Strawberry Powder",
+    "daraz_title": "NaturesMud Freeze Dried Strawberry Powder (80 GM) - Freeze Dried Strawberry Powder (स्ट्रबेरी पाउडर) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Breakfast, Choco & Snacks > Superfoods & Nutritional Powders",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 1395,
+    "compare_at_price_npr": 1395,
+    "net_weight": "80 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Mid-Hills Berry Orchards (Kakani & Nuwakot)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 1395,
+      "daraz_commission_9pct_npr": 126,
+      "vat_on_commission_13pct_npr": 16,
+      "payment_gateway_fee_1_5pct_npr": 21,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 193,
+      "net_estimated_payout_npr": 1202,
+      "estimated_net_margin_percent": "86%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Freeze Dried Strawberry Powder (80 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Mid-Hills Berry Orchards (Kakani & Nuwakot)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "freeze dried strawberry powder",
+      "freeze dried strawberry powder nepal",
+      "freeze dried strawberry powder daraz",
+      "freeze dried strawberry powder",
+      "स्ट्रबेरी पाउडर",
+      "naturesmud strawberry powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/strawberry-powder-v2.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/strawberry-powder-v2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/images/lifestyle/strawberry-powder-holding-jar.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/strawberry-powder-v2.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/strawberry-powder-v2.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/strawberry-powder"
+  },
+  {
+    "sku_index": 5,
+    "slug": "dry-figs-anjeer",
+    "seller_sku": "NM-DRY_FIGS_ANJEER",
+    "official_label_name": "Dry Figs (Anjeer)",
+    "nepali_name_devanagari": "सुकाएको अन्जीर",
+    "nepali_name_roman": "Dry Figs (Anjeer)",
+    "daraz_title": "NaturesMud Dry Figs (Anjeer) (200 GM) - Dry Figs (Anjeer) (सुकाएको अन्जीर) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 690,
+    "compare_at_price_npr": 690,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Single-Origin Sun-Dried Fruits",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 690,
+      "daraz_commission_9pct_npr": 62,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 110,
+      "net_estimated_payout_npr": 580,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dry Figs (Anjeer) (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Single-Origin Sun-Dried Fruits",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dry figs (anjeer)",
+      "dry figs (anjeer) nepal",
+      "dry figs (anjeer) daraz",
+      "dry figs (anjeer)",
+      "सुकाएको अन्जीर",
+      "naturesmud dry figs anjeer",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/dry-figs-anjeer.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/dry-figs-advertisement-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/dry-figs-product-photo-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/dry-figs-flat-lay-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/dried-figs.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dry-figs-anjeer"
+  },
+  {
+    "sku_index": 6,
+    "slug": "makhana-fox-nuts",
+    "seller_sku": "NM-MAKHANA_FOX_NUTS",
+    "official_label_name": "Makhana (Fox Nuts)",
+    "nepali_name_devanagari": "हिमाली मखाना",
+    "nepali_name_roman": "Makhana (Fox Nuts)",
+    "daraz_title": "NaturesMud Makhana (Fox Nuts) (50 GM) - Makhana (Fox Nuts) (हिमाली मखाना) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 390,
+    "compare_at_price_npr": 500,
+    "net_weight": "50 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Terai Wetland Harvesting (Mithila / Madhesh)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 390,
+      "daraz_commission_9pct_npr": 35,
+      "vat_on_commission_13pct_npr": 5,
+      "payment_gateway_fee_1_5pct_npr": 6,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 76,
+      "net_estimated_payout_npr": 314,
+      "estimated_net_margin_percent": "81%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Makhana (Fox Nuts) (50 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Terai Wetland Harvesting (Mithila / Madhesh)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "makhana (fox nuts)",
+      "makhana (fox nuts) nepal",
+      "makhana (fox nuts) daraz",
+      "makhana (fox nuts)",
+      "हिमाली मखाना",
+      "naturesmud makhana fox nuts",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-makhana-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/makhana-fox-nuts-surrounded-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/fox-nuts-jar-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/nm-makhana-jar.jpeg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-makhana-jar.jpeg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/makhana-fox-nuts"
+  },
+  {
+    "sku_index": 7,
+    "slug": "dehydrated-mango",
+    "seller_sku": "NM-DEHYDRATED_MANGO",
+    "official_label_name": "Dehydrated Mango",
+    "nepali_name_devanagari": "सुकाएको आँप",
+    "nepali_name_roman": "Dehydrated Mango Slices",
+    "daraz_title": "NaturesMud Dehydrated Mango (100 GM) - Dehydrated Mango Slices (सुकाएको आँप) - 100% Pure, 0% Added Sugar, Standup Ziplock Pouch",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 595,
+    "compare_at_price_npr": 595,
+    "net_weight": "100 GM",
+    "packing_type": "Standup Ziplock Pouch",
+    "shelf_life": "12 Months",
+    "origin_belt": "Terai Lowlands (Saptari & Siraha Orchards)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 595,
+      "daraz_commission_9pct_npr": 54,
+      "vat_on_commission_13pct_npr": 7,
+      "payment_gateway_fee_1_5pct_npr": 9,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 100,
+      "net_estimated_payout_npr": 495,
+      "estimated_net_margin_percent": "83%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dehydrated Mango (100 GM) in airtight food-grade Standup Ziplock Pouch",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Terai Lowlands (Saptari & Siraha Orchards)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dehydrated mango",
+      "dehydrated mango nepal",
+      "dehydrated mango daraz",
+      "dehydrated mango slices",
+      "सुकाएको आँप",
+      "naturesmud dehydrated mango",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-mango-pouch.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/nm-mango-prod.jpeg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/dehydrated-mango-poster.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/authentic-dehydrated-mango.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/mango.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dehydrated-mango"
+  },
+  {
+    "sku_index": 8,
+    "slug": "dehydrated-pineapple",
+    "seller_sku": "NM-DEHYDRATED_PINEAPPLE",
+    "official_label_name": "Dehydrated Pineapple",
+    "nepali_name_devanagari": "सुकाएको भुइँकटहर",
+    "nepali_name_roman": "Dehydrated Pineapple Rings",
+    "daraz_title": "NaturesMud Dehydrated Pineapple (100 GM) - Dehydrated Pineapple Rings (सुकाएको भुइँकटहर) - 100% Pure, 0% Added Sugar, Standup Ziplock Pouch",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 590,
+    "compare_at_price_npr": 590,
+    "net_weight": "100 GM",
+    "packing_type": "Standup Ziplock Pouch",
+    "shelf_life": "12 Months",
+    "origin_belt": "Eastern Mid-Hills & Terai (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 590,
+      "daraz_commission_9pct_npr": 53,
+      "vat_on_commission_13pct_npr": 7,
+      "payment_gateway_fee_1_5pct_npr": 9,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 99,
+      "net_estimated_payout_npr": 491,
+      "estimated_net_margin_percent": "83%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dehydrated Pineapple (100 GM) in airtight food-grade Standup Ziplock Pouch",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Eastern Mid-Hills & Terai (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dehydrated pineapple",
+      "dehydrated pineapple nepal",
+      "dehydrated pineapple daraz",
+      "dehydrated pineapple rings",
+      "सुकाएको भुइँकटहर",
+      "naturesmud dehydrated pineapple",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-pineapple-design.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/authentic-dehydrated-pineapple.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/dehydrated-pineapple.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/nm-pineapple-pouch.jpeg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-pineapple-design.jpeg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dehydrated-pineapple"
+  },
+  {
+    "sku_index": 9,
+    "slug": "dehydrated-apple",
+    "seller_sku": "NM-DEHYDRATED_APPLE",
+    "official_label_name": "Dehydrated Apple",
+    "nepali_name_devanagari": "सुकाएको हिमाली स्याउ",
+    "nepali_name_roman": "Dehydrated Apple Rings",
+    "daraz_title": "NaturesMud Dehydrated Apple (100 GM) - Dehydrated Apple Rings (सुकाएको हिमाली स्याउ) - 100% Pure, 0% Added Sugar, Standup Ziplock Pouch",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 510,
+    "compare_at_price_npr": 510,
+    "net_weight": "100 GM",
+    "packing_type": "Standup Ziplock Pouch",
+    "shelf_life": "12 Months",
+    "origin_belt": "Himalayan Mountain Valleys (Mustang & Jumla)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 510,
+      "daraz_commission_9pct_npr": 46,
+      "vat_on_commission_13pct_npr": 6,
+      "payment_gateway_fee_1_5pct_npr": 8,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 90,
+      "net_estimated_payout_npr": 420,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dehydrated Apple (100 GM) in airtight food-grade Standup Ziplock Pouch",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Himalayan Mountain Valleys (Mustang & Jumla)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dehydrated apple",
+      "dehydrated apple nepal",
+      "dehydrated apple daraz",
+      "dehydrated apple rings",
+      "सुकाएको हिमाली स्याउ",
+      "naturesmud dehydrated apple",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-apple-pouch.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/nm-apple-design.jpeg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/dehydrated-apple-poster.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/authentic-dehydrated-apple.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/apple.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dehydrated-apple"
+  },
+  {
+    "sku_index": 10,
+    "slug": "dehydrated-coconut-chips",
+    "seller_sku": "NM-DEHYDRATED_COCONUT_CHIPS",
+    "official_label_name": "Dehydrated Coconut Chips",
+    "nepali_name_devanagari": "सुकाएको नरिवल चिप्स",
+    "nepali_name_roman": "Dehydrated Coconut Flakes",
+    "daraz_title": "NaturesMud Dehydrated Coconut Chips (100 GM) - Dehydrated Coconut Flakes (सुकाएको नरिवल चिप्स) - 100% Pure, 0% Added Sugar, Standup Ziplock Pouch",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 475,
+    "compare_at_price_npr": 500,
+    "net_weight": "100 GM",
+    "packing_type": "Standup Ziplock Pouch",
+    "shelf_life": "12 Months",
+    "origin_belt": "Single-Origin Natural Dried Coconut",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 475,
+      "daraz_commission_9pct_npr": 43,
+      "vat_on_commission_13pct_npr": 6,
+      "payment_gateway_fee_1_5pct_npr": 7,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 86,
+      "net_estimated_payout_npr": 389,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dehydrated Coconut Chips (100 GM) in airtight food-grade Standup Ziplock Pouch",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Single-Origin Natural Dried Coconut",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dehydrated coconut chips",
+      "dehydrated coconut chips nepal",
+      "dehydrated coconut chips daraz",
+      "dehydrated coconut flakes",
+      "सुकाएको नरिवल चिप्स",
+      "naturesmud dehydrated coconut chips",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/dehydrated-coconut-chips.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/dehydrated-coconut-chips-100g.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/coconut-chips-pouch.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/dehydrated-coconut-chips.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/dehydrated-coconut-chips.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dehydrated-coconut-chips"
+  },
+  {
+    "sku_index": 11,
+    "slug": "dehydrated-papaya",
+    "seller_sku": "NM-DEHYDRATED_PAPAYA",
+    "official_label_name": "Dehydrated Papaya",
+    "nepali_name_devanagari": "सुकाएको मेवा",
+    "nepali_name_roman": "Dehydrated Sweet Papaya",
+    "daraz_title": "NaturesMud Dehydrated Papaya (80 GM) - Dehydrated Sweet Papaya (सुकाएको मेवा) - 100% Pure, 0% Added Sugar, Standup Ziplock Pouch",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 450,
+    "compare_at_price_npr": 450,
+    "net_weight": "80 GM",
+    "packing_type": "Standup Ziplock Pouch",
+    "shelf_life": "12 Months",
+    "origin_belt": "Terai Lowlands (Chitwan & Nawalpur)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 450,
+      "daraz_commission_9pct_npr": 41,
+      "vat_on_commission_13pct_npr": 5,
+      "payment_gateway_fee_1_5pct_npr": 7,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 83,
+      "net_estimated_payout_npr": 367,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dehydrated Papaya (80 GM) in airtight food-grade Standup Ziplock Pouch",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Terai Lowlands (Chitwan & Nawalpur)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dehydrated papaya",
+      "dehydrated papaya nepal",
+      "dehydrated papaya daraz",
+      "dehydrated sweet papaya",
+      "सुकाएको मेवा",
+      "naturesmud dehydrated papaya",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-papaya-flat.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/papaya-pouch-fruit-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/papaya-orange-bg-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/papaya-social-template-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/papaya-2.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dehydrated-papaya"
+  },
+  {
+    "sku_index": 12,
+    "slug": "dried-blueberries",
+    "seller_sku": "NM-DRIED_BLUEBERRIES",
+    "official_label_name": "Dried Blueberries",
+    "nepali_name_devanagari": "सुकाएको ब्लुबेरी",
+    "nepali_name_roman": "Dried Blueberries",
+    "daraz_title": "NaturesMud Dried Blueberries (100 GM) - Dried Blueberries (सुकाएको ब्लुबेरी) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 650,
+    "compare_at_price_npr": 650,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Premium Whole Berries",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 650,
+      "daraz_commission_9pct_npr": 59,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 107,
+      "net_estimated_payout_npr": 543,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dried Blueberries (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Premium Whole Berries",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dried blueberries",
+      "dried blueberries nepal",
+      "dried blueberries daraz",
+      "dried blueberries",
+      "सुकाएको ब्लुबेरी",
+      "naturesmud dried blueberries",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-blueberry-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/blueberries-flowers-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/blueberries-jar-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/blueberries-surrounded-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-blueberry-purple.jpeg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dried-blueberries"
+  },
+  {
+    "sku_index": 13,
+    "slug": "dried-cranberries",
+    "seller_sku": "NM-DRIED_CRANBERRIES",
+    "official_label_name": "Dried Cranberries",
+    "nepali_name_devanagari": "सुकाएको क्र्यानबेरी",
+    "nepali_name_roman": "Dried Cranberries",
+    "daraz_title": "NaturesMud Dried Cranberries (100 GM) - Dried Cranberries (सुकाएको क्र्यानबेरी) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Dried Fruits & Raisins",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 415,
+    "compare_at_price_npr": 415,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Premium Whole Berries",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 415,
+      "daraz_commission_9pct_npr": 37,
+      "vat_on_commission_13pct_npr": 5,
+      "payment_gateway_fee_1_5pct_npr": 6,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 78,
+      "net_estimated_payout_npr": 337,
+      "estimated_net_margin_percent": "81%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dried Cranberries (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Premium Whole Berries",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dried cranberries",
+      "dried cranberries nepal",
+      "dried cranberries daraz",
+      "dried cranberries",
+      "सुकाएको क्र्यानबेरी",
+      "naturesmud dried cranberries",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-cranberry-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/cranberries-juice-splash-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/cranberries-roses-flat-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/cranberries-social-template-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/posters/cranberries-jar-bg-2k.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dried-cranberries"
+  },
+  {
+    "sku_index": 14,
+    "slug": "dates-powder",
+    "seller_sku": "NM-DATES_POWDER",
+    "official_label_name": "Dates Powder",
+    "nepali_name_devanagari": "खजुरको धुलो",
+    "nepali_name_roman": "Dates Powder (Khajoor ko Dhulo)",
+    "daraz_title": "NaturesMud Dates Powder (100 GM) - Dates Powder (Khajoor ko Dhulo) (खजुरको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Mother & Baby > Feeding > Baby & Toddler Food > Cereal & Porridge",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 400,
+    "compare_at_price_npr": 400,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Single-Origin Pitted Dry Dates",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 400,
+      "daraz_commission_9pct_npr": 36,
+      "vat_on_commission_13pct_npr": 5,
+      "payment_gateway_fee_1_5pct_npr": 6,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 77,
+      "net_estimated_payout_npr": 323,
+      "estimated_net_margin_percent": "81%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Dates Powder (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Single-Origin Pitted Dry Dates",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "dates powder",
+      "dates powder nepal",
+      "dates powder daraz",
+      "dates powder (khajoor ko dhulo)",
+      "खजुरको धुलो",
+      "naturesmud dates powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-dates-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/dates-powder-on-wood-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/dates-powder-roses-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/dates-powder-social-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/posters/dates-powder-jar-2k.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/dates-powder"
+  },
+  {
+    "sku_index": 15,
+    "slug": "beetroot-powder",
+    "seller_sku": "NM-BEETROOT_POWDER",
+    "official_label_name": "Beetroot Powder",
+    "nepali_name_devanagari": "चुकन्दरको धुलो",
+    "nepali_name_roman": "Beetroot Powder (Chukandar ko Dhulo)",
+    "daraz_title": "NaturesMud Beetroot Powder (100 GM) - Beetroot Powder (Chukandar ko Dhulo) (चुकन्दरको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Breakfast, Choco & Snacks > Superfoods & Nutritional Powders",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 430,
+    "compare_at_price_npr": 430,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Mid-Hills & Kathmandu Valley Belt (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 430,
+      "daraz_commission_9pct_npr": 39,
+      "vat_on_commission_13pct_npr": 5,
+      "payment_gateway_fee_1_5pct_npr": 6,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 80,
+      "net_estimated_payout_npr": 350,
+      "estimated_net_margin_percent": "81%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Beetroot Powder (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Mid-Hills & Kathmandu Valley Belt (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "beetroot powder",
+      "beetroot powder nepal",
+      "beetroot powder daraz",
+      "beetroot powder (chukandar ko dhulo)",
+      "चुकन्दरको धुलो",
+      "naturesmud beetroot powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-beetroot-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/beetroot-powder-explosion-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/beetroot-powder-social-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/beetroot-powder-studio-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/posters/beetroot-powder-flat-2k.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/beetroot-powder"
+  },
+  {
+    "sku_index": 16,
+    "slug": "himalayan-pink-salt",
+    "seller_sku": "NM-HIMALAYAN_PINK_SALT",
+    "official_label_name": "Himalayan Pink Salt",
+    "nepali_name_devanagari": "हिमाली गुलाबी नुन (सिधे नुन)",
+    "nepali_name_roman": "Himalayan Pink Salt (Sidhe Noon)",
+    "daraz_title": "NaturesMud Himalayan Pink Salt (200 GM) - Himalayan Pink Salt (Sidhe Noon) (हिमाली गुलाबी नुन (सिधे नुन)) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Cooking Ingredients > Salt & Spices > Rock Salt",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 250,
+    "compare_at_price_npr": 250,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Himalayan Mineral Foothills",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 250,
+      "daraz_commission_9pct_npr": 23,
+      "vat_on_commission_13pct_npr": 3,
+      "payment_gateway_fee_1_5pct_npr": 4,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 60,
+      "net_estimated_payout_npr": 190,
+      "estimated_net_margin_percent": "76%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Himalayan Pink Salt (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Himalayan Mineral Foothills",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "himalayan pink salt",
+      "himalayan pink salt nepal",
+      "himalayan pink salt daraz",
+      "himalayan pink salt (sidhe noon)",
+      "हिमाली गुलाबी नुन (सिधे नुन)",
+      "naturesmud himalayan pink salt",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-pink-salt-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/pink-salt-crystals-roses-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/pink-salt-flat-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/client-authentic-label-1.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/pink-salt-crystals.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/himalayan-pink-salt"
+  },
+  {
+    "sku_index": 17,
+    "slug": "pure-himalayan-black-salt-bire-noon",
+    "seller_sku": "NM-PURE_HIMALAYAN_BLACK_SALT_BIRE_NOON",
+    "official_label_name": "Himalayan Black Salt (Bire Noon)",
+    "nepali_name_devanagari": "हिमाली बिरे नुन",
+    "nepali_name_roman": "Himalayan Black Salt (Bire Noon)",
+    "daraz_title": "NaturesMud Himalayan Black Salt (Bire Noon) (200 GM) - Himalayan Black Salt (Bire Noon) (हिमाली बिरे नुन) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Cooking Ingredients > Salt & Spices > Rock Salt",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 220,
+    "compare_at_price_npr": 220,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Himalayan Mineral Belt / Ayurvedic Kiln-Prepared",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 220,
+      "daraz_commission_9pct_npr": 20,
+      "vat_on_commission_13pct_npr": 3,
+      "payment_gateway_fee_1_5pct_npr": 3,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 56,
+      "net_estimated_payout_npr": 164,
+      "estimated_net_margin_percent": "75%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Himalayan Black Salt (Bire Noon) (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Himalayan Mineral Belt / Ayurvedic Kiln-Prepared",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "himalayan black salt (bire noon)",
+      "himalayan black salt (bire noon) nepal",
+      "himalayan black salt (bire noon) daraz",
+      "himalayan black salt (bire noon)",
+      "हिमाली बिरे नुन",
+      "naturesmud pure himalayan black salt bire noon",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/himalayan-black-salt-digestive.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/client-authentic-label-2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/black-salt.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/himalayan-black-salt-digestive.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/himalayan-black-salt-digestive.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/pure-himalayan-black-salt-bire-noon"
+  },
+  {
+    "sku_index": 18,
+    "slug": "chia-seeds",
+    "seller_sku": "NM-CHIA_SEEDS",
+    "official_label_name": "Chia Seeds",
+    "nepali_name_devanagari": "चिया सिड्स",
+    "nepali_name_roman": "Organic Chia Seeds",
+    "daraz_title": "NaturesMud Chia Seeds (300 GM) - Organic Chia Seeds (चिया सिड्स) - 100% Pure, 0% Added Sugar, Plastic Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 495,
+    "compare_at_price_npr": 495,
+    "net_weight": "300 GM",
+    "packing_type": "Plastic Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "High-Altitude Adapted Crops (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 495,
+      "daraz_commission_9pct_npr": 45,
+      "vat_on_commission_13pct_npr": 6,
+      "payment_gateway_fee_1_5pct_npr": 7,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 88,
+      "net_estimated_payout_npr": 407,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Chia Seeds (300 GM) in airtight food-grade Plastic Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: High-Altitude Adapted Crops (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "chia seeds",
+      "chia seeds nepal",
+      "chia seeds daraz",
+      "organic chia seeds",
+      "चिया सिड्स",
+      "naturesmud chia seeds",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-chia-display.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/chia-seeds-flowers-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/chia-seeds-purple-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/chia-seeds-swirl-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-chia-ad.jpeg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/chia-seeds"
+  },
+  {
+    "sku_index": 19,
+    "slug": "pumpkin-seeds",
+    "seller_sku": "NM-PUMPKIN_SEEDS",
+    "official_label_name": "Pumpkin Seeds",
+    "nepali_name_devanagari": "फर्सीको बिया",
+    "nepali_name_roman": "Raw Green Pumpkin Seeds",
+    "daraz_title": "NaturesMud Pumpkin Seeds (300 GM) - Raw Green Pumpkin Seeds (फर्सीको बिया) - 100% Pure, 0% Added Sugar, Plastic Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 650,
+    "compare_at_price_npr": 650,
+    "net_weight": "300 GM",
+    "packing_type": "Plastic Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Premium Whole Squash Seeds",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 650,
+      "daraz_commission_9pct_npr": 59,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 107,
+      "net_estimated_payout_npr": 543,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Pumpkin Seeds (300 GM) in airtight food-grade Plastic Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Premium Whole Squash Seeds",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "pumpkin seeds",
+      "pumpkin seeds nepal",
+      "pumpkin seeds daraz",
+      "raw green pumpkin seeds",
+      "फर्सीको बिया",
+      "naturesmud pumpkin seeds",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/pumpkin-seeds-product-shot.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/pumpkin-seeds.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/pumpkin-seeds-2.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/pumpkin-seeds-flat-lay-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/images/lifestyle/pumpkin-seeds-holding-jar-1.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/pumpkin-seeds"
+  },
+  {
+    "sku_index": 20,
+    "slug": "premium-cashewnuts",
+    "seller_sku": "NM-PREMIUM_CASHEWNUTS",
+    "official_label_name": "Raw Cashew Nuts",
+    "nepali_name_devanagari": "काँचो काजु",
+    "nepali_name_roman": "Raw Whole Cashew Nuts",
+    "daraz_title": "NaturesMud Raw Cashew Nuts (150 GM) - Raw Whole Cashew Nuts (काँचो काजु) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 750,
+    "compare_at_price_npr": 750,
+    "net_weight": "150 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Jumbo Whole Kernels (W320/W240 Grade)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 750,
+      "daraz_commission_9pct_npr": 68,
+      "vat_on_commission_13pct_npr": 9,
+      "payment_gateway_fee_1_5pct_npr": 11,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 118,
+      "net_estimated_payout_npr": 632,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Raw Cashew Nuts (150 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Jumbo Whole Kernels (W320/W240 Grade)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "raw cashew nuts",
+      "raw cashew nuts nepal",
+      "raw cashew nuts daraz",
+      "raw whole cashew nuts",
+      "काँचो काजु",
+      "naturesmud premium cashewnuts",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-cashew-new-jar.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/nm-cashew-jar2.jpeg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/authentic-cashewnuts-roasted.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/cashewnuts-roasted.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/images/lifestyle/cashews-holding-jar-1.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/premium-cashewnuts"
+  },
+  {
+    "sku_index": 21,
+    "slug": "roasted-cashewnuts",
+    "seller_sku": "NM-ROASTED_CASHEWNUTS",
+    "official_label_name": "Roasted Cashew Nuts",
+    "nepali_name_devanagari": "भुटेको काजु",
+    "nepali_name_roman": "Roasted & Salted Cashew Nuts",
+    "daraz_title": "NaturesMud Roasted Cashew Nuts (200 GM) - Roasted & Salted Cashew Nuts (भुटेको काजु) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 750,
+    "compare_at_price_npr": 750,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Jumbo Whole Kernels",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 750,
+      "daraz_commission_9pct_npr": 68,
+      "vat_on_commission_13pct_npr": 9,
+      "payment_gateway_fee_1_5pct_npr": 11,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 118,
+      "net_estimated_payout_npr": 632,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Roasted Cashew Nuts (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Jumbo Whole Kernels",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "roasted cashew nuts",
+      "roasted cashew nuts nepal",
+      "roasted cashew nuts daraz",
+      "roasted & salted cashew nuts",
+      "भुटेको काजु",
+      "naturesmud roasted cashewnuts",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-roasted-cashew-new.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/cashews-cream-bg-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/cashews-tropical-leaves-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/nm-cashew-jar2.jpeg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/authentic-cashewnuts-roasted.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/roasted-cashewnuts"
+  },
+  {
+    "sku_index": 22,
+    "slug": "roasted-almonds",
+    "seller_sku": "NM-ROASTED_ALMONDS",
+    "official_label_name": "Roasted Almonds",
+    "nepali_name_devanagari": "भुटेको बदाम",
+    "nepali_name_roman": "Slow Roasted Almonds",
+    "daraz_title": "NaturesMud Roasted Almonds (200 GM) - Slow Roasted Almonds (भुटेको बदाम) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 750,
+    "compare_at_price_npr": 750,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected California/Mountain Kernels",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 750,
+      "daraz_commission_9pct_npr": 68,
+      "vat_on_commission_13pct_npr": 9,
+      "payment_gateway_fee_1_5pct_npr": 11,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 118,
+      "net_estimated_payout_npr": 632,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Roasted Almonds (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected California/Mountain Kernels",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "roasted almonds",
+      "roasted almonds nepal",
+      "roasted almonds daraz",
+      "slow roasted almonds",
+      "भुटेको बदाम",
+      "naturesmud roasted almonds",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/roasted-almonds-v2.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/roasted-almonds-v2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/images/lifestyle/raw-almonds-holding-jar.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/roasted-almonds-v2.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/roasted-almonds-v2.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/roasted-almonds"
+  },
+  {
+    "sku_index": 23,
+    "slug": "raw-himalayan-almonds",
+    "seller_sku": "NM-RAW_HIMALAYAN_ALMONDS",
+    "official_label_name": "Raw Almonds",
+    "nepali_name_devanagari": "काँचो बदाम",
+    "nepali_name_roman": "Raw Mountain Almonds",
+    "daraz_title": "NaturesMud Raw Almonds (200 GM) - Raw Mountain Almonds (काँचो बदाम) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 750,
+    "compare_at_price_npr": 750,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Whole Sweet Almond Kernels",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 750,
+      "daraz_commission_9pct_npr": 68,
+      "vat_on_commission_13pct_npr": 9,
+      "payment_gateway_fee_1_5pct_npr": 11,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 118,
+      "net_estimated_payout_npr": 632,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Raw Almonds (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Whole Sweet Almond Kernels",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "raw almonds",
+      "raw almonds nepal",
+      "raw almonds daraz",
+      "raw mountain almonds",
+      "काँचो बदाम",
+      "naturesmud raw himalayan almonds",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-almond-jar-v2.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/nm-almond-jar-v2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/images/lifestyle/raw-almonds-holding-jar.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/nm-almond-jar-v2.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-almond-jar-v2.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/raw-himalayan-almonds"
+  },
+  {
+    "sku_index": 24,
+    "slug": "superfood-trail-mix",
+    "seller_sku": "NM-SUPERFOOD_TRAIL_MIX",
+    "official_label_name": "Superfood Trail Mix (Nuts & Seeds)",
+    "nepali_name_devanagari": "मिक्स ड्राइ नट्स",
+    "nepali_name_roman": "Superfood Trail Mix Nuts & Seeds",
+    "daraz_title": "NaturesMud Superfood Trail Mix (Nuts & Seeds) (200 GM) - Superfood Trail Mix Nuts & Seeds (मिक्स ड्राइ नट्स) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 690,
+    "compare_at_price_npr": 690,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Nepal Blend: Almonds, Cashews, Seeds & Dried Berries",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 690,
+      "daraz_commission_9pct_npr": 62,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 110,
+      "net_estimated_payout_npr": 580,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Superfood Trail Mix (Nuts & Seeds) (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Nepal Blend: Almonds, Cashews, Seeds & Dried Berries",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "superfood trail mix (nuts & seeds)",
+      "superfood trail mix (nuts & seeds) nepal",
+      "superfood trail mix (nuts & seeds) daraz",
+      "superfood trail mix nuts & seeds",
+      "मिक्स ड्राइ नट्स",
+      "naturesmud superfood trail mix",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/superfood-mix.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/superfood-mix-2.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/superfood-mix.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/superfood-mix.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/superfood-mix.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/superfood-trail-mix"
+  },
+  {
+    "sku_index": 25,
+    "slug": "macadamia-nuts",
+    "seller_sku": "NM-MACADAMIA_NUTS",
+    "official_label_name": "Macadamia Nuts",
+    "nepali_name_devanagari": "म्याकाडामिया नट्स",
+    "nepali_name_roman": "Macadamia Whole Nuts",
+    "daraz_title": "NaturesMud Macadamia Nuts (200 GM) - Macadamia Whole Nuts (म्याकाडामिया नट्स) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 1100,
+    "compare_at_price_npr": 1100,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Creamy Whole Nut Kernels",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 1100,
+      "daraz_commission_9pct_npr": 99,
+      "vat_on_commission_13pct_npr": 13,
+      "payment_gateway_fee_1_5pct_npr": 17,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 159,
+      "net_estimated_payout_npr": 941,
+      "estimated_net_margin_percent": "86%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Macadamia Nuts (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Creamy Whole Nut Kernels",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "macadamia nuts",
+      "macadamia nuts nepal",
+      "macadamia nuts daraz",
+      "macadamia whole nuts",
+      "म्याकाडामिया नट्स",
+      "naturesmud macadamia nuts",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/macadamia.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/macadamia.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/macadamia.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/macadamia.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/macadamia.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/macadamia-nuts"
+  },
+  {
+    "sku_index": 26,
+    "slug": "virgin-coconut-oil-500ml",
+    "seller_sku": "NM-VIRGIN_COCONUT_OIL_500ML",
+    "official_label_name": "Extra Virgin Coconut Oil (500ml)",
+    "nepali_name_devanagari": "एक्स्ट्रा भर्जिन नरिवलको तेल ५०० मिलि",
+    "nepali_name_roman": "Cold Pressed Virgin Coconut Oil 500ml",
+    "daraz_title": "NaturesMud Extra Virgin Coconut Oil (500ml) (500 ML) - Cold Pressed Virgin Coconut Oil 500ml (एक्स्ट्रा भर्जिन नरिवलको तेल ५०० मिलि) - 100% Pure, 0% Added Sugar, Glass Bottle",
+    "daraz_category_path": "Groceries > Cooking Ingredients > Cooking Oils > Coconut Oil",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 1750,
+    "compare_at_price_npr": 1750,
+    "net_weight": "500 ML",
+    "packing_type": "Glass Bottle",
+    "shelf_life": "12 Months",
+    "origin_belt": "Fresh Mature Coconut Meat",
+    "shipping_package_weight_kg": 0.85,
+    "package_dimensions_cm": "10 x 10 x 24 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 1750,
+      "daraz_commission_9pct_npr": 158,
+      "vat_on_commission_13pct_npr": 21,
+      "payment_gateway_fee_1_5pct_npr": 26,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 235,
+      "net_estimated_payout_npr": 1515,
+      "estimated_net_margin_percent": "87%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Extra Virgin Coconut Oil (500ml) (500 ML) in airtight food-grade Glass Bottle",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Fresh Mature Coconut Meat",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "extra virgin coconut oil (500ml)",
+      "extra virgin coconut oil (500ml) nepal",
+      "extra virgin coconut oil (500ml) daraz",
+      "cold pressed virgin coconut oil 500ml",
+      "एक्स्ट्रा भर्जिन नरिवलको तेल ५०० मिलि",
+      "naturesmud virgin coconut oil 500ml",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/coconut-oil-product.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/virgin-coconut-oil-500ml"
+  },
+  {
+    "sku_index": 27,
+    "slug": "virgin-coconut-oil-180ml",
+    "seller_sku": "NM-VIRGIN_COCONUT_OIL_180ML",
+    "official_label_name": "Extra Virgin Coconut Oil (180ml)",
+    "nepali_name_devanagari": "भर्जिन नरिवलको तेल १८० मिलि",
+    "nepali_name_roman": "Cold Pressed Virgin Coconut Oil 180ml",
+    "daraz_title": "NaturesMud Extra Virgin Coconut Oil (180ml) (180 ML) - Cold Pressed Virgin Coconut Oil 180ml (भर्जिन नरिवलको तेल १८० मिलि) - 100% Pure, 0% Added Sugar, Glass Bottle",
+    "daraz_category_path": "Groceries > Cooking Ingredients > Cooking Oils > Coconut Oil",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 650,
+    "compare_at_price_npr": 650,
+    "net_weight": "180 ML",
+    "packing_type": "Glass Bottle",
+    "shelf_life": "12 Months",
+    "origin_belt": "Fresh Mature Coconut Meat",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 650,
+      "daraz_commission_9pct_npr": 59,
+      "vat_on_commission_13pct_npr": 8,
+      "payment_gateway_fee_1_5pct_npr": 10,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 107,
+      "net_estimated_payout_npr": 543,
+      "estimated_net_margin_percent": "84%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Extra Virgin Coconut Oil (180ml) (180 ML) in airtight food-grade Glass Bottle",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Fresh Mature Coconut Meat",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "extra virgin coconut oil (180ml)",
+      "extra virgin coconut oil (180ml) nepal",
+      "extra virgin coconut oil (180ml) daraz",
+      "cold pressed virgin coconut oil 180ml",
+      "भर्जिन नरिवलको तेल १८० मिलि",
+      "naturesmud virgin coconut oil 180ml",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/coconut-oil-product.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/coconut-oil.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/virgin-coconut-oil-180ml"
+  },
+  {
+    "sku_index": 28,
+    "slug": "carrot-powder",
+    "seller_sku": "NM-CARROT_POWDER",
+    "official_label_name": "Carrot Powder",
+    "nepali_name_devanagari": "गाजरको धुलो",
+    "nepali_name_roman": "Pure Carrot Powder",
+    "daraz_title": "NaturesMud Carrot Powder (80 GM) - Pure Carrot Powder (गाजरको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Mother & Baby > Feeding > Baby & Toddler Food > Cereal & Porridge",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 490,
+    "compare_at_price_npr": 550,
+    "net_weight": "80 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Mid-Hills & Valley Farms (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 490,
+      "daraz_commission_9pct_npr": 44,
+      "vat_on_commission_13pct_npr": 6,
+      "payment_gateway_fee_1_5pct_npr": 7,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 87,
+      "net_estimated_payout_npr": 403,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Carrot Powder (80 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Mid-Hills & Valley Farms (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "carrot powder",
+      "carrot powder nepal",
+      "carrot powder daraz",
+      "pure carrot powder",
+      "गाजरको धुलो",
+      "naturesmud carrot powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-carrot-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/posters/carrot-powder-explosion-2k.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/carrot-benefits-poster.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/carrot-powder-eye-health.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/carrot-powder-marble.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/carrot-powder"
+  },
+  {
+    "sku_index": 29,
+    "slug": "sweet-potato-powder",
+    "seller_sku": "NM-SWEET_POTATO_POWDER",
+    "official_label_name": "Sweet Potato Powder",
+    "nepali_name_devanagari": "सखरखण्डको धुलो",
+    "nepali_name_roman": "Sweet Potato Powder (Sakharkhanda)",
+    "daraz_title": "NaturesMud Sweet Potato Powder (100 GM) - Sweet Potato Powder (Sakharkhanda) (सखरखण्डको धुलो) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Mother & Baby > Feeding > Baby & Toddler Food > Cereal & Porridge",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 510,
+    "compare_at_price_npr": 600,
+    "net_weight": "100 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Mid-Hills & Terai Organic Roots (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.28,
+    "package_dimensions_cm": "8 x 8 x 11 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 510,
+      "daraz_commission_9pct_npr": 46,
+      "vat_on_commission_13pct_npr": 6,
+      "payment_gateway_fee_1_5pct_npr": 8,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 90,
+      "net_estimated_payout_npr": 420,
+      "estimated_net_margin_percent": "82%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Sweet Potato Powder (100 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Mid-Hills & Terai Organic Roots (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "sweet potato powder",
+      "sweet potato powder nepal",
+      "sweet potato powder daraz",
+      "sweet potato powder (sakharkhanda)",
+      "सखरखण्डको धुलो",
+      "naturesmud sweet potato powder",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-sweet-potato-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/sweet-potato-jar-display.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/sweet-potato-product-poster.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/sweet-potato-creation-process.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/sweet-potato-powder-100g.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/sweet-potato-powder"
+  },
+  {
+    "sku_index": 30,
+    "slug": "pure-mountain-himalayan-shilajit-resin",
+    "seller_sku": "NM-PURE_MOUNTAIN_HIMALAYAN_SHILAJIT_RESIN",
+    "official_label_name": "Pure Himalayan Shilajit Resin",
+    "nepali_name_devanagari": "शुद्ध हिमाली शिलाजित",
+    "nepali_name_roman": "Pure Himalayan Shilajit Resin",
+    "daraz_title": "NaturesMud Pure Himalayan Shilajit Resin (20 GM) - Pure Himalayan Shilajit Resin (शुद्ध हिमाली शिलाजित) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Cooking Ingredients > Salt & Spices > Rock Salt",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 1995,
+    "compare_at_price_npr": 1995,
+    "net_weight": "20 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "High Himalayan Cliffs (Mustang / Dolpo, 16,000+ ft)",
+    "shipping_package_weight_kg": 0.12,
+    "package_dimensions_cm": "6 x 6 x 6 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 1995,
+      "daraz_commission_9pct_npr": 180,
+      "vat_on_commission_13pct_npr": 23,
+      "payment_gateway_fee_1_5pct_npr": 30,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 263,
+      "net_estimated_payout_npr": 1732,
+      "estimated_net_margin_percent": "87%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Pure Himalayan Shilajit Resin (20 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: High Himalayan Cliffs (Mustang / Dolpo, 16,000+ ft)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "pure himalayan shilajit resin",
+      "pure himalayan shilajit resin nepal",
+      "pure himalayan shilajit resin daraz",
+      "pure himalayan shilajit resin",
+      "शुद्ध हिमाली शिलाजित",
+      "naturesmud pure mountain himalayan shilajit resin",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-shilajit-jar.jpeg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/shilajit.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/nm-shilajit-jar.jpeg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/nm-shilajit-jar.jpeg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/nm-shilajit-jar.jpeg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/pure-mountain-himalayan-shilajit-resin"
+  },
+  {
+    "sku_index": 31,
+    "slug": "flax-seeds",
+    "seller_sku": "NM-FLAX_SEEDS",
+    "official_label_name": "Flax Seeds (Alash)",
+    "nepali_name_devanagari": "आलसको दाना",
+    "nepali_name_roman": "Raw Brown Flax Seeds (Alash)",
+    "daraz_title": "NaturesMud Flax Seeds (Alash) (200 GM) - Raw Brown Flax Seeds (Alash) (आलसको दाना) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 570,
+    "compare_at_price_npr": 600,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Whole Alash Seeds (Product of Nepal 🇳🇵)",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 570,
+      "daraz_commission_9pct_npr": 51,
+      "vat_on_commission_13pct_npr": 7,
+      "payment_gateway_fee_1_5pct_npr": 9,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 97,
+      "net_estimated_payout_npr": 473,
+      "estimated_net_margin_percent": "83%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Flax Seeds (Alash) (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Whole Alash Seeds (Product of Nepal 🇳🇵)",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "flax seeds (alash)",
+      "flax seeds (alash) nepal",
+      "flax seeds (alash) daraz",
+      "raw brown flax seeds (alash)",
+      "आलसको दाना",
+      "naturesmud flax seeds",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/flax-seeds.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/flax-seeds.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/flax-seeds.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/flax-seeds.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/flax-seeds.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/flax-seeds"
+  },
+  {
+    "sku_index": 32,
+    "slug": "premium-pistachio-roasted-salted",
+    "seller_sku": "NM-PREMIUM_PISTACHIO_ROASTED_SALTED",
+    "official_label_name": "Premium Pistachio Roasted & Salted",
+    "nepali_name_devanagari": "भुटेको नुनिलो पिस्ता",
+    "nepali_name_roman": "Roasted Salted California Pistachios",
+    "daraz_title": "NaturesMud Premium Pistachio Roasted & Salted (200 GM) - Roasted Salted California Pistachios (भुटेको नुनिलो पिस्ता) - 100% Pure, 0% Added Sugar, Glass Jar",
+    "daraz_category_path": "Groceries > Canned, Dry & Packaged Foods > Nuts & Seeds",
+    "brand_name": "NaturesMud",
+    "retail_price_npr": 895,
+    "compare_at_price_npr": 895,
+    "net_weight": "200 GM",
+    "packing_type": "Glass Jar",
+    "shelf_life": "12 Months",
+    "origin_belt": "Selected Long/Round In-Shell Pistachios",
+    "shipping_package_weight_kg": 0.45,
+    "package_dimensions_cm": "9 x 9 x 13 cm",
+    "financial_breakdown": {
+      "retail_price_npr": 895,
+      "daraz_commission_9pct_npr": 81,
+      "vat_on_commission_13pct_npr": 11,
+      "payment_gateway_fee_1_5pct_npr": 13,
+      "box_and_bubble_packaging_npr": 30,
+      "total_deductions_npr": 135,
+      "net_estimated_payout_npr": 760,
+      "estimated_net_margin_percent": "85%"
+    },
+    "short_bullet_highlights": [
+      "100% Pure Premium Pistachio Roasted & Salted (200 GM) in airtight food-grade Glass Jar",
+      "0% Added Cane Sugar · 0% Chemical Preservatives · 0% Maltodextrin Fillers",
+      "Dehydrated below 45°C to preserve natural vitamins, minerals & digestive enzymes",
+      "Origin: Selected Long/Round In-Shell Pistachios",
+      "Tamper-evident inner foil seal preserves aroma and prevents monsoon humidity caking",
+      "Fast delivery across Kathmandu Valley (24-48h) and all 77 districts of Nepal"
+    ],
+    "search_keywords": [
+      "premium pistachio roasted & salted",
+      "premium pistachio roasted & salted nepal",
+      "premium pistachio roasted & salted daraz",
+      "roasted salted california pistachios",
+      "भुटेको नुनिलो पिस्ता",
+      "naturesmud premium pistachio roasted salted",
+      "healthy food kathmandu online",
+      "pure baby food nepal"
+    ],
+    "image_shot_list": [
+      {
+        "slot": 1,
+        "type": "Hero Main Image",
+        "requirement": "Pure white background (#FFFFFF), 1000x1000px, product at 85% frame, front label fully legible, zero watermark",
+        "url": "/products/nm-pistachio-jar.jpg"
+      },
+      {
+        "slot": 2,
+        "type": "Raw Ingredient & Purity",
+        "requirement": "High-contrast closeup of raw farm crop (e.g. whole fruit, sun-dried kernels) alongside the jar",
+        "url": "/products/pistachios.jpg"
+      },
+      {
+        "slot": 3,
+        "type": "Nutritional & Purity Badges",
+        "requirement": "Clean infographic: 0% Added Sugar, 0% Preservatives, Single Ingredient, Gentle Dehydration below 45°C",
+        "url": "/products/posters/pistachios-product-photo-2k.jpg"
+      },
+      {
+        "slot": 4,
+        "type": "Packaging & Seal Integrity",
+        "requirement": "Close-up of food-grade glass jar / resealable pouch, tamper-evident inner seal, net weight marker",
+        "url": "/products/posters/pistachios-jar-display-2k.jpg"
+      },
+      {
+        "slot": 5,
+        "type": "Kitchen How-To & Serving Suggestion",
+        "requirement": "Action shot: spoonful of powder dissolving in warm milk / baby porridge / smoothie bowl / salad",
+        "url": "/products/posters/pistachios-exploding-2k.jpg"
+      },
+      {
+        "slot": 6,
+        "type": "Origin Belt & Nepal Harvest Map",
+        "requirement": "Infographic showing geographic origin belt (e.g. Chitwan, Mustang, Kavre, Terai) — 100% Product of Nepal",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      },
+      {
+        "slot": 7,
+        "type": "Trust, Compliance & WhatsApp Support",
+        "requirement": "DFTQC compliance pledge, 7-day hassle-free replacement, direct Kathmandu customer care desk",
+        "url": "https://naturesmud.shop/images/official-product-catalog.jpg"
+      }
+    ],
+    "video_specification": {
+      "resolution": "1080x1920 (9:16 Vertical) or 1080x1080 (1:1 Square)",
+      "durationSec": "20 to 35 seconds",
+      "format": "MP4 (H.264), < 30 MB",
+      "storyboard": "0-3s: Jar unboxing on clean wood surface. 4-10s: Peeling tamper-evident seal, spoon scoop showing fine lump-free texture. 11-20s: Stirring into glass of warm milk / baby jaulo. 21-30s: Happy family reaction shot & NaturesMud logo with \"0% Added Sugar\"."
+    },
+    "customer_review_insert_card": {
+      "frontHeadline": "Thank you for choosing 100% Pure Himalayan Whole Foods! 🇳🇵",
+      "frontBody": "We pack each jar with love and rigorous hygiene at our Kathmandu center. You are eating 100% real food with zero chemicals, zero added cane sugar, and zero preservatives.",
+      "darazCallToAction": "Loved our product? Help other Nepali families find honest nutrition by leaving a 5-Star Review with a photo on your Daraz App!",
+      "damageOrSupportFallback": "Notice any transit damage, jar crack, or seal leakage? Please do not worry. WhatsApp us directly at +977-9713888002 with your order ID, and we will dispatch a free replacement immediately."
+    },
+    "canonical_storefront_url": "https://naturesmud.shop/products/premium-pistachio-roasted-salted"
+  }
+]

@@ -27,6 +27,7 @@ import {
 import { initialFestivalOffers, FestivalOffer, getActiveCampaignOffers } from '@/lib/data/offers';
 import { useCartStore } from '@/lib/store/cart-store';
 import FeaturesStrip from '@/components/FeaturesStrip';
+import DashainOfferShowcaseSection from '@/components/DashainOfferShowcaseSection';
 import { ProductCard } from '@/components/ProductCard';
 import { products as staticProducts, normalizeProduct } from '@/lib/data/products';
 import { Product } from '@/lib/types';
@@ -39,36 +40,9 @@ export default function FestivalOffersPage() {
   const [addedId, setAddedId] = useState<string | null>(null);
   const openDrawer = useCartStore((s) => s.openDrawer);
 
-  const [soloProducts, setSoloProducts] = useState<Product[]>(() => {
-    const prioritySlugs = [
-      'freeze-dried-avocado-powder',
-      'strawberry-powder',
-      'dates-powder',
-      'banana-powder',
-      'moringa-leaf-powder',
-      'pure-mountain-himalayan-shilajit-resin',
-      'pumpkin-seeds',
-      'dehydrated-mango',
-      'makhana-fox-nuts',
-      'roasted-almonds',
-      'sweet-potato-powder',
-      'beetroot-powder',
-    ];
-    const map = new Map<string, Product>();
-    staticProducts.forEach((p) => map.set(p.slug, normalizeProduct(p)));
-    const selected: Product[] = [];
-    prioritySlugs.forEach((s) => {
-      if (map.has(s)) selected.push(map.get(s)!);
-    });
-    return selected.length > 0 ? selected : staticProducts.slice(0, 8).map((p) => normalizeProduct(p));
-  });
-
-  const [timeLeft, setTimeLeft] = useState({
-    days: 3,
-    hours: 12,
-    minutes: 45,
-    seconds: 30,
-  });
+  const [soloProducts, setSoloProducts] = useState<Product[]>(() =>
+    staticProducts.map((p) => normalizeProduct(p))
+  );
 
   useEffect(() => {
     async function fetchOffers() {
@@ -91,34 +65,12 @@ export default function FestivalOffersPage() {
   useEffect(() => {
     async function fetchDynamicProducts() {
       try {
-        const res = await fetch('/api/products?limit=50');
+        const res = await fetch('/api/products?limit=100');
         if (res.ok) {
           const json = await res.json();
           const prods = json.data || json.products || (Array.isArray(json) ? json : null);
           if (Array.isArray(prods) && prods.length > 0) {
-            const prioritySlugs = [
-              'freeze-dried-avocado-powder',
-              'strawberry-powder',
-              'dates-powder',
-              'banana-powder',
-              'moringa-leaf-powder',
-              'pure-mountain-himalayan-shilajit-resin',
-              'pumpkin-seeds',
-              'dehydrated-mango',
-              'makhana-fox-nuts',
-              'roasted-almonds',
-              'sweet-potato-powder',
-              'beetroot-powder',
-            ];
-            const sorted = [...prods].sort((a, b) => {
-              const idxA = prioritySlugs.indexOf(a.slug);
-              const idxB = prioritySlugs.indexOf(b.slug);
-              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-              if (idxA !== -1) return -1;
-              if (idxB !== -1) return 1;
-              return 0;
-            });
-            setSoloProducts(sorted.slice(0, 12).map((p) => normalizeProduct(p)));
+            setSoloProducts(prods.map((p) => normalizeProduct(p)));
           }
         }
       } catch {
@@ -126,19 +78,6 @@ export default function FestivalOffersPage() {
       }
     }
     fetchDynamicProducts();
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return { days: 3, hours: 12, minutes: 45, seconds: 30 };
-      });
-    }, 1000);
-    return () => clearInterval(timer);
   }, []);
 
   const handleCopyCode = (code: string) => {
@@ -193,51 +132,8 @@ export default function FestivalOffersPage() {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#2B2B2B] flex flex-col font-sans">
       <main className="flex-1">
-        {/* Top Hero Banner */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1E3A18] via-[#2D5A27] to-[#1E3A18] text-white py-16 lg:py-24">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#C9982A]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="container-nm relative z-10 text-center max-w-4xl mx-auto px-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9982A]/20 text-[#EBC164] border border-[#C9982A]/40 text-xs font-bold uppercase tracking-wider mb-6 animate-pulse">
-              <Sparkles className="w-4 h-4 text-[#C9982A]" />
-              Nepal Festival Dhamaka & Himalayan Combos
-            </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading leading-tight tracking-tight">
-              Curated Festival Combos & Wellness Packs
-            </h1>
-
-            <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed font-body">
-              Celebrate with 100% natural, chemical-free Himalayan superfoods. Exclusive festival combo savings of 5% OFF with free express delivery across Nepal.
-            </p>
-
-            {/* Live Ticker */}
-            <div className="mt-8 inline-flex flex-wrap items-center justify-center gap-4 bg-black/30 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/15 shadow-xl">
-              <div className="flex items-center gap-2 text-xs text-white/80 font-bold uppercase tracking-wide">
-                <Timer className="w-4 h-4 text-[#C9982A] animate-pulse" />
-                <span>Limited Festival Deals End In:</span>
-              </div>
-              <div className="flex items-center gap-2 font-mono font-black text-sm sm:text-base text-white">
-                <span className="bg-white/15 px-2.5 py-1 rounded-lg border border-white/20">
-                  {String(timeLeft.days).padStart(2, '0')}d
-                </span>
-                <span>:</span>
-                <span className="bg-white/15 px-2.5 py-1 rounded-lg border border-white/20">
-                  {String(timeLeft.hours).padStart(2, '0')}h
-                </span>
-                <span>:</span>
-                <span className="bg-white/15 px-2.5 py-1 rounded-lg border border-white/20">
-                  {String(timeLeft.minutes).padStart(2, '0')}m
-                </span>
-                <span>:</span>
-                <span className="bg-[#C9982A] text-black px-2.5 py-1 rounded-lg shadow-sm">
-                  {String(timeLeft.seconds).padStart(2, '0')}s
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 🎉 Grand Dashain Offer Showcase with Poster, Glowing Text, 3 Tiers & All Products */}
+        <DashainOfferShowcaseSection products={soloProducts} defaultShowAll={true} />
 
         {/* 4 Core Animated Trust Features Strip */}
         <FeaturesStrip className="my-0 shadow-xs" />
@@ -272,7 +168,7 @@ export default function FestivalOffersPage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/our-story"
+                  href="/about"
                   className="px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all cursor-pointer"
                 >
                   Our Farmer Roots
@@ -347,11 +243,9 @@ export default function FestivalOffersPage() {
                         <span className="px-2.5 py-0.5 rounded-lg bg-gray-100 text-gray-700 text-xs font-semibold">
                           {offer.categoryIcon} {offer.categoryLabel || offer.festivalName}
                         </span>
-                        {offer.startDate && offer.endDate && (
-                          <span className="px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
-                            📅 Valid: Sep 01 – Sep 30, 2026
-                          </span>
-                        )}
+                        <span className="px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+                          🎁 3-Product Value Bundle
+                        </span>
                       </div>
 
                       <div className="flex items-center gap-1 text-xs font-mono font-bold bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg">

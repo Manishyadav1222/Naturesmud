@@ -58,16 +58,21 @@ interface CatalogSectionDef {
 }
 
 function getDisplayWeight(w?: string, slug?: string): string {
-  if (slug === 'virgin-coconut-oil-180ml') return '180 GM';
+  if (slug === 'virgin-coconut-oil-180ml') return '180 ML';
   if (slug === 'freeze-dried-avocado-powder') return '80 GM';
   if (slug === 'strawberry-powder') return '80 GM';
+  if (slug === 'dehydrated-papaya') return '80 GM';
+  if (slug === 'carrot-powder') return '80 GM';
+  if (slug === 'moringa-leaf-powder') return '200 GM';
+  if (slug === 'premium-cashewnuts') return '150 GM';
+  if (slug === 'roasted-cashewnuts') return '200 GM';
+  if (slug === 'dry-figs-anjeer') return '200 GM';
+  if (slug === 'superfood-trail-mix') return '200 GM';
   if (!w) return '100 GM';
   const str = String(w).trim();
-  if (str.toLowerCase().includes('180')) return '180 GM';
-  if (str.toLowerCase().includes('80')) return '80 GM';
   if (/^\d+(\.\d+)?$/.test(str)) {
     const num = Math.round(Number(str));
-    return slug && slug.includes('oil') && !slug.includes('180') ? `${num} ML` : `${num} GM`;
+    return slug && slug.includes('oil') ? `${num} ML` : `${num} GM`;
   }
   return str;
 }
@@ -131,19 +136,19 @@ const CATALOG_SECTIONS: CatalogSectionDef[] = [
       'roasted-almonds',
       'premium-cashewnuts',
       'roasted-cashewnuts',
-      'premium-pistachios',
+      'premium-pistachio-roasted-salted',
       'superfood-trail-mix',
       'macadamia-nuts',
     ],
   },
   {
     id: 'seeds-oils',
-    title: 'ORGANIC SEEDS, OILS & SUPERFOODS',
-    subtitle: 'CELLULAR WELLNESS, PURE LIPIDS & RESIN',
-    tagline: 'Pesticide-free certified seeds, single-origin virgin coconut oil, and gold-grade Himalayan shilajit.',
+    title: 'SEEDS, OILS & HIMALAYAN SUPERFOODS',
+    subtitle: 'DAILY NUTRITION, COLD-PRESSED OILS & RESIN',
+    tagline: 'Triple-cleaned nutrient-dense seeds, cold-pressed virgin coconut oil, and purified Himalayan shilajit resin.',
     badge: 'Cold-Extracted • Unrefined • 100% Pure',
     heroImage: '/products/flax-seeds.jpg',
-    heroImageAlt: 'NaturesMud Organic Seeds & Cold-Pressed Virgin Oils',
+    heroImageAlt: 'NaturesMud Seeds & Cold-Pressed Virgin Oils',
     accentColor: '#1B3D2F',
     productIds: [
       'chia-seeds',
@@ -272,7 +277,8 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
       ['walnuts', 'superfood-trail-mix'],
       ['cashews', 'premium-cashewnuts'],
       ['superfood-mix', 'superfood-trail-mix'],
-      ['pistachios', 'premium-pistachios'],
+      ['pistachios', 'premium-pistachio-roasted-salted'],
+      ['premium-pistachios', 'premium-pistachio-roasted-salted'],
       ['macadamia', 'macadamia-nuts'],
     ];
     aliasPairs.forEach(([alias, targetSlug]) => {
@@ -428,6 +434,24 @@ export default function CatalogClient({ initialProducts, categories }: CatalogCl
                 </a>
               </div>
             </div>
+          </div>
+
+          {/* 🎉 Glowing Dashain Offer Banner on Master Catalog Page */}
+          <div className="mt-6 rounded-2xl bg-gradient-to-r from-[#5a0b0b] via-[#8b1515] to-[#1a3826] p-4 sm:p-5 text-white border-2 border-amber-400/60 shadow-xl dashain-glow-box flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+            <div>
+              <span className="inline-block px-2.5 py-0.5 rounded-full bg-amber-400 text-[#4a0808] text-[10px] font-black uppercase tracking-wider mb-1">
+                🎉 Dashain Blessings &amp; Health · Valid Till Dashain End
+              </span>
+              <p className="font-heading text-base sm:text-xl font-black text-amber-200 dashain-glow-text">
+                🚚 Free Delivery Over Rs. 3,000 · 🎁 Free Delivery &amp; Free Pink Salt Over Rs. 5,000+
+              </p>
+            </div>
+            <Link
+              href="/offers"
+              className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-500 text-[#4a0808] font-heading font-black text-xs uppercase tracking-wider shadow-md hover:brightness-110 transition-all"
+            >
+              Claim Dashain Offer &rarr;
+            </Link>
           </div>
         </div>
       </header>

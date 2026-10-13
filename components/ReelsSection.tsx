@@ -22,6 +22,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart-store';
+import { getProductBySlug } from '@/lib/data/products';
 
 export interface BrandReel {
   id: number;
@@ -47,146 +48,295 @@ const initialReels: BrandReel[] = [
     video_url: '/videos/sweet-potato-powder-video.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
     cover_image: '/products/naturesmud-all-products-100g.jpg',
-    product_name: 'NaturesMud 100g Range',
+    product_name: 'Sweet Potato Powder (100 GM)',
     product_url: '/products/sweet-potato-powder',
-    product_price: 380,
-    views: '58.4K',
-    likes: '5.2K',
+    product_price: 510,
     is_active: true,
     sort_order: 1,
   },
   {
     id: 2,
-    title: 'Organic Sweet Potato Powder — Baby Weaning & Energy',
-    description: '100% dehydrated pure Nepali Sweet Potato Powder — rich in beta-carotene with 0% added sugar! 🍠✨',
-    video_url: '/videos/naturesmud-screen-reel.mp4',
+    title: 'Freeze Dried Avocado Powder (80 GM) — Creamy Hass Avocado Nutrition',
+    description: '100% pure vacuum freeze-dried avocado powder packed with healthy plant fats, potassium & fiber! 🥑✨',
+    video_url: '/videos/avocado-powder-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/sweet-potato-powder-100g.jpg',
-    product_name: 'Sweet Potato Powder (100g)',
-    product_url: '/products/sweet-potato-powder',
-    product_price: 380,
-    views: '44.8K',
-    likes: '3.9K',
+    cover_image: '/images/lifestyle/avocado-powder-holding-jar.jpg',
+    product_name: 'Freeze Dried Avocado Powder (80 GM)',
+    product_url: '/products/freeze-dried-avocado-powder',
+    product_price: 790,
     is_active: true,
     sort_order: 2,
   },
   {
     id: 3,
-    title: 'Pure Himalayan Nitric Oxide Beetroot Power',
-    description: 'Concentrated dietary nitrates for endurance, stamina, and cardiovascular blood flow! 🍷⚡',
-    video_url: '/videos/beetroot-stamina-drink.mp4',
+    title: 'Freeze Dried Strawberry Powder (80 GM) — Real Berry Aroma & Vitamin C',
+    description: 'Vibrant ruby freeze-dried strawberries milled into a 100% single-ingredient berry powder for milk, smoothies & baking! 🍓🥛',
+    video_url: '/videos/strawberry-powder-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/beetroot-powder-100g.jpg',
-    product_name: 'Beetroot Powder (100g)',
-    product_url: '/products/beetroot-powder',
-    product_price: 380,
-    views: '41.2K',
-    likes: '3.8K',
+    cover_image: '/images/lifestyle/strawberry-powder-holding-jar.jpg',
+    product_name: 'Freeze Dried Strawberry Powder (80 GM)',
+    product_url: '/products/strawberry-powder',
+    product_price: 1395,
     is_active: true,
     sort_order: 3,
   },
   {
     id: 4,
-    title: 'Premium Black Chia Seeds — Hydration & Omega-3',
-    description: '12x hydrophilic water retention for sustained athletic hydration and healthy digestion! 🌱💧',
-    video_url: '/videos/chia-seed-ad.mp4',
+    title: 'Dates Powder (100 GM) — 0% White Sugar Natural Sweetener',
+    description: '100% whole dehydrated dates milled into a gentle sweetener for baby porridge (from 6 months, as advised by your pediatrician), milk & baking! 🌴🍯',
+    video_url: '/videos/dates-powder-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/chia-seeds.jpg',
-    product_name: 'Organic Chia Seeds (300g)',
-    product_url: '/products/chia-seeds',
-    product_price: 495,
-    views: '36.7K',
-    likes: '2.9K',
+    cover_image: '/images/lifestyle/dates-powder-healthy-sweetness.jpg',
+    product_name: 'Dates Powder (100 GM)',
+    product_url: '/products/dates-powder',
+    product_price: 400,
     is_active: true,
     sort_order: 4,
   },
   {
     id: 5,
-    title: 'High-Altitude Himalayan Sweet Potato Breakfast',
-    description: 'Sustainably farmed above 2,200m in pristine mountain soil. Great for pre-workout energy! ⚡🏔️',
-    video_url: '/videos/sweet-potato-baby.mp4',
+    title: 'Pure Himalayan Beetroot Powder — Cold-Milled in Nepal',
+    description: 'Concentrated dietary nitrates from whole dehydrated Nepali beetroots with 0 additives! 🍷⚡',
+    video_url: '/videos/beetroot-powder-promo.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/sweet-potato-powder.jpg',
-    product_name: 'Sweet Potato Powder (250g)',
-    product_url: '/products/sweet-potato-powder',
-    product_price: 650,
-    views: '52.1K',
-    likes: '4.6K',
+    cover_image: '/images/lifestyle/beetroot-powder-ad.jpg',
+    product_name: 'Beetroot Powder (100 GM)',
+    product_url: '/products/beetroot-powder',
+    product_price: 430,
     is_active: true,
     sort_order: 5,
   },
   {
     id: 6,
-    title: 'Pure Arabian Dehydrated Dates Powder Sweetener',
-    description: 'Natural low-glycemic potassium sweetener for baby porridge, milk, and healthy cooking! 🌴🍯',
-    video_url: '/videos/dates-powder-reel.mp4',
+    title: 'Dried Cranberries (100 GM) — Whole Plump Ruby Berries',
+    description: 'Tangy-sweet whole dried cranberries for yogurt bowls, salads, baking, and antioxidant snacking! 🍒🥣',
+    video_url: '/videos/dried-cranberries-pro.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/dates-powder-100g.jpg',
-    product_name: 'Dates Powder (100g)',
-    product_url: '/products/dates-powder',
-    product_price: 360,
-    views: '49.3K',
-    likes: '4.1K',
+    cover_image: '/images/lifestyle/dried-cranberries-holding-jar-1.jpg',
+    product_name: 'Dried Cranberries (100 GM)',
+    product_url: '/products/dried-cranberries',
+    product_price: 550,
     is_active: true,
     sort_order: 6,
   },
   {
     id: 7,
-    title: 'Crispy Roasted Himalayan Pumpkin Seeds',
-    description: 'High zinc and magnesium crunch for deep restorative sleep and reproductive wellness! 🎃💪',
-    video_url: '/videos/pumpkin-seeds-crunch.mp4',
+    title: 'Dried Blueberries (100 GM) — Whole Plump Berries',
+    description: 'Naturally dried plump blueberries for morning oats, yogurt bowls, and kids tiffin! 🫐🏔️',
+    video_url: '/videos/blueberries-harvest-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/pumpkin-seeds-100g.jpg',
-    product_name: 'Himalayan Pumpkin Seeds (100g)',
-    product_url: '/products/pumpkin-seeds',
-    product_price: 390,
-    views: '38.2K',
-    likes: '3.1K',
+    cover_image: '/images/lifestyle/dried-blueberries-holding-jar-1.jpg',
+    product_name: 'Dried Blueberries (100 GM)',
+    product_url: '/products/dried-blueberries',
+    product_price: 650,
     is_active: true,
     sort_order: 7,
   },
   {
     id: 8,
-    title: 'High-Anthocyanin Wild Alpine Blueberries',
-    description: 'Wild harvested at 3,200m in Himalayan frontiers! Shield your eyes from screen fatigue and boost brain memory. 🫐🏔️',
-    video_url: '/videos/naturesmud-product-reel.mp4',
+    title: 'Roasted Cashew Nuts (150 GM) — Golden Oil-Free Crunch',
+    description: 'Jumbo whole W240 cashew kernels slow dry-roasted to a buttery golden crunch! 🥜✨',
+    video_url: '/videos/roasted-cashews-reel.mp4',
     facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
-    cover_image: '/products/dried-blueberries-100g.jpg',
-    product_name: 'Dried Blueberries (100g)',
-    product_url: '/products/dried-blueberries',
-    product_price: 618,
-    views: '45.2K',
-    likes: '4.1K',
+    cover_image: '/images/lifestyle/cashews-floating-ad.jpg',
+    product_name: 'Roasted Cashew Nuts (150 GM)',
+    product_url: '/products/roasted-cashewnuts',
+    product_price: 750,
     is_active: true,
     sort_order: 8,
+  },
+  {
+    id: 9,
+    title: 'Himalayan Fox Nuts (Makhana) — Light & Crunchy Lotus Seeds',
+    description: 'Hand-graded popped lotus seeds for clean roasting, fasting snacks, and high-calcium munching! 🍿🌿',
+    video_url: '/videos/makhana-fox-nuts-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/makhana-100g.jpg',
+    product_name: 'Himalayan Fox Nuts (Makhana) (100 GM)',
+    product_url: '/products/fox-nuts-makhana',
+    product_price: 500,
+    is_active: true,
+    sort_order: 9,
+  },
+  {
+    id: 10,
+    title: 'Banana, Sweet Potato & Cranberry — Family Superfood Trio',
+    description: 'Pure Banana Powder, Sweet Potato Powder & Dried Cranberries for baby weaning (from 6 months, as advised by your pediatrician) and smoothies! 🍌🍠',
+    video_url: '/videos/banana-sweet-potato-cranberry-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/banana-powder-100g.jpg',
+    product_name: 'Banana Powder (100 GM)',
+    product_url: '/products/banana-powder',
+    product_price: 590,
+    is_active: true,
+    sort_order: 10,
+  },
+  {
+    id: 11,
+    title: 'Moringa Leaf Powder, Pumpkin Seeds & Banana Powder — Daily Vitality',
+    description: 'Shade-dried Moringa Leaf Powder paired with raw green Pumpkin Seeds and Banana Powder for daily plant iron & zinc! 🌿🎃',
+    video_url: '/videos/moringa-pumpkin-banana-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/moringa-powder-100g.jpg',
+    product_name: 'Moringa Leaf Powder (100 GM)',
+    product_url: '/products/moringa-leaf-powder',
+    product_price: 475,
+    is_active: true,
+    sort_order: 11,
+  },
+  {
+    id: 12,
+    title: 'Dehydrated Mango, Papaya & Banana Smoothie Prep',
+    description: 'Sun-ripened Tarai Dehydrated Mango, Sweet Papaya & Banana Powder blended into a tropical smoothie! 🥭🍹',
+    video_url: '/videos/mango-papaya-banana-smoothie.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/dehydrated-mango-slices.jpg',
+    product_name: 'Dehydrated Mango (100 GM)',
+    product_url: '/products/dehydrated-mango',
+    product_price: 595,
+    is_active: true,
+    sort_order: 12,
+  },
+  {
+    id: 13,
+    title: 'Dehydrated Apple (100 GM) — Crisp Mustang & Jumla Apple Rings',
+    description: 'High-altitude Himalayan apples sliced skin-on and gently air-dehydrated with 0% added sugar! 🍎🏔️',
+    video_url: '/videos/dehydrated-apple-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/dehydrated-apple-100g.jpg',
+    product_name: 'Dehydrated Apple (100 GM)',
+    product_url: '/products/dehydrated-apple',
+    product_price: 550,
+    is_active: true,
+    sort_order: 13,
+  },
+  {
+    id: 14,
+    title: 'Carrot Powder (100 GM) — Provitamin A & Beta-Carotene',
+    description: '100% pure dehydrated Nepali carrot powder for baby jaulo (from 6 months, as advised by your pediatrician), soups & rotis! 🥕🍲',
+    video_url: '/videos/clip-21.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/carrot-powder-100g.jpg',
+    product_name: 'Carrot Powder (100 GM)',
+    product_url: '/products/carrot-powder',
+    product_price: 490,
+    is_active: true,
+    sort_order: 14,
+  },
+  {
+    id: 15,
+    title: 'Chia Seeds (300 GM) — Hydration & Plant Omega-3',
+    description: 'Triple-cleaned hydrophilic black chia seeds for morning hydration and overnight pudding! 🌱💧',
+    video_url: '/videos/chia-seed-ad.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/chia-seeds.jpg',
+    product_name: 'Chia Seeds (300 GM)',
+    product_url: '/products/chia-seeds',
+    product_price: 495,
+    is_active: true,
+    sort_order: 15,
+  },
+  {
+    id: 16,
+    title: 'Pumpkin Seeds (300 GM) — Raw Green Pepita Kernels',
+    description: 'High zinc and magnesium crunch for oatmeal, salads, and clean desk snacking! 🎃💪',
+    video_url: '/videos/pumpkin-seeds-crunch.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/images/lifestyle/pumpkin-seeds-power-poster.jpg',
+    product_name: 'Pumpkin Seeds (300 GM)',
+    product_url: '/products/pumpkin-seeds',
+    product_price: 650,
+    is_active: true,
+    sort_order: 16,
+  },
+  {
+    id: 17,
+    title: 'Raw Cashew Nuts (150 GM) — Selected Jumbo Kernels',
+    description: 'Unblemished whole raw cashew nuts for snacking, homemade kaju milk, and festive gifting! 🥜👑',
+    video_url: '/videos/cashews-crunch-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/images/lifestyle/cashews-holding-jar-1.jpg',
+    product_name: 'Raw Cashew Nuts (150 GM)',
+    product_url: '/products/premium-cashewnuts',
+    product_price: 750,
+    is_active: true,
+    sort_order: 17,
+  },
+  {
+    id: 18,
+    title: 'Raw Almonds (200 GM) — Whole Sweet Himalayan Kernels',
+    description: '100% unroasted whole sweet almonds rich in Vitamin E for morning soaked badam and homemade almond milk! 🌰✨',
+    video_url: '/videos/almonds.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/images/lifestyle/raw-almonds-holding-jar.jpg',
+    product_name: 'Raw Almonds (200 GM)',
+    product_url: '/products/raw-himalayan-almonds',
+    product_price: 750,
+    is_active: true,
+    sort_order: 18,
+  },
+  {
+    id: 19,
+    title: 'Freeze Dried Strawberry Craft — From Fresh Berries to Fine Powder',
+    description: 'See how fresh strawberries are freeze-dried and cold-milled with 0% artificial dye or sugar! 🍓🔬',
+    video_url: '/videos/strawberry-powder-craft.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/strawberry-powder-100g.jpg',
+    product_name: 'Freeze Dried Strawberry Powder (80 GM)',
+    product_url: '/products/strawberry-powder',
+    product_price: 1395,
+    is_active: true,
+    sort_order: 19,
+  },
+  {
+    id: 20,
+    title: 'Dried Cranberries & Yogurt Bowl — Tangy Antioxidant Crunch',
+    description: 'Layer whole ruby Dried Cranberries over morning curd, muesli, or chia pudding! 🍒🥄',
+    video_url: '/videos/cranberries-yogurt-reel.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/images/lifestyle/dried-cranberries-holding-jar-2.jpg',
+    product_name: 'Dried Cranberries (100 GM)',
+    product_url: '/products/dried-cranberries',
+    product_price: 415,
+    is_active: true,
+    sort_order: 20,
+  },
+  {
+    id: 21,
+    title: 'Coconut Chips (100 GM) — Lightly Toasted Tropical Crunch',
+    description: 'Crisp dehydrated coconut ribbons with 0% trans fat and 0% refined sugar! 🥥✨',
+    video_url: '/videos/snaptik-reel-2.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/coconut-chips-100g.jpg',
+    product_name: 'Coconut Chips (100 GM)',
+    product_url: '/products/dehydrated-coconut-chips',
+    product_price: 475,
+    is_active: true,
+    sort_order: 21,
+  },
+  {
+    id: 22,
+    title: 'Cold-Pressed Extra Virgin Coconut Oil (500 ML) — Raw Centrifuged',
+    description: 'Unrefined, zero-heat virgin coconut oil pressed from fresh coconut milk for cooking, baby massage & hair care! 🥥💧',
+    video_url: '/videos/coconut-oil.mp4',
+    facebook_url: 'https://www.facebook.com/profile.php?id=61589084257990',
+    cover_image: '/products/virgin-coconut-oil-500ml.jpg',
+    product_name: 'Cold-Pressed Extra Virgin Coconut Oil (500 ML)',
+    product_url: '/products/virgin-coconut-oil-500ml',
+    product_price: 1750,
+    is_active: true,
+    sort_order: 22,
   },
 ];
 
 export default function ReelsSection() {
-  const [reels, setReels] = useState<BrandReel[]>(initialReels);
+  const [reels] = useState<BrandReel[]>(initialReels);
   const [playingReelId, setPlayingReelId] = useState<number | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isHoveredStream, setIsHoveredStream] = useState(false);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const openDrawer = useCartStore((s) => s.openDrawer);
-
-  useEffect(() => {
-    let mounted = true;
-    reelsApi
-      .getReels()
-      .then((data: any) => {
-        if (mounted && data && Array.isArray(data) && data.length > 0) {
-          setReels(data);
-        }
-      })
-      .catch(() => {
-        // Fallback to initialReels
-      });
-    return () => {
-      mounted = false;
-    };
-  }, []);
 
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
@@ -238,28 +388,6 @@ export default function ReelsSection() {
       }, 2500);
     }
   };
-
-  // Continuous smooth auto-movement from right to left
-  useEffect(() => {
-    let animId: number;
-    const speed = 0.8; // Smooth continuous movement
-
-    const step = () => {
-      const el = scrollContainerRef.current;
-      if (el && !isHoveredStream && !isDraggingRef.current && playingReelId === null) {
-        el.scrollLeft += speed;
-        const loopWidth = el.scrollWidth / 3;
-        if (loopWidth > 0 && el.scrollLeft >= loopWidth * 2) {
-          el.scrollLeft -= loopWidth;
-        }
-      }
-      animId = requestAnimationFrame(step);
-    };
-
-    animId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animId);
-  }, [isHoveredStream, playingReelId]);
-
 
   const handleReelHover = useCallback((uniqueKey: string, reelId: number) => {
     if (isDraggingRef.current) return;
@@ -422,7 +550,7 @@ export default function ReelsSection() {
           }}
         >
           <div className="flex gap-4 sm:gap-5 w-max">
-            {[...reels, ...reels, ...reels].map((reel, index) => {
+            {reels.map((reel, index) => {
               const uniqueKey = `stream-${reel.id}-${index}`;
               const isThisPlaying = playingReelId === reel.id;
 
@@ -439,7 +567,7 @@ export default function ReelsSection() {
                   }}
                   className="w-[210px] sm:w-[250px] md:w-[260px] h-[370px] sm:h-[430px] md:h-[445px] rounded-3xl overflow-hidden relative shrink-0 shadow-md border border-gray-200/80 bg-gray-950 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl flex flex-col justify-between select-none"
                 >
-                {/* Background Video / Image Thumbnail */}
+                {/* Background Video / Image Thumbnail Facade */}
                 <div className="absolute inset-0 z-0">
                   <Image
                     src={reel.cover_image}
@@ -450,24 +578,26 @@ export default function ReelsSection() {
                       isThisPlaying ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[uniqueKey] = el;
-                    }}
-                    src={reel.video_url}
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    preload="none"
-                    onError={(e) => {
-                      // Silently recover if video cannot load
-                      const el = e.currentTarget;
-                      if (el) el.style.display = 'none';
-                    }}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                      isThisPlaying ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
-                  />
+                  {isThisPlaying && (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[uniqueKey] = el;
+                        if (el) {
+                          el.play().catch(() => {});
+                        }
+                      }}
+                      src={reel.video_url}
+                      muted={isMuted}
+                      loop
+                      playsInline
+                      autoPlay
+                      onError={(e) => {
+                        const el = e.currentTarget;
+                        if (el) el.style.display = 'none';
+                      }}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/35" />
                 </div>
 
@@ -511,23 +641,33 @@ export default function ReelsSection() {
                   </div>
 
                   {/* Shop Product Action */}
-                  <div className="pt-2 border-t border-white/15 flex items-center justify-between gap-2">
-                    <Link
-                      href={reel.product_url}
-                      className="text-xs font-bold text-[#EBC164] hover:underline truncate"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {reel.product_name}
-                    </Link>
+                  {(() => {
+                    const slug = reel.product_url.replace('/products/', '');
+                    const prod = getProductBySlug(slug);
+                    const displayName = prod ? `${prod.official_label_name || prod.name} (${prod.weight})` : reel.product_name;
+                    const displayPrice = prod ? prod.price : (reel.product_price || 650);
+                    return (
+                      <div className="pt-2 border-t border-white/15 flex items-center justify-between gap-2">
+                        <Link
+                          href={reel.product_url}
+                          className="text-xs font-bold text-[#EBC164] hover:underline truncate flex-1 min-w-0"
+                          onClick={(e) => e.stopPropagation()}
+                          title={displayName}
+                        >
+                          <span className="truncate block font-heading">{displayName}</span>
+                          <span className="text-[10px] text-white/70 block font-sans">Rs. {displayPrice}</span>
+                        </Link>
 
-                    <button
-                      onClick={(e) => handleAddToCart(reel, e)}
-                      className="px-3 py-1.5 rounded-xl bg-white hover:bg-[#EBC164] text-gray-900 text-xs font-black flex items-center gap-1.5 transition-all shrink-0 cursor-pointer shadow-sm active:scale-95"
-                    >
-                      <ShoppingBag className="w-3.5 h-3.5 text-[#2D5A27]" />
-                      <span>Shop</span>
-                    </button>
-                  </div>
+                        <button
+                          onClick={(e) => handleAddToCart(reel, e)}
+                          className="px-3 py-1.5 rounded-xl bg-white hover:bg-[#EBC164] text-gray-900 text-xs font-black flex items-center gap-1.5 transition-all shrink-0 cursor-pointer shadow-sm active:scale-95"
+                        >
+                          <ShoppingBag className="w-3.5 h-3.5 text-[#2D5A27]" />
+                          <span>Shop</span>
+                        </button>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             );

@@ -1,0 +1,1688 @@
+{
+  "checkedAt": "2026-10-13T06:17:21.456Z",
+  "counts": {
+    "local": 32,
+    "api": 32,
+    "feed": 32,
+    "entities": 32,
+    "extraApiProducts": 0
+  },
+  "extraApiProducts": [],
+  "unstockedChecks": {
+    "dehydrated-kiwi": {
+      "httpStatus": 404,
+      "rendersProductNotFound": true
+    },
+    "walnuts": {
+      "httpStatus": 404,
+      "rendersProductNotFound": true
+    },
+    "mixed-fruits": {
+      "httpStatus": 404,
+      "rendersProductNotFound": true
+    },
+    "dehydrated-banana": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    },
+    "raw-cashewnuts": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    },
+    "sunflower-seeds": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    },
+    "premium-pistachios": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    },
+    "blueberry": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    },
+    "dehydrated-strawberries": {
+      "httpStatus": 200,
+      "rendersProductNotFound": false
+    }
+  },
+  "productsWithDiffsCount": 2,
+  "report": [
+    {
+      "slug": "banana-powder",
+      "local": {
+        "id": "168",
+        "dbId": 168,
+        "name": "Banana Powder",
+        "official_label_name": "Banana Powder",
+        "price": 650,
+        "compareAtPrice": 750,
+        "weight": "100 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/banana-powder.jpg"
+      },
+      "api": {
+        "id": 168,
+        "name": "Banana Powder",
+        "price": 650,
+        "compare_at_price": 750,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Banana Powder",
+        "schemaName": "Banana Powder",
+        "schemaPrice": 650,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-BANANA-POWDER",
+        "title": "Banana Powder",
+        "price": "650 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "168",
+        "name": "Banana Powder",
+        "price": 650
+      },
+      "llmsLine": "- **Banana Powder** (`100 GM`, Rs. 650): `https://naturesmud.shop/products/banana-powder` — 100% Natural & Pure Himalayan Banana Powder. Natural energy booster, supports digestion and child growth.",
+      "diffs": []
+    },
+    {
+      "slug": "moringa-leaf-powder",
+      "local": {
+        "id": "169",
+        "dbId": 169,
+        "name": "Moringa Leaf Powder",
+        "official_label_name": "Moringa Leaf Powder",
+        "price": 690,
+        "compareAtPrice": 750,
+        "weight": "200 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/moringa-leaf-powder.jpg"
+      },
+      "api": {
+        "id": 169,
+        "name": "Moringa Leaf Powder",
+        "price": 690,
+        "compare_at_price": 750,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Moringa Leaf Powder",
+        "schemaName": "Moringa Leaf Powder",
+        "schemaPrice": 690,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-MORINGA-LEAF-POWDER",
+        "title": "Moringa Leaf Powder",
+        "price": "690 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "169",
+        "name": "Moringa Leaf Powder",
+        "price": 690
+      },
+      "llmsLine": "- **Moringa Leaf Powder** (`100 GM`, Rs. 690): `https://naturesmud.shop/products/moringa-leaf-powder` — Pure Moringa Leaf Powder (100 GM). Shade-dried green leaf powder with 0 additives and 0 preservatives.",
+      "diffs": []
+    },
+    {
+      "slug": "freeze-dried-avocado-powder",
+      "local": {
+        "id": "170",
+        "dbId": 170,
+        "name": "Freeze Dried Avocado Powder",
+        "official_label_name": "Freeze Dried Avocado Powder",
+        "price": 790,
+        "compareAtPrice": 790,
+        "weight": "80 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/avocado-powder-v2.jpg"
+      },
+      "api": {
+        "id": 170,
+        "name": "Freeze Dried Avocado Powder",
+        "price": 790,
+        "compare_at_price": 790,
+        "weight": "80.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Freeze Dried Avocado Powder",
+        "schemaName": "Freeze Dried Avocado Powder",
+        "schemaPrice": 790,
+        "schemaWeight": "80 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-FREEZE-DRIED-AVOCADO-POWDER",
+        "title": "Freeze Dried Avocado Powder",
+        "price": "790 NPR",
+        "weight": "80 GM"
+      },
+      "entity": {
+        "id": "170",
+        "name": "Freeze Dried Avocado Powder",
+        "price": 790
+      },
+      "llmsLine": "- **Freeze Dried Avocado Powder** (`80 GM`, Rs. 790): `https://naturesmud.shop/products/freeze-dried-avocado-powder` — Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats.",
+      "diffs": []
+    },
+    {
+      "slug": "strawberry-powder",
+      "local": {
+        "id": "171",
+        "dbId": 171,
+        "name": "Freeze Dried Strawberry Powder",
+        "official_label_name": "Freeze Dried Strawberry Powder",
+        "price": 1395,
+        "compareAtPrice": 1395,
+        "weight": "80 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/strawberry-powder-v2.jpg"
+      },
+      "api": {
+        "id": 171,
+        "name": "Freeze Dried Strawberry Powder",
+        "price": 1395,
+        "compare_at_price": 1395,
+        "weight": "80.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Freeze Dried Strawberry Powder",
+        "schemaName": "Freeze Dried Strawberry Powder",
+        "schemaPrice": 1395,
+        "schemaWeight": "80 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-STRAWBERRY-POWDER",
+        "title": "Freeze Dried Strawberry Powder",
+        "price": "1395 NPR",
+        "weight": "80 GM"
+      },
+      "entity": {
+        "id": "171",
+        "name": "Freeze Dried Strawberry Powder",
+        "price": 1395
+      },
+      "llmsLine": "- **Freeze Dried Strawberry Powder** (`80 GM`, Rs. 1,395): `https://naturesmud.shop/products/strawberry-powder` — 100% Freeze Dried Strawberry Powder with Real Fruit Lasting Goodness. Zero added sugar, rich in Vitamin C & antioxidants.",
+      "diffs": []
+    },
+    {
+      "slug": "dry-figs-anjeer",
+      "local": {
+        "id": "172",
+        "dbId": 172,
+        "name": "Dry Figs (Anjeer)",
+        "official_label_name": "Dry Figs (Anjeer)",
+        "price": 690,
+        "compareAtPrice": 690,
+        "weight": "200 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/dry-figs-anjeer.jpg"
+      },
+      "api": {
+        "id": 172,
+        "name": "Dry Figs (Anjeer)",
+        "price": 690,
+        "compare_at_price": 690,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": false
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dry Figs (Anjeer)",
+        "schemaName": "Dry Figs (Anjeer)",
+        "schemaPrice": 690,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DRY-FIGS-ANJEER",
+        "title": "Dry Figs (Anjeer)",
+        "price": "690 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "172",
+        "name": "Dry Figs (Anjeer)",
+        "price": 690
+      },
+      "llmsLine": "- **Dry Figs (Anjeer)** (`200 GM`, Rs. 850): `https://naturesmud.shop/products/dry-figs-anjeer` — 100% Natural Dry Figs (Anjeer) in a 200 GM Glass Jar. Rich in dietary fiber and minerals with 0 added sugar.",
+      "diffs": []
+    },
+    {
+      "slug": "makhana-fox-nuts",
+      "local": {
+        "id": "166",
+        "dbId": 166,
+        "name": "Makhana (Fox Nuts)",
+        "official_label_name": "Makhana (Fox Nuts)",
+        "price": 390,
+        "compareAtPrice": 500,
+        "weight": "50 GM",
+        "categorySlug": "seeds",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-makhana-jar.jpeg"
+      },
+      "api": {
+        "id": 166,
+        "name": "Makhana (Fox Nuts)",
+        "price": 390,
+        "compare_at_price": 500,
+        "weight": "50.00",
+        "unit": "g",
+        "categorySlug": "seeds",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Makhana (Fox Nuts)",
+        "schemaName": "Makhana (Fox Nuts)",
+        "schemaPrice": 390,
+        "schemaWeight": "50 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-MAKHANA-FOX-NUTS",
+        "title": "Makhana (Fox Nuts)",
+        "price": "390 NPR",
+        "weight": "50 GM"
+      },
+      "entity": {
+        "id": "166",
+        "name": "Makhana (Fox Nuts)",
+        "price": 390
+      },
+      "llmsLine": "- **Makhana (Fox Nuts)** (`50 GM`, Rs. 390): `https://naturesmud.shop/products/makhana-fox-nuts` — Crunchy and lightweight Himalayan Fox Nuts (Makhana) for healthy snacking.",
+      "diffs": []
+    },
+    {
+      "slug": "dehydrated-mango",
+      "local": {
+        "id": "182",
+        "dbId": 182,
+        "name": "Dehydrated Mango",
+        "official_label_name": "Dehydrated Mango",
+        "price": 595,
+        "compareAtPrice": 595,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-mango-pouch.jpeg"
+      },
+      "api": {
+        "id": 182,
+        "name": "Dehydrated Mango",
+        "price": 595,
+        "compare_at_price": 595,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dehydrated Mango",
+        "schemaName": "Dehydrated Mango",
+        "schemaPrice": 595,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DEHYDRATED-MANGO",
+        "title": "Dehydrated Mango",
+        "price": "595 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "182",
+        "name": "Dehydrated Mango",
+        "price": 595
+      },
+      "llmsLine": "- **Dehydrated Mango** (`100 GM`, Rs. 595): `https://naturesmud.shop/products/dehydrated-mango` — Pure naturally dried sweet mango slices with 0 additives and 0 preservatives in a Standup Ziplock Pouch.",
+      "diffs": []
+    },
+    {
+      "slug": "dehydrated-pineapple",
+      "local": {
+        "id": "157",
+        "dbId": 157,
+        "name": "Dehydrated Pineapple",
+        "official_label_name": "Dehydrated Pineapple",
+        "price": 590,
+        "compareAtPrice": 590,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-pineapple-design.jpeg"
+      },
+      "api": {
+        "id": 157,
+        "name": "Dehydrated Pineapple",
+        "price": 590,
+        "compare_at_price": 590,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dehydrated Pineapple",
+        "schemaName": "Dehydrated Pineapple",
+        "schemaPrice": 590,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DEHYDRATED-PINEAPPLE",
+        "title": "Dehydrated Pineapple",
+        "price": "590 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "157",
+        "name": "Dehydrated Pineapple",
+        "price": 590
+      },
+      "llmsLine": "- **Dehydrated Pineapple** (`100 GM`, Rs. 495): `https://naturesmud.shop/products/dehydrated-pineapple` — Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme in a Standup Ziplock Pouch.",
+      "diffs": []
+    },
+    {
+      "slug": "dehydrated-apple",
+      "local": {
+        "id": "3",
+        "dbId": 3,
+        "name": "Dehydrated Apple",
+        "official_label_name": "Dehydrated Apple",
+        "price": 510,
+        "compareAtPrice": 510,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-apple-pouch.jpeg"
+      },
+      "api": {
+        "id": 3,
+        "name": "Dehydrated Apple",
+        "price": 510,
+        "compare_at_price": 510,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dehydrated Apple",
+        "schemaName": "Dehydrated Apple",
+        "schemaPrice": 510,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DEHYDRATED-APPLE",
+        "title": "Dehydrated Apple",
+        "price": "510 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "3",
+        "name": "Dehydrated Apple",
+        "price": 510
+      },
+      "llmsLine": "- **Dehydrated Apple** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/dehydrated-apple` — Pectin-rich crispy dehydrated apple rings with zero added sugar in a Standup Ziplock Pouch.",
+      "diffs": []
+    },
+    {
+      "slug": "dehydrated-coconut-chips",
+      "local": {
+        "id": "158",
+        "dbId": 158,
+        "name": "Dehydrated Coconut Chips",
+        "official_label_name": "Dehydrated Coconut Chips",
+        "price": 475,
+        "compareAtPrice": 500,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/dehydrated-coconut-chips.jpg"
+      },
+      "api": {
+        "id": 158,
+        "name": "Dehydrated Coconut Chips",
+        "price": 475,
+        "compare_at_price": 500,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dehydrated Coconut Chips",
+        "schemaName": "Dehydrated Coconut Chips",
+        "schemaPrice": 475,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DEHYDRATED-COCONUT-CHIPS",
+        "title": "Dehydrated Coconut Chips",
+        "price": "475 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "158",
+        "name": "Dehydrated Coconut Chips",
+        "price": 475
+      },
+      "llmsLine": "- **Dehydrated Coconut Chips** (`100 GM`, Rs. 475): `https://naturesmud.shop/products/dehydrated-coconut-chips` — Crunchy dehydrated coconut flakes rich in clean MCT healthy fats in a Standup Ziplock Pouch.",
+      "diffs": []
+    },
+    {
+      "slug": "dehydrated-papaya",
+      "local": {
+        "id": "22",
+        "dbId": 22,
+        "name": "Dehydrated Papaya",
+        "official_label_name": "Dehydrated Papaya",
+        "price": 450,
+        "compareAtPrice": 450,
+        "weight": "80 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-papaya-flat.jpeg"
+      },
+      "api": {
+        "id": 22,
+        "name": "Dehydrated Papaya",
+        "price": 450,
+        "compare_at_price": 450,
+        "weight": "80.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dehydrated Papaya",
+        "schemaName": "Dehydrated Papaya",
+        "schemaPrice": 450,
+        "schemaWeight": "80 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DEHYDRATED-PAPAYA",
+        "title": "Dehydrated Papaya",
+        "price": "450 NPR",
+        "weight": "80 GM"
+      },
+      "entity": {
+        "id": "22",
+        "name": "Dehydrated Papaya",
+        "price": 450
+      },
+      "llmsLine": "- **Dehydrated Papaya** (`80 GM`, Rs. 450): `https://naturesmud.shop/products/dehydrated-papaya` — Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.",
+      "diffs": []
+    },
+    {
+      "slug": "dried-blueberries",
+      "local": {
+        "id": "4",
+        "dbId": 4,
+        "name": "Dried Blueberries",
+        "official_label_name": "Dried Blueberries",
+        "price": 650,
+        "compareAtPrice": 650,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-blueberry-jar.jpeg"
+      },
+      "api": {
+        "id": 4,
+        "name": "Dried Blueberries",
+        "price": 650,
+        "compare_at_price": 650,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dried Blueberries",
+        "schemaName": "Dried Blueberries",
+        "schemaPrice": 650,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DRIED-BLUEBERRIES",
+        "title": "Dried Blueberries",
+        "price": "650 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "4",
+        "name": "Dried Blueberries",
+        "price": 650
+      },
+      "llmsLine": "- **Dried Blueberries** (`100 GM`, Rs. 650): `https://naturesmud.shop/products/dried-blueberries` — Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "dried-cranberries",
+      "local": {
+        "id": "7",
+        "dbId": 7,
+        "name": "Dried Cranberries",
+        "official_label_name": "Dried Cranberries",
+        "price": 415,
+        "compareAtPrice": 415,
+        "weight": "100 GM",
+        "categorySlug": "dried-fruits",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-cranberry-jar.jpeg"
+      },
+      "api": {
+        "id": 7,
+        "name": "Dried Cranberries",
+        "price": 415,
+        "compare_at_price": 415,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "dried-fruits",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dried Cranberries",
+        "schemaName": "Dried Cranberries",
+        "schemaPrice": 415,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DRIED-CRANBERRIES",
+        "title": "Dried Cranberries",
+        "price": "415 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "7",
+        "name": "Dried Cranberries",
+        "price": 415
+      },
+      "llmsLine": "- **Dried Cranberries** (`100 GM`, Rs. 415): `https://naturesmud.shop/products/dried-cranberries` — Antioxidant-rich whole dried cranberries with natural tart-sweet flavor in a Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "dates-powder",
+      "local": {
+        "id": "6",
+        "dbId": 6,
+        "name": "Dates Powder",
+        "official_label_name": "Dates Powder",
+        "price": 400,
+        "compareAtPrice": 400,
+        "weight": "100 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-dates-jar.jpeg"
+      },
+      "api": {
+        "id": 6,
+        "name": "Dates Powder",
+        "price": 400,
+        "compare_at_price": 400,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Dates Powder",
+        "schemaName": "Dates Powder",
+        "schemaPrice": 400,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-DATES-POWDER",
+        "title": "Dates Powder",
+        "price": "400 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "6",
+        "name": "Dates Powder",
+        "price": 400
+      },
+      "llmsLine": "- **Dates Powder** (`100 GM`, Rs. 400): `https://naturesmud.shop/products/dates-powder` — 100% unrefined natural sweetener made from whole dehydrated dates — 0% white sugar in a Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "beetroot-powder",
+      "local": {
+        "id": "5",
+        "dbId": 5,
+        "name": "Beetroot Powder",
+        "official_label_name": "Beetroot Powder",
+        "price": 430,
+        "compareAtPrice": 430,
+        "weight": "100 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-beetroot-jar.jpeg"
+      },
+      "api": {
+        "id": 5,
+        "name": "Beetroot Powder",
+        "price": 430,
+        "compare_at_price": 430,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Beetroot Powder",
+        "schemaName": "Beetroot Powder",
+        "schemaPrice": 430,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-BEETROOT-POWDER",
+        "title": "Beetroot Powder",
+        "price": "430 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "5",
+        "name": "Beetroot Powder",
+        "price": 430
+      },
+      "llmsLine": "- **Beetroot Powder** (`100 GM`, Rs. 430): `https://naturesmud.shop/products/beetroot-powder` — 100% pure cold-milled Nepali red Beetroot Powder (100 GM Glass Jar) with 0 additives and 0 preservatives.",
+      "diffs": []
+    },
+    {
+      "slug": "himalayan-pink-salt",
+      "local": {
+        "id": "10",
+        "dbId": 10,
+        "name": "Himalayan Pink Salt",
+        "official_label_name": "Himalayan Pink Salt",
+        "price": 250,
+        "compareAtPrice": 250,
+        "weight": "200 GM",
+        "categorySlug": "salts-spices",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-pink-salt-jar.jpeg"
+      },
+      "api": {
+        "id": 10,
+        "name": "Himalayan Pink Salt",
+        "price": 250,
+        "compare_at_price": 250,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "salts-spices",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Himalayan Pink Salt",
+        "schemaName": "Himalayan Pink Salt",
+        "schemaPrice": 250,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-HIMALAYAN-PINK-SALT",
+        "title": "Himalayan Pink Salt",
+        "price": "250 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "10",
+        "name": "Himalayan Pink Salt",
+        "price": 250
+      },
+      "llmsLine": "- **Himalayan Pink Salt** (`200 GM`, Rs. 250): `https://naturesmud.shop/products/himalayan-pink-salt` — Pure unrefined pink rock salt with 84+ essential bio-available trace minerals in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "pure-himalayan-black-salt-bire-noon",
+      "local": {
+        "id": "159",
+        "dbId": 159,
+        "name": "Himalayan Black Salt (Bire Noon)",
+        "official_label_name": "Himalayan Black Salt (Bire Noon)",
+        "price": 220,
+        "compareAtPrice": 220,
+        "weight": "200 GM",
+        "categorySlug": "salts-spices",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/himalayan-black-salt-digestive.jpg"
+      },
+      "api": {
+        "id": 159,
+        "name": "Himalayan Black Salt (Bire Noon)",
+        "price": 220,
+        "compare_at_price": 220,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "salts-spices",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Himalayan Black Salt (Bire Noon)",
+        "schemaName": "Himalayan Black Salt (Bire Noon)",
+        "schemaPrice": 220,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-PURE-HIMALAYAN-BLACK-SALT-BIRE-NOON",
+        "title": "Himalayan Black Salt (Bire Noon)",
+        "price": "220 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "159",
+        "name": "Himalayan Black Salt (Bire Noon)",
+        "price": 220
+      },
+      "llmsLine": "- **Himalayan Black Salt (Bire Noon)** (`200 GM`, Rs. 220): `https://naturesmud.shop/products/pure-himalayan-black-salt-bire-noon` — Volcanic sulfur-rich Himalayan black salt for Ayurvedic digestion and gut wellness in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "chia-seeds",
+      "local": {
+        "id": "11",
+        "dbId": 11,
+        "name": "Chia Seeds",
+        "official_label_name": "Chia Seeds",
+        "price": 495,
+        "compareAtPrice": 495,
+        "weight": "300 GM",
+        "categorySlug": "seeds",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-chia-display.jpeg"
+      },
+      "api": {
+        "id": 11,
+        "name": "Chia Seeds",
+        "price": 495,
+        "compare_at_price": 495,
+        "weight": "300.00",
+        "unit": "g",
+        "categorySlug": "seeds",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Chia Seeds",
+        "schemaName": "Chia Seeds",
+        "schemaPrice": 495,
+        "schemaWeight": "300 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-CHIA-SEEDS",
+        "title": "Chia Seeds",
+        "price": "495 NPR",
+        "weight": "300 GM"
+      },
+      "entity": {
+        "id": "11",
+        "name": "Chia Seeds",
+        "price": 495
+      },
+      "llmsLine": "- **Chia Seeds** (`300 GM`, Rs. 495): `https://naturesmud.shop/products/chia-seeds` — Whole organic black chia seeds loaded with plant-based Omega-3 ALA, soluble fiber, calcium, and clean plant protein in a 300g Plastic Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "pumpkin-seeds",
+      "local": {
+        "id": "8",
+        "dbId": 8,
+        "name": "Pumpkin Seeds",
+        "official_label_name": "Pumpkin Seeds",
+        "price": 650,
+        "compareAtPrice": 650,
+        "weight": "300 GM",
+        "categorySlug": "seeds",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/pumpkin-seeds-product-shot.jpg"
+      },
+      "api": {
+        "id": 8,
+        "name": "Pumpkin Seeds",
+        "price": 650,
+        "compare_at_price": 650,
+        "weight": "300.00",
+        "unit": "g",
+        "categorySlug": "seeds",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Pumpkin Seeds",
+        "schemaName": "Pumpkin Seeds",
+        "schemaPrice": 650,
+        "schemaWeight": "300 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-PUMPKIN-SEEDS",
+        "title": "Pumpkin Seeds",
+        "price": "650 NPR",
+        "weight": "300 GM"
+      },
+      "entity": {
+        "id": "8",
+        "name": "Pumpkin Seeds",
+        "price": 650
+      },
+      "llmsLine": "- **Pumpkin Seeds** (`300 GM`, Rs. 650): `https://naturesmud.shop/products/pumpkin-seeds` — Raw green Pumpkin Seeds (300 GM) rich in plant protein, zinc, and magnesium with 0 added salt or oil.",
+      "diffs": []
+    },
+    {
+      "slug": "premium-cashewnuts",
+      "local": {
+        "id": "14",
+        "dbId": 14,
+        "name": "Premium Cashew Nuts",
+        "official_label_name": "Premium Cashew Nuts",
+        "price": 750,
+        "compareAtPrice": 750,
+        "weight": "150 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-cashew-new-jar.jpg"
+      },
+      "api": {
+        "id": 14,
+        "name": "Premium Cashew Nuts",
+        "price": 750,
+        "compare_at_price": 750,
+        "weight": "150.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Premium Cashew Nuts",
+        "schemaName": "Premium Cashew Nuts",
+        "schemaPrice": 750,
+        "schemaWeight": "150 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-PREMIUM-CASHEWNUTS",
+        "title": "Premium Cashew Nuts",
+        "price": "750 NPR",
+        "weight": "150 GM"
+      },
+      "entity": {
+        "id": "14",
+        "name": "Premium Cashew Nuts",
+        "price": 750
+      },
+      "llmsLine": "- **Premium Cashew Nuts** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/premium-cashewnuts` — Jumbo whole grade cashewnuts with a rich buttery crunch and heart-healthy fats in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "roasted-cashewnuts",
+      "local": {
+        "id": "161",
+        "dbId": 161,
+        "name": "Roasted Cashew Nuts",
+        "official_label_name": "Roasted Cashew Nuts",
+        "price": 750,
+        "compareAtPrice": 750,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-roasted-cashew-new.jpg"
+      },
+      "api": {
+        "id": 161,
+        "name": "Roasted Cashew Nuts",
+        "price": 750,
+        "compare_at_price": 750,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Roasted Cashew Nuts",
+        "schemaName": "Roasted Cashew Nuts",
+        "schemaPrice": 750,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-ROASTED-CASHEWNUTS",
+        "title": "Roasted Cashew Nuts",
+        "price": "750 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "161",
+        "name": "Roasted Cashew Nuts",
+        "price": 750
+      },
+      "llmsLine": "- **Roasted Cashew Nuts** (`150 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-cashewnuts` — Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 150g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "roasted-almonds",
+      "local": {
+        "id": "17",
+        "dbId": 17,
+        "name": "Roasted Almonds",
+        "official_label_name": "Roasted Almonds",
+        "price": 750,
+        "compareAtPrice": 750,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/roasted-almonds-v2.jpg"
+      },
+      "api": {
+        "id": 17,
+        "name": "Roasted Almonds",
+        "price": 750,
+        "compare_at_price": 750,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Roasted Almonds",
+        "schemaName": "Roasted Almonds",
+        "schemaPrice": 750,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-ROASTED-ALMONDS",
+        "title": "Roasted Almonds",
+        "price": "750 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "17",
+        "name": "Roasted Almonds",
+        "price": 750
+      },
+      "llmsLine": "- **Roasted Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/roasted-almonds` — Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "raw-himalayan-almonds",
+      "local": {
+        "id": "2",
+        "dbId": 2,
+        "name": "Raw Almonds",
+        "official_label_name": "Raw Almonds",
+        "price": 750,
+        "compareAtPrice": 750,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-almond-jar-v2.jpg"
+      },
+      "api": {
+        "id": 2,
+        "name": "Raw Almonds",
+        "price": 750,
+        "compare_at_price": 750,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Raw Almonds",
+        "schemaName": "Raw Almonds",
+        "schemaPrice": 750,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-RAW-HIMALAYAN-ALMONDS",
+        "title": "Raw Almonds",
+        "price": "750 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "2",
+        "name": "Raw Almonds",
+        "price": 750
+      },
+      "llmsLine": "- **Raw Almonds** (`200 GM`, Rs. 750): `https://naturesmud.shop/products/raw-himalayan-almonds` — Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "superfood-trail-mix",
+      "local": {
+        "id": "183",
+        "dbId": 183,
+        "name": "Superfood Trail Mix (Nuts & Seeds)",
+        "official_label_name": "Superfood Trail Mix (Nuts & Seeds)",
+        "price": 690,
+        "compareAtPrice": 690,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/superfood-mix.jpg"
+      },
+      "api": {
+        "id": 188,
+        "name": "Superfood Trail Mix (Nuts & Seeds)",
+        "price": 690,
+        "compare_at_price": 690,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Superfood Trail Mix (Nuts & Seeds)",
+        "schemaName": "Superfood Trail Mix (Nuts & Seeds)",
+        "schemaPrice": 690,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-SUPERFOOD-TRAIL-MIX",
+        "title": "Superfood Trail Mix (Nuts & Seeds)",
+        "price": "690 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "183",
+        "name": "Superfood Trail Mix (Nuts & Seeds)",
+        "price": 690
+      },
+      "llmsLine": "- **Superfood Trail Mix (Nuts & Seeds)** (`200 GM`, Rs. 790): `https://naturesmud.shop/products/superfood-trail-mix` — Energy-dense blend of whole almonds, cashews, pumpkin seeds, berries, and chia in a 200g Glass Jar.",
+      "diffs": [
+        "ID_MISMATCH: API=188 vs Local id=183/dbId=183"
+      ]
+    },
+    {
+      "slug": "macadamia-nuts",
+      "local": {
+        "id": "184",
+        "dbId": 184,
+        "name": "Macadamia Nuts",
+        "official_label_name": "Macadamia Nuts",
+        "price": 1100,
+        "compareAtPrice": 1100,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/macadamia.jpg"
+      },
+      "api": {
+        "id": 189,
+        "name": "Macadamia Nuts",
+        "price": 1100,
+        "compare_at_price": 1100,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Macadamia Nuts",
+        "schemaName": "Macadamia Nuts",
+        "schemaPrice": 1100,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-MACADAMIA-NUTS",
+        "title": "Macadamia Nuts",
+        "price": "1100 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "184",
+        "name": "Macadamia Nuts",
+        "price": 1100
+      },
+      "llmsLine": "- **Macadamia Nuts** (`200 GM`, Rs. 1,100): `https://naturesmud.shop/products/macadamia-nuts` — Silky buttery macadamia nuts packed with monounsaturated palmitoleic acid in a 200g Glass Jar.",
+      "diffs": [
+        "ID_MISMATCH: API=189 vs Local id=184/dbId=184"
+      ]
+    },
+    {
+      "slug": "virgin-coconut-oil-500ml",
+      "local": {
+        "id": "162",
+        "dbId": 162,
+        "name": "Extra Virgin Coconut Oil (500ml)",
+        "official_label_name": "Extra Virgin Coconut Oil (500ml)",
+        "price": 1750,
+        "compareAtPrice": 1750,
+        "weight": "500 ML",
+        "categorySlug": "oils",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/coconut-oil.jpg"
+      },
+      "api": {
+        "id": 162,
+        "name": "Extra Virgin Coconut Oil (500ml)",
+        "price": 1750,
+        "compare_at_price": 1750,
+        "weight": "500.00",
+        "unit": "ml",
+        "categorySlug": "oils",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Extra Virgin Coconut Oil (500ml)",
+        "schemaName": "Extra Virgin Coconut Oil (500ml)",
+        "schemaPrice": 1750,
+        "schemaWeight": "500 ML",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-VIRGIN-COCONUT-OIL-500ML",
+        "title": "Extra Virgin Coconut Oil (500ml)",
+        "price": "1750 NPR",
+        "weight": "500 ML"
+      },
+      "entity": {
+        "id": "162",
+        "name": "Extra Virgin Coconut Oil (500ml)",
+        "price": 1750
+      },
+      "llmsLine": "- **Extra Virgin Coconut Oil (500ml)** (`500 ML`, Rs. 1,750): `https://naturesmud.shop/products/virgin-coconut-oil-500ml` — Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 500ml Glass Bottle.",
+      "diffs": []
+    },
+    {
+      "slug": "virgin-coconut-oil-180ml",
+      "local": {
+        "id": "164",
+        "dbId": 164,
+        "name": "Extra Virgin Coconut Oil (180ml)",
+        "official_label_name": "Extra Virgin Coconut Oil (180ml)",
+        "price": 650,
+        "compareAtPrice": 650,
+        "weight": "180 ML",
+        "categorySlug": "oils",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/coconut-oil.jpg"
+      },
+      "api": {
+        "id": 164,
+        "name": "Extra Virgin Coconut Oil (180ml)",
+        "price": 650,
+        "compare_at_price": 650,
+        "weight": "180.00",
+        "unit": "ml",
+        "categorySlug": "oils",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Extra Virgin Coconut Oil (180ml)",
+        "schemaName": "Extra Virgin Coconut Oil (180ml)",
+        "schemaPrice": 650,
+        "schemaWeight": "180 ML",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-VIRGIN-COCONUT-OIL-180ML",
+        "title": "Extra Virgin Coconut Oil (180ml)",
+        "price": "650 NPR",
+        "weight": "180 ML"
+      },
+      "entity": {
+        "id": "164",
+        "name": "Extra Virgin Coconut Oil (180ml)",
+        "price": 650
+      },
+      "llmsLine": "- **Extra Virgin Coconut Oil (180ml)** (`180 ML`, Rs. 650): `https://naturesmud.shop/products/virgin-coconut-oil-180ml` — Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 GM Glass Bottle.",
+      "diffs": []
+    },
+    {
+      "slug": "carrot-powder",
+      "local": {
+        "id": "27",
+        "dbId": 27,
+        "name": "Carrot Powder",
+        "official_label_name": "Carrot Powder",
+        "price": 490,
+        "compareAtPrice": 550,
+        "weight": "80 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-carrot-jar.jpeg"
+      },
+      "api": {
+        "id": 27,
+        "name": "Carrot Powder",
+        "price": 490,
+        "compare_at_price": 550,
+        "weight": "80.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Carrot Powder",
+        "schemaName": "Carrot Powder",
+        "schemaPrice": 490,
+        "schemaWeight": "80 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-CARROT-POWDER",
+        "title": "Carrot Powder",
+        "price": "490 NPR",
+        "weight": "80 GM"
+      },
+      "entity": {
+        "id": "27",
+        "name": "Carrot Powder",
+        "price": 490
+      },
+      "llmsLine": "- **Carrot Powder** (`100 GM`, Rs. 490): `https://naturesmud.shop/products/carrot-powder` — Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 100g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "sweet-potato-powder",
+      "local": {
+        "id": "24",
+        "dbId": 24,
+        "name": "Sweet Potato Powder",
+        "official_label_name": "Sweet Potato Powder",
+        "price": 510,
+        "compareAtPrice": 600,
+        "weight": "100 GM",
+        "categorySlug": "powders",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-sweet-potato-jar.jpeg"
+      },
+      "api": {
+        "id": 24,
+        "name": "Sweet Potato Powder",
+        "price": 510,
+        "compare_at_price": 600,
+        "weight": "100.00",
+        "unit": "g",
+        "categorySlug": "powders",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Sweet Potato Powder",
+        "schemaName": "Sweet Potato Powder",
+        "schemaPrice": 510,
+        "schemaWeight": "100 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-SWEET-POTATO-POWDER",
+        "title": "Sweet Potato Powder",
+        "price": "510 NPR",
+        "weight": "100 GM"
+      },
+      "entity": {
+        "id": "24",
+        "name": "Sweet Potato Powder",
+        "price": 510
+      },
+      "llmsLine": "- **Sweet Potato Powder** (`100 GM`, Rs. 510): `https://naturesmud.shop/products/sweet-potato-powder` — 100% natural dehydrated sweet potato powder for baby food, smoothies & healthy baking in a 100g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "pure-mountain-himalayan-shilajit-resin",
+      "local": {
+        "id": "40",
+        "dbId": 40,
+        "name": "Pure Himalayan Shilajit Resin",
+        "official_label_name": "Pure Himalayan Shilajit Resin",
+        "price": 1995,
+        "compareAtPrice": 1995,
+        "weight": "20 GM",
+        "categorySlug": "salts-spices",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-shilajit-jar.jpeg"
+      },
+      "api": {
+        "id": 40,
+        "name": "Pure Himalayan Shilajit Resin",
+        "price": 1995,
+        "compare_at_price": 1995,
+        "weight": "20.00",
+        "unit": "g",
+        "categorySlug": "salts-spices",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Pure Himalayan Shilajit Resin",
+        "schemaName": "Pure Himalayan Shilajit Resin",
+        "schemaPrice": 1995,
+        "schemaWeight": "20 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-PURE-MOUNTAIN-HIMALAYAN-SHILAJIT-RESIN",
+        "title": "Pure Himalayan Shilajit Resin",
+        "price": "1995 NPR",
+        "weight": "20 GM"
+      },
+      "entity": {
+        "id": "40",
+        "name": "Pure Himalayan Shilajit Resin",
+        "price": 1995
+      },
+      "llmsLine": "- **Pure Himalayan Shilajit Resin** (`20 GM`, Rs. 1,995): `https://naturesmud.shop/products/pure-mountain-himalayan-shilajit-resin` — Authentic purified Himalayan Shilajit resin in a 20 GM Glass Jar with 0 additives and 0 fillers.",
+      "diffs": []
+    },
+    {
+      "slug": "flax-seeds",
+      "local": {
+        "id": "185",
+        "dbId": 185,
+        "name": "Flax Seeds (Alash)",
+        "official_label_name": "Flax Seeds (Alash)",
+        "price": 570,
+        "compareAtPrice": 600,
+        "weight": "200 GM",
+        "categorySlug": "seeds",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/flax-seeds.jpg"
+      },
+      "api": {
+        "id": 185,
+        "name": "Flax Seeds (Alash)",
+        "price": 570,
+        "compare_at_price": 600,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "seeds",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": false
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Flax Seeds (Alash)",
+        "schemaName": "Flax Seeds (Alash)",
+        "schemaPrice": 570,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-FLAX-SEEDS",
+        "title": "Flax Seeds (Alash)",
+        "price": "570 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "185",
+        "name": "Flax Seeds (Alash)",
+        "price": 570
+      },
+      "llmsLine": "- **Flax Seeds (Alash)** (`200 GM`, Rs. 570): `https://naturesmud.shop/products/flax-seeds` — Whole raw brown flax seeds (Alash) packed with plant Omega-3 (ALA), lignans & dietary fiber in a 200g Glass Jar.",
+      "diffs": []
+    },
+    {
+      "slug": "premium-pistachio-roasted-salted",
+      "local": {
+        "id": "176",
+        "dbId": 176,
+        "name": "Premium Pistachio Roasted & Salted",
+        "official_label_name": "Premium Pistachio Roasted & Salted",
+        "price": 895,
+        "compareAtPrice": 895,
+        "weight": "200 GM",
+        "categorySlug": "nuts",
+        "rating": 0,
+        "reviewCount": 0,
+        "image": "/products/nm-pistachio-jar.jpg"
+      },
+      "api": {
+        "id": 176,
+        "name": "Premium Pistachio Roasted & Salted",
+        "price": 895,
+        "compare_at_price": 895,
+        "weight": "200.00",
+        "unit": "g",
+        "categorySlug": "nuts",
+        "rating_avg": "0.00",
+        "rating_count": 0,
+        "is_featured": true
+      },
+      "livePage": {
+        "status": 200,
+        "h1": "Premium Pistachio Roasted & Salted",
+        "schemaName": "Premium Pistachio Roasted & Salted",
+        "schemaPrice": 895,
+        "schemaWeight": "200 GM",
+        "schemaRating": null,
+        "schemaReviewCount": null,
+        "visibleReviewCount": null
+      },
+      "feed": {
+        "id": "NM-PREMIUM-PISTACHIO-ROASTED-SALTED",
+        "title": "Premium Pistachio Roasted & Salted",
+        "price": "895 NPR",
+        "weight": "200 GM"
+      },
+      "entity": {
+        "id": "176",
+        "name": "Premium Pistachio Roasted & Salted",
+        "price": 895
+      },
+      "llmsLine": "- **Premium Pistachio Roasted & Salted** (`200 GM`, Rs. 1,250): `https://naturesmud.shop/products/premium-pistachio-roasted-salted` — Crunchy roasted & salted pistachios packed with antioxidants, Vitamin B6 & healthy fats in a 200g Glass Jar.",
+      "diffs": []
+    }
+  ]
+}

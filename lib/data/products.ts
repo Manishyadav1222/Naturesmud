@@ -9,10 +9,10 @@ export const products: Product[] = [
     "name": "Banana Powder",
     "category": "Powders",
     "categorySlug": "powders",
-    "price": 590,
-    "compareAtPrice": 650,
-    "rating": 4.9,
-    "reviewCount": 28,
+    "price": 650,
+    "compareAtPrice": 750,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/banana-powder.jpg",
     "images": [
       "/products/banana-powder.jpg",
@@ -20,8 +20,8 @@ export const products: Product[] = [
       "/products/posters/banana-powder-scene-1.jpg",
       "/products/posters/banana-powder-scene-2.jpg"
     ],
-    "description": "Nature's Mud Pure Banana Powder is crafted from 100% naturally ripened and sun-dried bananas. Packed with natural potassium, dietary fiber, and essential vitamins. Zero added sugar, zero preservatives, zero artificial additives. Perfectly suited for baby porridge, weaning, morning smoothies, pancake batters, oatmeal, and quick healthy energy drinks.",
-    "shortDescription": "100% Natural & Pure Himalayan Banana Powder. Natural energy booster, supports digestion and child growth.",
+    "description": "Nature's Mud Pure Banana Powder is crafted from 100% naturally ripened and dehydrated bananas. Packed with natural potassium, dietary fiber, and essential vitamins. Zero added sugar, zero preservatives, zero artificial additives. Perfectly suited for baby porridge, weaning, morning smoothies, pancake batters, oatmeal, and quick healthy energy drinks.",
+    "shortDescription": "100% Natural & Pure Nepali Banana Powder. Natural energy booster, supports digestion and child growth.",
     "badges": [
       "new",
       "featured"
@@ -29,12 +29,12 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Glass Jar",
-    "mrp": 650,
+    "mrp": 750,
     "ingredients": [
       "100% Pure & Natural Himalayan Bananas"
     ],
     "benefits": [
-      "Natural Energy Booster for active children & fitness lovers",
+      "provides a wholesome source of carbohydrates and natural energy for active children & fitness lovers",
       "Supports healthy digestion and gentle gut motility",
       "Rich in dietary potassium and natural vitamins",
       "Zero added sugars, zero chemicals, zero preservatives",
@@ -75,8 +75,17 @@ export const products: Product[] = [
       "powders"
     ],
     "official_label_name": "Banana Powder",
-    "seo_title": "Banana Powder Price in Nepal | 100% Pure Baby Food & Weaning | NaturesMud",
-    "meta_description": "Buy NaturesMud Banana Powder (केरा पाउडर) in Nepal (Rs. 590 / 100g Glass Jar). 100% natural sun-dried Himalayan bananas with zero added sugar for baby weaning & smoothies."
+    "seo_title": "Banana Powder Price in Nepal | Baby Lito | NaturesMud",
+    "meta_description": "Buy Banana Powder (100 GM) at Rs. 650 in Nepal. 100% pure dehydrated banana with 0 added sugar for baby lito/jaulo & smoothies. Fast Kathmandu delivery.",
+    "origin_belt": "Terai Lowlands (Chitwan & Nawalpur)",
+    "drying_process": "Closed Sanitary Dehydration Chamber (<45°C)",
+    "baby_guidance": "Suitable for complementary infant feeding from 6 months, as advised by your pediatrician. Start with small single-ingredient portions (1 tsp); watch for food sensitivities; never add honey under 12 months; complementary feeding should never replace breast milk or infant formula advice.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "169",
@@ -87,8 +96,8 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 690,
     "compareAtPrice": 750,
-    "rating": 4.9,
-    "reviewCount": 36,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/moringa-leaf-powder.jpg",
     "images": [
       "/products/moringa-leaf-powder.jpg",
@@ -97,26 +106,24 @@ export const products: Product[] = [
       "/products/posters/moringa-powder-leaves-2k.jpg",
       "/products/posters/moringa-powder-jar-2k.jpg"
     ],
-    "description": "Handpicked from shade-dried organic Himalayan Moringa oleifera leaves, Nature's Mud Pure Moringa Leaf Powder is nature's most nutrient-rich miracle tree food. Packed with 90+ nutrients, 46 antioxidants, and all 9 essential amino acids. 100% natural, kosher, gluten-free, and additive-free. Enhances natural vitality, skin radiance, and immune defense.",
-    "shortDescription": "Pure Natural Leaf Moringa Powder. Himalayan superfood powerhouse delivering pure, real nutrition in every scoop.",
+    "description": "Handpicked from shade-dried Himalayan Moringa oleifera leaves, NaturesMud Moringa Leaf Powder is a nutrient-dense whole-food green powder. Naturally contains plant amino acids, iron, calcium, and chlorophyll. 100% natural, gluten-free, and additive-free for daily smoothies, dal, and soups.",
+    "shortDescription": "Pure Moringa Leaf Powder (200 GM). Shade-dried green leaf powder with 0 additives and 0 preservatives.",
     "badges": [
       "new",
-      "featured",
-      "organic"
+      "featured"
     ],
     "stock": 50,
-    "weight": "100 GM",
+    "weight": "200 GM",
     "packing": "Glass Jar",
     "mrp": 750,
     "ingredients": [
-      "100% Pure Organic Moringa Oleifera Leaves"
+      "100% Pure Shade-Dried Moringa Oleifera Leaves"
     ],
     "benefits": [
-      "Over 90 bio-available nutrients and 46 natural antioxidants",
-      "Rich in iron, plant-based calcium, and Vitamin A & C",
-      "Natural detoxifier supporting metabolic and liver vitality",
-      "100% Natural, Kosher, Gluten-Free, and zero additives",
-      "Boosts immune resilience and sustained cellular energy"
+      "Naturally rich in plant-based iron, calcium, and Vitamin A & C",
+      "Contains natural chlorophyll, plant protein, and dietary fiber",
+      "100% Natural, Gluten-Free, and zero additives",
+      "Supports daily whole-food nutrition in smoothies, soups, and dal"
     ],
     "nutrition": [
       {
@@ -148,13 +155,22 @@ export const products: Product[] = [
       "moringa",
       "moringa-powder",
       "immunity",
-      "detox",
+      "greens",
       "superfood",
       "powders"
     ],
     "official_label_name": "Moringa Leaf Powder",
-    "seo_title": "Moringa Leaf Powder Price in Nepal | Pure Himalayan Sitalchini | NaturesMud",
-    "meta_description": "Buy NaturesMud Moringa Leaf Powder (शीतलचिनी / मोरिङ्गा पाउडर) in Nepal (Rs. 690 / 100g Glass Jar). Shade-dried Himalayan moringa leaves rich in iron, calcium & antioxidants."
+    "seo_title": "Moringa Leaf Powder Price in Nepal | 100g | NaturesMud",
+    "meta_description": "Buy Moringa Leaf Powder (100 GM) at Rs. 690 in Nepal. 100% shade-dried Sajiwan/Sahijan leaves, 0 fillers. Fast delivery in Kathmandu, Pokhara & Nepal.",
+    "origin_belt": "Terai Lowlands & River Belts (Product of Nepal 🇳🇵)",
+    "drying_process": "Shade-Dried & Cold-Milled (<40°C)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "170",
@@ -165,12 +181,13 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 790,
     "compareAtPrice": 790,
-    "rating": 5,
-    "reviewCount": 24,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/avocado-powder-v2.jpg",
     "images": [
       "/products/avocado-powder-v2.jpg",
-      "/products/avocado-powder-v2.jpg"
+      "/products/avocado-powder-v2.jpg",
+      "/images/lifestyle/avocado-powder-holding-jar.jpg"
     ],
     "description": "Proudly harvested and crafted in Nepal! Nature's Mud Freeze Dried Avocado Powder preserves the rich buttery texture and heart-healthy monounsaturated fats of fresh avocados. Processed with advanced gentle freeze-drying technology to preserve raw cellular nutrients, natural potassium, Vitamin E, and dietary fiber. 100% natural, no sugar, no preservatives.",
     "shortDescription": "Single-origin Product of Nepal. Real fruit lasting goodness, slow freeze-dried to perfection with nutrient-dense healthy fats.",
@@ -229,8 +246,17 @@ export const products: Product[] = [
       "nepal"
     ],
     "official_label_name": "Freeze Dried Avocado Powder",
-    "seo_title": "Freeze Dried Avocado Powder in Nepal | Product of Nepal | NaturesMud",
-    "meta_description": "Buy NaturesMud Freeze Dried Avocado Powder in Nepal (Rs. 790 / 80g Glass Jar). Single-origin Nepali mountain avocados rich in healthy monounsaturated fats & fiber."
+    "seo_title": "Freeze Dried Avocado Powder Price in Nepal | NaturesMud",
+    "meta_description": "Buy Freeze Dried Avocado Powder (80 GM) at Rs. 790 in Nepal. 100% pure Hass avocado, rich in healthy fats for baby lito & smoothies. Fast Nepal delivery.",
+    "origin_belt": "Mid-Hills & Product of Nepal 🇳🇵",
+    "drying_process": "Vacuum Freeze-Dried (Lyophilization)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "171",
@@ -241,12 +267,13 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 1395,
     "compareAtPrice": 1395,
-    "rating": 4.9,
-    "reviewCount": 31,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/strawberry-powder-v2.jpg",
     "images": [
       "/products/strawberry-powder-v2.jpg",
-      "/products/strawberry-powder-v2.jpg"
+      "/products/strawberry-powder-v2.jpg",
+      "/images/lifestyle/strawberry-powder-holding-jar.jpg"
     ],
     "description": "Indulge in the pure aroma and vibrant ruby color of whole Himalayan strawberries. Nature's Mud Freeze Dried Strawberry Powder delivers real fruit lasting goodness from ripe strawberries to protect natural polyphenols, Vitamin C, and luscious berry flavor. 100% natural, rich in nutrients, zero artificial color, zero synthetic flavor.",
     "shortDescription": "100% Freeze Dried Strawberry Powder with Real Fruit Lasting Goodness. Zero added sugar, rich in Vitamin C & antioxidants.",
@@ -303,8 +330,17 @@ export const products: Product[] = [
       "powders"
     ],
     "official_label_name": "Freeze Dried Strawberry Powder",
-    "seo_title": "Freeze Dried Strawberry Powder Price in Nepal | 100% Real Fruit | NaturesMud",
-    "meta_description": "Buy NaturesMud Freeze Dried Strawberry Powder in Nepal (Rs. 1,395 / 80g Glass Jar). 100% pure whole strawberries with zero added sugar or artificial color."
+    "seo_title": "Freeze Dried Strawberry Powder Price in Nepal | NaturesMud",
+    "meta_description": "Buy Freeze Dried Strawberry Powder (80 GM) at Rs. 1,395 in Nepal. 100% real hill strawberries, 0 sugar, 0 artificial color. Fast Kathmandu & Nepal.",
+    "origin_belt": "Mid-Hills Berry Orchards (Kakani & Nuwakot)",
+    "drying_process": "Vacuum Freeze-Dried (Lyophilization)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "172",
@@ -313,10 +349,10 @@ export const products: Product[] = [
     "name": "Dry Figs (Anjeer)",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 850,
-    "compareAtPrice": 990,
-    "rating": 5,
-    "reviewCount": 42,
+    "price": 690,
+    "compareAtPrice": 690,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/dry-figs-anjeer.jpg",
     "images": [
       "/products/dry-figs-anjeer.jpg",
@@ -325,8 +361,8 @@ export const products: Product[] = [
       "/products/posters/dry-figs-flat-lay-2k.jpg",
       "/products/dried-figs.jpg"
     ],
-    "description": "Nature's Mud Premium Dry Figs (Anjeer) are hand-selected, plump, sun-ripened mountain figs with a delightfully chewy texture and natural honeyed sweetness. Renowned in Ayurveda for their exceptional soluble fiber, iron, calcium, and digestive wellness qualities. 100% natural, chemical-free, unsulphured, and packed in luxury protective jars.",
-    "shortDescription": "100% Natural Premium Quality Dry Figs (Anjeer). Rich in fiber & minerals, nature's goodness in every bite.",
+    "description": "NaturesMud Dry Figs (Anjeer) are hand-selected, plump, sun-dried whole figs with a chewy texture and natural fruit sweetness. Naturally rich in soluble fiber, iron, calcium, and potassium. 100% natural with 0% added sugar and 0% preservatives, packed in an airtight 200 GM glass jar.",
+    "shortDescription": "100% Natural Dry Figs (Anjeer) in a 200 GM Glass Jar. Rich in dietary fiber and minerals with 0 added sugar.",
     "badges": [
       "new",
       "featured",
@@ -335,16 +371,15 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
-    "mrp": 990,
+    "mrp": 690,
     "ingredients": [
       "100% Selected Sun-Dried Natural Figs (Anjeer)"
     ],
     "benefits": [
-      "Superior soluble and insoluble dietary fiber for smooth digestive health",
-      "Rich source of natural iron to support healthy hemoglobin levels",
-      "High in bone-strengthening calcium and potassium for heart vitality",
-      "100% Natural, unsulphured, and free from preservatives",
-      "Natural stamina food recommended for morning soaking rituals"
+      "Natural soluble and insoluble dietary fiber for everyday digestion",
+      "Source of plant iron, calcium, and potassium",
+      "100% Natural with 0% added sugar and 0% preservatives",
+      "Traditional whole-food fruit for overnight soaking and snacking"
     ],
     "nutrition": [
       {
@@ -382,8 +417,17 @@ export const products: Product[] = [
       "premium"
     ],
     "official_label_name": "Dry Figs (Anjeer)",
-    "seo_title": "Dry Figs (Anjeer) Price in Nepal | Unsulphured Dried Figs | NaturesMud",
-    "meta_description": "Buy NaturesMud Dry Figs (Anjeer / अन्जीर) in Nepal (Rs. 850 / 200g Glass Jar). Plump sun-dried figs rich in dietary fiber, iron, and calcium with zero preservatives."
+    "seo_title": "Dry Figs (Anjeer) Price in Nepal | 200g | NaturesMud",
+    "meta_description": "Buy Dry Figs / Anjeer (200 GM) at Rs. 690 in Nepal. Naturally sun-dried whole figs rich in dietary fiber, iron & calcium. 0 sulfur, fast Nepal delivery.",
+    "origin_belt": "Selected Single-Origin Sun-Dried Fruits",
+    "drying_process": "Naturally Sun-Dried & Washed",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "166",
@@ -394,8 +438,8 @@ export const products: Product[] = [
     "categorySlug": "seeds",
     "price": 390,
     "compareAtPrice": 500,
-    "rating": 4.8,
-    "reviewCount": 12,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-makhana-jar.jpeg",
     "images": [
       "/products/nm-makhana-jar.jpeg",
@@ -452,20 +496,29 @@ export const products: Product[] = [
       "healthy"
     ],
     "official_label_name": "Makhana (Fox Nuts)",
-    "seo_title": "Makhana (Fox Nuts) Price in Nepal | Crunchy Lotus Seeds | NaturesMud",
-    "meta_description": "Buy NaturesMud Makhana (Fox Nuts / मखाना) in Nepal (Rs. 390 / 50g Glass Jar). Light, crunchy puffed lotus seeds rich in calcium, plant protein, and antioxidants."
+    "seo_title": "Makhana (Fox Nuts) Price in Nepal | 50g Jar | NaturesMud",
+    "meta_description": "Buy Makhana / Fox Nuts (50 GM) at Rs. 390 in Nepal. Hand-graded crunchy puffed lotus seeds for healthy roasting, kheer & baby porridge. Fast Nepal.",
+    "origin_belt": "Terai Wetland Harvesting (Mithila / Madhesh)",
+    "drying_process": "Traditional Roasting & Gentle Popping",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "1",
-    "dbId": 1,
+    "id": "182",
+    "dbId": 182,
     "slug": "dehydrated-mango",
     "name": "Dehydrated Mango",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 595,
-    "compareAtPrice": 597,
-    "rating": 4.9,
-    "reviewCount": 68,
+    "compareAtPrice": 595,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-mango-pouch.jpeg",
     "images": [
       "/products/nm-mango-pouch.jpeg",
@@ -526,8 +579,17 @@ export const products: Product[] = [
       "sugar-free"
     ],
     "official_label_name": "Dehydrated Mango",
-    "seo_title": "Dehydrated Mango Price in Nepal | No Added Sugar Dried Mango | NaturesMud",
-    "meta_description": "Buy NaturesMud Dehydrated Mango in Nepal (Rs. 595 / 100g Pouch). Naturally sweet sun-ripened Nepali mango slices dehydrated below 42°C with zero added sugar."
+    "seo_title": "Dehydrated Mango Price in Nepal | 0% Sugar | NaturesMud",
+    "meta_description": "Buy Dehydrated Mango (100 GM) at Rs. 595 in Nepal. 100% ripe Nepali mango slices with 0 added sugar & 0 sulfur dioxide. Fast Kathmandu & Nepal delivery.",
+    "origin_belt": "Terai Lowlands (Saptari & Siraha Orchards)",
+    "drying_process": "Low-Temperature Closed Chamber (<45°C)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "157",
@@ -536,10 +598,10 @@ export const products: Product[] = [
     "name": "Dehydrated Pineapple",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 495,
-    "compareAtPrice": 495,
-    "rating": 4.9,
-    "reviewCount": 45,
+    "price": 590,
+    "compareAtPrice": 590,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-pineapple-design.jpeg",
     "images": [
       "/products/nm-pineapple-design.jpeg",
@@ -547,7 +609,7 @@ export const products: Product[] = [
       "/products/dehydrated-pineapple.jpg",
       "/products/nm-pineapple-pouch.jpeg"
     ],
-    "description": "Tangy-sweet pineapple slices harvested from sun-drenched terraced hills and slowly dehydrated. Packed with natural bromelain digestive enzyme, vitamin C, and manganese for anti-inflammatory wellness.",
+    "description": "Tangy-sweet pineapple slices harvested from sun-drenched terraced hills and slowly dehydrated. Naturally contains bromelain enzyme, vitamin C, and manganese for refreshing tropical nutrition.",
     "shortDescription": "Tangy-sweet dehydrated pineapple rings rich in natural bromelain enzyme in a Standup Ziplock Pouch.",
     "badges": [
       "organic"
@@ -555,7 +617,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
-    "mrp": 495,
+    "mrp": 590,
     "ingredients": [
       "100% Pure Dehydrated Pineapple Slices"
     ],
@@ -595,8 +657,17 @@ export const products: Product[] = [
       "digestive-health"
     ],
     "official_label_name": "Dehydrated Pineapple",
-    "seo_title": "Dehydrated Pineapple Price in Nepal | Pure Dried Fruit Slices | NaturesMud",
-    "meta_description": "Buy NaturesMud Dehydrated Pineapple in Nepal (Rs. 495 / 100g Pouch). Tangy-sweet pineapple rings rich in natural bromelain digestive enzymes with zero added sugar."
+    "seo_title": "Dehydrated Pineapple Price in Nepal | 100g | NaturesMud",
+    "meta_description": "Buy Dehydrated Pineapple (100 GM) at Rs. 590 in Nepal. Pure sun-ripened pineapple rings with 0 added sugar & 0 sulfur. Fast Kathmandu & Nepal delivery.",
+    "origin_belt": "Eastern Mid-Hills & Terai (Product of Nepal 🇳🇵)",
+    "drying_process": "Low-Temperature Closed Chamber (<45°C)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "3",
@@ -607,8 +678,8 @@ export const products: Product[] = [
     "categorySlug": "dried-fruits",
     "price": 510,
     "compareAtPrice": 510,
-    "rating": 4.8,
-    "reviewCount": 42,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-apple-pouch.jpeg",
     "images": [
       "/products/nm-apple-pouch.jpeg",
@@ -627,13 +698,13 @@ export const products: Product[] = [
     "packing": "Standup Ziplock Pouch",
     "mrp": 510,
     "ingredients": [
-      "100% Pure Mountain Apple Slices (Unsulfured)"
+      "100% Pure Mountain Apple Slices (0% Added Sugar, 0% Preservatives)"
     ],
     "benefits": [
-      "High in Pectin soluble fiber to nourish beneficial gut flora",
-      "Natural Quercetin antioxidant for lung and heart health",
-      "Satisfies sweet tooth naturally without refined sugars",
-      "Great toddler-friendly healthy snack"
+      "Natural pectin soluble fiber from whole skin-on apple rings",
+      "Naturally occurring polyphenols and gentle fruit sweetness",
+      "Satisfies sweet cravings naturally without refined sugars",
+      "Clean whole-food snack for school tiffins and trekking"
     ],
     "nutrition": [
       {
@@ -665,20 +736,29 @@ export const products: Product[] = [
       "pectin"
     ],
     "official_label_name": "Dehydrated Apple",
-    "seo_title": "Dehydrated Apple Rings Price in Nepal | Himalayan Dried Apple | NaturesMud",
-    "meta_description": "Buy NaturesMud Dehydrated Apple in Nepal (Rs. 510 / 100g Pouch). Crisp unsulfured Himalayan apple rings from Mustang & Jumla rich in pectin fiber."
+    "seo_title": "Dehydrated Apple Price in Nepal | Himalayan | NaturesMud",
+    "meta_description": "Buy Dehydrated Apple (100 GM) at Rs. 510 in Nepal. Crisp Himalayan apple rings from Mustang & Jumla with 0 added sugar & 0 preservatives. Fast Nepal delivery.",
+    "origin_belt": "Himalayan Mountain Valleys (Mustang & Jumla)",
+    "drying_process": "Solar Chamber Dehydration",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "156",
-    "dbId": 156,
+    "id": "158",
+    "dbId": 158,
     "slug": "dehydrated-coconut-chips",
     "name": "Dehydrated Coconut Chips",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 475,
     "compareAtPrice": 500,
-    "rating": 4.8,
-    "reviewCount": 36,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/dehydrated-coconut-chips.jpg",
     "images": [
       "/products/dehydrated-coconut-chips.jpg",
@@ -695,7 +775,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "100 GM",
     "packing": "Standup Ziplock Pouch",
-    "mrp": 495,
+    "mrp": 500,
     "ingredients": [
       "100% Pure Dehydrated Coconut Meat Flakes"
     ],
@@ -736,8 +816,17 @@ export const products: Product[] = [
       "healthy-fats"
     ],
     "official_label_name": "Dehydrated Coconut Chips",
-    "seo_title": "Dehydrated Coconut Chips Price in Nepal | Keto MCT Flakes | NaturesMud",
-    "meta_description": "Buy NaturesMud Dehydrated Coconut Chips in Nepal (Rs. 475 / 100g Pouch). Crunchy whole coconut flakes rich in clean MCT fats and dietary fiber with zero added sugar."
+    "seo_title": "Dehydrated Coconut Chips Price in Nepal | 100g | NaturesMud",
+    "meta_description": "Buy Dehydrated Coconut Chips (100 GM) at Rs. 475 in Nepal. Crisp mature coconut flakes with 0 added sugar, 0 oil frying & 0 sulfur. Fast Nepal delivery.",
+    "origin_belt": "Single-Origin Natural Dried Coconut",
+    "drying_process": "Slow Dehydration (<45°C)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "22",
@@ -746,10 +835,10 @@ export const products: Product[] = [
     "name": "Dehydrated Papaya",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
-    "price": 395,
-    "compareAtPrice": 395,
-    "rating": 4.9,
-    "reviewCount": 54,
+    "price": 450,
+    "compareAtPrice": 450,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-papaya-flat.jpeg",
     "images": [
       "/products/nm-papaya-flat.jpeg",
@@ -759,14 +848,14 @@ export const products: Product[] = [
       "/products/papaya-2.jpg"
     ],
     "description": "Chewy, naturally sweet papaya spears gently dehydrated below 42°C to preserve live digestive enzymes (papain), vitamin C, and fiber. 0 additives, 0 preservatives, and no artificial colors.",
-    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in a 90g Standup Ziplock Pouch.",
+    "shortDescription": "Enzyme-rich dehydrated sweet papaya slices for healthy gut digestion and snacking in an 80g Standup Ziplock Pouch.",
     "badges": [
       "bestseller"
     ],
     "stock": 50,
-    "weight": "90 GM",
+    "weight": "80 GM",
     "packing": "Standup Ziplock Pouch",
-    "mrp": 395,
+    "mrp": 450,
     "ingredients": [
       "100% Natural Dehydrated Papaya Slices"
     ],
@@ -806,8 +895,17 @@ export const products: Product[] = [
       "sugar-free"
     ],
     "official_label_name": "Dehydrated Papaya",
-    "seo_title": "Dehydrated Papaya Price in Nepal | Enzyme-Rich Dried Papaya | NaturesMud",
-    "meta_description": "Buy NaturesMud Dehydrated Papaya in Nepal (Rs. 395 / 90g Pouch). Gently dried papaya spears preserving natural papain digestive enzymes and Vitamin C."
+    "seo_title": "Dehydrated Papaya Price in Nepal | 80g | NaturesMud",
+    "meta_description": "Buy Dehydrated Papaya (80 GM) at Rs. 450 in Nepal. Ripe Terai papaya spears gently dried with 0 added sugar & 0 preservatives. Fast Kathmandu & Nepal.",
+    "origin_belt": "Terai Lowlands (Chitwan & Nawalpur)",
+    "drying_process": "Low-Temperature Closed Chamber (<42°C)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "4",
@@ -818,8 +916,8 @@ export const products: Product[] = [
     "categorySlug": "dried-fruits",
     "price": 650,
     "compareAtPrice": 650,
-    "rating": 5,
-    "reviewCount": 78,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-blueberry-jar.jpeg",
     "images": [
       "/products/nm-blueberry-jar.jpeg",
@@ -830,7 +928,10 @@ export const products: Product[] = [
       "/products/nm-blueberry-shoot.jpeg",
       "/products/blueberries-brain-power.jpg",
       "/products/blueberries.jpg",
-      "/products/blueberries-2.jpg"
+      "/products/blueberries-2.jpg",
+      "/images/lifestyle/dried-blueberries-holding-jar-1.jpg",
+      "/images/lifestyle/dried-blueberries-holding-jar-2.jpg",
+      "/images/lifestyle/naturesmud-refreshing-trio-jars.jpg"
     ],
     "description": "Whole wild alpine berries harvested at high Himalayan altitudes. Naturally rich in dark-violet Anthocyanins to support screen-weary eyes, promote sharp mental focus, and deliver powerful antioxidant protection.",
     "shortDescription": "Wild alpine anthocyanin berries for brain focus, memory & screen-fatigue eye defense in a Glass Jar.",
@@ -880,20 +981,29 @@ export const products: Product[] = [
       "eye-health"
     ],
     "official_label_name": "Dried Blueberries",
-    "seo_title": "Dried Blueberries Price in Nepal | Antioxidant Berries | NaturesMud",
-    "meta_description": "Buy NaturesMud Dried Blueberries in Nepal (Rs. 650 / 100g Glass Jar). Whole dried blueberries rich in anthocyanins for eye health, focus, and breakfast bowls."
+    "seo_title": "Dried Blueberries Price in Nepal | 100g Jar | NaturesMud",
+    "meta_description": "Buy Dried Blueberries (100 GM) at Rs. 650 in Nepal. Plump whole dried blueberries rich in anthocyanins for oats, yogurt & snacking. Fast Nepal delivery.",
+    "origin_belt": "Selected Premium Whole Berries",
+    "drying_process": "Gentle Dehydration",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "155",
-    "dbId": 155,
+    "id": "7",
+    "dbId": 7,
     "slug": "dried-cranberries",
     "name": "Dried Cranberries",
     "category": "Dried Fruits",
     "categorySlug": "dried-fruits",
     "price": 415,
     "compareAtPrice": 415,
-    "rating": 4.8,
-    "reviewCount": 49,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-cranberry-jar.jpeg",
     "images": [
       "/products/nm-cranberry-jar.jpeg",
@@ -903,11 +1013,12 @@ export const products: Product[] = [
       "/products/posters/cranberries-jar-bg-2k.jpg",
       "/products/cranberries-glowing-jar.jpg",
       "/products/cranberries-infographic.jpg",
-      "/products/cranberries-prevent-uti.jpg",
-      "/products/cranberries-2.jpg"
+      "/products/cranberries-2.jpg",
+      "/images/lifestyle/dried-cranberries-holding-jar-1.jpg",
+      "/images/lifestyle/dried-cranberries-holding-jar-2.jpg"
     ],
-    "description": "Plump, ruby-red whole dried cranberries bursting with natural tart-sweet flavor and rich in Type-A Proanthocyanidins (PACs). Revered for supporting daily urinary tract vitality, active antioxidant defense, and whole-body wellness.",
-    "shortDescription": "Antioxidant-dense whole dried cranberries for urinary tract and cellular wellness in a Glass Jar.",
+    "description": "Plump, ruby-red whole dried cranberries bursting with natural tart-sweet flavor and naturally occurring Proanthocyanidins (PACs), Vitamin C, and dietary fiber. Ideal for daily snacking, oatmeal, yogurt bowls, and baking.",
+    "shortDescription": "Antioxidant-rich whole dried cranberries with natural tart-sweet flavor in a Glass Jar.",
     "badges": [
       "popular"
     ],
@@ -919,9 +1030,9 @@ export const products: Product[] = [
       "100% Premium Whole Dried Ruby Cranberries (Pure Fruit Goodness)"
     ],
     "benefits": [
-      "Rich in Type-A PACs that promote natural urinary tract balance and comfort",
-      "Packed with potent flavonoids and natural antioxidants for radiant wellness",
-      "High in Vitamin C, Vitamin E, and protective dietary fiber",
+      "Naturally rich in cranberry Proanthocyanidins (PACs) and polyphenols",
+      "Packed with flavonoids and natural fruit antioxidants",
+      "Source of Vitamin C, Vitamin E, and dietary fiber",
       "Delicious natural sweet-tart flavor, perfect for smoothies, bowls, and healthy snacking"
     ],
     "nutrition": [
@@ -954,8 +1065,17 @@ export const products: Product[] = [
       "dried-fruits"
     ],
     "official_label_name": "Dried Cranberries",
-    "seo_title": "Dried Cranberries Price in Nepal | Whole Ruby Cranberries | NaturesMud",
-    "meta_description": "Buy NaturesMud Dried Cranberries in Nepal (Rs. 415 / 100g Glass Jar). Plump ruby-red dried cranberries rich in Type-A proanthocyanidins (PACs) and antioxidants."
+    "seo_title": "Dried Cranberries Price in Nepal | 100g Jar | NaturesMud",
+    "meta_description": "Buy Dried Cranberries (100 GM) at Rs. 415 in Nepal. Ruby-red whole dried cranberries for trail mixes, salads, oats & snacking. Fast Kathmandu & Nepal.",
+    "origin_belt": "Selected Premium Whole Berries",
+    "drying_process": "Gentle Dehydration",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "6",
@@ -966,8 +1086,8 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 400,
     "compareAtPrice": 400,
-    "rating": 4.9,
-    "reviewCount": 84,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-dates-jar.jpeg",
     "images": [
       "/products/nm-dates-jar.jpeg",
@@ -978,7 +1098,15 @@ export const products: Product[] = [
       "/products/dates-powder-jar-2k.jpg",
       "/products/dates-powder-health-poster.jpg",
       "/products/dates-powder-product-shot.jpg",
-      "/products/dates-powder-100g.jpg"
+      "/products/dates-powder-100g.jpg",
+      "/images/lifestyle/dates-powder-holding-jar-1.jpg",
+      "/images/lifestyle/dates-powder-holding-jar-2.jpg",
+      "/images/lifestyle/dates-powder-healthy-sweetness.jpg",
+      "/images/lifestyle/dates-powder-goodbye-sugar.jpg",
+      "/images/lifestyle/dates-powder-store-shelf.jpg",
+      "/images/lifestyle/dates-powder-social-ad.jpg",
+      "/images/lifestyle/dates-powder-purple-bicycle.jpg",
+      "/images/lifestyle/naturesmud-refreshing-trio-jars.jpg"
     ],
     "description": "100% pure dehydrated date powder made by slowly drying and micro-grinding whole premium dates. The healthiest, unrefined natural sweetener alternative to white table sugar for children, toddlers, and fitness enthusiasts. Loaded with natural potassium, magnesium, iron, and fiber without spiking blood sugar aggressively.",
     "shortDescription": "100% unrefined natural sweetener made from whole dehydrated dates — 0% white sugar in a Glass Jar.",
@@ -1035,8 +1163,17 @@ export const products: Product[] = [
       "powders"
     ],
     "official_label_name": "Dates Powder",
-    "seo_title": "Dates Powder Price in Nepal | Natural Baby Sweetener (Khajur) | NaturesMud",
-    "meta_description": "Buy NaturesMud Dates Powder (खजुर पाउडर) in Nepal (Rs. 400 / 100g Glass Jar). 100% pure ground whole dates—the healthiest natural sugar alternative for baby food & lito."
+    "seo_title": "Dates Powder Price in Nepal | Natural Sweetener | NaturesMud",
+    "meta_description": "Buy Dates Powder (100 GM) at Rs. 400 in Nepal. Pure dry dates (Khajur) sweetener for baby lito, milk & tea. 0 refined white sugar. Fast Nepal delivery.",
+    "origin_belt": "Single-Origin Pitted Dry Dates",
+    "drying_process": "Dehydrated & Cold-Milled (<40°C)",
+    "baby_guidance": "Suitable for complementary infant feeding from 6 months, as advised by your pediatrician. Start with small single-ingredient portions (1 tsp); watch for food sensitivities; never add honey under 12 months; complementary feeding should never replace breast milk or infant formula advice.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "5",
@@ -1047,8 +1184,8 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 430,
     "compareAtPrice": 430,
-    "rating": 4.9,
-    "reviewCount": 62,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-beetroot-jar.jpeg",
     "images": [
       "/products/nm-beetroot-jar.jpeg",
@@ -1061,12 +1198,14 @@ export const products: Product[] = [
       "/products/beetroot-glass-jar.jpg",
       "/products/beetroot-poster-2k.jpg",
       "/products/beetroot-vital-blood.jpg",
-      "/products/beetroot-powder-100g.jpg"
+      "/products/beetroot-powder-100g.jpg",
+      "/images/lifestyle/beetroot-powder-ad.jpg",
+      "/images/lifestyle/beetroot-powder-pink-bicycle.jpg",
+      "/images/lifestyle/naturesmud-refreshing-trio-jars.jpg"
     ],
-    "description": "Cold-dehydrated and finely milled from 100% pure pesticide-free Nepali red beetroots (Beta vulgaris). Naturally rich in dietary nitrates, betalains, iron, potassium, and folate that support nitric oxide bioavailability, athletic endurance, vibrant culinary recipes, and everyday cardiovascular wellness—with zero added sugar, zero preservatives, and zero artificial colors.",
-    "shortDescription": "Natural dietary nitrate booster for glowing skin, blood stamina & cardiac health in a Glass Jar.",
+    "description": "Cold-dehydrated and finely milled from 100% pure Nepali red beetroots (Beta vulgaris). Naturally rich in dietary nitrates, betalains, iron, potassium, and folate for pre-workout smoothies, juices, rotis, and everyday whole-food nutrition—with zero added sugar, zero preservatives, and zero artificial colors.",
+    "shortDescription": "100% pure cold-milled Nepali red Beetroot Powder (100 GM Glass Jar) with 0 additives and 0 preservatives.",
     "badges": [
-      "organic",
       "bestseller"
     ],
     "stock": 50,
@@ -1117,20 +1256,29 @@ export const products: Product[] = [
       "powders"
     ],
     "official_label_name": "Beetroot Powder",
-    "seo_title": "Beetroot Powder Price in Nepal | 100% Pure Chukandar Powder | NaturesMud",
-    "meta_description": "Buy NaturesMud Beetroot Powder (चुकन्दर पाउडर) in Nepal (Rs. 430 / 100g Glass Jar). 100% pure cold-dehydrated red beetroot rich in natural dietary nitrates & betalains."
+    "seo_title": "Beetroot Powder Price in Nepal | 100g Jar | NaturesMud",
+    "meta_description": "Buy Beetroot Powder (100 GM) at Rs. 430 in Nepal. 100% pure cold-milled Nepali beetroot (Chukandar) for stamina drinks, rotis & smoothies. Fast delivery.",
+    "origin_belt": "Mid-Hills & Kathmandu Valley Belt (Product of Nepal 🇳🇵)",
+    "drying_process": "Low-Temperature Dehydration & Fine Cold Milling",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "14",
-    "dbId": 14,
+    "id": "10",
+    "dbId": 10,
     "slug": "himalayan-pink-salt",
     "name": "Himalayan Pink Salt",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 250,
     "compareAtPrice": 250,
-    "rating": 4.8,
-    "reviewCount": 46,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-pink-salt-jar.jpeg",
     "images": [
       "/products/nm-pink-salt-jar.jpeg",
@@ -1176,7 +1324,7 @@ export const products: Product[] = [
         "value": "0%"
       }
     ],
-    "usage": "Use as a daily seasoning for cooking, salads, detox electrolyte drinks, or bath soaks.",
+    "usage": "Use as a daily seasoning for cooking, salads, hydrating lemon-water drinks, or bath soaks.",
     "storage": "Store in a sealed glass jar in a dry location.",
     "isFeatured": true,
     "isBestSeller": false,
@@ -1189,20 +1337,29 @@ export const products: Product[] = [
       "salts-spices"
     ],
     "official_label_name": "Himalayan Pink Salt",
-    "seo_title": "Himalayan Pink Salt Price in Nepal | Unrefined Rock Salt | NaturesMud",
-    "meta_description": "Buy NaturesMud Himalayan Pink Salt (सिधे नुन) in Nepal (Rs. 250 / 200g Glass Jar). Unrefined pink rock salt containing 84+ natural trace minerals and electrolytes."
+    "seo_title": "Himalayan Pink Salt Price in Nepal | 200g | NaturesMud",
+    "meta_description": "Buy Himalayan Pink Salt / Sindhe Noon (200 GM) at Rs. 250 in Nepal. Unrefined rock salt with natural trace minerals & 0 anti-caking chemicals. Fast.",
+    "origin_belt": "Himalayan Mineral Foothills",
+    "drying_process": "Traditional Rock Crushing & Sifting",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "15",
-    "dbId": 15,
+    "id": "159",
+    "dbId": 159,
     "slug": "pure-himalayan-black-salt-bire-noon",
     "name": "Himalayan Black Salt (Bire Noon)",
     "category": "Salts & Spices",
     "categorySlug": "salts-spices",
     "price": 220,
     "compareAtPrice": 220,
-    "rating": 4.9,
-    "reviewCount": 51,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/himalayan-black-salt-digestive.jpg",
     "images": [
       "/products/himalayan-black-salt-digestive.jpg",
@@ -1255,20 +1412,29 @@ export const products: Product[] = [
       "salts-spices"
     ],
     "official_label_name": "Himalayan Black Salt (Bire Noon)",
-    "seo_title": "Himalayan Black Salt (Bire Noon) Price in Nepal | Kala Namak | NaturesMud",
-    "meta_description": "Buy NaturesMud Himalayan Black Salt (Bire Noon / बिरे नुन) in Nepal (Rs. 220 / 200g Glass Jar). Authentic volcanic mineral salt for Ayurvedic digestion and gut relief."
+    "seo_title": "Himalayan Black Salt (Bire Noon) Price in Nepal | NaturesMud",
+    "meta_description": "Buy Himalayan Black Salt / Bire Noon (200 GM) at Rs. 220 in Nepal. Authentic Ayurvedic rock salt for fruit salad, nimbu pani & chutneys. Fast Nepal.",
+    "origin_belt": "Himalayan Mineral Belt / Ayurvedic Kiln-Prepared",
+    "drying_process": "Traditional Ayurvedic Calcination with Harro/Barro",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "7",
-    "dbId": 7,
+    "id": "11",
+    "dbId": 11,
     "slug": "chia-seeds",
     "name": "Chia Seeds",
     "category": "Seeds",
     "categorySlug": "seeds",
     "price": 495,
     "compareAtPrice": 495,
-    "rating": 4.9,
-    "reviewCount": 65,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-chia-display.jpeg",
     "images": [
       "/products/nm-chia-display.jpeg",
@@ -1334,8 +1500,17 @@ export const products: Product[] = [
       "superfood"
     ],
     "official_label_name": "Chia Seeds",
-    "seo_title": "Chia Seeds Price in Nepal | Raw Unroasted Omega-3 Super Seed | NaturesMud",
-    "meta_description": "Buy NaturesMud Chia Seeds (चिया सिड्स) in Nepal (Rs. 495 / 300g Jar). 100% natural raw unroasted chia seeds rich in plant Omega-3 ALA, soluble fiber, and calcium."
+    "seo_title": "Chia Seeds Price in Nepal | 300g Pack | NaturesMud",
+    "meta_description": "Buy Chia Seeds (300 GM) at Rs. 495 in Nepal (Rs. 165/100g). Clean AAA-grade black chia seeds rich in plant Omega-3 & fiber. Fast Kathmandu & Nepal.",
+    "origin_belt": "High-Altitude Adapted Crops (Product of Nepal 🇳🇵)",
+    "drying_process": "Cleaned, Winnowed & Triple-Sifted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "8",
@@ -1346,23 +1521,23 @@ export const products: Product[] = [
     "categorySlug": "seeds",
     "price": 650,
     "compareAtPrice": 650,
-    "rating": 4.9,
-    "reviewCount": 57,
-    "image": "/images/posters/pure-pumpkin-seeds.jpg",
+    "rating": 0,
+    "reviewCount": 0,
+    "image": "/products/pumpkin-seeds-product-shot.jpg",
     "images": [
-      "/images/posters/pure-pumpkin-seeds.jpg",
-      "/products/posters/pumpkin-seeds-ad-2k.jpg",
-      "/products/posters/pumpkin-seeds-flat-lay-2k.jpg",
-      "/products/posters/pumpkin-seeds-social-2k.jpg",
-      "/products/pumpkin-seeds.jpg",
       "/products/pumpkin-seeds-product-shot.jpg",
-      "/products/pumpkin-seeds-2.jpg"
+      "/products/pumpkin-seeds.jpg",
+      "/products/pumpkin-seeds-2.jpg",
+      "/products/posters/pumpkin-seeds-flat-lay-2k.jpg",
+      "/images/lifestyle/pumpkin-seeds-holding-jar-1.jpg",
+      "/images/lifestyle/pumpkin-seeds-holding-jar-2.jpg",
+      "/images/lifestyle/pumpkin-seeds-power-poster.jpg",
+      "/images/lifestyle/pumpkin-seeds-holding-jar-3.jpg"
     ],
-    "description": "Raw AAA-grade dark-green pumpkin seed kernels (pepitas). One of the richest dietary sources of natural bioavailable Zinc, Magnesium, Tryptophan, and antioxidants for deep sleep, prostate health, and immune defense.",
-    "shortDescription": "Zinc, magnesium, and tryptophan rich raw pumpkin seeds for prostate wellness, deep sleep, and hair vitality in a 300g Plastic Jar.",
+    "description": "Raw unroasted dark-green pumpkin seed kernels (pepitas) packed in a 300 GM airtight container. A rich whole-food source of plant protein, natural zinc, magnesium, iron, and healthy fats for breakfast bowls, trail mix, and daily snacking.",
+    "shortDescription": "Raw green Pumpkin Seeds (300 GM) rich in plant protein, zinc, and magnesium with 0 added salt or oil.",
     "badges": [
-      "bestseller",
-      "organic"
+      "bestseller"
     ],
     "stock": 50,
     "weight": "300 GM",
@@ -1372,9 +1547,9 @@ export const products: Product[] = [
       "100% Pure Raw Green Pumpkin Seed Kernels (Pepitas)"
     ],
     "benefits": [
-      "High natural Zinc supports testosterone, prostate, and immune vitality",
-      "Rich in Magnesium to soothe nerves, reduce muscle cramps, and promote deep sleep",
-      "Natural source of L-Tryptophan for serotonin and melatonin synthesis",
+      "Naturally rich in plant Zinc, Magnesium, and Iron for daily nutrition",
+      "Provides 30g of plant protein per 100g serving for active lifestyles",
+      "Natural whole-food source of tryptophan and healthy unsaturated fats",
       "Crunchy, nutrient-dense snack with zero added oils or sodium"
     ],
     "nutrition": [
@@ -1412,34 +1587,47 @@ export const products: Product[] = [
       "immunity"
     ],
     "official_label_name": "Pumpkin Seeds",
-    "seo_title": "Pumpkin Seeds Price in Nepal | Raw AAA Pepitas (300g) | NaturesMud",
-    "meta_description": "Buy NaturesMud Pumpkin Seeds (फर्सीको बिया) in Nepal (Rs. 650 / 300g Jar). 100% raw unroasted green pumpkin seed kernels rich in zinc, magnesium, and plant protein."
+    "seo_title": "Pumpkin Seeds Price in Nepal | 300g Pack | NaturesMud",
+    "meta_description": "Buy Pumpkin Seeds (300 GM) at Rs. 650 in Nepal (Rs. 217/100g). Raw AAA-grade green pepitas rich in zinc, magnesium & plant protein. Fast Nepal delivery.",
+    "origin_belt": "Selected Premium Whole Squash Seeds",
+    "drying_process": "Hulled, Washed & Gently Dried",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "161",
-    "dbId": 161,
+    "id": "14",
+    "dbId": 14,
     "slug": "premium-cashewnuts",
-    "name": "Premium Cashew Nuts",
+    "name": "Raw Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "rating": 4.9,
-    "reviewCount": 53,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-cashew-new-jar.jpg",
     "images": [
       "/products/nm-cashew-new-jar.jpg",
       "/products/nm-cashew-jar2.jpeg",
       "/products/authentic-cashewnuts-roasted.jpg",
-      "/products/cashewnuts-roasted.jpg"
+      "/products/cashewnuts-roasted.jpg",
+      "/images/lifestyle/cashews-holding-jar-1.jpg",
+      "/images/lifestyle/cashews-holding-jar-2.jpg",
+      "/images/lifestyle/cashews-floating-ad.jpg",
+      "/images/lifestyle/cashews-holding-jar-3.jpg"
     ],
     "description": "Handpicked whole jumbo W240 grade cashew nuts, delightfully sweet, buttery, and crunch-packed. Rich in copper, magnesium, plant protein, and heart-healthy oleic acid for bone strength, energy metabolism, and cardiac wellness.",
-    "shortDescription": "Jumbo whole grade cashewnuts with a rich buttery crunch and heart-healthy fats in a 200g Glass Jar.",
+    "shortDescription": "Jumbo whole grade cashewnuts with a rich buttery crunch and heart-healthy fats in a 150g Glass Jar.",
     "badges": [
       "popular"
     ],
     "stock": 50,
-    "weight": "200 GM",
+    "weight": "150 GM",
     "packing": "Glass Jar",
     "mrp": 750,
     "ingredients": [
@@ -1485,21 +1673,48 @@ export const products: Product[] = [
       "protein",
       "kaju"
     ],
-    "official_label_name": "Premium Cashew Nuts",
-    "seo_title": "Premium Cashew Nuts Price in Nepal | Whole Jumbo Kaju | NaturesMud",
-    "meta_description": "Buy NaturesMud Premium Cashew Nuts (काजु) in Nepal (Rs. 750 / 200g Glass Jar). Handpicked whole jumbo W240 cashew kernels rich in magnesium, copper, and healthy fats."
+    "official_label_name": "Raw Cashew Nuts",
+    "seo_title": "Premium Cashew Nuts Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Premium Cashew Nuts / Kaju (150 GM) at Rs. 750 in Nepal. Whole raw white W240/W320 cashews for snacking, kheer, baby paste & gifting. Fast delivery.",
+    "origin_belt": "Selected Jumbo Whole Kernels (W320/W240 Grade)",
+    "drying_process": "Raw, Unsalted & Unroasted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    },
+    "variantGroup": "cashew-nuts",
+    "variantTitle": "Cashew Variants",
+    "variants": [
+      {
+        "slug": "premium-cashewnuts",
+        "label": "Raw Cashew (150 GM)",
+        "weight": "150 GM",
+        "price": 750,
+        "active": true
+      },
+      {
+        "slug": "roasted-cashewnuts",
+        "label": "Roasted & Salted (200 GM)",
+        "weight": "200 GM",
+        "price": 750,
+        "active": false
+      }
+    ]
   },
   {
-    "id": "11",
-    "dbId": 11,
+    "id": "161",
+    "dbId": 161,
     "slug": "roasted-cashewnuts",
     "name": "Roasted Cashew Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "rating": 4.8,
-    "reviewCount": 39,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-roasted-cashew-new.jpg",
     "images": [
       "/products/nm-roasted-cashew-new.jpg",
@@ -1507,15 +1722,20 @@ export const products: Product[] = [
       "/products/posters/cashews-tropical-leaves-2k.jpg",
       "/products/nm-cashew-jar2.jpeg",
       "/products/authentic-cashewnuts-roasted.jpg",
-      "/products/cashewnuts-roasted.jpg"
+      "/products/cashewnuts-roasted.jpg",
+      "/images/lifestyle/cashews-holding-jar-4.jpg",
+      "/images/lifestyle/cashews-holding-jar-5.jpg",
+      "/images/lifestyle/cashews-floating-ad.jpg",
+      "/images/lifestyle/cashews-holding-jar-1.jpg",
+      "/images/lifestyle/cashews-holding-jar-2.jpg"
     ],
     "description": "Artisan slow-roasted golden cashew nuts roasted without added oils or synthetic flavor enhancers. Delicate toasty aroma with an irresistible crisp snap, delivering pure wholesome nut satisfaction.",
-    "shortDescription": "Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 150g Glass Jar.",
+    "shortDescription": "Dry-roasted crunchy cashews packed with minerals and natural savory flavor in a 200g Glass Jar.",
     "badges": [
       "bestseller"
     ],
     "stock": 50,
-    "weight": "150 GM",
+    "weight": "200 GM",
     "packing": "Glass Jar",
     "mrp": 750,
     "ingredients": [
@@ -1557,24 +1777,52 @@ export const products: Product[] = [
       "oil-free"
     ],
     "official_label_name": "Roasted Cashew Nuts",
-    "seo_title": "Roasted Cashew Nuts Price in Nepal | Oil-Free Dry Roasted Kaju | NaturesMud",
-    "meta_description": "Buy NaturesMud Roasted Cashew Nuts (भुटेको काजु) in Nepal (Rs. 750 / 150g Glass Jar). Slow dry-roasted whole cashew nuts with zero added palm oil or trans fats."
+    "seo_title": "Roasted Cashew Nuts Price in Nepal | 150g Jar | NaturesMud",
+    "meta_description": "Buy Roasted Cashew Nuts (200 GM) at Rs. 750 in Nepal. Slow dry-roasted whole cashews seasoned with Himalayan pink salt, 0 oil frying. Fast Nepal delivery.",
+    "origin_belt": "Selected Jumbo Whole Kernels",
+    "drying_process": "Gentle Dry-Roasted & Lightly Salted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    },
+    "variantGroup": "cashew-nuts",
+    "variantTitle": "Cashew Variants",
+    "variants": [
+      {
+        "slug": "premium-cashewnuts",
+        "label": "Raw Cashew (150 GM)",
+        "weight": "150 GM",
+        "price": 750,
+        "active": false
+      },
+      {
+        "slug": "roasted-cashewnuts",
+        "label": "Roasted & Salted (200 GM)",
+        "weight": "200 GM",
+        "price": 750,
+        "active": true
+      }
+    ]
   },
   {
-    "id": "9",
-    "dbId": 9,
+    "id": "17",
+    "dbId": 17,
     "slug": "roasted-almonds",
     "name": "Roasted Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "rating": 4.9,
-    "reviewCount": 66,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/roasted-almonds-v2.jpg",
     "images": [
       "/products/roasted-almonds-v2.jpg",
-      "/products/roasted-almonds-v2.jpg"
+      "/products/roasted-almonds-v2.jpg",
+      "/images/lifestyle/raw-almonds-holding-jar.jpg"
     ],
     "description": "Crispy slow-roasted mountain almonds sealed in a glass jar for maximum crunch and flavor. Exceptionally rich in Vitamin E, plant protein, dietary fiber, and heart-protective monounsaturated fatty acids.",
     "shortDescription": "Slow-roasted crispy mountain almonds packed with Vitamin E and clean protein in a 200g Glass Jar.",
@@ -1589,9 +1837,9 @@ export const products: Product[] = [
       "100% Pure Slow-Roasted Himalayan Almonds (Oil-Free)"
     ],
     "benefits": [
-      "Rich in natural Vitamin E (alpha-tocopherol) for skin hydration and anti-aging",
-      "Plant protein and fiber provide sustained focus and appetite control",
-      "Supports healthy cholesterol levels and cardiovascular resilience",
+      "Rich in natural Vitamin E (alpha-tocopherol) for daily skin and cellular nourishment",
+      "Plant protein and fiber provide sustained focus and satiety",
+      "Naturally rich in heart-friendly monounsaturated fats and plant sterols",
       "Slow-roasted to golden perfection with zero added oils"
     ],
     "nutrition": [
@@ -1629,24 +1877,34 @@ export const products: Product[] = [
       "protein"
     ],
     "official_label_name": "Roasted Almonds",
-    "seo_title": "Roasted Almonds Price in Nepal | Oil-Free Crunchy Badam | NaturesMud",
-    "meta_description": "Buy NaturesMud Roasted Almonds (भुटेको बदाम) in Nepal (Rs. 750 / 200g Glass Jar). Crispy slow-roasted whole almonds rich in Vitamin E, fiber, and plant protein."
+    "seo_title": "Roasted Almonds Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Roasted Almonds / Badam (200 GM) at Rs. 750 in Nepal. Slow dry-roasted crunchy almonds with Himalayan pink salt, 0 oil frying. Fast Nepal delivery.",
+    "origin_belt": "Selected California/Mountain Kernels",
+    "drying_process": "Gentle Dry-Roasted & Lightly Salted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "10",
-    "dbId": 10,
+    "id": "2",
+    "dbId": 2,
     "slug": "raw-himalayan-almonds",
     "name": "Raw Almonds",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 750,
     "compareAtPrice": 750,
-    "rating": 4.9,
-    "reviewCount": 59,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-almond-jar-v2.jpg",
     "images": [
       "/products/nm-almond-jar-v2.jpg",
-      "/products/nm-almond-jar-v2.jpg"
+      "/products/nm-almond-jar-v2.jpg",
+      "/images/lifestyle/raw-almonds-holding-jar.jpg"
     ],
     "description": "Unpasteurized, premium raw almonds harvested from pristine mountain orchards. Ideal for soaking overnight (badam pani) to activate live digestive enzymes, making fresh almond milk, and fueling daily cognitive memory.",
     "shortDescription": "Raw unpasteurized mountain almonds for morning soaking and brain memory fuel in a 200g Glass Jar.",
@@ -1702,93 +1960,29 @@ export const products: Product[] = [
       "superfood"
     ],
     "official_label_name": "Raw Almonds",
-    "seo_title": "Raw Almonds Price in Nepal | Unpasteurized Whole Badam | NaturesMud",
-    "meta_description": "Buy NaturesMud Raw Almonds (काँचो बदाम) in Nepal (Rs. 750 / 200g Glass Jar). 100% natural unroasted whole almonds ideal for overnight soaking and brain nutrition."
+    "seo_title": "Raw Almonds Price in Nepal | 200g Glass Jar | NaturesMud",
+    "meta_description": "Buy Raw Almonds / Badam (200 GM) at Rs. 750 in Nepal. Unroasted sweet whole almonds for overnight soaking, kids, badam milk & gifting. Fast Nepal delivery.",
+    "origin_belt": "Selected Whole Sweet Almond Kernels",
+    "drying_process": "Raw, Unpasteurized & Chemical-Free",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "162",
-    "dbId": 162,
-    "slug": "premium-pistachios",
-    "name": "Premium Roasted Pistachios",
-    "category": "Nuts",
-    "categorySlug": "nuts",
-    "price": 880,
-    "compareAtPrice": 999,
-    "rating": 4.9,
-    "reviewCount": 44,
-    "image": "/products/posters/pistachios-product-photo-2k.jpg",
-    "images": [
-      "/products/posters/pistachios-product-photo-2k.jpg",
-      "/products/posters/pistachios-jar-display-2k.jpg",
-      "/products/posters/pistachios-exploding-2k.jpg"
-    ],
-    "description": "Vibrant green naturally opened premium pistachios packed in a glass jar. Rich in lutein, zeaxanthin, vitamin B6, and potassium to support eye protection, blood sugar balance, and cardiovascular health.",
-    "shortDescription": "Lightly roasted mountain pistachios rich in lutein, zeaxanthin, and plant protein in a 200g Glass Jar.",
-    "badges": [
-      "popular"
-    ],
-    "stock": 50,
-    "weight": "200 GM",
-    "packing": "Glass Jar",
-    "mrp": 999,
-    "ingredients": [
-      "100% Premium Naturally Opened Whole Pistachios"
-    ],
-    "benefits": [
-      "Highest concentration of Lutein & Zeaxanthin among nuts for macular eye defense",
-      "Packed with Vitamin B6 to support energy metabolism and neurotransmitter health",
-      "Complete amino acid profile for clean plant protein fueling",
-      "Delightfully nutty flavor with natural vibrant green kernels"
-    ],
-    "nutrition": [
-      {
-        "label": "Calories",
-        "value": "562 kcal / 100g"
-      },
-      {
-        "label": "Protein",
-        "value": "20g"
-      },
-      {
-        "label": "Vitamin B6",
-        "value": "1.7mg (131% DV)"
-      },
-      {
-        "label": "Potassium",
-        "value": "1025mg"
-      },
-      {
-        "label": "Dietary Fiber",
-        "value": "10.6g"
-      }
-    ],
-    "usage": "Snack directly, toss onto Mediterranean salads, or garnish festive desserts and kheer.",
-    "storage": "Store in an airtight glass container in a cool spot.",
-    "isFeatured": true,
-    "isBestSeller": false,
-    "tags": [
-      "pistachios",
-      "pista",
-      "nuts",
-      "eye-health",
-      "vitamin-b6",
-      "healthy-snack"
-    ],
-    "official_label_name": "Premium Roasted Pistachios",
-    "seo_title": "Premium Roasted Pistachios Price in Nepal | Whole Pista | NaturesMud",
-    "meta_description": "Buy NaturesMud Premium Roasted Pistachios (पिस्ता) in Nepal (Rs. 880 / 200g Glass Jar). Naturally opened whole pistachios rich in lutein, Vitamin B6, and potassium."
-  },
-  {
-    "id": "12",
-    "dbId": 12,
+    "id": "183",
+    "dbId": 183,
     "slug": "superfood-trail-mix",
     "name": "Superfood Trail Mix (Nuts & Seeds)",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 790,
-    "compareAtPrice": 790,
-    "rating": 5,
-    "reviewCount": 92,
+    "price": 690,
+    "compareAtPrice": 690,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/superfood-mix.jpg",
     "images": [
       "/products/superfood-mix.jpg",
@@ -1803,7 +1997,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
-    "mrp": 790,
+    "mrp": 690,
     "ingredients": [
       "Himalayan Almonds",
       "Jumbo Cashews",
@@ -1815,7 +2009,7 @@ export const products: Product[] = [
     "benefits": [
       "Perfect synergy of plant protein, healthy fats, fiber, and antioxidant berries",
       "Sustained physical stamina for trekking, sports, and busy workdays",
-      "Zero added sugars, artificial flavorings, or inflammatory vegetable oils",
+      "Zero added sugars, artificial flavorings, or refined vegetable oils",
       "Loved by fitness enthusiasts, hikers, and growing children"
     ],
     "nutrition": [
@@ -1853,25 +2047,34 @@ export const products: Product[] = [
       "trekking"
     ],
     "official_label_name": "Superfood Trail Mix (Nuts & Seeds)",
-    "seo_title": "Superfood Trail Mix Price in Nepal | Mixed Nuts, Seeds & Berries | NaturesMud",
-    "meta_description": "Buy NaturesMud Superfood Trail Mix in Nepal (Rs. 790 / 200g Glass Jar). Energy-dense blend of almonds, cashews, pumpkin seeds, chia seeds, blueberries & cranberries."
+    "seo_title": "Superfood Trail Mix Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Superfood Trail Mix (200 GM) at Rs. 690 in Nepal. Balanced blend of almonds, cashews, pistachios, pumpkin seeds & berries. 0 added sugar. Fast.",
+    "origin_belt": "Nepal Blend: Almonds, Cashews, Seeds & Dried Berries",
+    "drying_process": "Raw & Lightly Roasted Whole Ingredients",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "159",
-    "dbId": 159,
+    "id": "184",
+    "dbId": 184,
     "slug": "macadamia-nuts",
     "name": "Macadamia Nuts",
     "category": "Nuts",
     "categorySlug": "nuts",
     "price": 1100,
     "compareAtPrice": 1100,
-    "rating": 4.9,
-    "reviewCount": 31,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/macadamia.jpg",
     "images": [
       "/products/macadamia.jpg"
     ],
-    "description": "Velvety, rich whole macadamia kernels loaded with monounsaturated palmitoleic acid (Omega-7) and flavonoids for cellular anti-aging, brain health, and glowing skin. The queen of gourmet nuts with a melt-in-the-mouth texture.",
+    "description": "Velvety, rich whole macadamia kernels loaded with monounsaturated palmitoleic acid (Omega-7) and flavonoids for wholesome daily nutrition and culinary richness. The queen of gourmet nuts with a melt-in-the-mouth texture.",
     "shortDescription": "Silky buttery macadamia nuts packed with monounsaturated palmitoleic acid in a 200g Glass Jar.",
     "badges": [
       "new",
@@ -1885,9 +2088,9 @@ export const products: Product[] = [
       "100% Pure Raw Gourmet Macadamia Nut Kernels"
     ],
     "benefits": [
-      "Rich in rare Palmitoleic Acid (Omega-7) for collagen synthesis and skin elasticity",
-      "Highest healthy monounsaturated fat content of any nut for cardiac wellness",
-      "Natural brain food with low carbohydrate profile, perfect for keto diets",
+      "Naturally rich in monounsaturated fats (Omega-7 and Omega-9)",
+      "Creamy, buttery whole kernels with a low-carbohydrate profile",
+      "Ideal for wholesome snacking, keto bowls, and gourmet baking",
       "Luxurious buttery flavor without any added oils or salt"
     ],
     "nutrition": [
@@ -1925,20 +2128,29 @@ export const products: Product[] = [
       "healthy-fats"
     ],
     "official_label_name": "Macadamia Nuts",
-    "seo_title": "Macadamia Nuts Price in Nepal | Gourmet Keto Nut Kernels | NaturesMud",
-    "meta_description": "Buy NaturesMud Macadamia Nuts in Nepal (Rs. 1,100 / 200g Glass Jar). Buttery whole macadamia kernels rich in Omega-7 palmitoleic acid and monounsaturated fats."
+    "seo_title": "Macadamia Nuts Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Macadamia Nuts (200 GM) at Rs. 1,100 in Nepal (Rs. 550/100g). Creamy whole macadamia kernels rich in monounsaturated fats. Fast Kathmandu & Nepal.",
+    "origin_belt": "Selected Creamy Whole Nut Kernels",
+    "drying_process": "Raw, Shelled & Natural",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "154",
-    "dbId": 154,
+    "id": "162",
+    "dbId": 162,
     "slug": "virgin-coconut-oil-500ml",
     "name": "Extra Virgin Coconut Oil (500ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 1750,
     "compareAtPrice": 1750,
-    "rating": 5,
-    "reviewCount": 88,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/coconut-oil.jpg",
     "images": [
       "/products/coconut-oil.jpg",
@@ -1961,7 +2173,7 @@ export const products: Product[] = [
       "Contains 50%+ Lauric Acid (monolaurin) to bolster antiviral & antibacterial defenses",
       "Medium-Chain Triglycerides (MCTs) burn cleanly for instant cellular energy",
       "Gentle, pure whole food moisturizer for baby massage and dry skin",
-      "Deeply conditions hair follicles and prevents protein loss"
+      "Deeply conditions hair follicles and contributes to dietary support for protein loss"
     ],
     "nutrition": [
       {
@@ -1999,32 +2211,59 @@ export const products: Product[] = [
       "oils"
     ],
     "official_label_name": "Extra Virgin Coconut Oil (500ml)",
-    "seo_title": "Extra Virgin Coconut Oil (500ml) Price in Nepal | Cold-Pressed | NaturesMud",
-    "meta_description": "Buy NaturesMud Extra Virgin Coconut Oil (500ml) in Nepal (Rs. 1,750). 100% pure cold-pressed unrefined coconut oil rich in Lauric Acid for baby massage, cooking & hair."
+    "seo_title": "Extra Virgin Coconut Oil 500ml Price in Nepal | NaturesMud",
+    "meta_description": "Buy Extra Virgin Coconut Oil (500 ML) at Rs. 1,750 in Nepal. 100% cold-pressed unrefined oil for cooking, baby massage, hair & oil pulling. Fast delivery.",
+    "origin_belt": "Fresh Mature Coconut Meat",
+    "drying_process": "Cold-Pressed Extra Virgin (First Press)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    },
+    "variantGroup": "coconut-oil",
+    "variantTitle": "Bottle Size Options",
+    "variants": [
+      {
+        "slug": "virgin-coconut-oil-180ml",
+        "label": "180 ML Glass Bottle",
+        "weight": "180 ML",
+        "price": 650,
+        "active": false
+      },
+      {
+        "slug": "virgin-coconut-oil-500ml",
+        "label": "500 ML Glass Bottle",
+        "weight": "500 ML",
+        "price": 1750,
+        "active": true
+      }
+    ]
   },
   {
-    "id": "153",
-    "dbId": 153,
+    "id": "164",
+    "dbId": 164,
     "slug": "virgin-coconut-oil-180ml",
     "name": "Extra Virgin Coconut Oil (180ml)",
     "category": "Oils",
     "categorySlug": "oils",
     "price": 650,
     "compareAtPrice": 650,
-    "rating": 4.9,
-    "reviewCount": 52,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/coconut-oil.jpg",
     "images": [
       "/products/coconut-oil.jpg",
       "/products/coconut-oil-product.jpg"
     ],
     "description": "Compact handy glass jar of 100% raw cold-pressed extra virgin coconut oil. Perfectly sized for daily facial skincare, Ayurvedic morning oil pulling, desk moisturizer, travel, and infant skin nourishing.",
-    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 GM Glass Bottle.",
+    "shortDescription": "Raw unrefined wood cold-pressed extra virgin coconut oil rich in Lauric acid in a 180 ML Glass Bottle.",
     "badges": [
       "cold-pressed"
     ],
     "stock": 50,
-    "weight": "180 GM",
+    "weight": "180 ML",
     "packing": "Glass Bottle",
     "mrp": 650,
     "ingredients": [
@@ -2067,8 +2306,35 @@ export const products: Product[] = [
       "oils"
     ],
     "official_label_name": "Extra Virgin Coconut Oil (180ml)",
-    "seo_title": "Extra Virgin Coconut Oil (180ml) Price in Nepal | Cold-Pressed | NaturesMud",
-    "meta_description": "Buy NaturesMud Extra Virgin Coconut Oil (180ml) in Nepal (Rs. 650). Compact cold-pressed unrefined coconut oil jar for baby skin massage, oil pulling & skincare."
+    "seo_title": "Extra Virgin Coconut Oil 180ml Price in Nepal | NaturesMud",
+    "meta_description": "Buy Extra Virgin Coconut Oil (180 ML) at Rs. 650 in Nepal. Cold-pressed unrefined coconut oil for baby massage, skin, hair & keto coffee. Fast delivery.",
+    "origin_belt": "Fresh Mature Coconut Meat",
+    "drying_process": "Cold-Pressed Extra Virgin (First Press)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    },
+    "variantGroup": "coconut-oil",
+    "variantTitle": "Bottle Size Options",
+    "variants": [
+      {
+        "slug": "virgin-coconut-oil-180ml",
+        "label": "180 ML Glass Bottle",
+        "weight": "180 ML",
+        "price": 650,
+        "active": true
+      },
+      {
+        "slug": "virgin-coconut-oil-500ml",
+        "label": "500 ML Glass Bottle",
+        "weight": "500 ML",
+        "price": 1750,
+        "active": false
+      }
+    ]
   },
   {
     "id": "27",
@@ -2079,8 +2345,8 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 490,
     "compareAtPrice": 550,
-    "rating": 4.8,
-    "reviewCount": 38,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-carrot-jar.jpeg",
     "images": [
       "/products/nm-carrot-jar.jpeg",
@@ -2091,12 +2357,12 @@ export const products: Product[] = [
       "/products/carrot-powder-100g.jpg"
     ],
     "description": "Sun-dried and gently milled organic carrots harvested from fertile mid-hill farms of Nepal. Packed with beta-carotene (pro-vitamin A), lutein, and dietary fiber to protect eyes, support cell regeneration, and enhance everyday cooking with a mild natural sweetness.",
-    "shortDescription": "Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 100g Glass Jar.",
+    "shortDescription": "Fine organic carrot powder rich in beta-carotene for infant feeding and healthy soups in a 80g Glass Jar.",
     "badges": [
       "organic"
     ],
     "stock": 50,
-    "weight": "100 GM",
+    "weight": "80 GM",
     "packing": "Glass Jar",
     "mrp": 550,
     "ingredients": [
@@ -2139,8 +2405,17 @@ export const products: Product[] = [
       "eye-health"
     ],
     "official_label_name": "Carrot Powder",
-    "seo_title": "Carrot Powder Price in Nepal | Beta-Carotene Baby Food & Soup | NaturesMud",
-    "meta_description": "Buy NaturesMud Carrot Powder (गाजर पाउडर) in Nepal (Rs. 490 / 100g Glass Jar). 100% pure dehydrated Nepali carrots rich in Vitamin A beta-carotene for baby weaning."
+    "seo_title": "Carrot Powder Price in Nepal | 100g Jar | NaturesMud",
+    "meta_description": "Buy Carrot Powder / Gajar Powder (100 GM) at Rs. 490 in Nepal. 100% pure dehydrated Nepali carrots rich in beta-carotene for baby lito, soups & rotis.",
+    "origin_belt": "Mid-Hills & Valley Farms (Product of Nepal 🇳🇵)",
+    "drying_process": "Low-Temperature Dehydration & Fine Cold Milling",
+    "baby_guidance": "Suitable for complementary infant feeding from 6 months, as advised by your pediatrician. Start with small single-ingredient portions (1 tsp); watch for food sensitivities; never add honey under 12 months; complementary feeding should never replace breast milk or infant formula advice.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "24",
@@ -2151,8 +2426,8 @@ export const products: Product[] = [
     "categorySlug": "powders",
     "price": 510,
     "compareAtPrice": 600,
-    "rating": 5,
-    "reviewCount": 96,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-sweet-potato-jar.jpeg",
     "images": [
       "/products/nm-sweet-potato-jar.jpeg",
@@ -2222,29 +2497,37 @@ export const products: Product[] = [
       "superfood"
     ],
     "official_label_name": "Sweet Potato Powder",
-    "seo_title": "Sweet Potato Powder Price in Nepal | Baby Weaning & Pre-Workout | NaturesMud",
-    "meta_description": "Buy NaturesMud Sweet Potato Powder (सखरखण्ड पाउडर) in Nepal (Rs. 510 / 100g Glass Jar). 100% pure dehydrated Nepali sweet potato for infant porridge (6M+) & smoothies."
+    "seo_title": "Sweet Potato Powder Price in Nepal | 100g | NaturesMud",
+    "meta_description": "Buy Sweet Potato Powder / Sakharkhanda Powder (100 GM) at Rs. 510 in Nepal. 100% pure root flour for baby lito, pancakes & gym shakes. Fast Nepal delivery.",
+    "origin_belt": "Mid-Hills & Terai Organic Roots (Product of Nepal 🇳🇵)",
+    "drying_process": "Peeled, Sliced, Dehydrated (<45°C) & Cold-Milled",
+    "baby_guidance": "Suitable for complementary infant feeding from 6 months, as advised by your pediatrician. Start with small single-ingredient portions (1 tsp); watch for food sensitivities; never add honey under 12 months; complementary feeding should never replace breast milk or infant formula advice.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
     "id": "40",
     "dbId": 40,
     "slug": "pure-mountain-himalayan-shilajit-resin",
     "name": "Pure Himalayan Shilajit Resin",
-    "category": "Ayurveda",
-    "categorySlug": "ayurveda",
+    "category": "Salts & Spices",
+    "categorySlug": "salts-spices",
     "price": 1995,
     "compareAtPrice": 1995,
-    "rating": 5,
-    "reviewCount": 114,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-shilajit-jar.jpeg",
     "images": [
       "/products/nm-shilajit-jar.jpeg",
       "/products/shilajit.jpg"
     ],
-    "description": "Gold-grade 100% pure Himalayan Shilajit resin, sustainably harvested from pristine Himalayan altitudes above 16,000 feet. Purified using traditional Ayurvedic triphala water decoction. Naturally concentrated with >75% fulvic acid and 84+ ionic trace minerals to support cellular mitochondrial energy, stamina, cognitive clarity, and vitality.",
-    "shortDescription": "Authentic gold-grade Himalayan Shilajit resin with >75% fulvic acid for peak vitality in a 20g Glass Jar.",
+    "description": "100% pure Himalayan Shilajit resin harvested from high-altitude Himalayan rock crevices in Nepal and purified using traditional hot spring water filtration and sun-drying. Naturally contains fulvic compounds, humic substances, and trace rock minerals traditionally dissolved in warm water or milk.",
+    "shortDescription": "Authentic purified Himalayan Shilajit resin in a 20 GM Glass Jar with 0 additives and 0 fillers.",
     "badges": [
-      "organic",
       "bestseller"
     ],
     "stock": 50,
@@ -2252,26 +2535,26 @@ export const products: Product[] = [
     "packing": "Glass Jar",
     "mrp": 1995,
     "ingredients": [
-      "100% Pure Purified Himalayan Shilajit Resin (Gold Grade, >75% Fulvic Acid)"
+      "100% Pure Purified Himalayan Shilajit Resin"
     ],
     "benefits": [
-      "Boosts cellular ATP energy and mitochondrial oxygenation",
-      "Supports healthy stamina and vitality in men and women",
-      "Enhances cognitive memory, focus, and neuroprotective resilience",
-      "Contains 84+ bioavailable ionic trace minerals for deep nourishment"
+      "Traditional high-altitude Himalayan mineral pitch in authentic semi-solid resin form",
+      "Naturally contains fulvic compounds, humic substances, and trace rock minerals",
+      "Purified with spring water filtration with 0% fillers, 0% sugar, and 0% gum",
+      "Dissolves cleanly in warm water or milk for traditional morning preparation"
     ],
     "nutrition": [
       {
-        "label": "Fulvic Acid",
-        "value": ">75%"
+        "label": "Serving Size",
+        "value": "250mg – 300mg (Pea-sized)"
       },
       {
-        "label": "Ionic Trace Minerals",
-        "value": "84+"
+        "label": "Servings Per 20g Jar",
+        "value": "65 – 80 Servings"
       },
       {
-        "label": "Heavy Metal Tested",
-        "value": "Safety Certified"
+        "label": "Form",
+        "value": "100% Semi-Solid Resin"
       }
     ],
     "usage": "Dissolve a pea-sized portion (300-500mg) in warm water, milk, or green tea once daily in the morning.",
@@ -2288,12 +2571,21 @@ export const products: Product[] = [
       "himalayan"
     ],
     "official_label_name": "Pure Himalayan Shilajit Resin",
-    "seo_title": "Pure Himalayan Shilajit Resin Price in Nepal | Gold Grade | NaturesMud",
-    "meta_description": "Buy NaturesMud Pure Himalayan Shilajit Resin (शिलाजीत) in Nepal (Rs. 1,995). Authentic high-altitude Himalayan shilajit resin rich in fulvic acid and 84+ trace minerals."
+    "seo_title": "Pure Himalayan Shilajit Resin Price in Nepal | NaturesMud",
+    "meta_description": "Buy Pure Himalayan Shilajit Resin (20 GM) at Rs. 1,995 in Nepal. High-altitude purified resin from Dolpa & Mustang (~80 daily servings). Fast Nepal.",
+    "origin_belt": "High Himalayan Cliffs (Mustang / Dolpo, 16,000+ ft)",
+    "drying_process": "Traditional Surya-Tapi (Sun-Purified in Spring Water)",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "18",
-    "dbId": 18,
+    "id": "185",
+    "dbId": 185,
     "slug": "flax-seeds",
     "name": "Flax Seeds (Alash)",
     "category": "Seeds",
@@ -2301,8 +2593,8 @@ export const products: Product[] = [
     "price": 570,
     "compareAtPrice": 600,
     "mrp": 600,
-    "rating": 4.9,
-    "reviewCount": 18,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/flax-seeds.jpg",
     "images": [
       "/products/flax-seeds.jpg"
@@ -2355,24 +2647,38 @@ export const products: Product[] = [
       "digestion"
     ],
     "official_label_name": "Flax Seeds (Alash)",
-    "seo_title": "Flax Seeds (Alash) Price in Nepal | Omega-3 Whole Brown Alash | NaturesMud",
-    "meta_description": "Buy NaturesMud Flax Seeds (Alash / आलस) in Nepal (Rs. 570 / 200g Glass Jar). 100% pure whole brown flax seeds rich in plant Omega-3 ALA, lignans, and dietary fiber."
+    "seo_title": "Flax Seeds (Alash) Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Flax Seeds / Alash (200 GM) at Rs. 570 in Nepal. Clean whole brown flax seeds rich in plant Omega-3, lignans & fiber for chhop, smoothies & rotis.",
+    "origin_belt": "Selected Whole Alash Seeds (Product of Nepal 🇳🇵)",
+    "drying_process": "Cleaned, Winnowed & Triple-Sifted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   },
   {
-    "id": "200",
-    "dbId": 200,
+    "id": "176",
+    "dbId": 176,
     "slug": "premium-pistachio-roasted-salted",
     "name": "Premium Pistachio Roasted & Salted",
     "category": "Nuts",
     "categorySlug": "nuts",
-    "price": 1250,
-    "compareAtPrice": 1400,
-    "rating": 4.9,
-    "reviewCount": 31,
+    "price": 895,
+    "compareAtPrice": 895,
+    "rating": 0,
+    "reviewCount": 0,
     "image": "/products/nm-pistachio-jar.jpg",
     "images": [
       "/products/nm-pistachio-jar.jpg",
-      "/products/pistachios.jpg"
+      "/products/pistachios.jpg",
+      "/products/posters/pistachios-product-photo-2k.jpg",
+      "/products/posters/pistachios-jar-display-2k.jpg",
+      "/products/posters/pistachios-exploding-2k.jpg",
+      "/images/lifestyle/pistachios-holding-jar-1.jpg",
+      "/images/lifestyle/pistachios-holding-jar-2.jpg"
     ],
     "description": "Handpicked premium Afghan & Himalayan pistachios, slow-roasted to a perfect golden crunch and lightly seasoned with pure Himalayan pink salt. Naturally rich in Vitamin B6, potassium, antioxidants, and heart-healthy monounsaturated fats. Each kernel is carefully shelled-open for freshness and packed in an airtight glass jar to preserve crispness.",
     "shortDescription": "Crunchy roasted & salted pistachios packed with antioxidants, Vitamin B6 & healthy fats in a 200g Glass Jar.",
@@ -2383,7 +2689,7 @@ export const products: Product[] = [
     "stock": 50,
     "weight": "200 GM",
     "packing": "Glass Jar",
-    "mrp": 1400,
+    "mrp": 895,
     "ingredients": [
       "100% Premium Pistachio Nuts (Roasted)",
       "Himalayan Pink Salt (trace)"
@@ -2437,17 +2743,24 @@ export const products: Product[] = [
       "heart-health"
     ],
     "official_label_name": "Premium Pistachio Roasted & Salted",
-    "seo_title": "Premium Pistachio Roasted & Salted Price in Nepal | 200g Jar | NaturesMud",
-    "meta_description": "Buy NaturesMud Premium Pistachio Roasted & Salted in Nepal (Rs. 1,250 / 200g Glass Jar). Slow-roasted jumbo pistachios lightly seasoned with Himalayan pink salt."
+    "seo_title": "Premium Pistachio Price in Nepal | 200g Jar | NaturesMud",
+    "meta_description": "Buy Premium Pistachio Roasted & Salted / Pista (200 GM) at Rs. 895 in Nepal. Naturally open-shell jumbo pistachios with Himalayan pink salt. Fast.",
+    "origin_belt": "Selected Long/Round In-Shell Pistachios",
+    "drying_process": "Gentle Dry-Roasted & Himalayan Salted",
+    "baby_guidance": "Whole nuts, seeds, and concentrated superfoods are intended for older children and adults. For children under 3 years, whole nuts present a choking hazard; consult your pediatrician before introducing any new concentrated food.",
+    "proof_block": {
+      "batch_label": "Batch number, manufacturing date, and best-before date are printed on the container label.",
+      "dftqc_registration": "TODO_OWNER: Pending DFTQC registration number upload",
+      "pan_vat": "TODO_OWNER: Pending registered business PAN/VAT document upload",
+      "lab_report": "TODO_OWNER: Third-party laboratory analysis report pending from owner"
+    }
   }
 ];
 
 export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
-}
-
-export function getProductById(id: string | number): Product | undefined {
-  return products.find((p) => String(p.id) === String(id) || String(p.dbId) === String(id));
+  if (!slug) return undefined;
+  const cleanSlug = slug.toLowerCase().trim();
+  return products.find((p) => p.slug === cleanSlug);
 }
 
 export function getFeaturedProducts(): Product[] {
@@ -2462,155 +2775,84 @@ export function getProductsByCategory(categorySlug: string): Product[] {
   return products.filter((p) => p.categorySlug === categorySlug);
 }
 
-export const categories = [
-  {
-    name: 'Dried Fruits',
-    slug: 'dried-fruits',
-    description: '100% pure sun-dried fruits with zero added sugar or sulfur dioxide',
-    image: '/products/mango-pouch.jpeg',
-    count: products.filter((p) => p.categorySlug === 'dried-fruits').length,
-  },
-  {
-    name: 'Organic Powders',
-    slug: 'powders',
-    description: 'Micro-pulverized 100% organic vegetable & fruit superfood powders',
-    image: '/products/sweet-potato-jar.jpeg',
-    count: products.filter((p) => p.categorySlug === 'powders').length,
-  },
-  {
-    name: 'Mountain Nuts',
-    slug: 'nuts',
-    description: 'Premium Himalayan almonds, walnuts, and mountain crunch',
-    image: '/products/almond-jar.jpeg',
-    count: products.filter((p) => p.categorySlug === 'nuts').length,
-  },
-  {
-    name: 'Seeds & Salts',
-    slug: 'seeds',
-    description: 'Raw high-altitude superfood seeds and pure Himalayan rock salt',
-    image: '/products/pumpkin-seeds.jpg',
-    count: products.filter((p) => p.categorySlug === 'seeds').length,
-  },
-];
-
-function formatProductWeight(val: any, rawUnit?: string, fallbackWeight?: string): string {
-  if (val !== undefined && val !== null && String(val).trim() !== '') {
-    const str = String(val).trim();
-    if (/^\d+(\.\d+)?$/.test(str)) {
-      const num = Math.round(Number(str));
-      const u = rawUnit ? String(rawUnit).trim().toUpperCase() : '';
-      if (u === 'G' || u === 'GM' || u === 'GRAM' || u === 'GRAMS') return `${num} GM`;
-      if (u === 'KG') return `${num} KG`;
-      if (u === 'ML') return `${num} ML`;
-      if (u === 'L' || u === 'LTR') return `${num} L`;
-      if (u) return `${num} ${u}`;
-      if (fallbackWeight) {
-        const match = fallbackWeight.match(/[a-zA-Z]+/);
-        if (match) return `${num} ${match[0].toUpperCase()}`;
-      }
-      return `${num} GM`;
-    }
-    return str;
+export function normalizeProduct(payload: any, localFallback: Product | null = null): Product {
+  if (!payload) {
+    if (localFallback) return localFallback;
+    throw new Error('No product payload or local fallback provided');
   }
-  return fallbackWeight || '100 GM';
-}
 
-export function normalizeProduct(raw: any, fallback?: Product | null): Product {
-  if (!raw) return (fallback || undefined) as unknown as Product;
-  const slug = raw.slug || fallback?.slug || String(raw.id || '');
-  const local = fallback || getProductBySlug(slug) || products.find((p) => String(p.id) === String(raw.id) || String(p.dbId) === String(raw.id));
+  // Always use local authoritative values as baseline if available
+  const base = localFallback || (payload.slug ? getProductBySlug(payload.slug) : null);
 
-  const rawCompare = Number(raw.compare_at_price || raw.compareAtPrice || 0);
-  const rawPrice = Number(raw.price || 0);
-  const localPrice = Number(local?.price || 0);
-  const localCompare = Number(local?.compareAtPrice || local?.mrp || 0);
+  const price = Number(payload.price ?? base?.price ?? 0);
+  const compareAtPrice = Number(payload.compare_at_price ?? payload.compareAtPrice ?? base?.compareAtPrice ?? price);
+  const mrp = Number(payload.mrp ?? base?.mrp ?? compareAtPrice);
 
-  const price = rawPrice > 0 ? rawPrice : (localPrice > 0 ? localPrice : Number(raw.mrp || local?.mrp || 0));
-  const compareAtPrice = rawCompare > 0 ? (rawCompare >= price ? rawCompare : price) : (localCompare >= price ? localCompare : price);
-  const mrp = Number(raw.mrp || local?.mrp || compareAtPrice || price);
+  let rawImg = payload.image || payload.image_url || base?.image || '/products/naturesmud-all-products-100g.jpg';
+  const mainImage = resolveImageUrl(rawImg);
 
-  const localImages = Array.isArray(local?.images) && local.images.length > 0
-    ? local.images.map((img: string) => resolveImageUrl(img)).filter(Boolean)
-    : [];
-
-  const rawImages = localImages.length > 0
-    ? localImages
-    : Array.isArray(raw.images) && raw.images.length > 0
-    ? raw.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : (img.url || img.image_url || img.path || ''))).filter(Boolean)
-    : (raw.image ? [resolveImageUrl(raw.image)] : [resolveImageUrl('/products/naturesmud-all-products-100g.jpg')]);
-
-  const rawPrimaryImage = resolveImageUrl(local?.image || (rawImages.length > 0 ? rawImages[0] : null) || raw.image || '/products/naturesmud-all-products-100g.jpg');
-
-  const officialLabelName = local?.official_label_name || local?.name || raw.official_label_name || raw.name || 'NaturesMud Product';
+  const images: string[] = Array.isArray(payload.images) && payload.images.length > 0
+    ? payload.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : img.url || img.image_url))
+    : base?.images?.map((img: string) => resolveImageUrl(img)) || [mainImage];
 
   return {
-    id: String(raw.id || local?.id || slug),
-    dbId: typeof raw.id === 'number' ? raw.id : (local?.dbId || parseInt(raw.id, 10) || undefined),
-    slug: slug,
-    name: officialLabelName,
-    official_label_name: officialLabelName,
-    seo_title: local?.seo_title || raw.seo_title || raw.meta_title || undefined,
-    meta_description: local?.meta_description || raw.meta_description || undefined,
-    category: local?.category || (typeof raw.category === 'object' && raw.category !== null ? raw.category.name : raw.category) || 'Organic',
-    categorySlug: local?.categorySlug || (typeof raw.category === 'object' && raw.category !== null ? raw.category.slug : raw.categorySlug) || 'organic',
-    price: localPrice > 0 ? localPrice : price,
-    compareAtPrice: localCompare > 0 ? localCompare : compareAtPrice,
-    mrp: local?.mrp ? Number(local.mrp) : mrp,
-    rating: Number(local?.rating || raw.rating || raw.rating_avg || 4.9),
-    reviewCount: Number(local?.reviewCount || raw.reviewCount || raw.rating_count || raw.reviews_count || 24),
-    image: rawPrimaryImage,
-    images: rawImages.length > 0 ? rawImages : [rawPrimaryImage],
-    description: local?.description || raw.description || '',
-    shortDescription: local?.shortDescription || raw.shortDescription || raw.short_description || '',
-    badges: Array.isArray(local?.badges) && local.badges.length > 0 ? local.badges : (Array.isArray(raw.badges) ? raw.badges : []),
-    stock: raw.stock !== undefined ? Number(raw.stock) : (raw.stock_quantity !== undefined ? Number(raw.stock_quantity) : (local?.stock ?? 100)),
-    weight: local?.weight || formatProductWeight(raw.weight, raw.unit, local?.weight),
-    packing: local?.packing || raw.packing || 'Standup Ziplock Pouch',
-    ingredients: Array.isArray(local?.ingredients) && local.ingredients.length > 0 ? local.ingredients : (Array.isArray(raw.ingredients) ? raw.ingredients : []),
-    benefits: Array.isArray(local?.benefits) && local.benefits.length > 0 ? local.benefits : (Array.isArray(raw.benefits) ? raw.benefits : []),
-    nutrition: Array.isArray(local?.nutrition) && local.nutrition.length > 0 ? local.nutrition : (Array.isArray(raw.nutrition) ? raw.nutrition : []),
-    usage: local?.usage || raw.usage || raw.usage_instructions || '',
-    storage: local?.storage || raw.storage || raw.storage_instructions || '',
-    isFeatured: (raw.isFeatured !== undefined || raw.is_featured !== undefined)
-      ? Boolean(
-          raw.isFeatured === true ||
-          raw.isFeatured === 1 ||
-          raw.isFeatured === '1' ||
-          raw.isFeatured === 'true' ||
-          raw.is_featured === true ||
-          raw.is_featured === 1 ||
-          raw.is_featured === '1' ||
-          raw.is_featured === 'true'
-        )
-      : Boolean(local?.isFeatured),
-    isBestSeller: Boolean(local?.isBestSeller ?? raw.isBestSeller ?? raw.is_bestseller),
-    isActive: (raw.isActive !== undefined || raw.is_active !== undefined || raw.status !== undefined)
-      ? (
-          raw.isActive !== undefined
-            ? Boolean(raw.isActive === true || raw.isActive === 1 || raw.isActive === '1' || raw.isActive === 'true')
-            : raw.is_active !== undefined
-            ? (Number(raw.is_active) === 1 || raw.is_active === true || raw.is_active === '1')
-            : String(raw.status).trim().toUpperCase() === 'ACTIVE'
-        )
-      : true,
-    isPublished: (raw.isPublished !== undefined || raw.is_active !== undefined)
-      ? (
-          raw.isPublished !== undefined
-            ? Boolean(raw.isPublished === true || raw.isPublished === 1 || raw.isPublished === '1' || raw.isPublished === 'true')
-            : (Number(raw.is_active) === 1 || raw.is_active === true || raw.is_active === '1')
-        )
-      : true,
-    tags: Array.isArray(local?.tags) && local.tags.length > 0 ? local.tags : (Array.isArray(raw.tags) ? raw.tags : []),
+    id: String(payload.id || base?.id || ''),
+    dbId: payload.id ? Number(payload.id) : base?.dbId,
+    slug: String(payload.slug || base?.slug || ''),
+    name: String(payload.name || base?.name || ''),
+    official_label_name: String(payload.official_label_name || base?.official_label_name || payload.name || base?.name || ''),
+    category: typeof payload.category === 'object' ? payload.category?.name || 'Superfoods' : String(payload.category || base?.category || 'Superfoods'),
+    categorySlug: String(payload.category?.slug || payload.categorySlug || base?.categorySlug || 'powders'),
+    price,
+    compareAtPrice,
+    mrp,
+    rating: Number(payload.rating_avg ?? payload.rating ?? base?.rating ?? 0),
+    reviewCount: Number(payload.rating_count ?? payload.reviewCount ?? base?.reviewCount ?? 0),
+    image: mainImage,
+    images,
+    description: String(payload.description || base?.description || ''),
+    shortDescription: String(payload.short_description || payload.shortDescription || base?.shortDescription || ''),
+    badges: Array.isArray(payload.badges) ? payload.badges : base?.badges || [],
+    stock: Number(payload.stock ?? base?.stock ?? 50),
+    weight: String(payload.weight ? `${Math.round(Number(payload.weight))} ${(payload.unit || 'GM').toUpperCase()}` : base?.weight || '100 GM'),
+    packing: String(payload.packing || base?.packing || 'Glass Jar'),
+    ingredients: Array.isArray(payload.ingredients) ? payload.ingredients : base?.ingredients || [],
+    benefits: Array.isArray(payload.benefits) ? payload.benefits : base?.benefits || [],
+    nutrition: Array.isArray(payload.nutrition) ? payload.nutrition : base?.nutrition || [],
+    usage: String(payload.usage || base?.usage || ''),
+    storage: String(payload.storage || base?.storage || ''),
+    isFeatured: Boolean(payload.is_featured ?? payload.isFeatured ?? base?.isFeatured),
+    isBestSeller: Boolean(payload.is_best_seller ?? payload.isBestSeller ?? base?.isBestSeller),
+    tags: Array.isArray(payload.tags) ? payload.tags : base?.tags || [],
+    origin_belt: String(payload.origin_belt || base?.origin_belt || 'Product of Nepal 🇳🇵'),
+    drying_process: String(payload.drying_process || base?.drying_process || 'Low-Temperature Processing'),
+    baby_guidance: String(payload.baby_guidance || base?.baby_guidance || ''),
+    proof_block: payload.proof_block || base?.proof_block || null,
+    variants: payload.variants || base?.variants || undefined,
   };
 }
 
-/**
- * Bilingual (English + Nepali Devanagari + Romanized Nepali) and singular/plural synonym map
- * so users searching "date powder", "खजुर पाउडर", "khajur", "sakharkhanda", "bire nun", "lito", etc.
- * always find the exact matching NaturesMud products.
- */
+export function getProductById(id: string | number): Product | undefined {
+  return products.find((p) => String(p.id) === String(id) || String(p.dbId) === String(id));
+}
+
+export function mergeLiveProductsWithCatalog(rawList: any[] | null | undefined): Product[] {
+  if (!rawList || !Array.isArray(rawList) || rawList.length === 0) {
+    return products;
+  }
+  return products.map((local) => {
+    const live = rawList.find(
+      (r: any) =>
+        (r.slug && r.slug === local.slug) ||
+        (r.id && String(r.id) === String(local.id)) ||
+        (r.id && String(r.id) === String(local.dbId))
+    );
+    if (!live) return local;
+    return normalizeProduct(live, local);
+  });
+}
+
 export const PRODUCT_SEARCH_SYNONYMS: Record<string, string[]> = {
-  'dates-powder': ['date powder', 'dates powder', 'date sweetener', 'khajur', 'khajoor', 'khajur powder', 'खजुर', 'खजुर पाउडर', 'baby sweetener', 'lito', 'लिटो', 'बच्चाको खाना'],
   'dried-dates-khajoor': ['date', 'dates', 'dry dates', 'khajur', 'khajoor', 'chhuwara', 'खजुर', 'छोकडा'],
   'sweet-potato-powder': ['sweet potato', 'sweet potato powder', 'sakharkhanda', 'shakarkandi', 'सखरखण्ड', 'सखरखण्ड पाउडर', 'baby porridge', 'weaning', 'lito', 'लिटो', 'बच्चाको खाना'],
   'carrot-powder': ['carrot', 'carrots', 'carrot powder', 'gajar', 'gajar powder', 'गाजर', 'गाजर पाउडर', 'lito', 'लिटो', 'बच्चाको खाना'],
@@ -2682,14 +2924,12 @@ export function searchProductsCatalog(catalog: Product[], rawQuery: string): Pro
     const tagsLower = (product.tags || []).map((t) => t.toLowerCase());
     const synonyms = PRODUCT_SEARCH_SYNONYMS[product.slug] || [];
 
-    // 1. Exact or substring match in product name or slug
     if (nameLower === query || slugLower === query) {
       score += 100;
     } else if (nameLower.includes(query)) {
       score += 75;
     }
 
-    // 2. Exact or substring match in bilingual/synonym dictionary
     for (const syn of synonyms) {
       const synLower = syn.toLowerCase();
       if (synLower === query) {
@@ -2699,7 +2939,6 @@ export function searchProductsCatalog(catalog: Product[], rawQuery: string): Pro
       }
     }
 
-    // 3. Token-level singular/plural normalized matching
     if (queryTokens.length > 0) {
       const searchableCorpus = [
         nameLower,
@@ -2724,7 +2963,6 @@ export function searchProductsCatalog(catalog: Product[], rawQuery: string): Pro
       }
     }
 
-    // 4. Category / Tag / Description fallback
     if (score === 0) {
       if (catLower.includes(query) || tagsLower.some((t) => t.includes(query))) {
         score += 35;
@@ -2742,7 +2980,3 @@ export function searchProductsCatalog(catalog: Product[], rawQuery: string): Pro
     .sort((a, b) => b.score - a.score)
     .map((entry) => entry.product);
 }
-
-
-
-

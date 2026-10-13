@@ -80,7 +80,7 @@ export default function GoldenArtisanHero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-lg text-[#4A2E05] max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed"
             >
-              Naturally dehydrated organic fruits, wild cliff shilajit, cold-pressed oils, and wholefood superfood powders sourced directly from 280+ smallholder Nepali family farms.
+              Naturally dehydrated whole fruits, purified Himalayan shilajit, cold-pressed oils, and whole-food superfood powders sourced across Nepal’s Terai, Mid-Hill, and Alpine belts.
             </motion.p>
 
             {/* Action Buttons */}
@@ -119,7 +119,7 @@ export default function GoldenArtisanHero() {
                 </div>
                 <div>
                   <h4 className="font-heading font-extrabold text-xs text-[#2C1802]">Daily Ritual</h4>
-                  <p className="text-[11px] text-[#523306] font-medium">100% Lab Tested Purity</p>
+                  <p className="text-[11px] text-[#523306] font-medium">0% Additives · 0% Sugar</p>
                 </div>
               </div>
 

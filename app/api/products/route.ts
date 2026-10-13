@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { products as localProducts, normalizeProduct } from '@/lib/data/products';
+import { products as localProducts, normalizeProduct, mergeLiveProductsWithCatalog } from '@/lib/data/products';
 import { api } from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
@@ -19,15 +19,20 @@ export async function GET(request: Request) {
     let result = localProducts.map((p) => normalizeProduct(p));
 
     try {
-      const res = await api.get('/products', { params: { per_page: 100 } });
-      if (res.data && Array.isArray(res.data.data) && res.data.data.length > 0) {
-        result = res.data.data
-          .filter((p: any) => p.isActive !== false && p.is_active !== 0 && p.is_active !== false)
-          .map((p: any) => normalizeProduct(p));
+      const res = await api.get('/products', {
+        params: { per_page: 100, nocache: 1, _t: Date.now() },
+      });
+      const rawList = Array.isArray(res.data?.data)
+        ? res.data.data
+        : Array.isArray(res.data)
+        ? res.data
+        : [];
+      if (rawList.length > 0) {
+        result = mergeLiveProductsWithCatalog(rawList);
       }
     } catch {
       // Graceful fallback to local catalog
-      result = localProducts.map((p) => normalizeProduct(p));
+      result = mergeLiveProductsWithCatalog(null);
     }
 
     if (category && category !== 'all') {

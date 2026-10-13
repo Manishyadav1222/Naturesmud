@@ -43,7 +43,7 @@ describe('Cart Store', () => {
 
     const { items, getItemCount, getSubtotal } = useCartStore.getState();
     expect(items).toHaveLength(1);
-    expect(items[0].productId).toBe('1');
+    expect(items[0].productId).toBe('test-product');
     expect(items[0].quantity).toBe(2);
     expect(getItemCount()).toBe(2);
     expect(getSubtotal()).toBe(1000);

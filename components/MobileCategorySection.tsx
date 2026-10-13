@@ -19,7 +19,7 @@ const CATEGORY_META: Record<string, { tag: string; bgGradient: string; badgeColo
     badgeColor: 'bg-rose-100 text-rose-900 border-rose-200',
   },
   'nuts': {
-    tag: 'Grade-A Whole',
+    tag: 'Whole Kernels',
     bgGradient: 'from-emerald-500/10 via-teal-500/5 to-transparent',
     badgeColor: 'bg-emerald-100 text-emerald-900 border-emerald-200',
   },
@@ -77,7 +77,7 @@ export default function MobileCategorySection() {
             return (
               <Link
                 key={cat.id}
-                href={`/products?category=${cat.slug}`}
+                href={`/category/${cat.slug}`}
                 className="group relative flex flex-col justify-between bg-[#FAF7F2] rounded-2xl p-2 sm:p-3 lg:p-3.5 border border-[#EAE3D6]/70 shadow-2xs hover:shadow-md hover:border-[#1A3826]/40 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 overflow-hidden"
               >
                 {/* Subtle Ambient Color Glow Behind Image */}

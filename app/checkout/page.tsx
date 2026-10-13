@@ -157,7 +157,7 @@ export default function CheckoutPage() {
 
   // Revalidate applied coupon when cart subtotal changes
   useEffect(() => {
-    if (!appliedCoupon || placed) return;
+    if (!appliedCoupon || placed || subtotal === 0) return;
     const check = validateCouponCode(appliedCoupon.code, subtotal);
     if (!check.valid) {
       setAppliedCoupon(null);
@@ -167,9 +167,13 @@ export default function CheckoutPage() {
   }, [subtotal, appliedCoupon, placed]);
 
   // Delivery rules: Inside Valley Rs. 100, Outside Valley Rs. 200 (Free over Rs. 3,000)
+  // Dashain Bonus Gift: Free Himalayan Pink Salt (200 GM) on orders over Rs. 5,000+
   const freeShippingThreshold = 3000;
+  const freePinkSaltThreshold = 5000;
+  const unlockedFreeShipping = subtotal >= freeShippingThreshold;
+  const unlockedFreePinkSalt = subtotal >= freePinkSaltThreshold;
   const standardShippingFee = isValley ? 100 : 200;
-  const shipping = subtotal === 0 || subtotal >= freeShippingThreshold ? 0 : standardShippingFee;
+  const shipping = subtotal === 0 || unlockedFreeShipping ? 0 : standardShippingFee;
 
   const total = Math.max(0, subtotal - discount + shipping);
 
@@ -198,6 +202,27 @@ export default function CheckoutPage() {
     setTimeout(() => setCopiedField(null), 2500);
   };
 
+  const beginCheckoutFiredRef = useRef(false);
+
+  // Fire begin_checkout once when checkout opens with items
+  useEffect(() => {
+    if (!mounted || items.length === 0 || beginCheckoutFiredRef.current) return;
+    beginCheckoutFiredRef.current = true;
+    trackEcommerceEvent('begin_checkout', {
+      value: subtotal,
+      items: items.map((item) => {
+        const product = resolveCartProduct(item) as any;
+        return {
+          item_id: product.sku || product.slug || item.productId,
+          item_name: product.official_label_name || product.name,
+          item_category: product.categorySlug || '',
+          price: product.price,
+          quantity: item.quantity,
+        };
+      }),
+    });
+  }, [mounted, items, subtotal]);
+
   const [isValidatingCoupon, setIsValidatingCoupon] = useState(false);
 
   const handleApplyCoupon = async (e: React.FormEvent) => {
@@ -223,6 +248,11 @@ export default function CheckoutPage() {
           value: data.coupon.value,
         });
         setCouponSuccess(data.message || `Coupon "${cleanCode}" applied!`);
+        trackEcommerceEvent('coupon_apply', {
+          coupon: data.coupon.code,
+          discount_amount: data.discountAmount || 0,
+          value: subtotal,
+        });
       } else {
         setCouponError(data.message || 'Invalid or inactive coupon code.');
       }
@@ -333,6 +363,10 @@ export default function CheckoutPage() {
 
       if (resolvedItems.length === 0) throw new Error('Your cart is empty.');
 
+      const dashainGiftNote = unlockedFreePinkSalt
+        ? ' [DASHAIN GIFT: FREE Himalayan Pink Salt (200 GM) Included]'
+        : '';
+
       const orderPayload = {
         items: resolvedItems,
         shipping_name: form.name,
@@ -346,7 +380,7 @@ export default function CheckoutPage() {
         receipt_image: receiptUrl || undefined,
         payment_reference: paymentReference || undefined,
         is_valley: isValley,
-        notes: form.note,
+        notes: `${form.note || ''}${dashainGiftNote}`.trim(),
       };
 
       const order = await ordersApi.create(orderPayload);
@@ -364,6 +398,16 @@ export default function CheckoutPage() {
           weight: cartProduct.weight || '100g',
         };
       });
+
+      if (unlockedFreePinkSalt) {
+        orderItems.push({
+          name: '🎁 FREE Himalayan Pink Salt (Dashain Gift)',
+          quantity: 1,
+          price: 0,
+          image: '/products/pink-salt.jpg',
+          weight: '200 GM',
+        });
+      }
 
       setSavedOrderedItems(orderItems);
 
@@ -1325,8 +1369,27 @@ export default function CheckoutPage() {
 
           {/* Right 5 Cols: Order Summary, Coupon & Action */}
           <div className="lg:col-span-5 space-y-6 sticky top-24">
-            <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-6">
-              <h2 className="font-heading font-black text-xl text-gray-900">Order Summary</h2>
+            <div className="bg-white rounded-3xl p-6 border-2 border-amber-300/80 shadow-sm space-y-6">
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-amber-400 text-[#4a0808] text-[10px] font-black uppercase tracking-wider mb-1">
+                  🎉 Dashain Offer Active · Valid Till Dashain End
+                </span>
+                <h2 className="font-heading font-black text-xl text-gray-900">Dashain Order Summary</h2>
+              </div>
+
+              {/* Dashain Status Box */}
+              <div className="rounded-2xl bg-gradient-to-r from-[#5a0b0b] via-[#7f1d1d] to-[#1a3826] p-3.5 text-white text-xs space-y-1.5 border border-amber-400/50">
+                <p className="text-emerald-200 font-semibold">
+                  {unlockedFreeShipping
+                    ? '✓ FREE Delivery Unlocked (Order Over Rs. 3,000)!'
+                    : `🚚 Add ${formatPrice(freeShippingThreshold - subtotal)} more for FREE Delivery!`}
+                </p>
+                <p className="text-rose-200 font-semibold">
+                  {unlockedFreePinkSalt
+                    ? '🎁 FREE Himalayan Pink Salt (200 GM) Gift Unlocked!'
+                    : `🎁 Add ${formatPrice(freePinkSaltThreshold - subtotal)} more for FREE Pink Salt (200g)!`}
+                </p>
+              </div>
 
               {/* Items List */}
               <div className="space-y-3 max-h-72 overflow-y-auto divide-y divide-gray-100 pr-1">
@@ -1350,12 +1413,35 @@ export default function CheckoutPage() {
                           </p>
                         )}
                       </div>
-                      <span className="text-xs font-black text-gray-900 shrink-0">
-                        {formatPrice(product.price * item.quantity)}
-                      </span>
+                      <div className="text-right shrink-0">
+                        <span className="text-xs font-bold text-gray-900 block">
+                          {formatPrice(product.price * item.quantity)}
+                        </span>
+                      </div>
                     </div>
                   );
                 })}
+
+                {/* Complimentary Free Pink Salt Gift Row when subtotal >= Rs. 5,000 */}
+                {unlockedFreePinkSalt && (
+                  <div className="pt-3 flex items-center gap-3 bg-rose-50/70 p-2.5 rounded-xl border border-rose-200">
+                    <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-white border border-rose-200 shrink-0">
+                      <Image src="/products/pink-salt.jpg" alt="Himalayan Pink Salt" fill className="object-cover" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <span className="text-[9px] font-black uppercase tracking-wider bg-rose-600 text-white px-1.5 py-0.5 rounded-full">
+                        🎁 Free Dashain Gift
+                      </span>
+                      <p className="text-xs font-bold text-gray-900 truncate mt-0.5">
+                        Himalayan Pink Salt (200 GM)
+                      </p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <span className="text-xs font-black text-emerald-700 block">FREE</span>
+                      <span className="text-[10px] text-gray-400 line-through">Rs. 250</span>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Coupon Code Box */}
@@ -1366,7 +1452,7 @@ export default function CheckoutPage() {
                       <Tag className="w-4 h-4 text-[#2D5A27]" />
                       <div>
                         <p className="text-xs font-bold text-[#2D5A27]">
-                          Coupon {appliedCoupon.code} Applied
+                          Code {appliedCoupon.code} Applied
                         </p>
                         <p className="text-[11px] text-emerald-700">
                           Saved {formatPrice(discount)}
@@ -1392,7 +1478,7 @@ export default function CheckoutPage() {
                         type="text"
                         value={couponCodeInput}
                         onChange={(e) => setCouponCodeInput(e.target.value)}
-                        placeholder="WELCOME10 / FESTIVAL15"
+                        placeholder="Enter promo code"
                         className="flex-1 px-3 py-2 border border-gray-200 rounded-xl text-xs uppercase focus:outline-none focus:ring-2 focus:ring-[#2D5A27]"
                       />
                       <button
@@ -1418,8 +1504,8 @@ export default function CheckoutPage() {
                 </div>
 
                 {discount > 0 && (
-                  <div className="flex justify-between text-[#2D5A27] font-bold">
-                    <span>Coupon Discount</span>
+                  <div className="flex justify-between text-emerald-700 font-bold">
+                    <span>Promo Discount ({appliedCoupon?.code})</span>
                     <span>-{formatPrice(discount)}</span>
                   </div>
                 )}
@@ -1438,6 +1524,13 @@ export default function CheckoutPage() {
                     )}
                   </span>
                 </div>
+
+                {unlockedFreePinkSalt && (
+                  <div className="flex justify-between text-rose-700 font-bold">
+                    <span>🎁 Free Himalayan Pink Salt (200 GM)</span>
+                    <span>FREE (Rs. 0)</span>
+                  </div>
+                )}
 
                 <div className="flex justify-between border-t border-gray-200 pt-3 text-base font-black text-gray-900">
                   <span>Total Amount</span>

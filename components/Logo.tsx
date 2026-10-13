@@ -31,7 +31,7 @@ export function Logo({
     <div className={`relative flex items-center ${!asLink || !href ? className : ''}`}>
       <Image
         src={logoSrc}
-        alt="Naturesmud - Pure Food. Real Nature."
+        alt="NaturesMud Nepal | Himalayan Superfoods, Dried Fruits & Powders"
         width={current.width}
         height={current.height}
         priority
@@ -49,7 +49,7 @@ export function Logo({
     <Link
       href={href}
       className={`relative inline-flex items-center group transition-transform duration-300 hover:scale-105 active:scale-95 ${className}`}
-      aria-label="NaturesMud — Pure Food. Real Nature. Home"
+      aria-label="NaturesMud Nepal | Himalayan Superfoods, Dried Fruits & Powders — Home"
     >
       {imageElement}
     </Link>

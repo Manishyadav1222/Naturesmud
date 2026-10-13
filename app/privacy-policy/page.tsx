@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Privacy Policy',
-  description: 'How NaturesMud Nepal collects, uses, and protects your personal information.',
+  title: 'Privacy Policy | NaturesMud Nepal',
+  description:
+    'Learn how NaturesMud Nepal collects, protects, and respects your personal data. Transparent privacy practices for shopping, payments, and fast delivery.',
   alternates: {
     canonical: 'https://naturesmud.shop/privacy-policy',
   },

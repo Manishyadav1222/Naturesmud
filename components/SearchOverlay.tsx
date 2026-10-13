@@ -120,7 +120,7 @@ export default function SearchOverlay() {
                     </div>
                   ) : (
                     <ul className="divide-y divide-gray-50">
-                      {results.slice(0, 8).map((product) => (
+                      {results.slice(0, 8).map((product: any) => (
                         <li key={product.id}>
                           <Link
                             href={`/products/${product.slug}`}

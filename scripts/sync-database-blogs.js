@@ -16,7 +16,7 @@ async function uploadFileFtp(localPath, remotePath) {
       host: config.host,
       user: config.user,
       password: config.password,
-      secure: false
+      secure: false,
     });
     await client.uploadFrom(localPath, remotePath);
   } finally {
@@ -31,7 +31,7 @@ async function removeFileFtp(remotePath) {
       host: config.host,
       user: config.user,
       password: config.password,
-      secure: false
+      secure: false,
     });
     await client.remove(remotePath);
   } catch (e) {
@@ -43,130 +43,266 @@ async function removeFileFtp(remotePath) {
 
 function callHttps(hostHeader, reqPath) {
   return new Promise((resolve) => {
-    const req = https.request({
-      hostname: hostHeader,
-      port: 443,
-      path: reqPath,
-      method: 'GET',
-      rejectUnauthorized: false
-    }, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve({ status: res.statusCode, data: JSON.parse(data) });
-        } catch (e) {
-          resolve({ status: res.statusCode, data: data });
-        }
-      });
-    });
-    req.on('error', e => resolve({ error: e.message }));
+    const req = https.request(
+      {
+        hostname: hostHeader,
+        port: 443,
+        path: reqPath,
+        method: 'GET',
+        rejectUnauthorized: false,
+      },
+      (res) => {
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => {
+          try {
+            resolve({ status: res.statusCode, data: JSON.parse(data) });
+          } catch (e) {
+            resolve({ status: res.statusCode, data });
+          }
+        });
+      }
+    );
+    req.on('error', (e) => resolve({ error: e.message }));
     req.end();
   });
 }
 
+// Parse 28 canonical blogs from lib/data/blogs-database.ts
+const blogsPath = path.join(__dirname, '..', 'lib', 'data', 'blogs-database.ts');
+const blogsRaw = fs.readFileSync(blogsPath, 'utf8');
+const blogJsonStr =
+  blogsRaw
+    .split('export const masterBlogCatalog: ExtendedBlogPost[] = ')[1]
+    ?.split(/;\r?\n\r?\nexport const /)[0] || '[]';
+const canonicalBlogs = JSON.parse(blogJsonStr);
+
+// Parse 18 canonical recipes from lib/data/recipes.ts
+const recipesPath = path.join(__dirname, '..', 'lib', 'data', 'recipes.ts');
+const recipesRaw = fs.readFileSync(recipesPath, 'utf8');
+const recipeJsonStr =
+  recipesRaw
+    .split('export const recipes: ExtendedRecipe[] = ')[1]
+    ?.split(/;\r?\n\r?\nexport const RECIPE_REDIRECT_MAP/)[0] || '[]';
+const canonicalRecipes = JSON.parse(recipeJsonStr);
+
+const payloadJson = JSON.stringify({
+  blogs: canonicalBlogs,
+  recipes: canonicalRecipes,
+});
+
 const phpScript = `<?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
 header('Content-Type: application/json');
 
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=kathma13_natures_mud;charset=utf8mb4', 'kathma13_muduser', '2*5Qt7iSrB7-Uz', [
+$envFile = '/home8/kathma13/api.naturesmud.shop/.env';
+$dbHost = '127.0.0.1';
+$dbName = 'kathma13_natures_mud';
+$dbUser = 'kathma13_muduser';
+$dbPass = '2*5Qt7iSrB7-Uz';
+
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') !== false) {
+            list($k, $v) = explode('=', $line, 2);
+            $k = trim($k);
+            $v = trim($v, " \\t\\n\\r\\0\\x0B\\"\\'");
+            if ($k === 'DB_HOST') $dbHost = $v;
+            if ($k === 'DB_DATABASE') $dbName = $v;
+            if ($k === 'DB_USERNAME') $dbUser = $v;
+            if ($k === 'DB_PASSWORD') $dbPass = $v;
+        }
+    }
+}
+
+$pdo = new PDO("mysql:host={$dbHost};dbname={$dbName};charset=utf8mb4", $dbUser, $dbPass, [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
 
-// Check if blogs table exists
-$tables = $pdo->query("SHOW TABLES LIKE 'blogs'")->fetchAll();
-if (empty($tables)) {
-    echo json_encode(['success' => true, 'message' => 'No blogs table present in backend. Handled by frontend SSG catalog.']);
-    exit;
+$rawPayload = <<<'JSONPAYLOAD'
+${payloadJson}
+JSONPAYLOAD;
+
+$data = json_decode($rawPayload, true);
+$blogs = $data['blogs'] ?? [];
+$recipes = $data['recipes'] ?? [];
+
+$allTables = $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
+
+$blogUpserted = 0;
+$recipeUpserted = 0;
+
+foreach (['blog_posts', 'blogs'] as $bTable) {
+    if (!in_array($bTable, $allTables)) continue;
+
+    // Unpublish non-canonical/merged/discontinued blog rows (safe non-destructive update)
+    $pdo->exec("UPDATE {$bTable} SET is_published = 0");
+
+    $cols = $pdo->query("SHOW COLUMNS FROM {$bTable}")->fetchAll(PDO::FETCH_COLUMN);
+    $hasPublishedAt = in_array('published_at', $cols);
+    $hasMetaTitle = in_array('meta_title', $cols);
+    $hasReadTime = in_array('read_time', $cols);
+
+    foreach ($blogs as $b) {
+        $slug = $b['slug'];
+        $title = $b['title'];
+        $excerpt = $b['excerpt'] ?? '';
+        $contentArr = $b['content'] ?? [];
+        $contentStr = is_array($contentArr) ? implode("\\n\\n", $contentArr) : (string)$contentArr;
+        if (!empty($b['nepaliSummary'])) {
+            $contentStr = "<div lang=\\"ne\\">" . $b['nepaliSummary'] . "</div>\\n\\n" . $contentStr;
+        }
+        $img = $b['image'] ?? '/products/sweet-potato-powder-100g.jpg';
+        $author = 'NaturesMud Editorial & Kitchen Team';
+        $cat = $b['category'] ?? 'Guides';
+        $tags = json_encode($b['tags'] ?? []);
+        $metaTitle = $b['metaTitle'] ?? ($title . ' | NaturesMud');
+        $metaDesc = $b['metaDescription'] ?? $excerpt;
+        $readTime = (int)($b['readTime'] ?? 10);
+        $pubDate = !empty($b['date']) ? ($b['date'] . ' 09:00:00') : date('Y-m-d H:i:s');
+
+        $chk = $pdo->prepare("SELECT id FROM {$bTable} WHERE slug = :slug LIMIT 1");
+        $chk->execute(['slug' => $slug]);
+        $existing = $chk->fetch();
+
+        if ($existing) {
+            $sql = "UPDATE {$bTable} SET title = :title, excerpt = :excerpt, content = :content, featured_image = :img, author = :author, category = :cat, tags = :tags, is_published = 1, updated_at = NOW()";
+            $params = [
+                'title' => $title,
+                'excerpt' => $excerpt,
+                'content' => $contentStr,
+                'img' => $img,
+                'author' => $author,
+                'cat' => $cat,
+                'tags' => $tags,
+                'id' => $existing['id']
+            ];
+            if ($hasMetaTitle) {
+                $sql .= ", meta_title = :meta_title, meta_description = :meta_description";
+                $params['meta_title'] = $metaTitle;
+                $params['meta_description'] = $metaDesc;
+            }
+            if ($hasReadTime) {
+                $sql .= ", read_time = :read_time";
+                $params['read_time'] = $readTime;
+            }
+            if ($hasPublishedAt) {
+                $sql .= ", published_at = :published_at";
+                $params['published_at'] = $pubDate;
+            }
+            $sql .= " WHERE id = :id";
+            $upd = $pdo->prepare($sql);
+            $upd->execute($params);
+        } else {
+            if ($hasPublishedAt && $hasMetaTitle) {
+                $ins = $pdo->prepare("INSERT INTO {$bTable} (title, slug, excerpt, content, featured_image, author, category, tags, is_published, published_at, meta_title, meta_description, created_at, updated_at) VALUES (:title, :slug, :excerpt, :content, :img, :author, :cat, :tags, 1, :published_at, :meta_title, :meta_description, NOW(), NOW())");
+                $ins->execute([
+                    'title' => $title,
+                    'slug' => $slug,
+                    'excerpt' => $excerpt,
+                    'content' => $contentStr,
+                    'img' => $img,
+                    'author' => $author,
+                    'cat' => $cat,
+                    'tags' => $tags,
+                    'published_at' => $pubDate,
+                    'meta_title' => $metaTitle,
+                    'meta_description' => $metaDesc
+                ]);
+            } else {
+                $ins = $pdo->prepare("INSERT INTO {$bTable} (title, slug, excerpt, content, category, featured_image, author, read_time, is_published, tags, created_at, updated_at) VALUES (:title, :slug, :excerpt, :content, :cat, :img, :author, :read_time, 1, :tags, NOW(), NOW())");
+                $ins->execute([
+                    'title' => $title,
+                    'slug' => $slug,
+                    'excerpt' => $excerpt,
+                    'content' => $contentStr,
+                    'cat' => $cat,
+                    'img' => $img,
+                    'author' => $author,
+                    'read_time' => $readTime,
+                    'tags' => $tags
+                ]);
+            }
+        }
+        $blogUpserted++;
+    }
 }
 
-$blogs = [
-    [
-        'title' => "Dates Powder: Nature's Perfect Sugar Substitute for Babies, Diabetics & Every Nepali Kitchen",
-        'slug' => "dates-powder-natural-sweetener-baby-food-diabetic-nepal",
-        'excerpt' => "Swap refined white sugar forever. Pure NaturesMud Dates Powder delivers caramel-rich sweetness packed with iron, potassium, and natural fibre — making it Nepal's safest sweetener for infants from 6 months, pregnant mothers, and anyone managing blood sugar.",
-        'content' => "Pure Dates Powder is 100% single-ingredient, stone-ground from ripe Medjool and Deglet Nour dates slow-dehydrated below 45°C. With a low Glycemic Index of ~42 and zero additives, it delivers clean caramel sweetness with essential iron, potassium, and fibre. Safe for weaning infants from 6 months and a proven 1-for-1 sugar replacement for diabetics and clean-eating households across Nepal.",
-        'category' => "Nutrition & Superfoods",
-        'featured_image' => "/products/dates-powder-jar-2k.jpg",
-        'author' => "NaturesMud Nutrition Council",
-        'read_time' => 7,
-        'is_published' => 1,
-        'tags' => json_encode(["dates powder nepal", "natural sugar substitute nepal", "baby food sweetener nepal", "dates powder benefits", "organic sweetener kathmandu"])
-    ],
-    [
-        'title' => "Raw Himalayan Almonds: The Ultimate Brain Food & Immunity Shield for Nepal's High-Altitude Lifestyle",
-        'slug' => "raw-himalayan-almonds-brain-food-immunity-nutrition-nepal",
-        'excerpt' => "Discover why NaturesMud's raw, unsalted Himalayan almonds — grown at 2,000m+ altitude in pristine mountain valleys — deliver 50% more nutrient density than store-bought roasted almonds. A complete guide to benefits, daily recipes, and why they're Nepal's top brain and heart food.",
-        'content' => "Sourced from traditional orchards at 1,800m to 2,400m elevation in Nepal's mountain zones, high UV intensity and diurnal variance concentrate Vitamin E, magnesium, and polyphenols. Consuming 20-25 raw unroasted almonds daily protects neuronal cell membranes, lowers LDL cholesterol, and sustains cognitive focus in urban Kathmandu.",
-        'category' => "Superfoods & Brain Health",
-        'featured_image' => "/products/authentic-almonds.jpg",
-        'author' => "NaturesMud Nutrition Council",
-        'read_time' => 6,
-        'is_published' => 1,
-        'tags' => json_encode(["himalayan almonds nepal", "raw almonds kathmandu", "brain food nepal", "almond benefits", "heart healthy food nepal"])
-    ],
-    [
-        'title' => "Dehydrated Apple Rings: Nepal's Crunchiest Gut-Healing Snack with Zero Sugar, Preservatives or Guilt",
-        'slug' => "dehydrated-apple-rings-gut-health-fibre-snack-nepal",
-        'excerpt' => "NaturesMud's dehydrated Himalayan apple rings lock in 100% of the fruit's pectin, quercetin, and natural fibre at low-temperature — delivering a crisp, intensely flavoured snack that heals your gut, feeds your microbiome, and eliminates ultra-processed chip cravings completely.",
-        'content' => "Slow-dehydrated at low temperatures from crisp Himalayan apples, each ring preserves natural pectin and quercetin. An ideal school tiffin or office snack with zero sulfur dioxide, zero added sugars, and prebiotic fibre that nourishes beneficial gut flora.",
-        'category' => "Clean Snacking & Gut Health",
-        'featured_image' => "/products/authentic-dehydrated-apple.jpg",
-        'author' => "NaturesMud Nutrition Council",
-        'read_time' => 5,
-        'is_published' => 1,
-        'tags' => json_encode(["dehydrated apple nepal", "healthy snack kathmandu", "gut health food nepal", "sugar free snack nepal", "apple chips nepal"])
-    ],
-    [
-        'title' => "Himalayan Shilajit & Mountain Endurance: Why Nepal's Ancient Resin is Kathmandu's #1 Clean Fitness Fuel in 2026",
-        'slug' => "himalayan-shilajit-mountain-endurance-clean-fitness-nepal-kathmandu",
-        'excerpt' => "From gym athletes in Jhamsikhel to marathon runners in Pokhara, pure Himalayan Shilajit resin with 84+ ionic minerals and fulvic acid is replacing artificial caffeine and synthetic supplements across Nepal.",
-        'content' => "Shilajit contains 60%+ fulvic acid, transporting 84+ ionic trace minerals directly into cell mitochondria for sustained ATP energy production without jitters or blood pressure spikes. Harvested from 16,000+ feet in the pristine rock cliffs of Mustang and Dolpa, Himalayan shilajit is solar-cured and purified to remove heavy metals.",
-        'category' => "Ayurveda & High-Altitude Energy",
-        'featured_image' => "/products/pink-salt-moss.jpg",
-        'author' => "Dr. Ananda Sharma, MD (Himalayan Botanical Medicine)",
-        'read_time' => 8,
-        'is_published' => 1,
-        'tags' => json_encode(["himalayan shilajit nepal", "pure shilajit kathmandu", "natural pre workout nepal", "fulvic acid benefits kathmandu"])
-    ],
-    [
-        'title' => "The Great Nepali Sugar Detox: Why Kathmandu Families Are Replacing Refined Sugar with Dates Powder & Sweet Potato Powder",
-        'slug' => "nepali-sugar-detox-dates-sweet-potato-powder-baby-food-diabetes",
-        'excerpt' => "With rising lifestyle diabetes and modern baby weaning awareness, Nepali parents and health-conscious households are replacing refined white sugar with 100% dehydrated whole dates powder and sweet potato flour for daily tea, porridge (lito), and festive treats.",
-        'content' => "Unlike refined white sugar which provides empty sucrose with zero minerals, NaturesMud Dates Powder is made exclusively from whole dehydrated dates rich in dietary iron, potassium, and magnesium. Micro-pulverized Sweet Potato Powder and Dates Powder provide slow-burning complex carbohydrates and natural sweetness for baby lito, preventing infant colic and constipation.",
-        'category' => "Baby Nutrition & Clean Eating",
-        'featured_image' => "/products/dates-powder-product-shot.jpg",
-        'author' => "Pooja Karki, Senior Clinical Nutritionist (Kathmandu University)",
-        'read_time' => 9,
-        'is_published' => 1,
-        'tags' => json_encode(["baby weaning food nepal", "dates powder kathmandu", "sweet potato powder baby food nepal", "sugar substitute diabetes nepal"])
-    ]
-];
+if (in_array('recipes', $allTables)) {
+    // Unpublish non-canonical/merged/discontinued recipe rows (safe non-destructive update)
+    $pdo->exec("UPDATE recipes SET is_published = 0");
 
-$inserted = 0;
-foreach ($blogs as $b) {
-    $stmt = $pdo->prepare("INSERT INTO blogs (title, slug, excerpt, content, category, featured_image, author, read_time, is_published, tags, created_at, updated_at) 
-        VALUES (:title, :slug, :excerpt, :content, :category, :featured_image, :author, :read_time, :is_published, :tags, NOW(), NOW())
-        ON DUPLICATE KEY UPDATE 
-        title = VALUES(title),
-        excerpt = VALUES(excerpt),
-        content = VALUES(content),
-        category = VALUES(category),
-        featured_image = VALUES(featured_image),
-        author = VALUES(author),
-        read_time = VALUES(read_time),
-        is_published = 1,
-        updated_at = NOW()");
-    $stmt->execute($b);
-    $inserted++;
+    foreach ($recipes as $r) {
+        $slug = $r['slug'];
+        $title = $r['title'];
+        $cat = $r['category'] ?? 'Healthy Snack';
+        $img = $r['image'] ?? '/products/sweet-potato-powder-100g.jpg';
+        $prep = (int)($r['prepTime'] ?? 5);
+        $cook = (int)($r['cookTime'] ?? 5);
+        $servings = (int)($r['servings'] ?? 2);
+        $diff = $r['difficulty'] ?? 'Easy';
+        $excerpt = $r['excerpt'] ?? '';
+        $ingJson = json_encode($r['ingredients'] ?? []);
+        $instJson = json_encode($r['instructions'] ?? []);
+        $contentStr = is_array($r['instructions'] ?? null) ? implode("\\n\\n", $r['instructions']) : '';
+        $metaTitle = $r['metaTitle'] ?? ($title . ' | NaturesMud');
+        $metaDesc = $r['metaDescription'] ?? $excerpt;
+
+        $chk = $pdo->prepare("SELECT id FROM recipes WHERE slug = :slug LIMIT 1");
+        $chk->execute(['slug' => $slug]);
+        $existing = $chk->fetch();
+
+        if ($existing) {
+            $upd = $pdo->prepare("UPDATE recipes SET title = :title, category = :cat, featured_image = :img, prep_time = :prep, cook_time = :cook, servings = :servings, difficulty = :diff, excerpt = :excerpt, content = :content, ingredients = :ing, instructions = :inst, is_published = 1, meta_title = :meta_title, meta_description = :meta_desc, updated_at = NOW() WHERE id = :id");
+            $upd->execute([
+                'title' => $title,
+                'cat' => $cat,
+                'img' => $img,
+                'prep' => $prep,
+                'cook' => $cook,
+                'servings' => $servings,
+                'diff' => $diff,
+                'excerpt' => $excerpt,
+                'content' => $contentStr,
+                'ing' => $ingJson,
+                'inst' => $instJson,
+                'meta_title' => $metaTitle,
+                'meta_desc' => $metaDesc,
+                'id' => $existing['id']
+            ]);
+        } else {
+            $ins = $pdo->prepare("INSERT INTO recipes (title, slug, category, featured_image, prep_time, cook_time, servings, difficulty, excerpt, content, ingredients, instructions, is_published, meta_title, meta_description, created_at, updated_at) VALUES (:title, :slug, :cat, :img, :prep, :cook, :servings, :diff, :excerpt, :content, :ing, :inst, 1, :meta_title, :meta_desc, NOW(), NOW())");
+            $ins->execute([
+                'title' => $title,
+                'slug' => $slug,
+                'cat' => $cat,
+                'img' => $img,
+                'prep' => $prep,
+                'cook' => $cook,
+                'servings' => $servings,
+                'diff' => $diff,
+                'excerpt' => $excerpt,
+                'content' => $contentStr,
+                'ing' => $ingJson,
+                'inst' => $instJson,
+                'meta_title' => $metaTitle,
+                'meta_desc' => $metaDesc
+            ]);
+        }
+        $recipeUpserted++;
+    }
 }
 
 echo json_encode([
     'success' => true,
-    'message' => "Successfully synchronized {$inserted} trending blogs into backend database!",
+    'canonical_blogs_published' => count($blogs),
+    'canonical_recipes_published' => count($recipes),
+    'blog_operations' => $blogUpserted,
+    'recipe_operations' => $recipeUpserted,
     'timestamp' => date('Y-m-d H:i:s')
 ]);
 `;
@@ -180,13 +316,16 @@ async function main() {
   const remotePhpPath = '/api.naturesmud.shop/public/sync_db_blogs.php';
   await uploadFileFtp(localPhpPath, remotePhpPath);
 
-  console.log('2. Triggering database blogs sync via HTTPS...');
+  console.log('2. Triggering database blogs & recipes sync via HTTPS...');
   const res = await callHttps('api.naturesmud.shop', '/sync_db_blogs.php');
-  console.log('   Response:', JSON.stringify(res.data));
+  console.log('   Response:', JSON.stringify(res.data, null, 2));
 
   console.log('3. Cleaning up temporary remote script...');
   await removeFileFtp(remotePhpPath);
   console.log('   Done.');
 }
 
-main().catch(console.error);
+main().catch((err) => {
+  console.error('Fatal blog/recipe sync error:', err);
+  process.exit(1);
+});

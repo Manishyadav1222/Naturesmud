@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Heart, ShoppingBag, Eye, Star, Leaf, BadgeCheck, Zap, Check } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, Star, Leaf, BadgeCheck, Zap, Check, Sparkles, Gift, Truck } from 'lucide-react';
 import { Product } from '@/lib/types';
 import { formatPrice, calculateDiscount, resolveImageUrl } from '@/lib/utils';
 import { useCartStore } from '@/lib/store/cart-store';
@@ -26,16 +26,18 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const discount = calculateDiscount(product.price, product.compareAtPrice);
   const badges = Array.isArray(product.badges) ? product.badges : [];
   const frontImg = resolveImageUrl(product.image);
-  const secondaryImg = Array.isArray(product.images) && product.images.length > 1 && product.images[1] !== product.image
+  const initialSecondaryImg = Array.isArray(product.images) && product.images.length > 1 && product.images[1] !== product.image
     ? resolveImageUrl(product.images[1])
     : null;
 
   const [imgSrc, setImgSrc] = useState(() => frontImg);
+  const [secondaryImg, setSecondaryImg] = useState<string | null>(() => initialSecondaryImg);
   const [justAdded, setJustAdded] = useState(false);
 
   useEffect(() => {
     setImgSrc(frontImg);
-  }, [frontImg]);
+    setSecondaryImg(initialSecondaryImg);
+  }, [frontImg, initialSecondaryImg]);
 
   // Format category name cleanly
   const categoryName = typeof product.category === 'object' && product.category !== null
@@ -52,7 +54,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   // Fallback description tailored for luxury apothecary feel
   const displayDesc = product.shortDescription ||
     (product.description && product.description.slice(0, 110) + '...') ||
-    '100% pure Himalayan single-ingredient botanical nutrition, lab-tested with zero additives.';
+    '100% pure Himalayan single-ingredient botanical nutrition with zero additives.';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -75,7 +77,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
 
   return (
     <div
-      className="group relative bg-white rounded-2xl overflow-hidden border border-[#EBE4D5] hover:border-[#C5A059] shadow-soft hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+      className="group relative bg-white rounded-2xl overflow-hidden border border-[#EBE4D5] hover:border-amber-400 shadow-soft hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
     >
       {/* Top Media Container */}
       <div className="relative">
@@ -85,9 +87,16 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             src={imgSrc}
             alt={product.name}
             fill
+            unoptimized
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             priority={index < 4}
-            onError={() => setImgSrc('/products/naturesmud-all-products-100g.jpg')}
+            onError={() => {
+              if (secondaryImg && imgSrc !== secondaryImg) {
+                setImgSrc(secondaryImg);
+              } else {
+                setImgSrc('/products/naturesmud-all-products-100g.jpg');
+              }
+            }}
             className={classNames(
               'object-cover transition-all duration-700',
               secondaryImg
@@ -102,7 +111,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
               src={secondaryImg}
               alt={`${product.name} alternate view`}
               fill
+              unoptimized
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              onError={() => setSecondaryImg(null)}
               className="object-cover max-lg:opacity-100 max-lg:scale-100 lg:opacity-0 lg:group-hover:opacity-100 lg:scale-95 lg:group-hover:scale-100 transition-all duration-700"
             />
           )}
@@ -110,12 +121,12 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Top Left Badges */}
           <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
             {discount && (
-              <span className="bg-red-600 text-white text-[10px] sm:text-xs font-black px-2 py-0.5 sm:py-1 rounded-full shadow-sm shadow-red-600/30">
-                -{discount}% OFF
+              <span className="bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm w-fit">
+                -{discount}%
               </span>
             )}
             {badges.includes('bestseller') && (
-              <span className="bg-[#143020] text-[#E8D5A3] border border-gold/40 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
+              <span className="bg-[#143020] text-[#E8D5A3] border border-gold/40 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs w-fit">
                 ⭐ Bestseller
               </span>
             )}
@@ -177,7 +188,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             {product.isBestSeller && (
               <span className="inline-flex items-center gap-0.5 text-[10px] font-bold text-amber-700">
                 <BadgeCheck className="w-3.5 h-3.5 text-amber-600" />
-                Verified
+                Popular
               </span>
             )}
           </div>
@@ -189,27 +200,46 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             </h3>
           </Link>
 
-          {/* Rating Capsule: ★ 4.9 (64) */}
-          <div className="mt-1 flex items-center gap-1.5">
-            <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-bold">
-              <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-              <span>{product.rating ? Number(product.rating).toFixed(1) : '4.9'}</span>
+          {/* Rating Capsule (only when real reviews exist) or Verified Purity Pill */}
+          {product.reviewCount && product.reviewCount > 0 ? (
+            <div className="mt-1 flex items-center gap-1.5">
+              <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-bold">
+                <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                <span>{Number(product.rating).toFixed(1)}</span>
+              </div>
+              <span className="text-[11px] text-gray-500 font-medium">
+                ({product.reviewCount} reviews)
+              </span>
             </div>
-            <span className="text-[11px] text-gray-500 font-medium">
-              ({product.reviewCount || 64} reviews)
-            </span>
-          </div>
+          ) : (
+            <div className="mt-1 flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-emerald-50/80 text-emerald-900 border border-emerald-200/60 text-[10px] font-semibold">
+                0% Added Sugar · 0 Preservatives
+              </span>
+            </div>
+          )}
 
           {/* Descriptive Subtitle / Benefit */}
           <p className="mt-1.5 text-xs text-ink/65 line-clamp-2 leading-relaxed">
             {displayDesc}
           </p>
+
+          {/* Glowing Dashain Offer Perks Pill on Every Card */}
+          <div className="mt-2 rounded-lg bg-gradient-to-r from-amber-50 via-red-50/80 to-amber-50 border border-amber-300/70 px-2 py-1 text-[10px] font-bold text-[#7f1d1d] flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+            <span className="inline-flex items-center gap-0.5 text-emerald-800">
+              <Truck className="w-2.5 h-2.5" /> Free Del &gt;3K
+            </span>
+            <span className="text-amber-500">·</span>
+            <span className="inline-flex items-center gap-0.5 text-rose-800">
+              <Gift className="w-2.5 h-2.5" /> Free Salt &gt;5K
+            </span>
+          </div>
         </div>
 
         {/* Price & Action Buttons */}
-        <div className="mt-3 pt-2.5 border-t border-ink/8">
+        <div className="mt-2.5 pt-2.5 border-t border-ink/8">
           {/* Price Row */}
-          <div className="flex items-center justify-between gap-2 mb-2.5">
+          <div className="flex items-center justify-between gap-1.5 mb-2.5 flex-wrap">
             <div className="flex items-baseline gap-1.5">
               <span className="font-heading font-black text-[#143020] text-base sm:text-lg">
                 {formatPrice(product.price)}
@@ -220,6 +250,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
                 </span>
               )}
             </div>
+            <span className="text-[10px] font-semibold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
+              {displayWeight}
+            </span>
           </div>
 
           {/* Action Buttons: ADD & BUY NOW */}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import './globals.css';
 import StorefrontShell from '@/components/StorefrontShell';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
 import { siteConfig } from '@/lib/site';
 
 import { Toaster } from 'sonner';
@@ -22,35 +23,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'NaturesMud Nepal | Pure Himalayan Superfoods, Dehydrated Fruits, Powders & Nuts',
+    default: 'NaturesMud Nepal | Himalayan Superfoods, Dried Fruits & Powders',
     template: '%s | NaturesMud Nepal',
   },
   applicationName: 'NaturesMud',
   description:
-    'NaturesMud Nepal delivers 100% pure naturally dehydrated fruits, freeze-dried & solar-dried superfood powders (Avocado, Banana, Strawberry, Moringa, Sweet Potato, Beetroot, Dates, Carrot), mountain nuts, seeds, cold-pressed virgin coconut oil & Himalayan salts across Kathmandu, Pokhara & all of Nepal. 0 Additives · 0 Preservatives · 0 Added Sugar.',
-  keywords: [
-    'NaturesMud',
-    'NaturesMud Nepal',
-    "Nature's Mud",
-    'Nature Mud Nepal',
-    'dehydrated fruits Nepal',
-    'superfood powders Nepal',
-    'freeze dried avocado powder Nepal',
-    'strawberry powder Nepal',
-    'banana powder Nepal',
-    'moringa powder Nepal',
-    'sweet potato powder Nepal',
-    'beetroot powder Nepal',
-    'dates powder Nepal',
-    'carrot powder Nepal',
-    'baby weaning food powder Nepal',
-    'healthy snacks Kathmandu',
-    'Himalayan Shilajit resin Nepal',
-    'cold pressed virgin coconut oil Nepal',
-    'chia seeds price in Nepal',
-    'pumpkin seeds Nepal',
-    'raw almonds price in Nepal',
-  ],
+    'Shop 100% pure dehydrated fruits, superfood powders, mountain nuts & cold-pressed oils in Nepal. 0 additives, 0 added sugar. Fast delivery across Nepal.',
   alternates: {
     canonical: './',
   },
@@ -75,23 +53,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteConfig.url,
     siteName: 'NaturesMud Nepal',
-    title: 'NaturesMud Nepal | Pure Himalayan Superfoods, Dehydrated Fruits, Powders & Nuts',
+    title: 'NaturesMud Nepal | Himalayan Superfoods, Dried Fruits & Powders',
     description:
-      'Shop 100% pure Himalayan dehydrated fruits, superfood powders (Avocado, Banana, Strawberry, Moringa, Sweet Potato, Dates, Beetroot), mountain nuts, seeds & cold-pressed oils delivered across Nepal. 0 Additives · 0 Preservatives.',
+      'Shop 100% pure dehydrated fruits, superfood powders, mountain nuts & cold-pressed oils in Nepal. 0 additives, 0 added sugar. Fast delivery across Nepal.',
     images: [
       {
         url: '/naturesmud-og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'NaturesMud Nepal — Pure Himalayan Superfoods, Dehydrated Fruits & Powders',
+        alt: 'NaturesMud Nepal — Pure Superfoods, Dehydrated Fruits & Powders',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NaturesMud Nepal | Pure Himalayan Superfoods, Dehydrated Fruits & Powders',
+    title: 'NaturesMud Nepal | Himalayan Superfoods, Dried Fruits & Powders',
     description:
-      '100% pure Himalayan dehydrated fruits, superfood powders, mountain nuts & seeds delivered across Kathmandu, Pokhara & all 77 districts of Nepal.',
+      'Shop 100% pure dehydrated fruits, superfood powders, mountain nuts & cold-pressed oils in Nepal. 0 additives, 0 added sugar. Fast delivery across Nepal.',
     images: ['/naturesmud-og-image.jpg'],
   },
   verification: {
@@ -104,6 +82,9 @@ export const metadata: Metadata = {
     'geo.position': '27.7172;85.3240',
     'ICBM': '27.7172, 85.3240',
     'target_country': 'Nepal',
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : {}),
   },
   robots: {
     index: true,
@@ -156,7 +137,7 @@ const jsonLd = {
       email: siteConfig.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Kathmandu',
+        streetAddress: 'Baneshwor',
         addressLocality: 'Kathmandu',
         addressRegion: 'Bagmati Province',
         postalCode: '44600',
@@ -222,8 +203,8 @@ const jsonLd = {
       },
     },
     {
-      '@type': ['OnlineStore', 'Store'],
-      '@id': `${siteConfig.url}/#store`,
+      '@type': ['OnlineStore', 'HealthFoodStore', 'LocalBusiness'],
+      '@id': `${siteConfig.url}/#localbusiness`,
       name: 'NaturesMud Nepal',
       parentOrganization: {
         '@id': `${siteConfig.url}/#organization`,
@@ -235,17 +216,72 @@ const jsonLd = {
       paymentAccepted: 'Cash on Delivery, FonePay QR, eSewa, Khalti, Bank Transfer',
       priceRange: 'NPR 220 - NPR 1995',
       image: `${siteConfig.url}/products/naturesmud-all-products-100g.jpg`,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 27.6915,
+        longitude: 85.342,
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      ],
       areaServed: {
         '@type': 'Country',
         name: 'Nepal',
       },
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Kathmandu',
+        streetAddress: 'Baneshwor',
         addressLocality: 'Kathmandu',
         addressRegion: 'Bagmati Province',
         postalCode: '44600',
         addressCountry: 'NP',
+      },
+      sameAs: [
+        siteConfig.social.facebook,
+        siteConfig.social.instagram,
+        siteConfig.social.tiktok,
+        siteConfig.social.youtube,
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'NaturesMud Nepal Canonical Product Categories',
+        itemListElement: [
+          {
+            '@type': 'OfferCatalog',
+            name: 'Pure Fruit & Vegetable Powders in Nepal',
+            url: `${siteConfig.url}/category/powders`,
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Dehydrated Fruits & Berries in Nepal',
+            url: `${siteConfig.url}/category/dried-fruits`,
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Premium Nuts & Dry Fruits in Nepal',
+            url: `${siteConfig.url}/category/nuts`,
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Superfood Seeds & Makhana in Nepal',
+            url: `${siteConfig.url}/category/seeds`,
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Cold-Pressed Coconut Oils & Rosemary in Nepal',
+            url: `${siteConfig.url}/category/oils`,
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Himalayan Salts & Shilajit Resin in Nepal',
+            url: `${siteConfig.url}/category/salts-spices`,
+          },
+        ],
       },
     },
     {
@@ -256,49 +292,49 @@ const jsonLd = {
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Freeze Dried Avocado Powder (80g)',
+          name: 'Freeze Dried Avocado Powder',
           url: `${siteConfig.url}/products/freeze-dried-avocado-powder`,
         },
         {
           '@type': 'ListItem',
           position: 2,
-          name: 'Freeze Dried Strawberry Powder (80g)',
+          name: 'Freeze Dried Strawberry Powder',
           url: `${siteConfig.url}/products/strawberry-powder`,
         },
         {
           '@type': 'ListItem',
           position: 3,
-          name: 'Pure Banana Powder (100g)',
+          name: 'Banana Powder',
           url: `${siteConfig.url}/products/banana-powder`,
         },
         {
           '@type': 'ListItem',
           position: 4,
-          name: 'Organic Moringa Leaf Powder (100g)',
+          name: 'Moringa Leaf Powder',
           url: `${siteConfig.url}/products/moringa-leaf-powder`,
         },
         {
           '@type': 'ListItem',
           position: 5,
-          name: 'Sweet Potato Powder (100g)',
+          name: 'Sweet Potato Powder',
           url: `${siteConfig.url}/products/sweet-potato-powder`,
         },
         {
           '@type': 'ListItem',
           position: 6,
-          name: 'Natural Dates Powder Sweetener (100g)',
+          name: 'Dates Powder',
           url: `${siteConfig.url}/products/dates-powder`,
         },
         {
           '@type': 'ListItem',
           position: 7,
-          name: 'Dehydrated Mango Slices (100g)',
+          name: 'Dehydrated Mango',
           url: `${siteConfig.url}/products/dehydrated-mango`,
         },
         {
           '@type': 'ListItem',
           position: 8,
-          name: 'Pure Mountain Himalayan Shilajit Resin (20g)',
+          name: 'Pure Mountain Himalayan Shilajit Resin',
           url: `${siteConfig.url}/products/pure-mountain-himalayan-shilajit-resin`,
         },
       ],
@@ -324,6 +360,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-body bg-[#FAF7F2] text-[#242220] antialiased overflow-x-clip w-full max-w-full">
+        <AnalyticsTracker />
         <StorefrontShell>{children}</StorefrontShell>
         <Toaster position="bottom-right" richColors />
       </body>

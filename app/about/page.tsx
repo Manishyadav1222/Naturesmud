@@ -5,103 +5,89 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Mountain,
   Sun,
   Sprout,
   ShieldCheck,
-  Award,
-  Truck,
-  Heart,
-  Users,
   CheckCircle2,
   ArrowRight,
   Sparkles,
   MapPin,
   Leaf,
   Layers,
-  Zap,
   Play,
-  RotateCcw,
   Store,
   Building2,
-  Globe,
+  FileCheck2,
+  Package,
 } from 'lucide-react';
 import BlogLanguageSwitcher from '@/components/BlogLanguageSwitcher';
 
 const regionsData = [
   {
     id: 'terai',
-    beltNameEn: '🌾 Terai Organic Lowlands',
-    beltNameNp: '🌾 तराई जैविक फाँट',
+    beltNameEn: '🌾 Terai Lowland Farms',
+    beltNameNp: '🌾 तराई कृषि फाँट',
     nepaliSubtitle: '१००–३०० मिटर उचाइ (चितवन, झापा, नवलपुर, सर्लाही)',
     altitudeEn: '100m – 300m Altitude',
     altitudeNp: '१००–३०० मिटर उचाइ',
     locationsEn: 'Chitwan · Jhapa · Nawalpur · Sarlahi',
     locationsNp: 'चितवन · झापा · नवलपुर · सर्लाही',
     primaryProducts: [
-      { nameEn: 'Organic Sweet Potato Powder (100g)', nameNp: 'अर्ग्यानिक सखरखण्ड पाउडर (१००g)', image: '/products/sweet-potato-powder-100g.jpg', slug: 'sweet-potato-powder' },
-      { nameEn: 'Organic Carrot Powder (100g)', nameNp: 'अर्ग्यानिक गाजर पाउडर (१००g)', image: '/products/carrot-powder-100g.jpg', slug: 'carrot-powder' },
-      { nameEn: 'Sun-Dried Sweet Papaya (100g)', nameNp: 'डिहाइड्रेटेड गुलियो मेवा (१००g)', image: '/products/papaya.jpg', slug: 'dehydrated-papaya' },
-      { nameEn: 'Natural Dates Powder (100g)', nameNp: 'प्राकृतिक खजुर पाउडर (१००g)', image: '/products/dates-powder-100g.jpg', slug: 'dates-powder' },
+      { nameEn: 'Sweet Potato Powder', nameNp: 'सखरखण्ड पाउडर', image: '/products/sweet-potato-powder-100g.jpg', slug: 'sweet-potato-powder' },
+      { nameEn: 'Carrot Powder', nameNp: 'गाजर पाउडर', image: '/products/carrot-powder-100g.jpg', slug: 'carrot-powder' },
+      { nameEn: 'Dehydrated Sweet Papaya', nameNp: 'डिहाइड्रेटेड मेवा', image: '/products/papaya.jpg', slug: 'dehydrated-papaya' },
+      { nameEn: 'Dates Powder', nameNp: 'खजुर पाउडर', image: '/products/dates-powder-100g.jpg', slug: 'dates-powder' },
     ],
-    farmerCountEn: '110+ Smallholder Farming Families',
-    farmerCountNp: '११०+ साना किसान परिवारहरू',
     impactStoryEn:
-      'In the fertile alluvial soils of Chitwan and Nawalpur, we partner with smallholder root and fruit growers. Before our direct partnership, post-harvest perishability forced farmers to sell at distress prices. By introducing low-temperature dehydration hubs directly at farm sites, farmers receive 35% above market prices, and zero fresh crop is wasted.',
+      'From the warm alluvial plains of the Terai, we source ripe root vegetables and tropical fruits including sweet potatoes, carrots, bananas, papayas, pineapples, and mangoes. Crops are selected at full ripeness, washed thoroughly, and gently dehydrated at low temperatures to preserve their natural color, aroma, and whole-food nutrients without added sugar or preservatives.',
     impactStoryNp:
-      'चितवन र नवलपुरको मलिलो माटोमा हामी साना किसानहरूसँग प्रत्यक्ष सहकार्य गर्छौं। पहिले बजार नपाउँदा किसानहरूले सस्तोमा बेच्नुपर्थ्यो। नेचर्स मडले फार्म नजिकै न्यून-तापक्रम डिहाइड्रेसन केन्द्र स्थापना गरेपछि किसानहरूले बजारभन्दा ३५% बढी मूल्य पाउँछन् र बाली खेर जाँदैन।',
-    farmerQuoteEn:
-      '"We used to lose 40% of our sweet potato crop to market distress. With NaturesMud, our harvest is cleaned, sliced, and gently dehydrated within 6 hours, and we get paid on the spot with dignity."',
-    farmerQuoteNp:
-      '"हाम्रो सखरखण्ड पहिले ४०% कुहिएर जान्थ्यो। नेचर्स मडसँग जोडिएपछि बाली टिपेको ६ घण्टामै सफा गरी सुकाइन्छ र उचित मूल्य तुरुन्तै हात पर्छ।"',
-    farmerNameEn: 'Ram Bahadur Chaudhary',
-    farmerNameNp: 'रामबहादुर चौधरी',
-    farmerRoleEn: 'Chitwan Root & Fruit Growers Cooperative',
-    farmerRoleNp: 'चितवन अर्ग्यानिक कृषि सहकारी',
+      'तराईको मलिलो माटोमा उब्जिएका ताजा सखरखण्ड, गाजर, केरा, मेवा र आँप जस्ता फलफूल तथा कन्दमूलहरू पूर्ण पाकेको अवस्थामा सङ्कलन गरिन्छ। तिनलाई सफा गरी कम तापक्रममा सुकाएर बिना चिनी र बिना प्रिजर्भेटिभ प्राकृतिक रूपमै तयार गरिन्छ।',
+    sourcingStandardEn:
+      'Every Terai harvest batch is cleaned, sliced, and dehydrated in closed sanitary trays with 0% sulphur dioxide, 0% added sugar, and 0% artificial color.',
+    sourcingStandardNp:
+      'तराईबाट सङ्कलित प्रत्येक बालीलाई सफा गरी बन्द ट्रेमा ०% सल्फर, ०% चिनी र ०% कृत्रिम रङ बिना स्वच्छ रूपमा सुकाइन्छ।',
+    sourcingFocusEn: 'Root Vegetables & Tropical Fruits',
+    sourcingFocusNp: 'कन्दमूल तथा उष्णप्रदेशीय फलफूल',
     stats: [
-      { labelEn: 'Fair Trade Premium', labelNp: 'उचित किसान मूल्य', value: '+35% Above Market' },
-      { labelEn: 'Crop Waste Saved', labelNp: 'बाली संरक्षण', value: '18 Tons/Year' },
-      { labelEn: 'Women Harvesters', labelNp: 'महिला सहभागिता', value: '72% Majority' },
+      { labelEn: 'Added Sugar', labelNp: 'थप चिनी', value: '0% Added' },
+      { labelEn: 'Preservatives', labelNp: 'प्रिजर्भेटिभ', value: '0% Zero' },
+      { labelEn: 'Processing', labelNp: 'प्रशोधन विधि', value: 'Low-Heat Dried' },
     ],
   },
   {
     id: 'hilly',
-    beltNameEn: '⛰️ Midland Terraced Green Valleys',
-    beltNameNp: '⛰️ पहाडी जैविक उपत्यका',
+    beltNameEn: '⛰️ Mid-Hill Terraced Valleys',
+    beltNameNp: '⛰️ पहाडी उपत्यका',
     nepaliSubtitle: '८००–२,२०० मिटर उचाइ (काभ्रे, सिन्धुपाल्चोक, पाल्पा, इलाम)',
     altitudeEn: '800m – 2,200m Altitude',
     altitudeNp: '८००–२,२०० मिटर उचाइ',
     locationsEn: 'Kavre · Sindhupalchok · Palpa · Ilam',
     locationsNp: 'काभ्रे · सिन्धुपाल्चोक · पाल्पा · इलाम',
     primaryProducts: [
-      { nameEn: 'Pure Himalayan Beetroot Powder (100g)', nameNp: 'हिमाली चुकन्दर पाउडर (१००g)', image: '/products/beetroot-powder-100g.jpg', slug: 'beetroot-powder' },
-      { nameEn: 'Cold-Pressed Virgin Coconut Oil', nameNp: 'भर्जिन नरिवल तेल', image: '/products/coconut-oil.jpg', slug: 'virgin-coconut-oil-500ml' },
-      { nameEn: 'Organic Flax Seeds (100g)', nameNp: 'अर्ग्यानिक आलस दाना (१००g)', image: '/products/flax-seeds.jpg', slug: 'flax-seeds' },
-      { nameEn: 'Organic Chia Seeds (100g)', nameNp: 'अर्ग्यानिक चिया सिड्स (१००g)', image: '/products/chia-seeds.jpg', slug: 'chia-seeds' },
+      { nameEn: 'Beetroot Powder', nameNp: 'चुकन्दर पाउडर', image: '/products/beetroot-powder-100g.jpg', slug: 'beetroot-powder' },
+      { nameEn: 'Extra Virgin Coconut Oil', nameNp: 'भर्जिन नरिवल तेल', image: '/products/coconut-oil.jpg', slug: 'virgin-coconut-oil-500ml' },
+      { nameEn: 'Flax Seeds', nameNp: 'आलस दाना', image: '/products/flax-seeds.jpg', slug: 'flax-seeds' },
+      { nameEn: 'Chia Seeds', nameNp: 'चिया सिड्स', image: '/products/chia-seeds.jpg', slug: 'chia-seeds' },
     ],
-    farmerCountEn: '95+ Organic Hill Collectives',
-    farmerCountNp: '९५+ पहाडी महिला समूहहरू',
     impactStoryEn:
-      'The pristine terraced hills of Kavre and Palpa are blessed with mineral-rich mountain soil free from industrial pesticide runoff. We work hand-in-hand with female-led agricultural groups who cultivate deep-crimson beetroots, heirloom turmeric, and ginger with pure organic compost and natural mountain spring irrigation.',
+      'The cool terraced hills of Kavre, Sindhupalchok, Palpa, and Ilam provide mineral-rich soil for slow-growing root crops, leafy greens, and oilseeds. Beetroots, moringa leaves, rosemary, flax seeds, and chia seeds are harvested cleanly and cold-milled in small batches so families receive pure single-ingredient nutrition.',
     impactStoryNp:
-      'काभ्रे र पाल्पाका पहाडी फाँटहरूमा रासायनिक विषादीरहित अर्ग्यानिक माटो छ। यहाँका महिला कृषक समूहहरूले परम्परागत प्राङ्गारिक मल र हिमाली मुहानको पानी प्रयोग गरी रातो चुकन्दर, बेसार र अदुवा उब्जाउँछन्।',
-    farmerQuoteEn:
-      '"Our beetroots grow slowly in the cool hill mist, packing dense nitrates and earthy sweetness. NaturesMud cold-grinds them into fine powder without heat, preserving every ounce of natural life with 0 additives."',
-    farmerQuoteNp:
-      '"हाम्रा चुकन्दर पहाडको चिसो हावापानीमा प्राकृतिक रूपमा हुर्कन्छन्। नेचर्स मडले ताप उत्पन्न नहुने विधिबाट पिँधेर यसको सम्पूर्ण पौष्टिकता जस्ताको तस्तै राख्छ।"',
-    farmerNameEn: 'Sita Maya Tamang',
-    farmerNameNp: 'सीतामाया तामाङ',
-    farmerRoleEn: 'Sindhupalchok Hill Women’s Agriculture Co-op',
-    farmerRoleNp: 'सिन्धुपाल्चोक महिला कृषि समूह',
+      'काभ्रे, सिन्धुपाल्चोक, पाल्पा र इलामका पहाडी फाँटहरूमा चिसो हावापानीमा हुर्किएका चुकन्दर, शीतलचिनी (मोरिङ्गा), रोजमेरी, आलस र चिया सिड्स सङ्कलन गरिन्छ। यिनलाई सानो ब्याचमा कोल्ड-मिलिङ विधिबाट शुद्ध रूपमा तयार गरिन्छ।',
+    sourcingStandardEn:
+      'Mid-hill roots and greens are shade-dried or low-temperature dehydrated before fine milling to retain natural pigments and earthy flavor.',
+    sourcingStandardNp:
+      'पहाडी जरा र सागपातलाई प्राकृतिक रङ र स्वाद जोगाउन कम तापक्रममा सुकाएर मसिनो पाउडर बनाइन्छ।',
+    sourcingFocusEn: 'Beetroot, Culinary Herbs & Nutrient-Dense Seeds',
+    sourcingFocusNp: 'चुकन्दर, जडीबुटी र पोषणयुक्त दानाहरू',
     stats: [
-      { labelEn: 'Organic Compost', labelNp: 'प्राङ्गारिक मल', value: '100% Traditional' },
-      { labelEn: 'Synthetic Chemicals', labelNp: 'विषादी मिसावट', value: '0.0% Zero' },
-      { labelEn: 'Community Seed Fund', labelNp: 'सामुदायिक कोष', value: 'Rs. 4.5L Seed Fund' },
+      { labelEn: 'Ingredients', labelNp: 'सामग्री', value: 'Single-Ingredient' },
+      { labelEn: 'Fillers or Starch', labelNp: 'मिसावट वा स्टार्च', value: '0% Zero' },
+      { labelEn: 'Batch Size', labelNp: 'उत्पादन ब्याच', value: 'Small-Batch Milled' },
     ],
   },
   {
     id: 'himalaya',
-    beltNameEn: '🏔️ High Himalayan Alpine Peaks',
+    beltNameEn: '🏔️ High Himalayan Alpine Belt',
     beltNameNp: '🏔️ उच्च हिमाली भेग',
     nepaliSubtitle: '२,५००–३,५००+ मिटर उचाइ (मुस्ताङ, जुम्ला, मनाङ, डोल्पा)',
     altitudeEn: '2,500m – 3,500m+ Altitude',
@@ -109,29 +95,25 @@ const regionsData = [
     locationsEn: 'Mustang · Jumla · Manang · Dolpa',
     locationsNp: 'मुस्ताङ · जुम्ला · मनाङ · डोल्पा',
     primaryProducts: [
-      { nameEn: 'Dehydrated Himalayan Apple Rings', nameNp: 'हिमाली स्याउको सुकुटी', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
-      { nameEn: 'Pure Mountain Himalayan Shilajit Resin', nameNp: 'शुद्ध हिमाली शिलाजीत', image: '/products/pure-shilajit.jpg', slug: 'pure-mountain-himalayan-shilajit-resin' },
-      { nameEn: 'Raw Himalayan Mountain Almonds (200g)', nameNp: 'हिमाली काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
-      { nameEn: 'Ancient Himalayan Pink Rock Salt', nameNp: 'शुद्ध हिमाली बिरे नुन / सिधे नुन', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
+      { nameEn: 'Dehydrated Apple', nameNp: 'डिहाइड्रेटेड स्याउ', image: '/products/dehydrated-apple.jpg', slug: 'dehydrated-apple' },
+      { nameEn: 'Pure Mountain Himalayan Shilajit Resin', nameNp: 'शुद्ध हिमाली शिलाजीत', image: '/products/nm-shilajit-jar.jpeg', slug: 'pure-mountain-himalayan-shilajit-resin' },
+      { nameEn: 'Raw Almonds', nameNp: 'काँचो बदाम', image: '/products/almonds.jpg', slug: 'raw-himalayan-almonds' },
+      { nameEn: 'Himalayan Pink Salt', nameNp: 'हिमाली गुलाबी नुन', image: '/products/pink-salt.jpg', slug: 'himalayan-pink-salt' },
     ],
-    farmerCountEn: '75+ Indigenous Foragers & Harvesters',
-    farmerCountNp: '७५+ हिमाली जडीबुटी सङ्कलक',
     impactStoryEn:
-      'At 3,000 meters altitude in Mustang and Jumla, nature thrives in its purest state. Here, wild bees harvest multi-floral nectar from high-altitude flora on vertical cliffs, and mountain orchards produce crisp, sweet apples. We supply safety gear and fair forward contracts directly to indigenous foragers.',
+      'From the high-altitude orchards and alpine rocks of Mustang, Jumla, Manang, and Dolpa come crisp mountain apples, nuts, mineral rock salts, and purified Himalayan shilajit resin. Cold mountain nights and intense alpine sunlight create dense flavor and natural mineral richness.',
     impactStoryNp:
-      'मुस्ताङ र जुम्लाका ३,००० मिटर अग्ला भिरपाखामा जंगली मौरीले बहुमूल्य हिमाली जडीबुटीबाट मह बनाउँछन्। उच्च उचाइका स्याउमा भरपूर पौष्टिकता हुन्छ। हामी हिमाली सङ्कलकहरूलाई सुरक्षा उपकरण र उचित पारिश्रमिक उपलब्ध गराउँछौं।',
-    farmerQuoteEn:
-      '"Foraging wild cliff honey is our ancestral heritage. NaturesMud lab-tests every batch for purity and ensures we receive respectful livelihood compensation without middlemen."',
-    farmerQuoteNp:
-      '"भिर मह काढ्ने हाम्रो पुख्र्यौली पेशा हो। नेचर्स मडले प्रत्येक ब्याचको शुद्धता परीक्षण गर्छ र बिचौलिया बिना हामीलाई उचित आम्दानी दिन्छ।"',
-    farmerNameEn: 'Pasang Norbu Gurung',
-    farmerNameNp: 'पासाङ नोर्बु गुरुङ',
-    farmerRoleEn: 'Mustang Wild Cliff Honey Harvesters Collective',
-    farmerRoleNp: 'मुस्ताङ भिर मह सङ्कलक समूह',
+      'मुस्ताङ, जुम्ला, मनाङ र डोल्पाका उच्च हिमाली बगैँचा र चट्टानहरूबाट रसिलो हिमाली स्याउ, बदाम, प्राकृतिक नुन र शुद्ध हिमाली शिलाजीत सङ्कलन गरिन्छ। हिमाली हावापानीले यी उत्पादनहरूमा विशिष्ट स्वाद र प्राकृतिक खनिज प्रदान गर्छ।',
+    sourcingStandardEn:
+      'High-altitude fruits, nuts, mineral salts, and traditional shilajit resin are hygienically sorted and packed in food-grade containers.',
+    sourcingStandardNp:
+      'उच्च हिमाली फलफूल, ड्राइ फ्रुट्स, खनिज नुन र शिलाजीतलाई स्वच्छताका साथ छनोट गरी फुड-ग्रेड प्याकिङमा सुरक्षित गरिन्छ।',
+    sourcingFocusEn: 'Orchard Apples, Mountain Nuts, Salts & Shilajit',
+    sourcingFocusNp: 'हिमाली स्याउ, ड्राइ फ्रुट्स, नुन र शिलाजीत',
     stats: [
-      { labelEn: 'Altitude Range', labelNp: 'सङ्कलन उचाइ', value: '3,000m – 3,800m' },
-      { labelEn: 'Middlemen Cut', labelNp: 'बिचौलिया रहित', value: '100% Direct' },
-      { labelEn: 'Live Enzymes', labelNp: 'सक्रिय इन्जाइम', value: '98.5% Preserved' },
+      { labelEn: 'Altitude Range', labelNp: 'सङ्कलन उचाइ', value: '2,500m – 3,500m+' },
+      { labelEn: 'Purity Standard', labelNp: 'शुद्धता मापदण्ड', value: '100% Unadulterated' },
+      { labelEn: 'Preservatives', labelNp: 'प्रिजर्भेटिभ', value: '0% Zero' },
     ],
   },
 ];
@@ -139,46 +121,69 @@ const regionsData = [
 const processSteps = [
   {
     number: '01',
-    titleEn: 'Peak Nutrition Organic Harvest',
-    titleNp: 'उचित समयमा अर्ग्यानिक बाली सङ्कलन',
-    descEn: 'Handpicked at absolute peak nutritional ripeness by local farmer cooperatives across Terai, Hilly, and Alpine regions of Nepal.',
-    descNp: 'नेपालका तराई, पहाड र हिमालका साना किसान समूहहरूद्वारा पूर्ण पाकेको र पोषणले भरिपूर्ण अवस्थामा हातले टिपिएको।',
+    titleEn: 'Ripe Crop Selection',
+    titleNp: 'उचित समयमा बाली छनोट',
+    descEn: 'Selected at nutritional ripeness across Terai, Mid-Hill, and Alpine regions for clean whole-food processing.',
+    descNp: 'नेपालका तराई, पहाड र हिमाली क्षेत्रबाट पाकेको र स्वच्छ अवस्थामा छनोट गरिएको।',
     icon: Sprout,
   },
   {
     number: '02',
-    titleEn: 'Low-Temp Dehydration (<42°C)',
-    titleNp: 'कम तापक्रम डिहाइड्रेसन (<४२°C)',
-    descEn: 'Gently dehydrated in closed sanitary dehydrators to preserve 98% of natural vitamins, live enzymes, and rich colors with 0 additives and 0 preservatives.',
-    descNp: '४२ डिग्री भन्दा कम तापक्रममा बन्द डिहाइड्रेटरमा सुकाइन्छ, जसले केमिकल बिना ९८% भिटामिन र इन्जाइम सुरक्षित राख्छ।',
+    titleEn: 'Gentle Low-Temperature Dehydration',
+    titleNp: 'कम तापक्रम डिहाइड्रेसन',
+    descEn: 'Gently dehydrated in closed sanitary dehydrators to retain natural vitamins, color, and flavor with 0 additives and 0 preservatives.',
+    descNp: 'बन्द डिहाइड्रेटरमा कम तापक्रममा सुकाइन्छ, जसले केमिकल बिना प्राकृतिक पोषक तत्व र रङ सुरक्षित राख्छ।',
     icon: Sun,
   },
   {
     number: '03',
-    titleEn: 'Frictionless Cold Micro-Milling',
+    titleEn: 'Fine Cold Micro-Milling',
     titleNp: 'कोल्ड माइक्रो-मिलिङ प्रविधि',
-    descEn: 'Milled using friction-free stone and cold micro-milling into silky, ultra-fine whole food powders ideal for baby food, fitness, and daily health.',
-    descNp: 'ताप उत्पन्न नहुने चिसो प्रविधिबाट मसिनो गरी पिँधिन्छ, जसले गर्दा शिशुको लिटो र कसरत ड्रिंकमा सजिलै घुल्ने शुद्ध पाउडर तयार हुन्छ।',
+    descEn: 'Milled into smooth, fine whole-food powders suitable for smoothies, family recipes, and baby weaning porridges (from 6 months, as advised by your pediatrician).',
+    descNp: 'मसिनो गरी पिँधिन्छ, जसले गर्दा पारिवारिक परिकार र ६ महिना माथिका शिशुको लिटोमा (बालरोग विशेषज्ञको सल्लाह अनुसार) सजिलै मिसाउन सकिन्छ।',
     icon: Layers,
   },
   {
     number: '04',
-    titleEn: '100g Airtight Eco Glass Jar Sealing',
-    titleNp: '१००g इको ग्लास जारमा सुरक्षित सिल',
-    descEn: 'Hygienically sealed in airtight 100g glass jars with tamper-proof seals to lock in mountain freshness and eliminate single-use plastics.',
-    descNp: 'प्लास्टिकमुक्त १०० ग्रामका एयरटाइट ग्लास जारमा ताजापन सुरक्षित राख्न सिल गरिन्छ, जसले खाद्य स्वच्छता सुनिश्चित गर्छ।',
+    titleEn: 'Hygienic Airtight Packaging',
+    titleNp: 'एयरटाइट स्वच्छ प्याकिङ',
+    descEn: 'Hygienically sealed in food-grade glass jars, BPA-free food-grade PET jars, and resealable standup pouches to lock in freshness during Nepal’s monsoon.',
+    descNp: 'आर्द्रताबाट जोगाउन र ताजापन सुरक्षित राख्न फुड-ग्रेड काँचका जार, फुड-ग्रेड पीईटी जार तथा एयरटाइट पाउचमा सिल गरिन्छ।',
     icon: ShieldCheck,
+  },
+];
+
+const qualityLedgerRows = [
+  {
+    standard: 'Ingredient Purity (0% Additives / 0% Refined Sugar)',
+    verification: 'Verified via Physical Ingredient Label & Batch Processing Protocol',
+    details: 'Every powder and dried fruit SKU is a single-ingredient whole food with 0% maltodextrin, 0% cornstarch, 0% added cane sugar, and 0% sulphur dioxide (E220).',
+  },
+  {
+    standard: 'Packaging Materials (Glass Jars, Food-Grade PET Jars & Pouches)',
+    verification: 'Verified per SKU Specification (Transparency Standard)',
+    details: 'Powders, oils, figs, berries, macadamia, trail mix, and shilajit are packed in Glass Jars. High-volume seeds and nuts (300 GM Chia, Flax, Pumpkin, Sunflower, Watermelon) use shatter-resistant food-grade PET jars; dehydrated fruit slices use resealable ziplock pouches.',
+  },
+  {
+    standard: 'Pediatric & Infant Food Guidance',
+    verification: 'Standard Pediatric Weaning Compliance',
+    details: 'All baby weaning porridges (Sweet Potato, Banana, Carrot, Dates, Avocado powders) state clearly: "suitable from 6 months, as advised by your pediatrician".',
+  },
+  {
+    standard: 'Third-Party Lab COA, Organic Certificates & DFTQC License',
+    verification: 'OWNER MUST SUPPLY (Unverified Claims Removed)',
+    details: 'Third-party organic certificates, DFTQC registration numbers, and batch laboratory assay reports are published on this ledger only after official PDF documents are uploaded by the owner. No unverified certification badges or percentage assay claims are displayed anywhere on our store.',
   },
 ];
 
 const showrooms = [
   {
-    typeEn: 'Central Sourcing Hub & HQ',
-    typeNp: 'मुख्य कार्यालय तथा हब',
-    nameEn: 'Kathmandu, Nepal',
-    nameNp: 'काठमाडौँ, नेपाल',
-    addressEn: 'Kathmandu Sourcing Hub, Kathmandu, Nepal',
-    addressNp: 'काठमाडौँ हब, काठमाडौँ, नेपाल',
+    typeEn: 'Central Dispatch Hub & HQ',
+    typeNp: 'मुख्य कार्यालय तथा डिस्प्याच हब',
+    nameEn: 'Baneshwor, Kathmandu',
+    nameNp: 'बानेश्वर, काठमाडौँ',
+    addressEn: 'Baneshwor, Kathmandu 44600, Nepal',
+    addressNp: 'बानेश्वर, काठमाडौँ ४४६००, नेपाल',
     phone: '+977-9713888002',
     icon: Building2,
   },
@@ -189,7 +194,7 @@ const showrooms = [
     nameNp: 'किड्स कटेज कुपण्डोल र कपन',
     addressEn: 'Kupondol (Lalitpur) & Kapan Outlets, Kathmandu Valley',
     addressNp: 'कुपण्डोल ललितपुर तथा कपन, काठमाडौँ उपत्यका',
-    phone: 'Direct in-store sample tasting',
+    phone: 'Direct in-store retail stockist',
     icon: Store,
   },
   {
@@ -199,37 +204,17 @@ const showrooms = [
     nameNp: 'जिरो टु टेन (चाबहिल)',
     addressEn: 'Chabahil, Kathmandu Valley',
     addressNp: 'चाबहिल, काठमाडौँ उपत्यका',
-    phone: 'Baby & pure nutrition shelves',
+    phone: 'Baby & family nutrition shelves',
     icon: Store,
   },
   {
     typeEn: 'Regional Partner',
-    typeNp: 'कर्णाली प्रदेश हब',
-    nameEn: 'Kids Kottage Surkhet',
-    nameNp: 'किड्स कटेज सुर्खेत',
-    addressEn: 'Surkhet Branch, Karnali Province',
-    addressNp: 'सुर्खेत शाखा, कर्णाली प्रदेश',
-    phone: 'All 100g products available',
-    icon: Store,
-  },
-  {
-    typeEn: 'Regional Partner',
-    typeNp: 'गण्डकी प्रदेश हब',
-    nameEn: 'Kids Kottage Pokhara',
-    nameNp: 'किड्स कटेज पोखरा',
-    addressEn: 'Pokhara Showroom, Gandaki Province',
-    addressNp: 'पोखरा शोरुम, गण्डकी प्रदेश',
-    phone: 'All products available',
-    icon: Store,
-  },
-  {
-    typeEn: 'Regional Partner',
-    typeNp: 'बागमती प्रदेश हब',
-    nameEn: 'Baby Love Hetauda',
-    nameNp: 'बेबी लभ हेटौँडा',
-    addressEn: 'Hetauda Showroom, Makwanpur',
-    addressNp: 'हेटौँडा शोरुम, मकवानपुर',
-    phone: 'All products available',
+    typeNp: 'कर्णाली, गण्डकी र बागमती हब',
+    nameEn: 'Kids Kottage (Pokhara & Surkhet) · Baby Love (Hetauda)',
+    nameNp: 'किड्स कटेज (पोखरा र सुर्खेत) · बेबी लभ (हेटौँडा)',
+    addressEn: 'Pokhara, Surkhet & Hetauda Partner Showrooms',
+    addressNp: 'पोखरा, सुर्खेत र हेटौँडा साझेदार शोरुमहरू',
+    phone: 'Regional retail availability',
     icon: Store,
   },
 ];
@@ -255,7 +240,7 @@ export default function AboutPage() {
 
   return (
     <main className="bg-[#FAF8F5] text-[#2B2B2B] min-h-screen">
-      {/* 1. Hero Section with Glow & Organic Particles */}
+      {/* 1. Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#172D13] via-[#24451D] to-[#3A6B35] text-white pt-16 pb-24 lg:pt-24 lg:pb-32">
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#FFF_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#D9A441]/20 blur-3xl pointer-events-none" />
@@ -269,7 +254,7 @@ export default function AboutPage() {
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                 <li aria-hidden="true">/</li>
                 <li className="text-[#D9A441] font-semibold">
-                  {isEn ? 'Our Story & Farmer Roots' : 'हाम्रो कथा र किसान सम्बन्ध'}
+                  {isEn ? 'About NaturesMud & Sourcing Standards' : 'नेचर्स मडको परिचय र गुणस्तर मापदण्ड'}
                 </li>
               </ol>
             </nav>
@@ -281,35 +266,35 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#D9A441] text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4 text-[#D9A441]" />
-                {isEn ? 'Direct Sourced from Nepal’s 3 Ecological Belts' : 'नेपालका ३ भौगोलिक भेगबाट सिधै सङ्कलन'}
+                {isEn ? 'Sourced Across Nepal’s 3 Agro-Ecological Belts' : 'नेपालका ३ भौगोलिक भेगबाट सङ्कलन'}
               </div>
 
               <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white leading-tight tracking-tight">
                 {isEn ? (
                   <>
-                    Pure Himalayan Food. <br />
-                    <span className="text-[#D9A441]">Real Farmer Dignity.</span>
+                    Pure Himalayan Whole Foods. <br />
+                    <span className="text-[#D9A441]">Transparent Quality.</span>
                   </>
                 ) : (
                   <>
-                    शुद्ध हिमाली खाना। <br />
-                    <span className="text-[#D9A441]">वास्तविक किसान मर्यादा।</span>
+                    शुद्ध हिमाली सम्पूर्ण आहार। <br />
+                    <span className="text-[#D9A441]">पारदर्शी गुणस्तर।</span>
                   </>
                 )}
               </h1>
 
               <p className="text-emerald-100/90 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
                 {isEn
-                  ? 'NaturesMud was born out of a profound mission: connecting Nepali families with 0 additive, 0 preservative superfoods while ensuring rural farming families across Terai, Hilly, and Alpine regions receive fair, dignified livelihoods.'
-                  : 'नेचर्स मडको एउटै मूल उद्देश्य छ: नेपाली परिवारहरूलाई ०% मिसावट, रसायनरहित सुपरफुड उपलब्ध गराउँदै तराई, पहाड र हिमालका साना किसानहरूलाई उचित मूल्य र सम्मानजनक जीवनयापन सुनिश्चित गर्नु।'}
+                  ? 'NaturesMud connects Nepali households with 32 single-ingredient superfood powders, dehydrated fruits, whole nuts, seeds, cold-pressed oils, and Himalayan mineral salts — prepared with 0% artificial preservatives and 0% added white sugar.'
+                  : 'नेचर्स मडले नेपाली भान्सामा ३२ प्रकारका शुद्ध सुपरफुड पाउडर, डिहाइड्रेटेड फलफूल, ड्राइ फ्रुट्स, सिड्स, कोल्ड-प्रेस तेल र हिमाली नुन उपलब्ध गराउँछ — ०% प्रिजर्भेटिभ र ०% थप चिनी बिना।'}
               </p>
 
-              {/* Trust Metric Badges */}
+              {/* Factual Product & Sourcing Badges */}
               <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/15">
                 <div>
-                  <div className="font-heading font-black text-2xl sm:text-3xl text-[#D9A441]">280+</div>
+                  <div className="font-heading font-black text-2xl sm:text-3xl text-[#D9A441]">32 SKUs</div>
                   <div className="text-xs text-emerald-100/80 mt-0.5">
-                    {isEn ? 'Farmer Families' : 'किसान परिवारहरू'}
+                    {isEn ? 'Whole-Food Catalog' : '३२ शुद्ध उत्पादनहरू'}
                   </div>
                 </div>
                 <div>
@@ -331,18 +316,17 @@ export default function AboutPage() {
                   href="#geographic-belts"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#D9A441] hover:bg-[#c49235] text-[#1C3317] font-bold text-sm shadow-xl transition-transform active:scale-95 cursor-pointer"
                 >
-                  <span>{isEn ? 'Explore Farmer Regions' : 'हाम्रा उत्पादन क्षेत्रहरू'}</span>
+                  <span>{isEn ? 'Explore Sourcing Regions' : 'उत्पादन क्षेत्रहरू हेर्नुहोस्'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
 
-                <button
-                  type="button"
-                  onClick={() => setVideoModalOpen(true)}
+                <a
+                  href="#quality-ledger"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold text-sm transition-all cursor-pointer"
                 >
-                  <Play className="w-4 h-4 text-[#D9A441] fill-[#D9A441]" />
-                  <span>{isEn ? 'Watch Farm Story Video' : 'हाम्रो भिडियो कथा हेर्नुहोस्'}</span>
-                </button>
+                  <FileCheck2 className="w-4 h-4 text-[#D9A441]" />
+                  <span>{isEn ? 'Quality & Claims Ledger' : 'गुणस्तर तथा पारदर्शिता विवरण'}</span>
+                </a>
               </div>
             </div>
 
@@ -363,8 +347,8 @@ export default function AboutPage() {
                   </span>
                   <p className="text-sm font-medium text-white/90 mt-1">
                     {isEn
-                      ? 'Wild Blueberries · Beetroot · Apple · Dates Powder · Pink Salt · Coconut Oil'
-                      : 'ब्लुबेरी · चुकन्दर · स्याउ · खजुर · गुलाबी नुन · भर्जिन नरिवल तेल'}
+                      ? 'Dried Blueberries · Beetroot Powder · Dehydrated Apple · Dates Powder · Himalayan Pink Salt · Extra Virgin Coconut Oil'
+                      : 'डिहाइड्रेटेड ब्लुबेरी · चुकन्दर पाउडर · स्याउ · खजुर · गुलाबी नुन · भर्जिन नरिवल तेल'}
                   </p>
                 </div>
               </div>
@@ -376,10 +360,10 @@ export default function AboutPage() {
                 </span>
                 <div>
                   <div className="text-xs font-bold text-stone-800">
-                    {isEn ? '100% Nepali Origin' : '१००% नेपाली माटोको उपज'}
+                    {isEn ? 'Central Dispatch: Baneshwor, Kathmandu' : 'मुख्य हब: बानेश्वर, काठमाडौँ'}
                   </div>
                   <div className="text-[11px] text-stone-500">
-                    {isEn ? 'From 100m to 3,500m Altitudes' : '१०० देखि ३,५०० मिटर उचाइबाट'}
+                    {isEn ? 'Delivering Across All 77 Districts' : 'नेपालका ७७ वटै जिल्लामा डेलिभरी'}
                   </div>
                 </div>
               </div>
@@ -396,12 +380,12 @@ export default function AboutPage() {
               {isEn ? 'Nepal’s 3 Agro-Ecological Belts' : 'नेपालका ३ भौगोलिक तथा जैविक क्षेत्रहरू'}
             </span>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight">
-              {isEn ? 'Where Our Organic Superfoods Grow' : 'हाम्रा अर्ग्यानिक सुपरफुडहरू कहाँ उब्जन्छन्?'}
+              {isEn ? 'Where Our Superfoods Grow' : 'हाम्रा सुपरफुडहरू कहाँ उब्जन्छन्?'}
             </h2>
             <p className="text-stone-600 mt-3 text-base leading-relaxed">
               {isEn
-                ? 'Nepal offers one of the world’s most diverse microclimates. We harness the unique biological strengths of each altitude to harvest nature’s purest, most potent crops.'
-                : 'नेपालमा संसारकै दुर्लभ र विविध हावापानी पाइन्छ। हामी प्रत्येक उचाइको विशेष गुण अनुसार शुद्ध र पौष्टिक बाली सङ्कलन गर्छौं।'}
+                ? 'Nepal offers one of the world’s most diverse microclimates. We source from the distinct agricultural strengths of each altitude to bring clean whole-food ingredients to your table.'
+                : 'नेपालमा विविध हावापानी पाइन्छ। हामी प्रत्येक उचाइको विशेष गुण अनुसार स्वच्छ र पौष्टिक बाली सङ्कलन गर्छौं।'}
             </p>
           </div>
 
@@ -458,7 +442,7 @@ export default function AboutPage() {
                     {isEn ? selectedBelt.impactStoryEn : selectedBelt.impactStoryNp}
                   </p>
 
-                  {/* Impact Stats Grid */}
+                  {/* Stats Grid */}
                   <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
                     {selectedBelt.stats.map((st, i) => (
                       <div key={i} className="bg-white p-3.5 sm:p-4 rounded-2xl border border-stone-200/80 shadow-xs">
@@ -472,21 +456,21 @@ export default function AboutPage() {
                     ))}
                   </div>
 
-                  {/* Farmer Quote Box */}
+                  {/* Regional Sourcing Standard Box */}
                   <div className="bg-white p-5 rounded-2xl border-l-4 border-[#3A6B35] shadow-xs">
-                    <p className="italic text-stone-700 text-sm leading-relaxed">
-                      {isEn ? selectedBelt.farmerQuoteEn : selectedBelt.farmerQuoteNp}
+                    <p className="text-stone-700 text-sm leading-relaxed">
+                      {isEn ? selectedBelt.sourcingStandardEn : selectedBelt.sourcingStandardNp}
                     </p>
                     <div className="mt-3 flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-emerald-100 text-[#3A6B35] flex items-center justify-center font-bold text-xs">
-                        👨‍🌾
+                        🌿
                       </div>
                       <div>
                         <div className="text-xs font-bold text-stone-900">
-                          {isEn ? selectedBelt.farmerNameEn : selectedBelt.farmerNameNp}
+                          {isEn ? 'Regional Sourcing Focus' : 'क्षेत्रीय उत्पादन विशेषता'}
                         </div>
                         <div className="text-[11px] text-stone-500">
-                          {isEn ? selectedBelt.farmerRoleEn : selectedBelt.farmerRoleNp}
+                          {isEn ? selectedBelt.sourcingFocusEn : selectedBelt.sourcingFocusNp}
                         </div>
                       </div>
                     </div>
@@ -497,7 +481,7 @@ export default function AboutPage() {
                 <div className="lg:col-span-5 space-y-4">
                   <h4 className="font-heading font-bold text-base text-stone-800 flex items-center gap-2">
                     <Leaf className="w-4 h-4 text-[#3A6B35]" />
-                    {isEn ? 'Featured 100g Crops from this Belt' : 'यस भेगका मुख्य १००g उत्पादनहरू'}
+                    {isEn ? 'Featured Crops from this Belt' : 'यस भेगका मुख्य उत्पादनहरू'}
                   </h4>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -520,7 +504,7 @@ export default function AboutPage() {
                           {isEn ? prod.nameEn : prod.nameNp}
                         </span>
                         <span className="text-[11px] text-[#3A6B35] font-semibold mt-1 inline-flex items-center gap-1">
-                          {isEn ? 'View 100g Pack' : 'विवरण हेर्नुहोस्'} <ArrowRight className="w-3 h-3" />
+                          {isEn ? 'View Product' : 'विवरण हेर्नुहोस्'} <ArrowRight className="w-3 h-3" />
                         </span>
                       </Link>
                     ))}
@@ -537,17 +521,17 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-white px-4 py-1.5 rounded-full shadow-xs mb-3">
-              {isEn ? '0 Additives · Gentle Science' : '०% मिसावट · सुरक्षित प्रविधि'}
+              {isEn ? '0 Additives · Gentle Processing' : '०% मिसावट · सुरक्षित प्रविधि'}
             </span>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight">
               {isEn
-                ? 'How We Dehydrate & Mill Without Damaging Nutrients'
-                : 'पोषक तत्व नष्ट नहुने गरी हामी कसरी डिहाइड्रेट र पिसाइ गर्छौं?'}
+                ? 'How We Dehydrate, Mill & Pack Whole Foods'
+                : 'हामी कसरी स्वच्छ डिहाइड्रेट, पिसाइ र प्याकिङ गर्छौं?'}
             </h2>
             <p className="text-stone-600 mt-3 text-base leading-relaxed">
               {isEn
-                ? 'Commercial drying often uses high heat or chemical fumes. Here is why our gentle low-temperature dehydration locks in 98% bioactive nutrients with 0 additives and 0 preservatives.'
-                : 'बजारका उत्पादनहरू उच्च तापक्रम वा सल्फर केमिकल प्रयोग गरी सुकाइन्छन्। हाम्रो न्यून-तापक्रम प्रविधिले ९८% प्राकृतिक पोषक तत्व र इन्जाइम जस्ताको तस्तै राख्छ।'}
+                ? 'Commercial drying often uses high heat or sulphur fumes. Our gentle low-temperature dehydration preserves natural flavor, color, and whole-food nutrients with 0 additives and 0 preservatives.'
+                : 'बजारका उत्पादनहरू उच्च तापक्रम वा सल्फर प्रयोग गरी सुकाइन्छन्। हाम्रो न्यून-तापक्रम प्रविधिले प्राकृतिक पोषक तत्व, स्वाद र रङ जोगाउँछ।'}
             </p>
           </div>
 
@@ -579,7 +563,7 @@ export default function AboutPage() {
 
                   <div className="mt-6 pt-4 border-t border-stone-100 flex items-center gap-1 text-[11px] font-bold text-[#3A6B35]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>{isEn ? 'Lab Verified Safe' : 'प्रयोगशाला प्रमाणित शुद्ध'}</span>
+                    <span>{isEn ? '0% Additives · 0% Preservatives' : '०% मिसावट · ०% प्रिजर्भेटिभ'}</span>
                   </div>
                 </div>
               );
@@ -588,20 +572,66 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Physical Showrooms & Partner Retailers */}
-      <section className="py-20 bg-white border-b border-stone-200/80">
+      {/* 4. Quality, Packaging & Claims Verification Ledger */}
+      <section id="quality-ledger" className="py-20 bg-white border-b border-stone-200/80">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-emerald-50 px-4 py-1.5 rounded-full mb-3">
+              <FileCheck2 className="w-3.5 h-3.5" />
+              {isEn ? 'NaturesMud Transparency Ledger' : 'नेचर्स मड पारदर्शिता विवरण'}
+            </span>
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight">
+              {isEn
+                ? 'Quality, Packaging & Claims Verification Standards'
+                : 'गुणस्तर, प्याकेजिङ र प्रामाणिकता मापदण्ड'}
+            </h2>
+            <p className="text-stone-600 mt-3 text-sm sm:text-base leading-relaxed">
+              {isEn
+                ? 'We believe Nepali families deserve complete honesty about how their food is processed, what container it arrives in, and which regulatory documents are on file.'
+                : 'हामी विश्वास गर्छौं कि प्रत्येक नेपाली परिवारले आफूले खाने खाना कसरी तयार गरिन्छ र कुन प्याकिङमा आउँछ भन्ने स्पष्ट र सत्य जानकारी पाउनुपर्छ।'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {qualityLedgerRows.map((row, idx) => (
+              <div
+                key={idx}
+                className="bg-[#FAF8F5] rounded-2xl p-6 border border-stone-200/90 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#3A6B35] flex items-center gap-1.5">
+                      <Package className="w-3.5 h-3.5" />
+                      {row.verification}
+                    </span>
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-stone-900 mb-2">
+                    {row.standard}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                    {row.details}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Physical Showrooms & Partner Retailers */}
+      <section className="py-20 bg-[#FAF8F5] border-b border-stone-200/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#3A6B35] bg-emerald-50 px-4 py-1.5 rounded-full mb-3">
               {isEn ? 'Visit Us In Person' : 'हाम्रो कार्यालय तथा शोरुमहरू'}
             </span>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl text-stone-900 tracking-tight">
-              {isEn ? 'Our Sourcing Hub & Showrooms Across Nepal' : 'हाम्रो मुख्य हब तथा नेपालभरका आधिकारिक बिक्री केन्द्रहरू'}
+              {isEn ? 'Our Dispatch Hub & Partner Showrooms Across Nepal' : 'हाम्रो मुख्य हब तथा नेपालभरका आधिकारिक बिक्री केन्द्रहरू'}
             </h2>
             <p className="text-stone-600 mt-3 text-base leading-relaxed">
               {isEn
-                ? 'Experience our product range in person, taste samples, and pick up fresh 100g batches directly from our central Kathmandu hub and partner stores.'
-                : 'हाम्रा उत्पादनहरू प्रत्यक्ष अवलोकन गर्न, स्वाद चाख्न र ताजा ब्याच खरिद गर्न काठमाडौँस्थित मुख्य हब र साझेदार स्टोरहरूमा पाल्नुहोस्।'}
+                ? 'Order online for doorstep delivery or pick up fresh batches from our Baneshwor, Kathmandu dispatch hub and partner retail stores.'
+                : 'अनलाइन अर्डर गर्नुहोस् वा बानेश्वर, काठमाडौँस्थित मुख्य हब र साझेदार स्टोरहरूबाट खरिद गर्नुहोस्।'}
             </p>
           </div>
 
@@ -611,7 +641,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={idx}
-                  className="bg-[#FAF8F5] rounded-3xl p-6 border border-stone-200 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                  className="bg-white rounded-3xl p-6 border border-stone-200 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-[#3A6B35] text-xs font-bold uppercase tracking-wide">
@@ -638,7 +668,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. Brand Video Reel Showcase Teaser */}
+      {/* 6. Brand Video Reel Showcase Teaser */}
       <section className="py-20 bg-stone-900 text-white relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -651,8 +681,8 @@ export default function AboutPage() {
               </h2>
               <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
                 {isEn
-                  ? 'Watch our harvest and dehydrating journey — from whole farm sweet potatoes to micro-milled baby food powders and high-altitude wild honey jars.'
-                  : 'हाम्रो बाली सङ्कलन र सौर्य डिहाइड्रेसन यात्रा हेर्नुहोस् — फार्मको ताजा सखरखण्डदेखि शिशुको लिटो पाउडर र हिमाली भिर महसम्म।'}
+                  ? 'Watch our harvest and dehydrating journey — from whole farm sweet potatoes to micro-milled baby food powders (from 6 months, as advised by your pediatrician) and dehydrated mountain fruit slices.'
+                  : 'हाम्रो बाली सङ्कलन र डिहाइड्रेसन यात्रा हेर्नुहोस् — फार्मको ताजा सखरखण्डदेखि शिशुको लिटो पाउडर (६ महिनादेखि, बालरोग विशेषज्ञको सल्लाह अनुसार) र हिमाली फलफूलसम्म।'}
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2">
@@ -668,7 +698,7 @@ export default function AboutPage() {
                   href="/products"
                   className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all"
                 >
-                  {isEn ? 'Browse 100g Catalog' : 'सबै उत्पादनहरू हेर्नुहोस्'}
+                  {isEn ? 'Browse All 32 Products' : 'सबै ३२ उत्पादनहरू हेर्नुहोस्'}
                 </Link>
               </div>
             </div>
@@ -697,7 +727,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 6. Call to Action */}
+      {/* 7. Call to Action */}
       <section className="py-16 bg-[#3A6B35] text-white text-center">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl">
@@ -719,7 +749,7 @@ export default function AboutPage() {
               href="/products"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#D9A441] hover:bg-[#c79537] text-[#1C3317] font-extrabold text-base shadow-xl hover:shadow-2xl transition-all"
             >
-              <span>{isEn ? 'Shop All 100g Superfoods' : 'सबै अर्ग्यानिक उत्पादनहरू अर्डर गर्नुहोस्'}</span>
+              <span>{isEn ? 'Shop All 32 Superfoods' : 'सबै ३२ शुद्ध उत्पादनहरू अर्डर गर्नुहोस्'}</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -744,15 +774,14 @@ export default function AboutPage() {
                 src="/videos/naturesmud-product-reel.mp4"
                 controls
                 autoPlay
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <button
                 type="button"
                 onClick={() => setVideoModalOpen(false)}
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center text-lg font-bold hover:bg-black/80 transition-colors cursor-pointer"
-                aria-label="Close modal"
+                className="absolute top-4 right-4 px-3.5 py-1.5 rounded-full bg-black/70 text-white text-xs font-bold hover:bg-black cursor-pointer"
               >
-                ✕
+                ✕ Close
               </button>
             </div>
           </motion.div>

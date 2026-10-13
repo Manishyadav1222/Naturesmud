@@ -1000,4 +1000,64 @@ button, a, input, select, textarea {
     max-width: 320px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DASHAIN FESTIVAL GLOWING TEXT & OFFER UTILITIES
+   ═══════════════════════════════════════════════════════════════ */
+@keyframes dashain-neon-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 8px rgba(251, 191, 36, 0.75),
+      0 0 18px rgba(245, 158, 11, 0.55),
+      0 0 32px rgba(220, 38, 38, 0.45);
+  }
+  50% {
+    text-shadow:
+      0 0 14px rgba(253, 224, 71, 0.95),
+      0 0 28px rgba(245, 158, 11, 0.85),
+      0 0 46px rgba(220, 38, 38, 0.65);
+  }
+}
+
+@keyframes dashain-box-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px rgba(251, 191, 36, 0.35),
+      0 0 24px rgba(220, 38, 38, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(253, 224, 71, 0.65),
+      0 0 38px rgba(220, 38, 38, 0.4);
+  }
+}
+
+.dashain-glow-text {
+  animation: dashain-neon-glow 2.4s ease-in-out infinite;
+}
+
+.dashain-glow-gold {
+  background: linear-gradient(90deg, #fde047 0%, #ffffff 35%, #fbbf24 65%, #fde047 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer-flow 3.5s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.55));
+}
+
+.dashain-glow-crimson {
+  background: linear-gradient(90deg, #991b1b 0%, #d97706 35%, #dc2626 70%, #991b1b 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer-flow 4s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.35));
+}
+
+.dashain-glow-box {
+  animation: dashain-box-glow 2.8s ease-in-out infinite;
+}
+
 

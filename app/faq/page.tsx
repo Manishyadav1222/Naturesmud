@@ -25,8 +25,7 @@ export default function FAQPage() {
   const categories = [
     'All',
     'Baby Care & Nutrition',
-    'Mothercare & Pregnancy',
-    'Superfoods & Honey',
+    'Superfood Powders & Seeds',
     'Dry Fruits & Oils',
     'Orders & Shipping',
   ];
@@ -61,7 +60,7 @@ export default function FAQPage() {
             How Can We Help You Today?
           </h1>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            Find expert answers about our chemical-free Himalayan superfoods, safe baby weaning nutrition, pregnancy mothercare, and nationwide delivery across Nepal.
+            Find clear answers about NaturesMud single-ingredient baby weaning powders, dehydrated fruits, mountain nuts, seeds, virgin coconut oil, monsoon storage, and delivery across Nepal.
           </p>
 
           {/* Search Bar */}
@@ -69,7 +68,7 @@ export default function FAQPage() {
             <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by topic, e.g. baby porridge, honey crystallization, delivery time..."
+              placeholder="Search by topic, e.g. baby lito, dates powder, monsoon storage, delivery time..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-3.5 rounded-full border border-gray-200 bg-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/40 shadow-sm"
