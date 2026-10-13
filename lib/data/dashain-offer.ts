@@ -3,7 +3,7 @@ export const DASHAIN_OFFER_CONFIG = {
   subtitle: 'Bada Dashain 2083 Maha Festival Offer — Pure Himalayan Superfoods',
   badge: '🇳🇵 DASHAIN MAHA OFFER · VALID TILL DASHAIN END',
   couponCode: 'DASHAIN',
-  discountPercent: 0,
+  discountPercent: 10,
   freeDeliveryThreshold: 3000,
   freePinkSaltThreshold: 5000,
   posterImage: '/images/posters/dashain-offer-poster.jpg',

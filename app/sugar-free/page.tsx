@@ -14,6 +14,7 @@ import {
   Leaf,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
+import { getProductBySlug } from '@/lib/data/products';
 
 export const metadata: Metadata = {
   title: '0% Added Sugar Foods & Natural Sweeteners Nepal | NaturesMud',
@@ -31,80 +32,62 @@ export const metadata: Metadata = {
   },
 };
 
-const SUGAR_FREE_PRODUCTS = [
+const SUGAR_FREE_ITEMS = [
   {
-    name: 'Natural Dates Powder Sweetener',
-    nepaliName: 'खजुरको धुलो',
     slug: 'dates-powder',
-    weight: '100 GM',
-    price: 400,
-    packing: 'Airtight Glass Jar',
-    image: '/products/dates-powder-100g.jpg',
+    nepaliName: 'खजुरको धुलो',
     badge: '1:1 Cane Sugar Replacement',
     detail: '100% whole dried dates milled into fine powder. Unlike refined sugar that has 0 fiber, dates powder preserves natural dietary fiber, potassium, and magnesium.',
     useCase: 'Tea, coffee, kheer, porridge, baking cakes, and infant food.',
   },
   {
-    name: 'Dehydrated Himalayan Apple Slices',
-    nepaliName: 'सुकाएको हिमाली स्याउ',
     slug: 'dehydrated-apple',
-    weight: '100 GM',
-    price: 420,
-    packing: 'Food-Grade Pack',
-    image: '/products/dehydrated-apple.jpg',
-    badge: '0% Sulphur & 0% Sugar',
+    nepaliName: 'सुकाएको हिमाली स्याउ',
+    badge: '0% Sulphur & 0% Added Sugar',
     detail: 'Fresh crisp apples thinly sliced and gently dried at low heat. Concentrated natural fruit pectin and sweet-tart flavor with zero added syrup.',
     useCase: 'Guilt-free desktop snacking, trail mix, or oatmeal topping.',
   },
   {
-    name: 'Dehydrated Sweet Papaya Slices',
-    nepaliName: 'सुकाएको गुलियो मेवा',
     slug: 'dehydrated-papaya',
-    weight: '100 GM',
-    price: 400,
-    packing: 'Food-Grade Pack',
-    image: '/products/papaya.jpg',
+    nepaliName: 'सुकाएको गुलियो मेवा',
     badge: 'Natural Digestive Enzymes',
-    detail: 'Naturally sweet ripe Terai papayas dried below 45°C. Retains natural papain enzymes and carotenoids with zero confectioner glaze.',
+    detail: 'Naturally sweet ripe Terai papayas dried below 42°C. Retains natural papain enzymes and carotenoids with zero confectioner glaze.',
     useCase: 'Digestive after-meal chew or lunchbox fruit snack.',
   },
   {
-    name: 'Dry Figs (Himalayan Anjeer)',
-    nepaliName: 'सुकाएको अन्जीर',
     slug: 'dry-figs-anjeer',
-    weight: '200 GM',
-    price: 750,
-    packing: 'Airtight Glass Jar',
-    image: '/products/anjeer-jar.jpg',
+    nepaliName: 'सुकाएको अन्जीर',
     badge: 'High Soluble Fiber',
     detail: 'Sun-dried whole figs providing natural sweetness alongside dense dietary calcium, iron, and gut-friendly prebiotic fiber.',
     useCase: 'Soak 2 figs in water overnight for a gentle morning bowel routine.',
   },
   {
-    name: 'Dehydrated Ripe Mango Slices',
-    nepaliName: 'सुकाएको आँप',
     slug: 'dehydrated-mango',
-    weight: '100 GM',
-    price: 450,
-    packing: 'Food-Grade Pack',
-    image: '/products/mango.jpg',
-    badge: 'Chewy Fruit Leather Alternative',
+    nepaliName: 'सुकाएको आँप',
+    badge: 'Chewy Fruit Snack Alternative',
     detail: 'Pure tree-ripened mango slices dehydrated to perfection. Tropical sunshine flavor without glucose syrup or artificial color.',
     useCase: 'Healthy whole-food sweet cravings for kids and adults.',
   },
   {
-    name: 'Dehydrated Raw Coconut Chips',
-    nepaliName: 'सुकाएको नरिवल चिप्स',
     slug: 'dehydrated-coconut-chips',
-    weight: '100 GM',
-    price: 350,
-    packing: 'Food-Grade Pack',
-    image: '/products/coconut-chips.jpg',
+    nepaliName: 'सुकाएको नरिवल चिप्स',
     badge: '0g Added Sugar Crunch',
     detail: 'Toasted unsweetened coconut flakes rich in medium-chain fatty acids (MCTs). 100% natural crunch without sugar coating.',
     useCase: 'Keto-friendly crunch for smoothies, yogurts, and desk snacking.',
   },
 ];
+
+const SUGAR_FREE_PRODUCTS = SUGAR_FREE_ITEMS.map((item) => {
+  const p = getProductBySlug(item.slug);
+  return {
+    ...item,
+    name: p?.official_label_name || p?.name || item.slug,
+    weight: p?.weight || '100 GM',
+    price: p?.price || 400,
+    packing: p?.packing || 'Food-Grade Pack',
+    image: p?.image || '/products/dates-powder-100g.jpg',
+  };
+});
 
 export default function SugarFreePage() {
   return (

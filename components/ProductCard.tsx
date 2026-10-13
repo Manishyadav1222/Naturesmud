@@ -5,11 +5,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Heart, ShoppingBag, Eye, Star, Leaf, BadgeCheck, Zap, Check, Sparkles, Gift, Truck } from 'lucide-react';
 import { Product } from '@/lib/types';
-import { formatPrice, calculateDiscount, resolveImageUrl } from '@/lib/utils';
+import { formatPrice, calculateDiscount, resolveImageUrl, formatProductWeight, classNames } from '@/lib/utils';
 import { useCartStore } from '@/lib/store/cart-store';
 import { useWishlistStore } from '@/lib/store/wishlist-store';
 import { useUIStore } from '@/lib/store/ui-store';
-import { classNames } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useState, useEffect } from 'react';
 
@@ -44,12 +43,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     ? (product.category as any)?.name || 'Organic'
     : product.category || 'Superfood';
 
-  // Format packaging & weight
-  const displayWeight = product.weight
-    ? /^\d+(\.00)?$/.test(product.weight.trim())
-      ? `${parseFloat(product.weight)} GM`
-      : product.weight
-    : '100 GM';
+  // Format packaging & weight with authoritative validator
+  const displayWeight = formatProductWeight(product.weight, (product as any)?.unit, '100 GM');
 
   // Fallback description tailored for luxury apothecary feel
   const displayDesc = product.shortDescription ||

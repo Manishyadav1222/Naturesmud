@@ -70,6 +70,21 @@ function isKathmanduValley(city: string, province: string, explicitValleyChoice?
   return false;
 }
 
+const MAJOR_OUTSIDE_VALLEY_CITIES = [
+  'pokhara',
+  'chitwan',
+  'bharatpur',
+  'butwal',
+  'biratnagar',
+  'dharan',
+  'nepalgunj',
+  'hetauda',
+  'itahari',
+  'birtamod',
+  'damak',
+  'bhairahawa',
+];
+
 export default function CheckoutPage() {
   const { items, getSubtotal, clearCart } = useCartStore();
   const [form, setForm] = useState({
@@ -166,13 +181,19 @@ export default function CheckoutPage() {
     }
   }, [subtotal, appliedCoupon, placed]);
 
-  // Delivery rules: Inside Valley Rs. 100, Outside Valley Rs. 200 (Free over Rs. 3,000)
+  // Delivery rules: Inside Valley Rs. 100, Major Outside Valley Cities Rs. 150, Other Regions Rs. 200 (Free over Rs. 3,000)
   // Dashain Bonus Gift: Free Himalayan Pink Salt (200 GM) on orders over Rs. 5,000+
   const freeShippingThreshold = 3000;
   const freePinkSaltThreshold = 5000;
   const unlockedFreeShipping = subtotal >= freeShippingThreshold;
   const unlockedFreePinkSalt = subtotal >= freePinkSaltThreshold;
-  const standardShippingFee = isValley ? 100 : 200;
+
+  const isMajorCity = useMemo(() => {
+    const clean = (form.city || '').trim().toLowerCase();
+    return MAJOR_OUTSIDE_VALLEY_CITIES.some((c) => clean.includes(c));
+  }, [form.city]);
+
+  const standardShippingFee = isValley ? 100 : isMajorCity ? 150 : 200;
   const shipping = subtotal === 0 || unlockedFreeShipping ? 0 : standardShippingFee;
 
   const total = Math.max(0, subtotal - discount + shipping);

@@ -17,6 +17,7 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
+import { getProductBySlug } from '@/lib/data/products';
 
 export const metadata: Metadata = {
   title: 'Baby Weaning Foods & Natural Porridge Powders Nepal | NaturesMud',
@@ -34,68 +35,55 @@ export const metadata: Metadata = {
   },
 };
 
-const WEANING_PRODUCTS = [
+const WEANING_ITEMS = [
   {
-    name: 'Pure Sweet Potato Powder',
-    nepaliName: 'सखरखण्ड पाउडर',
     slug: 'sweet-potato-powder',
-    weight: '100 GM',
-    price: 510,
-    packing: 'Airtight Glass Jar',
-    image: '/products/sweet-potato-powder-100g.jpg',
+    nepaliName: 'सखरखण्ड पाउडर',
     badge: 'Gentle on Little Stomachs',
     pediatricNote: 'Naturally sweet and easy to digest; provides dietary fiber and beta-carotene when mixed into lito or jaulo.',
     intro: 'Single-ingredient steamed and gently dehydrated sweet potatoes, cold-milled into a fine golden powder.',
   },
   {
-    name: 'Raw Banana Powder',
-    nepaliName: 'केराको धुलो',
     slug: 'banana-powder',
-    weight: '100 GM',
-    price: 590,
-    packing: 'Airtight Glass Jar',
-    image: '/products/banana-powder-100g.jpg',
+    nepaliName: 'केराको धुलो',
     badge: 'Traditional Weaning Staple',
     pediatricNote: 'Rich in potassium and gentle resistant starch; a trusted base for wholesome baby porridge and smooth puddings.',
     intro: '100% unripe and mature raw bananas gently dried and finely milled without added starch or maltodextrin.',
   },
   {
-    name: 'Natural Dates Powder',
-    nepaliName: 'खजुरको धुलो',
     slug: 'dates-powder',
-    weight: '100 GM',
-    price: 400,
-    packing: 'Airtight Glass Jar',
-    image: '/products/dates-powder-100g.jpg',
+    nepaliName: 'खजुरको धुलो',
     badge: '0% Added Cane Sugar',
     pediatricNote: '100% dried Arabian dates milled into fine powder. The ideal natural sweetener for porridge, kheer, and halwa.',
     intro: 'Pure pitted dates dried and milled. Replaces refined white sugar in infant cereal and family recipes.',
   },
   {
-    name: 'Pure Carrot Powder',
-    nepaliName: 'गाजरको धुलो',
     slug: 'carrot-powder',
-    weight: '100 GM',
-    price: 490,
-    packing: 'Airtight Glass Jar',
-    image: '/products/carrot-powder-100g.jpg',
+    nepaliName: 'गाजरको धुलो',
     badge: 'Beta-Carotene Rich',
     pediatricNote: 'Wholesome orange root goodness to gently introduce earthy vegetable flavors into baby soups, jaulo, and lito.',
     intro: 'Single-ingredient garden-fresh carrots cleaned, dehydrated, and cold-pulverized with 0% artificial color.',
   },
   {
-    name: 'Freeze-Dried Avocado Powder',
-    nepaliName: 'एभोकाडो पाउडर',
     slug: 'freeze-dried-avocado-powder',
-    weight: '80 GM',
-    price: 790,
-    packing: 'Airtight Glass Jar',
-    image: '/products/avocado-powder-v2.jpg',
+    nepaliName: 'एभोकाडो पाउडर',
     badge: 'Healthy Monounsaturated Fats',
     pediatricNote: 'Provides natural plant fats and folate supporting infant growth and brain development during complementary feeding.',
     intro: 'Gently freeze-dried ripe avocados capturing healthy lipids in an instant, scoopable powder.',
   },
 ];
+
+const WEANING_PRODUCTS = WEANING_ITEMS.map((item) => {
+  const p = getProductBySlug(item.slug);
+  return {
+    ...item,
+    name: p?.official_label_name || p?.name || item.slug,
+    weight: p?.weight || '100 GM',
+    price: p?.price || 500,
+    packing: p?.packing || 'Glass Jar',
+    image: p?.image || '/products/banana-powder.jpg',
+  };
+});
 
 export default function BabyWeaningPage() {
   return (

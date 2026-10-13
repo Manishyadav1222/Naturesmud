@@ -59,6 +59,71 @@ export const getInitials = (name: string): string => {
     .slice(0, 2);
 };
 
+/**
+ * Authoritative product weight & package size formatter.
+ * Enforces valid metric mass and volume units (GM, G, KG, ML, L).
+ * Discards packaging count units (PC, JAR, BOTTLE) and guards against "NaN GM".
+ * Falls back to approved product record fallback (default: '100 GM').
+ */
+export const formatProductWeight = (
+  weight: any,
+  unit?: any,
+  fallback: string = '100 GM'
+): string => {
+  if (weight === null || weight === undefined) return fallback;
+
+  const rawStr = String(weight).trim();
+  if (!rawStr || rawStr === '' || /nan/i.test(rawStr)) {
+    return fallback;
+  }
+
+  // Reject packaging-unit artifacts (e.g. "100 PC", "200 JAR", "1 BOTTLE")
+  if (/\b(pc|pcs|piece|pieces|jar|jars|bottle|bottles|pack|packs|box|boxes)\b/i.test(rawStr)) {
+    return fallback;
+  }
+
+  const unitStr = unit ? String(unit).trim().toUpperCase() : '';
+
+  // Numeric input (e.g. 100, "100", 100.0)
+  if (/^\d+(?:\.\d+)?$/.test(rawStr)) {
+    const num = parseFloat(rawStr);
+    if (isNaN(num) || num <= 0) return fallback;
+
+    let targetUnit = 'GM';
+    if (unitStr) {
+      if (['GM', 'G', 'GMS', 'GRAM', 'GRAMS'].includes(unitStr)) targetUnit = 'GM';
+      else if (['KG', 'KGS', 'KILOGRAM', 'KILOGRAMS'].includes(unitStr)) targetUnit = 'KG';
+      else if (['ML', 'MILLILITER', 'MILLILITERS'].includes(unitStr)) targetUnit = 'ML';
+      else if (['L', 'LTR', 'LITER', 'LITRE', 'LITERS'].includes(unitStr)) targetUnit = 'L';
+      else if (['PC', 'JAR', 'BOTTLE'].includes(unitStr)) targetUnit = 'GM';
+    }
+    return `${num} ${targetUnit}`;
+  }
+
+  // String containing quantity and unit (e.g. "100 GM", "100g", "500 ML", "20 GM")
+  const match = rawStr.match(/^(\d+(?:\.\d+)?)\s*([a-zA-Z]+)?$/);
+  if (match) {
+    const num = parseFloat(match[1]);
+    if (isNaN(num) || num <= 0) return fallback;
+
+    let u = (match[2] || unitStr || 'GM').toUpperCase();
+    if (['GM', 'G', 'GMS', 'GRAM', 'GRAMS'].includes(u)) u = 'GM';
+    else if (['KG', 'KGS', 'KILOGRAM', 'KILOGRAMS'].includes(u)) u = 'KG';
+    else if (['ML', 'MILLILITER', 'MILLILITERS'].includes(u)) u = 'ML';
+    else if (['L', 'LTR', 'LITER', 'LITRE', 'LITERS'].includes(u)) u = 'L';
+    else {
+      return fallback;
+    }
+    return `${num} ${u}`;
+  }
+
+  if (/^[a-zA-Z\s]+$/.test(rawStr)) {
+    return rawStr;
+  }
+
+  return fallback;
+};
+
 export const slugify = (text: string): string => {
   return text
     .toLowerCase()

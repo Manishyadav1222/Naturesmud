@@ -13,6 +13,7 @@ import {
   Package,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
+import { getProductBySlug } from '@/lib/data/products';
 
 export const metadata: Metadata = {
   title: 'Pure Vrat & Fasting Snacks Nepal | Satvik Upavas Foods | NaturesMud',
@@ -30,80 +31,62 @@ export const metadata: Metadata = {
   },
 };
 
-const FASTING_PRODUCTS = [
+const FASTING_ITEMS = [
   {
-    name: 'Himalayan Makhana (Fox Nuts / Phool Makhana)',
-    nepaliName: 'हिमाली मखाना',
     slug: 'makhana-fox-nuts',
-    weight: '50 GM',
-    price: 390,
-    packing: 'Airtight Food-Grade Pack',
-    image: '/products/makhana.jpg',
+    nepaliName: 'हिमाली मखाना',
     badge: 'Essential Vrat Snack',
     detail: 'Light, crunchy puffed lotus lily seeds. 100% natural, unroasted, and unsalted — ready to roast in pure cow ghee with Himalayan Sidhe Noon.',
     useCase: 'Light fasting snack for Ekadashi, Navratri, Teej, and Shrawan Sombar.',
   },
   {
-    name: 'Himalayan Pink Rock Salt (Sidhe Noon / Sendha Namak)',
-    nepaliName: 'हिमाली गुलाबी नुन (सिधे नुन)',
     slug: 'himalayan-pink-salt',
-    weight: '200 GM',
-    price: 250,
-    packing: 'Airtight Food-Grade Pack',
-    image: '/products/pink-salt.jpg',
+    nepaliName: 'हिमाली गुलाबी नुन (सिधे नुन)',
     badge: 'Pure Fasting Salt (Sendha Namak)',
     detail: 'Ancient rock crystal salt containing 84+ trace minerals. The traditional, prescribed salt permitted during religious fasts and satvik meals.',
     useCase: 'Seasoning makhana, fruit salads, boiled potatoes, and aloo jeera during fasts.',
   },
   {
-    name: 'Pure Himalayan Black Salt (Bire Noon)',
-    nepaliName: 'हिमाली बिरे नुन',
     slug: 'pure-himalayan-black-salt-bire-noon',
-    weight: '200 GM',
-    price: 220,
-    packing: 'Airtight Food-Grade Pack',
-    image: '/products/black-salt.jpg',
+    nepaliName: 'हिमाली बिरे नुन',
     badge: 'Ayurvedic Digestive Rock Salt',
     detail: 'Traditional mineral salt with characteristic volcanic aroma and gentle cooling properties. Aids digestive comfort during periods of fasting.',
     useCase: 'Fruit chaat, digestive warm water, and fresh lassi.',
   },
   {
-    name: 'Raw Himalayan Mountain Almonds',
-    nepaliName: 'काँचो बदाम',
     slug: 'raw-himalayan-almonds',
-    weight: '200 GM',
-    price: 750,
-    packing: 'Airtight Food-Grade Pack',
-    image: '/products/nm-almond-jar-v2.jpg',
+    nepaliName: 'काँचो बदाम',
     badge: 'Satvik Energy',
     detail: 'Unroasted, unpeeled whole almonds rich in natural plant fats and protein to sustain energy levels through day-long fasts.',
     useCase: 'Soak 8–10 almonds overnight for early-morning satvik sustenance.',
   },
   {
-    name: 'Dry Figs (Himalayan Anjeer)',
-    nepaliName: 'सुकाएको अन्जीर',
     slug: 'dry-figs-anjeer',
-    weight: '200 GM',
-    price: 750,
-    packing: 'Airtight Glass Jar',
-    image: '/products/anjeer-jar.jpg',
+    nepaliName: 'सुकाएको अन्जीर',
     badge: 'Natural Fasting Sweetness',
     detail: 'Sun-dried whole figs providing concentrated natural fruit sugars, dietary calcium, and fiber without processed sugar.',
     useCase: 'Sustained energy during fasting days; pair with a glass of warm milk.',
   },
   {
-    name: 'Premium Cashewnuts (Raw Whole Kernels)',
-    nepaliName: 'काँचो काजु',
     slug: 'premium-cashewnuts',
-    weight: '150 GM',
-    price: 750,
-    packing: 'Airtight Glass Jar',
-    image: '/products/cashews.jpg',
+    nepaliName: 'काँचो काजु',
     badge: 'Creamy Satvik Snack',
     detail: '100% raw, unsalted, unroasted whole cashew nuts. Packed in airtight glass jars to prevent humidity spoilage during monsoon.',
     useCase: 'Roast lightly in pure ghee or blend into rich fasting gravies.',
   },
 ];
+
+const FASTING_PRODUCTS = FASTING_ITEMS.map((item) => {
+  const p = getProductBySlug(item.slug);
+  return {
+    ...item,
+    name: p?.official_label_name || p?.name || item.slug,
+    weight: p?.weight || '100 GM',
+    price: p?.price || 500,
+    packing: p?.packing || 'Glass Jar',
+    image: p?.image || '/products/makhana-fox-nuts-product-shot.jpg',
+  };
+});
 
 export default function FastingSnacksPage() {
   return (

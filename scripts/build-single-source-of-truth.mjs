@@ -89,6 +89,14 @@ function transformProduct(p) {
     p.compareAtPrice = 500;
   }
 
+  // Canonical SKU
+  p.sku = 'NM-' + p.slug.toUpperCase();
+
+  // Replace inaccurate "sugar-free" tag with "0-added-sugar" on natural whole fruits
+  if (['dehydrated-mango', 'dehydrated-papaya', 'dates-powder'].includes(p.slug)) {
+    p.tags = (p.tags || []).map((t) => (t === 'sugar-free' ? '0-added-sugar' : t));
+  }
+
   // Set provenance & processing
   p.origin_belt = meta.belt;
   p.drying_process = meta.process;
@@ -109,7 +117,9 @@ function transformProduct(p) {
       .replace(/boosts immunity/gi, 'supports healthy immune function')
       .replace(/cures|prevents|treats/gi, 'contributes to dietary support for')
       .replace(/locks 98% natural vitamins/gi, 'helps preserve natural vitamins and dietary fiber')
-      .replace(/natural energy booster/gi, 'provides a wholesome source of carbohydrates and natural energy');
+      .replace(/natural energy booster/gi, 'provides a wholesome source of carbohydrates and natural energy')
+      .replace(/Natural source of iron \(2\.5mg\/100g\) to combat fatigue and anemia/gi, 'Dietary source of iron (2.5mg/100g) and potassium to support daily vitality')
+      .replace(/combat fatigue and anemia/gi, 'support daily vitality');
   });
 
   // Baby content compliance (Rule 3)
@@ -173,7 +183,7 @@ console.log('✅ Created root products.json and public/products.json (32 SKUs)')
 
 // Synchronize lib/data/products.ts
 const tsContent = `import { Product } from '@/lib/types';
-import { resolveImageUrl } from '@/lib/utils';
+import { resolveImageUrl, formatProductWeight } from '@/lib/utils';
 
 export const products: Product[] = ${JSON.stringify(cleanedProducts, null, 2)};
 
@@ -213,16 +223,17 @@ export function normalizeProduct(payload: any, localFallback: Product | null = n
 
   const images: string[] = Array.isArray(payload.images) && payload.images.length > 0
     ? payload.images.map((img: any) => resolveImageUrl(typeof img === 'string' ? img : img.url || img.image_url))
-    : base?.images?.map(resolveImageUrl) || [mainImage];
+    : base?.images?.map((img: string) => resolveImageUrl(img)) || [mainImage];
 
   return {
     id: String(payload.id || base?.id || ''),
     dbId: payload.id ? Number(payload.id) : base?.dbId,
-    slug: String(payload.slug || base?.slug || ''),
-    name: String(payload.name || base?.name || ''),
-    official_label_name: String(payload.official_label_name || base?.official_label_name || payload.name || base?.name || ''),
-    category: typeof payload.category === 'object' ? payload.category?.name || 'Superfoods' : String(payload.category || base?.category || 'Superfoods'),
-    categorySlug: String(payload.category?.slug || payload.categorySlug || base?.categorySlug || 'powders'),
+    slug: String(base?.slug || payload.slug || ''),
+    sku: String(base?.sku || payload.sku || \`NM-\${(base?.slug || payload.slug || '').toUpperCase()}\`),
+    name: String(base?.name || payload.name || ''),
+    official_label_name: String(base?.official_label_name || payload.official_label_name || base?.name || payload.name || ''),
+    category: base?.category || (typeof payload.category === 'object' ? payload.category?.name : payload.category) || 'Superfoods',
+    categorySlug: base?.categorySlug || (typeof payload.category === 'object' ? payload.category?.slug : payload.categorySlug) || 'powders',
     price,
     compareAtPrice,
     mrp,
@@ -230,28 +241,178 @@ export function normalizeProduct(payload: any, localFallback: Product | null = n
     reviewCount: Number(payload.rating_count ?? payload.reviewCount ?? base?.reviewCount ?? 0),
     image: mainImage,
     images,
-    description: String(payload.description || base?.description || ''),
-    shortDescription: String(payload.short_description || payload.shortDescription || base?.shortDescription || ''),
-    badges: Array.isArray(payload.badges) ? payload.badges : base?.badges || [],
+    description: String(base?.description || payload.description || ''),
+    shortDescription: String(base?.shortDescription || payload.short_description || payload.shortDescription || ''),
+    badges: Array.isArray(base?.badges) && base.badges.length > 0 ? base.badges : (Array.isArray(payload.badges) ? payload.badges : []),
     stock: Number(payload.stock ?? base?.stock ?? 50),
-    weight: String(payload.weight ? \`\${Math.round(Number(payload.weight))} \${(payload.unit || 'GM').toUpperCase()}\` : base?.weight || '100 GM'),
-    packing: String(payload.packing || base?.packing || 'Glass Jar'),
-    ingredients: Array.isArray(payload.ingredients) ? payload.ingredients : base?.ingredients || [],
-    benefits: Array.isArray(payload.benefits) ? payload.benefits : base?.benefits || [],
-    nutrition: Array.isArray(payload.nutrition) ? payload.nutrition : base?.nutrition || [],
-    usage: String(payload.usage || base?.usage || ''),
-    storage: String(payload.storage || base?.storage || ''),
+    weight: formatProductWeight(payload.weight, payload.unit, base?.weight || '100 GM'),
+    packing: String(base?.packing || payload.packing || 'Glass Jar'),
+    ingredients: Array.isArray(base?.ingredients) && base.ingredients.length > 0 ? base.ingredients : (Array.isArray(payload.ingredients) ? payload.ingredients : []),
+    benefits: Array.isArray(base?.benefits) && base.benefits.length > 0 ? base.benefits : (Array.isArray(payload.benefits) ? payload.benefits : []),
+    nutrition: Array.isArray(base?.nutrition) && base.nutrition.length > 0 ? base.nutrition : (Array.isArray(payload.nutrition) ? payload.nutrition : []),
+    usage: String(base?.usage || payload.usage || ''),
+    storage: String(base?.storage || payload.storage || ''),
     isFeatured: Boolean(payload.is_featured ?? payload.isFeatured ?? base?.isFeatured),
     isBestSeller: Boolean(payload.is_best_seller ?? payload.isBestSeller ?? base?.isBestSeller),
-    tags: Array.isArray(payload.tags) ? payload.tags : base?.tags || [],
-    origin_belt: String(payload.origin_belt || base?.origin_belt || 'Product of Nepal 🇳🇵'),
-    drying_process: String(payload.drying_process || base?.drying_process || 'Low-Temperature Processing'),
-    baby_guidance: String(payload.baby_guidance || base?.baby_guidance || ''),
-    proof_block: payload.proof_block || base?.proof_block || null,
-    variants: payload.variants || base?.variants || undefined,
+    tags: Array.isArray(base?.tags) && base.tags.length > 0 ? base.tags : (Array.isArray(payload.tags) ? payload.tags : []),
+    origin_belt: String(base?.origin_belt || payload.origin_belt || 'Product of Nepal 🇳🇵'),
+    drying_process: String(base?.drying_process || payload.drying_process || 'Low-Temperature Processing'),
+    baby_guidance: String(base?.baby_guidance || payload.baby_guidance || ''),
+    proof_block: base?.proof_block || payload.proof_block || null,
+    variants: base?.variants || payload.variants || undefined,
   };
+}
+
+export function getProductById(id: string | number): Product | undefined {
+  return products.find((p) => String(p.id) === String(id) || String(p.dbId) === String(id));
+}
+
+export function mergeLiveProductsWithCatalog(rawList: any[] | null | undefined): Product[] {
+  if (!rawList || !Array.isArray(rawList) || rawList.length === 0) {
+    return products;
+  }
+  return products.map((local) => {
+    const live = rawList.find(
+      (r: any) =>
+        (r.slug && r.slug === local.slug) ||
+        (r.id && String(r.id) === String(local.id)) ||
+        (r.id && String(r.id) === String(local.dbId))
+    );
+    if (!live) return local;
+    return normalizeProduct(live, local);
+  });
+}
+
+export const PRODUCT_SEARCH_SYNONYMS: Record<string, string[]> = {
+  'dried-dates-khajoor': ['date', 'dates', 'dry dates', 'khajur', 'khajoor', 'chhuwara', 'खजुर', 'छोकडा'],
+  'sweet-potato-powder': ['sweet potato', 'sweet potato powder', 'sakharkhanda', 'shakarkandi', 'सखरखण्ड', 'सखरखण्ड पाउडर', 'baby porridge', 'weaning', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'carrot-powder': ['carrot', 'carrots', 'carrot powder', 'gajar', 'gajar powder', 'गाजर', 'गाजर पाउडर', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'banana-powder': ['banana', 'bananas', 'banana powder', 'kera', 'kera powder', 'केरा', 'केरा पाउडर', 'baby food', 'weaning', 'lito', 'लिटो', 'बच्चाको खाना'],
+  'beetroot-powder': ['beetroot', 'beet', 'beets', 'beetroot powder', 'chukandar', 'चुकन्दर', 'चुकन्दर पाउडर', 'nitric oxide', 'stamina'],
+  'moringa-leaf-powder': ['moringa', 'moringa powder', 'sitalchini', 'shitalchini', 'drumstick leaf', 'शीतलचिनी', 'मोरिङ्गा', 'सजिवन'],
+  'freeze-dried-avocado-powder': ['avocado', 'avocados', 'avocado powder', 'guacamole', 'एभोकाडो', 'घिउ फल'],
+  'strawberry-powder': ['strawberry', 'strawberries', 'strawberry powder', 'स्ट्रबेरी', 'स्ट्रबेरी पाउडर'],
+  'raw-himalayan-almonds': ['almond', 'almonds', 'raw almond', 'raw almonds', 'badam', 'kagaji badam', 'बदाम', 'कागजी बदाम'],
+  'roasted-almonds': ['almond', 'almonds', 'roasted almond', 'roasted almonds', 'salted almonds', 'badam', 'भुटेको बदाम', 'बदाम'],
+  'premium-cashewnuts': ['cashew', 'cashews', 'cashewnut', 'cashewnuts', 'raw cashew', 'kaju', 'काजु'],
+  'roasted-cashewnuts': ['cashew', 'cashews', 'roasted cashew', 'roasted cashews', 'salted cashew', 'kaju', 'भुटेको काजु', 'काजु'],
+  'premium-pistachios': ['pistachio', 'pistachios', 'pista', 'पिस्ता'],
+  'premium-pistachio-roasted-salted': ['pistachio', 'pistachios', 'salted pistachio', 'roasted pistachio', 'pista', 'पिस्ता'],
+  'dry-figs-anjeer': ['fig', 'figs', 'dry fig', 'dry figs', 'dried figs', 'anjeer', 'anjir', 'अन्जीर'],
+  'makhana-fox-nuts': ['makhana', 'fox nut', 'fox nuts', 'lotus seed', 'lotus seeds', 'phool makhana', 'मखाना', 'फक्स नट्स'],
+  'flax-seeds': ['flax', 'flax seed', 'flax seeds', 'flaxseed', 'alash', 'alas', 'alsi', 'आलस', 'आलसको बिया'],
+  'chia-seeds': ['chia', 'chia seed', 'chia seeds', 'black chia', 'sabja', 'चिया सिड्स', 'चिया बिया'],
+  'pumpkin-seeds': ['pumpkin', 'pumpkin seed', 'pumpkin seeds', 'pepita', 'pepitas', 'farsi', 'फर्सीको बिया'],
+  'sunflower-seeds': ['sunflower', 'sunflower seed', 'sunflower seeds', 'सूर्यमुखी बिया'],
+  'pure-himalayan-black-salt-bire-noon': ['black salt', 'bire nun', 'bire noon', 'kala namak', 'बिरे नुन', 'काला नमक'],
+  'himalayan-pink-salt': ['pink salt', 'rock salt', 'himalayan salt', 'sidhe nun', 'sendha namak', 'सिधे नुन', 'गुलाबी नुन'],
+  'pure-mountain-himalayan-shilajit-resin': ['shilajit', 'silajit', 'shilajeet', 'resin', 'fulvic acid', 'शिलाजीत', 'हिमाली शिलाजीत'],
+  'virgin-coconut-oil-500ml': ['coconut oil', 'virgin coconut oil', 'cold pressed oil', 'nariwal tel', 'नरिवलको तेल', 'नरिवल तेल'],
+  'virgin-coconut-oil-180ml': ['coconut oil', 'virgin coconut oil', 'nariwal tel', 'नरिवलको तेल'],
+  'dehydrated-coconut-chips': ['coconut', 'coconut chip', 'coconut chips', 'coconut flakes', 'khopra', 'नरिवल', 'सुकेको नरिवल'],
+  'dehydrated-mango': ['mango', 'mangoes', 'dried mango', 'dehydrated mango', 'aap', 'आँप', 'सुकेको आँप'],
+  'dehydrated-apple': ['apple', 'apples', 'dried apple', 'dehydrated apple', 'apple rings', 'syau', 'स्याउ', 'स्याउको सुकुटी'],
+  'dehydrated-papaya': ['papaya', 'dried papaya', 'dehydrated papaya', 'mewa', 'मेवा'],
+  'dehydrated-pineapple': ['pineapple', 'dried pineapple', 'dehydrated pineapple', 'bhuikatahar', 'भुइँकटहर'],
+  'dehydrated-kiwi': ['kiwi', 'dried kiwi', 'dehydrated kiwi', 'किवी'],
+  'dehydrated-dragon-fruit': ['dragon fruit', 'pitaya', 'dried dragon fruit', 'ड्रागन फ्रुट', 'सिउडी'],
+  'dried-blueberries': ['blueberry', 'blueberries', 'dried blueberry', 'dried blueberries', 'ब्लुबेरी'],
+  'dried-cranberries': ['cranberry', 'cranberries', 'dried cranberry', 'dried cranberries', 'क्र्यानबेरी'],
+  'superfood-trail-mix': ['trail mix', 'mix dry nuts', 'mixed nuts', 'dry fruits mix', 'superfood mix', 'immunity mix', 'मिक्स ड्राई फ्रुट्स'],
+};
+
+function normalizeSearchToken(token: string): string {
+  const lower = token.toLowerCase().trim();
+  if (lower.endsWith('ies') && lower.length > 4) {
+    return \`\${lower.slice(0, -3)}y\`;
+  }
+  if (lower.endsWith('oes') && lower.length > 4) {
+    return lower.slice(0, -2);
+  }
+  if (lower.endsWith('s') && !lower.endsWith('ss') && lower.length > 3) {
+    return lower.slice(0, -1);
+  }
+  return lower;
+}
+
+export function searchProductsCatalog(catalog: Product[], rawQuery: string): Product[] {
+  const query = rawQuery.trim().toLowerCase();
+  if (!query) return [];
+
+  const queryTokens = query
+    .split(/[\\s,.-]+/)
+    .map(normalizeSearchToken)
+    .filter(Boolean);
+
+  const scored: { product: Product; score: number }[] = [];
+
+  for (const product of catalog) {
+    let score = 0;
+    const nameLower = (product.name || '').toLowerCase();
+    const slugLower = (product.slug || '').toLowerCase();
+    const catLower = (product.category || '').toLowerCase();
+    const descLower = \`\${product.shortDescription || ''} \${product.description || ''}\`.toLowerCase();
+    const tagsLower = (product.tags || []).map((t) => t.toLowerCase());
+    const synonyms = PRODUCT_SEARCH_SYNONYMS[product.slug] || [];
+
+    if (nameLower === query || slugLower === query) {
+      score += 100;
+    } else if (nameLower.includes(query)) {
+      score += 75;
+    }
+
+    for (const syn of synonyms) {
+      const synLower = syn.toLowerCase();
+      if (synLower === query) {
+        score += 90;
+      } else if (synLower.includes(query) || query.includes(synLower)) {
+        score += 60;
+      }
+    }
+
+    if (queryTokens.length > 0) {
+      const searchableCorpus = [
+        nameLower,
+        slugLower.replace(/-/g, ' '),
+        catLower,
+        ...tagsLower,
+        ...synonyms.map((s) => s.toLowerCase()),
+      ].join(' ');
+      const corpusTokens = searchableCorpus
+        .split(/[\\s,.-]+/)
+        .map(normalizeSearchToken)
+        .filter(Boolean);
+
+      const matchedTokens = queryTokens.filter((qt) =>
+        corpusTokens.some((ct) => ct === qt || ct.includes(qt) || qt.includes(ct))
+      );
+
+      if (matchedTokens.length === queryTokens.length) {
+        score += 55;
+      } else if (matchedTokens.length > 0 && queryTokens.length > 1) {
+        score += matchedTokens.length * 15;
+      }
+    }
+
+    if (score === 0) {
+      if (catLower.includes(query) || tagsLower.some((t) => t.includes(query))) {
+        score += 35;
+      } else if (descLower.includes(query)) {
+        score += 15;
+      }
+    }
+
+    if (score > 0) {
+      scored.push({ product, score });
+    }
+  }
+
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.product);
 }
 `;
 
 fs.writeFileSync('lib/data/products.ts', tsContent);
 console.log('✅ Successfully updated lib/data/products.ts with standardized single source of truth');
+

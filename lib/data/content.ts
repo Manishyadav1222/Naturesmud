@@ -1071,7 +1071,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Discover how 100% pure micro-ground dates powder replaces white refined sugar 1:1 in tea, baby kheer, morning porridge, and baking without inflammatory glycemic crashes.',
     image: '/products/dates-powder-100g.jpg',
     category: 'Sugar-Free Living',
-    author: "NaturesMud Clinical Nutritionist",
+    author: "NaturesMud Wellness Team",
     date: '2026-08-18',
     readTime: 6,
     content: [
@@ -1097,7 +1097,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Why cold-dehydrated sweet potato powder milled from farm-fresh Nepali harvests provides gentle gut digestion for toddlers and clean muscle glycogen for athletes.',
     image: '/products/sweet-potato-powder-100g.jpg',
     category: 'Baby Care & Fitness',
-    author: "NaturesMud Pediatric Nutrition Team",
+    author: "NaturesMud Family & Wellness Team",
     date: '2026-08-16',
     readTime: 7,
     content: [
@@ -1120,7 +1120,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'The scientific breakdown of how cold-dehydrated red beetroots from Nepal\'s hill cooperatives enhance cardiovascular stamina and cellular oxygenation.',
     image: '/products/beetroot-powder-100g.jpg',
     category: 'Sports Nutrition & Glow',
-    author: "NaturesMud Sports Science Lab",
+    author: "NaturesMud Fitness & Wellness Team",
     date: '2026-08-14',
     readTime: 6,
     content: [
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Whole dried berries pack dark-violet anthocyanins and dietary fiber for oatmeal, yogurt bowls, and daily snacking.',
     image: '/products/dried-blueberries-100g.jpg',
     category: 'Nutrition Guides',
-    author: "NaturesMud Editorial Desk",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-12',
     readTime: 6,
     content: [
@@ -1161,7 +1161,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'How NaturesMud sources across Chitwan, Kavre, and Mustang to deliver naturally dehydrated whole-food jars directly to your doorstep.',
     image: '/products/naturesmud-all-products-100g.jpg',
     category: 'Regional Sourcing',
-    author: "NaturesMud Editorial Desk",
+    author: "NaturesMud Editorial Team",
     date: '2026-08-10',
     readTime: 8,
     content: [
@@ -1182,7 +1182,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Step-by-step nutritional advice for introducing chemical-free first solids, Sweet Potato Powder, and Dates Powder to babies aged 6 to 24 months in Nepal.',
     image: 'https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=800&q=80',
     category: 'Baby Care & Weaning',
-    author: "NaturesMud Child Nutrition Specialists",
+    author: "NaturesMud Family & Wellness Team",
     date: '2025-02-10',
     readTime: 8,
     content: [
@@ -1206,7 +1206,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'How dehydrated sweet potato powder delivers steady glycogen replenishment, sustained muscle pumps, and digestive comfort for fitness enthusiasts and athletes.',
     image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=800&q=80',
     category: 'Fitness & Gym',
-    author: "NaturesMud Sports Nutrition Team",
+    author: "NaturesMud Fitness & Wellness Team",
     date: '2025-02-08',
     readTime: 7,
     content: [
@@ -1226,7 +1226,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Why replacing refined white table sugar with 100% dehydrated Dates Powder improves gut flora, stabilizes blood sugar, and provides natural iron.',
     image: 'https://images.unsplash.com/photo-1505253758473-96b3015f27eb?w=800&q=80',
     category: 'Healthy Living',
-    author: "NaturesMud Holistic Wellness Team",
+    author: "NaturesMud Wellness Team",
     date: '2025-02-05',
     readTime: 6,
     content: [
@@ -1244,7 +1244,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Explore how gentle low-temperature dehydration preserves live papain enzymes to eliminate post-meal bloating and support comfortable digestion.',
     image: 'https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?w=800&q=80',
     category: 'Digestive Health',
-    author: "NaturesMud Biochemical Team",
+    author: "NaturesMud Editorial Team",
     date: '2025-02-03',
     readTime: 6,
     content: [
@@ -1260,7 +1260,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'The purity test: How high-altitude wild cliff honey from Mustang retains live antibacterial enzymes, royal jelly, and bioflavonoids.',
     image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80',
     category: 'Ayurveda & Immunity',
-    author: "NaturesMud Apiculture Team",
+    author: "NaturesMud Sourcing Team",
     date: '2025-02-01',
     readTime: 7,
     content: [
@@ -1276,7 +1276,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Discover the cardiovascular and athletic benefits of dietary nitrates found in organic mountain beetroot powder.',
     image: 'https://images.unsplash.com/photo-1585672840462-85e839e38dc0?w=800&q=80',
     category: 'Fitness & Gym',
-    author: "NaturesMud Sports Team",
+    author: "NaturesMud Fitness & Wellness Team",
     date: '2025-01-28',
     readTime: 6,
     content: [
@@ -1292,7 +1292,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'High-altitude wild berries contain 4x the antioxidant capacity of cultivated berries. Here is how they protect vision and cognitive function.',
     image: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=800&q=80',
     category: 'Brain & Vision',
-    author: "NaturesMud Science Team",
+    author: "NaturesMud Editorial Team",
     date: '2025-01-25',
     readTime: 7,
     content: [
@@ -1308,7 +1308,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'How micro-milled organic carrot powder provides gentle, bioavailable Vitamin A for babies and adults alike.',
     image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5c317?w=800&q=80',
     category: 'Baby Care & Weaning',
-    author: "NaturesMud Nutrition Specialists",
+    author: "NaturesMud Wellness Team",
     date: '2025-01-22',
     readTime: 5,
     content: [
@@ -1356,7 +1356,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Why sun-dried mango slices are the best school lunchbox snack for kids, offering natural sweetness with zero chemicals.',
     image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=800&q=80',
     category: 'Healthy Snacking',
-    author: "NaturesMud Culinary Team",
+    author: "NaturesMud Kitchen Team",
     date: '2025-01-15',
     readTime: 5,
     content: [
@@ -1372,7 +1372,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'How black chia seeds absorb 10x their weight in water to provide prolonged cellular hydration, fullness, and smooth digestion.',
     image: 'https://images.unsplash.com/photo-1514733670139-4d87a1941d55?w=800&q=80',
     category: 'Weight Management',
-    author: "NaturesMud Health Specialists",
+    author: "NaturesMud Wellness Team",
     date: '2025-01-12',
     readTime: 7,
     content: [
@@ -1388,7 +1388,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Learn why Moringa Oleifera contains 7x more Vitamin C than oranges and 4x more Calcium than milk.',
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&q=80',
     category: 'Superfoods',
-    author: "NaturesMud Herbal Specialists",
+    author: "NaturesMud Wellness Team",
     date: '2025-01-10',
     readTime: 6,
     content: [
@@ -1404,7 +1404,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'The science behind cold-pressed extra-virgin coconut oil for metabolic energy and oral hygiene.',
     image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=80',
     category: 'Ayurveda & Oils',
-    author: "NaturesMud Ayurvedic Team",
+    author: "NaturesMud Wellness Team",
     date: '2025-01-08',
     readTime: 6,
     content: [
@@ -1436,7 +1436,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'How natural bromelain in dehydrated pineapple accelerates muscle repair, eases joint stiffness, and aids digestion.',
     image: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=800&q=80',
     category: 'Fitness & Recovery',
-    author: "NaturesMud Sports Team",
+    author: "NaturesMud Fitness & Wellness Team",
     date: '2025-01-03',
     readTime: 5,
     content: [
@@ -1452,7 +1452,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Why a morning glass of chlorophyll-rich barley grass water neutralizes dietary acidity and revitalizes cellular energy.',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80',
     category: 'Detox & Cleansing',
-    author: "NaturesMud Holistic Team",
+    author: "NaturesMud Wellness Team",
     date: '2024-12-30',
     readTime: 6,
     content: [
@@ -1468,7 +1468,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Why replacing stripped white salt with unrefined ancient rock salt restores natural electrolyte balance and cellular hydration.',
     image: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=800&q=80',
     category: 'Mineral Nutrition',
-    author: "NaturesMud Mineral Team",
+    author: "NaturesMud Sourcing Team",
     date: '2024-12-28',
     readTime: 5,
     content: [
@@ -1484,7 +1484,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'A comprehensive guide for nursing mothers: healthy fats, natural galactagogues, iron sources, and restorative Himalayan superfoods.',
     image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80',
     category: 'Mothercare & Lactation',
-    author: "NaturesMud Maternal Health Team",
+    author: "NaturesMud Family & Wellness Team",
     date: '2024-12-25',
     readTime: 8,
     content: [
@@ -1500,7 +1500,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Simple steps to detox your kitchen pantry and replace processed snacks with pure mountain nuts, seeds, powders, and raw honey.',
     image: 'https://images.unsplash.com/photo-1543362906-acfc16c67564?w=800&q=80',
     category: 'Healthy Living',
-    author: "NaturesMud Founder & Team",
+    author: "NaturesMud Editorial Team",
     date: '2024-12-20',
     readTime: 7,
     content: [
@@ -1516,7 +1516,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Clinical pediatric insights on starting stage 1 infant solids with single-ingredient dehydrated sweet potato powder—high bioavailability Vitamin A, gentle digestion, and zero choking hazards.",
     image: "/products/sweet-potato-powder-100g.jpg",
     category: "Baby Weaning Guides",
-    author: "NaturesMud Editorial Desk",
+    author: "NaturesMud Editorial Team",
     date: "2026-08-19",
     readTime: 8,
     content: [
@@ -1537,36 +1537,36 @@ export const blogPosts: BlogPost[] = [
   {
     id: "b-dates-powder-infant-iron",
     slug: "combating-infant-iron-deficiency-natural-dates-powder-vs-supplements",
-    title: "Preventing Infant Anemia Naturally: Why Dates Powder Outperforms Synthetic Iron Syrups in Weaning Diets",
-    excerpt: "Learn how natural non-heme iron, potassium, and copper in 100% dehydrated dates powder support infant hemoglobin synthesis without digestive cramping.",
+    title: "Nutritional Guide: Whole Dates Powder in Infant Weaning Diets",
+    excerpt: "Learn how dietary non-heme iron, potassium, and natural minerals in 100% dehydrated dates powder support diverse complementary feeding without refined sugar.",
     image: "/products/dates-powder-health-poster.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud Pediatric Clinical Team",
+    author: "NaturesMud Editorial Team",
     date: "2026-08-18",
     readTime: 7,
     content: [
-      "Between 6 and 9 months of age, an infant's innate gestational iron stores become depleted. If complementary foods do not provide sufficient bioavailable dietary iron, children are vulnerable to iron-deficiency anemia (IDA), which can impair cognitive development and motor skills.",
-      "### The Problem with Synthetic Ferrous Sulfate Drops",
-      "While pharmaceutical iron drops are frequently prescribed, up to 40% of toddlers suffer from severe side effects including dark, hardened stools, painful colic, gastrointestinal reflux, and tooth enamel discoloration.",
-      "### The Whole-Food Solution: NaturesMud Dates Powder Sweetener (100g)",
-      "Milled solely from dehydrated desert dates without added sugar or chemical carriers, NaturesMud Dates Powder delivers dietary iron within a whole-food plant matrix:",
-      "- **Non-Heme Iron + Vitamin C Synergy:** Contains 2.6mg of plant iron per 100g. When paired with Vitamin C rich foods (like mashed papaya or carrot puree), iron absorption in the infant duodenum increases by up to 300%.",
-      "- **Gentle on Immature Guts:** The natural soluble date fibers act as an osmotic stool balancer, preventing the constipation associated with chemical iron syrups.",
-      "- **Sugar-Free Taste Palatability:** Naturally sweetens bitter weaning grains like sprouted ragi (finger millet) and barley without exposing infant taste buds to toxic refined white sugar.",
-      "### Daily Pediatric Dosage Guideline",
-      "Add 1 teaspoon (approx. 5g) of NaturesMud Dates Powder to daily baby porridge, oatmeal, or homemade vegetable khichdi for infants aged 7 to 24 months."
+      "During the complementary feeding window (6 to 12 months), incorporating nutrient-dense whole foods helps meet evolving nutritional needs alongside continued breastfeeding or formula.",
+      "### Understanding Whole-Food Ingredients in Weaning",
+      "While pediatricians may evaluate and prescribe clinical iron supplements when medically diagnosed, whole-food dietary ingredients provide gentle, complementary nutrition in home-cooked meals.",
+      "### Nutritional Role of NaturesMud Dates Powder (100g)",
+      "Milled from 100% pure dehydrated desert dates with zero added sugars, preservatives, or artificial additives:",
+      "- **Dietary Non-Heme Iron & Potassium:** Supplies approximately 2.5mg of plant-based non-heme iron per 100g along with natural potassium and magnesium to support daily nutrition.",
+      "- **Naturally Occurring Whole-Fruit Fiber:** Contains soluble dietary fiber that contributes to normal digestion when paired with balanced hydration and varied meals.",
+      "- **Natural Fruit Sweetness (0% Added Refined Sugar):** Naturally flavours traditional weaning grains like sprouted ragi, oats, and barley using whole dried fruit rather than refined sucrose.",
+      "### Complementary Feeding Tips",
+      "Stir 1/2 to 1 teaspoon (approx. 3-5g) of NaturesMud Dates Powder into warm baby porridge or vegetable purees for babies aged 6+ months as advised by your healthcare provider. *Note: Whole foods complement a healthy diet and are not substitutes for medical diagnosis or clinical treatment.*"
     ],
-    tags: ["dates powder","infant iron","baby anemia","natural sweetener","baby weaning","pediatric nutrition"],
+    tags: ["dates powder","infant nutrition","dietary iron","natural sweetener","baby weaning","pediatric nutrition"],
     featured: true,
   },
   {
     id: "b-baby-screen-eyes-carrot-powder",
     slug: "protecting-toddler-eyesight-blue-light-organic-carrot-powder",
     title: "Screen Fatigue & Infant Vision: The Role of Dietary Lutein and Beta-Carotene in Early Eye Development",
-    excerpt: "Discover why pediatric ophthalmologists recommend whole-food carotenoids from dehydrated carrot powder to shield developing maculas from digital blue light.",
+    excerpt: "Discover how dietary carotenoids and beta-carotene from dehydrated carrot powder contribute to overall nutritional wellness as part of a balanced diet.",
     image: "/products/carrot-benefits-poster.jpg",
     category: "Pediatric Nutrition",
-    author: "Dr. S. Koirala (Ophthalmic Nutritionist)",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-17",
     readTime: 6,
     content: [
@@ -1584,25 +1584,25 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "b-infant-constipation-chia-papaya",
-    slug: "natural-cures-infant-constipation-black-chia-seeds-dehydrated-papaya",
-    title: "Gentle & Natural Solutions for Infant Constipation: Black Chia Gel and naturally dehydrated Papaya Enzymes",
-    excerpt: "A drug-free clinical protocol utilizing hydrophilic soluble mucilage from chia seeds and proteolytic papain enzymes from mountain papaya to relieve toddler bowel blockage.",
+    slug: "gentle-dietary-support-infant-constipation-black-chia-seeds-dehydrated-papaya",
+    title: "Gentle Dietary Support for Infant Digestion: Chia Seeds and Naturally Dehydrated Papaya",
+    excerpt: "A dietary guide exploring how soluble fiber from chia seeds and natural enzymes from mountain papaya can support smooth toddler digestion.",
     image: "/products/papaya.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud Integrative Pediatric Care",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
-      "Infant constipation is one of the most common causes of parental distress during the complementary feeding transition. When milk consumption drops and solid starches increase, immature infant intestines often struggle to propel stools, leading to painful straining, abdominal distension, and anal fissures.",
-      "### The Dangers of Chronic Laxative Overuse in Toddlers",
-      "Relying on synthetic osmotic laxatives like polyethylene glycol or glycerin suppositories can create psychological bowel dependence and disrupt the developing infant gut microbiome.",
-      "### The Dual Natural Protocol: Chia Mucilage + Papain Enzymes",
-      "- **1. NaturesMud Black Chia Seed Gel:** Chia seeds are 40% dietary fiber by weight, predominantly soluble mucilaginous fiber. When soaked in water (1:6 ratio for 15 minutes), chia forms a soothing lubricating gel that hydrates dry fecal matter and triggers gentle peristalsis without cramping.",
-      "- **2. NaturesMud Dehydrated Papaya Compote:** Sun-dried sweet mountain papaya contains active proteolytic enzymes (papain and chymopapain) that break down complex milk proteins and dense carbohydrates in the lower digestive tract.",
-      "### How to Administer to Babies 8M+",
-      "Rehydrate 2 slices of NaturesMud Dehydrated Papaya in 3 tablespoons of warm water. Blend into a smooth puree and stir in 1/2 teaspoon of pre-bloomed chia seed gel. Feed once daily in the afternoon."
+      "Digestive adjustments are common during the complementary feeding transition as infants transition from an all-milk diet to solid foods.",
+      "### Wholesome Dietary Fiber & Hydration",
+      "Supporting digestive regularity starts with balanced fluid intake and introducing fiber-rich whole foods into home-cooked meals.",
+      "### Dietary Components in Home Meals",
+      "- **1. Pre-Hydrated Chia Seed Gel:** Chia seeds provide soluble dietary fiber. When pre-soaked thoroughly in water, the gel adds moisture and gentle bulk to complementary meals.",
+      "- **2. Dehydrated Papaya:** Naturally dehydrated mountain papaya provides dietary fruit fiber and natural plant enzymes (such as papain) as a sweet, nutritious addition to porridge.",
+      "### Serving Suggestion for Babies 8M+",
+      "Rehydrate 1-2 small pieces of NaturesMud Dehydrated Papaya in warm water, blend into a smooth puree, and mix with pre-soaked chia gel. Always consult your pediatrician if digestive discomfort or constipation persists."
     ],
-    tags: ["baby constipation","chia seeds","papaya","papain","infant digestion","toddler health"],
+    tags: ["infant digestion","chia seeds","papaya","dietary fiber","baby weaning","toddler nutrition"],
     featured: false,
   },
   {
@@ -1612,7 +1612,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A comprehensive biochemical comparison of glycemic index, fructose kinetics, micronutrient density, and dental health between whole dates powder and industrial sweeteners.",
     image: "/products/dates-powder-jar-2k.jpg",
     category: "Clinical Nutrition",
-    author: "Dr. Bikram Thapa (PhD Nutritional Biochemistry)",
+    author: "NaturesMud Editorial Team",
     date: "2026-08-16",
     readTime: 9,
     content: [
@@ -1644,7 +1644,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Peer-reviewed evidence on how chemical zero-calorie sweeteners disrupt the intestinal microbiome and why whole plant date fiber supports probiotic diversity.",
     image: "/products/dates-powder-health-poster.jpg",
     category: "Gut Health & Nutrition",
-    author: "Gastroenterology Research Division, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-14",
     readTime: 8,
     content: [
@@ -1668,7 +1668,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A deep physiological dive into dietary nitrate metabolism, mitochondrial phosphorylation efficiency, and real-world athletic performance benefits.",
     image: "/products/beetroot-vital-blood.jpg",
     category: "Sports Science & Physiology",
-    author: "K. Basnet (M.Sc. Exercise Physiology)",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-17",
     readTime: 8,
     content: [
@@ -1695,7 +1695,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how low-glycemic, polyphenol-rich sweet potato powder restores depleted liver and muscle glycogen without GI distress or rebound hypoglycemia.",
     image: "/products/sweet-potato-product-poster.jpg",
     category: "Sports Science & Physiology",
-    author: "NaturesMud Sports Performance Lab",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
@@ -1720,7 +1720,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Explore the biophysical science of chia seed hydrophilic gels: prolonged water retention, sustained carbohydrate breakdown, and electrolyte bioavailability for long-distance trail runners.",
     image: "/products/chia-seeds.jpg",
     category: "Sports Science & Physiology",
-    author: "Endurance Sports Medicine Desk, NaturesMud",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-13",
     readTime: 7,
     content: [
@@ -1744,7 +1744,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A complete clinical breakdown of how dietary lignans, zinc, and essential fatty acids in golden flax and pumpkin seeds modulate estrogen and progesterone phases.",
     image: "/products/flax-seeds.jpg",
     category: "Women's Health & Hormones",
-    author: "Dr. P. Adhikari (Naturopathic Endocrinology) & NaturesMud Health Team",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-16",
     readTime: 9,
     content: [
@@ -1771,7 +1771,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Why sugary bottled cranberry juice fails and how whole dried cranberries with concentrated A-type PACs support natural bladder wellness.",
     image: "/products/cranberries-prevent-uti.jpg",
     category: "Women's Health & Hormones",
-    author: "NaturesMud Urological & Integrative Nutrition Team",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-14",
     readTime: 7,
     content: [
@@ -1795,7 +1795,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An authentic exploration of Nepal's 45-day postpartum healing tradition, updated with modern whole-food nutrition for new nursing mothers.",
     image: "/products/walnuts.jpg",
     category: "Women's Health & Hormones",
-    author: "Sunita Pradhan (Postpartum Care Specialist) & NaturesMud",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-12",
     readTime: 8,
     content: [
@@ -1820,7 +1820,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The neuroscience behind why whole raw walnuts—nature's brain-shaped nut—are the richest plant source of neuroprotective ALA Omega-3 and polyphenols.",
     image: "/products/walnuts.jpg",
     category: "Brain Health & Cognition",
-    author: "Neurobiology Research Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-15",
     readTime: 8,
     content: [
@@ -1844,7 +1844,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Discover why high-altitude wild dried blueberries contain up to 4x more antioxidant anthocyanins than standard cultivated berries.",
     image: "/products/blueberries-brain-power.jpg",
     category: "Brain Health & Cognition",
-    author: "NaturesMud Phytochemistry Lab",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-13",
     readTime: 7,
     content: [
@@ -1868,7 +1868,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How slow-roasted mountain almonds nourish brain neurotransmitters, improve working memory, and maintain healthy cholesterol levels.",
     image: "/products/almonds.jpg",
     category: "Brain Health & Cognition",
-    author: "Cognitive Wellness Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-11",
     readTime: 6,
     content: [
@@ -1892,7 +1892,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An authoritative scientific and Ayurvedic analysis of authentic high-altitude Shilajit resin: fulvic acid molecular transport, 84+ ionic trace minerals, testosterone, and stamina.",
     image: "/products/shilajit.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Vaidya R. K. Acharya (Ayurvedacharya) & NaturesMud Science Team",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-18",
     readTime: 10,
     content: [
@@ -1919,7 +1919,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The chemical and Ayurvedic breakdown of Kala Namak / Bire Noon: why natural greigite iron sulfides, lower sodium, and carminative minerals soothe heartburn and gas.",
     image: "/products/himalayan-black-salt-digestive.jpg",
     category: "Ayurveda & Rasayana",
-    author: "NaturesMud Ayurvedic Therapeutics",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-16",
     readTime: 7,
     content: [
@@ -1945,7 +1945,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The biophysics of Sole (So-lay): how fully saturated Himalayan pink rock salt brine matches human blood osmolarity and optimizes adrenals and hydration.",
     image: "/products/pink-salt-health-poster.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Integrative Biophysics Desk, NaturesMud",
+    author: "NaturesMud Editorial Team",
     date: "2026-08-14",
     readTime: 8,
     content: [
@@ -1971,7 +1971,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Investigate the chemistry of raw high-altitude honey: why pasteurized supermarket honey is dead sugar water, and how raw Mustang cliff honey preserves live glucose oxidase enzymes.",
     image: "/products/raw-honey.jpg",
     category: "Ayurveda & Rasayana",
-    author: "NaturesMud Apiculture Science Desk",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-12",
     readTime: 8,
     content: [
@@ -1996,7 +1996,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The biochemical difference between cold-pressed virgin coconut oil and refined copra oils: rapid portal vein transport, ketone synthesis, and monolaurin pathogen defense.",
     image: "/products/coconut-oil-infographic.jpg",
     category: "Ketogenic & Healthy Fats",
-    author: "Lipid Biochemistry Division, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-16",
     readTime: 8,
     content: [
@@ -2022,7 +2022,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Discover why unrefined, cold-pressed Nepali mustard oil with natural allylisothiocyanate provides optimal 1:2 Omega-3 to Omega-6 ratios and joint relief.",
     image: "/products/coconut-oil.jpg",
     category: "Ketogenic & Healthy Fats",
-    author: "NaturesMud Traditional Oils Research Group",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-14",
     readTime: 7,
     content: [
@@ -2046,7 +2046,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The nutritional biochemistry of raw pumpkin seeds: high plant zinc, magnesium for nervous system relaxation, and natural L-tryptophan for restorative deep sleep.",
     image: "/products/pumpkin-seeds-product-shot.jpg",
     category: "Ketogenic & Healthy Fats",
-    author: "Sleep and Cellular Nutrition Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-12",
     readTime: 7,
     content: [
@@ -2070,7 +2070,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How living chlorophyll, superoxide dismutase (SOD) enzymes, and 70+ trace minerals in young barley grass neutralize heavy metals and restore alkaline balance.",
     image: "/products/sweet-potato-powder.jpg",
     category: "Alkaline Nutrition & Detox",
-    author: "Cellular Detoxification Lab, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-10",
     readTime: 7,
     content: [
@@ -2094,7 +2094,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Detailed physiological guide on how SDG flax lignans modulate estrogen receptors and support follicle growth during the first half of the menstrual cycle.",
     image: "/products/flax-seeds.jpg",
     category: "Women's Health & Hormones",
-    author: "NaturesMud Women's Health Lab",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-16",
     readTime: 7,
     content: [
@@ -2117,7 +2117,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How the zinc, magnesium, and healthy phytosterols in Himalayan pumpkin seeds support the corpus luteum and alleviate mood swings and cramping.",
     image: "/products/pumpkin-seeds-product-shot.jpg",
     category: "Women's Health & Hormones",
-    author: "NaturesMud Women's Health Lab",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
@@ -2139,7 +2139,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Clinical and Ayurvedic nutrition for new nursing mothers: how unrefined dates powder, raw walnuts, fenugreek, and cold-pressed oils optimize breastmilk lipid profiles.",
     image: "/products/dates-powder-100g.jpg",
     category: "Women's Health & Hormones",
-    author: "Dr. K. Shakya (Maternal Health Desk)",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-14",
     readTime: 8,
     content: [
@@ -2161,7 +2161,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The biochemistry of the gut-brain axis: how Alpha-Linolenic Acid (ALA) from Himalayan walnuts and chia seeds reduces neuroinflammation and stabilizes mood.",
     image: "/products/walnuts.jpg",
     category: "Brain Health & Cognition",
-    author: "Nutritional Psychiatry Division, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-13",
     readTime: 8,
     content: [
@@ -2184,7 +2184,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Ditch energy drinks and synthetic caffeine pills: how roasted almonds, wild blueberries, pumpkin seeds, and dates powder fuel academic excellence.",
     image: "/products/blueberries-brain-power.jpg",
     category: "Brain Health & Cognition",
-    author: "Academic Performance Nutrition Desk, NaturesMud",
+    author: "NaturesMud Editorial Team",
     date: "2026-08-12",
     readTime: 7,
     content: [
@@ -2205,7 +2205,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An endocrinological review on why intact date fiber buffers postprandial glucose excursions compared to pure sucrose and maltodextrin.",
     image: "/products/dates-powder-health-poster.jpg",
     category: "Clinical Nutrition",
-    author: "Endocrinology & Diabetic Care Team, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-16",
     readTime: 8,
     content: [
@@ -2226,7 +2226,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Dermatological science of glycation: why refined white sugar causes premature wrinkles and sagging, while antioxidant date polyphenols preserve dermal elasticity.",
     image: "/products/dates-powder-100g.jpg",
     category: "Sugar-Free Living",
-    author: "Dermatological Nutrition Lab, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-11",
     readTime: 7,
     content: [
@@ -2246,7 +2246,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Practical pediatric advice for self-feeding toddlers: soft sweet potato teething sticks, dates oat pancakes, and apple rings for fine motor development.",
     image: "/products/sweet-potato-product-poster.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud BLW Feeding Specialist",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
@@ -2268,7 +2268,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Why finger millet (kodo/ragi) paired with unrefined dates powder provides the highest plant calcium and iron density for teething babies (7M+).",
     image: "/products/dates-powder-health-poster.jpg",
     category: "Pediatric Nutrition",
-    author: "Ayurvedic Pediatric Care, NaturesMud",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-13",
     readTime: 6,
     content: [
@@ -2290,7 +2290,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How combining Pure Himalayan Beetroot Powder and Premium Black Chia Seeds creates the cleanest, stimulant-free athletic endurance stack.",
     image: "/images/combos/sports-nutrition-combo.jpg",
     category: "Sports Science & Physiology",
-    author: "NaturesMud Sports Performance Desk",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
@@ -2311,7 +2311,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Why high-caffeine energy drinks cause adrenal burnout and how adaptogenic green powders and nitrate roots oxygenate muscle tissue without caffeine crashes.",
     image: "/images/recipes/green-smoothie-powder.jpg",
     category: "Sports Science & Physiology",
-    author: "Integrative Sports Medicine Desk, NaturesMud",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-11",
     readTime: 7,
     content: [
@@ -2331,7 +2331,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Why mountain communities drink salted butter tea: fat-emulsified hydration, thermal thermogenesis, and electrolyte replenishment with Himalayan pink rock salt.",
     image: "/products/pink-salt.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Himalayan Cultural & Nutritional Anthropology Desk",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-14",
     readTime: 7,
     content: [
@@ -2353,7 +2353,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The biochemistry of proteolytic fruit enzymes: breaking down tough food proteins, relieving acid reflux, and healing intestinal mucosal inflammation.",
     image: "/products/papaya.jpg",
     category: "Gut Health & Nutrition",
-    author: "NaturesMud Gastroenterology & Enzymes Desk",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-12",
     readTime: 7,
     content: [
@@ -2375,7 +2375,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Compare the whole-food nutrient density of micro-ground moringa leaves: 7x Vitamin C of oranges, 4x Calcium of milk, 4x Vitamin A of carrots, and 3x Potassium of bananas.",
     image: "/products/sweet-potato-powder.jpg",
     category: "Alkaline Nutrition & Detox",
-    author: "Botanical Pharmacology Group, NaturesMud",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-15",
     readTime: 8,
     content: [
@@ -2400,7 +2400,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A complete step-by-step master recipe for 100% gluten-free, keto-friendly rustic flatbreads and sandwich loaves using freshly ground flax and chia seeds.",
     image: "/products/flax-seeds.jpg",
     category: "Ketogenic & Healthy Fats",
-    author: "NaturesMud Test Kitchen & Low-Carb Science",
+    author: "NaturesMud Kitchen Team",
     date: "2026-08-13",
     readTime: 7,
     content: [
@@ -2421,7 +2421,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An inside look at our clean low-temperature dehydration technology: how slow moisture removal at sub-45°C preserves vitamins, living enzymes, and natural fruit sugars without sulfur dioxide.",
     image: "/products/dehydrated-apple.jpg",
     category: "Provenance & Sustainability",
-    author: "Food Engineering & Quality Assurance, NaturesMud",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-10",
     readTime: 7,
     content: [
@@ -2443,7 +2443,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How industrial high-heat refining generates inflammatory trans-fats and lipid peroxides, and why unrefined virgin coconut and mustard oils protect arteries.",
     image: "/products/coconut-oil.jpg",
     category: "Ketogenic & Healthy Fats",
-    author: "Lipidology & Nutritional Toxicology, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-09",
     readTime: 8,
     content: [
@@ -2463,7 +2463,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The sports hydration breakdown: artificial dyes and 36g of high-fructose corn syrup vs. 84 ionic trace minerals and natural potassium.",
     image: "/products/pink-salt-moss.jpg",
     category: "Sports Science & Physiology",
-    author: "NaturesMud Sports Performance Desk",
+    author: "NaturesMud Fitness & Wellness Team",
     date: "2026-08-08",
     readTime: 7,
     content: [
@@ -2481,7 +2481,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Cardiovascular clinical trials on daily flax seed consumption: reducing small dense LDL particles, binding excess bile, and relaxing blood vessels.",
     image: "/products/flax-seeds.jpg",
     category: "Clinical Nutrition",
-    author: "Cardiovascular Nutrition Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-07",
     readTime: 8,
     content: [
@@ -2501,7 +2501,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Dermatological studies on pumpkin seed oil and whole seeds: inhibiting 5-alpha reductase, nourishing hair follicles, and stimulating hair count growth.",
     image: "/products/pumpkin-seeds-product-shot.jpg",
     category: "Women's Health & Hormones",
-    author: "Trichology & Nutritional Dermatology, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-06",
     readTime: 7,
     content: [
@@ -2516,22 +2516,22 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "b-sweet-potato-vs-white-potato-infants",
-    slug: "sweet-potato-vs-white-potato-why-pediatricians-recommend-sweet-potato-for-weaning",
-    title: "Sweet Potato vs. White Potato: Why Pediatricians Recommend Sweet Potato for Infant Weaning and Blood Sugar Stability",
-    excerpt: "The nutritional breakdown: glycemic index, pro-vitamin A carotenoids, and gut-friendly prebiotic fiber compared between root tubers.",
+    slug: "sweet-potato-vs-white-potato-nutritional-profile-for-infant-weaning",
+    title: "Sweet Potato vs. White Potato: Nutritional Profile for Infant Weaning Porridge",
+    excerpt: "A nutritional breakdown of beta-carotene provitamin A, prebiotic dietary fiber, and preparation versatility for toddler complementary meals.",
     image: "/products/sweet-potato-powder-100g.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud Child Nutrition Group",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-05",
     readTime: 6,
     content: [
-      "While both are root tubers, sweet potatoes and standard white potatoes belong to completely different botanical families and have vastly different metabolic effects.",
-      "### 1. Glycemic & Fiber Superiority",
-      "White potatoes have a very high Glycemic Index (GI ~85), converting rapidly into pure glucose and causing blood sugar volatility. Sweet potatoes have a lower glycemic load and higher prebiotic soluble fiber, keeping infants and children satiated without hyperactivity.",
-      "### 2. Vitamin A Carotenoid Density",
-      "White potatoes contain virtually zero Vitamin A. In contrast, 100g of NaturesMud Organic Sweet Potato Powder delivers over 700% DV of Vitamin A beta-carotene, vital for infant vision, skin integrity, and lung development."
+      "Both sweet potatoes and white potatoes are widely used root crops, yet they offer distinct nutritional profiles for introducing solids to infants.",
+      "### 1. Dietary Fiber & Sustained Energy",
+      "Sweet potatoes contain rich prebiotic dietary fiber and complex carbohydrates, providing gentle, sustained energy release for active toddlers.",
+      "### 2. Vitamin A Beta-Carotene Density",
+      "Orange-fleshed sweet potatoes are naturally abundant in beta-carotene (provitamin A), which the body converts into Vitamin A to support visual health and immune function as part of a varied weaning diet."
     ],
-    tags: ["sweet potato powder","baby weaning","potato comparison","beta carotene","infant health"],
+    tags: ["sweet potato powder","baby weaning","potato comparison","beta carotene","infant nutrition"],
     featured: false,
   },
   {
@@ -2541,7 +2541,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An exploration of Nepal's native botanical remedies for toothaches, cold weather digestion, and joint inflammation.",
     image: "/products/pink-salt.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Ethnobotany & Mountain Medicine Desk",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-04",
     readTime: 7,
     content: [
@@ -2561,7 +2561,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Gastroenterological research on cranberry proanthocyanidins: inhibiting H. pylori bacterial adhesion to gastric mucosa and soothing gastritis.",
     image: "/products/cranberries.jpg",
     category: "Gut Health & Nutrition",
-    author: "Integrative Gastroenterology, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-03",
     readTime: 7,
     content: [
@@ -2580,7 +2580,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Endocrinological trials on walnut polyphenols and ALA: improving endothelial flow, reducing fasting insulin, and lowering abdominal adiposity.",
     image: "/products/walnuts.jpg",
     category: "Clinical Nutrition",
-    author: "Endocrinology & Metabolic Health Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-02",
     readTime: 8,
     content: [
@@ -2601,7 +2601,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Immunological science of raw unheated mountain honey: micro-doses of bioavailable floral pollens and bioflavonoids for allergy relief.",
     image: "/products/raw-honey.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Immunology & Allergy Desk, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-01",
     readTime: 7,
     content: [
@@ -2621,7 +2621,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Discover our uncompromising quality standards: independent heavy metal testing, zero synthetic flow agents, and direct single-origin sourcing in Nepal.",
     image: "/images/combos/lineup-wood.jpg",
     category: "Provenance & Sustainability",
-    author: "Quality Assurance & Standards Directorate, NaturesMud",
+    author: "NaturesMud Sourcing Team",
     date: "2026-07-30",
     readTime: 7,
     content: [
@@ -2643,7 +2643,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A cultural shift towards mindful gifting during weddings, Dashain, Tihar, and corporate celebrations: investing in health, vitality, and longevity.",
     image: "/images/combos/superfood-lineup.jpg",
     category: "Sugar-Free Living",
-    author: "Cultural Trends Desk, NaturesMud",
+    author: "NaturesMud Editorial Team",
     date: "2026-07-28",
     readTime: 6,
     content: [
@@ -2664,7 +2664,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The symbiotic power of probiotic live curd cultures paired with prebiotic fiber and natural beta-carotene from sun-dried Himalayan mangoes.",
     image: "/products/dehydrated-mango.jpg",
     category: "Gut Health & Nutrition",
-    author: "NaturesMud Fermentation & Probiotics Desk",
+    author: "NaturesMud Wellness Team",
     date: "2026-07-25",
     readTime: 6,
     content: [
@@ -2685,7 +2685,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Gastrointestinal research on apple pectin fiber: increasing mucosal gut integrity, lowering LDL cholesterol, and balancing blood sugar.",
     image: "/products/dehydrated-apple.jpg",
     category: "Gut Health & Nutrition",
-    author: "NaturesMud Microbiome Lab",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-16",
     readTime: 7,
     content: [
@@ -2707,7 +2707,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Why traditional turmeric milk requires healthy lipid carriers and piperine to increase curcumin absorption by 2000% for joint and sleep wellness.",
     image: "/images/recipes/coconut-oil-jasmine-bowl.jpg",
     category: "Ayurveda & Rasayana",
-    author: "Ayurvedic Clinical Pharmacology, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-15",
     readTime: 7,
     content: [
@@ -2729,7 +2729,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Dermatological and hepatic insights on betacyanin antioxidants: neutralizing phase 1 liver free radicals and clearing hormonal cystic breakouts.",
     image: "/products/beetroot-poster-2k.jpg",
     category: "Sports Nutrition & Glow",
-    author: "Dermal Physiology Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-14",
     readTime: 6,
     content: [
@@ -2751,7 +2751,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How combining non-heme iron in dates powder with dietary nitrates in beetroot powder and Vitamin C accelerates red blood cell volume after birth.",
     image: "/products/beetroot-vital-blood.jpg",
     category: "Women's Health & Hormones",
-    author: "NaturesMud Maternal Health Desk",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-13",
     readTime: 7,
     content: [
@@ -2773,7 +2773,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "How to make a velvety 3-ingredient spread packed with bioavailable zinc, protein, and magnesium that is 100% safe for peanut-free classrooms.",
     image: "/products/pumpkin-seeds.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud Family Kitchen",
+    author: "NaturesMud Kitchen Team",
     date: "2026-08-12",
     readTime: 6,
     content: [
@@ -2794,7 +2794,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The endocrinology of natural weight management: how hydrophilic chia gel slows gastric emptying, curtails appetite, and flattens insulin spikes.",
     image: "/products/chia-seeds.jpg",
     category: "Clinical Nutrition",
-    author: "Metabolic Endocrinology Group, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-11",
     readTime: 8,
     content: [
@@ -2814,7 +2814,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A review of the Walnuts and Healthy Aging (WAHA) clinical trials: preserving white matter integrity, improving processing speed, and reducing neuro-plaque.",
     image: "/products/walnuts.jpg",
     category: "Brain Health & Cognition",
-    author: "Geriatric Neuroscience Desk, NaturesMud",
+    author: "NaturesMud Wellness Team",
     date: "2026-08-10",
     readTime: 8,
     content: [
@@ -2834,7 +2834,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "The fascinating geological history of primal Jurassic oceans, volcanic magma pressure, and why ancient unpolluted rock salt has zero microplastics.",
     image: "/products/pink-salt-crystals.jpg",
     category: "Provenance & Sustainability",
-    author: "Geology & Mineral Sourcing Desk, NaturesMud",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-09",
     readTime: 7,
     content: [
@@ -2854,7 +2854,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "An inside look at the perilous ancestral tradition of Himalayan cliff honey hunting: honoring the sacred wild bees, eco-conservation, and pure unheated honey.",
     image: "/products/raw-honey.jpg",
     category: "Provenance & Sustainability",
-    author: "Cultural Documentation & Sourcing Team, NaturesMud",
+    author: "NaturesMud Sourcing Team",
     date: "2026-08-08",
     readTime: 8,
     content: [
@@ -2874,7 +2874,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "A practical guide for parents of picky eaters: creating delicious, naturally sweet superfood smoothies loaded with hidden carrot, beetroot, and chia.",
     image: "/images/recipes/sweet-potato-stirred-smoothie.jpg",
     category: "Pediatric Nutrition",
-    author: "NaturesMud Pediatric Nutrition Desk",
+    author: "NaturesMud Family & Wellness Team",
     date: "2026-08-07",
     readTime: 6,
     content: [

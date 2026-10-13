@@ -14,6 +14,7 @@ import {
   Package,
 } from 'lucide-react';
 import { siteConfig } from '@/lib/site';
+import { getProductBySlug } from '@/lib/data/products';
 
 export const metadata: Metadata = {
   title: 'Clean Gym & Fitness Nutrition Nepal | Natural Whole Food Fuel | NaturesMud',
@@ -31,80 +32,62 @@ export const metadata: Metadata = {
   },
 };
 
-const FITNESS_PRODUCTS = [
+const FITNESS_ITEMS = [
   {
-    name: 'Pure Mountain Himalayan Shilajit Resin',
-    nepaliName: 'शुद्ध हिमाली शिलाजीत',
     slug: 'pure-mountain-himalayan-shilajit-resin',
-    weight: '20 GM',
-    price: 1995,
-    packing: 'Amber Glass Jar with Dosing Spoon',
-    image: '/products/shilajit.jpg',
+    nepaliName: 'शुद्ध हिमाली शिलाजीत',
     benefit: 'Traditional Himalayan Mineral Resin',
     detail: 'Purified alpine shilajit resin rich in natural fulvic acid and 80+ trace ionic minerals. Supports cellular vitality and recovery.',
     howToUse: 'Dissolve a pea-sized amount (300–500 mg) in warm water or milk in the morning.',
   },
   {
-    name: 'Pure Beetroot Powder',
-    nepaliName: 'चुकन्दर पाउडर',
     slug: 'beetroot-powder',
-    weight: '100 GM',
-    price: 510,
-    packing: 'Airtight Glass Jar',
-    image: '/products/beetroot-powder-100g.jpg',
+    nepaliName: 'चुकन्दर पाउडर',
     benefit: 'Natural Dietary Nitrates',
     detail: 'Dietary nitrates in beetroot convert into nitric oxide in the body, supporting healthy blood flow and cardiovascular stamina during intense training.',
     howToUse: 'Mix 1–2 teaspoons into your pre-workout shaker bottle 30–45 minutes before exercise.',
   },
   {
-    name: 'Raw Himalayan Mountain Almonds',
-    nepaliName: 'काँचो हिमाली बदाम',
     slug: 'raw-himalayan-almonds',
-    weight: '200 GM',
-    price: 750,
-    packing: 'Airtight Food-Grade Pack',
-    image: '/products/nm-almond-jar-v2.jpg',
+    nepaliName: 'काँचो हिमाली बदाम',
     benefit: 'Clean Plant Protein & Vitamin E',
     detail: 'Cold-shelled, unroasted almonds delivering plant protein, monounsaturated healthy fats, and natural antioxidant alpha-tocopherol.',
     howToUse: 'Consume 10–15 almonds post-workout or soak overnight for easy morning digestion.',
   },
   {
-    name: 'Whole Chia Seeds',
-    nepaliName: 'चिया सिड्स',
     slug: 'chia-seeds',
-    weight: '300 GM',
-    price: 490,
-    packing: 'Food-Grade PET Jar',
-    image: '/products/chia-seeds.jpg',
+    nepaliName: 'चिया सिड्स',
     benefit: 'Plant Omega-3 & Hydration Gel',
     detail: 'Absorbs up to 10x its weight in water to create a soothing mucilage gel. Provides plant ALA omega-3 and soluble dietary fiber.',
     howToUse: 'Soak 1 tablespoon in 250ml water, lemonade, or electrolyte drink for sustained workout hydration.',
   },
   {
-    name: 'AAA-Grade Pumpkin Seeds',
-    nepaliName: 'फर्सीको बिया',
     slug: 'pumpkin-seeds',
-    weight: '300 GM',
-    price: 650,
-    packing: 'Food-Grade PET Jar',
-    image: '/products/posters/pumpkin-seeds-ad-2k.jpg',
+    nepaliName: 'फर्सीको बिया',
     benefit: 'Zinc, Magnesium & Muscle Recovery',
     detail: 'Naturally dense in dietary magnesium, essential for muscle protein synthesis, electrolyte balance, and neuromuscular recovery.',
     howToUse: 'Add 2 tablespoons to post-workout oats, smoothie bowls, or consume raw.',
   },
   {
-    name: 'Superfood Trail Mix',
-    nepaliName: 'सुपरफुड मिक्स नट्स',
     slug: 'superfood-trail-mix',
-    weight: '200 GM',
-    price: 650,
-    packing: 'Airtight Glass Jar',
-    image: '/products/trail-mix.jpg',
+    nepaliName: 'सुपरफुड मिक्स नट्स',
     benefit: 'Instant Portable Clean Energy',
     detail: 'A balanced blend of energy-dense raw nuts and antioxidant-rich dried berries with 0% added sugar or confectioner glaze.',
     howToUse: 'Keep a jar in your gym bag for an instant, whole-food energy replenishment.',
   },
 ];
+
+const FITNESS_PRODUCTS = FITNESS_ITEMS.map((item) => {
+  const p = getProductBySlug(item.slug);
+  return {
+    ...item,
+    name: p?.official_label_name || p?.name || item.slug,
+    weight: p?.weight || '100 GM',
+    price: p?.price || 500,
+    packing: p?.packing || 'Glass Jar',
+    image: p?.image || '/products/shilajit.jpg',
+  };
+});
 
 export default function GymFitnessPage() {
   return (
