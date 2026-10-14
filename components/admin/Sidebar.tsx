@@ -23,6 +23,7 @@ import {
   Leaf,
   Circle,
   X,
+  Globe,
 } from 'lucide-react';
 
 interface NavItem {
@@ -74,6 +75,7 @@ const navItems: NavItem[] = [
   },
   { label: 'Messages', href: '/admin/messages', icon: <MessageCircle className="h-4 w-4" />, permission: PERMISSIONS.MANAGE_MESSAGES },
   { label: 'Analytics', href: '/admin/analytics', icon: <BarChart3 className="h-4 w-4" />, permission: PERMISSIONS.VIEW_ANALYTICS },
+  { label: 'SEO & GEO Centre', href: '/admin/seo', icon: <Globe className="h-4 w-4" />, permission: PERMISSIONS.VIEW_DASHBOARD },
   { label: 'Reports', href: '/admin/reports', icon: <FileBarChart className="h-4 w-4" />, permission: PERMISSIONS.VIEW_REPORTS },
   { label: 'Users & Roles', href: '/admin/users', icon: <UsersIcon className="h-4 w-4" />, permission: PERMISSIONS.MANAGE_USERS },
   { label: 'Notifications', href: '/admin/notifications', icon: <Bell className="h-4 w-4" />, permission: PERMISSIONS.MANAGE_NOTIFICATIONS },
