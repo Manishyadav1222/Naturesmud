@@ -32,6 +32,7 @@ interface MainstayItem {
   stars: number;
   price: number;
   image: string;
+  weight?: string;
 }
 
 const MAINSTAY_ITEMS: MainstayItem[] = [
@@ -44,26 +45,29 @@ const MAINSTAY_ITEMS: MainstayItem[] = [
     stars: 5,
     price: 595,
     image: '/products/authentic-dehydrated-mango.jpg',
+    weight: '100 GM',
   },
   {
-    id: 'roasted-cashews',
-    slug: 'roasted-cashews',
+    id: 'roasted-cashewnuts',
+    slug: 'roasted-cashewnuts',
     name: 'Royal Roasted Cashews',
     sub: 'with Himalayan rock salt',
     rating: '9.9',
     stars: 5,
     price: 750,
     image: '/products/authentic-cashewnuts-roasted.jpg',
+    weight: '200 GM',
   },
   {
-    id: 'shilajit-resin',
-    slug: 'pure-shilajit-resin',
-    name: 'Mustang Shilajit Resin',
+    id: 'pure-mountain-himalayan-shilajit-resin',
+    slug: 'pure-mountain-himalayan-shilajit-resin',
+    name: 'Pure Himalayan Shilajit Resin',
     sub: 'with 60%+ fulvic acid',
     rating: '9.9',
     stars: 5,
-    price: 890,
+    price: 1995,
     image: '/products/shilajit.jpg',
+    weight: '20 GM',
   },
 ];
 
@@ -78,7 +82,7 @@ export default function ArtisanEditorialHero() {
       price: item.price,
       image: item.image,
       category: 'Mainstay Superfoods',
-      weight: '100 GM',
+      weight: item.weight || '100 GM',
     });
     toast.success('Added to Cart', {
       description: `${item.name} has been added.`,

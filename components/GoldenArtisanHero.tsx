@@ -177,7 +177,7 @@ export default function GoldenArtisanHero() {
                     <span>4.9 / 5.0</span>
                   </div>
                   <h4 className="font-heading font-extrabold text-xs text-[#2C1802]">Sun-Dehydrated Mango</h4>
-                  <p className="text-[11px] text-gray-500 font-semibold">Rs. 595 · Standup Pouch</p>
+                  <p className="text-[11px] text-gray-500 font-semibold">Rs. 595 · 100 GM Glass Jar</p>
                 </div>
               </motion.div>
 
@@ -199,8 +199,8 @@ export default function GoldenArtisanHero() {
                   <span className="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase bg-emerald-100 text-emerald-800">
                     60%+ Fulvic
                   </span>
-                  <h4 className="font-heading font-extrabold text-xs text-[#2C1802]">Mustang Shilajit Resin</h4>
-                  <p className="text-[11px] text-gray-500 font-semibold">Rs. 890 · 100% Pure</p>
+                  <h4 className="font-heading font-extrabold text-xs text-[#2C1802]">Pure Himalayan Shilajit Resin</h4>
+                  <p className="text-[11px] text-gray-500 font-semibold">Rs. 1,995 · 20 GM Glass Jar</p>
                 </div>
               </motion.div>
             </motion.div>
