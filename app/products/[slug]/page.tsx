@@ -1636,6 +1636,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 ),
                 description: dossier?.whatItIs || product.description || product.shortDescription,
                 sku: `NM-${product.slug.toUpperCase()}`,
+                mpn: `NM-${product.slug.toUpperCase()}`,
                 category: categoryName || product.category || 'Superfoods',
                 brand: {
                   '@type': 'Brand',
@@ -1648,6 +1649,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         '@type': 'QuantitativeValue',
                         value: parseFloat(product.weight) || 100,
                         unitText: product.weight.replace(/[0-9.\s]/g, '') || 'GM',
+                      },
+                      hasMeasurement: {
+                        '@type': 'QuantitativeValue',
+                        value: parseFloat(product.weight) || 100,
+                        unitCode: product.weight.includes('ML') ? 'MLT' : 'GRM',
+                        unitText: product.weight,
                       },
                     }
                   : {}),
@@ -1699,23 +1706,76 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   hasMerchantReturnPolicy: {
                     '@type': 'MerchantReturnPolicy',
                     applicableCountry: 'NP',
+                    returnPolicyCountry: 'NP',
                     returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
                     merchantReturnDays: 7,
                     returnMethod: 'https://schema.org/ReturnByMail',
                     returnFees: 'https://schema.org/FreeReturn',
-                  },
-                  shippingDetails: {
-                    '@type': 'OfferShippingDetails',
-                    shippingDestination: {
-                      '@type': 'DefinedRegion',
-                      addressCountry: 'NP',
-                    },
-                    shippingRate: {
+                    refundType: 'https://schema.org/FullRefund',
+                    returnShippingFeesAmount: {
                       '@type': 'MonetaryAmount',
-                      value: product.price >= siteConfig.freeShippingThreshold ? 0 : 100,
+                      value: 0,
                       currency: 'NPR',
                     },
                   },
+                  shippingDetails: [
+                    {
+                      '@type': 'OfferShippingDetails',
+                      shippingRate: {
+                        '@type': 'MonetaryAmount',
+                        value: product.price >= siteConfig.freeShippingThreshold ? 0 : 100,
+                        currency: 'NPR',
+                      },
+                      shippingDestination: {
+                        '@type': 'DefinedRegion',
+                        addressCountry: 'NP',
+                        addressRegion: 'Bagmati (Kathmandu Valley)',
+                      },
+                      deliveryTime: {
+                        '@type': 'ShippingDeliveryTime',
+                        handlingTime: {
+                          '@type': 'QuantitativeValue',
+                          minValue: 0,
+                          maxValue: 1,
+                          unitCode: 'DAY',
+                        },
+                        transitTime: {
+                          '@type': 'QuantitativeValue',
+                          minValue: 1,
+                          maxValue: 2,
+                          unitCode: 'DAY',
+                        },
+                      },
+                    },
+                    {
+                      '@type': 'OfferShippingDetails',
+                      shippingRate: {
+                        '@type': 'MonetaryAmount',
+                        value: product.price >= siteConfig.freeShippingThreshold ? 0 : 150,
+                        currency: 'NPR',
+                      },
+                      shippingDestination: {
+                        '@type': 'DefinedRegion',
+                        addressCountry: 'NP',
+                        addressRegion: 'Outside Kathmandu Valley (All 7 Provinces)',
+                      },
+                      deliveryTime: {
+                        '@type': 'ShippingDeliveryTime',
+                        handlingTime: {
+                          '@type': 'QuantitativeValue',
+                          minValue: 0,
+                          maxValue: 1,
+                          unitCode: 'DAY',
+                        },
+                        transitTime: {
+                          '@type': 'QuantitativeValue',
+                          minValue: 2,
+                          maxValue: 4,
+                          unitCode: 'DAY',
+                        },
+                      },
+                    },
+                  ],
                 },
               },
               {

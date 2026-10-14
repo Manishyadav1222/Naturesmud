@@ -21,6 +21,7 @@ export async function GET() {
       category: p.category,
       categorySlug: p.categorySlug,
       sku: `NM-${p.slug.toUpperCase()}`,
+      mpn: `NM-${p.slug.toUpperCase()}`,
       weight: p.weight,
       packaging: p.packing || 'Airtight Food-Grade Pack',
       price: p.price,
@@ -31,8 +32,88 @@ export async function GET() {
         '@type': 'Offer',
         price: p.price,
         priceCurrency: 'NPR',
+        priceValidUntil: '2027-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
         availability: p.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
         url: `${baseUrl}/products/${p.slug}`,
+        seller: {
+          '@type': 'Organization',
+          name: siteConfig.name,
+          url: baseUrl,
+        },
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'NP',
+          returnPolicyCountry: 'NP',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+          merchantReturnDays: 7,
+          returnMethod: 'https://schema.org/ReturnByMail',
+          returnFees: 'https://schema.org/FreeReturn',
+          refundType: 'https://schema.org/FullRefund',
+          returnShippingFeesAmount: {
+            '@type': 'MonetaryAmount',
+            value: 0,
+            currency: 'NPR',
+          },
+        },
+        shippingDetails: [
+          {
+            '@type': 'OfferShippingDetails',
+            shippingRate: {
+              '@type': 'MonetaryAmount',
+              value: p.price >= siteConfig.freeShippingThreshold ? 0 : 100,
+              currency: 'NPR',
+            },
+            shippingDestination: {
+              '@type': 'DefinedRegion',
+              addressCountry: 'NP',
+              addressRegion: 'Bagmati (Kathmandu Valley)',
+            },
+            deliveryTime: {
+              '@type': 'ShippingDeliveryTime',
+              handlingTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 0,
+                maxValue: 1,
+                unitCode: 'DAY',
+              },
+              transitTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 1,
+                maxValue: 2,
+                unitCode: 'DAY',
+              },
+            },
+          },
+          {
+            '@type': 'OfferShippingDetails',
+            shippingRate: {
+              '@type': 'MonetaryAmount',
+              value: p.price >= siteConfig.freeShippingThreshold ? 0 : 150,
+              currency: 'NPR',
+            },
+            shippingDestination: {
+              '@type': 'DefinedRegion',
+              addressCountry: 'NP',
+              addressRegion: 'Outside Kathmandu Valley (All 7 Provinces)',
+            },
+            deliveryTime: {
+              '@type': 'ShippingDeliveryTime',
+              handlingTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 0,
+                maxValue: 1,
+                unitCode: 'DAY',
+              },
+              transitTime: {
+                '@type': 'QuantitativeValue',
+                minValue: 2,
+                maxValue: 4,
+                unitCode: 'DAY',
+              },
+            },
+          },
+        ],
       },
       ...(p.reviewCount && p.reviewCount > 0
         ? {
