@@ -128,7 +128,7 @@ export default function DashainOfferShowcaseSection({
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-amber-300/60 text-[11px] font-black uppercase tracking-wider text-amber-300 dashain-glow-text">
-                🎉 Valid Till Dashain End
+                🪔 Valid Till Chhath Puja
               </div>
               <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-amber-400 text-[#4a0808] text-[11px] font-black uppercase tracking-wider shadow-lg">
                 Click to Enlarge ✨
@@ -141,20 +141,20 @@ export default function DashainOfferShowcaseSection({
             <div>
               <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 border border-amber-300/50 text-amber-200 text-xs font-black uppercase tracking-widest mb-3 dashain-glow-box">
                 <Sparkles className="w-4 h-4 text-amber-300 animate-spin" />
-                <span>Nepal&apos;s Grand Festival Celebration · Valid Till Dashain End</span>
+                <span>Nepal&apos;s Grand Festival Celebration · Valid Till Chhath Puja (Late Nov)</span>
               </div>
 
               <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                 <span className="dashain-glow-gold block">
-                  DASHAIN BLESSINGS &amp; HEALTH
+                  DASHAIN, TIHAR &amp; CHHATH BLESSINGS
                 </span>
                 <span className="text-white dashain-glow-text text-xl sm:text-3xl lg:text-4xl mt-1 block">
-                  Free Delivery Over Rs. 3,000 + Free Pink Salt Over Rs. 5,000+!
+                  Bhai Masala &amp; Puja Gifts · Free Delivery &gt; 3,000 + Free Pink Salt &gt; 5,000+!
                 </span>
               </h2>
 
               <p className="mt-2.5 text-amber-100/90 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Celebrate Dashain with 100% pure Himalayan superfoods, dry fruits, nuts, and baby-safe organic powders. Enjoy Free Delivery over Rs. 3,000 and a complimentary Himalayan Pink Salt jar on orders over Rs. 5,000+ valid till Dashain End!
+                Celebrate Dashain, Tihar (Bhai Tika Masala) and sacred Chhath Puja with 100% pure Himalayan superfoods, raw nuts, dried fruits, and natural sweeteners. Enjoy Free Delivery over Rs. 3,000 and a complimentary Himalayan Pink Salt jar on orders over Rs. 5,000+ valid through Chhath Puja!
               </p>
             </div>
 
@@ -241,7 +241,7 @@ export default function DashainOfferShowcaseSection({
                     href="/products"
                     className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 text-[#4a0808] font-heading font-black text-xs uppercase tracking-wider shadow-lg hover:brightness-110 transition-all"
                   >
-                    <ShoppingBag className="w-4 h-4" /> Shop Dashain Collection
+                    <ShoppingBag className="w-4 h-4" /> Shop Festive Collection
                   </Link>
                 </div>
               </div>
@@ -249,13 +249,13 @@ export default function DashainOfferShowcaseSection({
           </div>
         </div>
 
-        {/* ── All Products Dashain Offer Catalog Grid ── */}
+        {/* ── All Products Festive Offer Catalog Grid ── */}
         <div className="mt-10 sm:mt-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400 text-[#4a0808] text-xs font-black uppercase tracking-wider mb-2 shadow-sm">
                 <Flame className="w-3.5 h-3.5 fill-current" />
-                <span>All {catalogList.length} Products Included in Dashain Offer</span>
+                <span>All {catalogList.length} Products Included in Festive Offer</span>
               </div>
               <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-white dashain-glow-text">
                 Shop All Pure Himalayan Products
@@ -272,7 +272,7 @@ export default function DashainOfferShowcaseSection({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search any product in Dashain offer..."
+                placeholder="Search any product in festive offer..."
                 className="w-full pl-9 pr-4 py-2.5 rounded-full bg-black/35 border border-amber-300/50 text-xs sm:text-sm text-white placeholder:text-amber-200/60 focus:outline-none focus:border-amber-300"
               />
             </div>
@@ -316,7 +316,7 @@ export default function DashainOfferShowcaseSection({
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 text-[#4a0808] font-heading font-black text-sm uppercase tracking-wider shadow-[0_0_30px_rgba(251,191,36,0.5)] hover:brightness-110 transition-all cursor-pointer"
               >
                 <ShoppingBag className="w-4 h-4" />
-                <span>Show All {filteredProducts.length} Dashain Offer Products</span>
+                <span>Show All {filteredProducts.length} Festive Offer Products</span>
               </button>
             )}
             <Link

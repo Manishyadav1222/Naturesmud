@@ -15,10 +15,10 @@ export default function FeaturesStrip({ className = '', variant = 'light' }: Fea
   const features = [
     {
       icon: Sparkles,
-      badge: '🎉 Valid Till Dashain End',
+      badge: '🪔 Valid Till Chhath Puja',
       badgeColor: 'bg-red-500/15 text-red-800 border-red-500/30',
-      title: 'Dashain Blessings & Health',
-      desc: 'Celebrate with 100% Pure Himalayan Superfoods, Nuts & Oils',
+      title: 'Tihar & Chhath Festive Blessings',
+      desc: 'Bhai Masala Hampers & Satvik Chhath Offerings · 100% Pure',
       accentColor: 'from-red-600 to-amber-600',
       iconBg: 'bg-amber-100 text-red-800',
       animation: 'star-glow'
@@ -35,7 +35,7 @@ export default function FeaturesStrip({ className = '', variant = 'light' }: Fea
     },
     {
       icon: Gift,
-      badge: '🎁 Dashain Bonus Gift',
+      badge: '🎁 Festive Bonus Gifts',
       badgeColor: 'bg-rose-500/15 text-rose-800 border-rose-500/30',
       title: 'Free Delivery + Pink Salt Free > 5,000',
       desc: 'Orders over Rs. 5,000+ get Free Delivery & Free Himalayan Pink Salt!',

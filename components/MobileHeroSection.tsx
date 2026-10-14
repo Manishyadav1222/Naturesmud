@@ -51,14 +51,14 @@ export interface MobileHeroPoster {
 const RAW_MOBILE_POSTERS: MobileHeroPoster[] = [
   {
     id: 'dashain-offer-2026',
-    name: 'Dashain Blessings & Health Offer',
-    subname: 'Free Delivery Over Rs. 3,000 · Free Delivery & Free Pink Salt Over Rs. 5,000+',
+    name: 'Dashain, Tihar & Chhath Festive Offer',
+    subname: 'Tihar Bhai Masala & Chhath Puja Gifts · Free Delivery Over Rs. 3,000 · Free Pink Salt Over Rs. 5,000+',
     slug: 'dashain-offer',
     image: '/images/posters/dashain-offer-poster.jpg',
     price: 3000,
     originalPrice: 3500,
     weight: 'All 32 Products',
-    badge: '🎉 Dashain Festive Offer',
+    badge: '🎉 Dashain, Tihar & Chhath Offer',
     primary: '#7F1D1D',
     secondary: '#5A0B0B',
     accent: '#FDE047',
@@ -1135,7 +1135,15 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                   className={`absolute inset-0 transition-opacity duration-700 ease-in-out cursor-pointer ${
                     isCurrent ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
                   }`}
-                  onClick={() => openQuickView(matchedCatalogProduct?.id || poster.slug)}
+                  onClick={() => {
+                    if (poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer') {
+                      const el = document.getElementById('dashain-mega-offer');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      else window.location.href = '/offers';
+                    } else {
+                      openQuickView(matchedCatalogProduct?.id || poster.slug);
+                    }
+                  }}
                 >
                   <Image
                     src={poster.image}
@@ -1204,34 +1212,46 @@ export default function MobileHeroSection({ dynamicProducts }: { dynamicProducts
                     </div>
 
                     <div className="flex items-center gap-2 pt-0.5">
-                      <button
-                        type="button"
-                        onClick={handleQuickAdd}
-                        className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                        style={{
-                          background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
-                        }}
-                      >
-                        {addedItem === poster.id ? (
-                          <>
-                            <Check className="w-4 h-4 animate-bounce" />
-                            <span>Added to Cart!</span>
-                          </>
-                        ) : (
-                          <>
-                            <ShoppingBag className="w-3.5 h-3.5" />
-                            <span>Quick Add · <strong className="font-black text-amber-200">Rs. {poster.price}</strong></span>
-                          </>
-                        )}
-                      </button>
+                      {poster.id === 'dashain-offer-2026' || poster.slug === 'dashain-offer' ? (
+                        <Link
+                          href="/offers"
+                          className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-[#4a0808] shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer relative overflow-hidden bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 hover:brightness-110"
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>Explore Festival Offers &rarr;</span>
+                        </Link>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            onClick={handleQuickAdd}
+                            className="flex-1 py-2 px-3.5 rounded-xl font-heading font-bold text-xs text-white shadow-lg active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                            style={{
+                              background: `linear-gradient(135deg, ${poster.primary} 0%, ${poster.secondary} 100%)`,
+                            }}
+                          >
+                            {addedItem === poster.id ? (
+                              <>
+                                <Check className="w-4 h-4 animate-bounce" />
+                                <span>Added to Cart!</span>
+                              </>
+                            ) : (
+                              <>
+                                <ShoppingBag className="w-3.5 h-3.5" />
+                                <span>Quick Add · <strong className="font-black text-amber-200">Rs. {poster.price}</strong></span>
+                              </>
+                            )}
+                          </button>
 
-                      <Link
-                        href={`/products/${poster.slug}`}
-                        className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
-                        aria-label="View Details"
-                      >
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
+                          <Link
+                            href={`/products/${poster.slug}`}
+                            className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white backdrop-blur-xs border border-white/30 active:scale-95 transition-all flex items-center justify-center"
+                            aria-label="View Details"
+                          >
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

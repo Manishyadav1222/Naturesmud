@@ -1,16 +1,16 @@
 export const DASHAIN_OFFER_CONFIG = {
-  title: 'Dashain Blessings & Health',
-  subtitle: 'Bada Dashain 2083 Maha Festival Offer — Pure Himalayan Superfoods',
-  badge: '🇳🇵 DASHAIN MAHA OFFER · VALID TILL DASHAIN END',
-  couponCode: 'DASHAIN',
+  title: 'Dashain, Tihar & Chhath Festive Blessings',
+  subtitle: 'Dashain, Tihar (Bhai Masala) & Chhath Puja 2083 Maha Festival Offer — Pure Himalayan Superfoods & Gift Packs',
+  badge: '🇳🇵 DASHAIN, TIHAR & CHHATH MAHA OFFER · VALID TILL CHHATH PUJA',
+  couponCode: 'TIHAR10',
   discountPercent: 10,
   freeDeliveryThreshold: 3000,
   freePinkSaltThreshold: 5000,
   posterImage: '/images/posters/dashain-offer-poster.jpg',
   startDate: '2026-10-01T00:00:00+05:45',
-  // Dashain 2083 (2026) concludes after Kojagrat Purnima; keep valid through Dashain end
-  endDate: '2026-11-05T23:59:59+05:45',
-  endDateLabel: 'Valid Till Dashain End (Kojagrat Purnima)',
+  // Celebrates Dashain, Tihar (Bhai Tika) & Chhath Puja; valid through end of Chhath Parva
+  endDate: '2026-11-25T23:59:59+05:45',
+  endDateLabel: 'Valid Till Chhath Puja (November 25, 2026)',
   freeGiftProduct: {
     id: 'free-dashain-pink-salt',
     slug: 'himalayan-pink-salt',

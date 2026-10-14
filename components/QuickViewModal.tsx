@@ -204,10 +204,10 @@ export default function QuickViewModal() {
                             {product.description}
                           </p>
 
-                          {/* Dashain Offer Perks Card */}
+                          {/* Festive Offer Perks Card */}
                           <div className="mt-4 rounded-xl bg-gradient-to-r from-[#5a0b0b] via-[#7f1d1d] to-[#1a3826] p-3 text-white border border-amber-400/40 shadow-md">
                             <p className="text-xs font-black uppercase tracking-wider text-amber-300 dashain-glow-text mb-1.5 flex items-center gap-1.5">
-                              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> Dashain Blessings &amp; Health Offer (Valid Till Dashain End)
+                              <Sparkles className="w-3.5 h-3.5 text-amber-300" /> Tihar &amp; Chhath Festive Blessings (Valid Till Chhath Puja)
                             </p>
                             <div className="space-y-1 text-xs text-amber-100/95">
                               <p className="flex items-center gap-1.5 font-semibold">

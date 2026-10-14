@@ -99,15 +99,15 @@ export default function DashainOfferPopup() {
             onClick={openDashainModal}
             type="button"
             className="fixed bottom-20 lg:bottom-6 left-3 sm:left-6 z-40 flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-gradient-to-r from-[#881337] via-[#B91C1C] to-[#D97706] text-white border-2 border-amber-300 shadow-2xl cursor-pointer dashain-glow-box"
-            aria-label="Open Dashain Blessings & Health Offer"
+            aria-label="Open Dashain, Tihar and Chhath Festive Offer"
           >
-            <span className="text-base animate-bounce">🎉</span>
+            <span className="text-base animate-bounce">🪔</span>
             <div className="text-left leading-tight">
               <p className="text-[10px] font-black uppercase tracking-wider text-amber-200 dashain-glow-text">
-                Dashain Offer
+                Tihar &amp; Chhath Offer
               </p>
               <p className="text-xs font-extrabold text-white">
-                Free Delivery + Free Pink Salt
+                Bhai Masala · Free Delivery + Gifts
               </p>
             </div>
           </motion.button>
@@ -121,7 +121,7 @@ export default function DashainOfferPopup() {
             className="fixed inset-0 z-[100] flex items-center justify-center p-2.5 sm:p-4 md:p-6 overflow-y-auto bg-black/80 backdrop-blur-md"
             role="dialog"
             aria-modal="true"
-            aria-label="Dashain Blessings and Health Special Offer"
+            aria-label="Dashain, Tihar and Chhath Festive Blessings Special Offer"
           >
             {/* Backdrop click to close */}
             <motion.div
@@ -145,16 +145,16 @@ export default function DashainOfferPopup() {
                 type="button"
                 onClick={closeDashainModal}
                 className="absolute top-3 right-3 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/70 hover:bg-red-700 text-amber-200 hover:text-white border border-amber-300/60 flex items-center justify-center transition-all cursor-pointer shadow-lg"
-                aria-label="Close Dashain Offer Popup"
+                aria-label="Close Festive Offer Popup"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Left / Top Column: Static Dashain Offer Poster Image Opening First */}
+              {/* Left / Top Column: Static Offer Poster Image Opening First */}
               <div className="relative w-full md:w-[52%] aspect-square bg-[#2A080E] shrink-0 overflow-hidden border-b md:border-b-0 md:border-r border-amber-400/40">
                 <Image
                   src={DASHAIN_OFFER_CONFIG.posterImage}
-                  alt="NaturesMud Dashain Blessings & Health - Free Delivery > 3000, Free Pink Salt on 5000+ Orders"
+                  alt="NaturesMud Dashain, Tihar & Chhath Festive Blessings - Free Delivery > 3000, Free Pink Salt on 5000+ Orders"
                   fill
                   priority
                   unoptimized
@@ -163,7 +163,7 @@ export default function DashainOfferPopup() {
                 {/* Top Left Live Validity Pill */}
                 <div className="absolute top-3 left-3 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-amber-400/70 text-[10px] sm:text-xs font-black text-amber-300 shadow-md">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span>🇳🇵 Valid Till Dashain End</span>
+                  <span>🇳🇵 Valid Till Chhath Puja</span>
                 </div>
               </div>
 
@@ -173,16 +173,16 @@ export default function DashainOfferPopup() {
                   {/* Glowing Eyebrow */}
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-300/50 text-amber-200 text-[11px] font-black uppercase tracking-widest">
                     <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-spin" style={{ animationDuration: '5s' }} />
-                    <span>Bada Dashain 2083 Maha Offer</span>
+                    <span>Dashain, Tihar &amp; Chhath 2083 Maha Offer</span>
                   </div>
 
                   {/* Glowing Title */}
                   <div>
                     <h2 className="font-heading font-black text-2xl sm:text-3xl text-amber-300 tracking-tight leading-tight dashain-glow-text">
-                      ✨ Dashain Blessings &amp; Health ✨
+                      ✨ Tihar &amp; Chhath Festive Blessings ✨
                     </h2>
                     <p className="text-xs sm:text-sm text-amber-100/90 mt-1">
-                      Celebrate Dashain with 100% Pure Himalayan Superfoods, Powders, Nuts &amp; Cold-Pressed Oils!
+                      Celebrate Tihar Bhai Masala &amp; Chhath Puja with 100% Pure Himalayan Superfoods, Nuts, Dried Fruits &amp; Raw Honey!
                     </p>
                   </div>
 
@@ -254,7 +254,7 @@ export default function DashainOfferPopup() {
                       className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:brightness-110 text-red-950 font-heading font-black text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-lg cursor-pointer transition-all active:scale-95"
                     >
                       <ShoppingBag className="w-4 h-4" />
-                      <span>Claim Dashain Offer</span>
+                      <span>Claim Festival Offer</span>
                     </button>
 
                     <button

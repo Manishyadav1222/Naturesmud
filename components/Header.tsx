@@ -95,7 +95,7 @@ export default function Header() {
           <div className="mx-auto max-w-7xl px-3 sm:px-6 py-1.5 sm:py-2 flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400 text-[#4a0808] font-black text-[10px] uppercase tracking-wider shadow-sm animate-pulse">
-                🎉 Dashain Offer
+                🪔 Tihar &amp; Chhath Festive Offer
               </span>
               <span className="font-extrabold text-amber-200 dashain-glow-text">
                 🚚 Free Delivery Over Rs. 3,000
@@ -107,14 +107,14 @@ export default function Header() {
             </div>
             <div className="flex items-center gap-2 ml-auto">
               <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-wider text-amber-300/90 bg-black/25 px-2 py-0.5 rounded-full border border-amber-400/30">
-                Valid Till Dashain End
+                Valid Till Chhath Puja (Late Nov)
               </span>
               <button
                 type="button"
                 onClick={openDashainModal}
                 className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-300 to-amber-400 text-[#4a0808] font-black text-[10px] uppercase tracking-wider hover:brightness-110 transition-all shadow-sm cursor-pointer"
               >
-                View Poster ✨
+                View Offer Poster ✨
               </button>
             </div>
           </div>

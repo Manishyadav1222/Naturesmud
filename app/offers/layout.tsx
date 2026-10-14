@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Superfood Combos, Baby Weaning Bundles & Festival Gift Hampers in Nepal',
+  title: 'Superfood Combos, Tihar Bhai Masala & Chhath Puja Gift Hampers in Nepal',
   description:
-    'Save on curated NaturesMud superfood combo packs, baby & mother weaning nutrition bundles, athletic energy trios, and healthy Dashain, Tihar & corporate gift hampers delivered across Nepal.',
+    'Save on curated NaturesMud superfood combo packs, baby weaning bundles, Tihar Bhai Masala dry fruit gift boxes, and sacred Chhath Puja offering hampers delivered across Nepal.',
   alternates: {
     canonical: 'https://naturesmud.shop/offers',
   },
